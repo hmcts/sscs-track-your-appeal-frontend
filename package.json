@@ -21,7 +21,8 @@
     "govuk-elements-sass": "2.2.1",
     "govuk_frontend_toolkit": "^5.0.1",
     "govuk_template_jinja": "^0.19.0",
-    "serve-favicon": "2.3.0"
+    "serve-favicon": "2.3.0",
+    "nunjucks": "2.5.2"
   },
   "devDependencies": {
     "grunt": "1.0.1",
@@ -30,7 +31,6 @@
     "grunt-contrib-watch": "1.0.0",
     "grunt-nodemon": "0.4.2",
     "grunt-sass": "^1.2.1",
-    "grunt-sync": "^0.6.2",
-    "nunjucks": "2.5.2"
+    "grunt-sync": "^0.6.2"
   }
 }
