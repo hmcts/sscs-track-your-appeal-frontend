@@ -2,11 +2,11 @@ const express = require('express');
 const nunjucks = require('express-nunjucks');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
-const locals = require('./app/locals');
+const locals = require('app/locals');
 const os = require('os');
 const path = require('path');
 
-const PORT = 8080;
+const PORT = 3000;
 
 exports.init = () => {
 
@@ -46,10 +46,10 @@ exports.init = () => {
     app.use(locals);
 
     app.get('/', function(req, res) {
-        res.render('index.html');
+        res.render('track-your-appeal.html');
     });
 
-    const http = app.listen(PORT);
+    const server = app.listen(PORT);
 
-    return {app, http};
+    return {app, server};
 };
