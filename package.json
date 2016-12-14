@@ -10,7 +10,9 @@
     "start": "NODE_PATH=. node server.js",
     "test": "NODE_PATH=. mocha test/unit --reporter spec",
     "dev": "NODE_PATH=. grunt",
-    "generate-assets": "NODE_PATH=. grunt generate-assets"
+    "generate-assets": "NODE_PATH=. grunt generate-assets",
+    "smoke-test": "NODE_PATH=. codeceptjs run test/smoketests/ --steps",
+    "pa11y": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
     "type": "git",
@@ -23,8 +25,8 @@
     "govuk-elements-sass": "2.2.1",
     "govuk_frontend_toolkit": "^5.0.1",
     "govuk_template_jinja": "^0.19.0",
-    "serve-favicon": "2.3.0",
-    "nunjucks": "2.5.2"
+    "nunjucks": "2.5.2",
+    "serve-favicon": "2.3.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
@@ -36,6 +38,9 @@
     "grunt-sass": "^1.2.1",
     "grunt-sync": "^0.6.2",
     "mocha": "^3.2.0",
+    "mochawesome": "^1.5.3",
+    "nightmare": "^2.8.1",
+    "nightmare-upload": "^0.1.1",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0",
     "supertest": "^2.0.1"
