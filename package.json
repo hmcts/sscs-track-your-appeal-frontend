@@ -7,8 +7,10 @@
     "node": ">=6.0"
   },
   "scripts": {
-    "start": "node ./server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "NODE_PATH=. node server.js",
+    "test": "NODE_PATH=. mocha test/unit --reporter spec",
+    "dev": "NODE_PATH=. grunt",
+    "generate-assets": "NODE_PATH=. grunt generate-assets"
   },
   "repository": {
     "type": "git",
@@ -25,12 +27,17 @@
     "nunjucks": "2.5.2"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "grunt": "1.0.1",
     "grunt-cli": "1.2.0",
     "grunt-concurrent": "2.3.1",
     "grunt-contrib-watch": "1.0.0",
     "grunt-nodemon": "0.4.2",
     "grunt-sass": "^1.2.1",
-    "grunt-sync": "^0.6.2"
+    "grunt-sync": "^0.6.2",
+    "mocha": "^3.2.0",
+    "sinon": "^1.17.6",
+    "sinon-chai": "^2.8.0",
+    "supertest": "^2.0.1"
   }
 }
