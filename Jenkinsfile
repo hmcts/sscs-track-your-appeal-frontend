@@ -20,6 +20,6 @@
      build job: 'testing-always-pass'
 
      stage "Run smoke tests"
-     build job: 'testsscse2e'
+     build job: 'sscs-track-your-appeal-frontend-smoketests'
 
  }
