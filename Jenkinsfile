@@ -8,6 +8,7 @@
 
      stage "Install dependencies"
      sh "npm install"
+     sh "npm run generate-assets"
 
      stage "Run unit tests"
      sh "npm test"
