@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "NODE_PATH=. node server.js",
-    "test": "NODE_PATH=. mocha test/unit --reporter spec",
+    "test": "NODE_PATH=. mocha test/unit/**/*.js --reporter spec",
     "dev": "NODE_PATH=. grunt",
     "generate-assets": "NODE_PATH=. grunt generate-assets"
   },

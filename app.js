@@ -3,6 +3,7 @@ const nunjucks = require('express-nunjucks');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const locals = require('app/locals');
+const routes = require('app/routes');
 const os = require('os');
 const path = require('path');
 
@@ -13,7 +14,12 @@ exports.init = () => {
     const app = express();
 
     app.set('view engine', 'html');
-    app.set('views', [__dirname + '/app/views', __dirname + '/lib/']);
+    app.set('views', [
+        __dirname + '/lib/',
+        __dirname + '/app/views',
+        __dirname + '/app/modules/trackyourappeal',
+        __dirname + '/app/modules/abouthearing'
+    ]);
 
     nunjucks(app, {
         autoescape: true,
@@ -44,10 +50,7 @@ exports.init = () => {
     }));
 
     app.use(locals);
-
-    app.get('/', function(req, res) {
-        res.render('track-your-appeal.html');
-    });
+    app.use('/', routes);
 
     const server = app.listen(PORT);
 
