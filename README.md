@@ -18,3 +18,8 @@
 
 ## Run the unit tests
     $> npm test
+
+## Run the smoke tests
+    $> npm smoke-test
+        or
+       codeceptjs run test/smoketest/ --steps
