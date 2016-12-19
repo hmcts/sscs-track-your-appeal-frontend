@@ -36,9 +36,9 @@ describe('Node.js application/server', () => {
                 .end(done)
         });
 
-        it('should respond to /trackyourappeal route with a HTTP 200:OK', function(done) {
+        it('should respond to /trackyourappeal/?id=xxxxxx route with a HTTP 200:OK', function(done) {
             request(express.app)
-                .get('/trackyourappeal')
+                .get('/trackyourappeal/?id=tt48i5')
                 .expect(200, done);
         });
 
