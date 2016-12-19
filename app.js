@@ -4,6 +4,7 @@ const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const locals = require('app/locals');
 const routes = require('app/routes');
+const filters = require('app/core/filters');
 const os = require('os');
 const path = require('path');
 
@@ -24,7 +25,8 @@ exports.init = () => {
     nunjucks(app, {
         autoescape: true,
         watch: true,
-        noCache: false
+        noCache: false,
+        filters: filters
     });
 
     // Disallow search index indexing

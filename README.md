@@ -13,8 +13,8 @@
 ## Start the application
     $> npm start
 
-## Open a browser
-    http://localhost:3000
+## Open a browser including the appellant ID
+    http://localhost:3000/trackyourappeal?id=xxxxxx
 
 ## Run the unit tests
     $> npm test

@@ -1,3 +1,6 @@
+const TrackYourAppealService = require('app/services/TrackYourAppealService');
+const locale = require('app/assets/locale/en');
+
 let singleton = Symbol();
 let singletonEnforcer = Symbol();
 
@@ -20,8 +23,8 @@ class TrackYourAppeal {
     }
 
     getStatus(req, res) {
-        res.render('track-your-appeal', {
-            content: 'Progress bar goes here...'
+        TrackYourAppealService.status(req.query.id).then((result) => {
+            res.render('track-your-appeal', Object.assign(locale, { data: result.body.appeal }));
         });
     }
 
