@@ -16,6 +16,10 @@ indent_size = 2
 [Makefile]
 indent_style = tab
 
+[Jenkinsfile*]
+indent_style = space
+indent_size = 4
+
 # Paths editorconfig should ignore
 [node_modules/**]
 indent_style = ignore
