@@ -1,8 +1,8 @@
 const app = require('app');
 const request = require('supertest');
-const {expect} = require('util/chai-sinon');
+const {expect, sinon} = require('util/chai-sinon');
 
-describe('the node application/server', () => {
+describe('Node.js application/server', () => {
 
     let express;
 
@@ -28,16 +28,30 @@ describe('the node application/server', () => {
 
     describe('making HTTP application requests', function() {
 
-        it('should respond to application route', function(done) {
+        it('should redirect to /trackyourappeal when a request is made to root', function(done) {
             request(express.app)
                 .get('/')
+                .expect(302)
+                .expect('Location', 'trackyourappeal')
+                .end(done)
+        });
+
+        it('should respond to /abouthearing route with a HTTP 200:OK', function(done) {
+            request(express.app)
+                .get('/abouthearing')
                 .expect(200, done);
         });
 
-        it('should respond with a "HTTP 404:Not found" when encountering an unknown route', function(done) {
+        it('should respond to an unknown route with a HTTP 404:Not found', function(done) {
             request(express.app)
                 .get('/foo')
                 .expect(404, done);
         });
-    })
+
+        it('should respond to /trackyourappeal route with a HTTP 404:Not found', function(done) {
+            request(express.app)
+                .get('/trackyourappeal')
+                .expect(404, done);
+        });
+    });
 });

@@ -1,7 +1,108 @@
+@import "_colours";
+
 #content.track-your-appeal {
 
   .content {
-    color: darkblue;
+    color: blue;
+    font-style: italic;
+  }
+
+
+  .divider {
+    margin-top: 15px;
+    border-bottom: 3px solid $govuk-blue;
+  }
+
+  .details .heading-medium {
+    margin-top: 30px;
+    margin-bottom: 0;
+  }
+
+  .screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    position: absolute !important;
+    top: -999px;
+    left: -999px;
+  }
+
+  .progress-container {
+    height: 32px;
+    white-space: nowrap;
+    margin-top: 45px;
+    margin-bottom: 75px;
+    padding: 15px;
+
+    .ring {
+      border-radius: 50%;
+      border: 8px solid $grey-2;;
+      width: 16px;
+      height: 16px;
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .leg {
+      width: calc((100% - 49px)/3);
+      height: 8px;
+      background-color: $grey-2;
+      margin: 12px -5px;
+      padding: 0;
+      display: inline-block;
+      position: relative;
+    }
+
+    .leg.foot:after {
+      display: block;
+      content: " ";
+      background-color: $grey-2;
+      width: 8px;
+      height: 22px;
+      position: relative;
+      z-index: 1;
+      left: calc(100% - 8px);
+    }
+
+    .leg.active,
+    .leg.foot.active:after {
+      background-color: $button-colour;
+    }
+
+    .ring.active {
+      border: 8px solid $button-colour;
+    }
+
+    p {
+      position: absolute;
+      top: 30px;
+    }
+
+    .appeal-received {
+      left: -21px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .dwp-respond {
+      top: 26px;
+      font-size: 16px;
+      left: calc(100% - 60px);
+    }
+
+    .hearing-booked {
+      top: 26px;
+      font-size: 16px;
+      left: calc(100% - 70px);
+    }
+
+    .hearing {
+      font-weight: bold;
+      font-size: 16px;
+      left: calc(100% - 40px);
+    }
   }
 
 }

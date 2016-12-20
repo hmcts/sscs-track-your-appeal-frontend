@@ -1,0 +1,259 @@
+{
+	"status": {
+		"appeal": {
+			"heading": "Appeal received",
+			"msg": "We have told the DWP that you want to appeal against their decision. They have to provide a written response before {{date | formatDate}} We will contact you and explain the next steps when they have replied."
+		},
+		"dwpRespond": {
+			"heading": "DWP response",
+			"msg": "We have told the DWP you wanted to appeal against their decision on your claim for PIP benefit. They have now responded and told us they have not changed their decision. They should have sent you a copy of their response in the post.",
+			"msg2": "We are now in the process of booking a hearing for your appeal. We’ll contact you within 6 weeks to tell you when and where your hearing is."
+		},
+		"hearingBooked": {
+			"heading": "Hearing booked",
+			"msg": "A hearing has been booked for your appeal"
+		},
+		"hearing": {
+			"heading": "Hearing",
+			"msg": "A decision was made on your appeal on {{date | formatDate}}. A letter with the decision will be sent to your registered address."
+		}
+	},
+	"progressBar": {
+		"appeal": "Appeal",
+		"dwpRespond": "DWP response",
+		"hearingBooked": "Hearing booked",
+		"hearing": "Hearing",
+		"screenReader": {
+			"heading": "Appeal process with 4 steps",
+			"appeal": {
+				"happening": "Step 1 of 4. Appeal received. This is the current status of your appeal",
+				"happened": "Step 1 of 4. Appeal received. This step is complete."
+			},
+			"dwpRespond": {
+				"due": "Step 2 of 4. DWP respond to your appeal. This has not happened yet.",
+				"happening": "Step 2 of 4. DWP respond to your appeal. This is the current status of your appeal.",
+				"happened": "Step 2 of 4. DWP respond to your appeal. This step is complete."
+			},
+			"hearingBooked": {
+				"due": "Step 3 of 4. Hearing booked. This has not happened yet.",
+				"happening": "Step 3 of 4. Hearing booked. This is the current status of your appeal.",
+				"happened": "Step 3 of 4. Hearing booked. This step is complete."
+			},
+			"hearing": {
+				"due": "Step 4 of 4. Hearing for your appeal. This has not happened yet.",
+				"happening": "Step 4 of 4. Hearing for your appeal. This is the current status of your appeal.",
+				"happened": "Step 4 of 4. Hearing for your appeal. This step is complete"
+			}
+		}
+	},
+	"claimExpenses": {
+		"title": "Claiming expenses to attend your hearing",
+		"description": "You may be able to claim back the money you spend on attending your hearing. The amount you can claim depends on how you get there and how long you’re away from home.",
+		"travel": {
+			"heading": "Travel",
+			"description": [
+				"We encourage you to use public transport where possible. Bring your train or bus ticket with you to the hearing to show how much you spent.",
+				"If you come by car you can claim 12p per mile. If you’re bringing passengers you can claim an extra 2p per mile.",
+				"If you have a health condition or disability which means you can’t get yourself to the hearing then you might be able to claim for a taxi. You’ll need to get authorisation before claiming for a taxi by phoning 0300 123 1142."
+			]
+		},
+		"meals": {
+			"heading": "Meals",
+			"subHeading": "The amount you can claim for food depends on how long you’re away from home:",
+			"description": [
+				"5 hours | £4.25",
+				"10 hours | £9.30",
+				"12 hours | £13.55"
+			]
+		},
+		"accommodation": {
+			"heading": "Accommodation",
+			"description": [
+				"If you need to spend the night away from home to attend your hearing then you may be able to claim back the cost. You’ll need to get authorisation before claiming for accommodation by phoning 0300 123 1142."
+			]
+		},
+		"lossOfEarnings": {
+			"heading": "Loss of earnings",
+			"description": [
+				"If you would usually be earning money while at your hearing, you may be able to claim this back. You can claim £37.06 if you’re away from work for up to 4 hours or £71.80 for 4 hours or more. You’ll need to bring a letter from your employer which shows how much you're paid."
+			]
+		},
+		"howToClaim": {
+			"heading": "How to claim",
+			"description": [
+				"You’ll be given a claim form at your hearing. A clerk will help you fill it out.",
+				"Make sure you bring your tickets and receipts to show how much you spent."
+			]
+		}
+	},
+	"evidence": {
+		"receivedBy": "All evidence must be received by",
+		"dwp": {
+			"heading": "DWP evidence received",
+			"msg": "The evidence the DWP sent was received by us on {{date | formatDate}}"
+		},
+		"default": {
+			"heading": "Evidence received",
+			"msg": "The evidence was received on {{data | formatDate}}"
+		},
+		"appellant": {
+			"heading": "Evidence received",
+			"msg": "The evidence that you sent was received by us on {{date | formatDate}}"
+		},
+		"tribunalsService": {
+			"heading": "Evidence received",
+			"msg": "The evidence the Tribunal Service sent was received by us on {{date | formatDate}}"
+		},
+		"representative": {
+			"heading": "Evidence received",
+			"msg": "The evidence the representative sent was received by us on {{date | formatDate}}"
+		},
+		"provide": {
+			"title": "Providing evidence to support your appeal",
+			"link": "Find out about submitting evidence to support your appeal.",
+			"description": "Evidence is anything that supports your appeal. It could be letters, documents or medical records which show you have a particular condition. What you say at the hearing is also classed as evidence. All this helps the tribunal understand the facts of your appeal.",
+			"medicalEvidence": {
+				"heading": "Medical evidence",
+				"description": [
+					"This is the most common and useful form of evidence. Medical evidence is anything which shows you have a particular condition at the time of making your appeal. For example a copy of your medical records or letter from a consultant.",
+					"As a patient, you have a right to a copy of your medical records. If you want to submit them as evidence you should request them from your doctor as early as possible and send them to the tribunal.",
+					"If you think it will support your appeal, you could ask a medically qualified person who knows about your condition to write you a letter. For example a consultant at the hospital or a mental health worker. A letter is different from your medical records because it describes your condition and how it affects your life.",
+					"Try to obtain medical evidence as early as possible and send it to us at least 2 weeks before your hearing. If you bring it on the day, your hearing may be delayed to a different day because the tribunal has not had time to read it.",
+					"Please note that your doctor or consultant may charge you for your medical records or writing a letter. We cannot reimburse you for this."
+				]
+			},
+			"oralEvidence": {
+				"heading": "Oral evidence",
+				"description": [
+					"What you or anyone else says on your behalf at the hearing is classed as oral evidence. If you have a carer or someone who supports you in the home, you might want to invite them to come to the hearing and tell the tribunal about your condition.",
+					"You should check the person is happy with talking at your hearing and that they are available on the day."
+				]
+			},
+			"additionalEvidence": {
+				"heading": "Additional evidence",
+				"description": [
+					"Other evidence can be used to support your appeal. For example, a gas bill might show you were living at a particular address, a phone bill might prove you phoned the DWP on a particular day, or your bank statement might show your financial situation.",
+					"Again, it is important that all documents are sent to the tribunal as early as possible. If you bring them on the day, the hearing may be delayed because the judge has not had time to read them."
+				]
+			},
+			"whereToSendEvidence": {
+				"heading": "Where to send your evidence",
+				"description": [
+					"Post evidence to the following address, clearly marked with your appeal reference number:"
+				],
+				"address": [
+					"Birmingham ASC",
+					"HM Courts and Tribunals Service",
+					"Administrative Support Centre (ASC)",
+					"P O Box 14620",
+					"Birmingham",
+					"B16 6FR"
+				]
+			}
+		}
+	},
+	"notifications": {
+		"register": {
+			"title": "Register for notifications",
+			"description": "Receive reminders and notifications to keep you updated on the progress of your appeal",
+			"question": "How would you like to receive notifications?",
+			"options": [
+				"Email",
+				"Text Message",
+				"Both"
+			],
+			"continue": "Continue",
+			"cancel": "Cancel"
+		}
+	},
+	"hearing": {
+		"details": {
+			"title": "Your tribunal hearing",
+			"description": []
+		},
+		"expectations": {
+			"title": "What to expect at your hearing",
+			"description": "Your hearing is an opportunity for you to explain your case and get a decision on your benefit appeal. The judge is independent and will listen to both sides of the dispute before making a decision.",
+			"whenYouArrive": {
+				"heading": "When you arrive",
+				"description": "You’ll be greeted by a tribunal clerk. They will take care of you at the hearing venue and answer any questions you may have. You’ll then sit in a waiting area until your hearing begins."
+			},
+			"theHearingRoom": {
+				"heading": "The Hearing Room",
+				"description": "The tribunal clerk will take you into a room for your hearing. The judge will be sat behind a table and you’ll be invited to sit opposite him or her. If you have someone to support you or give evidence they will sit next to you."
+			},
+			"image": {
+				"description": "A typical tribunal hearing"
+			},
+			"peopleAtHearing": {
+				"heading": "The People at your hearing",
+				"description": [
+					"The judge runs the hearing. It’s their job to review the evidence and make a decision on your claim. They will not be dressed in a robe and wig, it’s not as formal as a court.",
+					"Depending on your type of appeal, there may other people who are helping the judge making a decision. For example a doctor or disability expert are present in a lot of Personal Independence Payment appeals.",
+					"Lastly a representative from the Department of Work and Pensions (DWP) may also be there. They are not the person who made the decision on your benefits but they are there to speak on behalf of the DWP."
+				]
+			},
+			"duringHearing": {
+				"heading": "During your hearing",
+				"description": [
+					"The judge and the people advising the judge will ask you some questions. They are trying to understand how your condition affects your life. So they may ask how you cope with certain tasks or what types of of things you need help with.",
+					"They may also ask you questions that relate to the evidence you or the DWP have provided. It’s important that you send any evidence at least two weeks before so they have time to read it before your hearing.",
+					"The judge or other panel members will not ask you trick questions. They are just trying to decide whether you are legally entitled to the benefit you are claiming."
+				]
+			},
+			"gettingDecision": {
+				"heading": "Getting a decision",
+				"description": [
+					"After the panel members have finished asking you questions, you’ll be asked to wait outside while they discuss your appeal. You’ll then be asked back into the room to receive your decision.",
+					"The judge will either tell you your appeal has been ‘allowed’ (which means you’ve won) or whether the original decision has been upheld. The judge will explain what this means in relation to your benefits.",
+					"Sometimes the tribunal needs more time to make a decision. In that case, your decision will be posted to you."
+				]
+			},
+			"afterYourHearing": {
+				"heading": "After your hearing",
+				"description": [
+					"If you accept the decision of the tribunal then that is the end of your appeal. If you have any further questions about your benefits, you will need to contact the DWP.",
+					"If you don’t accept the decision and you feel that you have legal grounds for an appeal you can request one. First you have to ask the judge to explain the decision. This means requesting a Statement of Reasons."
+				]
+			}
+		}
+	},
+	"hearingDetails": {
+		"checkDetails": "Check your hearing details",
+		"arriveEarly": "arrive 15 minutes before",
+		"location": "Location",
+		"mapsAndDirections": "Maps and directions",
+		"nearestCarPark": "Nearest car park",
+		"parking": "Parking",
+		"disabledAccess": "Disabled access",
+		"representative": "Representative",
+		"interpreter": "Interpreter",
+		"interpretersBookedByUs": "Only interpreters booked by us can translate for you at the hearing.",
+		"incorrect": "If anything above is incorrect or you cannot attend, call us on 0300 123 1142",
+		"pleaseNote": {
+			"heading": "Please note",
+			"description": [
+				"You're allowed to bring people to support you at the hearing. The judge may only allow those who are giving evidence to come into the hearing room.",
+				"Children are allowed in the waiting area but not in the hearing room. You will need to bring someone to supervise them while you're in the hearing.",
+				"Bring any documents relating to your appeal to the hearing. For example letters or evidence we or the DWP have sent you."
+			]
+		}
+	},
+	"trackYourAppeal": {
+		"title": "Track your benefit appeal",
+		"enterReference": "Enter your appeal reference number",
+		"hint": "You can find this on any letter you’ve received about your benefit appeal.",
+		"hint2": "For example SC242/16/03435",
+		"find": "Find appeal"
+	},
+	"common": {
+		"date": "Date",
+		"time": "Time",
+		"aboutYourAppeal": "About your appeal",
+		"trackYourAppeal": "Track your appeal",
+		"appealReferenceNumber": "Appeal reference number",
+		"availableInAnotherLanguage": "This page is also available in Welsh (Cymraeg).",
+		"latestUpdate": "Latest update",
+		"viewAllUpdates": "View previous updates"
+	}
+}

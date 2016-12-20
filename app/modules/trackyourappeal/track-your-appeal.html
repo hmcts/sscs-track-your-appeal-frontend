@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Track your Appeal
+{% endblock %}
+
+{% block content %}
+
+<main id="content" class="track-your-appeal" role="main">
+
+    {% include "includes/phase_banner_beta.html" %}
+    {% include "includes/breadcrumbs.html" %}
+
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+            <h1 class="heading-xlarge">Your ESA benefit appeal</h1>
+
+            <div class="details">
+                <h2 class="heading-medium">{{ data.name }}</h2>
+                <h2 class="form-hint">{{ common.appealReferenceNumber }}: {{ data.caseReference }}</h2>
+            </div>
+
+            <div class="divider"></div>
+
+            <section role="region" class="progress-container">
+
+                <h2 class="screen-reader-text">{{ progressBar.screenReader.heading }}</h2>
+
+                <div class="ring active">
+                    <p class="appeal-received">
+                        <span aria-hidden="true">{{ progressBar.appeal }}</span>
+                        {% if status == 'APPEAL' %}
+                        <span class="screen-reader-text">{{ progressBar.screenReader.appeal.happening }}</span>
+                        {% else %}
+                        <span class="screen-reader-text">{{ progressBar.screenReader.appeal.happened }}</span>
+                        {% endif %}
+                    </p>
+                </div>
+
+                <div class="leg foot {{ isActive('DWP_RESPOND', data.status ) }}">
+                    <p class="dwp-respond">
+                        <span aria-hidden="true">{{ progressBar.dwpRespond }}</span>
+                        {% if status == 'APPEAL' %}
+                        <span class="screen-reader-text">{{ progressBar.screenReader.dwpRespond.due }}</span>
+                        {% elif status == 'DWP_RESPOND' %}
+                        <span class="screen-reader-text">{{ progressBar.screenReader.dwpRespond.happening }}</span>
+                        {% else %}
+                        <span class="screen-reader-text">{{ progressBar.screenReader.dwpRespond.happened }}</span>
+                        {% endif %}
+                    </p>
+                </div>
+
+                <div class="leg foot {{ isActive('HEARING_BOOKED', data.status ) }}">
+                    <p class="hearing-booked">
+                        <span aria-hidden="true">{{ progressBar.hearingBooked }}</span>
+                        {% if status == 'APPEAL' or status == 'DWP_RESPOND' %}
+                        <span class="screen-reader-text">{{ progressBar.screenReader.hearingBooked.due }}</span>
+                        {% elif status == 'HEARING_BOOKED' %}
+                        <span class="screen-reader-text">{{ progressBar.screenReader.hearingBooked.happening }}</span>
+                        {% else %}
+                        <span class="screen-reader-text">{{ progressBar.screenReader.hearingBooked.happened }}</span>
+                        {% endif %}
+                    </p>
+                </div>
+
+                <div class="leg {{ isActive('HEARING', data.status ) }}"></div>
+                <div class="ring {{ isActive('HEARING', data.status ) }}">
+                    <p class="hearing">
+                        <span aria-hidden="true">{{ progressBar.hearing }}</span>
+                        {% if status != 'HEARING' %}
+                        <span class="screen-reader-text">{{ progressBar.screenReader.hearing.due }}</span>
+                        {% else %}
+                        <span class="screen-reader-text">{{ progressBar.screenReader.hearing.happening }}</span>
+                        {% endif %}
+                    </p>
+                </div>
+
+            </section>
+
+            <pre class="content">{{ data | json }}</pre>
+
+        </div>
+    </div>
+</main>
+
+{% endblock %}
