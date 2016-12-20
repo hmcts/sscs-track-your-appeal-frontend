@@ -15,7 +15,7 @@ class TrackYourAppeal {
 
     initRoutes(router) {
         router.get('/', this.redirectRoot);
-        router.get('/trackyourappeal', this.getStatus);
+        router.get('/trackyourappeal/:id', this.getStatus);
     }
 
     redirectRoot(req, res) {
@@ -23,7 +23,7 @@ class TrackYourAppeal {
     }
 
     getStatus(req, res) {
-        TrackYourAppealService.status(req.query.id).then((result) => {
+        TrackYourAppealService.status(req.params.id).then((result) => {
             res.render('track-your-appeal', Object.assign(locale, { data: result.body.appeal }));
         });
     }

@@ -1,30 +1,4 @@
 {
-	"validationErrors": {
-		"emptyString": {
-			"surname": [
-				"No surname entered.",
-				"You haven't entered a surname. Enter your surname to continue."
-			],
-			"reference": [
-				"No appeal reference number entered.",
-				"You haven't entered an appeal reference number. Enter it to find your appeal."
-			]
-		},
-		"regex": {
-			"surname": [
-				"Invalid surname entered.",
-				"You’ve entered an invalid surname. Check it and enter it again."
-			],
-			"reference": [
-				"Invalid appeal reference number entered.",
-				"You’ve entered an invalid appeal reference number. Check it and enter it again, including the forward slashes."
-			]
-		},
-		"notFound": [
-			"Your details don’t match our records.",
-			"Check any correspondence you’ve received about your appeal and enter them again."
-		]
-	},
 	"status": {
 		"appeal": {
 			"heading": "Appeal received",

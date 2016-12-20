@@ -1,6 +1,6 @@
 const app = require('app');
 const request = require('supertest');
-const {expect} = require('util/chai-sinon');
+const {expect, sinon} = require('util/chai-sinon');
 
 describe('Node.js application/server', () => {
 
@@ -36,12 +36,6 @@ describe('Node.js application/server', () => {
                 .end(done)
         });
 
-        it('should respond to /trackyourappeal/?id=xxxxxx route with a HTTP 200:OK', function(done) {
-            request(express.app)
-                .get('/trackyourappeal/?id=tt48i5')
-                .expect(200, done);
-        });
-
         it('should respond to /abouthearing route with a HTTP 200:OK', function(done) {
             request(express.app)
                 .get('/abouthearing')
@@ -53,5 +47,11 @@ describe('Node.js application/server', () => {
                 .get('/foo')
                 .expect(404, done);
         });
-    })
+
+        it('should respond to /trackyourappeal route with a HTTP 404:Not found', function(done) {
+            request(express.app)
+                .get('/trackyourappeal')
+                .expect(404, done);
+        });
+    });
 });
