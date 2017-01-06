@@ -7,7 +7,6 @@
     font-style: italic;
   }
 
-
   .divider {
     margin-top: 15px;
     border-bottom: 3px solid $govuk-blue;
@@ -28,6 +27,15 @@
     left: -999px;
   }
 
+  .description {
+    background-color: #eef7ff;
+    padding: 20px 20px 30px 20px;
+    .heading-small {
+      margin-top: 0;
+      padding-bottom: 10px;
+    }
+  }
+
   .progress-container {
     height: 32px;
     white-space: nowrap;
@@ -46,7 +54,7 @@
     }
 
     .leg {
-      width: calc((100% - 49px)/3);
+      width: calc((100% - 49px) / 3);
       height: 8px;
       background-color: $grey-2;
       margin: 12px -5px;
@@ -102,6 +110,56 @@
       font-weight: bold;
       font-size: 16px;
       left: calc(100% - 40px);
+    }
+  }
+
+  .updates-toggle {
+    margin-bottom: 5px;
+    margin-top: 20px;
+    color: $govuk-blue;
+    i {
+      font-size: 25px;
+      vertical-align: middle;
+      cursor: pointer;
+      span {
+        font-family: nta, Arial, sans-serif;
+        font-size: 19px;
+        position: relative;
+        top: -2px;
+        left: 5px;
+      }
+    }
+  }
+
+  .updates-container {
+    display: none;
+
+    .update {
+      position: relative;
+      padding-bottom: 10px;
+      padding-top: 15px;
+      a {
+        display: block;
+        padding-bottom: 15px;
+      }
+    }
+
+    .update:last-child {
+      padding-bottom: 0;
+    }
+
+    div:after {
+      content: "";
+      background: $grey-2;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 95%;
+      height: 1px;
+    }
+
+    div:last-child:after {
+      display: none;
     }
   }
 
