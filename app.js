@@ -19,7 +19,8 @@ exports.init = () => {
     __dirname + '/lib/',
     __dirname + '/app/views',
     __dirname + '/app/modules/trackyourappeal',
-    __dirname + '/app/modules/abouthearing'
+    __dirname + '/app/modules/abouthearing',
+    __dirname + '/app/modules/provideevidence'
   ]);
 
   const njk = nunjucks(app, {

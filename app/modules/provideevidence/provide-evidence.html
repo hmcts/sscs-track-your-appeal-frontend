@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Provide Evidence
+{% endblock %}
+
+{% block content %}
+
+<main id="content" class="provide-evidence" role="main">
+
+    <div class="grid-row">
+
+        <div class="column-two-thirds">
+
+            <h1 class="heading-xlarge">
+                {{ i18n.evidence.provide.title }}
+            </h1>
+
+            <p class="lede">{{ i18n.evidence.provide.content }}</p>
+
+            <h2 class="heading-medium">{{ i18n.evidence.provide.medicalEvidence.heading }}</h2>
+            {% for content in i18n.evidence.provide.medicalEvidence.content %}
+            <p>{{content}}</p>
+            {% endfor %}
+
+            <h2 class="heading-medium">{{ i18n.evidence.provide.oralEvidence.heading }}</h2>
+            {% for content in i18n.evidence.provide.oralEvidence.content %}
+            <p>{{content}}</p>
+            {% endfor %}
+
+            <h2 class="heading-medium">{{ i18n.evidence.provide.additionalEvidence.heading }}</h2>
+            {% for content in i18n.evidence.provide.additionalEvidence.content %}
+            <p>{{content}}</p>
+            {% endfor %}
+
+            <h2 class="heading-medium">{{ i18n.evidence.provide.whereToSendEvidence.heading }}</h2>
+            {% for content in i18n.evidence.provide.whereToSendEvidence.content %}
+            <p>{{content}}</p>
+            {% endfor %}
+            {% for addressLine in i18n.evidence.provide.whereToSendEvidence.address %}
+            <div>{{addressLine}}</div>
+            {% endfor %}
+
+        </div>
+
+        <div class="column-third">
+            <aside class="govuk-related-items" role="complementary">
+                <h2 class="heading-medium" id="subsection-title">{{ i18n.common.aboutYourAppeal }}</h2>
+                <nav role="navigation" aria-labelledby="subsection-title">
+                    <ul class="font-xsmall">
+                        <li><a href="/trackyourappeal/{{data.id}}">{{ i18n.common.trackYourAppeal }}</a></li>
+                        <li><a href="/abouthearing">{{ i18n.hearing.expectations.title }}</a></li>
+                    </ul>
+                </nav>
+            </aside>
+        </div>
+
+    </div>
+
+</main>
+
+{% endblock %}
