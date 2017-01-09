@@ -5,5 +5,6 @@ const router = express.Router();
 require('app/modules/abouthearing/AboutHearingCtrl').instance(router);
 require('app/modules/trackyourappeal/TrackYourAppealCtrl').instance(router);
 require('app/modules/provideevidence/ProvideEvidenceCtrl').instance(router);
+require('app/modules/claimexpenses/ClaimExpensesCtrl').instance(router);
 
 module.exports = router;

@@ -50,41 +50,11 @@
   },
   "claimExpenses": {
     "title": "Claiming expenses to attend your hearing",
-    "content": "You may be able to claim back the money you spend on attending your hearing. The amount you can claim depends on how you get there and how long you’re away from home.",
+    "content": "You may be able to claim back some of the money you spend on attending your hearing.",
     "travel": {
-      "heading": "Travel",
       "content": [
-        "We encourage you to use public transport where possible. Bring your train or bus ticket with you to the hearing to show how much you spent.",
-        "If you come by car you can claim 12p per mile. If you’re bringing passengers you can claim an extra 2p per mile.",
-        "If you have a health condition or disability which means you can’t get yourself to the hearing then you might be able to claim for a taxi. You’ll need to get authorisation before claiming for a taxi by phoning 0300 123 1142."
-      ]
-    },
-    "meals": {
-      "heading": "Meals",
-      "subHeading": "The amount you can claim for food depends on how long you’re away from home:",
-      "content": [
-        "5 hours | £4.25",
-        "10 hours | £9.30",
-        "12 hours | £13.55"
-      ]
-    },
-    "accommodation": {
-      "heading": "Accommodation",
-      "content": [
-        "If you need to spend the night away from home to attend your hearing then you may be able to claim back the cost. You’ll need to get authorisation before claiming for accommodation by phoning 0300 123 1142."
-      ]
-    },
-    "lossOfEarnings": {
-      "heading": "Loss of earnings",
-      "content": [
-        "If you would usually be earning money while at your hearing, you may be able to claim this back. You can claim £37.06 if you’re away from work for up to 4 hours or £71.80 for 4 hours or more. You’ll need to bring a letter from your employer which shows how much you're paid."
-      ]
-    },
-    "howToClaim": {
-      "heading": "How to claim",
-      "content": [
-        "You’ll be given a claim form at your hearing. A clerk will help you fill it out.",
-        "Make sure you bring your tickets and receipts to show how much you spent."
+        "You should use public transport where possible. Keep your travel tickets and bring them with you to your hearing. You’ll be given a claim form to fill out by the tribunal clerk.",
+        "If you have a health condition or disability which means you can’t get yourself to the hearing then you might be able to claim for a taxi. You’ll need to get authorisation first by phoning 0300 123 1142."
       ]
     }
   },
