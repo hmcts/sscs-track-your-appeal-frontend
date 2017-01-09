@@ -5,15 +5,18 @@ const TIMEOUT = 50;
 
 class TrackMyAppealService {
 
-    static status(id) {
-        return request('GET', Config.TRACK_YOUR_APPEAL_ENDPOINT + '/' + id);
-    }
+  static status(id) {
+    return request('GET', Config.TRACK_YOUR_APPEAL_ENDPOINT + '/' + id);
+  }
 
-    static get mockStatus() {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => resolve(mockedData), TIMEOUT);
-        });
-    }
+  static mockStatus() {
+    return new Promise((resolve, reject) => {
+      let data = {
+        body: mockedData
+      };
+      setTimeout(() => resolve(data), TIMEOUT);
+    });
+  }
 }
 
 module.exports = TrackMyAppealService;

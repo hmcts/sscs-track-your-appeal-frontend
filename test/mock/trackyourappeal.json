@@ -1,8 +1,45 @@
 {
   "appeal": {
-    "caseReference": "SC123/45/00001",
-    "name": "Mr Joe Mock",
-    "appealStatus": "APPEAL",
-    "id": "tt48i5"
+    "caseReference": "case-ref-6",
+    "name": "sathish-6",
+    "id": "tt48i5",
+    "status": "HEARING",
+    "events": [
+      {
+        "contentKey": "status.hearing",
+        "date": "2016-11-16T01:00:00Z",
+        "placeholder": {
+          "date": "2016-11-30T00:00:00Z"
+        }
+      },
+      {
+        "contentKey": "status.hearingBooked",
+        "date": "2016-11-15T01:00:00Z",
+        "placeholder": {
+          "date": "2016-11-30T00:00:00Z"
+        }
+      },
+      {
+        "contentKey": "status.hearingBooked",
+        "date": "2016-11-14T01:00:00Z",
+        "placeholder": {
+          "date": "2016-11-30T00:00:00Z"
+        }
+      },
+      {
+        "contentKey": "status.dwpRespond",
+        "date": "2016-11-13T01:00:00Z",
+        "placeholder": {
+          "date": "2016-11-30T00:00:00Z"
+        }
+      },
+      {
+        "contentKey": "status.appealReceived",
+        "date": "2016-11-12T01:00:00Z",
+        "placeholder": {
+          "date": "2016-11-30T00:00:00Z"
+        }
+      }
+    ]
   }
 }
