@@ -20,7 +20,8 @@ exports.init = () => {
     __dirname + '/app/views',
     __dirname + '/app/modules/trackyourappeal',
     __dirname + '/app/modules/abouthearing',
-    __dirname + '/app/modules/provideevidence'
+    __dirname + '/app/modules/provideevidence',
+    __dirname + '/app/modules/claimexpenses'
   ]);
 
   const njk = nunjucks(app, {

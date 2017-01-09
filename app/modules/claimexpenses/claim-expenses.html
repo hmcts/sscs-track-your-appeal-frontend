@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Claim Expenses
+{% endblock %}
+
+{% block content %}
+
+<main id="content" class="claim-expenses" role="main">
+
+    {% include "includes/phase_banner_beta.html" %}
+    {% include "includes/breadcrumbs.html" %}
+
+    <div class="grid-row">
+
+        <div class="column-two-thirds">
+
+            <h1 class="heading-xlarge">{{ i18n.claimExpenses.title }}</h1>
+
+            <p class="lede">{{ i18n.claimExpenses.content }}</p>
+            {% for content in i18n.claimExpenses.travel.content %}
+            <p>{{content}}</p>
+            {% endfor %}
+
+        </div>
+
+        <div class="column-third">
+            <aside class="govuk-related-items" role="complementary">
+                <h2 class="heading-medium" id="subsection-title">{{ i18n.common.aboutYourAppeal }}</h2>
+                <nav role="navigation" aria-labelledby="subsection-title">
+                    <ul class="font-xsmall">
+                        <li><a href="/progress/{{data.id}}/hearingdetails">{{ i18n.hearingDetails.checkDetails }}</a></li>
+                        <li><a href="/trackyourappeal/{{data.id}}">{{ i18n.common.trackYourAppeal}}</a></li>
+                    </ul>
+                </nav>
+            </aside>
+        </div>
+
+    </div>
+
+</main>
+
+{% endblock %}
