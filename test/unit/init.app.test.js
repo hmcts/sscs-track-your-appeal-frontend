@@ -4,54 +4,66 @@ const {expect, sinon} = require('util/chai-sinon');
 
 describe('Node.js application/server', () => {
 
-    let express;
+  let express;
 
-    beforeEach(function() {
-        express = app.init();
+  beforeEach(function () {
+    express = app.init();
+  });
+
+  afterEach(() => {
+    express.server.close();
+  });
+
+  describe('the application after initialisation', function () {
+
+    it('should define a node application that emits events', () => {
+      expect(express.app.constructor.name).to.equal('EventEmitter');
     });
 
-    afterEach(() => {
-        express.server.close();
+    it('should define a node http.Server', () => {
+      expect(express.server.constructor.name).to.equal('Server');
     });
 
-    describe('the application after initialisation', function() {
+  });
 
-        it('should define a node application that emits events', () => {
-            expect(express.app.constructor.name).to.equal('EventEmitter');
-        });
+  describe('making HTTP application requests', function () {
 
-        it('should define a node http.Server', () => {
-            expect(express.server.constructor.name).to.equal('Server');
-        });
-
+    it('should redirect to /trackyourappeal when a request is made to root', function (done) {
+      request(express.app)
+        .get('/')
+        .expect(302)
+        .expect('Location', 'trackyourappeal')
+        .end(done)
     });
 
-    describe('making HTTP application requests', function() {
-
-        it('should redirect to /trackyourappeal when a request is made to root', function(done) {
-            request(express.app)
-                .get('/')
-                .expect(302)
-                .expect('Location', 'trackyourappeal')
-                .end(done)
-        });
-
-        it('should respond to /abouthearing route with a HTTP 200:OK', function(done) {
-            request(express.app)
-                .get('/abouthearing')
-                .expect(200, done);
-        });
-
-        it('should respond to an unknown route with a HTTP 404:Not found', function(done) {
-            request(express.app)
-                .get('/foo')
-                .expect(404, done);
-        });
-
-        it('should respond to /trackyourappeal route with a HTTP 404:Not found', function(done) {
-            request(express.app)
-                .get('/trackyourappeal')
-                .expect(404, done);
-        });
+    it('should respond to /abouthearing route with a HTTP 200:OK', function (done) {
+      request(express.app)
+        .get('/abouthearing')
+        .expect(200, done);
     });
+
+    it('should respond to /abouthearing route with a HTTP 200:OK', function (done) {
+      request(express.app)
+        .get('/abouthearing')
+        .expect(200, done);
+    });
+
+    it('should respond to /progress/id/evidence route with a HTTP 200:OK', function (done) {
+      request(express.app)
+        .get('/progress/tt48i5/evidence')
+        .expect(200, done);
+    });
+
+    it('should respond to an unknown route with a HTTP 404:Not found', function (done) {
+      request(express.app)
+        .get('/foo')
+        .expect(404, done);
+    });
+
+    it('should respond to /trackyourappeal route with a HTTP 404:Not found', function (done) {
+      request(express.app)
+        .get('/trackyourappeal')
+        .expect(404, done);
+    });
+  });
 });
