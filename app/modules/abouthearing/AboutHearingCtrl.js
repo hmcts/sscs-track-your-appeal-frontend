@@ -11,7 +11,7 @@ class AboutHearing {
     }
 
     initRoutes(router) {
-        router.get('/abouthearing', this.aboutHearing);
+        router.get('/progress/:id/abouthearing', this.aboutHearing);
     }
 
     aboutHearing(req, res) {

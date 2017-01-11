@@ -26,31 +26,11 @@ describe('Node.js application/server', () => {
 
   });
 
-  describe('making HTTP application requests', function () {
+  describe('making route requests which result in a HTTP:200', () => {
 
-    it('should redirect to /trackyourappeal when a request is made to root', function (done) {
+    it('should respond to /progress/:id/abouthearing route with a HTTP 200:OK', function (done) {
       request(express.app)
-        .get('/')
-        .expect(302)
-        .expect('Location', 'trackyourappeal')
-        .end(done)
-    });
-
-    it('should respond to /abouthearing route with a HTTP 200:OK', function (done) {
-      request(express.app)
-        .get('/abouthearing')
-        .expect(200, done);
-    });
-
-    it('should respond to /abouthearing route with a HTTP 200:OK', function (done) {
-      request(express.app)
-        .get('/abouthearing')
-        .expect(200, done);
-    });
-
-    it('should respond to /progress/:id/evidence route with a HTTP 200:OK', function (done) {
-      request(express.app)
-        .get('/progress/tt48i5/evidence')
+        .get('/progress/tt48i5/abouthearing')
         .expect(200, done);
     });
 
@@ -60,16 +40,37 @@ describe('Node.js application/server', () => {
         .expect(200, done);
     });
 
+    it('should respond to /progress/:id/hearingdetails route with a HTTP 200:OK', function (done) {
+      request(express.app)
+        .get('/progress/tt48i5/hearingdetails')
+        .expect(200, done);
+    });
+
+    it('should respond to /progress/:id/evidence route with a HTTP 200:OK', function (done) {
+      request(express.app)
+        .get('/progress/tt48i5/evidence')
+        .expect(200, done);
+    });
+  });
+
+  describe('making route requests which result in a HTTP:404', () => {
+
     it('should respond to an unknown route with a HTTP 404:Not found', function (done) {
       request(express.app)
         .get('/foo')
         .expect(404, done);
     });
-
-    it('should respond to /trackyourappeal route with a HTTP 404:Not found', function (done) {
-      request(express.app)
-        .get('/trackyourappeal')
-        .expect(404, done);
-    });
   });
+
+  describe('making route requests which redirect with a HTTP:302', () => {
+
+    it('should redirect to /trackyourappeal when a request is made to root', function (done) {
+      request(express.app)
+        .get('/')
+        .expect(302)
+        .expect('Location', 'trackyourappeal')
+        .end(done)
+    });
+  })
+
 });

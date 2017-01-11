@@ -144,6 +144,7 @@
     },
     "expectations": {
       "title": "What to expect at your hearing",
+      "link": "Read about what to expect at your hearing",
       "content": "Your hearing is an opportunity for you to explain your case and get a decision on your benefit appeal. The judge is independent and will listen to both sides of the dispute before making a decision.",
       "whenYouArrive": {
         "heading": "When you arrive",
@@ -204,8 +205,8 @@
     "pleaseNote": {
       "heading": "Please note",
       "content": [
-        "You're allowed to bring people to support you at the hearing. The judge may only allow those who are giving evidence to come into the hearing room.",
-        "Children are allowed in the waiting area but not in the hearing room. You will need to bring someone to supervise them while you're in the hearing.",
+        "You can bring people to support you at your hearing. For example family, friends or a support worker. There will be a limit to the number of people you can take into the hearing room because of space.",
+        "Children are allowed in the waiting area but not in the hearing room. You’ll need to bring someone to supervise them while you’re in the hearing.",
         "Bring any documents relating to your appeal to the hearing. For example letters or evidence we or the DWP have sent you."
       ]
     }
