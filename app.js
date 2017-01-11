@@ -21,7 +21,8 @@ exports.init = () => {
     __dirname + '/app/modules/trackyourappeal',
     __dirname + '/app/modules/abouthearing',
     __dirname + '/app/modules/provideevidence',
-    __dirname + '/app/modules/claimexpenses'
+    __dirname + '/app/modules/claimexpenses',
+    __dirname + '/app/modules/hearingdetails'
   ]);
 
   const njk = nunjucks(app, {

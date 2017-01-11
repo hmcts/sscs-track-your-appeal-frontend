@@ -7,11 +7,6 @@
     font-style: italic;
   }
 
-  .divider {
-    margin-top: 15px;
-    border-bottom: 3px solid $govuk-blue;
-  }
-
   .details .heading-medium {
     margin-top: 30px;
     margin-bottom: 0;
@@ -163,4 +158,109 @@
     }
   }
 
+}
+
+#content.hearing-details {
+
+  .tribunal-details {
+    background-color: $grey-3;
+    margin-top: 20px;
+    padding: 30px 20px 20px 25px;
+    dl {
+      margin-bottom: 15px;
+    }
+    dt,
+    dd {
+      display: inline;
+    }
+    dd {
+      font-weight: bold;
+    }
+    .date-time {
+      dt {
+        padding-right: 120px;
+      }
+      span {
+        font-weight: normal;
+      }
+    }
+    .address {
+      dt {
+        padding-right: 89px;
+      }
+      dd span:not(:first-child) {
+        display: block;
+        margin-left: 164px;
+      }
+    }
+
+    .maps-and-directions {
+      margin-left: 163px;
+      line-height: 160%
+    }
+
+    .parking {
+      margin-top: 25px;
+      dt {
+        padding-right: 97px;
+      }
+      dd {
+        font-weight: normal;
+      }
+      dd span:not(:first-child) {
+        display: block;
+        margin-left: 164px;
+      }
+    }
+
+    .disabled-access {
+      dt {
+        padding-right:27px;
+      }
+    }
+
+    .representative {
+      dt {
+        padding-right:35px;
+      }
+    }
+
+    .interpreter {
+      dt {
+        padding-right: 70px;
+      }
+      dd span:not(:first-child) {
+        display: block;
+        margin-left: 164px;
+        font-weight: normal;
+      }
+    }
+  }
+
+  .panel.panel-border-wide {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .about-hearing {
+    margin-top: 40px;
+  }
+
+  .updates-border {
+    background: #005ea5;
+    height: 6px;
+    margin-top: 60px;
+  }
+}
+
+#content.hearing-details,
+#content.track-your-appeal {
+  .divider {
+    margin-top: 15px;
+    border-bottom: 3px solid $govuk-blue;
+  }
+  .details .heading-medium {
+    margin-top: 30px;
+    margin-bottom: 0;
+  }
 }

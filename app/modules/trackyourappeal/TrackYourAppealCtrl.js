@@ -1,5 +1,4 @@
 const TrackYourAppealService = require('app/services/TrackYourAppealService');
-const I18nHelper = require('app/core/I18nHelper');
 const locale = require('app/assets/locale/en');
 
 let singleton = Symbol();
@@ -16,7 +15,7 @@ class TrackYourAppeal {
 
   initRoutes(router) {
     router.get('/', this.redirectRoot);
-    router.get('/trackyourappeal/:id', this.getStatus);
+    router.get('/progress/:id/trackyourappeal', this.getStatus);
   }
 
   redirectRoot(req, res) {
@@ -24,9 +23,7 @@ class TrackYourAppeal {
   }
 
   getStatus(req, res) {
-    TrackYourAppealService.status(req.params.id).then((result) => {
-      let appeal = result.body.appeal;
-      I18nHelper.setHeadingAndRenderedContentOnEvents(appeal.events);
+    TrackYourAppealService.status(req.params.id).then((appeal) => {
       res.render('track-your-appeal', Object.assign({i18n: locale}, {data: appeal}));
     });
   }

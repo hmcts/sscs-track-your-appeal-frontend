@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Hearing Details
+{% endblock %}
+
+{% block content %}
+
+<main id="content" class="hearing-details" role="main">
+
+    {% include "includes/phase_banner_beta.html" %}
+    {% include "includes/breadcrumbs.html" %}
+
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            <h1 class="heading-xlarge">{{ i18n.hearingDetails.checkDetails }}</h1>
+            <div class="details">
+                <h2 class="heading-medium">{{ data.name }}</h2>
+                <h2 class="form-hint">{{ i18n.common.appealReferenceNumber }}: {{ data.caseReference }}</h2>
+            </div>
+            <div class="divider"></div>
+        </div>
+    </div>
+
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+            <div class="tribunal-details">
+
+                <dl class="date-time">
+                    <dt>{{ i18n.common.date }}</dt>
+                    <dd>{{ data.hearingDate | formatDate }}</dd>
+                </dl>
+
+                <dl class="date-time">
+                    <dt>{{ i18n.common.time }}</dt>
+                    <dd>{{ data.hearingTime | formatTime }}<span> ({{ i18n.hearingDetails.arriveEarly }})</span></dd>
+                </dl>
+
+                <dl class="address">
+                    <dt>{{ i18n.hearingDetails.location }}</dt>
+                    <dd>
+                        {% for key, value in data.address %}
+                        <span>{{ value }}</span>
+                        {% endfor %}
+                    </dd>
+                </dl>
+
+                <dl class="disabled-access">
+                    <dt>{{ i18n.hearingDetails.disabledAccess }}</dt>
+                    <dd>{{ data.disabledAccess}}</dd>
+                </dl>
+
+                <dl class="representative">
+                    <dt>{{ i18n.hearingDetails.representative }}</dt>
+                    <dd>{{ data.representative }}</dd>
+                </dl>
+
+                <dl class="interpreter">
+                    <dt>{{ i18n.hearingDetails.interpreter }}</dt>
+                    <dd >
+                        <span>{{ data.interpreter }}</span>
+                        <span>{{ i18n.hearingDetails.interpretersBookedByUs }}</span>
+                    </dd>
+                </dl>
+
+            </div>
+
+            <div class="panel panel-border-wide">
+                <p><strong class="bold-small">{{ i18n.hearingDetails.incorrect }}</strong></p>
+            </div>
+
+            <h3 class="heading-small">{{ i18n.hearingDetails.pleaseNote.heading }}</h3>
+            {% for content in i18n.hearingDetails.pleaseNote.content %}
+            <p>{{content}}</p>
+            {% endfor %}
+
+            <p class="about-hearing">
+                <a href="/progress/{{data.id}}/abouthearing">{{ i18n.hearing.expectations.link }}</a>
+            </p>
+
+            <div class="updates-border"></div>
+
+            <h4 class="heading-small">{{ i18n.common.aboutYourAppeal }}</h4>
+            <ul class="list">
+                <li><a href="/progress/{{data.id}}/evidence">{{ i18n.evidence.provide.title }}</a></li>
+                <li><a href="/progress/{{data.id}}/trackyourappeal">{{ i18n.common.trackYourAppeal }}</a></li>
+            </ul>
+        </div>
+    </div>
+
+</main>
+
+{% endblock %}

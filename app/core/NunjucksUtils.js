@@ -9,6 +9,11 @@ const FILTERS = {
   formatDate: (date) => {
     return moment(date, DATE_FORMAT).format('DD MMMM YYYY');
   },
+
+  formatTime: (date) => {
+    let time = moment(date, DATE_FORMAT).format("HH:mm");
+    return time;
+  }
 };
 let nunjucksEnv;
 
