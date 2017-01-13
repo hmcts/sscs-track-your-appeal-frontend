@@ -30,7 +30,7 @@ Track your Appeal
                 <div class="ring active">
                     <p class="appeal-received">
                         <span aria-hidden="true">{{ i18n.progressBar.appeal }}</span>
-                        {% if status == 'APPEAL_RECEIVED' %}
+                        {% if data.status == 'APPEAL_RECEIVED' %}
                         <span class="screen-reader-text">{{ i18n.progressBar.screenReader.appeal.happening }}</span>
                         {% else %}
                         <span class="screen-reader-text">{{ i18n.progressBar.screenReader.appeal.happened }}</span>
@@ -41,9 +41,9 @@ Track your Appeal
                 <div class="leg foot {{ isActive('DWP_RESPOND', data.status ) }}">
                     <p class="dwp-respond">
                         <span aria-hidden="true">{{ i18n.progressBar.dwpRespond }}</span>
-                        {% if status == 'APPEAL_RECEIVED' %}
+                        {% if data.status == 'APPEAL_RECEIVED' %}
                         <span class="screen-reader-text">{{ i18n.progressBar.screenReader.dwpRespond.due }}</span>
-                        {% elif status == 'DWP_RESPOND' %}
+                        {% elif data.status == 'DWP_RESPOND' %}
                         <span class="screen-reader-text">{{ i18n.progressBar.screenReader.dwpRespond.happening }}</span>
                         {% else %}
                         <span class="screen-reader-text">{{ i18n.progressBar.screenReader.dwpRespond.happened }}</span>
@@ -54,9 +54,9 @@ Track your Appeal
                 <div class="leg foot {{ isActive('HEARING_BOOKED', data.status ) }}">
                     <p class="hearing-booked">
                         <span aria-hidden="true">{{ i18n.progressBar.hearingBooked }}</span>
-                        {% if status == 'APPEAL_RECEIVED' or status == 'DWP_RESPOND' %}
+                        {% if data.status == 'APPEAL_RECEIVED' or data.status == 'DWP_RESPOND' %}
                         <span class="screen-reader-text">{{ i18n.progressBar.screenReader.hearingBooked.due }}</span>
-                        {% elif status == 'HEARING_BOOKED' %}
+                        {% elif data.status == 'HEARING_BOOKED' %}
                         <span class="screen-reader-text">{{ i18n.progressBar.screenReader.hearingBooked.happening }}</span>
                         {% else %}
                         <span class="screen-reader-text">{{ i18n.progressBar.screenReader.hearingBooked.happened }}</span>
@@ -68,7 +68,7 @@ Track your Appeal
                 <div class="ring {{ isActive('HEARING', data.status ) }}">
                     <p class="hearing">
                         <span aria-hidden="true">{{ i18n.progressBar.hearing }}</span>
-                        {% if status != 'HEARING' %}
+                        {% if data.status != 'HEARING' %}
                         <span class="screen-reader-text">{{ i18n.progressBar.screenReader.hearing.due }}</span>
                         {% else %}
                         <span class="screen-reader-text">{{ i18n.progressBar.screenReader.hearing.happening }}</span>
@@ -88,46 +88,45 @@ Track your Appeal
             <div class="description">
 
                 <h4 class="heading-small">{{ i18n.common.latestUpdate }}</h4>
-
                 <p>{{ data.events[0].renderedContent }}</p>
 
-                {% if data.events.length > 1 %}
+                {% if data.status == 'HEARING_BOOKED' or data.status == 'HEARING'  %}
+                <a href="/progress/{{data.id}}/hearingdetails">{{ i18n.hearingDetails.checkDetails }}</a>
+                {% endif %}
 
+                {% if data.events.length > 1 %}
                 <p class="updates-toggle">
                     <i class="fa fa-caret-right" aria-hidden="true"><span>{{ i18n.common.viewAllUpdates }}</span></i>
                 </p>
-
                 <div class="updates-container">
-
                     {% for index in range(1, data.events.length) %}
-
                     <div class="update">
-
                         <h4 class="bold-small">
                             {{ data.events[index].heading }}
                             <span class="form-hint">{{ data.events[index].date | formatDate }}</span>
                         </h4>
-
                         {% for content in data.events[index].renderedContent %}
                         <p>{{ content }}</p>
                         {% endfor %}
-
                     </div>
-
                     {% endfor %}
-
                 </div>
                 {% endif %}
 
             </div>
 
             <div class="panel panel-border-wide">
-                <p>{{ i18n.evidence.receivedBy }} [date goes here]<br/>
+                <p>{{ i18n.evidence.receivedBy }} [date to be defined]<br/>
                     <a href="/progress/{{data.id}}/evidence">{{ i18n.evidence.provide.link }}</a>
                 </p>
             </div>
 
             <div class="updates-border"></div>
+
+            <h4 class="heading-small">{{ i18n.common.aboutYourAppeal }}</h4>
+            <ul class="links">
+                <li><a href="/progress/{{data.id}}/abouthearing">{{ i18n.hearing.expectations.title }}</a></li>
+            </ul>
 
         </div>
 

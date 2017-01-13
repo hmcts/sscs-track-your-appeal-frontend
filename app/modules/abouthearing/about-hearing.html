@@ -12,16 +12,67 @@ About Hearing
     {% include "includes/breadcrumbs.html" %}
 
     <div class="grid-row">
+
         <div class="column-two-thirds">
 
-            <h1 class="heading-xlarge">
-                About Hearing
-            </h1>
+            <h1 class="heading-xlarge">{{ i18n.hearing.expectations.title }}</h1>
 
-            <p class="content">{{ content }}</p>
+            <p class="lede">{{ i18n.hearing.expectations.content }}</p>
+
+            <h2 class="heading-medium">{{ i18n.hearing.expectations.whenYouArrive.heading }}</h2>
+            <p>{{ i18n.hearing.expectations.whenYouArrive.content }}</p>
+
+            <h2 class="heading-medium">{{ i18n.hearing.expectations.theHearingRoom.heading }}</h2>
+            <p>{{ i18n.hearing.expectations.theHearingRoom.content }}</p>
+
+            <img src="/public/images/hearing-room.png">
+            <p>{{ i18n.hearing.expectations.image.content }}</p>
+
+            <h2 class="heading-medium">{{ i18n.hearing.expectations.peopleAtHearing.heading }}</h2>
+            {% for content in i18n.hearing.expectations.peopleAtHearing.content %}
+            <p>{{content}}</p>
+            {% endfor %}
+
+            <h2 class="heading-medium">{{ i18n.hearing.expectations.dwp.heading }}</h2>
+            {% for content in i18n.hearing.expectations.dwp.content %}
+            <p>{{content}}</p>
+            {% endfor %}
+
+            <h2 class="heading-medium">{{ i18n.hearing.expectations.duringHearing.heading }}</h2>
+            {% for content in i18n.hearing.expectations.duringHearing.content %}
+            <p>{{content}}</p>
+            {% endfor %}
+
+            <h2 class="heading-medium">{{ i18n.hearing.expectations.gettingDecision.heading }}</h2>
+            {% for content in i18n.hearing.expectations.gettingDecision.content %}
+            <p>{{content}}</p>
+            {% endfor %}
+
+            <h2 class="heading-medium">{{ i18n.hearing.expectations.afterYourHearing.heading }}</h2>
+            {% for content in i18n.hearing.expectations.afterYourHearing.content %}
+            <p>{{content}}</p>
+            {% endfor %}
 
         </div>
+
+        <div class="column-third">
+            <aside class="govuk-related-items" role="complementary">
+                <h2 class="heading-medium" id="subsection-title">{{ i18n.common.aboutYourAppeal }}</h2>
+                <nav role="navigation" aria-labelledby="subsection-title">
+                    <ul class="font-xsmall">
+
+                        {% if data.status=='HEARING_BOOKED' or data.status=='HEARING'  %}
+                        <li><a href="/progress/{{data.id}}/hearingdetails">{{ i18n.hearingDetails.checkDetails }}</a></li>
+                        {% endif %}
+
+                        <li><a href="/progress/{{data.id}}/evidence">{{ i18n.evidence.provide.title }}</a></li>
+                        <li><a href="/progress/{{data.id}}/trackyourappeal">{{ i18n.common.trackYourAppeal }}</a></li>
+                    </ul>
+                </nav>
+            </aside>
+        </div>
     </div>
+
 </main>
 
 {% endblock %}
