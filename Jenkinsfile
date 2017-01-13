@@ -10,7 +10,7 @@ node {
 
     stage "Install dependencies"
     sh "npm install"
-    sh "npm run generate-assets"
+    sh "npm run setup"
 
     stage "Run unit tests"
     sh "npm test"
