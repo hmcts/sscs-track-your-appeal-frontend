@@ -40,17 +40,24 @@ describe('Node.js application/server', () => {
         .expect(200, done);
     });
 
-    it('should respond to /progress/:id/hearingdetails route with a HTTP 200:OK', function (done) {
-      request(express.app)
-        .get('/progress/tt48i5/hearingdetails')
-        .expect(200, done);
-    });
+    // it('should respond to /progress/:id/hearingdetails route with a HTTP 200:OK', function (done) {
+    //   request(express.app)
+    //     .get('/progress/tt48i5/hearingdetails')
+    //     .expect(200, done);
+    // });
 
     it('should respond to /progress/:id/evidence route with a HTTP 200:OK', function (done) {
       request(express.app)
         .get('/progress/tt48i5/evidence')
         .expect(200, done);
     });
+
+    // it('should respond to /progress/:id/trackyourappeal route with a HTTP 200:OK', function (done) {
+    //   request(express.app)
+    //     .get('/progress/tt48i5/trackyourappeal')
+    //     .expect(200, done);
+    // });
+
   });
 
   describe('making route requests which result in a HTTP:404', () => {
