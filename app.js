@@ -59,7 +59,7 @@ exports.init = () => {
   app.use(locals);
   app.use('/', routes);
 
-  const server = app.listen(PORT);
+  const server = app.listen(process.env.PORT || PORT);
 
   return {app, server, njk};
 };
