@@ -28,11 +28,11 @@ describe('Node.js application/server', () => {
 
   describe('making route requests which result in a HTTP:200', () => {
 
-    it('should respond to /progress/:id/abouthearing route with a HTTP 200:OK', function (done) {
-      request(express.app)
-        .get('/progress/tt48i5/abouthearing')
-        .expect(200, done);
-    });
+    // it('should respond to /progress/:id/abouthearing route with a HTTP 200:OK', function (done) {
+    //   request(express.app)
+    //     .get('/progress/tt48i5/abouthearing')
+    //     .expect(200, done);
+    // });
 
     it('should respond to /progress/:id/expenses route with a HTTP 200:OK', function (done) {
       request(express.app)
