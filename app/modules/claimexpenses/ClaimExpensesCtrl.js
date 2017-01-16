@@ -1,3 +1,4 @@
+const TrackYourAppealService = require('app/services/TrackYourAppealService');
 const locale = require('app/assets/locale/en');
 
 let singleton = Symbol();
@@ -17,7 +18,9 @@ class ClaimExpenses {
   }
 
   claimExpenses(req, res) {
-    res.render('claim-expenses', Object.assign({i18n: locale}, {data: { id: req.params.id }}) );
+    TrackYourAppealService.status(req.params.id).then((appeal) => {
+      res.render('claim-expenses', Object.assign({i18n: locale}, {data: appeal}));
+    });
   }
 
   static instance(router) {

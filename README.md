@@ -1,20 +1,23 @@
 # SSCS - Track your appeal
 
 ## Dependencies
- - [node.js](https://nodejs.org) >= v6
- - npm >= v3 (note that npm ships with node.js) 
+ - [node.js](https://nodejs.org) >= v7
+ - npm >= v4 (note that npm ships with node.js) 
 
 ## Install application dependencies
     $> npm install
 
 ## Generate/copy assets over
-    $> npm run generate-assets
 
-## Start the application
+##### Development
+    $> npm run dev
+ 
+##### Production
+    $> npm run setup
     $> npm start
 
 ## Open a browser including the ID
-    http://localhost:3000/trackyourappeal/xxxxxx
+    http://localhost:3000/progress/id/trackyourappeal 
 
 ## Run the unit tests
     $> npm test
