@@ -50,6 +50,7 @@
   },
   "claimExpenses": {
     "title": "Claiming expenses to attend your hearing",
+    "link": "Claiming hearing expenses",
     "content": "You may be able to claim back some of the money you spend on attending your hearing.",
     "travel": {
       "content": [
@@ -82,7 +83,6 @@
     },
     "provide": {
       "title": "Providing evidence to support your appeal",
-      "link": "Find out about submitting evidence to support your appeal.",
       "content": "Evidence is anything that supports your appeal. It could be medical records, letters or documents. What you say at the hearing is also classed as evidence. It all helps the tribunal understand the facts of your appeal.",
       "medicalEvidence": {
         "heading": "Medical evidence",
@@ -137,7 +137,7 @@
     },
     "expectations": {
       "title": "What to expect at your hearing",
-      "link": "Read about what to expect at your hearing",
+      "link": "Find out what your hearing is going to be like",
       "content": "Your hearing is an opportunity for you to explain your case and get a decision on your benefit appeal. The tribunal is independent from the DWP and will listen to both sides of the dispute before making a decision.",
       "whenYouArrive": {
         "heading": "When you arrive",

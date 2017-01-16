@@ -10,7 +10,6 @@
     "start": "cross-env NODE_PATH=. node server.js",
     "test": "cross-env NODE_PATH=. mocha test/unit/**/*.js --reporter spec",
     "dev": "cross-env NODE_PATH=. grunt",
-    "generate-assets": "cross-env NODE_PATH=. grunt generate-assets",
     "setup": "cross-env NODE_PATH=. grunt generate-assets",
     "smoke-test": "cross-env NODE_PATH=. codeceptjs run test/smoketests/ --steps",
     "pa11y": "echo \"Error: no test specified\" && exit 0",
