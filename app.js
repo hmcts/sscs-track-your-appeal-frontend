@@ -10,22 +10,14 @@ const path = require('path');
 
 const PORT = 3000;
 
-exports.init = () => {
+function init() {
 
-  const app = express();
+  const exp = express();
 
-  app.set('view engine', 'html');
-  app.set('views', [
-    __dirname + '/lib/',
-    __dirname + '/app/views',
-    __dirname + '/app/modules/trackyourappeal',
-    __dirname + '/app/modules/abouthearing',
-    __dirname + '/app/modules/provideevidence',
-    __dirname + '/app/modules/claimexpenses',
-    __dirname + '/app/modules/hearingdetails'
-  ]);
+  exp.set('view engine', 'html');
+  exp.set('views', [__dirname + '/lib/', __dirname + '/app/views']);
 
-  const njk = nunjucks(app, {
+  const njk = nunjucks(exp, {
     autoescape: true,
     watch: true,
     noCache: false,
@@ -35,31 +27,33 @@ exports.init = () => {
   NunjucksUtils.env = njk.env;
 
   // Disallow search index indexing
-  app.use((req, res, next) => {
+  exp.use((req, res, next) => {
     // Setting headers stops pages being indexed even if indexed pages link to them.
     res.setHeader('X-Robots-Tag', 'noindex');
     res.setHeader('X-Served-By', os.hostname());
     next();
   });
 
-  app.use('/public', express.static(__dirname + '/public'));
-  app.use('/public', express.static(__dirname + '/govuk_modules/govuk_template/assets'));
-  app.use('/public', express.static(__dirname + '/govuk_modules/govuk_frontend_toolkit'));
-  app.use('/public/images/icons', express.static(__dirname + '/govuk_modules/govuk_frontend_toolkit/images'));
+  exp.use('/public', express.static(__dirname + '/public'));
+  exp.use('/public', express.static(__dirname + '/govuk_modules/govuk_template/assets'));
+  exp.use('/public', express.static(__dirname + '/govuk_modules/govuk_frontend_toolkit'));
+  exp.use('/public/images/icons', express.static(__dirname + '/govuk_modules/govuk_frontend_toolkit/images'));
 
   // Elements refers to icon folder instead of images folder
-  app.use(favicon(path.join(__dirname, 'govuk_modules', 'govuk_template', 'assets', 'images', 'favicon.ico')));
+  exp.use(favicon(path.join(__dirname, 'govuk_modules', 'govuk_template', 'assets', 'images', 'favicon.ico')));
 
   // Support for parsing data in POSTs
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({
+  exp.use(bodyParser.json());
+  exp.use(bodyParser.urlencoded({
     extended: true
   }));
 
-  app.use(locals);
-  app.use('/', routes);
+  exp.use(locals);
+  exp.use('/', routes);
 
-  const server = app.listen(process.env.PORT || PORT);
+  const srv = exp.listen(process.env.PORT || PORT);
 
-  return {app, server, njk};
-};
+  return {exp,srv,njk};
+}
+
+module.exports = init;

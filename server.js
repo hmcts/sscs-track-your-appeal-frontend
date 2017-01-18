@@ -1,3 +1,1 @@
-const app = require('./app');
-
-app.init();
+require('./app')();
