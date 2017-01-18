@@ -30,7 +30,8 @@
     "lodash": "4.17.4",
     "moment": "2.17.1",
     "nunjucks": "2.5.2",
-    "serve-favicon": "2.3.0"
+    "serve-favicon": "2.3.0",
+    "superagent": "^3.3.2"
   },
   "devDependencies": {
     "chai": "^3.5.0",

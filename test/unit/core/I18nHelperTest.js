@@ -1,6 +1,6 @@
 const {expect} = require('util/chai-sinon');
 const mockery = require('mockery');
-const app = require('app');
+const application = require('app');
 
 describe('I18nHelper', () => {
 
@@ -61,12 +61,12 @@ describe('I18nHelper', () => {
   };
 
   let I18nHelper;
-  let express;
+  let app;
   let nunjucksEnv;
 
   before(() => {
-    express = app.init();
-    nunjucksEnv = express.njk.env;
+    app = application();
+    nunjucksEnv = app.njk.env;
 
     // Register and enable mockery.
     mockery.registerAllowable('app/core/I18nHelper');
@@ -87,7 +87,7 @@ describe('I18nHelper', () => {
     mockery.disable();
     mockery.deregisterAll();
     I18nHelper = undefined;
-    express.server.close();
+    app.srv.close();
   });
 
   describe('calling the setHeadingOnEvent() function', () => {

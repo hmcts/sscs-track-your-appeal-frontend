@@ -271,3 +271,11 @@
   }
 
 }
+
+#content.malformed-url {
+  span {
+    margin-left: 5px;
+    color: $govuk-blue;
+    font-style: italic;
+  }
+}

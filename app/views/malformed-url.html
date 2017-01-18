@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Malformed URL
+{% endblock %}
+
+{% block content %}
+
+<main id="content" class="malformed-url" role="main">
+
+    {% include "includes/phase_banner_beta.html" %}
+    {% include "includes/breadcrumbs.html" %}
+
+    <div class="grid-row">
+
+        <div class="column-two-thirds">
+
+            <h1 class="heading-xlarge">Malformed URL</h1>
+            <p>The URL is incomplete and you probably want:<span>/progress/id/trackyourappeal</span></p>
+
+        </div>
+
+    </div>
+
+</main>
+
+{% endblock %}
