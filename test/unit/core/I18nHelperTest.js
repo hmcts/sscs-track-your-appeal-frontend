@@ -1,4 +1,4 @@
-const {expect} = require('util/chai-sinon');
+const {expect} = require('test/chai-sinon');
 const mockery = require('mockery');
 const application = require('app');
 

@@ -1,5 +1,5 @@
 const application = require('app');
-const {expect} = require('util/chai-sinon');
+const {expect} = require('test/chai-sinon');
 
 describe('Application initialisation', () => {
 

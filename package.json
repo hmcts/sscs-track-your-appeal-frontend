@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "cross-env NODE_PATH=. node server.js",
-    "test": "cross-env NODE_PATH=. mocha test/unit/**/*.js --reporter spec",
+    "test": "cross-env NODE_PATH=. SSCS_MOCK_DATA=true mocha test/unit/* --reporter spec",
     "dev": "cross-env NODE_PATH=. grunt",
     "setup": "cross-env NODE_PATH=. grunt generate-assets",
     "smoke-test": "cross-env NODE_PATH=. codeceptjs run test/smoke/ --steps",

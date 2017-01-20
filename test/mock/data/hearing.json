@@ -1,8 +1,8 @@
 {
   "appeal": {
-    "caseReference": "case-ref-6",
-    "name": "sathish-6",
-    "id": "tt48i5",
+    "caseReference": "SC123/04/56789",
+    "name": "Jason Mock",
+    "id": "md400",
     "status": "HEARING",
     "events": [
       {
@@ -40,6 +40,19 @@
           "date": "2016-11-30T00:00:00Z"
         }
       }
-    ]
+    ],
+    "hearing": {
+      "date": "To be defined",
+      "time": "To be defined",
+      "disabledAccess": "To be defined",
+      "representative": "To be defined",
+      "interpreter": "To be defined",
+      "address": {
+        "addressLine1": "Address line 1 to be defined",
+        "addressLine2": "Address line 2 to be defined",
+        "addressLine3": "Address line 3 to be defined",
+        "addressLine4": "Address line 4 to be defined"
+      }
+    }
   }
 }
