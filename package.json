@@ -12,7 +12,7 @@
     "dev": "cross-env NODE_PATH=. grunt",
     "setup": "cross-env NODE_PATH=. grunt generate-assets",
     "smoke-test": "cross-env NODE_PATH=. codeceptjs run test/smoke/ --steps",
-    "pa11y": "echo \"Error: no test specified\" && exit 0",
+    "pa11y": "cross-env NODE_PATH=. SSCS_MOCK_DATA=true mocha test/accessibility -r test/chai-sinon.js --reporter spec --recursive --timeout 10000",
     "eslint": "cross-env NODE_PATH=. eslint ."
   },
   "repository": {
@@ -51,6 +51,7 @@
     "mockery": "2.0.0",
     "nightmare": "^2.8.1",
     "nightmare-upload": "^0.1.1",
+    "pa11y": "^4.3.0",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0",
     "supertest": "^2.0.1"
