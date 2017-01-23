@@ -1,0 +1,24 @@
+{
+  "appeal": {
+    "caseReference": "SC123/04/56789",
+    "name": "Jason Mock",
+    "id": "md200",
+    "status": "DWP_RESPOND",
+    "events": [
+      {
+        "contentKey": "status.dwpRespond",
+        "date": "2016-11-13T01:00:00Z",
+        "placeholder": {
+          "date": "2016-11-30T00:00:00Z"
+        }
+      },
+      {
+        "contentKey": "status.appealReceived",
+        "date": "2016-11-12T01:00:00Z",
+        "placeholder": {
+          "date": "2016-11-30T00:00:00Z"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "appeal": {
+    "caseReference": "SC123/04/56789",
+    "name": "Jason Mock",
+    "id": "md300",
+    "status": "HEARING_BOOKED",
+    "events": [
+      {
+        "contentKey": "status.hearingBooked",
+        "date": "2016-11-15T01:00:00Z",
+        "placeholder": {
+          "date": "2016-11-30T00:00:00Z"
+        }
+      },
+      {
+        "contentKey": "status.dwpRespond",
+        "date": "2016-11-13T01:00:00Z",
+        "placeholder": {
+          "date": "2016-11-30T00:00:00Z"
+        }
+      },
+      {
+        "contentKey": "status.appealReceived",
+        "date": "2016-11-12T01:00:00Z",
+        "placeholder": {
+          "date": "2016-11-30T00:00:00Z"
+        }
+      }
+    ],
+    "hearing": {
+      "date": "To be defined",
+      "time": "To be defined",
+      "disabledAccess": "To be defined",
+      "representative": "To be defined",
+      "interpreter": "To be defined",
+      "address": {
+        "addressLine1": "Address line 1 to be defined",
+        "addressLine2": "Address line 2 to be defined",
+        "addressLine3": "Address line 3 to be defined",
+        "addressLine4": "Address line 4 to be defined"
+      }
+    }
+  }
+}
