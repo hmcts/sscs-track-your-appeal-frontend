@@ -21,6 +21,9 @@
 
 ## Run the unit tests
     $> npm test
+    
+## Run the acceptance tests
+    $> npm run pa11y
 
 ## Run the smoke tests
     $> npm smoke-test
