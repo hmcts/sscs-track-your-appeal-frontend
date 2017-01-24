@@ -52,6 +52,7 @@
     "nightmare": "^2.8.1",
     "nightmare-upload": "^0.1.1",
     "pa11y": "^4.3.0",
+    "request-json": "^0.6.1",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0",
     "supertest": "^2.0.1"

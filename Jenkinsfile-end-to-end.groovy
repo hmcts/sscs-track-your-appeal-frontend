@@ -1,7 +1,8 @@
 node("Slave1") {
-    env.https_proxy = "http://172.16.200.254:3128/"
-    env.http_proxy = "http://172.16.200.254:3128/"
+    env.https_proxy = ""
+    env.http_proxy = ""
     env.E2E_FRONTEND_URL = "http://www.sscs.sandbox.reform.ukc.hmcts.net"
+    env.API_BASE_URL ="http://sscs-track-your-appeal-api.internal"
     env.E2E_OUTPUT_DIR = "${env.JENKINS_HOME}/testResults/"
     env.npm_config_tmp = "${pwd()}/.tmp"
 
