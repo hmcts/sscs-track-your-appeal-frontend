@@ -4,6 +4,9 @@ node {
     env.https_proxy="http://172.16.200.254:3128/"
     env.http_proxy="http://172.16.200.254:3128/"
     env.npm_config_tmp="${pwd()}/.tmp"
+    env.APP_NAME = 'track-your-appeal-frontend'
+    env.LIMIT = 'sscs_web_nodejs'
+    env.EXTRA_VARS = "java_app_name=${env.JAVA_APP_NAME} sscs_track_your_appeal_frontend_branch=${env.BRANCH_NAME} ${env.ENV_VARS}"
 
     stage "Checkout"
     git url: 'git@10.196.60.5:SSCS/track-your-appeal-frontend.git', branch: env.BRANCH_NAME
@@ -19,20 +22,13 @@ node {
     sh "npm run pa11y"
 
     stage "Deploy"
-    def deploy_result = build job: 'sscs-track-your-appeal-deploy', parameters: [
-        [$class: 'StringParameterValue', name: 'APP_NAME', value: 'track-your-appeal-frontend'],
-        [$class: 'StringParameterValue', name: 'BRANCH_NAME', value: env.BRANCH_NAME],
-        [$class: 'StringParameterValue', name: 'LIMIT', value: 'sscs_web_nodejs'],
-        [$class: 'StringParameterValue', name: 'EXTRA_VARS', value: "sscs_track_your_appeal_frontend_branch=${env.BRANCH_NAME}"],
-    ]
-    if (deploy_result.result == 'UNSTABLE') {
-        println('Could not deploy the branch. See the deploy job for who has the lock')
-        currentBuild.result = 'UNSTABLE'
-        return
-    }
+    deploy(env, env.BRANCH_NAME)
 
     stage "Run smoke tests"
     build job: 'sscs-track-your-appeal-frontend-smoketests'
+
+    stage "Deploy master"
+    deploy(env, 'master')
 }
 
 def get_branch_name(env) {
@@ -48,5 +44,18 @@ def get_branch_name(env) {
     } else {
         sh 'env | sort'
         error 'Could not determine branch name'
+    }
+}
+
+def deploy(env, branch_name) {
+    def deploy_result = build job: 'sscs-track-your-appeal-deploy', parameters: [
+        [$class: 'StringParameterValue', name: 'APP_NAME', value: env.APP_NAME],
+        [$class: 'StringParameterValue', name: 'BRANCH_NAME', value: branch_name],
+        [$class: 'StringParameterValue', name: 'LIMIT', value: env.LIMIT],
+        [$class: 'StringParameterValue', name: 'EXTRA_VARS', value: env.EXTRA_VARS],
+    ]
+    if (deploy_result.result == 'UNSTABLE') {
+        currentBuild.result = 'UNSTABLE'
+        error "Could not deploy the branch. See the deploy job for who has the lock"
     }
 }
