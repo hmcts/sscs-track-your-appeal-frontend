@@ -29,3 +29,32 @@
     $> npm smoke-test
         or
        codeceptjs run test/smoketest/ --steps
+
+## Logging
+
+* There are 8 log levels: {ALL, TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF}.
+* A level can be set either within app/config.js or via an environment variable LOG_LEVEL within the npm script.
+* By default logging is turned off when running the unit tests and the accessability tests.
+* A typical HTTP 404 log error when encountering an unknown id would look like the following. Note the property "fields" contains the server errors.
+
+~~~~
+{
+  responseCode: 404,
+  message: 'Not Found',
+  fields: [
+    { exception: 'uk.gov.justice.sscs.exception.AppealNotFoundException'},
+    { message: 'No appeal for given id' },
+    { path: '/appeals/777' }
+  ],
+  level: 'ERROR',
+  environment: '',
+  hostname: 'Pauls-MacBook-Pro.local',
+  rootRequestId: '',
+  requestId: '',
+  originRequestId: '',
+  type: 'nodejs',
+  microservice: 'track-your-appeal',
+  team: 'SSCS',
+  timestamp: '2017-01-27T11:27:23+00:00'
+}
+~~~~

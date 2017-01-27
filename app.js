@@ -1,3 +1,4 @@
+const logger = require('app/core/log/Logger').getLogger();
 const express = require('express');
 const nunjucks = require('express-nunjucks');
 const favicon = require('serve-favicon');
@@ -52,6 +53,10 @@ function init() {
   exp.use('/', routes);
 
   const srv = exp.listen(process.env.PORT || PORT);
+
+  logger.info({
+    message: `Express server started on port ${srv.address().port}`
+  });
 
   return {exp,srv,njk};
 }

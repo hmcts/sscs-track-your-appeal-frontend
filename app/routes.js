@@ -1,7 +1,7 @@
 const ServiceLoader = require('app/services/ServiceLoader');
 const AppealsService = ServiceLoader.load(ServiceLoader.APPEALS);
 const locale = require('app/assets/locale/en');
-
+const logger = require('app/core/log/Logger').getLogger();
 const express = require('express');
 const router = express.Router();
 
@@ -16,17 +16,20 @@ router.get('/malformedurl', function (req, res) {
 router.use((req, res, next) => {
   let id = req.url.split('/')[2];
   if (!id) {
-    console.log("Unable to determine ID: '" + id + "' from path: '" + req.url + "'");
+    logger.error({
+      message: `Unable to determine id:${id} from path ${req.url}`
+    });
     next();
   }
 
+  logger.info({message: `GET:/appeals/${id} : PATH:${req.url}`});
   AppealsService.status(id).then((appeal) => {
     res.locals.appeal = appeal;
     next();
   }).catch((error) => {
-    res.status(error.status).send(error);
+    res.status(error.responseCode).send(error);
+    logger.error(error);
   })
-
 });
 
 router.get('/progress/:id/abouthearing', (req, res) => {
