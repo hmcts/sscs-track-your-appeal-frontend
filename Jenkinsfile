@@ -6,7 +6,7 @@ node {
     env.npm_config_tmp="${pwd()}/.tmp"
     env.APP_NAME = 'track-your-appeal-frontend'
     env.LIMIT = 'sscs_web_nodejs'
-    env.EXTRA_VARS = "java_app_name=${env.JAVA_APP_NAME} sscs_track_your_appeal_frontend_branch=${env.BRANCH_NAME} ${env.ENV_VARS}"
+    env.EXTRA_VARS = "nodejs_app_name=${env.APP_NAME} sscs_track_your_appeal_frontend_branch=${env.BRANCH_NAME} ${env.ENV_VARS?:''}"
 
     stage "Checkout"
     git url: 'git@10.196.60.5:SSCS/track-your-appeal-frontend.git', branch: env.BRANCH_NAME
