@@ -9,7 +9,7 @@ class MockTrackMyAppealService {
         reject({
           error: "Not Found",
           message: 'No mocked json file for appeal id:' + id,
-          status: 404
+          responseCode: 404
         });
       }
       const appeal = mockedData[id].appeal;

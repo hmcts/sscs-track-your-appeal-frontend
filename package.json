@@ -8,11 +8,11 @@
   },
   "scripts": {
     "start": "cross-env NODE_PATH=. node server.js",
-    "test": "cross-env NODE_PATH=. SSCS_MOCK_DATA=true mocha test/unit/* --reporter spec",
+    "test": "cross-env NODE_PATH=. SSCS_MOCK_DATA=true LOG_LEVEL=OFF mocha test/unit/* --reporter spec",
     "dev": "cross-env NODE_PATH=. grunt",
     "setup": "cross-env NODE_PATH=. grunt generate-assets",
     "smoke-test": "cross-env NODE_PATH=. codeceptjs run test/smoke/ --steps",
-    "pa11y": "cross-env NODE_PATH=. SSCS_MOCK_DATA=true mocha test/accessibility -r test/chai-sinon.js --reporter spec --recursive --timeout 10000",
+    "pa11y": "cross-env NODE_PATH=. SSCS_MOCK_DATA=true LOG_LEVEL=OFF mocha test/accessibility -r test/chai-sinon.js --reporter spec --recursive --timeout 10000",
     "eslint": "cross-env NODE_PATH=. eslint ."
   },
   "repository": {
@@ -28,6 +28,7 @@
     "govuk_frontend_toolkit": "^5.0.1",
     "govuk_template_jinja": "^0.19.0",
     "lodash": "4.17.4",
+    "log4js": "^1.1.0",
     "moment": "2.17.1",
     "nunjucks": "2.5.2",
     "serve-favicon": "2.3.0",

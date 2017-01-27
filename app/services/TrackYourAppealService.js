@@ -26,16 +26,20 @@ class TrackMyAppealService {
         resolve(appeal);
 
       }).catch((error) => {
-        reject(error.response.body.Map);
+        let serverErr = {};
+        if(error.response && error.response.body && error.response.body.Map) {
+          serverErr = error.response.body.Map;
+        }
+        reject({
+          responseCode: error.status,
+          message: error.message,
+          fields: [
+            {'exception': serverErr.exception},
+            {'message': serverErr.message},
+            {'path': serverErr.path}
+          ]
+        });
       });
-    });
-  }
-
-  static mockStatus() {
-    let mockedData = require('test/mock/trackyourappeal.json');
-    return new Promise((resolve) => {
-      I18nHelper.setHeadingAndRenderedContentOnEvents(mockedData.appeal.events);
-      setTimeout(() => resolve(mockedData.appeal), 50);
     });
   }
 }
