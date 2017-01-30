@@ -19,7 +19,15 @@ node {
     sh "npm test"
 
     stage "Run accessibility tests"
-    sh "npm run pa11y"
+    env.JUNIT_REPORT_PATH = "test-reports.xml"
+        try {
+            sh '''
+              npm install mocha-jenkins-reporter
+              npm run pa11y -- --reporter mocha-jenkins-reporter --reporter-options junit_report_packages=true
+            '''
+        } finally {
+            step([$class: 'JUnitResultArchiver', testResults: env.JUNIT_REPORT_PATH])
+        }
 
     stage "Deploy"
     deploy(env, env.BRANCH_NAME)

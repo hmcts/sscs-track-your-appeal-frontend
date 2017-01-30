@@ -3,11 +3,17 @@ const request = require('supertest');
 const {expect} = require('test/chai-sinon');
 const pa11y = require('pa11y');
 const pa11yRunner = pa11y({
-  ignore: [],
+  ignore: ['WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail'],
   hideElements: '.skiplink'
 });
 const accessibilityPages = [
-  '/progress/md100/trackyourappeal'
+  '/progress/md100/trackyourappeal',
+  '/progress/md200/trackyourappeal',
+  '/progress/md300/trackyourappeal',
+  '/progress/md400/trackyourappeal',
+  '/progress/md400/hearingdetails',
+  '/progress/md400/expenses',
+  '/progress/md400/evidence'
 ];
 
 accessibilityPages.forEach((page) => {
