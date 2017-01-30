@@ -1,7 +1,7 @@
 const ServiceLoader = require('app/services/ServiceLoader');
 const AppealsService = ServiceLoader.load(ServiceLoader.APPEALS);
 const locale = require('app/assets/locale/en');
-const logger = require('app/core/log/Logger').getLogger('routes.js');
+const logger = require('nodejs-logging').getLogger('routes.js');
 const express = require('express');
 const router = express.Router();
 

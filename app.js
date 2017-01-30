@@ -1,4 +1,6 @@
-const logger = require('app/core/log/Logger').getLogger('app.js');
+const logging = require('nodejs-logging');
+logging.config({ microservice: 'track-your-appeal', team: 'SSCS'});
+logger = logging.getLogger('app.js');
 const express = require('express');
 const nunjucks = require('express-nunjucks');
 const favicon = require('serve-favicon');
