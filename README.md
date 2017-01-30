@@ -34,6 +34,7 @@
 
 * There are 8 log levels: {ALL, TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF}.
 * A level can be set either within app/config.js or via an environment variable LOG_LEVEL within the npm script.
+* There are 2 types of logging output, the first is a single line (production), the second is over multiple lines (dev). Both are set via an environment variable: LOG_OUTPUT=single & LOG_OUTPUT=multi
 * By default logging is turned off when running the unit tests and the accessability tests.
 * A typical HTTP 404 log error when encountering an unknown id would look like the following. Note the property "fields" contains the server errors.
 

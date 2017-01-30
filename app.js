@@ -1,4 +1,4 @@
-const logger = require('app/core/log/Logger').getLogger();
+const logger = require('app/core/log/Logger').getLogger('app.js');
 const express = require('express');
 const nunjucks = require('express-nunjucks');
 const favicon = require('serve-favicon');
