@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const request = require('superagent');
 const Config = require('app/config');
 const I18nHelper = require('app/core/I18nHelper');
@@ -26,19 +27,31 @@ class TrackMyAppealService {
         resolve(appeal);
 
       }).catch((error) => {
-        let serverErr = {};
-        if(error.response && error.response.body && error.response.body.Map) {
-          serverErr = error.response.body.Map;
+        let err = {};
+        err.responseCode = error.status;
+        err.message = error.message;
+        err.fields = [];
+
+        // Pull out the server side exception.
+        let exception = _.get(error, 'response.body.Map.exception');
+        if (exception) {
+          err.fields.push({'exception': exception});
         }
-        reject({
-          responseCode: error.status,
-          message: error.message,
-          fields: [
-            {'exception': serverErr.exception},
-            {'message': serverErr.message},
-            {'path': serverErr.path}
-          ]
-        });
+
+        // Pull out the server side message.
+        let message = _.get(error, 'response.body.Map.message');
+        if(message) {
+          err.fields.push({'message': message});
+        }
+
+        // Pull out the server side path.
+        let path = _.get(error, 'response.body.Map.path');
+        if(path) {
+          err.fields.push({'path': path})
+        }
+
+        reject(err);
+
       });
     });
   }

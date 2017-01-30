@@ -1,7 +1,7 @@
 const ServiceLoader = require('app/services/ServiceLoader');
 const AppealsService = ServiceLoader.load(ServiceLoader.APPEALS);
 const locale = require('app/assets/locale/en');
-const logger = require('app/core/log/Logger').getLogger();
+const logger = require('app/core/log/Logger').getLogger('routes.js');
 const express = require('express');
 const router = express.Router();
 
@@ -27,8 +27,8 @@ router.use((req, res, next) => {
     res.locals.appeal = appeal;
     next();
   }).catch((error) => {
-    res.status(error.responseCode).send(error);
     logger.error(error);
+    res.status(error.responseCode).send(error);
   })
 });
 
