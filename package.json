@@ -30,7 +30,6 @@
     "lodash": "4.17.4",
     "log4js": "^1.1.0",
     "moment": "2.17.1",
-    "nodejs-logging": "git+ssh://git@10.196.60.5:reform/nodejs-logging.git",
     "nunjucks": "2.5.2",
     "serve-favicon": "2.3.0",
     "superagent": "^3.3.2"

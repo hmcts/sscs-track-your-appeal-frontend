@@ -1,6 +1,3 @@
-const logging = require('nodejs-logging');
-logging.config({ microservice: 'track-your-appeal', team: 'SSCS'});
-logger = logging.getLogger('app.js');
 const express = require('express');
 const nunjucks = require('express-nunjucks');
 const favicon = require('serve-favicon');
@@ -56,9 +53,7 @@ function init() {
 
   const srv = exp.listen(process.env.PORT || PORT);
 
-  logger.info({
-    message: `Express server started on port ${srv.address().port}`
-  });
+  console.log(`Express server started on port ${srv.address().port}`);
 
   return {exp,srv,njk};
 }
