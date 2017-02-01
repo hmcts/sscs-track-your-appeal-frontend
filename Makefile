@@ -1,9 +1,14 @@
-.PHONY: build npmtest
+.PHONY: build dockerbuild installdependencies unittest accessibilitytest
 
-build: dockerbuild npmtest
+build: install unittest accessibilitytest
 
-dockerbuild:
-	docker build -t track-your-appeal-frontend .
+install:
+	npm install
+	npm run setup
 
-npmtest:
-	docker run -t track-your-appeal-frontend npm test
+unittest:
+	npm test
+
+accessibilitytest:
+	npm run pa11y
+
