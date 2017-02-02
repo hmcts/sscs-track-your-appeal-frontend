@@ -51,6 +51,11 @@ function init() {
   exp.use(locals);
   exp.use('/', routes);
 
+  exp.use((err, req, res, next) => {
+    res.status(err.responseCode || 500);
+    res.json(err)
+  });
+
   const srv = exp.listen(process.env.PORT || PORT);
 
   console.log(`Express server started on port ${srv.address().port}`);

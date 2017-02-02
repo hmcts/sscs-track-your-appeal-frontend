@@ -1,0 +1,16 @@
+{
+  "Health": {
+    "status": "UP",
+    "diskSpace": {
+      "status": "UP",
+      "total": 499055067136,
+      "free": 27483611136,
+      "threshold": 10485760
+    },
+    "db": {
+      "status": "UP",
+      "database": "PostgreSQL",
+      "hello": 1
+    }
+  }
+}
