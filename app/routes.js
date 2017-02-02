@@ -1,52 +1,62 @@
+const _ = require('lodash');
 const ServiceLoader = require('app/services/ServiceLoader');
-const AppealsService = ServiceLoader.load(ServiceLoader.APPEALS);
+const AppealsService = ServiceLoader.instance().load(ServiceLoader.appeals);
+const HealthService = ServiceLoader.instance().load(ServiceLoader.health);
 const locale = require('app/assets/locale/en');
 const express = require('express');
 const router = express.Router();
-
-router.get('/', function (req, res) {
-  return res.redirect(302, '/malformedurl');
-});
-
-router.get('/malformedurl', function (req, res) {
-  return res.render('malformed-url');
-});
+const rootPath = '/progress';
 
 router.use((req, res, next) => {
-  let id = req.url.split('/')[2];
-  if (!id) {
-    console.log(`Unable to determine id:${id} from path ${req.url}`);
+
+  if(_.startsWith(req.url, rootPath)) {
+    let id = req.url.split('/')[2];
+    //console.log(`GET:/appeals/${id} : PATH:${req.url}`);
+    AppealsService.status(id).then((appeal) => {
+      res.locals.appeal = appeal;
+      next();
+    }).catch((error) => {
+      next(error);
+    })
+  } else {
     next();
   }
 
-  console.log(`GET:/appeals/${id} : PATH:${req.url}`);
-  AppealsService.status(id).then((appeal) => {
-    res.locals.appeal = appeal;
-    next();
-  }).catch((error) => {
-    console.log(error);
-    res.status(error.responseCode).send(error);
-  })
 });
 
-router.get('/progress/:id/abouthearing', (req, res) => {
+router.get(`${rootPath}/:id/abouthearing`, (req, res) => {
   res.render('about-hearing', Object.assign({i18n: locale}, {data: res.locals.appeal}));
 });
 
-router.get('/progress/:id/trackyourappeal', (req, res) => {
+router.get(`${rootPath}/:id/trackyourappeal`, (req, res) => {
   res.render('track-your-appeal', Object.assign({i18n: locale}, {data: res.locals.appeal}));
 });
 
-router.get('/progress/:id/evidence', (req, res) => {
+router.get(`${rootPath}/:id/evidence`, (req, res) => {
   res.render('provide-evidence', Object.assign({i18n: locale}, {data: res.locals.appeal}));
 });
 
-router.get('/progress/:id/expenses', (req, res) => {
+router.get(`${rootPath}/:id/expenses`, (req, res) => {
   res.render('claim-expenses', Object.assign({i18n: locale}, {data: res.locals.appeal}));
 });
 
-router.get('/progress/:id/hearingdetails', (req, res) => {
+router.get(`${rootPath}/:id/hearingdetails`, (req, res) => {
   res.render('hearing-details', Object.assign({i18n: locale}, {data: res.locals.appeal}));
+});
+
+router.get('/status', (req, res, next) => {
+  //console.log(`GET:/health: PATH:${req.url}`);
+  HealthService.health().then((health) => {
+    res.json(health.body);
+  });
+});
+
+router.get('/', function (req, res, next) {
+  //console.log(`PATH:${req.url}`);
+  return next({
+    message: `Not found, you probably want ${rootPath}/:id/trackyourappeal`,
+    responseCode: 404,
+  });
 });
 
 module.exports = router;

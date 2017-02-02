@@ -49,21 +49,22 @@ describe('Node.js application/server', () => {
           .expect(200, done);
       });
 
-    });
-
-    describe('making application route requests which redirect with a HTTP 302', () => {
-
-      it('should redirect to /malformedurl when a request is made to root', function (done) {
+      it('should respond to the /status route with a HTTP 200:OK', function (done) {
         request(app.exp)
-          .get('/')
-          .expect(302)
-          .expect('Location', '/malformedurl')
-          .end(done)
+          .get('/status')
+          .expect('Content-Type', /json/)
+          .expect(200, done);
       });
 
     });
 
     describe('making application route requests which result in a HTTP 404', () => {
+
+      it('should respond to / route with a HTTP 404:Not found', function (done) {
+        request(app.exp)
+          .get('/')
+          .expect(404, done);
+      });
 
       it('should respond to an unknown route with a HTTP 404:Not found', function (done) {
         request(app.exp)
