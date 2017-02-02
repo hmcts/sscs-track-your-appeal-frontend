@@ -9,6 +9,7 @@
   "scripts": {
     "start": "cross-env NODE_PATH=. node server.js",
     "test": "cross-env NODE_PATH=. SSCS_MOCK_DATA=true LOG_LEVEL=OFF mocha test/unit/* --reporter spec",
+    "coverage": "cross-env NODE_PATH=. SSCS_MOCK_DATA=true istanbul cover _mocha --dir test/coverage test/unit/*",
     "dev": "cross-env NODE_PATH=. LOG_OUTPUT=multi grunt",
     "setup": "cross-env NODE_PATH=. grunt generate-assets",
     "smoke-test": "cross-env NODE_PATH=. codeceptjs run test/smoke/ --steps",
@@ -47,6 +48,7 @@
     "grunt-nodemon": "0.4.2",
     "grunt-sass": "^1.2.1",
     "grunt-sync": "^0.6.2",
+    "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
     "mochawesome": "^1.5.3",
     "mockery": "2.0.0",
