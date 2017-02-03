@@ -1,11 +1,11 @@
 exports.config = {
   'tests': './tests/trackAppealPage_test.js',
-  'timeout': 1000,
   'output': './testResults',
-
+  'timeout': 1000,
   'helpers': {
     'Nightmare': {
       'url': process.env.E2E_FRONTEND_URL || 'http://localhost:3000',
+      'waitForTimeout': 10000,
       'show': false
     },
     'postAppealHelper': {
@@ -24,5 +24,6 @@ exports.config = {
       'inlineAssets': true
     }
   },
+
   'name': 'SmokeTest'
 };
