@@ -53,14 +53,20 @@ function init() {
 
   exp.use((err, req, res, next) => {
     res.status(err.responseCode || 500);
-    res.json(err)
+    res.json({
+      responseCode: err.responseCode,
+      message: err.message,
+      fields: err.fields,
+      name: err.name,
+      stack: err.stack
+    })
   });
 
   const srv = exp.listen(process.env.PORT || PORT);
 
   console.log(`Express server started on port ${srv.address().port}`);
 
-  return {exp,srv,njk};
+  return {exp, srv, njk};
 }
 
 module.exports = init;

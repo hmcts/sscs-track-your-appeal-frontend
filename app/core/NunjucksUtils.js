@@ -1,5 +1,6 @@
 const moment = require('moment');
 const DATE_FORMAT = 'YYYY-MM-DDHH:mm:ss ZZ';
+const locale = require('app/assets/locale/en');
 const FILTERS = {
 
   json: (obj) => {
@@ -11,8 +12,17 @@ const FILTERS = {
   },
 
   formatTime: (date) => {
-    let time = moment(date, DATE_FORMAT).format("HH:mm");
-    return time;
+    return moment(date, DATE_FORMAT).format("HH:mm");
+  },
+
+  needed: (needed) => {
+    if (needed === undefined) {
+      return '-'
+    }
+
+    return needed ?
+      locale.hearingDetails.needed :
+      locale.hearingDetails.notNeeded;
   }
 };
 let nunjucksEnv;

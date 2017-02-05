@@ -6,7 +6,7 @@ Hearing Details
 
 {% block content %}
 
-<main id="content" class="hearing-details" role="main">
+<main id="content" class="hearing" role="main">
 
     {% include "includes/phase_banner_beta.html" %}
     {% include "includes/breadcrumbs.html" %}
@@ -25,41 +25,52 @@ Hearing Details
     <div class="grid-row">
         <div class="column-two-thirds">
 
-            <div class="tribunal-details">
+            <div class="hearing-details">
 
                 <dl class="date-time">
                     <dt>{{ i18n.common.date }}</dt>
-                    <dd>{{ data.hearingDate | formatDate }}</dd>
+                    <dd>{{ data.hearing.placeholder.date | formatDate }}</dd>
                 </dl>
 
                 <dl class="date-time">
                     <dt>{{ i18n.common.time }}</dt>
-                    <dd>{{ data.hearingTime | formatTime }}<span> ({{ i18n.hearingDetails.arriveEarly }})</span></dd>
+                    <dd>{{ data.hearing.placeholder.date | formatTime }}
+                        <span> ({{ i18n.hearingDetails.arriveEarly }})</span>
+                    </dd>
                 </dl>
 
                 <dl class="address">
                     <dt>{{ i18n.hearingDetails.location }}</dt>
+                    {% if data.hearing.address.lines.length %}
                     <dd>
-                        {% for key, value in data.address %}
-                        <span>{{ value }}</span>
+                        {% for addressLine in data.hearing.address.lines %}
+                        <span>{{ addressLine }}</span>
                         {% endfor %}
+                        <span>{{ data.hearing.address.postcode }}</span>
                     </dd>
+                    {% else %}
+                    <dd>-</dd>
+                    {% endif %}
                 </dl>
 
                 <dl class="disabled-access">
                     <dt>{{ i18n.hearingDetails.disabledAccess }}</dt>
-                    <dd>{{ data.disabledAccess}}</dd>
+                    <dd>{{ data.hearing.placeholder.requiresDisabledAccess | needed }}</dd>
                 </dl>
 
                 <dl class="representative">
                     <dt>{{ i18n.hearingDetails.representative }}</dt>
-                    <dd>{{ data.representative }}</dd>
+                    {% if data.hearing.placeholder.hasRepresentative %}
+                    <dd>{{ data.hearing.placeholder.representative }}</dd>
+                    {% else %}
+                    <dd>{{ data.hearing.placeholder.hasRepresentative | needed }}</dd>
+                    {% endif %}
                 </dl>
 
                 <dl class="interpreter">
                     <dt>{{ i18n.hearingDetails.interpreter }}</dt>
                     <dd >
-                        <span>{{ data.interpreter }}</span>
+                        <span>{{ data.hearing.placeholder.requiresInterpreter | needed }}</span>
                         <span>{{ i18n.hearingDetails.interpretersBookedByUs }}</span>
                     </dd>
                 </dl>

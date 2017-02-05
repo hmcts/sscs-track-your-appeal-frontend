@@ -160,81 +160,53 @@
 
 }
 
-#content.hearing-details {
+#content.hearing {
 
-  .tribunal-details {
+  .hearing-details {
     background-color: $grey-3;
     margin-top: 20px;
     padding: 30px 20px 20px 25px;
+    float: left;
+
     dl {
       margin-bottom: 15px;
-    }
-    dt,
-    dd {
-      display: inline;
-    }
-    dd {
-      font-weight: bold;
-    }
-    .date-time {
+      float: left;
+      width: 100%;
       dt {
-        padding-right: 120px;
+        float: inherit;
+        width: 40%;
       }
+      dd {
+        float: inherit;
+        width: 50%;
+        font-weight: bold;
+      }
+    }
+
+    .date-time {
       span {
         font-weight: normal;
       }
     }
+
     .address {
-      dt {
-        padding-right: 89px;
-      }
-      dd span:not(:first-child) {
-        display: block;
-        margin-left: 164px;
-      }
-    }
-
-    .maps-and-directions {
-      margin-left: 163px;
-      line-height: 160%
-    }
-
-    .parking {
-      margin-top: 25px;
-      dt {
-        padding-right: 97px;
-      }
       dd {
-        font-weight: normal;
-      }
-      dd span:not(:first-child) {
-        display: block;
-        margin-left: 164px;
-      }
-    }
-
-    .disabled-access {
-      dt {
-        padding-right: 27px;
-      }
-    }
-
-    .representative {
-      dt {
-        padding-right: 35px;
+        span {
+          display: block;
+        }
       }
     }
 
     .interpreter {
-      dt {
-        padding-right: 70px;
-      }
       dd span:not(:first-child) {
         display: block;
-        margin-left: 164px;
         font-weight: normal;
       }
     }
+  }
+
+  .panel.panel-border-wide {
+    float: left;
   }
 
   .about-hearing {
@@ -242,7 +214,7 @@
   }
 }
 
-#content.hearing-details,
+#content.hearing,
 #content.track-your-appeal {
 
   .divider {
@@ -277,5 +249,11 @@
     margin-left: 5px;
     color: $govuk-blue;
     font-style: italic;
+  }
+}
+
+@media (max-width: 400px) {
+  #content.hearing .hearing-details dl dd {
+    clear: both;
   }
 }

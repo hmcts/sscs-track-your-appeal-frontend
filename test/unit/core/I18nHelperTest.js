@@ -1,6 +1,7 @@
 const {expect} = require('test/chai-sinon');
 const mockery = require('mockery');
 const application = require('app');
+const {CONTENT_KEYS} = require('app/config');
 
 describe('I18nHelper', () => {
 
@@ -90,7 +91,7 @@ describe('I18nHelper', () => {
     app.srv.close();
   });
 
-  describe('calling the setHeadingOnEvent() function', () => {
+  describe('Calling the setHeadingOnEvent() function', () => {
 
     before(() => mockedEvents.forEach(event => I18nHelper.setHeadingOnEvent(event)));
 
@@ -112,7 +113,7 @@ describe('I18nHelper', () => {
 
   });
 
-  describe('calling the setRenderedContentOnEvent() function', () => {
+  describe('Calling the setRenderedContentOnEvent() function', () => {
 
     before(() => mockedEvents.forEach(event => I18nHelper.setRenderedContentOnEvent(event)));
 
@@ -139,7 +140,7 @@ describe('I18nHelper', () => {
 
   });
 
-  describe('calling the getContent() function', () => {
+  describe('Calling the getContent() function', () => {
 
     it('should retreive the content when using the status.hearing.content key', () => {
       const content = I18nHelper.getContent(mockedContent, 'status.hearing.content');
@@ -164,6 +165,70 @@ describe('I18nHelper', () => {
 
     it('should throw an error when encountering an unknown content key', () => {
       expect(() => I18nHelper.getContent(mockedContent, 'rubbish')).to.throw(Error, 'Unkown content key: rubbish');
+    });
+
+  });
+
+  describe('Calling the getEventWithMatchingContentKey() function', () => {
+
+    it('should filter out the status.appealReceived event from a list of events', () => {
+      const appealReceivedEvent = I18nHelper.getEventWithMatchingContentKey(mockedEvents, CONTENT_KEYS.APPEAL_RECEIVED);
+      expect(appealReceivedEvent.contentKey).to.equal(CONTENT_KEYS.APPEAL_RECEIVED);
+    });
+
+    it('should filter out the status.dwpRespond event from a list of events', () => {
+      const dwpRespondEvent = I18nHelper.getEventWithMatchingContentKey(mockedEvents, CONTENT_KEYS.DWP_RESPOND);
+      expect(dwpRespondEvent.contentKey).to.equal(CONTENT_KEYS.DWP_RESPOND);
+    });
+
+    it('should filter out the status.hearingBooked event from a list of events', () => {
+      const hearingEvent = I18nHelper.getEventWithMatchingContentKey(mockedEvents, CONTENT_KEYS.HEARING_BOOKED);
+      expect(hearingEvent.contentKey).to.equal(CONTENT_KEYS.HEARING_BOOKED);
+    });
+
+    it('should filter out the status.hearing event from a list of events', () => {
+      const hearingEvent = I18nHelper.getEventWithMatchingContentKey(mockedEvents, CONTENT_KEYS.HEARING);
+      expect(hearingEvent.contentKey).to.equal(CONTENT_KEYS.HEARING);
+    });
+
+  });
+
+  describe('Copying a hearing event and setting the address', () => {
+
+    let hearingAppeal, hearingEvt;
+
+    before(() => {
+      hearingAppeal = require('test/mock/data/hearing.json').appeal;
+      hearingEvt = I18nHelper.getEventWithMatchingContentKey(hearingAppeal.events, CONTENT_KEYS.HEARING);
+    });
+
+    it('should return an event that contains the address in a new format', () => {
+      const newHearingEvt = I18nHelper.copyEventAndSetAddress(hearingEvt);
+      expect(newHearingEvt.address.lines.length).to.equal(3);
+      expect(newHearingEvt.address.lines[0]).to.equal(hearingEvt.placeholder.addressLine1);
+      expect(newHearingEvt.address.lines[1]).to.equal(hearingEvt.placeholder.addressLine2);
+      expect(newHearingEvt.address.lines[2]).to.equal(hearingEvt.placeholder.addressLine3);
+      expect(newHearingEvt.address.postcode).to.equal(hearingEvt.placeholder.postcode);
+    });
+
+  });
+
+  describe('Copying a hearing booked event and setting the address', () => {
+
+    let hearingBookedAppeal, hearingBookedEvt;
+
+    before(() => {
+      hearingBookedAppeal = require('test/mock/data/hearingBooked.json').appeal;
+      hearingBookedEvt = I18nHelper.getEventWithMatchingContentKey(hearingBookedAppeal.events, CONTENT_KEYS.HEARING_BOOKED);
+    });
+
+    it('should return an event that contains the address in a new format', () => {
+      const newHearingEvt = I18nHelper.copyEventAndSetAddress(hearingBookedEvt);
+      expect(newHearingEvt.address.lines.length).to.equal(3);
+      expect(newHearingEvt.address.lines[0]).to.equal(hearingBookedEvt.placeholder.addressLine1);
+      expect(newHearingEvt.address.lines[1]).to.equal(hearingBookedEvt.placeholder.addressLine2);
+      expect(newHearingEvt.address.lines[2]).to.equal(hearingBookedEvt.placeholder.addressLine3);
+      expect(newHearingEvt.address.postcode).to.equal(hearingBookedEvt.placeholder.postcode);
     });
 
   });
