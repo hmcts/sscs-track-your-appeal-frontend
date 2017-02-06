@@ -25,7 +25,7 @@ About Hearing
             <h2 class="heading-medium">{{ i18n.hearing.expectations.theHearingRoom.heading }}</h2>
             <p>{{ i18n.hearing.expectations.theHearingRoom.content }}</p>
 
-            <img src="/public/images/hearing-room.png">
+            <img src="/public/images/hearing-room.png" alt="Hearing room">
             <p>{{ i18n.hearing.expectations.image.content }}</p>
 
             <h2 class="heading-medium">{{ i18n.hearing.expectations.peopleAtHearing.heading }}</h2>
@@ -45,11 +45,6 @@ About Hearing
 
             <h2 class="heading-medium">{{ i18n.hearing.expectations.gettingDecision.heading }}</h2>
             {% for content in i18n.hearing.expectations.gettingDecision.content %}
-            <p>{{content}}</p>
-            {% endfor %}
-
-            <h2 class="heading-medium">{{ i18n.hearing.expectations.afterYourHearing.heading }}</h2>
-            {% for content in i18n.hearing.expectations.afterYourHearing.content %}
             <p>{{content}}</p>
             {% endfor %}
 
