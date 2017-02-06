@@ -3,10 +3,16 @@ const request = require('supertest');
 const {expect} = require('test/chai-sinon');
 const pa11y = require('pa11y');
 const pa11yRunner = pa11y({
-  ignore: ['WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail'],
-  hideElements: '.skiplink'
+  ignore: [
+    'WCAG2AA.Principle1.Guideline1_3.1_3_1.H49.I',
+    'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.BgImage',
+    'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Abs'
+  ],
+
+  hideElements: '.skiplink .govuk-box-highlight, #logo, #footer, link[rel=mask-icon], .skipAccessTest'
 });
 const accessibilityPages = [
+  '/progress/md100/abouthearing',
   '/progress/md100/trackyourappeal',
   '/progress/md200/trackyourappeal',
   '/progress/md300/trackyourappeal',
@@ -39,7 +45,7 @@ accessibilityPages.forEach((page) => {
 
     it('should pass without errors', () => {
       let errors = pageResults.filter((result) => {
-        return result.type === 'error';
+        return result.type === 'error' || result.type === 'warning'
       });
       expect(errors.length).to.equal(0, JSON.stringify(errors, null, 2));
     });
