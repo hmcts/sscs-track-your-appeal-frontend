@@ -1,10 +1,10 @@
 const request = require('superagent');
-const Config = require('app/config');
+const {HEALTH_ENDPOINT} = require('app/config');
 
 class HealthService {
 
   static health() {
-    return request('GET', Config.HEALTH_ENDPOINT);
+    return request('GET', HEALTH_ENDPOINT);
   }
 }
 

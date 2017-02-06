@@ -31,9 +31,9 @@ describe('Node.js application/server', () => {
           .expect(200, done);
       });
 
-      it('should respond to /progress/md100/hearingdetails route with a HTTP 200:OK', function (done) {
+      it('should respond to /progress/md400/hearingdetails route with a HTTP 200:OK', function (done) {
         request(app.exp)
-          .get('/progress/md100/hearingdetails')
+          .get('/progress/md400/hearingdetails')
           .expect(200, done);
       });
 

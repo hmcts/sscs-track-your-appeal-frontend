@@ -90,7 +90,7 @@ Track your Appeal
                 <h4 class="heading-small">{{ i18n.common.latestUpdate }}</h4>
                 <p>{{ data.events[0].renderedContent }}</p>
 
-                {% if data.status == 'HEARING_BOOKED' or data.status == 'HEARING'  %}
+                {% if feature.SHOW_HEARING_DETAILS and (data.status == 'HEARING_BOOKED' or data.status == 'HEARING') %}
                 <a href="/progress/{{data.id}}/hearingdetails">{{ i18n.hearingDetails.checkDetails }}</a>
                 {% endif %}
 

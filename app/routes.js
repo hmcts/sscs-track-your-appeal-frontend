@@ -3,13 +3,14 @@ const ServiceLoader = require('app/services/ServiceLoader');
 const AppealsService = ServiceLoader.instance().load(ServiceLoader.appeals);
 const HealthService = ServiceLoader.instance().load(ServiceLoader.health);
 const locale = require('app/assets/locale/en');
+const {SHOW_HEARING_DETAILS} = require('app/config');
 const express = require('express');
 const router = express.Router();
 const rootPath = '/progress';
 
 router.use((req, res, next) => {
 
-  if(_.startsWith(req.url, rootPath)) {
+  if (_.startsWith(req.url, rootPath)) {
     let id = req.url.split('/')[2];
     //console.log(`GET:/appeals/${id} : PATH:${req.url}`);
     AppealsService.status(id).then((appeal) => {
@@ -25,24 +26,26 @@ router.use((req, res, next) => {
 });
 
 router.get(`${rootPath}/:id/abouthearing`, (req, res) => {
-  res.render('about-hearing', Object.assign({i18n: locale}, {data: res.locals.appeal}));
+  res.render('about-hearing', _getData(res.locals.appeal));
 });
 
 router.get(`${rootPath}/:id/trackyourappeal`, (req, res) => {
-  res.render('track-your-appeal', Object.assign({i18n: locale}, {data: res.locals.appeal}));
+  res.render('track-your-appeal', _getData(res.locals.appeal));
 });
 
 router.get(`${rootPath}/:id/evidence`, (req, res) => {
-  res.render('provide-evidence', Object.assign({i18n: locale}, {data: res.locals.appeal}));
+  res.render('provide-evidence', _getData(res.locals.appeal));
 });
 
 router.get(`${rootPath}/:id/expenses`, (req, res) => {
-  res.render('claim-expenses', Object.assign({i18n: locale}, {data: res.locals.appeal}));
+  res.render('claim-expenses', _getData(res.locals.appeal));
 });
 
-router.get(`${rootPath}/:id/hearingdetails`, (req, res) => {
-  res.render('hearing-details', Object.assign({i18n: locale}, {data: res.locals.appeal}));
-});
+if (SHOW_HEARING_DETAILS) {
+  router.get(`${rootPath}/:id/hearingdetails`, (req, res) => {
+    res.render('hearing-details', Object.assign({i18n: locale}, {data: res.locals.appeal}));
+  });
+}
 
 router.get('/status', (req, res, next) => {
   //console.log(`GET:/health: PATH:${req.url}`);
@@ -58,5 +61,15 @@ router.get('/', function (req, res, next) {
     responseCode: 404,
   });
 });
+
+_getData = (appeal) => {
+  return {
+    i18n: locale,
+    data: appeal,
+    feature: {
+      SHOW_HEARING_DETAILS: SHOW_HEARING_DETAILS
+    }
+  };
+};
 
 module.exports = router;

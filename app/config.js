@@ -1,19 +1,47 @@
 const SERVICE_NAME = 'Track my appeal for Social Security and Child Support';
-const TRACK_YOUR_APPEAL_ENDPOINT = (process.env.SSCS_API_URL || 'http://localhost:8080') + '/appeals';
-const HEALTH_ENDPOINT = (process.env.SSCS_API_URL || 'http://localhost:8081') + '/health';
+const APPEALS_ENDPOINT = (process.env.SSCS_API_URL || 'http://localhost:8080') + '/appeals';
+const HEALTH_ENDPOINT = (process.env.SSCS_API_URL || 'http://localhost:8080') + '/health';
 const MOCK_DATA = process.env.SSCS_MOCK_DATA === 'true';
+const SHOW_HEARING_DETAILS = process.env.SHOW_HEARING_DETAILS === 'true';
 
 const STATUSES = {
-  APPEAL_RECEIVED: 0,
-  DWP_RESPOND: 1,
-  HEARING_BOOKED: 2,
-  HEARING: 3
+  APPEAL_RECEIVED: {
+    name: "APPEAL_RECEIVED",
+    value: 0
+  },
+  DWP_RESPOND: {
+    name: "DWP_RESPOND",
+    value: 1
+  },
+  HEARING_BOOKED: {
+    name: "HEARING_BOOKED",
+    value: 2
+  },
+  HEARING: {
+    name: "HEARING",
+    value: 3
+  }
+};
+
+const CONTENT_KEYS = {
+  APPEAL_RECEIVED: 'status.appealReceived',
+  DWP_RESPOND: 'status.dwpRespond',
+  HEARING_BOOKED: 'status.hearingBooked',
+  HEARING: 'status.hearing'
+};
+
+const CONTENT_SUBKEYS = {
+  HEADING: '.heading',
+  CONTENT: '.content',
 };
 
 module.exports = {
-  STATUSES: STATUSES,
-  SERVICE_NAME: SERVICE_NAME,
-  MOCK_DATA: MOCK_DATA,
-  TRACK_YOUR_APPEAL_ENDPOINT: TRACK_YOUR_APPEAL_ENDPOINT,
-  HEALTH_ENDPOINT: HEALTH_ENDPOINT
+  STATUSES: Object.freeze(STATUSES),
+  CONTENT_KEYS: Object.freeze(CONTENT_KEYS),
+  CONTENT_SUBKEYS: Object.freeze(CONTENT_SUBKEYS),
+  MOCK_DATA: Object.freeze(MOCK_DATA),
+  SERVICE_NAME: Object.freeze(SERVICE_NAME),
+  HEALTH_ENDPOINT: Object.freeze(HEALTH_ENDPOINT),
+  APPEALS_ENDPOINT: Object.freeze(APPEALS_ENDPOINT),
+  SHOW_HEARING_DETAILS: Object.freeze(SHOW_HEARING_DETAILS),
 };

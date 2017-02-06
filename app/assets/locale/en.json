@@ -191,6 +191,8 @@
     "disabledAccess": "Disabled access",
     "representative": "Representative",
     "interpreter": "Interpreter",
+    "needed": "Needed",
+    "notNeeded": "Not Needed",
     "interpretersBookedByUs": "Only interpreters booked by us can translate for you at the hearing.",
     "incorrect": "If anything above is incorrect or you cannot attend, call us on 0300 123 1142",
     "pleaseNote": {

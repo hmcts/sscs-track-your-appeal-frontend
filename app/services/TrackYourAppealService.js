@@ -1,28 +1,23 @@
 const _ = require('lodash');
 const request = require('superagent');
-const Config = require('app/config');
 const I18nHelper = require('app/core/I18nHelper');
+const {APPEALS_ENDPOINT, STATUSES, CONTENT_KEYS} = require('app/config');
 
 class TrackMyAppealService {
 
   static status(id) {
     return new Promise((resolve, reject) => {
-      request('GET', Config.TRACK_YOUR_APPEAL_ENDPOINT + '/' + id).then((result) => {
+      request('GET', APPEALS_ENDPOINT + '/' + id).then((result) => {
         let appeal = result.body.appeal;
         I18nHelper.setHeadingAndRenderedContentOnEvents(appeal.events);
 
-        // Temporarily add the hearing data until it's defined within the API.
-        appeal.hearingDate = "To be defined";
-        appeal.hearingTime = "To be defined";
-        appeal.disabledAccess = "To be defined";
-        appeal.representative = "To be defined";
-        appeal.interpreter = "To be defined";
-        appeal.address = {
-          addressLine1: "Address line 1 to be defined",
-          addressLine2: "Address line 2 to be defined",
-          addressLine3: "Address line 3 to be defined",
-          addressLine4: "Address line 4 to be defined",
-        };
+        if (appeal.status === STATUSES.HEARING_BOOKED.name) {
+          I18nHelper.setHearingOnAppeal(appeal, CONTENT_KEYS.HEARING_BOOKED);
+        }
+
+        if (appeal.status === STATUSES.HEARING.name) {
+          I18nHelper.setHearingOnAppeal(appeal, CONTENT_KEYS.HEARING);
+        }
 
         resolve(appeal);
 
@@ -40,13 +35,13 @@ class TrackMyAppealService {
 
         // Pull out the server side message.
         let message = _.get(error, 'response.body.Map.message');
-        if(message) {
+        if (message) {
           err.fields.push({'message': message});
         }
 
         // Pull out the server side path.
         let path = _.get(error, 'response.body.Map.path');
-        if(path) {
+        if (path) {
           err.fields.push({'path': path})
         }
 
