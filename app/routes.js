@@ -41,11 +41,13 @@ router.get(`${rootPath}/:id/expenses`, (req, res) => {
   res.render('claim-expenses', _getData(res.locals.appeal));
 });
 
-if (SHOW_HEARING_DETAILS) {
-  router.get(`${rootPath}/:id/hearingdetails`, (req, res) => {
+router.get(`${rootPath}/:id/hearingdetails`, (req, res) => {
+  if (SHOW_HEARING_DETAILS) {
     res.render('hearing-details', Object.assign({i18n: locale}, {data: res.locals.appeal}));
-  });
-}
+  } else {
+    res.send("Sorry, currently unavailable");
+  }
+});
 
 router.get('/status', (req, res, next) => {
   //console.log(`GET:/health: PATH:${req.url}`);
