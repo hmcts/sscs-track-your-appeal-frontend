@@ -76,6 +76,12 @@ module.exports = function(grunt){
             }
         },
 
+        env : {
+          dev : {
+            NODE_PATH : '.',
+          }
+        },
+
         // Watches assets and sass for changes
         watch: {
             css: {
@@ -117,6 +123,7 @@ module.exports = function(grunt){
     });
 
     [
+        'grunt-env',
         'grunt-sync',
         'grunt-contrib-watch',
         'grunt-sass',
@@ -132,6 +139,7 @@ module.exports = function(grunt){
     ]);
 
     grunt.registerTask('default', [
+        'env:dev',
         'generate-assets',
         'concurrent:target'
     ]);
