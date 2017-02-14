@@ -43,7 +43,7 @@
   responseCode: 404,
   message: 'Not Found',
   fields: [
-    { exception: 'uk.gov.justice.sscs.exception.AppealNotFoundException'},
+    { exception: 'uk.gov.hmcts.sscs.exception.AppealNotFoundException'},
     { message: 'No appeal for given id' },
     { path: '/appeals/777' }
   ],
