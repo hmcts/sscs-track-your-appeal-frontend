@@ -13,7 +13,7 @@
     "dev": "cross-env NODE_PATH=. LOG_OUTPUT=multi grunt",
     "setup": "cross-env NODE_PATH=. grunt generate-assets",
     "smoke-test": "cross-env NODE_PATH=. codeceptjs run test/smoke/ --steps",
-    "pa11y": "cross-env NODE_PATH=. SSCS_MOCK_DATA=true LOG_LEVEL=OFF mocha test/accessibility -r test/chai-sinon.js --reporter spec --recursive --timeout 10000",
+    "pa11y": "cross-env NODE_PATH=. SHOW_HEARING_DETAILS=true SSCS_MOCK_DATA=true LOG_LEVEL=OFF mocha test/accessibility -r test/chai-sinon.js --reporter spec --recursive --timeout 10000",
     "eslint": "cross-env NODE_PATH=. eslint ."
   },
   "repository": {
