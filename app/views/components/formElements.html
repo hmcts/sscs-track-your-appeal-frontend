@@ -1,0 +1,32 @@
+{% macro textField(name, error, label, hint = '', boldLabel = false) %}
+
+<div class="form-group {{ 'error' if error }}">
+    <label class="form-label{{ '-bold' if boldLabel }} text" for="{{ name }}">{{ label | safe }}</label>
+
+    {% if hint %}
+    <span class="form-hint text">{{ hint | safe }}</span>
+    {% endif %}
+
+    <input class="form-control"
+           id="{{ name }}"
+           name="{{ name }}"
+           type="text"
+           value="{{ error.value }}">
+    {{ errorsFor(error) }}
+
+</div>
+{% endmacro %}
+
+{% macro radioButton(value, label, name, field, dataTarget = '') %}
+<label class="block-label selection-button-radio" for="{{ name }}_{{ value }}" data-target={{ dataTarget }}>
+    <input id="{{ name }}_{{ value }}" type="radio" name="{{ name }}" value="{{ value }}">
+    {{ label }}
+</label>
+{% endmacro %}
+
+{% macro errorsFor(error) -%}
+{% if error %}
+    <span class="error-message">{{ error.message }}</span>
+{% endif %}
+{%- endmacro %}
+

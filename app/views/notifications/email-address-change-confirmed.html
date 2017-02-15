@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+{{ i18n.tab }}
+{% endblock %}
+
+{% block content %}
+
+<main id="content" class="email-change-confirmed" role="main">
+
+    {% include "includes/phase_banner_beta.html" %}
+    {% include "includes/breadcrumbs.html" %}
+
+    <div class="grid-row">
+
+        <div class="column-full">
+
+            <form action="/manage-email-notifications-change" method="post">
+
+                <div class="govuk-box-highlight">
+                    <h1 class="bold-small">{{ i18n.title }}</h1>
+                    <br>
+                    <p class="bold-large">{{ data.email }}</p>
+                </div>
+
+                <p>{{ i18n.content }}</p>
+
+            </form>
+
+        </div>
+    </div>
+
+</main>
+
+{% endblock %}

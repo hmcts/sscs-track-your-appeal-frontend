@@ -128,6 +128,40 @@
       ],
       "continue": "Continue",
       "cancel": "Cancel"
+    },
+    "email": {
+      "manage": {
+        "tab": "Manage notifications",
+        "title": "What do you want to do?",
+        "visuallyHidden": "What do you want to do?",
+        "continue": "Continue"
+      },
+      "stop": {
+        "tab": "Manage email notifications",
+        "title": "You’ll stop receiving email updates and reminders about your ESA benefit appeal.",
+        "confirm": "Confirm"
+      },
+      "stopConfirmation": {
+        "tab": "Stopped notifications",
+        "title": "You’ve stopped email notifications",
+        "linkPre": "You can still",
+        "linkPost": "track your benefit appeal online"
+      },
+      "addressChange": {
+        "tab": "Change email address",
+        "tabError": "Errors on page",
+        "title": "Your new email address",
+        "visuallyHidden": "What do you want to do?",
+        "continue": "Continue",
+        "errors": {
+          "title": "There are errors on the page."
+        }
+      },
+      "addressChangeConfirmed": {
+        "tab": "Email address confirmation",
+        "title": "Emails about your ESA benefit appeal will now be sent to",
+        "content": "We’ve sent a confirmation email to that address. Check it in a few minutes."
+      }
     }
   },
   "hearing": {

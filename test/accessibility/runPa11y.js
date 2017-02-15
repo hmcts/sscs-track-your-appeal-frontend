@@ -17,7 +17,7 @@ const accessibilityPages = [
   '/progress/md200/trackyourappeal',
   '/progress/md300/trackyourappeal',
   '/progress/md400/trackyourappeal',
-  //'/progress/md400/hearingdetails',
+  '/progress/md400/hearingdetails',
   '/progress/md400/expenses',
   '/progress/md400/evidence'
 ];

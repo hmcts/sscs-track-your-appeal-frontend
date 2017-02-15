@@ -1,6 +1,6 @@
 const health = require('test/mock/data/health');
 
-class HealthService {
+class MockHealthService {
 
   static health() {
     return new Promise((resolve, reject) => {
@@ -9,4 +9,4 @@ class HealthService {
   }
 }
 
-module.exports = HealthService;
+module.exports = MockHealthService;

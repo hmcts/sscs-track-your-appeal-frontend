@@ -58,6 +58,30 @@ describe('Node.js application/server', () => {
 
     });
 
+    describe('making email notifications route requests which result in a HTTP 200', () => {
+
+      it('should respond to the /manage-email-notifications/:mactoken route', function (done) {
+        request(app.exp)
+          .get('/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=')
+          .expect(200, done);
+      });
+
+      it('should respond to the /manage-email-notifications route when posting "changeEmailAddress" ', function (done) {
+        request(app.exp)
+          .post('/manage-email-notifications')
+          .send({'emailNotify': 'changeEmailAddress'})
+          .expect(200, done);
+      });
+
+      it('should respond to the /manage-email-notifications route when posting "stopEmails" ', function (done) {
+        request(app.exp)
+          .post('/manage-email-notifications')
+          .send({'emailNotify': 'stopEmails'})
+          .expect(200, done);
+      });
+
+    });
+
     describe('making application route requests which result in a HTTP 404', () => {
 
       it('should respond to / route with a HTTP 404:Not found', function (done) {

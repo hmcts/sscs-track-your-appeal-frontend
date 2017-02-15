@@ -2,7 +2,7 @@ const I18nHelper = require('app/core/I18nHelper');
 const mockedData = require('test/mock/data/index');
 const {CONTENT_KEYS, STATUSES} = require('app/config');
 
-class MockTrackMyAppealService {
+class MockAppealService {
 
   static status(id) {
     return new Promise((resolve, reject) => {
@@ -27,6 +27,28 @@ class MockTrackMyAppealService {
       setTimeout(() => resolve(appeal), 50);
     });
   }
+
+  static changeEmailAddress(id, subscriptionId, body) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => resolve({
+        appeal_id: 'md200',
+        email: 'mickey.mouse@disney.com',
+        id: 6,
+        mobileNumber: "07533457331"
+      }), 50);
+    });
+  }
+
+  static stopReceivingEmails(id, subscriptionId) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => resolve({
+        appeal_id: 'md200',
+        email: 'mickey.mouse@disney.com',
+        id: 6,
+        mobileNumber: "07533457331"
+      }), 50);
+    });
+  }
 }
 
-module.exports = MockTrackMyAppealService;
+module.exports = MockAppealService;

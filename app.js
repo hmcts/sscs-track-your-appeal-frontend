@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const nunjucks = require('express-nunjucks');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
@@ -14,8 +15,19 @@ function init() {
 
   const exp = express();
 
+  exp.use(session({
+    secret: 'sscs secret',
+    cookie: {},
+    resave: true,
+    saveUninitialized: true
+  }));
+
   exp.set('view engine', 'html');
-  exp.set('views', [__dirname + '/lib/', __dirname + '/app/views']);
+  exp.set('views', [
+    __dirname + '/lib/',
+    __dirname + '/app/views',
+    __dirname + '/app/views/notifications'
+  ]);
 
   const njk = nunjucks(exp, {
     autoescape: true,
@@ -52,10 +64,12 @@ function init() {
   exp.use('/', routes);
 
   exp.use((err, req, res, next) => {
-    res.status(err.responseCode || 500);
+    const status = err.responseCode || err.statusCode || 500
+    res.status(status);
     res.json({
-      responseCode: err.responseCode,
+      responseCode: status,
       message: err.message,
+      rawResponse: err.rawResponse || '',
       fields: err.fields,
       name: err.name,
       stack: err.stack

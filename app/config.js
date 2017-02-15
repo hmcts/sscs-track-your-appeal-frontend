@@ -1,6 +1,7 @@
 const SERVICE_NAME = 'Track my appeal for Social Security and Child Support';
 const APPEALS_ENDPOINT = (process.env.SSCS_API_URL || 'http://localhost:8080') + '/appeals';
 const HEALTH_ENDPOINT = (process.env.SSCS_API_URL || 'http://localhost:8080') + '/health';
+const TOKEN_ENDPOINT = (process.env.SSCS_API_URL || 'http://localhost:8080') + '/tokens';
 const MOCK_DATA = process.env.SSCS_MOCK_DATA === 'true';
 const SHOW_HEARING_DETAILS = process.env.SHOW_HEARING_DETAILS === 'true';
 
@@ -43,5 +44,6 @@ module.exports = {
   SERVICE_NAME: Object.freeze(SERVICE_NAME),
   HEALTH_ENDPOINT: Object.freeze(HEALTH_ENDPOINT),
   APPEALS_ENDPOINT: Object.freeze(APPEALS_ENDPOINT),
+  TOKEN_ENDPOINT: Object.freeze(TOKEN_ENDPOINT),
   SHOW_HEARING_DETAILS: Object.freeze(SHOW_HEARING_DETAILS),
 };
