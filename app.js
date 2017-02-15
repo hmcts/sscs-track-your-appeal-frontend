@@ -64,12 +64,12 @@ function init() {
   exp.use('/', routes);
 
   exp.use((err, req, res, next) => {
-    const status = err.responseCode || err.statusCode || 500
+    const status =  err.status || err.statusCode || err.responseCode || 500;
     res.status(status);
     res.json({
       responseCode: status,
       message: err.message,
-      rawResponse: err.rawResponse || '',
+      rawResponse: err.rawResponse,
       fields: err.fields,
       name: err.name,
       stack: err.stack
