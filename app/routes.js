@@ -92,7 +92,7 @@ router.post(`${notificationRoot}/:mactoken`, validateToken, (req, res, next) => 
   }
 });
 
-router.get(`${notificationRoot}/:mactoken/stop`, validateToken, (req, res, next) => {
+router.post(`${notificationRoot}/:mactoken/stop`, validateToken, (req, res, next) => {
   const token = res.locals.token;
   AppealsService.stopReceivingEmails(token.appealId, token.subscriptionId).then((result) => {
     res.render('stopped-email-notifications', {

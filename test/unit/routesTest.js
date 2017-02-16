@@ -82,7 +82,7 @@ describe('Node.js application/server', () => {
 
       it('should respond to the /manage-email-notifications/token/stop route', function (done) {
         request(app.exp)
-          .get('/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=/stop')
+          .post('/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=/stop')
           .expect(200, done);
       });
 
@@ -100,7 +100,7 @@ describe('Node.js application/server', () => {
         {path: '/manage-email-notifications/invalid', method: 'post', data: {
           'emailNotify': 'changeEmailAddress'
         }},
-        {path: '/manage-email-notifications/invalid/stop', method: 'get'},
+        {path: '/manage-email-notifications/invalid/stop', method: 'post'},
         {path: '/manage-email-notifications/invalid/change', method: 'post', data: {
           'email': 'person@example.com', 'email2': 'person@example.com'
         }},
