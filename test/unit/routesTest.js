@@ -114,6 +114,21 @@ describe('Node.js application/server', () => {
         });
       });
 
+      it('should respond to the /manage-email-notifications/token/change route when both emails are empty', (done) => {
+        request(app.exp)
+        .post('/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=/change')
+        .send({'email': '', 'email2': ''})
+        .expect(400, done);
+      });
+
+
+      it('should respond to the /manage-email-notifications-change route when given mismatched emails', (done) => {
+        request(app.exp)
+          .post('/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=/change')
+          .send({'email': 'person@example.com', 'email2': 'other@example.com'})
+          .expect(400, done);
+      });
+
     });
 
     describe('making application route requests which result in a HTTP 404', () => {

@@ -125,6 +125,7 @@ router.post(`${notificationRoot}/:mactoken/change`, (req, res, next) => {
 
   if(email === '' && email2 === '') {
     errors.email.message = errors.email2.message = EMAIL.EMPTY_STRING;
+    res.status(400);
     res.render('email-address-change', {
       errors: errors,
       i18n: locale.notifications.email.addressChange,
@@ -135,6 +136,7 @@ router.post(`${notificationRoot}/:mactoken/change`, (req, res, next) => {
 
   if(email !== email2 ) {
     errors.email.message = errors.email2.message = EMAIL.NO_MATCH;
+    res.status(400);
     res.render('email-address-change', {
       errors: errors,
       i18n: locale.notifications.email.addressChange,
