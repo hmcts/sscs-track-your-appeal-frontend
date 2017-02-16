@@ -18,12 +18,10 @@ const EMAIL = {
 };
 const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-router.use((req, res, next) => {
-
-  if (_.startsWith(req.url, progressRoot)) {
-    let id = req.url.split('/')[2];
+function getAppeal(req, res, next) {
+  if (req.params.id) {
     //console.log(`GET:/appeals/${id} : PATH:${req.url}`);
-    AppealsService.status(id).then((appeal) => {
+    AppealsService.status(req.params.id).then((appeal) => {
       res.locals.appeal = appeal;
       next();
     }).catch((error) => {
@@ -32,26 +30,25 @@ router.use((req, res, next) => {
   } else {
     next();
   }
+}
 
-});
-
-router.get(`${progressRoot}/:id/abouthearing`, (req, res) => {
+router.get(`${progressRoot}/:id/abouthearing`, getAppeal, (req, res) => {
   res.render('about-hearing', _getData(res.locals.appeal));
 });
 
-router.get(`${progressRoot}/:id/trackyourappeal`, (req, res) => {
+router.get(`${progressRoot}/:id/trackyourappeal`, getAppeal, (req, res) => {
   res.render('track-your-appeal', _getData(res.locals.appeal));
 });
 
-router.get(`${progressRoot}/:id/evidence`, (req, res) => {
+router.get(`${progressRoot}/:id/evidence`, getAppeal, (req, res) => {
   res.render('provide-evidence', _getData(res.locals.appeal));
 });
 
-router.get(`${progressRoot}/:id/expenses`, (req, res) => {
+router.get(`${progressRoot}/:id/expenses`, getAppeal, (req, res) => {
   res.render('claim-expenses', _getData(res.locals.appeal));
 });
 
-router.get(`${progressRoot}/:id/hearingdetails`, (req, res) => {
+router.get(`${progressRoot}/:id/hearingdetails`, getAppeal, (req, res) => {
   if (SHOW_HEARING_DETAILS) {
     res.render('hearing-details', Object.assign({i18n: locale}, {data: res.locals.appeal}));
   } else {
@@ -60,10 +57,9 @@ router.get(`${progressRoot}/:id/hearingdetails`, (req, res) => {
 });
 
 
-router.use((req, res, next) => {
-  if (_.startsWith(req.url, notificationRoot)) {
-    let mactoken = req.url.split('/')[2];
-    TokenService.validateToken(mactoken).then((result) => {
+function validateToken(req, res, next) {
+  if (req.params.mactoken) {
+    TokenService.validateToken(req.params.mactoken).then((result) => {
       res.locals.token = result.body.token;
       next();
     }).catch((error) => {
@@ -72,16 +68,16 @@ router.use((req, res, next) => {
   } else {
     next();
   }
-});
+};
 
-router.get(`${notificationRoot}/:mactoken`, (req, res, next) => {
+router.get(`${notificationRoot}/:mactoken`, validateToken, (req, res, next) => {
   res.render('manage-email-notifications', {
     i18n: locale.notifications.email.manage,
     mactoken: req.params.mactoken,
   });
 });
 
-router.post(`${notificationRoot}/:mactoken`, (req, res, next) => {
+router.post(`${notificationRoot}/:mactoken`, validateToken, (req, res, next) => {
   const userSelection = req.body.emailNotify;
   if(userSelection === EMAIL.CHANGE) {
     res.render('email-address-change', {
@@ -96,7 +92,7 @@ router.post(`${notificationRoot}/:mactoken`, (req, res, next) => {
   }
 });
 
-router.get(`${notificationRoot}/:mactoken/stop`, (req, res, next) => {
+router.get(`${notificationRoot}/:mactoken/stop`, validateToken, (req, res, next) => {
   const token = res.locals.token;
   AppealsService.stopReceivingEmails(token.appealId, token.subscriptionId).then((result) => {
     res.render('stopped-email-notifications', {
@@ -109,7 +105,7 @@ router.get(`${notificationRoot}/:mactoken/stop`, (req, res, next) => {
   });
 });
 
-router.post(`${notificationRoot}/:mactoken/change`, (req, res, next) => {
+router.post(`${notificationRoot}/:mactoken/change`, validateToken, (req, res, next) => {
   const token = res.locals.token;
   const email = req.body.email;
   const email2 = req.body.email2;
