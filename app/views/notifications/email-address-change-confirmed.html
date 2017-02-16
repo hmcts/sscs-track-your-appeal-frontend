@@ -15,17 +15,15 @@
 
         <div class="column-full">
 
-            <form action="/manage-email-notifications/{{ mactoken }}/change" method="post">
+            <div class="govuk-box-highlight">
+                <h1 class="bold-small">{{ i18n.title }}</h1>
+                <br>
+                <p class="bold-large">{{ data.email }}</p>
+            </div>
 
-                <div class="govuk-box-highlight">
-                    <h1 class="bold-small">{{ i18n.title }}</h1>
-                    <br>
-                    <p class="bold-large">{{ data.email }}</p>
-                </div>
+            <p>{{ i18n.content }}</p>
 
-                <p>{{ i18n.content }}</p>
-
-            </form>
+            <a href="/manage-email-notifications/{{ mactoken }}/change">{{ i18n.link }}</a>
 
         </div>
     </div>

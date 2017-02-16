@@ -105,6 +105,14 @@ router.post(`${notificationRoot}/:mactoken/stop`, validateToken, (req, res, next
   });
 });
 
+
+router.get(`${notificationRoot}/:mactoken/change`, validateToken, (req, res, next) => {
+  res.render('email-address-change', {
+    i18n: locale.notifications.email.addressChange,
+    mactoken: req.params.mactoken,
+  });
+});
+
 router.post(`${notificationRoot}/:mactoken/change`, validateToken, (req, res, next) => {
   const token = res.locals.token;
   const email = req.body.email;

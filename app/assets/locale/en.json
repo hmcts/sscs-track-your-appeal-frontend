@@ -160,7 +160,8 @@
       "addressChangeConfirmed": {
         "tab": "Email address confirmation",
         "title": "Emails about your ESA benefit appeal will now be sent to",
-        "content": "We’ve sent a confirmation email to that address. Check it in a few minutes."
+        "content": "We’ve sent a confirmation email to that address. Check it in a few minutes.",
+        "link": "Change your email address"
       }
     }
   },
