@@ -248,6 +248,16 @@
 
 }
 
+#content.confirm-emails-stop {
+  input {
+    margin-top: 50px;
+  }
+  .cancel {
+    margin-top: 20px;
+    display: inline-block;
+  }
+}
+
 #content.malformed-url {
   span {
     margin-left: 5px;

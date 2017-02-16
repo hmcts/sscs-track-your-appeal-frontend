@@ -139,7 +139,8 @@
       "stop": {
         "tab": "Manage email notifications",
         "title": "You’ll stop receiving email updates and reminders about your ESA benefit appeal.",
-        "confirm": "Confirm"
+        "confirm": "Confirm?",
+        "link": "Cancel"
       },
       "stopConfirmation": {
         "tab": "Stopped notifications",
