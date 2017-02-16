@@ -20,7 +20,7 @@
 
         <div class="column-two-thirds">
 
-            <form action="/manage-email-notifications-change" method="post">
+          <form action="/manage-email-notifications/{{ mactoken }}/change" method="post">
 
                 {% if errors %}
                 <div class="error-summary" role="group" aria-labelledby="error-summary-heading" tabindex="-1">

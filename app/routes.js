@@ -7,7 +7,8 @@ const locale = require('app/assets/locale/en');
 const {SHOW_HEARING_DETAILS} = require('app/config');
 const express = require('express');
 const router = express.Router();
-const rootPath = '/progress';
+const progressRoot = '/progress';
+const notificationRoot = '/manage-email-notifications';
 const EMAIL = {
   CHANGE: 'changeEmailAddress',
   STOP: 'stopEmails',
@@ -19,7 +20,7 @@ const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"
 
 router.use((req, res, next) => {
 
-  if (_.startsWith(req.url, rootPath)) {
+  if (_.startsWith(req.url, progressRoot)) {
     let id = req.url.split('/')[2];
     //console.log(`GET:/appeals/${id} : PATH:${req.url}`);
     AppealsService.status(id).then((appeal) => {
@@ -34,23 +35,23 @@ router.use((req, res, next) => {
 
 });
 
-router.get(`${rootPath}/:id/abouthearing`, (req, res) => {
+router.get(`${progressRoot}/:id/abouthearing`, (req, res) => {
   res.render('about-hearing', _getData(res.locals.appeal));
 });
 
-router.get(`${rootPath}/:id/trackyourappeal`, (req, res) => {
+router.get(`${progressRoot}/:id/trackyourappeal`, (req, res) => {
   res.render('track-your-appeal', _getData(res.locals.appeal));
 });
 
-router.get(`${rootPath}/:id/evidence`, (req, res) => {
+router.get(`${progressRoot}/:id/evidence`, (req, res) => {
   res.render('provide-evidence', _getData(res.locals.appeal));
 });
 
-router.get(`${rootPath}/:id/expenses`, (req, res) => {
+router.get(`${progressRoot}/:id/expenses`, (req, res) => {
   res.render('claim-expenses', _getData(res.locals.appeal));
 });
 
-router.get(`${rootPath}/:id/hearingdetails`, (req, res) => {
+router.get(`${progressRoot}/:id/hearingdetails`, (req, res) => {
   if (SHOW_HEARING_DETAILS) {
     res.render('hearing-details', Object.assign({i18n: locale}, {data: res.locals.appeal}));
   } else {
@@ -58,44 +59,58 @@ router.get(`${rootPath}/:id/hearingdetails`, (req, res) => {
   }
 });
 
-router.get('/manage-email-notifications/:mactoken', (req, res, next) => {
-  TokenService.validateToken(req.params.mactoken).then((result) => {
-    req.session.token = result.body.token;
-    res.render('manage-email-notifications', {
-      i18n: locale.notifications.email.manage
+
+router.use((req, res, next) => {
+  if (_.startsWith(req.url, notificationRoot)) {
+    let mactoken = req.url.split('/')[2];
+    TokenService.validateToken(mactoken).then((result) => {
+      res.locals.token = result.body.token;
+      next();
+    }).catch((error) => {
+      next(error);
     });
-  }).catch((error) => {
-    next(error);
+  } else {
+    next();
+  }
+});
+
+router.get(`${notificationRoot}/:mactoken`, (req, res, next) => {
+  res.render('manage-email-notifications', {
+    i18n: locale.notifications.email.manage,
+    mactoken: req.params.mactoken,
   });
 });
 
-router.post('/manage-email-notifications', (req, res, next) => {
+router.post(`${notificationRoot}/:mactoken`, (req, res, next) => {
   const userSelection = req.body.emailNotify;
   if(userSelection === EMAIL.CHANGE) {
     res.render('email-address-change', {
-      i18n: locale.notifications.email.addressChange
+      i18n: locale.notifications.email.addressChange,
+      mactoken: req.params.mactoken,
     });
   } else if (userSelection === EMAIL.STOP) {
     res.render('confirm-emails-stop', {
-      i18n: locale.notifications.email.stop
+      i18n: locale.notifications.email.stop,
+      mactoken: req.params.mactoken,
     });
   }
 });
 
-router.get('/manage-email-notifications-stop', (req, res, next) => {
-  const token = req.session.token;
+router.get(`${notificationRoot}/:mactoken/stop`, (req, res, next) => {
+  const token = res.locals.token;
   AppealsService.stopReceivingEmails(token.appealId, token.subscriptionId).then((result) => {
     res.render('stopped-email-notifications', {
       data: { id: token.appealId },
-      i18n: locale.notifications.email.stopConfirmation
+      i18n: locale.notifications.email.stopConfirmation,
+      mactoken: req.params.mactoken,
     });
   }).catch((error) => {
     next(error);
   });
 });
 
-router.post('/manage-email-notifications-change', (req, res, next) => {
-  const token = req.session.token;
+router.post(`${notificationRoot}/:mactoken/change`, (req, res, next) => {
+  const token = res.locals.token;
   const email = req.body.email;
   const email2 = req.body.email2;
 
@@ -112,7 +127,8 @@ router.post('/manage-email-notifications-change', (req, res, next) => {
     errors.email.message = errors.email2.message = EMAIL.EMPTY_STRING;
     res.render('email-address-change', {
       errors: errors,
-      i18n: locale.notifications.email.addressChange
+      i18n: locale.notifications.email.addressChange,
+      mactoken: req.params.mactoken,
     });
     return;
   }
@@ -121,7 +137,8 @@ router.post('/manage-email-notifications-change', (req, res, next) => {
     errors.email.message = errors.email2.message = EMAIL.NO_MATCH;
     res.render('email-address-change', {
       errors: errors,
-      i18n: locale.notifications.email.addressChange
+      i18n: locale.notifications.email.addressChange,
+      mactoken: req.params.mactoken,
     });
     return;
   }
@@ -130,7 +147,8 @@ router.post('/manage-email-notifications-change', (req, res, next) => {
     errors.email.message = errors.email2.message = EMAIL.NOT_VALID;
     res.render('email-address-change', {
       errors: errors,
-      i18n: locale.notifications.email.addressChange
+      i18n: locale.notifications.email.addressChange,
+      mactoken: req.params.mactoken,
     });
     return;
   }
@@ -139,11 +157,12 @@ router.post('/manage-email-notifications-change', (req, res, next) => {
   AppealsService.changeEmailAddress(token.appealId, token.subscriptionId, body).then((result) => {
     res.render('email-address-change-confirmed', {
       i18n: locale.notifications.email.addressChangeConfirmed,
-      data: { email: email } });
+      data: { email: email },
+      mactoken: req.params.mactoken,
+    });
   }).catch((error) => {
     next(error);
   });
-
 });
 
 router.get('/status', (req, res, next) => {
@@ -156,7 +175,7 @@ router.get('/status', (req, res, next) => {
 router.get('/', function (req, res, next) {
   //console.log(`PATH:${req.url}`);
   return next({
-    message: `Not found, you probably want ${rootPath}/:id/trackyourappeal`,
+    message: `Not found, you probably want ${progressRoot}/:id/trackyourappeal`,
     responseCode: 404,
   });
 });

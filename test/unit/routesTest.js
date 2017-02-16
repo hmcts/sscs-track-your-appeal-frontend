@@ -68,16 +68,50 @@ describe('Node.js application/server', () => {
 
       it('should respond to the /manage-email-notifications route when posting "changeEmailAddress" ', function (done) {
         request(app.exp)
-          .post('/manage-email-notifications')
+          .post('/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=')
           .send({'emailNotify': 'changeEmailAddress'})
           .expect(200, done);
       });
 
       it('should respond to the /manage-email-notifications route when posting "stopEmails" ', function (done) {
         request(app.exp)
-          .post('/manage-email-notifications')
+          .post('/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=')
           .send({'emailNotify': 'stopEmails'})
           .expect(200, done);
+      });
+
+      it('should respond to the /manage-email-notifications/token/stop route', function (done) {
+        request(app.exp)
+          .get('/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=/stop')
+          .expect(200, done);
+      });
+
+      it('should respond to the /manage-email-notifications/token/change route', function (done) {
+        request(app.exp)
+          .post('/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=/change')
+          .send({'email': 'person@example.com', 'email2': 'person@example.com'})
+          .expect(200, done);
+      });
+    });
+
+    describe('making email notifications route requests which result in an HTTP 400', () => {
+      [
+        {path: '/manage-email-notifications/invalid', method: 'get'},
+        {path: '/manage-email-notifications/invalid', method: 'post', data: {
+          'emailNotify': 'changeEmailAddress'
+        }},
+        {path: '/manage-email-notifications/invalid/stop', method: 'get'},
+        {path: '/manage-email-notifications/invalid/change', method: 'post', data: {
+          'email': 'person@example.com', 'email2': 'person@example.com'
+        }},
+      ].forEach((value) => {
+        it('should respond to the ' + value.path + ' route when given an invalid token', function (done) {
+          let call = request(app.exp)[value.method](value.path)
+          if (value.data) {
+            call = call.send(value.data);
+          }
+          call.expect(400, done);
+        });
       });
 
     });

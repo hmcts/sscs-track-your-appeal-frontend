@@ -1,5 +1,4 @@
 const express = require('express');
-const session = require('express-session');
 const nunjucks = require('express-nunjucks');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
@@ -14,13 +13,6 @@ const PORT = 3000;
 function init() {
 
   const exp = express();
-
-  exp.use(session({
-    secret: 'sscs secret',
-    cookie: {},
-    resave: true,
-    saveUninitialized: true
-  }));
 
   exp.set('view engine', 'html');
   exp.set('views', [

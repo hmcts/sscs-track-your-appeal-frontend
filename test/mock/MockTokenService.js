@@ -1,6 +1,6 @@
 class MockTokenService {
 
-  static validateToken() {
+  static validateToken(token) {
     const response = {
       body: {
         token: {
@@ -10,8 +10,15 @@ class MockTokenService {
         }
       }
     };
+    const invalid = {
+      statusCode: 400,
+    };
     return new Promise((resolve, reject) => {
-      setTimeout(() => resolve(response), 50);
+      if (token == "invalid") {
+        setTimeout(() => reject(invalid), 50);
+      } else {
+        setTimeout(() => resolve(response), 50);
+      }
     });
   }
 }
