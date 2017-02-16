@@ -2,12 +2,13 @@ const _ = require('lodash');
 const request = require('superagent');
 const I18nHelper = require('app/core/I18nHelper');
 const {APPEALS_ENDPOINT, STATUSES, CONTENT_KEYS} = require('app/config');
+const METHODS = require('app/services/methods');
 
-class TrackMyAppealService {
+class AppealService {
 
   static status(id) {
     return new Promise((resolve, reject) => {
-      request('GET', APPEALS_ENDPOINT + '/' + id).then((result) => {
+      request(METHODS.GET, APPEALS_ENDPOINT + '/' + id).then((result) => {
         let appeal = result.body.appeal;
         I18nHelper.setHeadingAndRenderedContentOnEvents(appeal.events);
 
@@ -50,6 +51,14 @@ class TrackMyAppealService {
       });
     });
   }
+
+  static changeEmailAddress(id, subscriptionId, body) {
+    return request.post(`${APPEALS_ENDPOINT}/${id}/subscriptions/${subscriptionId}`).send(body);
+  }
+
+  static stopReceivingEmails(id, subscriptionId) {
+    return request.delete(`${APPEALS_ENDPOINT}/${id}/subscriptions/${subscriptionId}`);
+  }
 }
 
-module.exports = TrackMyAppealService;
+module.exports = AppealService;

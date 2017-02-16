@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+{{ i18n.tab }}
+{% endblock %}
+
+{% block content %}
+
+<main id="content" class="confirm-emails-stop" role="main">
+
+    {% include "includes/phase_banner_beta.html" %}
+    {% include "includes/breadcrumbs.html" %}
+
+    <div class="grid-row">
+        <div class="column-two-thirds">
+
+            <form action="/manage-email-notifications/{{ mactoken }}/stop" method="post">
+
+                <h1 class="heading-large">{{ i18n.title }}</h1>
+
+                <input type="submit" class="button" value="{{ i18n.confirm }}">
+
+            </form>
+
+        </div>
+    </div>
+
+</main>
+
+{% endblock %}

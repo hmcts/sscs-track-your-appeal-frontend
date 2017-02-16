@@ -1,7 +1,13 @@
-const TrackYourAppealService = require('app/services/TrackYourAppealService');
+// Real services
+const AppealService = require('app/services/AppealService');
 const HealthService = require('app/services/HealthService');
-const MockTrackYourAppealService = require('test/mock/MockTrackYourAppealService');
+const TokenService = require('app/services/TokenService');
+
+// Mocked services
+const MockAppealService = require('test/mock/MockAppealService');
 const MockHealthService = require('test/mock/MockHealthService');
+const MockTokenService = require('test/mock/MockTokenService');
+
 const {MOCK_DATA} = require('app/config');
 
 let singleton = Symbol();
@@ -9,7 +15,8 @@ let singletonEnforcer = Symbol();
 
 const services = {
   appeals: 'appeals',
-  health: 'health'
+  health: 'health',
+  token: 'token'
 };
 
 class ServiceLoader {
@@ -27,9 +34,11 @@ class ServiceLoader {
   load(serviceName) {
     switch (serviceName) {
       case services.appeals:
-        return MOCK_DATA ? MockTrackYourAppealService : TrackYourAppealService;
+        return MOCK_DATA ? MockAppealService : AppealService;
       case services.health:
         return MOCK_DATA ? MockHealthService : HealthService;
+      case services.token:
+        return MOCK_DATA ? MockTokenService : TokenService;
       default:
         throw new Error('Unknown service: ' + serviceName);
     }
@@ -41,6 +50,10 @@ class ServiceLoader {
 
   static get health() {
     return services.health;
+  }
+
+  static get token() {
+    return services.token;
   }
 
   //----------------------------------------------------
