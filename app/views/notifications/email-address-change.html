@@ -19,6 +19,8 @@
 
         <div class="column-two-thirds">
 
+            <pre class="content">{{ errors.email.field | json }}</pre>
+
           <form action="/manage-email-notifications/{{ mactoken }}/change" method="post">
 
                 {% if errors %}
@@ -27,11 +29,11 @@
                         {{ i18n.errors.title }}
                     </h1>
                     <ul class="error-summary-list">
-                        {% if errors.email %}
-                        <li><a href="#email">{{ errors.email.message }}</a></li>
+                        {% if errors.heading %}
+                        <li><a href="#email">{{ errors.heading }}</a></li>
                         {% endif %}
-                        {% if errors.email2 %}
-                        <li><a href="#email2">{{ errors.email2.message }}</a></li>
+                        {% if errors.heading2 %}
+                        <li><a href="#email2">{{ errors.heading2 }}</a></li>
                         {% endif %}
                     </ul>
 
@@ -65,6 +67,8 @@
                 <div class="form-group">
                     <input type="submit" class="button" value="{{ i18n.continue }}">
                 </div>
+
+                <a class="cancel" href="/manage-email-notifications/{{ mactoken }}">{{ i18n.cancel }}</a>
 
             </form>
 

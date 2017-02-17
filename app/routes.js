@@ -12,9 +12,17 @@ const notificationRoot = '/manage-email-notifications';
 const EMAIL = {
   CHANGE: 'changeEmailAddress',
   STOP: 'stopEmails',
-  NO_MATCH: 'Emails do not match',
-  NOT_VALID: 'Not a valid email address',
-  EMPTY_STRING: 'Please enter an email address'
+
+  EMPTY_STRING_EMAIL_HEADING: 'New email address not entered',
+  EMPTY_STRING_EMAIL_HEADING_TWO: 'New email address not entered again',
+  EMPTY_STRING_EMAIL_FIELD: 'You have not entered your email address. Enter your email address.',
+  EMPTY_STRING_EMAIL_FIELD_TWO: 'You have not entered your email address again. Enter your email address again.',
+
+  NO_MATCH_HEADING: 'Email addresses do not match',
+  NO_MATCH_FIELD: 'Your email addresses don’t match. Check and enter them again.',
+
+  NOT_VALID_HEADING: 'New email address is invalid',
+  NOT_VALID_FIELD: 'The email address you’ve entered is invalid. Check it and enter it again.',
 };
 const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -74,6 +82,9 @@ router.get(`${notificationRoot}/:mactoken`, validateToken, (req, res, next) => {
   res.render('manage-email-notifications', {
     i18n: locale.notifications.email.manage,
     mactoken: req.params.mactoken,
+    field: {
+      value:'changeEmailAddress'
+    }
   });
 });
 
@@ -128,8 +139,13 @@ router.post(`${notificationRoot}/:mactoken/change`, validateToken, (req, res, ne
   };
 
   if(email === '' && email2 === '') {
-    errors.email.message = errors.email2.message = EMAIL.EMPTY_STRING;
-    res.status(400);
+    errors.heading = EMAIL.EMPTY_STRING_EMAIL_HEADING;
+    errors.heading2 = EMAIL.EMPTY_STRING_EMAIL_HEADING_TWO;
+    errors.email.field = EMAIL.EMPTY_STRING_EMAIL_FIELD;
+    errors.email2.field = EMAIL.EMPTY_STRING_EMAIL_FIELD_TWO;
+    errors.isEmptyStringError = true;
+
+    //res.status(400);
     res.render('email-address-change', {
       errors: errors,
       i18n: locale.notifications.email.addressChange,
@@ -139,7 +155,9 @@ router.post(`${notificationRoot}/:mactoken/change`, validateToken, (req, res, ne
   }
 
   if(email !== email2 ) {
-    errors.email.message = errors.email2.message = EMAIL.NO_MATCH;
+    errors.heading = EMAIL.NO_MATCH_HEADING;
+    errors.email.field = errors.email2.field = EMAIL.NO_MATCH_FIELD;
+
     res.status(400);
     res.render('email-address-change', {
       errors: errors,
@@ -150,7 +168,10 @@ router.post(`${notificationRoot}/:mactoken/change`, validateToken, (req, res, ne
   }
 
   if(!EMAIL_REGEX.test(email)) {
-    errors.email.message = errors.email2.message = EMAIL.NOT_VALID;
+    errors.heading = EMAIL.NOT_VALID_HEADING;
+    errors.email.field = errors.email2.field = EMAIL.NOT_VALID_FIELD;
+
+    res.status(400);
     res.render('email-address-change', {
       errors: errors,
       i18n: locale.notifications.email.addressChange,

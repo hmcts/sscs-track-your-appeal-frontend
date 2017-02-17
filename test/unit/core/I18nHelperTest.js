@@ -118,7 +118,7 @@ describe('I18nHelper', () => {
     before(() => mockedEvents.forEach(event => I18nHelper.setRenderedContentOnEvent(event)));
 
     it('should set the renderedContent property when the contentKey is defined as status.hearing', () => {
-      expect(mockedEvents[0].renderedContent[0]).to.equal('Hearing date: 30 November 2016.');
+      expect(mockedEvents[0].renderedContent[0]).to.equal('Hearing date: 5 June 2017.');
       expect(mockedEvents[0].renderedContent.length).to.equal(1);
     });
 
@@ -134,7 +134,7 @@ describe('I18nHelper', () => {
     });
 
     it('should set the renderedContent property when the contentKey is defined as status.appealReceived', () => {
-      expect(mockedEvents[3].renderedContent[0]).to.equal('Appeal received: 30 November 2016');
+      expect(mockedEvents[3].renderedContent[0]).to.equal('Appeal received: 5 June 2017');
       expect(mockedEvents[3].renderedContent.length).to.equal(1);
     });
 

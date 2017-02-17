@@ -80,9 +80,11 @@ Track your Appeal
             <div class="description">
 
                 <h2 class="heading-small">{{ i18n.common.latestUpdate }}</h2>
-                <p>{{ data.events[0].renderedContent }}</p>
+                {% for content in data.events[0].renderedContent %}
+                <p>{{ content }}</p>
+                {% endfor %}
 
-                {% if feature.SHOW_HEARING_DETAILS and (data.status == 'HEARING_BOOKED' or data.status == 'HEARING') %}
+                {% if feature.SHOW_HEARING_DETAILS and (data.status == 'HEARING_BOOKED') %}
                 <a href="/progress/{{data.id}}/hearingdetails">{{ i18n.hearingDetails.checkDetails }}</a>
                 {% endif %}
 
@@ -102,6 +104,11 @@ Track your Appeal
                         {% for content in data.events[index].renderedContent %}
                         <p>{{ content }}</p>
                         {% endfor %}
+
+                        {% if feature.SHOW_HEARING_DETAILS and data.events[index].contentKey === 'status.hearingBooked' %}
+                        <a href="/progress/{{data.id}}/hearingdetails">{{ i18n.hearingDetails.checkDetails }}</a>
+                        {% endif %}
+
                     </div>
                     {% endfor %}
                 </div>
@@ -109,11 +116,13 @@ Track your Appeal
 
             </div>
 
+            {% if data.status == 'DWP_RESPOND' or data.status == 'HEARING_BOOKED' %}
             <div class="panel panel-border-wide">
-                <p>{{ i18n.evidence.receivedBy }} 29 February 2017<br/>
+                <p>{{ i18n.evidence.receivedBy }}<br/>
                     <a href="/progress/{{data.id}}/evidence">{{ i18n.evidence.provide.title }}</a>
                 </p>
             </div>
+            {% endif %}
 
             <div class="updates-border"></div>
 
@@ -128,7 +137,7 @@ Track your Appeal
 
     </div>
 
-    <!--<pre class="content">{{ data | json }}</pre>-->
+    <!--<pre class="content">{{ data.events[index] | json }}</pre>-->
 
 </main>
 
