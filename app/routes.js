@@ -145,7 +145,7 @@ router.post(`${notificationRoot}/:mactoken/change`, validateToken, (req, res, ne
     errors.email2.field = EMAIL.EMPTY_STRING_EMAIL_FIELD_TWO;
     errors.isEmptyStringError = true;
 
-    //res.status(400);
+    res.status(400);
     res.render('email-address-change', {
       errors: errors,
       i18n: locale.notifications.email.addressChange,
