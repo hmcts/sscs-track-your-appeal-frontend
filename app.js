@@ -56,10 +56,12 @@ function init() {
   exp.use('/', routes);
 
   exp.use((err, req, res, next) => {
-    const status =  err.status || err.statusCode || err.responseCode || 500;
-    res.status(status);
+    const status =  err.status || err.statusCode || err.responseCode;
+    if(status) {
+      res.status(status);
+    }
     res.json({
-      responseCode: status,
+      responseCode: status? status : "Not applicable, internal error",
       message: err.message,
       rawResponse: err.rawResponse,
       fields: err.fields,
