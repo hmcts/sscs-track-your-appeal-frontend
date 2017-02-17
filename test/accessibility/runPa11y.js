@@ -6,7 +6,8 @@ const pa11yRunner = pa11y({
   ignore: [
     'WCAG2AA.Principle1.Guideline1_3.1_3_1.H49.I',
     'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.BgImage',
-    'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Abs'
+    'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Abs',
+    'WCAG2AA.Principle1.Guideline1_3.1_3_1_A.G141'
   ],
 
   hideElements: '.skiplink .govuk-box-highlight, #logo, #footer, link[rel=mask-icon], .skipAccessTest'

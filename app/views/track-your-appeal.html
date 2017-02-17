@@ -11,6 +11,7 @@ Track your Appeal
     {% include "includes/phase_banner_beta.html" %}
 
     <div class="grid-row">
+
         <div class="column-two-thirds">
 
             <h1 class="heading-xlarge">Your ESA benefit appeal</h1>
@@ -22,7 +23,7 @@ Track your Appeal
 
             <div class="divider"></div>
 
-            <section role="region" class="progress-container">
+            <section class="h-progress-container">
 
                 <h2 class="screen-reader-text">{{ i18n.progressBar.screenReader.heading }}</h2>
 
@@ -77,7 +78,57 @@ Track your Appeal
 
             </section>
 
-            <div class="description">
+            <section class="v-progress-container">
+
+                <div class="appeal-received">
+                    <div class="ring active"></div>
+                    <h5 aria-hidden="true">{{ i18n.progressBar.appeal }}</h5>
+                    {% if data.status == 'APPEAL_RECEIVED' %}
+                    <span class="screen-reader-text">{{ i18n.progressBar.screenReader.appeal.happening }}</span>
+                    {% else %}
+                    <span class="screen-reader-text">{{ i18n.progressBar.screenReader.appeal.happened }}</span>
+                    {% endif %}
+                </div>
+
+                <div class="dwp-respond">
+                    <div class="leg foot {{ isActive('DWP_RESPOND', data.status ) }}"></div>
+                    <h5 aria-hidden="true">{{ i18n.progressBar.dwpRespond }}</h5>
+                    {% if data.status == 'APPEAL_RECEIVED' %}
+                    <span class="screen-reader-text">{{ i18n.progressBar.screenReader.dwpRespond.due }}</span>
+                    {% elif data.status == 'DWP_RESPOND' %}
+                    <span class="screen-reader-text">{{ i18n.progressBar.screenReader.dwpRespond.happening }}</span>
+                    {% else %}
+                    <span class="screen-reader-text">{{ i18n.progressBar.screenReader.dwpRespond.happened }}</span>
+                    {% endif %}
+                </div>
+
+                <div class="hearing-booked">
+                    <div class="leg foot {{ isActive('HEARING_BOOKED', data.status ) }}"></div>
+                    <h5 aria-hidden="true">{{ i18n.progressBar.hearingBooked }}</h5>
+                    {% if data.status == 'APPEAL_RECEIVED' or data.status == 'DWP_RESPOND' %}
+                    <span class="screen-reader-text">{{ i18n.progressBar.screenReader.hearingBooked.due }}</span>
+                    {% elif data.status == 'HEARING_BOOKED' %}
+                    <span class="screen-reader-text">{{ i18n.progressBar.screenReader.hearingBooked.happening }}</span>
+                    {% else %}
+                    <span class="screen-reader-text">{{ i18n.progressBar.screenReader.hearingBooked.happened }}</span>
+                    {% endif %}
+                </div>
+
+                <div class="hearing leg {{ isActive('HEARING', data.status ) }}"></div>
+
+                <div class="hearing">
+                    <div class="ring {{ isActive('HEARING', data.status ) }}"></div>
+                    <h5 aria-hidden="true">{{ i18n.progressBar.hearing }}</h5>
+                    {% if data.status != 'HEARING' %}
+                    <span class="screen-reader-text">{{ i18n.progressBar.screenReader.hearing.due }}</span>
+                    {% else %}
+                    <span class="screen-reader-text">{{ i18n.progressBar.screenReader.hearing.happening }}</span>
+                    {% endif %}
+                </div>
+
+            </section>
+
+            <div class="updates">
 
                 <h2 class="heading-small">{{ i18n.common.latestUpdate }}</h2>
                 {% for content in data.events[0].renderedContent %}
@@ -137,7 +188,7 @@ Track your Appeal
 
     </div>
 
-    <!--<pre class="content">{{ data.events[index] | json }}</pre>-->
+    <!--<pre class="data">{{ data | json }}</pre>-->
 
 </main>
 

@@ -1,8 +1,32 @@
 @import "_colours";
 
+@mixin ring {
+  border-radius: 50%;
+  border: 8px solid $grey-2;;
+  width: 16px;
+  height: 16px;
+}
+
+@mixin leg {
+  width: 8px;
+  height: 50px;
+  background-color: $grey-2;
+  margin-left: 12px;
+}
+
+@mixin legfoot {
+  display: block;
+  content: " ";
+  background-color: $grey-2;
+  width: 22px;
+  height: 8px;
+  position: relative;
+  top: 42px;
+}
+
 #content.track-your-appeal {
 
-  .content {
+  .data {
     color: blue;
     font-style: italic;
   }
@@ -22,16 +46,7 @@
     left: -999px;
   }
 
-  .description {
-    background-color: #eef7ff;
-    padding: 20px 20px 30px 20px;
-    .heading-small {
-      margin-top: 0;
-      padding-bottom: 10px;
-    }
-  }
-
-  .progress-container {
+  .h-progress-container {
     height: 32px;
     white-space: nowrap;
     margin-top: 45px;
@@ -108,60 +123,135 @@
     }
   }
 
-  .updates-toggle {
-    margin-bottom: 5px;
-    margin-top: 20px;
-    color: $govuk-blue;
-    i {
-      font-size: 25px;
-      vertical-align: middle;
-      cursor: pointer;
-      span {
-        font-family: nta, Arial, sans-serif;
-        font-size: 19px;
+  .updates {
+    background-color: #eef7ff;
+    padding: 20px 20px 30px 20px;
+    .heading-small {
+      margin-top: 0;
+      padding-bottom: 10px;
+    }
+
+    .updates-toggle {
+      margin-bottom: 5px;
+      margin-top: 20px;
+      color: $govuk-blue;
+      i {
+        font-size: 25px;
+        vertical-align: middle;
+        cursor: pointer;
+        span {
+          font-family: nta, Arial, sans-serif;
+          font-size: 19px;
+          position: relative;
+          top: -2px;
+          left: 5px;
+        }
+      }
+    }
+
+    .updates-container {
+      display: none;
+
+      .update {
         position: relative;
-        top: -2px;
-        left: 5px;
+        padding-bottom: 10px;
+        padding-top: 15px;
+        a {
+          display: block;
+          padding-bottom: 15px;
+        }
+      }
+
+      .update:last-child {
+        padding-bottom: 0;
+      }
+
+      div:after {
+        content: "";
+        background: $grey-2;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 95%;
+        height: 1px;
+      }
+
+      div:last-child:after {
+        display: none;
       }
     }
   }
 
-  .updates-container {
+  .v-progress-container {
     display: none;
+    margin: 20px 0 20px 0;
 
-    .update {
+    .appeal-received,
+    .dwp-respond,
+    .hearing-booked,
+    .hearing {
       position: relative;
-      padding-bottom: 10px;
-      padding-top: 15px;
-      a {
-        display: block;
-        padding-bottom: 15px;
+      h5 {
+        position: absolute;
+        left: 50px;
       }
     }
 
-    .update:last-child {
-      padding-bottom: 0;
+    .hearing,
+    .appeal-received {
+      .ring {
+        position: relative;
+        @include ring;
+      }
+      h5 {
+        font-weight: bold;
+        top: 5px;
+      }
     }
 
-    div:after {
-      content: "";
-      background: $grey-2;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 95%;
-      height: 1px;
+    .dwp-respond,
+    .hearing-booked {
+      .leg {
+        @include leg;
+      }
+      .foot:after {
+        @include legfoot;
+      }
+      h5 {
+        top: 36px;
+      }
     }
 
-    div:last-child:after {
-      display: none;
+    .hearing.leg {
+      @include leg;
+    }
+
+    .appeal-received .ring {
+      top: 1px;
+    }
+
+    .hearing .ring {
+      top: -1px;
+    }
+
+    .appeal-received,
+    .hearing {
+      font-weight: bold;
+    }
+
+    .ring.active {
+      border: 8px solid #009243;
+    }
+
+    .leg.active,
+    .leg.foot.active:after {
+      background-color: #009243;
     }
   }
 
   .form-hint {
-   color: $black;
+    color: $black;
   }
-
 }
 
 #content.hearing {
@@ -269,5 +359,28 @@
 @media (max-width: 400px) {
   #content.hearing .hearing-details dl dd {
     clear: both;
+  }
+  #content.track-your-appeal {
+    .h-progress-container {
+      display: none;
+    }
+    .v-progress-container {
+      display: block;
+    }
+  }
+}
+
+@media (max-width: 790px) {
+  #content.track-your-appeal .h-progress-container {
+    .dwp-respond span:first-child,
+    .hearing-booked span:first-child,
+    .dwp-respond span:first-child,
+    .hearing-booked span:first-child {
+      white-space: normal;
+      left: calc(100% - 44px) !important;
+      text-align: center;
+      display: inline-block;
+      position: relative;
+    }
   }
 }
