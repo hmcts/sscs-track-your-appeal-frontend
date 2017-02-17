@@ -139,11 +139,13 @@
       "stop": {
         "tab": "Manage email notifications",
         "title": "You’ll stop receiving email updates and reminders about your ESA benefit appeal.",
-        "confirm": "Confirm"
+        "confirm": "Confirm",
+        "link": "Cancel"
       },
       "stopConfirmation": {
         "tab": "Stopped notifications",
         "title": "You’ve stopped email notifications",
+        "content": "Steve to add content here",
         "linkPre": "You can still",
         "linkPost": "track your benefit appeal online"
       },
@@ -180,6 +182,7 @@
       },
       "theHearingRoom": {
         "heading": "The hearing room",
+        "imageAlt": "A picture of a tribunal hearing with four people, dressed informally, sat around a table.",
         "content": "The tribunal clerk will take you into a room for your hearing. It’s more like a meeting room than a courtroom. The judge will be sat behind a table and you’ll be invited to sit opposite him or her. If you have someone to support you or give evidence, they’ll sit next to you."
       },
       "image": {

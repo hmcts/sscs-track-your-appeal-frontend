@@ -7,13 +7,12 @@
     <span class="form-hint text">{{ hint | safe }}</span>
     {% endif %}
 
+    {{ errorsFor(error) }}
     <input class="form-control"
            id="{{ name }}"
            name="{{ name }}"
            type="text"
            value="{{ error.value }}">
-    {{ errorsFor(error) }}
-
 </div>
 {% endmacro %}
 

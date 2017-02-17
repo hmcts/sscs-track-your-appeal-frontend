@@ -42,6 +42,11 @@ class I18nHelper {
 
   static setHearingOnAppeal(appeal, contentKey) {
     let event = I18nHelper.getEventWithMatchingContentKey(appeal.events, contentKey);
+
+    // As the API doesn't define the hearing details we simply add
+    // it here. This is purely for the DAC assessment.
+    I18nHelper.addHearingDetailsToEvent(event);
+
     appeal.hearing = I18nHelper.copyEventAndSetAddress(event);
   }
 
@@ -62,6 +67,18 @@ class I18nHelper {
       }
     }
     return copyEvent;
+  }
+
+  static addHearingDetailsToEvent(event) {
+    event.placeholder.date = "2016-11-30T14:30:00Z";
+    event.placeholder.requiresDisabledAccess = false;
+    event.placeholder.requiresInterpreter = false;
+    event.placeholder.hasRepresentative = true;
+    event.placeholder.representative = "Mr P. Ashbourne";
+    event.placeholder.addressLine1 = "The Old Bakery";
+    event.placeholder.addressLine2 = "115 Queens Road";
+    event.placeholder.addressLine3 = "Norwich";
+    event.placeholder.postcode = "NR1 3PL";
   }
 }
 
