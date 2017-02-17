@@ -19,8 +19,6 @@
 
         <div class="column-two-thirds">
 
-            <pre class="content">{{ errors.email.field | json }}</pre>
-
           <form action="/manage-email-notifications/{{ mactoken }}/change" method="post">
 
                 {% if errors %}
