@@ -1,7 +1,7 @@
 Feature('Track your Appeal Page Tests');
 
 Scenario('verify appellant details after appeal received ', function*(I, Properties) {
-  appeal_id = yield I.postAppealReceivedEvent();
+  let appeal_id = yield I.postAppealReceivedEvent();
   I.amOnPage('/progress/' + appeal_id + '/trackyourappeal');
   I.see('MR Smoke Test');
   I.see('Appeal reference number: test/track/case/001', Properties.fields.form_hint_css_path);
@@ -10,7 +10,7 @@ Scenario('verify appellant details after appeal received ', function*(I, Propert
 });
 
 Scenario('verify appellant details after DWP response received', function*(I, Properties) {
-  I.postDWPResponseEvent();
+  let appeal_id = yield I.postDWPResponseEvent();
   I.amOnPage('/progress/' + appeal_id + '/trackyourappeal');
   I.see('MR Smoke Test');
   I.see('Appeal reference number: test/track/case/001', Properties.fields.form_hint_css_path);
@@ -18,12 +18,12 @@ Scenario('verify appellant details after DWP response received', function*(I, Pr
   I.see('Step 2 of 4. DWP respond to your appeal. This is the current status of your appeal.', Properties.fields.dwp_respond_progbar_css_path);
   I.see('Latest update');
   I.click(Properties.fields.view_previous_updates_link_css_path, 'View previous updates');
-  I.see('Appeal received', Properties.fields.sub_headings_h4_css_path);
-  I.see('12 December 2016', Properties.fields.sub_headings_h4_css_path);
+  I.see('Appeal received', Properties.fields.sub_headings_h3_css_path);
+  I.see('12 December 2016', Properties.fields.sub_headings_h3_css_path);
 });
 
 Scenario('verify appellant details after Hearing response received', function*(I, Properties) {
-  I.postHearingBookedEvent();
+  let appeal_id = yield I.postHearingBookedEvent();
   I.amOnPage('/progress/' + appeal_id + '/trackyourappeal');
   I.see('MR Smoke Test');
   I.see('Appeal reference number: test/track/case/001', Properties.fields.form_hint_css_path);
@@ -32,14 +32,14 @@ Scenario('verify appellant details after Hearing response received', function*(I
   I.see('Step 3 of 4. Hearing booked. This is the current status of your appeal', Properties.fields.hearing_booked_progbar_css_path);
   I.see('Latest update');
   I.click(Properties.fields.view_previous_updates_link_css_path, 'View previous updates');
-  I.see('Appeal received', Properties.fields.sub_headings_h4_css_path);
-  I.see('12 December 2016', Properties.fields.sub_headings_h4_css_path);
-  I.see('DWP response', Properties.fields.sub_headings_h4_css_path);
-  I.see('13 December 2016', Properties.fields.sub_headings_h4_css_path);
+  I.see('Appeal received', Properties.fields.sub_headings_h3_css_path);
+  I.see('12 December 2016', Properties.fields.sub_headings_h3_css_path);
+  I.see('DWP response', Properties.fields.sub_headings_h3_css_path);
+  I.see('13 December 2016', Properties.fields.sub_headings_h3_css_path);
 });
 
 Scenario('verify appellant details after Hearing booked', function*(I, Properties) {
-  I.postHearingEvent();
+  let appeal_id = yield I.postHearingEvent();
   I.amOnPage('/progress/' + appeal_id + '/trackyourappeal');
   I.see('MR Smoke Test');
   I.see('Appeal reference number: test/track/case/001', Properties.fields.form_hint_css_path);
@@ -49,15 +49,16 @@ Scenario('verify appellant details after Hearing booked', function*(I, Propertie
   I.see('Step 4 of 4. Hearing for your appeal. This is the current status of your appeal.', Properties.fields.hearing_progbar_css_path);
   I.see('Latest update');
   I.click(Properties.fields.view_previous_updates_link_css_path, 'View previous updates');
-  I.see('Appeal received', Properties.fields.sub_headings_h4_css_path);
-  I.see('12 December 2016', Properties.fields.sub_headings_h4_css_path);
-  I.see('DWP response', Properties.fields.sub_headings_h4_css_path);
-  I.see('13 December 2016', Properties.fields.sub_headings_h4_css_path);
-  I.see('Hearing booked', Properties.fields.sub_headings_h4_css_path);
-  I.see('14 December 2016', Properties.fields.sub_headings_h4_css_path);
+  I.see('Appeal received', Properties.fields.sub_headings_h3_css_path);
+  I.see('12 December 2016', Properties.fields.sub_headings_h3_css_path);
+  I.see('DWP response', Properties.fields.sub_headings_h3_css_path);
+  I.see('13 December 2016', Properties.fields.sub_headings_h3_css_path);
+  I.see('Hearing booked', Properties.fields.sub_headings_h3_css_path);
+  I.see('14 December 2016', Properties.fields.sub_headings_h3_css_path);
 });
 
-Scenario('verify about your appeal section links', (I) => {
+Scenario('verify about your appeal section links', function*(I, Properties) {
+  let appeal_id = yield I.getAppealId();
   I.amOnPage('/progress/' + appeal_id + '/trackyourappeal');
   I.see('About your appeal');
   I.click('What to expect at your hearing');
@@ -70,7 +71,8 @@ Scenario('verify about your appeal section links', (I) => {
   I.see('Providing evidence to support your appeal');
 });
 
-Scenario('verify evidence page', (I, Properties) => {
+Scenario('verify evidence page', function*(I, Properties) {
+  let appeal_id = yield I.getAppealId();
   I.amOnPage('/progress/' + appeal_id + '/evidence');
   I.see('Providing evidence to support your appeal');
   I.see('Medical evidence', Properties.fields.sub_headings_h2_css_path);
@@ -83,7 +85,8 @@ Scenario('verify evidence page', (I, Properties) => {
   I.see('L2 5UZ');
 });
 
-Scenario('verify what to expect at your hearing page', (I, Properties) => {
+Scenario('verify what to expect at your hearing page', function*(I, Properties) {
+  let appeal_id = yield I.getAppealId();
   I.amOnPage('/progress/' + appeal_id + '/abouthearing');
   I.see('What to expect at your hearing');
   I.see('When you arrive', Properties.fields.sub_headings_h2_css_path);
@@ -94,7 +97,8 @@ Scenario('verify what to expect at your hearing page', (I, Properties) => {
   I.see('Getting a decision', Properties.fields.sub_headings_h2_css_path);
 });
 
-Scenario('verify expenses page', (I, Properties) => {
+Scenario('verify expenses page', function*(I, Properties) {
+  let appeal_id = yield I.getAppealId();
   I.amOnPage('/progress/' + appeal_id + '/expenses');
   I.see('Claiming expenses to attend your hearing');
   I.see('You may be able to claim back some of the money you spend on attending your hearing.');
