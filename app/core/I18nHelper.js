@@ -70,7 +70,7 @@ class I18nHelper {
   }
 
   static addHearingDetailsToEvent(event) {
-    event.placeholder.date = "2016-11-30T14:30:00Z";
+    event.placeholder.date = "2017-06-05T14:30:00Z";
     event.placeholder.requiresDisabledAccess = false;
     event.placeholder.requiresInterpreter = false;
     event.placeholder.hasRepresentative = true;

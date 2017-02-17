@@ -28,13 +28,6 @@
         }
       },
       {
-        "contentKey": "status.hearingBooked",
-        "date": "2016-11-14T01:00:00Z",
-        "placeholder": {
-          "date": "2016-11-30T00:00:00Z"
-        }
-      },
-      {
         "contentKey": "status.dwpRespond",
         "date": "2016-11-13T01:00:00Z",
         "placeholder": {

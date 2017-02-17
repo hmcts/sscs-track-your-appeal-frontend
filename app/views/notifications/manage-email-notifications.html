@@ -24,12 +24,14 @@
                         <legend class="visually-hidden">{{ i18n.visuallyHidden }}</legend>
 
                         {{ radioButton(
+                            field = field,
                             value = 'changeEmailAddress',
                             label = 'Change your email address',
                             name = 'emailNotify'
                         ) }}
 
                         {{ radioButton(
+                            field = field,
                             value = 'stopEmails',
                             label = 'Stop receiving emails',
                             name = 'emailNotify'
