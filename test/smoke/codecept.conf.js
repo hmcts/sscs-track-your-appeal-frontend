@@ -1,5 +1,5 @@
 exports.config = {
-  'tests': './tests/*.js',
+  'tests': './tests/manageNotifications.js',
   'output': './testResults',
   'timeout': 1000,
   'helpers': {
