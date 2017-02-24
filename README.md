@@ -26,7 +26,7 @@
     $> npm run pa11y
 
 ## Run the smoke tests
-    $> npm smoke-test
+    $> npm run smoke-test
         or
        codeceptjs run test/smoketest/ --steps
 
