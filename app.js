@@ -9,6 +9,7 @@ const os = require('os');
 const path = require('path');
 
 const PORT = 3000;
+const TEST_PORT = 3001;
 
 function init() {
 
@@ -72,7 +73,9 @@ function init() {
 
   const srv = exp.listen(process.env.PORT || PORT);
 
-  console.log(`Express server started on port ${srv.address().port}`);
+  if(srv.address().port !== TEST_PORT) {
+    console.log(`Express server started on port ${srv.address().port}`);
+  }
 
   return {exp, srv, njk};
 }

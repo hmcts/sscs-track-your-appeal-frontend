@@ -27,7 +27,8 @@ describe('I18nHelper', () => {
     "contentKey": "status.appealReceived",
     "date": "2016-11-12T01:00:00Z",
     "placeholder": {
-      "date": "2016-11-30T00:00:00Z"
+      "date": "2016-11-30T00:00:00Z",
+      "dwpResponseDate": "2017-03-29T00:00:00Z"
     }
   }];
 
@@ -35,7 +36,7 @@ describe('I18nHelper', () => {
     "status": {
       "appealReceived": {
         "heading": "Appeal received",
-        "content": "Appeal received: {{date | formatDate}}"
+        "content": "Appeal received: {{date|formatDate}}, DWP respond: {{dwpResponseDate|formatDate}}"
       },
       "dwpRespond": {
         "heading": "DWP response",
@@ -50,7 +51,7 @@ describe('I18nHelper', () => {
       },
       "hearing": {
         "heading": "Hearing",
-        "content": "Hearing date: {{date | formatDate}}."
+        "content": "Hearing date: {{date|formatDate}}."
       }
     }
   };
@@ -134,7 +135,7 @@ describe('I18nHelper', () => {
     });
 
     it('should set the renderedContent property when the contentKey is defined as status.appealReceived', () => {
-      expect(mockedEvents[3].renderedContent[0]).to.equal('Appeal received: 30 November 2016');
+      expect(mockedEvents[3].renderedContent[0]).to.equal('Appeal received: 30 November 2016, DWP respond: 29 March 2017');
       expect(mockedEvents[3].renderedContent.length).to.equal(1);
     });
 
@@ -144,7 +145,7 @@ describe('I18nHelper', () => {
 
     it('should retreive the content when using the status.hearing.content key', () => {
       const content = I18nHelper.getContent(mockedContent, 'status.hearing.content');
-      expect(content).to.equal('Hearing date: {{date | formatDate}}.');
+      expect(content).to.equal('Hearing date: {{date|formatDate}}.');
     });
 
     it('should retreive the content when using the status.hearingBooked.content key', () => {
@@ -160,7 +161,7 @@ describe('I18nHelper', () => {
 
     it('should retreive the content when using the status.appealReceived.content key', () => {
       const content = I18nHelper.getContent(mockedContent, 'status.appealReceived.content');
-      expect(content).to.equal('Appeal received: {{date | formatDate}}');
+      expect(content).to.equal('Appeal received: {{date|formatDate}}, DWP respond: {{dwpResponseDate|formatDate}}');
     });
 
     it('should throw an error when encountering an unknown content key', () => {
