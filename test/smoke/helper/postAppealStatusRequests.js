@@ -10,38 +10,48 @@ class postAppealHelper extends Helper {
     this.appeal_id = null;
   }
 
-  postAppealReceivedEvent() {
+  createAppeal(appealData) {
     return new Promise((resolve, reject) => {
-      const appeal_data = config.appeal_post_data;
-      const appeal_event_data = config.appeal_event_post_data;
 
-      client.post('/appeals', appeal_data, (err, res, body) => {
-
-        if (err) {
+      client.post('/appeals', appealData, (err, res) => {
+        if (err || res.statusCode != 201) {
           return reject({
-            log: console.log("Backend API service " + err),
-            error: "Backend API service is Not Available:"
+            log: console.log("Backend API service " + err + " Status Code is: " + res.statusCode ),
+            error: "Backend API service is Not Available or error on Creation of Appeal"
           });
         }
-
-        if (res.statusCode != 201) {
-          return reject({
-            error: "Post Appeal API Creation Failed:",
-          });
-        }
-
         const header_location = res.headers.location;
         const location_split = header_location.split("/");
-        this.appeal_id = location_split[2];
-        client.post('/appeals/' + this.appeal_id + '/events', appeal_event_data, (err, res, body)=> {
-          if (err) {
-            throw new assert.AssertionError({message: "Backend API service failure " + err});
-          }
-          console.log("Event Created For Appeal received: " + res.statusCode + " and appeal Id is : " + this.appeal_id);
-          resolve(this.appeal_id);
-        });
+        const appealId = location_split[2];
+
+        resolve({ id: appealId });
+      });
+
+    });
+  }
+
+  createEvent(appealID, appealEventData) {
+    return new Promise((resolve, reject) => {
+      client.post('/appeals/' + appealID + '/events', appealEventData, (err, res, body) => {
+        if (err) {
+          throw new assert.AssertionError({message: "Backend API service failure " + err});
+        }
+        console.log("Event Created For Appeal received: " + res.statusCode + " and appeal Id is : " + appealID);
+        resolve(this.appeal_id = appealID);
       });
     });
+  }
+
+  postAppealReceivedEvent() {
+    return new Promise((resolve, reject) => {
+      this.createAppeal(config.appeal_post_data)
+        .then((result, error) => {
+          return this.createEvent(result.id, config.appeal_event_post_data);
+        }).then((result, error) => {
+        resolve(this.appeal_id );
+
+    });
+  });
   };
 
   postDWPResponseEvent() {

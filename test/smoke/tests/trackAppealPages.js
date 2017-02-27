@@ -5,7 +5,7 @@ Scenario('verify appellant details after appeal received ', function*(I, Propert
   I.amOnPage('/progress/' + appeal_id + '/trackyourappeal');
   I.see('MR Smoke Test');
   I.see('Appeal reference number: test/track/case/001', Properties.fields.form_hint_css_path);
-  I.see('Step 1 of 4. Appeal received. This is the current status of your appeal', Properties.fields.appeal_progbar_css_path);
+  I.see('Appeal received. This is the current status of your appeal', Properties.fields.appeal_progbar_css_path);
   I.see('Latest update');
 });
 
@@ -14,8 +14,8 @@ Scenario('verify appellant details after DWP response received', function*(I, Pr
   I.amOnPage('/progress/' + appeal_id + '/trackyourappeal');
   I.see('MR Smoke Test');
   I.see('Appeal reference number: test/track/case/001', Properties.fields.form_hint_css_path);
-  I.see('Step 1 of 4. Appeal received. This step is complete.', Properties.fields.appeal_progbar_css_path);
-  I.see('Step 2 of 4. DWP respond to your appeal. This is the current status of your appeal.', Properties.fields.dwp_respond_progbar_css_path);
+  I.see('Appeal received. This step is complete.', Properties.fields.appeal_progbar_css_path);
+  I.see('DWP respond to your appeal. This is the current status of your appeal.', Properties.fields.dwp_respond_progbar_css_path);
   I.see('Latest update');
   I.click(Properties.fields.view_previous_updates_link_css_path, 'View previous updates');
   I.see('Appeal received', Properties.fields.sub_headings_h3_css_path);
@@ -27,9 +27,9 @@ Scenario('verify appellant details after Hearing response received', function*(I
   I.amOnPage('/progress/' + appeal_id + '/trackyourappeal');
   I.see('MR Smoke Test');
   I.see('Appeal reference number: test/track/case/001', Properties.fields.form_hint_css_path);
-  I.see('Step 1 of 4. Appeal received. This step is complete.', Properties.fields.appeal_progbar_css_path);
-  I.see('Step 2 of 4. DWP respond to your appeal. This step is complete.', Properties.fields.dwp_respond_progbar_css_path);
-  I.see('Step 3 of 4. Hearing booked. This is the current status of your appeal', Properties.fields.hearing_booked_progbar_css_path);
+  I.see('Appeal received. This step is complete.', Properties.fields.appeal_progbar_css_path);
+  I.see('DWP respond to your appeal. This step is complete.', Properties.fields.dwp_respond_progbar_css_path);
+  I.see('Hearing booked. This is the current status of your appeal.', Properties.fields.hearing_booked_progbar_css_path);
   I.see('Latest update');
   I.click(Properties.fields.view_previous_updates_link_css_path, 'View previous updates');
   I.see('Appeal received', Properties.fields.sub_headings_h3_css_path);
@@ -43,10 +43,10 @@ Scenario('verify appellant details after Hearing booked', function*(I, Propertie
   I.amOnPage('/progress/' + appeal_id + '/trackyourappeal');
   I.see('MR Smoke Test');
   I.see('Appeal reference number: test/track/case/001', Properties.fields.form_hint_css_path);
-  I.see('Step 1 of 4. Appeal received. This step is complete.', Properties.fields.appeal_progbar_css_path);
-  I.see('Step 2 of 4. DWP respond to your appeal. This step is complete.', Properties.fields.dwp_respond_progbar_css_path);
-  I.see('Step 3 of 4. Hearing booked. This step is complete.', Properties.fields.hearing_booked_progbar_css_path);
-  I.see('Step 4 of 4. Hearing for your appeal. This is the current status of your appeal.', Properties.fields.hearing_progbar_css_path);
+  I.see('Appeal received. This step is complete.', Properties.fields.appeal_progbar_css_path);
+  I.see('DWP respond to your appeal. This step is complete.', Properties.fields.dwp_respond_progbar_css_path);
+  I.see('Hearing booked. This step is complete.', Properties.fields.hearing_booked_progbar_css_path);
+  I.see('Hearing for your appeal. This is the current status of your appeal.', Properties.fields.hearing_progbar_css_path);
   I.see('Latest update');
   I.click(Properties.fields.view_previous_updates_link_css_path, 'View previous updates');
   I.see('Appeal received', Properties.fields.sub_headings_h3_css_path);

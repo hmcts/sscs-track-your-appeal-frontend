@@ -1,5 +1,5 @@
 exports.config = {
-  'tests': './tests/trackAppealPage_test.js',
+  'tests': './tests/*.js',
   'output': './testResults',
   'timeout': 1000,
   'helpers': {
@@ -9,7 +9,10 @@ exports.config = {
       'show': false
     },
     'postAppealHelper': {
-      'require': './helper/postrequest.js'
+      'require': './helper/postAppealStatusRequests.js'
+    },
+    'messageAuthenticationCodeHelper': {
+      'require': './helper/messageAuthenticationCode.js'
     }
   },
   'include': {
