@@ -1,22 +1,22 @@
 Feature('Manage Notifications');
 
 Scenario('verify change password ', function*(I, Properties) {
-  let authenticationCode = yield I.generateMessageAuthenticationCode();
+  let authenticationCode = yield I.getMACToken();
   I.amOnPage('/manage-email-notifications/' + authenticationCode );
   I.see('What do you want to do?');
   I.checkOption("Change your email address");
   I.click("Continue");
-  I.fillField('email', 'naveen.manga@hmcts.net');
-  I.fillField('email2', 'naveen.manga@hmcts.net');
+  I.fillField('email', 'test2.test@hmcts.net');
+  I.fillField('email2', 'test2.test@hmcts.net');
   I.click("Continue");
   I.see("Emails about your ESA benefit appeal will now be sent to")
-  I.see("naveen.manga@hmcts.net");
+  I.see("test2.test@hmcts.net");
   I.click ("Change your email address");
-  I.fillField('email', 'Vivek.Reddy@HMCTS.NET');
-  I.fillField('email2', 'Vivek.Reddy@HMCTS.NET');
+  I.fillField('email', 'test.test@hmcts.net');
+  I.fillField('email2', 'test.test@hmcts.net');
   I.click("Continue");
   I.see("Emails about your ESA benefit appeal will now be sent to")
-  I.see("Vivek.Reddy@HMCTS.NET");
+  I.see("test.test@hmcts.net");
 });
 
 Scenario('stop email subscription  ', function*(I, Properties) {

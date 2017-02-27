@@ -1,5 +1,5 @@
 exports.config = {
-  'tests': './tests/manageNotifications.js',
+  'tests': './tests/*.js',
   'output': './testResults',
   'timeout': 1000,
   'helpers': {
@@ -9,7 +9,7 @@ exports.config = {
       'show': false
     },
     'postAppealHelper': {
-      'require': './helper/postrequest.js'
+      'require': './helper/postAppealStatusRequests.js'
     },
     'messageAuthenticationCodeHelper': {
       'require': './helper/messageAuthenticationCode.js'

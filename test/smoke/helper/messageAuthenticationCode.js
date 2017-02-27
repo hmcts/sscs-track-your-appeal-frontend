@@ -12,11 +12,10 @@ class messageAuthenticationCodeHelper extends Helper {
     super(config);
     this.appeal_id = null;
     this.authentication_code = null;
-    this.subscription_id = null;
-  }
+   }
 
 
-  generateMessageAuthenticationCode() {
+  getMACToken() {
     return this.generateSubscriptionID().then((result, reject) => {
 
       const unixTimeStamp = Math.floor((new Date).getTime() / 1000);
@@ -52,15 +51,10 @@ class messageAuthenticationCodeHelper extends Helper {
     return new Promise((resolve, reject) => {
 
       client.post('/appeals', appealData, (err, res, body) => {
-        if (err) {
+        if (err || res.statusCode != 201) {
           return reject({
-            log: console.log("Backend API service " + err),
-            error: "Backend API service is Not Available:"
-          });
-        }
-        if (res.statusCode != 201) {
-          return reject({
-            error: "Post Appeal API Creation Failed:",
+            log: console.log("Backend API service " + err + " Status Code is: " + res.statusCode ),
+            error: "Backend API service is Not Available or error on Creation of Appeal"
           });
         }
         const header_location = res.headers.location;
@@ -79,7 +73,7 @@ class messageAuthenticationCodeHelper extends Helper {
         if (err) {
           throw new assert.AssertionError({message: "Backend API service failure " + err});
         }
-        console.log("Event Created For Appeal received: " + res.statusCode + " and appeal Id is : " + this.appeal_id);
+        console.log("Event Created For Appeal received: " + res.statusCode + " and appeal Id is : " + appealID);
         resolve({ id: appealID });
       });
     });
@@ -91,7 +85,6 @@ class messageAuthenticationCodeHelper extends Helper {
         if (err) {
           throw new assert.AssertionError({message: "Backend API service failure " + err});
         }
-        console.log("Subscription id is :" + body.subscription.id);
         resolve({ id: body.subscription.id });
       });
     });
