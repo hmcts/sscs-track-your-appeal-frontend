@@ -2,7 +2,7 @@
   "status": {
     "appealReceived": {
       "heading": "Appeal received",
-      "content": "We’ve told the DWP that you’ve appealed against their decision. They have to respond before 27 March 2017. We’ll contact you and explain the next steps when they’ve replied."
+      "content": "We’ve told the DWP that you’ve appealed against their decision. They have to respond before {{dwpResponseDate|formatDate}}. We’ll contact you and explain the next steps when they’ve replied."
     },
     "dwpRespond": {
       "heading": "DWP response",
