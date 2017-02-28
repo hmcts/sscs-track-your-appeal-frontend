@@ -119,10 +119,15 @@ module.exports = function(grunt){
                     logConcurrentOutput: true
                 }
             }
+        },
+
+        nsp: {
+          package: grunt.file.readJSON('package.json')
         }
     });
 
     [
+        'grunt-nsp',
         'grunt-env',
         'grunt-sync',
         'grunt-contrib-watch',
@@ -136,6 +141,10 @@ module.exports = function(grunt){
     grunt.registerTask('generate-assets', [
         'sync',
         'sass'
+    ]);
+
+    grunt.registerTask('security-checks', [
+      'nsp:package',
     ]);
 
     grunt.registerTask('default', [

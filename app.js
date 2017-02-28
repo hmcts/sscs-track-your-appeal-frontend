@@ -7,6 +7,7 @@ const routes = require('app/routes');
 const NunjucksUtils = require('app/core/NunjucksUtils');
 const os = require('os');
 const path = require('path');
+const helmet = require('helmet');
 
 const PORT = 3000;
 const TEST_PORT = 3001;
@@ -30,6 +31,13 @@ function init() {
   });
 
   NunjucksUtils.env = njk.env;
+
+  // Protect against some well known web vulnerabilities
+  // by setting HTTP headers appropriately.
+  exp.use(helmet());
+
+  // Sets "X-XSS-Protection: 1; mode=block".
+  exp.use(helmet.xssFilter({ setOnOldIE: true }));
 
   // Disallow search index indexing
   exp.use((req, res, next) => {
