@@ -18,6 +18,12 @@ stage("Unit tests") {
     }
 }
 
+stage("Security checks") {
+    node {
+        sh "make securitychecks"
+    }
+}
+
 stage("Pa11y tests") {
     node {
         withEnv(["JUNIT_REPORT_PATH='test-reports.xml'"]) {

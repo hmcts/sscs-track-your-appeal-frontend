@@ -9,6 +9,9 @@ install:
 unittest:
 	npm test
 
+securitychecks:
+	npm run security-checks
+
 accessibilitytest:
 	npm run pa11y
 
