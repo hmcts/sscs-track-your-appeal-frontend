@@ -14,13 +14,13 @@ stage("Install dependencies") {
 
 stage("Unit tests") {
     node {
-        sh "make unittest"
+        sh "make test-unit"
     }
 }
 
 stage("Security checks") {
     node {
-        sh "make securitychecks"
+        sh "make test-security"
     }
 }
 
@@ -28,10 +28,7 @@ stage("Pa11y tests") {
     node {
         withEnv(["JUNIT_REPORT_PATH='test-reports.xml'"]) {
             try {
-                sh '''
-                    npm install mocha-jenkins-reporter
-                    npm run pa11y -- --reporter mocha-jenkins-reporter --reporter-options junit_report_packages=true
-                '''
+                sh 'make test-accessibility"
             } finally {
                 step([$class: 'JUnitResultArchiver', testResults: env.JUNIT_REPORT_PATH])
             }
