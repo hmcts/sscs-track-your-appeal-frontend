@@ -52,28 +52,6 @@ Hearing Details
                     {% endif %}
                 </dl>
 
-                <dl class="disabled-access">
-                    <dt>{{ i18n.hearingDetails.disabledAccess }}</dt>
-                    <dd>{{ data.hearing.placeholder.requiresDisabledAccess | needed }}</dd>
-                </dl>
-
-                <dl class="representative">
-                    <dt>{{ i18n.hearingDetails.representative }}</dt>
-                    {% if data.hearing.placeholder.hasRepresentative %}
-                    <dd>{{ data.hearing.placeholder.representative }}</dd>
-                    {% else %}
-                    <dd>{{ data.hearing.placeholder.hasRepresentative | needed }}</dd>
-                    {% endif %}
-                </dl>
-
-                <dl class="interpreter">
-                    <dt>{{ i18n.hearingDetails.interpreter }}</dt>
-                    <dd >
-                        <span>{{ data.hearing.placeholder.requiresInterpreter | needed }}</span>
-                        <span>{{ i18n.hearingDetails.interpretersBookedByUs }}</span>
-                    </dd>
-                </dl>
-
             </div>
 
             <div class="panel panel-border-wide">
