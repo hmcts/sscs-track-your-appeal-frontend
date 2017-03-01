@@ -7,26 +7,24 @@ node("Slave1") {
     env.E2E_OUTPUT_DIR = "${env.JENKINS_HOME}/testResults/"
     env.npm_config_tmp = "${pwd()}/.tmp"
 
-    stage "Run smoke tests"
-    ws('workspace/track-your-appeal/smoke-tests') {
-        git url: 'git@10.196.60.5:SSCS/track-your-appeal-frontend.git', branch: "$BRANCH"
-        echo "Running Smoke Tests using Codeceptjs"
-        wrap([$class: 'Xvfb']) {
-            sh '''
-                npm install
-                npm run smoke-test -- --reporter mochawesome
-            '''
+    stage("Run smoke tests") {
+        ws('workspace/track-your-appeal/smoke-tests') {
+            git url: 'git@git.reform:sscs/track-your-appeal-frontend.git', branch: "$BRANCH"
+            echo "Running Smoke Tests using Codeceptjs"
+            wrap([$class: 'Xvfb']) {
+                sh "make test-end-to-end"
+            }
         }
-    }
 
-    publishHTML(target: [
-        alwaysLinkToLastBuild: true,
-        reportDir            : "${env.JENKINS_HOME}/testResults/",
-        reportFiles          : "mochawesome.html",
-        reportName           : "Functional Test Report"
-    ])
+        publishHTML(target: [
+            alwaysLinkToLastBuild: true,
+            reportDir            : "${env.JENKINS_HOME}/testResults/",
+            reportFiles          : "mochawesome.html",
+            reportName           : "Functional Test Report"
+        ])
 
-    ws('workspace/track-your-appeal/smoke-tests') {
-        deleteDir()
+        ws('workspace/track-your-appeal/smoke-tests') {
+            deleteDir()
+        }
     }
 }
