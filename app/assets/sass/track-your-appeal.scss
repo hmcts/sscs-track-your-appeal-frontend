@@ -1,131 +1,219 @@
 @import "_colours";
 
+$ring-diameter: 32px;
+
 @mixin ring {
   border-radius: 50%;
   border: 8px solid $grey-2;;
   width: 16px;
   height: 16px;
+  z-index: 2;
 }
 
-@mixin leg {
+@mixin v-leg {
   width: 8px;
   height: 50px;
   background-color: $grey-2;
   margin-left: 12px;
 }
 
-@mixin legfoot {
+@mixin h-leg {
+  height: 8px;
+  margin-bottom: 12px;
+  background-color: $grey-2;
+}
+
+@mixin v-foot {
   display: block;
   content: " ";
   background-color: $grey-2;
   width: 22px;
   height: 8px;
-  position: relative;
-  top: 42px;
+  position: absolute;
+  top: 41px;
+}
+
+@mixin h-foot {
+  display: block;
+  content: " ";
+  background-color: $grey-2;
+  width: 8px;
+  height: 22px;
+  position: absolute;
+  right: -4px;
+  z-index: 2;
+}
+
+@mixin horizontal-progress-bar {
+  @media screen and (min-width: 401px) {
+    margin: 60px 15px 70px 15px;
+
+    .appeal-received,
+    .dwp-respond,
+    .hearing-booked,
+    .hearing-leg,
+    .hearing {
+      display: inline-block;
+      position: relative;
+      margin-right: -5px;
+    }
+
+    // Start and end rings
+    .hearing,
+    .appeal-received {
+      .ring {
+        @include ring;
+        position: inherit;
+        z-index: 1;
+      }
+      h5 {
+        font-weight: bold;
+        left: -10px;
+        top: 39px;
+      }
+    }
+
+    // Middle status legs and corresponding feet.
+    .dwp-respond,
+    .hearing-booked {
+      .leg {
+        @include h-leg;
+      }
+      .foot:after {
+        @include h-foot;
+      }
+      h5 {
+        right: -50px;
+        top: 27px;
+      }
+    }
+
+    // The last leg
+    .hearing-leg {
+      .leg {
+        @include h-leg;
+      }
+    }
+
+    // Divide the width of all three legs equally minus both rings diameters.
+    .dwp-respond,
+    .hearing-booked,
+    .hearing-leg {
+      width: calc((100% - (#{$ring-diameter} * 2)) / 3)
+    }
+
+    h5 {
+      position: absolute;
+      font-size: 16px;
+    }
+  }
+}
+
+@mixin vertical-progress-bar {
+  @media screen and (max-width: 400px) {
+    margin: 20px 0;
+
+    .appeal-received,
+    .dwp-respond,
+    .hearing-booked,
+    .hearing-leg,
+    .hearing {
+      position: relative;
+      margin-top: -1px;
+    }
+
+    // Start and end rings
+    .appeal-received,
+    .hearing {
+      .ring {
+        position: inherit;
+        @include ring;
+      }
+      h5 {
+        font-weight: bold;
+        top: 5px;
+      }
+    }
+
+    // Middle status legs and corresponding feet.
+    .dwp-respond,
+    .hearing-booked {
+      .leg {
+        @include v-leg;
+      }
+      .foot:after {
+        @include v-foot;
+      }
+      h5 {
+        top: 36px;
+      }
+    }
+
+    // The last leg
+    .hearing-leg {
+      .leg {
+        @include v-leg;
+      }
+    }
+
+    h5 {
+      position: absolute;
+      left: 50px;
+    }
+  }
+}
+
+@mixin active-progress-bar {
+  .ring.active {
+    border: 8px solid #009243;
+  }
+  .leg.active,
+  .leg.foot.active:after {
+    background-color: #009243;
+  }
+}
+
+@mixin wrap-dwp-and-hearing-booked-text {
+  .dwp-respond h5,
+  .hearing-booked h5 {
+    white-space: normal;
+    text-align: center;
+    width: 67px;
+    right: -33px;
+    top: 28px;
+  }
+}
+
+@mixin wrap-progress-bar-text {
+  @media (min-width: 640px) and (max-width: 800px) {
+    @include wrap-dwp-and-hearing-booked-text;
+  }
+  @media (min-width: 401px) and (max-width: 520px) {
+    @include wrap-dwp-and-hearing-booked-text;
+  }
 }
 
 #content.track-your-appeal {
 
-  .data {
-    color: blue;
-    font-style: italic;
-  }
+  .progress-bar {
 
-  .details .heading-medium {
-    margin-top: 30px;
-    margin-bottom: 0;
-  }
+    // Display a horizontal progress bar when on larger devices.
+    @include horizontal-progress-bar;
 
-  .screen-reader-text {
-    clip: rect(1px, 1px, 1px, 1px);
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-    position: absolute !important;
-    top: -999px;
-    left: -999px;
-  }
+    // Display a vertical progress bar when on smaller devices.
+    @include vertical-progress-bar;
 
-  .h-progress-container {
-    height: 32px;
-    white-space: nowrap;
-    margin-top: 45px;
-    margin-bottom: 75px;
-    padding: 15px;
+    // Colour part of the progress bar given a particular status.
+    @include active-progress-bar;
 
-    .ring {
-      border-radius: 50%;
-      border: 8px solid $grey-2;;
-      width: 16px;
-      height: 16px;
-      display: inline-block;
-      position: relative;
-      z-index: 1;
-    }
-
-    .leg {
-      width: calc((100% - 49px) / 3);
-      height: 8px;
-      background-color: $grey-2;
-      margin: 12px -5px;
-      padding: 0;
-      display: inline-block;
-      position: relative;
-    }
-
-    .leg.foot:after {
-      display: block;
-      content: " ";
-      background-color: $grey-2;
-      width: 8px;
-      height: 22px;
-      position: relative;
-      z-index: 1;
-      left: calc(100% - 8px);
-    }
-
-    .leg.active,
-    .leg.foot.active:after {
-      background-color: #009243;
-    }
-
-    .ring.active {
-      border: 8px solid #009243;
-    }
-
-    p {
-      position: absolute;
-      top: 30px;
-    }
-
-    .appeal-received {
-      left: -21px;
-      font-size: 16px;
-      font-weight: bold;
-    }
-
-    .dwp-respond {
-      top: 26px;
-      font-size: 16px;
-      left: calc(100% - 60px);
-    }
-
-    .hearing-booked {
-      top: 26px;
-      font-size: 16px;
-      left: calc(100% - 70px);
-    }
-
-    .hearing {
-      font-weight: bold;
-      font-size: 16px;
-      left: calc(100% - 40px);
-    }
+    // Wrap the progress bar text depending what device you're on.
+    @include wrap-progress-bar-text;
   }
 
   .updates {
     background-color: #eef7ff;
     padding: 20px 20px 30px 20px;
+
     .heading-small {
       margin-top: 0;
       padding-bottom: 10px;
@@ -179,208 +267,6 @@
       div:last-child:after {
         display: none;
       }
-    }
-  }
-
-  .v-progress-container {
-    display: none;
-    margin: 20px 0 20px 0;
-
-    .appeal-received,
-    .dwp-respond,
-    .hearing-booked,
-    .hearing {
-      position: relative;
-      h5 {
-        position: absolute;
-        left: 50px;
-      }
-    }
-
-    .hearing,
-    .appeal-received {
-      .ring {
-        position: relative;
-        @include ring;
-      }
-      h5 {
-        font-weight: bold;
-        top: 5px;
-      }
-    }
-
-    .dwp-respond,
-    .hearing-booked {
-      .leg {
-        @include leg;
-      }
-      .foot:after {
-        @include legfoot;
-      }
-      h5 {
-        top: 36px;
-      }
-    }
-
-    .hearing.leg {
-      @include leg;
-    }
-
-    .appeal-received .ring {
-      top: 1px;
-    }
-
-    .hearing .ring {
-      top: -1px;
-    }
-
-    .appeal-received,
-    .hearing {
-      font-weight: bold;
-    }
-
-    .ring.active {
-      border: 8px solid #009243;
-    }
-
-    .leg.active,
-    .leg.foot.active:after {
-      background-color: #009243;
-    }
-  }
-
-  .form-hint {
-    color: $black;
-  }
-}
-
-#content.hearing {
-
-  .hearing-details {
-    background-color: $grey-3;
-    margin-top: 20px;
-    padding: 30px 20px 20px 25px;
-    float: left;
-
-    dl {
-      margin-bottom: 15px;
-      float: left;
-      width: 100%;
-      dt {
-        float: inherit;
-        width: 40%;
-      }
-      dd {
-        float: inherit;
-        width: 50%;
-        font-weight: bold;
-      }
-    }
-
-    .date-time {
-      span {
-        font-weight: normal;
-      }
-    }
-
-    .address {
-      dd {
-        span {
-          display: block;
-        }
-      }
-    }
-
-    .interpreter {
-      dd span:not(:first-child) {
-        display: block;
-        font-weight: normal;
-      }
-    }
-  }
-
-  .panel.panel-border-wide {
-    float: left;
-  }
-
-  .about-hearing {
-    margin-top: 50px;
-  }
-}
-
-#content.hearing,
-#content.track-your-appeal {
-
-  .divider {
-    margin-top: 15px;
-    border-bottom: 3px solid $govuk-blue;
-  }
-
-  .details .heading-medium {
-    margin-top: 30px;
-    margin-bottom: 0;
-  }
-
-  .updates-border {
-    background: #005ea5;
-    height: 6px;
-    margin-top: 50px;
-  }
-
-  .panel.panel-border-wide {
-    margin-top: 50px;
-    margin-bottom: 50px;
-  }
-
-  .links li {
-    margin-bottom: 5px;
-  }
-
-}
-
-#content.confirm-emails-stop {
-  input {
-    margin-top: 25px;
-  }
-  .cancel {
-    margin-top: 30px;
-    display: inline-block;
-  }
-}
-
-#content.malformed-url {
-  span {
-    margin-left: 5px;
-    color: $govuk-blue;
-    font-style: italic;
-  }
-}
-
-@media (max-width: 400px) {
-  #content.hearing .hearing-details dl dd {
-    clear: both;
-  }
-  #content.track-your-appeal {
-    .h-progress-container {
-      display: none;
-    }
-    .v-progress-container {
-      display: block;
-    }
-  }
-}
-
-@media (max-width: 790px) {
-  #content.track-your-appeal .h-progress-container {
-    .dwp-respond span:first-child,
-    .hearing-booked span:first-child,
-    .dwp-respond span:first-child,
-    .hearing-booked span:first-child {
-      white-space: normal;
-      left: calc(100% - 44px) !important;
-      text-align: center;
-      display: inline-block;
-      position: relative;
     }
   }
 }

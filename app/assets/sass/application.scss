@@ -23,3 +23,25 @@ $path: "/public/images/";
 }
 
 @import 'track-your-appeal';
+@import 'hearing';
+@import 'email-notifications';
+@import 'combined';
+
+.debug-data {
+  color: blue;
+  font-style: italic;
+}
+
+.form-hint {
+  color: $black;
+}
+
+.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  position: absolute !important;
+  top: -999px;
+  left: -999px;
+}
