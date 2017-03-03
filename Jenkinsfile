@@ -28,7 +28,7 @@ stage("Pa11y tests") {
     node {
         withEnv(["JUNIT_REPORT_PATH='test-reports.xml'"]) {
             try {
-                sh 'make test-accessibility"
+                sh "make test-accessibility"
             } finally {
                 step([$class: 'JUnitResultArchiver', testResults: env.JUNIT_REPORT_PATH])
             }
