@@ -1,0 +1,34 @@
+@import "_colours";
+
+#content.hearing,
+#content.track-your-appeal {
+
+  .divider {
+    margin-top: 15px;
+    border-bottom: 3px solid $govuk-blue;
+  }
+
+  .details {
+    .heading-medium {
+      margin-top: 30px;
+      margin-bottom: 0;
+    }
+  }
+
+  .updates-border {
+    background: #005ea5;
+    height: 6px;
+    margin-top: 50px;
+  }
+
+  .panel {
+    &.panel-border-wide {
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+  }
+
+  .links li {
+    margin-bottom: 5px;
+  }
+}

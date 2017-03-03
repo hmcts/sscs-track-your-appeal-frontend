@@ -1,0 +1,67 @@
+@import "_colours";
+
+#content.hearing {
+
+  .hearing-details {
+    background-color: $grey-3;
+    margin-top: 20px;
+    padding: 30px 20px 20px 25px;
+    float: left;
+
+    dl {
+      margin-bottom: 15px;
+      float: left;
+      width: 100%;
+      dt {
+        float: inherit;
+        width: 40%;
+      }
+      dd {
+        float: inherit;
+        width: 50%;
+        font-weight: bold;
+      }
+    }
+
+    .date-time {
+      span {
+        font-weight: normal;
+      }
+    }
+
+    .address {
+      dd {
+        span {
+          display: block;
+        }
+      }
+    }
+
+    .interpreter {
+      dd span:not(:first-child) {
+        display: block;
+        font-weight: normal;
+      }
+    }
+  }
+
+  .panel.panel-border-wide {
+    float: left;
+  }
+
+  .about-hearing {
+    margin-top: 35px;
+  }
+}
+
+@media (max-width: 400px) {
+  #content.hearing {
+    .hearing-details {
+      dl {
+        dd {
+          clear: both;
+        }
+      }
+    }
+  }
+}

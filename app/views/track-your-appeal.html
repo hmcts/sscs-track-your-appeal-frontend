@@ -23,62 +23,7 @@ Track your Appeal
 
             <div class="divider"></div>
 
-            <section class="h-progress-container">
-
-                <h2 class="screen-reader-text">{{ i18n.progressBar.screenReader.heading }}</h2>
-
-                <div class="ring active">
-                    <p class="appeal-received">
-                        <span aria-hidden="true">{{ i18n.progressBar.appeal }}</span>
-                        {% if data.status == 'APPEAL_RECEIVED' %}
-                        <span class="screen-reader-text">{{ i18n.progressBar.screenReader.appeal.happening }}</span>
-                        {% else %}
-                        <span class="screen-reader-text">{{ i18n.progressBar.screenReader.appeal.happened }}</span>
-                        {% endif %}
-                    </p>
-                </div>
-
-                <div class="leg foot {{ isActive('DWP_RESPOND', data.status ) }}">
-                    <p class="dwp-respond">
-                        <span aria-hidden="true">{{ i18n.progressBar.dwpRespond }}</span>
-                        {% if data.status == 'APPEAL_RECEIVED' %}
-                        <span class="screen-reader-text">{{ i18n.progressBar.screenReader.dwpRespond.due }}</span>
-                        {% elif data.status == 'DWP_RESPOND' %}
-                        <span class="screen-reader-text">{{ i18n.progressBar.screenReader.dwpRespond.happening }}</span>
-                        {% else %}
-                        <span class="screen-reader-text">{{ i18n.progressBar.screenReader.dwpRespond.happened }}</span>
-                        {% endif %}
-                    </p>
-                </div>
-
-                <div class="leg foot {{ isActive('HEARING_BOOKED', data.status ) }}">
-                    <p class="hearing-booked">
-                        <span aria-hidden="true">{{ i18n.progressBar.hearingBooked }}</span>
-                        {% if data.status == 'APPEAL_RECEIVED' or data.status == 'DWP_RESPOND' %}
-                        <span class="screen-reader-text">{{ i18n.progressBar.screenReader.hearingBooked.due }}</span>
-                        {% elif data.status == 'HEARING_BOOKED' %}
-                        <span class="screen-reader-text">{{ i18n.progressBar.screenReader.hearingBooked.happening }}</span>
-                        {% else %}
-                        <span class="screen-reader-text">{{ i18n.progressBar.screenReader.hearingBooked.happened }}</span>
-                        {% endif %}
-                    </p>
-                </div>
-
-                <div class="leg {{ isActive('HEARING', data.status ) }}"></div>
-                <div class="ring {{ isActive('HEARING', data.status ) }}">
-                    <p class="hearing">
-                        <span aria-hidden="true">{{ i18n.progressBar.hearing }}</span>
-                        {% if data.status != 'HEARING' %}
-                        <span class="screen-reader-text">{{ i18n.progressBar.screenReader.hearing.due }}</span>
-                        {% else %}
-                        <span class="screen-reader-text">{{ i18n.progressBar.screenReader.hearing.happening }}</span>
-                        {% endif %}
-                    </p>
-                </div>
-
-            </section>
-
-            <section class="v-progress-container">
+            <section class="progress-bar">
 
                 <div class="appeal-received">
                     <div class="ring active"></div>
@@ -114,7 +59,9 @@ Track your Appeal
                     {% endif %}
                 </div>
 
-                <div class="hearing leg {{ isActive('HEARING', data.status ) }}"></div>
+                <div class="hearing-leg">
+                    <div class="leg {{ isActive('HEARING', data.status ) }}"></div>
+                </div>
 
                 <div class="hearing">
                     <div class="ring {{ isActive('HEARING', data.status ) }}"></div>
@@ -188,7 +135,7 @@ Track your Appeal
 
     </div>
 
-    <!--<pre class="data">{{ data | json }}</pre>-->
+    <!--<pre class="debug-data">{{ data | json }}</pre>-->
 
 </main>
 
