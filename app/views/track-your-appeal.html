@@ -84,7 +84,7 @@ Track your Appeal
                     {% endfor %}
                 {% endfor %}
 
-                {% if feature.SHOW_HEARING_DETAILS and (data.status == 'HEARING_BOOKED') %}
+                {% if data.status == 'HEARING_BOOKED' %}
                 <a href="/progress/{{data.id}}/hearingdetails">{{ i18n.hearingDetails.checkDetails }}</a>
                 {% endif %}
 
@@ -105,7 +105,7 @@ Track your Appeal
                         <p>{{ content }}</p>
                         {% endfor %}
 
-                        {% if feature.SHOW_HEARING_DETAILS and historicalEvent.contentKey === 'status.hearingBooked' %}
+                        {% if historicalEvent.contentKey === 'status.hearingBooked' %}
                         <a href="/progress/{{data.id}}/hearingdetails">{{ i18n.hearingDetails.checkDetails }}</a>
                         {% endif %}
 

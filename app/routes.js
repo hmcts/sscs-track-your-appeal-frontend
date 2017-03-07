@@ -4,7 +4,6 @@ const AppealsService = ServiceLoader.instance().load(ServiceLoader.appeals);
 const HealthService = ServiceLoader.instance().load(ServiceLoader.health);
 const TokenService = ServiceLoader.instance().load(ServiceLoader.token);
 const locale = require('app/assets/locale/en');
-const {SHOW_HEARING_DETAILS} = require('app/config');
 const express = require('express');
 const router = express.Router();
 const progressRoot = '/progress';
@@ -55,13 +54,8 @@ router.get(`${progressRoot}/:id/expenses`, getAppeal, (req, res) => {
 });
 
 router.get(`${progressRoot}/:id/hearingdetails`, getAppeal, (req, res) => {
-  if (SHOW_HEARING_DETAILS) {
-    res.render('hearing-details', Object.assign({i18n: locale}, {data: res.locals.appeal}));
-  } else {
-    res.send("Sorry, currently unavailable");
-  }
+  res.render('hearing-details', Object.assign({i18n: locale}, {data: res.locals.appeal}));
 });
-
 
 function validateToken(req, res, next) {
   if (req.params.mactoken) {
@@ -208,10 +202,7 @@ router.get('/', function (req, res, next) {
 _getData = (appeal) => {
   return {
     i18n: locale,
-    data: appeal,
-    feature: {
-      SHOW_HEARING_DETAILS: SHOW_HEARING_DETAILS
-    }
+    data: appeal
   };
 };
 

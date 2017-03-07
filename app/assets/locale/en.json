@@ -23,7 +23,7 @@
       ]
     },
     "evidenceReceived": {
-      "heading": "Evidence Received",
+      "heading": "Evidence received",
       "content": "The {{evidenceType}} evidence you sent was received by us on {{date|formatDate}}"
     }
   },
