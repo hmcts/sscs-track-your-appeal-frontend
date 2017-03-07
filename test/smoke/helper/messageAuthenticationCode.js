@@ -3,17 +3,16 @@ const secret_key = process.env.EMAIL_MAC_SECRET_TEXT || "our-big-secret",
   cryptoJS = require("crypto-js"),
   URLSafeBase64 = require('urlsafe-base64'),
   config = require('../props/postdatatoAPI'),
-  request = require('request-json'),
-  assert = require('assert'),
-  client = request.createClient(config.api_base_url);
+  request = require('superagent'),
+  assert = require('assert');
+
 
 class messageAuthenticationCodeHelper extends Helper {
   constructor(config) {
     super(config);
     this.appeal_id = null;
     this.authentication_code = null;
-   }
-
+  }
 
   getMACToken() {
     return this.generateSubscriptionID().then((result, reject) => {
@@ -42,52 +41,47 @@ class messageAuthenticationCodeHelper extends Helper {
         }).then((result, error) => {
         return this.createSubscription(result.id, config.subscriptions_post_data);
       }).then((result, error) => {
-        resolve({ id: result.id });
+        resolve({id: result.id});
       })
     });
   }
 
   createAppeal(appealData) {
-    return new Promise((resolve, reject) => {
-
-      client.post('/appeals', appealData, (err, res, body) => {
-        if (err || res.statusCode != 201) {
-          return reject({
-            log: console.log("Backend API service " + err + " Status Code is: " + res.statusCode ),
-            error: "Backend API service is Not Available or error on Creation of Appeal"
-          });
+    return request('POST', config.api_base_url + '/appeals')
+      .send(appealData)
+      .then(res => {
+          const header_location = res.headers.location;
+          const location_split = header_location.split("/");
+          const appealId = location_split[2];
+          return {id: appealId};
+        }, err => {
+          throw new assert.AssertionError({message: "Backend API service error on appeal post " + err});
         }
-        const header_location = res.headers.location;
-        const location_split = header_location.split("/");
-        const appealId = location_split[2];
-
-        resolve({ id: appealId });
-      });
-
-    });
+      );
   }
 
   createEvent(appealID, appealEventData) {
-    return new Promise((resolve, reject) => {
-      client.post('/appeals/' + appealID + '/events', appealEventData, (err, res, body) => {
-        if (err) {
-          throw new assert.AssertionError({message: "Backend API service failure " + err});
+    return request('POST', config.api_base_url + '/appeals/' + appealID + '/events')
+      .send(appealEventData)
+      .then(res => {
+          console.log("Event Created For Appeal received: " + res.statusCode + " and appeal Id is : " + appealID);
+          return {id: appealID};
+        }, err => {
+          throw new assert.AssertionError({message: "Backend API service failure on appeal received event post " + err});
         }
-        console.log("Event Created For Appeal received: " + res.statusCode + " and appeal Id is : " + appealID);
-        resolve({ id: appealID });
-      });
-    });
+      );
   }
 
   createSubscription(appealID, subscriptionsData) {
-    return new Promise((resolve, reject) => {
-      client.post('/appeals/' + appealID  + '/subscriptions', subscriptionsData, (err, res, body) => {
-        if (err) {
-          throw new assert.AssertionError({message: "Backend API service failure " + err});
+    return request('POST', config.api_base_url + '/appeals/' + appealID + '/subscriptions')
+      .send(subscriptionsData)
+      .then(res => {
+          return {id: res.body.subscription.id};
+        },
+        err => {
+          throw new assert.AssertionError({message: "Backend API service failure on subscription creation" + err});
         }
-        resolve({ id: body.subscription.id });
-      });
-    });
+      );
   }
 
   getMessageAuthenticationCode() {

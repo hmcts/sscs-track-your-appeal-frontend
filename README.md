@@ -26,9 +26,9 @@
     $> npm run pa11y
 
 ## Run the smoke tests
+- Ensure environment variable NOTIFICATION_API_KEY is set before running smoke tests.
+
     $> npm run smoke-test
-        or
-       codeceptjs run test/smoketest/ --steps
-      
+ 
 ## Run the security checks
     $> npm run security-checks

@@ -1,8 +1,7 @@
 'use strict';
 const config = require('../props/postdatatoAPI'),
-  request = require('request-json'),
-  assert = require('assert'),
-  client = request.createClient(config.api_base_url);
+  request = require('superagent'),
+  assert = require('assert');
 
 class postAppealHelper extends Helper {
   constructor(config) {
@@ -11,35 +10,29 @@ class postAppealHelper extends Helper {
   }
 
   createAppeal(appealData) {
-    return new Promise((resolve, reject) => {
-
-      client.post('/appeals', appealData, (err, res) => {
-        if (err || res.statusCode != 201) {
-          return reject({
-            log: console.log("Backend API service " + err + " Status Code is: " + res.statusCode ),
-            error: "Backend API service is Not Available or error on Creation of Appeal"
-          });
+    return request('POST', config.api_base_url + '/appeals')
+      .send(appealData)
+      .then(res => {
+          const header_location = res.headers.location;
+          const location_split = header_location.split("/");
+          const appealId = location_split[2];
+          return {id: appealId};
+        }, err => {
+          throw new assert.AssertionError({message: "Backend API service error " + err});
         }
-        const header_location = res.headers.location;
-        const location_split = header_location.split("/");
-        const appealId = location_split[2];
-
-        resolve({ id: appealId });
-      });
-
-    });
+      );
   }
 
   createEvent(appealID, appealEventData) {
-    return new Promise((resolve, reject) => {
-      client.post('/appeals/' + appealID + '/events', appealEventData, (err, res, body) => {
-        if (err) {
-          throw new assert.AssertionError({message: "Backend API service failure " + err});
+    return request('POST', config.api_base_url + '/appeals/' + appealID + '/events')
+      .send(appealEventData)
+      .then(res => {
+          console.log("Event Created For Appeal received: " + res.statusCode + " and appeal Id is : " + appealID);
+          return this.appeal_id = appealID;
+        }, err => {
+          throw new assert.AssertionError({message: "Backend API service failure on appeal received event post " + err});
         }
-        console.log("Event Created For Appeal received: " + res.statusCode + " and appeal Id is : " + appealID);
-        resolve(this.appeal_id = appealID);
-      });
-    });
+      );
   }
 
   postAppealReceivedEvent() {
@@ -57,37 +50,47 @@ class postAppealHelper extends Helper {
   postDWPResponseEvent() {
     this.getAppealId();
     const dwp_response_data = config.dwp_response_event_post_data;
-    client.post('/appeals/' + this.appeal_id + '/events', dwp_response_data, function (err, res, body) {
-      if (err) {
-        throw new assert.AssertionError({message: "Backend API service failure " + err});
-      }
-      console.log("DWP Response Event Created: " + res.statusCode);
-    });
-    return this.appeal_id;
-  };
+
+    return request('POST', config.api_base_url + '/appeals/' + this.appeal_id + '/events')
+      .send(dwp_response_data)
+      .then(res => {
+        console.log("DWP Response Event Created: " + res.statusCode);
+          return this.appeal_id ;
+        }, err => {
+          throw new assert.AssertionError({message: "Backend API service failure on DWP response event post " + err});
+        }
+      );
+    };
 
   postHearingBookedEvent() {
     this.getAppealId();
     const hearing_booked_data = config.hearing_booked_event_post_data;
-    client.post('/appeals/' + this.appeal_id + '/events', hearing_booked_data, function (err, res, body) {
-      if (err) {
-        throw new assert.AssertionError({message: "Backend API service failure " + err});
-      }
-      console.log("Hearing Book Received Event Created: " + res.statusCode);
-    });
-    return this.appeal_id;
+
+    return request('POST', config.api_base_url + '/appeals/' + this.appeal_id + '/events')
+      .send(hearing_booked_data)
+      .then(res => {
+        console.log("Hearing Book Received Event Created: " + res.statusCode);
+          return this.appeal_id ;
+        }, err => {
+          throw new assert.AssertionError({message: "Backend API service failure on Hearing Booked event post " + err});
+        }
+      );
   };
 
   postHearingEvent() {
     this.getAppealId();
     const hearing_data = config.hearing_event_post_data;
-    client.post('/appeals/' + this.appeal_id + '/events', hearing_data, function (err, res, body) {
-      if (err) {
-        throw new assert.AssertionError({message: "Backend API service failure " + err});
-      }
-      console.log("Hearing Event Created: " + res.statusCode);
-    });
-    return this.appeal_id;
+
+    return request('POST', config.api_base_url + '/appeals/' + this.appeal_id + '/events')
+      .send(hearing_data)
+      .then(res => {
+          console.log("Hearing Event Created: " + res.statusCode);
+          return this.appeal_id ;
+        }, err => {
+          throw new assert.AssertionError({message: "Backend API service failure on appeal received Hearing event post " + err});
+        }
+      );
+     return this.appeal_id;
   };
 
   getAppealId() {
