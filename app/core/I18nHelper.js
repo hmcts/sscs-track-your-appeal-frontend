@@ -1,15 +1,23 @@
 const _ = require('lodash');
 const locale = require('app/assets/locale/en');
 const NunjucksUtils = require('app/core/NunjucksUtils');
-const {CONTENT_SUBKEYS} = require('app/config');
+const {CONTENT_KEYS, CONTENT_SUBKEYS} = require('app/config');
 
 const ADDRESS_LINE = 'addressLine';
 
 class I18nHelper {
 
   static setHeadingAndRenderedContentOnEvents(events) {
+    events = events ? events : [];
     events.forEach(event => {
       I18nHelper.setHeadingOnEvent(event);
+      I18nHelper.setRenderedContentOnEvent(event);
+    });
+  }
+
+  static setRenderedContentOnEvents(events) {
+    events = events ? events : [];
+    events.forEach(event => {
       I18nHelper.setRenderedContentOnEvent(event);
     });
   }
@@ -23,6 +31,13 @@ class I18nHelper {
     if (typeof content === 'string') {
       content = [content];
     }
+
+    // Safely remove this when the evidence received date has moved from
+    // the event to the event.placeholder.
+    if(event.contentKey === CONTENT_KEYS.EVIDENCE_RECEIVED) {
+      event.placeholder.date = event.date;
+    }
+
     event.renderedContent = I18nHelper.getRenderedContent(content, event.placeholder);
   }
 
@@ -41,13 +56,8 @@ class I18nHelper {
   }
 
   static setHearingOnAppeal(appeal, contentKey) {
-    let event = I18nHelper.getEventWithMatchingContentKey(appeal.events, contentKey);
-
-    // As the API doesn't define the hearing details we simply add
-    // it here. This is purely for the DAC assessment.
-    I18nHelper.addHearingDetailsToEvent(event);
-
-    appeal.hearing = I18nHelper.copyEventAndSetAddress(event);
+    let event = I18nHelper.getEventWithMatchingContentKey(appeal.latestEvents, contentKey);
+    appeal.hearing = I18nHelper.copyEventAndSetHearingAddress(event);
   }
 
   static getEventWithMatchingContentKey(events, contentKey) {
@@ -56,29 +66,28 @@ class I18nHelper {
     })[0];
   }
 
-  static copyEventAndSetAddress(event) {
+  static copyEventAndSetHearingAddress(event) {
     let copyEvent = Object.assign({}, event);
+
+    if(!copyEvent.placeholder) {
+      return copyEvent;
+    }
+
+    // Create the hearing address object.
     copyEvent.address = {};
-    copyEvent.address.postcode = copyEvent.placeholder.postcode;
     copyEvent.address.lines = [];
+
+    // Add the address lines.
     for (let property in copyEvent.placeholder) {
       if (_.startsWith(property, ADDRESS_LINE)) {
         copyEvent.address.lines.push(copyEvent.placeholder[property]);
       }
     }
-    return copyEvent;
-  }
 
-  static addHearingDetailsToEvent(event) {
-    event.placeholder.date = "2017-06-05T14:30:00Z";
-    event.placeholder.requiresDisabledAccess = false;
-    event.placeholder.requiresInterpreter = false;
-    event.placeholder.hasRepresentative = true;
-    event.placeholder.representative = "Mr P. Ashbourne";
-    event.placeholder.addressLine1 = "The Old Bakery";
-    event.placeholder.addressLine2 = "115 Queens Road";
-    event.placeholder.addressLine3 = "Norwich";
-    event.placeholder.postcode = "NR1 3PL";
+    // Finally set the postcode.
+    copyEvent.address.postcode = copyEvent.placeholder.postcode;
+
+    return copyEvent;
   }
 }
 

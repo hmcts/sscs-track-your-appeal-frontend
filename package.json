@@ -7,10 +7,10 @@
     "node": ">=6.0"
   },
   "scripts": {
-    "start": "cross-env NODE_PATH=. SHOW_HEARING_DETAILS=true node server.js",
+    "start": "cross-env NODE_PATH=. SHOW_HEARING_DETAILS=false node server.js",
     "test": "cross-env NODE_PATH=. SSCS_MOCK_DATA=true PORT=3021 mocha test/unit/* --reporter spec",
     "coverage": "cross-env NODE_PATH=. SSCS_MOCK_DATA=true istanbul cover _mocha --dir test/coverage test/unit/*",
-    "dev": "cross-env NODE_PATH=. SHOW_HEARING_DETAILS=true LOG_OUTPUT=multi grunt",
+    "dev": "cross-env NODE_PATH=. SHOW_HEARING_DETAILS=false LOG_OUTPUT=multi grunt",
     "setup": "cross-env NODE_PATH=. grunt generate-assets",
     "smoke-test": "cross-env NODE_PATH=. codeceptjs run test/smoke/ --steps",
     "pa11y": "cross-env NODE_PATH=. SHOW_HEARING_DETAILS=true SSCS_MOCK_DATA=true LOG_LEVEL=OFF mocha test/accessibility -r test/chai-sinon.js --reporter spec --recursive --timeout 10000",

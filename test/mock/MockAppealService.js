@@ -14,7 +14,8 @@ class MockAppealService {
         });
       }
       let appeal = mockedData[id].appeal;
-      I18nHelper.setHeadingAndRenderedContentOnEvents(appeal.events);
+      I18nHelper.setRenderedContentOnEvents(appeal.latestEvents);
+      I18nHelper.setHeadingAndRenderedContentOnEvents(appeal.historicalEvents);
 
       if (appeal.status === STATUSES.HEARING_BOOKED.name) {
         I18nHelper.setHearingOnAppeal(appeal, CONTENT_KEYS.HEARING_BOOKED);

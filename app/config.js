@@ -28,7 +28,8 @@ const CONTENT_KEYS = {
   APPEAL_RECEIVED: 'status.appealReceived',
   DWP_RESPOND: 'status.dwpRespond',
   HEARING_BOOKED: 'status.hearingBooked',
-  HEARING: 'status.hearing'
+  HEARING: 'status.hearing',
+  EVIDENCE_RECEIVED: 'status.evidenceReceived'
 };
 
 const CONTENT_SUBKEYS = {

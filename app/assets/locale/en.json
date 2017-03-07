@@ -2,7 +2,7 @@
   "status": {
     "appealReceived": {
       "heading": "Appeal received",
-      "content": "We’ve told the DWP that you’ve appealed against their decision. They have to respond before {{dwpResponseDate|formatDate}}. We’ll contact you and explain the next steps when they’ve replied."
+      "content": "We’ve told the DWP that you’ve appealed against their decision. They should respond before {{dwpResponseDate|formatDate}}. We’ll contact you and explain the next steps when they’ve replied."
     },
     "dwpRespond": {
       "heading": "DWP response",
@@ -20,7 +20,11 @@
       "content": [
       "Your hearing took place on 5 June 2017. The decision was sent to you in the post and should have arrived at your registered address by 14 June 2017.",
       "We can’t publish the decision online or tell you over the phone. This is to protect your personal information."
-    ]
+      ]
+    },
+    "evidenceReceived": {
+      "heading": "Evidence Received",
+      "content": "The {{evidenceType}} evidence you sent was received by us on {{date|formatDate}}"
     }
   },
   "progressBar": {
@@ -168,6 +172,16 @@
         "title": "Emails about your ESA benefit appeal will now be sent to",
         "content": "We’ve sent a confirmation email to that address. Check it in a few minutes.",
         "link": "Change your email address"
+      },
+      "errors" : {
+        "emptyStringEmailHeading": "New email address not entered",
+        "emptyStringEmailHeadingTwo": "New email address not entered again",
+        "emptyStringEmailField": "You have not entered your email address. Enter your email address.",
+        "emptyStringEmailFieldTwo": "You have not entered your email address again. Enter your email address again.",
+        "noMatchHeading": "Email addresses do not match",
+        "noMatchField": "Your email addresses don’t match. Check and enter them again.",
+        "notValidHeading": "New email address is invalid",
+        "notValidField": "The email address you’ve entered is invalid. Check it and enter it again."
       }
     }
   },

@@ -4,12 +4,21 @@
     "name": "Jason Mock",
     "id": "md100",
     "status": "APPEAL_RECEIVED",
-    "events": [
+    "latestEvents": [
       {
-        "contentKey": "status.appealReceived",
-        "date": "2016-11-12T01:00:00Z",
+        "date": "2017-08-01T00:00:00Z",
+        "type": "EVIDENCE_RECEIVED",
+        "contentKey": "status.evidenceReceived",
         "placeholder": {
-          "date": "2016-11-30T00:00:00Z"
+          "evidenceType": "medical"
+        }
+      },
+      {
+        "date": "2017-02-22T00:00:00Z",
+        "type": "APPEAL_RECEIVED",
+        "contentKey": "status.appealReceived",
+        "placeholder": {
+          "dwpResponseDate": "2017-03-29T00:00:00Z"
         }
       }
     ]

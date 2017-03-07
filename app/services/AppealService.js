@@ -10,7 +10,8 @@ class AppealService {
     return new Promise((resolve, reject) => {
       request(METHODS.GET, APPEALS_ENDPOINT + '/' + id).then((result) => {
         let appeal = result.body.appeal;
-        I18nHelper.setHeadingAndRenderedContentOnEvents(appeal.events);
+        I18nHelper.setRenderedContentOnEvents(appeal.latestEvents);
+        I18nHelper.setHeadingAndRenderedContentOnEvents(appeal.historicalEvents);
 
         if (appeal.status === STATUSES.HEARING_BOOKED.name) {
           I18nHelper.setHearingOnAppeal(appeal, CONTENT_KEYS.HEARING_BOOKED);

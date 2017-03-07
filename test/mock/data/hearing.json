@@ -4,10 +4,37 @@
     "name": "Jason Mock",
     "id": "md400",
     "status": "HEARING",
-    "events": [
+    "latestEvents": [
       {
+        "date": "2017-06-10T00:00:00Z",
+        "type": "EVIDENCE_RECEIVED",
+        "contentKey": "status.evidenceReceived",
+        "placeholder": {
+          "evidenceType": "medical"
+        }
+      },
+      {
+        "date": "2017-05-22T00:00:00Z",
+        "type": "HEARING",
         "contentKey": "status.hearing",
-        "date": "2016-11-16T01:00:00Z",
+        "placeholder": {
+          "date": "2016-11-30T14:30:00Z",
+          "requiresDisabledAccess": false,
+          "requiresInterpreter": false,
+          "hasRepresentative": true,
+          "representative": "Mr P. Ashbourne",
+          "addressLine1": "The Old Bakery",
+          "addressLine2": "115 Queens Road",
+          "addressLine3": "Norwich",
+          "postcode": "NR1 3PL"
+        }
+      }
+    ],
+    "historicalEvents": [
+      {
+        "date": "2017-06-05T00:00:00Z",
+        "type": "HEARING_BOOKED",
+        "contentKey": "status.hearingBooked",
         "placeholder": {
           "date": "2016-11-30T14:30:00Z",
           "requiresDisabledAccess": false,
@@ -21,24 +48,24 @@
         }
       },
       {
-        "contentKey": "status.hearingBooked",
-        "date": "2016-11-15T01:00:00Z",
+        "date": "2017-04-10T00:00:00Z",
+        "type": "EVIDENCE_RECEIVED",
+        "contentKey": "status.evidenceReceived",
         "placeholder": {
-          "date": "2016-11-30T00:00:00Z"
+          "evidenceType": "medical"
         }
       },
       {
-        "contentKey": "status.dwpRespond",
-        "date": "2016-11-13T01:00:00Z",
-        "placeholder": {
-          "date": "2016-11-30T00:00:00Z"
-        }
+        "date": "2017-04-01T00:00:00Z",
+        "type": "DWP_RESPOND",
+        "contentKey": "status.dwpRespond"
       },
       {
+        "date": "2017-03-01T00:00:00Z",
+        "type": "APPEAL_RECEIVED",
         "contentKey": "status.appealReceived",
-        "date": "2016-11-12T01:00:00Z",
         "placeholder": {
-          "date": "2016-11-30T00:00:00Z"
+          "dwpResponseDate": "2017-04-05T00:00:00Z"
         }
       }
     ]

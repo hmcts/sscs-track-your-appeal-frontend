@@ -78,32 +78,34 @@ Track your Appeal
             <div class="updates">
 
                 <h2 class="heading-small">{{ i18n.common.latestUpdate }}</h2>
-                {% for content in data.events[0].renderedContent %}
-                <p>{{ content }}</p>
+                {% for latestEvent in data.latestEvents | reverse %}
+                    {% for content in latestEvent.renderedContent %}
+                    <p>{{ content }}</p>
+                    {% endfor %}
                 {% endfor %}
 
                 {% if feature.SHOW_HEARING_DETAILS and (data.status == 'HEARING_BOOKED') %}
                 <a href="/progress/{{data.id}}/hearingdetails">{{ i18n.hearingDetails.checkDetails }}</a>
                 {% endif %}
 
-                {% if data.events.length > 1 %}
+                {% if data.historicalEvents %}
                 <p class="updates-toggle">
                     <i class="fa fa-caret-right" aria-label="View previous updates">
                         <span>{{ i18n.common.viewAllUpdates }}</span>
                     </i>
                 </p>
                 <div class="updates-container">
-                    {% for index in range(1, data.events.length) %}
+                    {% for historicalEvent in data.historicalEvents %}
                     <div class="update">
                         <h3 class="bold-small">
-                            {{ data.events[index].heading }}
-                            <span class="form-hint">{{ data.events[index].date | formatDate }}</span>
+                            {{ historicalEvent.heading }}
+                            <span class="form-hint">{{ historicalEvent.date | formatDate }}</span>
                         </h3>
-                        {% for content in data.events[index].renderedContent %}
+                        {% for content in historicalEvent.renderedContent %}
                         <p>{{ content }}</p>
                         {% endfor %}
 
-                        {% if feature.SHOW_HEARING_DETAILS and data.events[index].contentKey === 'status.hearingBooked' %}
+                        {% if feature.SHOW_HEARING_DETAILS and historicalEvent.contentKey === 'status.hearingBooked' %}
                         <a href="/progress/{{data.id}}/hearingdetails">{{ i18n.hearingDetails.checkDetails }}</a>
                         {% endif %}
 
@@ -135,7 +137,7 @@ Track your Appeal
 
     </div>
 
-    <!--<pre class="debug-data">{{ data | json }}</pre>-->
+    <!--<pre class="debug-data">{{ data.historicalEvents | json }}</pre>-->
 
 </main>
 
