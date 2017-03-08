@@ -1,16 +1,25 @@
 {
   "appeal": {
-    "caseReference": "SC123/04/56789",
-    "name": "Jason Mock",
+    "caseReference": "SC123/45/00001",
+    "name": "Mr Jason Mock",
     "id": "md100",
     "status": "APPEAL_RECEIVED",
-    "events": [
+    "latestEvents": [
       {
-        "contentKey": "status.appealReceived",
-        "date": "2016-11-12T01:00:00Z",
+        "date": "2017-03-10T00:00:00Z",
+        "type": "EVIDENCE_RECEIVED",
         "placeholder": {
-          "date": "2016-11-30T00:00:00Z"
-        }
+          "evidenceType": "medical"
+        },
+        "contentKey": "status.evidenceReceived"
+      },
+      {
+        "date": "2017-03-08T00:00:00Z",
+        "type": "APPEAL_RECEIVED",
+        "placeholder": {
+          "dwpResponseDate": "2017-04-12T00:00:00Z"
+        },
+        "contentKey": "status.appealReceived"
       }
     ]
   }

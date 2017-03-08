@@ -3,7 +3,6 @@ const APPEALS_ENDPOINT = (process.env.SSCS_API_URL || 'http://localhost:8080') +
 const HEALTH_ENDPOINT = (process.env.SSCS_API_URL || 'http://localhost:8080') + '/health';
 const TOKEN_ENDPOINT = (process.env.SSCS_API_URL || 'http://localhost:8080') + '/tokens';
 const MOCK_DATA = process.env.SSCS_MOCK_DATA === 'true';
-const SHOW_HEARING_DETAILS = process.env.SHOW_HEARING_DETAILS === 'true';
 
 const STATUSES = {
   APPEAL_RECEIVED: {
@@ -28,7 +27,8 @@ const CONTENT_KEYS = {
   APPEAL_RECEIVED: 'status.appealReceived',
   DWP_RESPOND: 'status.dwpRespond',
   HEARING_BOOKED: 'status.hearingBooked',
-  HEARING: 'status.hearing'
+  HEARING: 'status.hearing',
+  EVIDENCE_RECEIVED: 'status.evidenceReceived'
 };
 
 const CONTENT_SUBKEYS = {
@@ -44,6 +44,5 @@ module.exports = {
   SERVICE_NAME: Object.freeze(SERVICE_NAME),
   HEALTH_ENDPOINT: Object.freeze(HEALTH_ENDPOINT),
   APPEALS_ENDPOINT: Object.freeze(APPEALS_ENDPOINT),
-  TOKEN_ENDPOINT: Object.freeze(TOKEN_ENDPOINT),
-  SHOW_HEARING_DETAILS: Object.freeze(SHOW_HEARING_DETAILS),
+  TOKEN_ENDPOINT: Object.freeze(TOKEN_ENDPOINT)
 };

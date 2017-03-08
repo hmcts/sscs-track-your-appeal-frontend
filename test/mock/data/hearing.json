@@ -1,13 +1,40 @@
 {
   "appeal": {
     "caseReference": "SC123/04/56789",
-    "name": "Jason Mock",
+    "name": "Mr Jason Mock",
     "id": "md400",
     "status": "HEARING",
-    "events": [
+    "latestEvents": [
       {
+        "date": "2017-05-30T00:00:00Z",
+        "type": "HEARING",
         "contentKey": "status.hearing",
-        "date": "2016-11-16T01:00:00Z",
+        "placeholder": {
+          "date": "2016-11-30T14:30:00Z",
+          "requiresDisabledAccess": false,
+          "requiresInterpreter": false,
+          "hasRepresentative": true,
+          "representative": "Mr P. Ashbourne",
+          "addressLine1": "The Old Bakery",
+          "addressLine2": "115 Queens Road",
+          "addressLine3": "Norwich",
+          "postcode": "NR1 3PL"
+        }
+      }
+    ],
+    "historicalEvents": [
+      {
+        "date": "2017-05-03T00:00:00Z",
+        "type": "EVIDENCE_RECEIVED",
+        "placeholder": {
+          "evidenceType": "medical"
+        },
+        "contentKey": "status.evidenceReceived"
+      },
+      {
+        "date": "2017-05-01T00:00:00Z",
+        "type": "HEARING_BOOKED",
+        "contentKey": "status.hearingBooked",
         "placeholder": {
           "date": "2016-11-30T14:30:00Z",
           "requiresDisabledAccess": false,
@@ -21,25 +48,33 @@
         }
       },
       {
-        "contentKey": "status.hearingBooked",
-        "date": "2016-11-15T01:00:00Z",
+        "date": "2017-04-12T00:00:00Z",
+        "type": "EVIDENCE_RECEIVED",
         "placeholder": {
-          "date": "2016-11-30T00:00:00Z"
-        }
+          "evidenceType": "medical"
+        },
+        "contentKey": "status.evidenceReceived"
       },
       {
-        "contentKey": "status.dwpRespond",
-        "date": "2016-11-13T01:00:00Z",
-        "placeholder": {
-          "date": "2016-11-30T00:00:00Z"
-        }
+        "date": "2017-04-10T00:00:00Z",
+        "type": "DWP_RESPOND",
+        "contentKey": "status.dwpRespond"
       },
       {
-        "contentKey": "status.appealReceived",
-        "date": "2016-11-12T01:00:00Z",
+        "date": "2017-03-10T00:00:00Z",
+        "type": "EVIDENCE_RECEIVED",
         "placeholder": {
-          "date": "2016-11-30T00:00:00Z"
-        }
+          "evidenceType": "medical"
+        },
+        "contentKey": "status.evidenceReceived"
+      },
+      {
+        "date": "2017-03-08T00:00:00Z",
+        "type": "APPEAL_RECEIVED",
+        "placeholder": {
+          "dwpResponseDate": "2017-04-12T00:00:00Z"
+        },
+        "contentKey": "status.appealReceived"
       }
     ]
   }

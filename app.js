@@ -66,17 +66,36 @@ function init() {
 
   exp.use((err, req, res, next) => {
     const status =  err.status || err.statusCode || err.responseCode;
+
+    let error = {};
+
     if(status) {
+      error.status = status;
       res.status(status);
     }
-    res.json({
-      responseCode: status? status : "Not applicable, internal error",
-      message: err.message,
-      rawResponse: err.rawResponse,
-      fields: err.fields,
-      name: err.name,
-      stack: err.stack
-    })
+
+    if(err.fields && err.fields.length) {
+      error.fields = err.fields;
+    }
+
+    if(err.message) {
+      error.message = err.message;
+    }
+
+    if(err.rawResponse) {
+      error.rawResponse = err.rawResponse;
+    }
+
+    if(err.name) {
+      error.name = err.name;
+    }
+
+    if(err.stack) {
+      error.stack = err.stack;
+    }
+
+    res.json(error)
+
   });
 
   const srv = exp.listen(process.env.PORT || PORT);

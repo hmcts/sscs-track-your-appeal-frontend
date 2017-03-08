@@ -28,7 +28,7 @@ Claim Expenses
                 <h2 class="heading-medium" id="subsection-title">{{ i18n.common.aboutYourAppeal }}</h2>
                 <nav role="navigation" aria-labelledby="subsection-title">
                     <ul class="font-xsmall">
-                        {% if feature.SHOW_HEARING_DETAILS and (data.status=='HEARING_BOOKED' or data.status=='HEARING') %}
+                        {% if data.status=='HEARING_BOOKED' or data.status=='HEARING' %}
                         <li><a href="/progress/{{data.id}}/hearingdetails">{{ i18n.hearingDetails.checkDetails }}</a></li>
                         {% endif %}
                         <li><a href="/progress/{{data.id}}/abouthearing">{{ i18n.hearing.expectations.title }}</a></li>
