@@ -74,20 +74,28 @@ describe('I18nHelper', () => {
 
     before(() => appeal.historicalEvents.forEach(event => I18nHelper.setHeadingOnEvent(event)));
 
+    it("should set the heading to 'Evidence Received' when the contentKey is defined as status.evidenceReceived", () => {
+      expect(appeal.historicalEvents[0].heading).to.equal('Evidence Received');
+    });
+
     it("should set the heading to 'Hearing booked' when the contentKey is defined as status.hearingBooked", () => {
-      expect(appeal.historicalEvents[0].heading).to.equal('Hearing booked');
+      expect(appeal.historicalEvents[1].heading).to.equal('Hearing booked');
     });
 
     it("should set the heading to 'Evidence Received' when the contentKey is defined as status.evidenceReceived", () => {
-      expect(appeal.historicalEvents[1].heading).to.equal('Evidence Received');
+      expect(appeal.historicalEvents[2].heading).to.equal('Evidence Received');
     });
 
     it("should set the heading to 'DWP response' when the contentKey is defined as status.dwpRespond", () => {
-      expect(appeal.historicalEvents[2].heading).to.equal('DWP response');
+      expect(appeal.historicalEvents[3].heading).to.equal('DWP response');
+    });
+
+    it("should set the heading to 'Evidence Received' when the contentKey is defined as status.evidenceReceived", () => {
+      expect(appeal.historicalEvents[4].heading).to.equal('Evidence Received');
     });
 
     it("should set the heading to 'Appeal received' when the contentKey is defined as status.appealReceived", () => {
-      expect(appeal.historicalEvents[3].heading).to.equal('Appeal received');
+      expect(appeal.historicalEvents[5].heading).to.equal('Appeal received');
     });
 
   });
@@ -96,25 +104,35 @@ describe('I18nHelper', () => {
 
     before(() => appeal.historicalEvents.forEach(event => I18nHelper.setRenderedContentOnEvent(event)));
 
-    it('should set the renderedContent property when the contentKey is defined as status.hearingBooked', () => {
-      expect(appeal.historicalEvents[0].renderedContent[0]).to.equal('A hearing has been booked for your appeal');
+    it('should set the renderedContent property when the contentKey is defined as status.evidenceReceived', () => {
+      expect(appeal.historicalEvents[0].renderedContent[0]).to.equal('The medical evidence you sent was received by us on 03 May 2017');
       expect(appeal.historicalEvents[0].renderedContent.length).to.equal(1);
     });
 
-    it('should set the renderedContent property when the contentKey is defined as status.evidenceReceived', () => {
-      expect(appeal.historicalEvents[1].renderedContent[0]).to.equal('The medical evidence you sent was received by us on 10 April 2017');
+    it('should set the renderedContent property when the contentKey is defined as status.hearingBooked', () => {
+      expect(appeal.historicalEvents[1].renderedContent[0]).to.equal('A hearing has been booked for your appeal');
       expect(appeal.historicalEvents[1].renderedContent.length).to.equal(1);
     });
 
+    it('should set the renderedContent property when the contentKey is defined as status.evidenceReceived', () => {
+      expect(appeal.historicalEvents[2].renderedContent[0]).to.equal('The medical evidence you sent was received by us on 12 April 2017');
+      expect(appeal.historicalEvents[2].renderedContent.length).to.equal(1);
+    });
+
     it('should set the renderedContent property when the contentKey is defined as status.dwpRespond', () => {
-      expect(appeal.historicalEvents[2].renderedContent[0]).to.equal('The DWP have written a response to your ESA benefit appeal...');
-      expect(appeal.historicalEvents[2].renderedContent[1]).to.equal('We’re now in the process of booking a hearing for your appeal...');
-      expect(appeal.historicalEvents[2].renderedContent.length).to.equal(2);
+      expect(appeal.historicalEvents[3].renderedContent[0]).to.equal('The DWP have written a response to your ESA benefit appeal...');
+      expect(appeal.historicalEvents[3].renderedContent[1]).to.equal('We’re now in the process of booking a hearing for your appeal...');
+      expect(appeal.historicalEvents[3].renderedContent.length).to.equal(2);
+    });
+
+    it('should set the renderedContent property when the contentKey is defined as status.evidenceReceived', () => {
+      expect(appeal.historicalEvents[4].renderedContent[0]).to.equal('The medical evidence you sent was received by us on 10 March 2017');
+      expect(appeal.historicalEvents[4].renderedContent.length).to.equal(1);
     });
 
     it('should set the renderedContent property when the contentKey is defined as status.appealReceived', () => {
-      expect(appeal.historicalEvents[3].renderedContent[0]).to.equal('DWP should respond by respond: 05 April 2017');
-      expect(appeal.historicalEvents[3].renderedContent.length).to.equal(1);
+      expect(appeal.historicalEvents[5].renderedContent[0]).to.equal('DWP should respond by respond: 12 April 2017');
+      expect(appeal.historicalEvents[5].renderedContent.length).to.equal(1);
     });
 
   });
@@ -125,14 +143,9 @@ describe('I18nHelper', () => {
       I18nHelper.setRenderedContentOnEvent(event);
     }));
 
-    it('should set the renderedContent property when the contentKey is defined as status.evidenceReceived', () => {
-      expect(appeal.latestEvents[0].renderedContent[0]).to.equal('The medical evidence you sent was received by us on 10 June 2017');
-      expect(appeal.latestEvents[0].renderedContent.length).to.equal(1);
-    });
-
     it('should set the renderedContent property when the contentKey is defined as status.hearing', () => {
-      expect(appeal.latestEvents[1].renderedContent[0]).to.equal('Hearing date: 30 November 2016.');
-      expect(appeal.latestEvents[1].renderedContent.length).to.equal(1);
+      expect(appeal.latestEvents[0].renderedContent[0]).to.equal('Hearing date: 30 November 2016.');
+      expect(appeal.latestEvents[0].renderedContent.length).to.equal(1);
     });
 
   });
@@ -197,14 +210,20 @@ describe('I18nHelper', () => {
 
   describe('Calling the getEventWithMatchingContentKey() function passing the latestEvents array', () => {
 
-    it('should filter out the status.hearing event from the latestEvents array', () => {
-      const hearingEvent = I18nHelper.getEventWithMatchingContentKey(appeal.latestEvents, CONTENT_KEYS.HEARING);
-      expect(hearingEvent.contentKey).to.equal(CONTENT_KEYS.HEARING);
+    let hearingBooked;
+
+    before(() => {
+      hearingBooked = require('test/mock/data/hearingBooked.json').appeal;
     });
 
     it('should filter out the status.evidenceReceived from the latestEvents array', () => {
-      const evidenceReceivedEvent = I18nHelper.getEventWithMatchingContentKey(appeal.latestEvents, CONTENT_KEYS.EVIDENCE_RECEIVED);
+      const evidenceReceivedEvent = I18nHelper.getEventWithMatchingContentKey(hearingBooked.latestEvents, CONTENT_KEYS.EVIDENCE_RECEIVED);
       expect(evidenceReceivedEvent.contentKey).to.equal(CONTENT_KEYS.EVIDENCE_RECEIVED);
+    });
+
+    it('should filter out the status.hearingBooked event from the latestEvents array', () => {
+      const hearingBookedEvent = I18nHelper.getEventWithMatchingContentKey(hearingBooked.latestEvents, CONTENT_KEYS.HEARING_BOOKED);
+      expect(hearingBookedEvent.contentKey).to.equal(CONTENT_KEYS.HEARING_BOOKED);
     });
 
   });

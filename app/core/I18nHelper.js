@@ -8,7 +8,7 @@ const ADDRESS_LINE = 'addressLine';
 class I18nHelper {
 
   static setHeadingAndRenderedContentOnEvents(events) {
-    events = events ? events : [];
+    events = events || [];
     events.forEach(event => {
       I18nHelper.setHeadingOnEvent(event);
       I18nHelper.setRenderedContentOnEvent(event);
@@ -16,7 +16,7 @@ class I18nHelper {
   }
 
   static setRenderedContentOnEvents(events) {
-    events = events ? events : [];
+    events = events || [];
     events.forEach(event => {
       I18nHelper.setRenderedContentOnEvent(event);
     });
