@@ -16,7 +16,7 @@ describe('I18nHelper', () => {
         "heading": "DWP response",
         "content": [
           "The DWP have written a response to your ESA benefit appeal...",
-          "We’re now in the process of booking a hearing for your appeal..."
+          "We’re now in the process of booking a hearing... {{hearingContactDate|formatDate}}"
         ]
       },
       "hearingBooked": {
@@ -121,7 +121,7 @@ describe('I18nHelper', () => {
 
     it('should set the renderedContent property when the contentKey is defined as status.dwpRespond', () => {
       expect(appeal.historicalEvents[3].renderedContent[0]).to.equal('The DWP have written a response to your ESA benefit appeal...');
-      expect(appeal.historicalEvents[3].renderedContent[1]).to.equal('We’re now in the process of booking a hearing for your appeal...');
+      expect(appeal.historicalEvents[3].renderedContent[1]).to.equal('We’re now in the process of booking a hearing... 24 May 2017');
       expect(appeal.historicalEvents[3].renderedContent.length).to.equal(2);
     });
 
@@ -165,7 +165,7 @@ describe('I18nHelper', () => {
     it('should retrieve the content when using the status.dwpRespond.content key', () => {
       const content = I18nHelper.getContent(mockedContent, 'status.dwpRespond.content');
       expect(content[0]).to.equal('The DWP have written a response to your ESA benefit appeal...');
-      expect(content[1]).to.equal('We’re now in the process of booking a hearing for your appeal...');
+      expect(content[1]).to.equal('We’re now in the process of booking a hearing... {{hearingContactDate|formatDate}}');
     });
 
     it('should retrieve the content when using the status.appealReceived.content key', () => {

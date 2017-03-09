@@ -8,7 +8,7 @@
       "heading": "DWP response",
       "content": [
         "The DWP have written a response to your ESA benefit appeal. They should have sent you a copy in the post.",
-        "We’re now in the process of booking a hearing for your appeal. We’ll contact you by 8 May 2017 with the details."
+        "We’re now in the process of booking a hearing for your appeal. We’ll contact you by {{hearingContactDate|formatDate}} with the details."
       ]
     },
     "hearingBooked": {
