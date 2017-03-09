@@ -16,7 +16,10 @@
       {
         "date": "2017-04-10T00:00:00Z",
         "type": "DWP_RESPOND",
-        "contentKey": "status.dwpRespond"
+        "contentKey": "status.dwpRespond",
+        "placeholder": {
+          "hearingContactDate": "2017-05-24T00:00:00Z"
+        }
       }
     ],
     "historicalEvents": [
