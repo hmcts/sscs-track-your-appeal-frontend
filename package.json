@@ -36,9 +36,7 @@
     "moment": "2.17.1",
     "nunjucks": "2.5.2",
     "serve-favicon": "2.3.0",
-    "superagent": "^3.3.2"
-  },
-  "devDependencies": {
+    "superagent": "^3.3.2",
     "chai": "^3.5.0",
     "codeceptjs": "^0.4.12",
     "crypto-js": "^3.1.9-1",
