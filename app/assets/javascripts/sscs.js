@@ -1,27 +1,18 @@
-function ShowHideUpdates() {
+function ViewHideUpdates() {
   let self = this;
 
   self.toggleUpdates = function () {
-    let $updatesContainer = $('.updates-container');
-    let $i = $('.updates-toggle i');
-    $i.on('click', function () {
-      let $this = $(this);
-      if ($this.hasClass('fa-caret-right')) {
-        $this.removeClass('fa-caret-right');
-        $this.addClass('fa-caret-down');
-        $this.find('span').text('Hide previous updates');
-        $updatesContainer.css('display', 'block');
-      } else {
-        $this.removeClass('fa-caret-down');
-        $this.addClass('fa-caret-right');
-        $this.find('span').text('View previous updates');
-        $updatesContainer.css('display', 'none');
-      }
+    let $summary = $('.track-your-appeal .events details summary ');
+    $summary.on('click', function () {
+      let $span = $(this).find('span');
+      $span.text() === 'View previous updates' ?
+        $span.text('Hide previous updates') :
+        $span.text('View previous updates');
     })
   }
 }
 
 $(document).ready(function () {
-  let showHideUpdates = new ShowHideUpdates();
-  showHideUpdates.toggleUpdates();
+  let viewHideUpdates = new ViewHideUpdates();
+  viewHideUpdates.toggleUpdates();
 });

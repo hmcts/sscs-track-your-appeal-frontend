@@ -75,7 +75,7 @@ Track your Appeal
 
             </section>
 
-            <div class="updates">
+            <div class="events">
 
                 <h2 class="heading-small">{{ i18n.common.latestUpdate }}</h2>
                 {% for latestEvent in data.latestEvents | reverse %}
@@ -89,18 +89,19 @@ Track your Appeal
                 {% endif %}
 
                 {% if data.historicalEvents %}
-                <p class="updates-toggle">
-                    <i class="fa fa-caret-right" aria-label="View previous updates">
-                        <span>{{ i18n.common.viewAllUpdates }}</span>
-                    </i>
-                </p>
-                <div class="updates-container">
+                <details>
+
+                    <summary>
+                        <span class="summary">View previous updates</span>
+                    </summary>
+
                     {% for historicalEvent in data.historicalEvents %}
-                    <div class="update">
+                    <div>
                         <h3 class="bold-small">
                             {{ historicalEvent.heading }}
                             <span class="form-hint">{{ historicalEvent.date | formatDate }}</span>
                         </h3>
+
                         {% for content in historicalEvent.renderedContent %}
                         <p>{{ content }}</p>
                         {% endfor %}
@@ -108,10 +109,10 @@ Track your Appeal
                         {% if historicalEvent.contentKey === 'status.hearingBooked' %}
                         <a href="/progress/{{data.id}}/hearingdetails">{{ i18n.hearingDetails.checkDetails }}</a>
                         {% endif %}
-
                     </div>
                     {% endfor %}
-                </div>
+
+                </details>
                 {% endif %}
 
             </div>
