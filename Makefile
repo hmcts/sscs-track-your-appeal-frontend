@@ -25,7 +25,7 @@ endif
 
 test-end-to-end:
 ifdef E2E_OUTPUT_DIR
-	npm run smoke-test -- --reporter mochaawesome
+	npm run smoke-test -- --reporter mochawesome
 else
 	npm run smoke-test
 endif
