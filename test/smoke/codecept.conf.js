@@ -23,7 +23,6 @@ exports.config = {
   'mocha': {
     'reporterOptions': {
       'reportDir': process.env.E2E_OUTPUT_DIR || './testResults',
-      'reportName': 'mochawesome',
       'inlineAssets': true
     }
   },
