@@ -8,12 +8,11 @@
   },
   "scripts": {
     "start": "cross-env NODE_PATH=. node server.js",
-    "test": "cross-env NODE_PATH=. SSCS_MOCK_DATA=true PORT=3021 mocha test/unit/* --reporter spec",
     "dev": "cross-env NODE_PATH=. LOG_OUTPUT=multi grunt",
     "setup": "cross-env NODE_PATH=. grunt generate-assets",
+    "test": "cross-env NODE_PATH=. SSCS_MOCK_DATA=true PORT=3021 mocha test/unit/* --reporter spec",
+    "coverage": "cross-env NODE_PATH=. PORT=3022 SSCS_MOCK_DATA=true istanbul cover _mocha --dir test/coverage/html test/unit/**",
     "smoke-test": "cross-env NODE_PATH=. codeceptjs run test/smoke/ --steps",
-    "coverage-html": "cross-env NODE_PATH=. PORT=3022 SSCS_MOCK_DATA=true istanbul cover _mocha --dir test/coverage/html test/unit/**",
-    "coverage-cobertura": "cross-env NODE_PATH=. PORT=3022 SSCS_MOCK_DATA=true istanbul cover _mocha --dir test/coverage/cobertura test/unit/* --report cobertura",
     "pa11y": "cross-env NODE_PATH=. SSCS_MOCK_DATA=true LOG_LEVEL=OFF mocha test/accessibility -r test/chai-sinon.js --reporter spec --recursive --timeout 10000",
     "eslint": "cross-env NODE_PATH=. eslint .",
     "security-checks": "cross-env NODE_PATH=. grunt security-checks"
