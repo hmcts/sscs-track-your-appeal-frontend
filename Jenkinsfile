@@ -21,12 +21,14 @@ stage("Unit tests") {
 stage("Code coverage") {
     node {
         sh 'make test-coverage'
-        publishHTML(target: [
+        publishHTML([
+            allowMissing: false,
             alwaysLinkToLastBuild: true,
-            reportDir:             "test/coverage/html/lcov-report",
-            reportFiles:           "index.html",
-            reportName:            "Code Coverage Report"
-      ])
+            keepAll: false,
+            reportDir: 'test/coverage/html/lcov-report',
+            reportFiles: 'index.html',
+            reportName: 'HTML Report'
+        ])
     }
 }
 
