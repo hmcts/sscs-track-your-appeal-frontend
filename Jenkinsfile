@@ -20,7 +20,7 @@ stage("Unit tests") {
 
 stage("Code coverage") {
     node {
-        sh 'make coverage'
+        sh 'make test-coverage'
         publishHTML(target: [
             alwaysLinkToLastBuild: true,
             reportDir:             "test/coverage/html/lcov-report",
