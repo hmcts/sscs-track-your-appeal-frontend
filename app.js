@@ -1,3 +1,4 @@
+const logging = require('nodejs-logging');
 const express = require('express');
 const nunjucks = require('express-nunjucks');
 const favicon = require('serve-favicon');
@@ -15,6 +16,14 @@ const TEST_PORT = 3021;
 function init() {
 
   const exp = express();
+
+  logging.config({
+    microservice: 'sscs-track-your-appeal',
+    team: 'SSCS',
+    environment: process.env.NODE_ENV
+  });
+
+  const logger = logging.getLogger('app.js');
 
   exp.set('view engine', 'html');
   exp.set('views', [
@@ -101,7 +110,7 @@ function init() {
   const srv = exp.listen(process.env.PORT || PORT);
 
   if(srv.address().port !== TEST_PORT) {
-    console.log(`Express server started on port ${srv.address().port}`);
+    logger.info(`Express server started on port ${srv.address().port}`);
   }
 
   return {exp, srv, njk};
