@@ -25,7 +25,7 @@ describe('I18nHelper', () => {
       },
       "hearing": {
         "heading": "Hearing",
-        "content": "Hearing date: {{date|formatDate}}."
+        "content": "Hearing date: {{hearingDate|formatDate}}."
       },
       "evidenceReceived": {
         "heading": "Evidence Received",
@@ -154,7 +154,7 @@ describe('I18nHelper', () => {
 
     it('should retrieve the content when using the status.hearing.content key', () => {
       const content = I18nHelper.getContent(mockedContent, 'status.hearing.content');
-      expect(content).to.equal('Hearing date: {{date|formatDate}}.');
+      expect(content).to.equal('Hearing date: {{hearingDate|formatDate}}.');
     });
 
     it('should retrieve the content when using the status.hearingBooked.content key', () => {
@@ -238,10 +238,9 @@ describe('I18nHelper', () => {
 
     it('should return an event that contains the address in a new format', () => {
       const newHearingEvt = I18nHelper.copyEventAndSetHearingAddress(hearingEvt);
-      expect(newHearingEvt.address.lines.length).to.equal(3);
+      expect(newHearingEvt.address.lines.length).to.equal(2);
       expect(newHearingEvt.address.lines[0]).to.equal(hearingEvt.placeholder.addressLine1);
       expect(newHearingEvt.address.lines[1]).to.equal(hearingEvt.placeholder.addressLine2);
-      expect(newHearingEvt.address.lines[2]).to.equal(hearingEvt.placeholder.addressLine3);
       expect(newHearingEvt.address.postcode).to.equal(hearingEvt.placeholder.postcode);
     });
 
@@ -258,10 +257,9 @@ describe('I18nHelper', () => {
 
     it('should return an event that contains the address in a new format', () => {
       const newHearingEvt = I18nHelper.copyEventAndSetHearingAddress(hearingBookedEvt);
-      expect(newHearingEvt.address.lines.length).to.equal(3);
+      expect(newHearingEvt.address.lines.length).to.equal(2);
       expect(newHearingEvt.address.lines[0]).to.equal(hearingBookedEvt.placeholder.addressLine1);
       expect(newHearingEvt.address.lines[1]).to.equal(hearingBookedEvt.placeholder.addressLine2);
-      expect(newHearingEvt.address.lines[2]).to.equal(hearingBookedEvt.placeholder.addressLine3);
       expect(newHearingEvt.address.postcode).to.equal(hearingBookedEvt.placeholder.postcode);
     });
 
