@@ -58,7 +58,6 @@
     "mockery": "2.0.0",
     "nightmare": "^2.8.1",
     "nightmare-upload": "^0.1.1",
-    "nodejs-logging": "git+ssh://git@git.reform:reform/nodejs-logging.git",
     "nsp": "^2.6.2",
     "pa11y": "^4.3.0",
     "request-json": "^0.6.1",
