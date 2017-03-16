@@ -23,9 +23,9 @@ stage("Code coverage") {
         sh 'make testcoverage'
         publishHTML([
             allowMissing: false,
-            alwaysLinkToLastBuild: false,
+            alwaysLinkToLastBuild: true,
             keepAll: false,
-            reportDir: './test/coverage/html/lcov-report/',
+            reportDir: './test/coverage/html',
             reportFiles: 'index.html',
             reportName: 'Code Coverage Report'
         ])
