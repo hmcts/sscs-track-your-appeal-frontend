@@ -13,8 +13,7 @@ test-unit:
 	npm test
 
 test-coverage:
-	npm run coverage-html
-	npm run coverage-cobertura
+	npm run coverage
 
 test-security:
 	npm run security-checks
