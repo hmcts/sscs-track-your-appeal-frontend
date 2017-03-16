@@ -18,6 +18,12 @@ stage("Unit tests") {
     }
 }
 
+stage("Code coverage") {
+    node {
+        sh 'make testcoverage'
+    }
+}
+
 stage("Security checks") {
     node {
         sh "make test-security"
