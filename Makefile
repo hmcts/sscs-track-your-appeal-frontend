@@ -12,6 +12,10 @@ install:
 test-unit:
 	npm test
 
+test-coverage:
+	npm run coverage-html
+	npm run coverage-cobertura
+
 test-security:
 	npm run security-checks
 
@@ -36,3 +40,4 @@ securitychecks: test-security
 
 accessibilitytest: test-accessibility
 
+testcoverage: test-coverage
