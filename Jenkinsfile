@@ -25,7 +25,7 @@ stage("Code coverage") {
             allowMissing: false,
             alwaysLinkToLastBuild: true,
             keepAll: false,
-            reportDir: 'test/coverage/html',
+            reportDir: 'test/coverage/html/lcov-report',
             reportFiles: 'index.html',
             reportName: 'HTML Report'
         ])
