@@ -10,14 +10,9 @@
         "type": "HEARING",
         "contentKey": "status.hearing",
         "placeholder": {
-          "date": "2016-11-30T14:30:00Z",
-          "requiresDisabledAccess": false,
-          "requiresInterpreter": false,
-          "hasRepresentative": true,
-          "representative": "Mr P. Ashbourne",
+          "hearingDate": "2016-11-30T14:30:00Z",
           "addressLine1": "The Old Bakery",
           "addressLine2": "115 Queens Road",
-          "addressLine3": "Norwich",
           "postcode": "NR1 3PL"
         }
       }
@@ -36,14 +31,9 @@
         "type": "HEARING_BOOKED",
         "contentKey": "status.hearingBooked",
         "placeholder": {
-          "date": "2016-11-30T14:30:00Z",
-          "requiresDisabledAccess": false,
-          "requiresInterpreter": false,
-          "hasRepresentative": true,
-          "representative": "Mr P. Ashbourne",
+          "hearingDate": "2016-11-30T14:30:00Z",
           "addressLine1": "The Old Bakery",
           "addressLine2": "115 Queens Road",
-          "addressLine3": "Norwich",
           "postcode": "NR1 3PL"
         }
       },
