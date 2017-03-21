@@ -9,102 +9,93 @@ const os = require('os');
 const path = require('path');
 const helmet = require('helmet');
 
+const app = express();
+
 const PORT = 3000;
-const TEST_PORT = 3021;
+app.set('port', process.env.PORT || PORT);
 
-function init() {
+// Tests
+app.set('portFrom', PORT);
+app.set('portTo', PORT + 50);
 
-  const exp = express();
+app.set('view engine', 'html');
+app.set('views', [
+  __dirname + '/lib/',
+  __dirname + '/app/views',
+  __dirname + '/app/views/notifications'
+]);
 
-  exp.set('view engine', 'html');
-  exp.set('views', [
-    __dirname + '/lib/',
-    __dirname + '/app/views',
-    __dirname + '/app/views/notifications'
-  ]);
+// Protect against some well known web vulnerabilities
+// by setting HTTP headers appropriately.
+app.use(helmet());
 
-  const njk = nunjucks(exp, {
-    autoescape: true,
-    watch: true,
-    noCache: false,
-    filters: NunjucksUtils.filters
-  });
+// Sets "X-XSS-Protection: 1; mode=block".
+app.use(helmet.xssFilter({ setOnOldIE: true }));
 
-  NunjucksUtils.env = njk.env;
+// Disallow search index indexing
+app.use((req, res, next) => {
+  // Setting headers stops pages being indexed even if indexed pages link to them.
+  res.setHeader('X-Robots-Tag', 'noindex');
+  res.setHeader('X-Served-By', os.hostname());
+  next();
+});
 
-  // Protect against some well known web vulnerabilities
-  // by setting HTTP headers appropriately.
-  exp.use(helmet());
+NunjucksUtils.env = nunjucks(app, {
+  autoescape: true,
+  watch: true,
+  noCache: false,
+  filters: NunjucksUtils.filters
+}).env;
 
-  // Sets "X-XSS-Protection: 1; mode=block".
-  exp.use(helmet.xssFilter({ setOnOldIE: true }));
+app.use('/public', express.static(__dirname + '/public'));
+app.use('/public', express.static(__dirname + '/govuk_modules/govuk_template/assets'));
+app.use('/public', express.static(__dirname + '/govuk_modules/govuk_frontend_toolkit'));
+app.use('/public/images/icons', express.static(__dirname + '/govuk_modules/govuk_frontend_toolkit/images'));
 
-  // Disallow search index indexing
-  exp.use((req, res, next) => {
-    // Setting headers stops pages being indexed even if indexed pages link to them.
-    res.setHeader('X-Robots-Tag', 'noindex');
-    res.setHeader('X-Served-By', os.hostname());
-    next();
-  });
+// Elements refers to icon folder instead of images folder
+app.use(favicon(path.join(__dirname, 'govuk_modules', 'govuk_template', 'assets', 'images', 'favicon.ico')));
 
-  exp.use('/public', express.static(__dirname + '/public'));
-  exp.use('/public', express.static(__dirname + '/govuk_modules/govuk_template/assets'));
-  exp.use('/public', express.static(__dirname + '/govuk_modules/govuk_frontend_toolkit'));
-  exp.use('/public/images/icons', express.static(__dirname + '/govuk_modules/govuk_frontend_toolkit/images'));
+// Support for parsing data in POSTs
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
-  // Elements refers to icon folder instead of images folder
-  exp.use(favicon(path.join(__dirname, 'govuk_modules', 'govuk_template', 'assets', 'images', 'favicon.ico')));
+app.use(locals);
+app.use('/', routes);
 
-  // Support for parsing data in POSTs
-  exp.use(bodyParser.json());
-  exp.use(bodyParser.urlencoded({
-    extended: true
-  }));
+app.use((err, req, res, next) => {
+  const status =  err.status || err.statusCode || err.responseCode;
 
-  exp.use(locals);
-  exp.use('/', routes);
+  let error = {};
 
-  exp.use((err, req, res, next) => {
-    const status =  err.status || err.statusCode || err.responseCode;
-
-    let error = {};
-
-    if(status) {
-      error.status = status;
-      res.status(status);
-    }
-
-    if(err.fields && err.fields.length) {
-      error.fields = err.fields;
-    }
-
-    if(err.message) {
-      error.message = err.message;
-    }
-
-    if(err.rawResponse) {
-      error.rawResponse = err.rawResponse;
-    }
-
-    if(err.name) {
-      error.name = err.name;
-    }
-
-    if(err.stack) {
-      error.stack = err.stack;
-    }
-
-    res.json(error)
-
-  });
-
-  const srv = exp.listen(process.env.PORT || PORT);
-
-  if(srv.address().port !== TEST_PORT) {
-    console.log(`Express server started on port ${srv.address().port}`);
+  if(status) {
+    error.status = status;
+    res.status(status);
   }
 
-  return {exp, srv, njk};
-}
+  if(err.fields && err.fields.length) {
+    error.fields = err.fields;
+  }
 
-module.exports = init;
+  if(err.message) {
+    error.message = err.message;
+  }
+
+  if(err.rawResponse) {
+    error.rawResponse = err.rawResponse;
+  }
+
+  if(err.name) {
+    error.name = err.name;
+  }
+
+  if(err.stack) {
+    error.stack = err.stack;
+  }
+
+  res.json(error)
+
+});
+
+module.exports = app;
