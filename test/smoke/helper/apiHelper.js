@@ -70,6 +70,10 @@ class APIHelper {
     return this.createEvent(appealId, config.hearing_event_post_data);
   }
 
+  createEvidenceReceivedEvent(appealId, n) {
+    return this.createEvent(appealId, config['evidence_received_' + n + '_event_post_data']);
+  }
+
   rePromise(promise, callback) {
     return new Promise((resolve, reject) => {
       promise.then((result, error) => {
