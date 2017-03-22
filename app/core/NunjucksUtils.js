@@ -25,15 +25,23 @@ const FILTERS = {
       locale.hearingDetails.notNeeded;
   }
 };
+
 let nunjucksEnv;
 
 class NunjucksUtils {
+
+  static get env() {
+    return nunjucksEnv;
+  }
 
   static set env(value) {
     nunjucksEnv = value;
   }
 
   static renderString(str, placeholder) {
+    if(!nunjucksEnv) {
+      throw Error('The nunjucksEnv has not been set!');
+    }
     return nunjucksEnv.renderString(str, placeholder);
   }
 

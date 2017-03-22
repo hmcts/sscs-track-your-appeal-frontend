@@ -1,8 +1,9 @@
 const {expect} = require('test/chai-sinon');
 const mockery = require('mockery');
-const application = require('app');
+const testServer = require('test/testServer');
 const {CONTENT_KEYS} = require('app/config');
 const appeal = require('test/mock/data/hearing.json').appeal;
+const nunjucksEnv = require('app/core/NunjucksUtils').env;
 
 describe('I18nHelper', () => {
 
@@ -41,15 +42,10 @@ describe('I18nHelper', () => {
   };
 
   let I18nHelper;
-  let app;
-  let nunjucksEnv;
 
   before(() => {
-    app = application();
-    nunjucksEnv = app.njk.env;
 
     // Register and enable mockery.
-    mockery.registerAllowable('app/core/I18nHelper');
     mockery.registerAllowable('lodash');
     mockery.registerMock('app/assets/locale/en', mockedContent);
     mockery.registerMock('app/core/NunjucksUtils', MockNunjucksUtils);
@@ -67,7 +63,6 @@ describe('I18nHelper', () => {
     mockery.disable();
     mockery.deregisterAll();
     I18nHelper = undefined;
-    app.srv.close();
   });
 
   describe('Calling the setHeadingOnEvent() function on all historicalEvents', () => {
@@ -139,9 +134,7 @@ describe('I18nHelper', () => {
 
   describe('Calling the setRenderedContentOnEvent() function on all latestEvents', () => {
 
-    before(() => appeal.latestEvents.forEach(function(event) {
-      I18nHelper.setRenderedContentOnEvent(event);
-    }));
+    before(() => appeal.latestEvents.forEach((event) => { I18nHelper.setRenderedContentOnEvent(event); }));
 
     it('should set the renderedContent property when the contentKey is defined as status.hearing', () => {
       expect(appeal.latestEvents[0].renderedContent[0]).to.equal('Hearing date: 30 November 2016.');

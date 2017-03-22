@@ -1,28 +1,23 @@
-const application = require('app');
 const {expect} = require('test/chai-sinon');
+const testServer = require('test/testServer');
 
 describe('Application initialisation', () => {
 
-  const app = application();
+  let httpServer;
 
-  after(() => {
-    app.srv.close();
+  before((done) => {
+    testServer.connect().then((server) => {
+      httpServer = server;
+      done();
+    })
   });
 
-  it('should define an express app that emits events', () => {
-    expect(app.exp.constructor.name).to.equal('EventEmitter');
+  after(() => {
+    httpServer.close();
   });
 
   it('should define an express http.Server', () => {
-    expect(app.srv.constructor.name).to.equal('Server');
-  });
-
-  it('should define a nunjucks environment', () => {
-    expect(app.njk.env).to.be.defined;
-  });
-
-  it('should define context processors', () => {
-    expect(app.njk.ctxProc).to.be.defined;
+    expect(httpServer.constructor.name).to.equal('Server');
   });
 
 });
