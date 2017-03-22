@@ -6,3 +6,4 @@ test/coverage
 govuk_modules/*
 npm-debug.log
 lib/govuk_template.html
+testResults
