@@ -29,6 +29,10 @@ class postAppealHelper extends Helper {
       });
   };
 
+  postAppealSubscription() {
+    return this.apiHelper.createDefaultSubscription(this.appeal_id);
+  }
+
   postDWPResponseEvent() {
     this.getAppealId();
     return this.apiHelper.createDWPRespondEvent(this.appeal_id);
