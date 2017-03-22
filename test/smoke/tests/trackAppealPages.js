@@ -1,8 +1,8 @@
 Feature('Track your Appeal Page Tests');
 
 Scenario('verify appellant details after appeal received ', function*(I, Properties) {
-  let appeal_id = yield I.postAppealReceivedEvent();
-  I.amOnPage('/progress/' + appeal_id + '/trackyourappeal');
+  let result = yield I.postAppealReceivedEvent();
+  I.amOnPage('/progress/' + result.appealId + '/trackyourappeal');
   I.see('MR Smoke Test');
   I.see('Appeal reference number: test/track/case/001', Properties.fields.form_hint_css_path);
   I.see('Appeal received. This is the current status of your appeal', Properties.fields.appeal_progbar_css_path);
@@ -10,8 +10,8 @@ Scenario('verify appellant details after appeal received ', function*(I, Propert
 });
 
 Scenario('verify appellant details after DWP response received', function*(I, Properties) {
-  let appeal_id = yield I.postDWPResponseEvent();
-  I.amOnPage('/progress/' + appeal_id + '/trackyourappeal');
+  let result = yield I.postDWPResponseEvent();
+  I.amOnPage('/progress/' + result.appealId + '/trackyourappeal');
   I.see('MR Smoke Test');
   I.see('Appeal reference number: test/track/case/001', Properties.fields.form_hint_css_path);
   I.see('Appeal received. This step is complete.', Properties.fields.appeal_progbar_css_path);
@@ -23,8 +23,8 @@ Scenario('verify appellant details after DWP response received', function*(I, Pr
 });
 
 Scenario('verify appellant details after Hearing response received', function*(I, Properties) {
-  let appeal_id = yield I.postHearingBookedEvent();
-  I.amOnPage('/progress/' + appeal_id + '/trackyourappeal');
+  let result = yield I.postHearingBookedEvent();
+  I.amOnPage('/progress/' + result.appealId + '/trackyourappeal');
   I.see('MR Smoke Test');
   I.see('Appeal reference number: test/track/case/001', Properties.fields.form_hint_css_path);
   I.see('Appeal received. This step is complete.', Properties.fields.appeal_progbar_css_path);
@@ -39,8 +39,8 @@ Scenario('verify appellant details after Hearing response received', function*(I
 });
 
 Scenario('verify appellant details after Hearing booked', function*(I, Properties) {
-  let appeal_id = yield I.postHearingEvent();
-  I.amOnPage('/progress/' + appeal_id + '/trackyourappeal');
+  let result = yield I.postHearingEvent();
+  I.amOnPage('/progress/' + result.appealId + '/trackyourappeal');
   I.see('MR Smoke Test');
   I.see('Appeal reference number: test/track/case/001', Properties.fields.form_hint_css_path);
   I.see('Appeal received. This step is complete.', Properties.fields.appeal_progbar_css_path);
