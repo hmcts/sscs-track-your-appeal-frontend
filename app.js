@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const locals = require('app/locals');
 const routes = require('app/routes');
 const NunjucksUtils = require('app/core/NunjucksUtils');
+const ErrorHandling = require('app/core/ErrorHandling');
 const os = require('os');
 const path = require('path');
 const helmet = require('helmet');
@@ -64,38 +65,7 @@ app.use(bodyParser.urlencoded({
 app.use(locals);
 app.use('/', routes);
 
-app.use((err, req, res, next) => {
-  const status =  err.status || err.statusCode || err.responseCode;
-
-  let error = {};
-
-  if(status) {
-    error.status = status;
-    res.status(status);
-  }
-
-  if(err.fields && err.fields.length) {
-    error.fields = err.fields;
-  }
-
-  if(err.message) {
-    error.message = err.message;
-  }
-
-  if(err.rawResponse) {
-    error.rawResponse = err.rawResponse;
-  }
-
-  if(err.name) {
-    error.name = err.name;
-  }
-
-  if(err.stack) {
-    error.stack = err.stack;
-  }
-
-  res.json(error)
-
-});
+app.use(ErrorHandling.handle404);
+app.use(ErrorHandling.handle500);
 
 module.exports = app;

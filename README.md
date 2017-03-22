@@ -4,31 +4,40 @@
  - [node.js](https://nodejs.org) >= v7
  - npm >= v4 (note that npm ships with node.js) 
 
-## Install application dependencies
-    $> npm install
+## Commands
 
-## Generate/copy assets over
+### Install application dependencies and generate assets
+    $> make install
 
-##### Development
+### Run development server
     $> npm run dev
- 
-##### Production
-    $> npm run setup
+
+### Run production server
     $> npm start
 
-## Open a browser including the ID
+### Open a browser including the ID
     http://localhost:3000/progress/id/trackyourappeal 
 
-## Run the unit tests
-    $> npm test
+### Run the tests
+
+#### Unit tests
+    $> make test-unit
+    $> make test-coverage
+
+#### Security checks
+    $> make test-security
+
+#### Accessibility tests
+Pass the `JUNIT_REPORT_PATH` environment variable to use the jenkins reporter.
+
+    $> make test-accessibility
     
-## Run the acceptance tests
-    $> npm run pa11y
+#### Smoke tests
+Ensure environment variable `NOTIFICATION_API_KEY` is set before running smoke tests.
+Pass `E2E_OUTPUT_DIR` environment variable to use mochawesome reporter.
 
-## Run the smoke tests
-- Ensure environment variable NOTIFICATION_API_KEY is set before running smoke tests.
-
-    $> npm run smoke-test
+    $> make test-end-to-end
  
-## Run the security checks
-    $> npm run security-checks
+## Error pages
+- `/_errors/404` HTTP 404 Not found
+- `/_errors/500` HTTP 500 Internal server error

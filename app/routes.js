@@ -196,12 +196,16 @@ router.get('/cookiepolicy', (req, res) => {
   res.render('cookie-policy', {i18n: locale.cookiePolicy, urls});
 });
 
-router.get('/', function (req, res, next) {
-  //console.log(`PATH:${req.url}`);
-  return next({
-    message: `Not found, you probably want ${progressRoot}/:id/trackyourappeal`,
-    responseCode: 404,
-  });
+router.get('/_errors/404', (req, res, next) => {
+  let err = new Error('Not found');
+  err.status = 404;
+  next(err);
+})
+
+router.get('/_errors/500', (req, res, next) => {
+  let err = new Error('Broken');
+  err.status = 500;
+  next(err);
 });
 
 _getData = (appeal) => {

@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+{{ i18n.errors.error500.title }}
+We’re experiencing technical difficulties
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+    {% include "includes/phase_banner_beta.html" %}
+
+    <h1 class="heading-large">{{ i18n.errors.error500.heading }}</h1>
+
+    {% for content in i18n.errors.error500.content %}
+    <p>{{ content }}</p>
+    {% endfor %}
+</main>
+{% endblock %}
