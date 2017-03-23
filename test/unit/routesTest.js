@@ -55,6 +55,12 @@ describe('Node.js application/server', () => {
         .expect(200, done);
     });
 
+    it('should respond to /cookiepolicy route with a HTTP 200:OK', function (done) {
+      request(httpServer)
+        .get('/cookiepolicy')
+        .expect(200, done);
+    });
+
   });
 
   describe('making email notifications route requests which result in a HTTP 200', () => {

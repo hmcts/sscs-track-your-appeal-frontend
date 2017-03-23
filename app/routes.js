@@ -9,6 +9,7 @@ const router = express.Router();
 const progressRoot = '/progress';
 const notificationRoot = '/manage-email-notifications';
 const errors = locale.notifications.email.errors;
+const urls = require('app/urls');
 const EMAIL = {
   CHANGE: 'changeEmailAddress',
   STOP: 'stopEmails',
@@ -189,6 +190,10 @@ router.get('/status', (req, res, next) => {
   HealthService.health().then((health) => {
     res.json(health.body);
   });
+});
+
+router.get('/cookiepolicy', (req, res) => {
+  res.render('cookie-policy', {i18n: locale.cookiePolicy, urls: urls});
 });
 
 router.get('/', function (req, res, next) {

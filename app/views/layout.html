@@ -5,7 +5,9 @@
 {% endblock %}
 
 {% block cookie_message %}
-<p>{{cookieText | safe }}</p>
+<p>{{cookieText | safe }}
+    <a href="/cookiepolicy">{{cookieLink | safe }}</a>
+</p>
 {% endblock %}
 
 {% block header_class %}
