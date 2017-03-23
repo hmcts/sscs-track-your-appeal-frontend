@@ -13,4 +13,4 @@ Make sure the branch has the JIRA number in it (eg. sscs-1111-do-amazing-things)
 - [] Have you run the app and verified it works?
 - [] Does the commit log tell a clear concise story? (If it's one logical change it should be one commit)
 - [] Does it follow our ubiquitous language?
-- [] Does it follow our [good app guidelines](http://git.reform/sscs/readme/master/good-app-guidelins.md)?
+- [] Does it follow our [good app guidelines](http://git.reform/sscs/readme/blob/master/good-app-guidelines.md)?
