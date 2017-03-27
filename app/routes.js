@@ -193,7 +193,7 @@ router.get('/status', (req, res, next) => {
 });
 
 router.get('/cookiepolicy', (req, res) => {
-  res.render('cookie-policy', {i18n: locale.cookiePolicy, urls: urls});
+  res.render('cookie-policy', {i18n: locale.cookiePolicy, urls});
 });
 
 router.get('/', function (req, res, next) {
