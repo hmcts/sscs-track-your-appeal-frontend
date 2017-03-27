@@ -65,6 +65,10 @@ module.exports = function(grunt){
                     cwd: 'govuk_modules/govuk_template/views/layouts/',
                     src: '**',
                     dest: 'lib/'
+                }, {
+                  cwd: 'govuk_modules/govuk_template/assets/javascripts',
+                  src: 'govuk-template.js',
+                  dest: 'public/javascripts'
                 }]
             },
             font_awesome: {

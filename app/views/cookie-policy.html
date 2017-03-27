@@ -1,0 +1,79 @@
+{% from "components/cookie-table.html" import cookieTable %}
+
+{% extends "layout.html" %}
+
+{% block page_title %}
+Cookie Policy
+{% endblock %}
+
+{% block content %}
+
+<main id="content" class="about-hearing" role="main">
+
+    {% include "includes/phase_banner_beta.html" %}
+
+    <div class="grid-row">
+
+        <div class="column-two-thirds">
+
+            <h1 class="heading-xlarge">{{i18n.cookies.title}}</h1>
+
+            <p>{{i18n.cookies.description}}</p>
+
+            <p>{{i18n.cookies.whatAreThey.listHeading}}</p>
+            <ul class="list list-bullet">
+            {% for listItem in i18n.cookies.whatAreThey.list %}
+            <li>{{listItem}}</li>
+            {% endfor %}
+            </ul>
+
+            {% for description in i18n.cookies.whatAreThey.description %}
+            <p>{{description}}</p>
+            {% endfor %}
+
+            <p>{{i18n.cookies.whatAreThey.preLink}}
+                <a href="{{urls.aboutcookies}}" rel="external">{{i18n.cookies.whatAreThey.link}}</a>
+            </p>
+
+            <h2 class="heading-large">{{i18n.howAreTheyUsed.title}}</h2>
+            <h3 class="heading-medium">{{i18n.howAreTheyUsed.subtitle}}</h3>
+
+            <p>{{i18n.howAreTheyUsed.description}}
+                <a href="{{urls.searches}}" rel="external">{{i18n.howAreTheyUsed.descriptionLink}}</a>
+            </p>
+
+            <p>{{i18n.howAreTheyUsed.googleAnalytics.listHeading}}</p>
+            <ul class="list list-bullet">
+                {% for listItem in i18n.howAreTheyUsed.googleAnalytics.list %}
+                <li>{{listItem}}</li>
+                {% endfor %}
+            </ul>
+
+            {% for description in i18n.howAreTheyUsed.googleAnalytics.description %}
+            <p>{{description}}</p>
+            {% endfor %}
+
+            <h3 class="heading-medium">{{i18n.universalAnalytics.title}}</h3>
+            {{ cookieTable( i18n.universalAnalytics.items, i18n.universalAnalytics.columnNames ) }}
+
+            <h3 class="heading-medium">{{i18n.googleAnalytics.title}}</h3>
+            {{ cookieTable( i18n.googleAnalytics.items, i18n.googleAnalytics.columnNames ) }}
+
+            <h3 class="heading-medium">{{i18n.govUkEvents.title}}</h3>
+            {{ cookieTable( i18n.govUkEvents.items, i18n.govUkEvents.columnNames ) }}
+
+            <p class="google-opt-out-link">{{i18n.govUkEvents.preLink}}
+                <a href="{{urls.goolgeOptOut}}" rel="external">{{i18n.govUkEvents.link}}</a>
+            </p>
+
+            <h3 class="heading-medium">{{i18n.ourIntroductoryMessage.title}}</h3>
+            <p>{{i18n.ourIntroductoryMessage.description}}</p>
+            {{ cookieTable( i18n.ourIntroductoryMessage.items, i18n.ourIntroductoryMessage.columnNames ) }}
+
+        </div>
+
+    </div>
+
+</main>
+
+{% endblock %}
