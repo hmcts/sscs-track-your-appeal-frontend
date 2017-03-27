@@ -1,7 +1,13 @@
 Feature('Track your Appeal Page Tests');
 
-Scenario('verify appellant details after appeal received ', function*(I, Properties) {
+Scenario('verify appellant details cannot be seen after appeal received', function*(I, Properties) {
   let result = yield I.postAppealReceivedEvent();
+  I.amOnPage('/progress/' + result.appealId + '/trackyourappeal');
+  I.dontSee('Mr Smoke Test');
+});
+
+Scenario('verify appellant details after subscription', function*(I, Properties) {
+  let result = yield I.postAppealSubscription();
   I.amOnPage('/progress/' + result.appealId + '/trackyourappeal');
   I.see('MR Smoke Test');
   I.see('Appeal reference number: test/track/case/001', Properties.fields.form_hint_css_path);
