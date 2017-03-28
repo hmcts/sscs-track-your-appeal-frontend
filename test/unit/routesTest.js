@@ -1,5 +1,6 @@
 const testServer = require('test/testServer');
 const request = require('supertest');
+const assert  = require('chai').assert;
 
 describe('Node.js application/server', () => {
 
@@ -153,9 +154,28 @@ describe('Node.js application/server', () => {
     it('should respond to an unknown id with a HTTP 404:Not found', function (done) {
       request(httpServer)
         .get('/progress/999/trackyourappeal')
-        .expect(404, done)
+        .expect(404)
+        .end((err, resp) => {
+          if (err) return done(err);
+          assert.include(resp.text, "Sorry, this page could not be found")
+          done();
+        })
     });
 
+  });
+
+  describe('explicitly calling error pages', () => {
+    it('should respond to the 404 url', (done) => {
+      request(httpServer)
+        .get('/_errors/404')
+        .expect(404, done);
+    });
+
+    it('should respond to the 500 url', (done) => {
+      request(httpServer)
+        .get('/_errors/500')
+        .expect(500, done);
+    });
   });
 
 });

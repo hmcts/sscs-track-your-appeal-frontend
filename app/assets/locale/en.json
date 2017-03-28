@@ -382,5 +382,23 @@
         }
       ]
     }
+  },
+  "errors": {
+    "error500": {
+      "title": "Page could not be found",
+      "heading": "Sorry, we're experiencing technical difficulties",
+      "content": [
+        "Please try again in a few minutes.",
+        "Or, if you want an update on your appeal you can call 0300 123 1142."
+      ]
+    },
+    "error404": {
+      "title": "We're experiencing technical difficulties",
+      "heading": "Sorry, this page could not be found",
+      "content": [
+        "Check that you’ve entered the correct web address.",
+        "If you want an update on your appeal you can call 0300 123 1142."
+      ]
+    }
   }
 }
