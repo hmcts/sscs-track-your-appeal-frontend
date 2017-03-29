@@ -6,31 +6,31 @@
 build: install unittest accessibilitytest
 
 install:
-	npm install
-	npm run setup
+	yarn install
+	yarn run setup
 
 test-unit:
-	npm test
+	yarn test
 
 test-coverage:
-	npm run coverage
+	yarn run coverage
 
 test-security:
-	npm run security-checks
+	yarn run security-checks
 
 test-accessibility:
 ifdef JUNIT_REPORT_PATH
-	npm install mocha-jenkins-reporter
-	npm run pa11y -- --reporter mocha-jenkins-reporter --reporter-options junit_report_packages=true
+	yarn add mocha-jenkins-reporter
+	yarn run pa11y -- --reporter mocha-jenkins-reporter --reporter-options junit_report_packages=true
 else
-	npm run pa11y
+	yarn run pa11y
 endif
 
 test-end-to-end:
 ifdef E2E_OUTPUT_DIR
-	npm run smoke-test -- --reporter mochawesome
+	yarn run smoke-test -- --reporter mochawesome
 else
-	npm run smoke-test
+	yarn run smoke-test
 endif
 
 unittest: test-unit
