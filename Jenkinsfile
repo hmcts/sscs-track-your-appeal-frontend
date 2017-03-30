@@ -34,8 +34,7 @@ stage("Code coverage") {
 
 stage("Security checks") {
     node {
-        sh "echo 'Disabled while nodesecurity.io is down'"
-        //  sh "make test-security"
+        sh "make test-security"
     }
 }
 
