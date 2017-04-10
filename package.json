@@ -66,5 +66,8 @@
     "superagent": "^3.3.2",
     "supertest": "^2.0.1",
     "urlsafe-base64": "^1.0.0"
+  },
+  "devDependencies": {
+    "jsdom": "^9.12.0"
   }
 }
