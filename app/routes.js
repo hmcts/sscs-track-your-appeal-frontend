@@ -39,23 +39,23 @@ function getAppeal(req, res, next) {
 }
 
 router.get(`${progressRoot}/:id/abouthearing`, getAppeal, (req, res) => {
-  res.render('about-hearing', _getData(res.locals.appeal));
+  res.render('about-hearing', {data: res.locals.appeal});
 });
 
 router.get(`${progressRoot}/:id/trackyourappeal`, getAppeal, (req, res) => {
-  res.render('track-your-appeal', _getData(res.locals.appeal));
+  res.render('track-your-appeal', {data: res.locals.appeal});
 });
 
 router.get(`${progressRoot}/:id/evidence`, getAppeal, (req, res) => {
-  res.render('provide-evidence', _getData(res.locals.appeal));
+  res.render('provide-evidence', {data: res.locals.appeal});
 });
 
 router.get(`${progressRoot}/:id/expenses`, getAppeal, (req, res) => {
-  res.render('claim-expenses', _getData(res.locals.appeal));
+  res.render('claim-expenses', {data: res.locals.appeal});
 });
 
 router.get(`${progressRoot}/:id/hearingdetails`, getAppeal, (req, res) => {
-  res.render('hearing-details', _getData(res.locals.appeal));
+  res.render('hearing-details', {data: res.locals.appeal});
 });
 
 function validateToken(req, res, next) {
@@ -208,9 +208,5 @@ router.get('/_errors/500', (req, res, next) => {
   err.status = 500;
   next(err);
 });
-
-_getData = (appeal) => {
-  return {data: appeal};
-};
 
 module.exports = router;
