@@ -181,7 +181,8 @@
         "noMatchHeading": "Email addresses do not match",
         "noMatchField": "Your email addresses don’t match. Check and enter them again.",
         "notValidHeading": "New email address is invalid",
-        "notValidField": "The email address you’ve entered is invalid. Check it and enter it again."
+        "notValidField": "The email address you’ve entered is invalid. Check it and enter it again.",
+        "selectAnOption": "Please select an option"
       }
     }
   },

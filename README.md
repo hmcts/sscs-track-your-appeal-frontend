@@ -7,18 +7,24 @@
 ## Commands
 
 ### Install application dependencies and generate assets
-    $> make install
+    In order for yarn to communicate with Artifactory we need to go through a proxy when installing our dependencies.
+    $> http_proxy=http://proxyout.reform:8080 yarn install
+    $> yarn run setup
 
+Jenkins
+
+    $> make install
+    
 ### Run development server
-    $> npm run dev
+    $> yarn run dev
 
 ### Run production server
-    $> npm start
+    $> yarn start
 
 ### Open a browser including the ID
     http://localhost:3000/progress/id/trackyourappeal 
 
-### Run the tests
+### Running the tests
 
 #### Unit tests
     $> make test-unit
