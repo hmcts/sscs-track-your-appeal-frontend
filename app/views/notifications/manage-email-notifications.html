@@ -17,24 +17,27 @@
 
             <form action="/manage-email-notifications/{{ mactoken }}" method="post">
 
-                <div class="form-group">
+                <div class="form-group {{'form-group-error' if field.error}}">
 
                     <fieldset>
 
-                        <legend class="visually-hidden">{{ i18n.visuallyHidden }}</legend>
+                        <legend>
+                            <span class="visually-hidden">{{ i18n.visuallyHidden }}</span>
+                            {% if field.error %}
+                            <span class="error-message">{{ field.errorMessage | safe }}</span>
+                            {% endif %}
+                        </legend>
 
                         {{ radioButton(
-                            field = field,
+                            name = 'emailNotify',
                             value = 'changeEmailAddress',
-                            label = 'Change your email address',
-                            name = 'emailNotify'
+                            label = 'Change your email address'
                         ) }}
 
                         {{ radioButton(
-                            field = field,
+                            name = 'emailNotify',
                             value = 'stopEmails',
-                            label = 'Stop receiving emails',
-                            name = 'emailNotify'
+                            label = 'Stop receiving emails'
                         ) }}
 
                     </fieldset>

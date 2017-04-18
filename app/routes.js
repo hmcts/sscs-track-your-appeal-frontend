@@ -20,7 +20,8 @@ const EMAIL = {
   NO_MATCH_HEADING: errors.noMatchHeading,
   NO_MATCH_FIELD: errors.noMatchField,
   NOT_VALID_HEADING: errors.notValidHeading,
-  NOT_VALID_FIELD: errors.notValidField
+  NOT_VALID_FIELD: errors.notValidField,
+  SELECT_AN_OPTION: errors.selectAnOption
 };
 const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -69,15 +70,12 @@ function validateToken(req, res, next) {
   } else {
     next();
   }
-};
+}
 
 router.get(`${notificationRoot}/:mactoken`, validateToken, (req, res, next) => {
   res.render('manage-email-notifications', {
     i18n: locale.notifications.email.manage,
-    mactoken: req.params.mactoken,
-    field: {
-      value:'changeEmailAddress'
-    }
+    mactoken: req.params.mactoken
   });
 });
 
@@ -92,6 +90,15 @@ router.post(`${notificationRoot}/:mactoken`, validateToken, (req, res, next) => 
     res.render('confirm-emails-stop', {
       i18n: res.locals.i18n.notifications.email.stop,
       mactoken: req.params.mactoken,
+    });
+  } else {
+    res.render('manage-email-notifications', {
+      i18n: locale.notifications.email.manage,
+      mactoken: req.params.mactoken,
+      field: {
+        error: true,
+        errorMessage: EMAIL.SELECT_AN_OPTION
+      }
     });
   }
 });
@@ -123,25 +130,27 @@ router.post(`${notificationRoot}/:mactoken/change`, validateToken, (req, res, ne
   const email2 = req.body.email2;
   const errorTexts = res.locals.i18n.notifications.email.errors;
 
-  let errors = {
+  let fields = {
+    hasErrors: true,
     email: {
-      value: email
+      value: email,
+      error: true
     },
     email2: {
-      value: email2
+      value: email2,
+      error: true
     }
   };
 
   if(email === '' && email2 === '') {
-    errors.heading = errorTexts.emptyStringEmailHeading;
-    errors.heading2 = errorTexts.emptyStringEmailHeadingTwo;
-    errors.email.field = errorTexts.emptyStringEmailField;
-    errors.email2.field = errorTexts.emptyStringEmailFieldTwo;
-    errors.isEmptyStringError = true;
+    fields.heading = errorTexts.emptyStringEmailHeading;
+    fields.heading2 = errorTexts.emptyStringEmailHeadingTwo;
+    fields.email.errorMessage = errorTexts.emptyStringEmailField;
+    fields.email2.errorMessage = errorTexts.emptyStringEmailFieldTwo;
 
     res.status(400);
     res.render('email-address-change', {
-      errors: errors,
+      fields: fields,
       i18n: res.locals.i18n.notifications.email.addressChange,
       mactoken: req.params.mactoken,
     });
@@ -149,12 +158,12 @@ router.post(`${notificationRoot}/:mactoken/change`, validateToken, (req, res, ne
   }
 
   if(email !== email2 ) {
-    errors.heading = errorTexts.noMatchHeading;
-    errors.email.field = errors.email2.field = errorTexts.noMatchField;
+    fields.heading = errorTexts.noMatchHeading;
+    fields.email.errorMessage = fields.email2.errorMessage = errorTexts.noMatchField;
 
     res.status(400);
     res.render('email-address-change', {
-      errors: errors,
+      fields: fields,
       i18n: res.locals.i18n.notifications.email.addressChange,
       mactoken: req.params.mactoken,
     });
@@ -162,12 +171,12 @@ router.post(`${notificationRoot}/:mactoken/change`, validateToken, (req, res, ne
   }
 
   if(!EMAIL_REGEX.test(email)) {
-    errors.heading = errorTexts.notValidHeading;
-    errors.email.field = errors.email2.field = errorTexts.notValidField;
+    fields.heading = errorTexts.notValidHeading;
+    fields.email.errorMessage = fields.email2.errorMessage = errorTexts.notValidField;
 
     res.status(400);
     res.render('email-address-change', {
-      errors: errors,
+      fields: fields,
       i18n: res.locals.i18n.notifications.email.addressChange,
       mactoken: req.params.mactoken,
     });
@@ -187,7 +196,6 @@ router.post(`${notificationRoot}/:mactoken/change`, validateToken, (req, res, ne
 });
 
 router.get('/status', (req, res, next) => {
-  //console.log(`GET:/health: PATH:${req.url}`);
   HealthService.health().then((health) => {
     res.json(health.body);
   });
@@ -197,11 +205,17 @@ router.get('/cookiepolicy', (req, res) => {
   res.render('cookie-policy', {i18n: locale.cookiePolicy, urls});
 });
 
+if (process.env.NODE_ENV == 'development') {
+  router.get('/components', (req, res) => {
+    res.render('components');
+  });
+}
+
 router.get('/_errors/404', (req, res, next) => {
   let err = new Error('Not found');
   err.status = 404;
   next(err);
-})
+});
 
 router.get('/_errors/500', (req, res, next) => {
   let err = new Error('Broken');

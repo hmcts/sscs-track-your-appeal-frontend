@@ -1,0 +1,129 @@
+{% from "components/formElements.html" import textField %}
+{% from "components/formElements.html" import textArea %}
+{% from "components/formElements.html" import checkBox %}
+{% from "components/formElements.html" import yesNoRadio %}
+{% from "components/formElements.html" import date %}
+
+{% extends "layout.html" %}
+
+{% block page_title %}
+Reusable components
+{% endblock %}
+
+{% block content %}
+
+<main id="content" class="components" role="main">
+
+    <div class="grid-row">
+
+        <div class="column-full">
+
+            <h1 class="heading-xlarge">Reusable form elements</h1>
+
+            <!-- Textfield -->
+
+            {% set label = 'This is the label text' %}
+            {% set hint  = 'This is hint text' %}
+            {% set field = { value: 'TextField value goes here', error: true, errorMessage: 'This is the error message' } %}
+            {% set name  = 'textFieldName' %}
+
+
+            {{ textField(label=label, hint=hint, field=field, name=name) }}
+
+            <!-- TextArea -->
+
+            {% set label = 'This is the label text' %}
+            {% set hint  = 'This is hint text' %}
+            {% set field = { value: 'TextArea value goes here', error: true, errorMessage: 'This is the error message' } %}
+            {% set name  = 'textAreaName' %}
+
+            {{ textArea(label=label, hint=hint, field=field, name=name) }}
+
+            <!-- Checkboxes -->
+
+            <h1 class="heading-medium">Which types of waste do you transport regularly?</h1>
+
+            <form>
+
+                <div class="form-group form-group-error">
+
+                    <fieldset>
+
+                        <legend>
+                            <span class="form-label">This is hint text</span>
+                            <span class="error-message">This is the error message</span>
+                        </legend>
+
+                        {{ checkBox(
+                            label='Waste from animal carcasses',
+                            value='waste-animal',
+                            name='waste-types',
+                            id='waste-type-1'
+                        ) }}
+
+                        {{ checkBox(
+                            label='Waste from mines or quarries',
+                            value='waste-mines',
+                            name='waste-types',
+                            id='waste-type-2'
+                        )}}
+
+                        {{ checkBox(
+                            label='Farm or agricultural waste',
+                            value='waste-farm-agricultural',
+                            name='waste-types',
+                            id='waste-type-3'
+                        )}}
+
+                    </fieldset>
+
+                </div>
+
+            </form>
+
+            <!-- Radio buttons -->
+
+            <h1 class="heading-medium">Do you already have a personal user account?</h1>
+
+            {% set hint  = 'This is hint text' %}
+            {% set field = { error: true, errorMessage:'This is the error message' } %}
+            {% set name  = 'radioGroup' %}
+
+            <form>{{ yesNoRadio(hint=hint, field=field, name=name, yes=yes, no=no) }}</form>
+
+            {% set day   = { value: '25',  error: true, errorMessage: 'Day error message' } %}
+            {% set month = { value: '01',  error: true, errorMessage: 'Month error message' } %}
+            {% set year  = { value: '1972', error: true, errorMessage: 'Year error message' } %}
+            {% set dateField  = { error: true, errorMessage: 'General error message' } %}
+            {% set label = 'This is the label text' %}
+            {% set hint  = 'This is hint text' %}
+            {% set id  = 'dateId' %}
+            {% set legend  = 'Legend goes here' %}
+            {% set hiddenLegend  = 'testHiddenLegend' %}
+
+            <!-- Dates -->
+
+            <div class="form-group form-group-error">
+
+            {{ date(
+                dayField = day,
+                monthField = month,
+                yearField = year,
+                dateField = dateField,
+                label = label,
+                hint = hint,
+                id = id,
+                hiddenLegend = hiddenLegend,
+                legend = legend
+                )
+            }}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+{% endblock %}

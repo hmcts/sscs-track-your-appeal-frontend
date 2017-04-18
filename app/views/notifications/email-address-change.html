@@ -21,17 +21,17 @@
 
           <form action="/manage-email-notifications/{{ mactoken }}/change" method="post">
 
-                {% if errors %}
+                {% if fields.hasErrors %}
                 <div class="error-summary" role="group" aria-labelledby="error-summary-heading" tabindex="-1">
                     <h1 class="heading-medium error-summary-heading" id="error-summary-heading">
                         {{ i18n.errors.title }}
                     </h1>
                     <ul class="error-summary-list">
-                        {% if errors.heading %}
-                        <li><a href="#email">{{ errors.heading }}</a></li>
+                        {% if fields.heading %}
+                        <li><a href="#email">{{ fields.heading }}</a></li>
                         {% endif %}
-                        {% if errors.heading2 %}
-                        <li><a href="#email2">{{ errors.heading2 }}</a></li>
+                        {% if fields.heading2 %}
+                        <li><a href="#email2">{{ fields.heading2 }}</a></li>
                         {% endif %}
                     </ul>
 
@@ -47,15 +47,15 @@
                         <h1 class="heading-large">{{ i18n.title }}</h1>
 
                         {{ textField(
-                            name = 'email',
                             label = 'Enter your new email address',
-                            error = errors.email
+                            field = fields.email,
+                            name = 'email'
                         ) }}
 
                         {{ textField(
-                            name = 'email2',
                             label = 'Enter your new email address again',
-                            error = errors.email2
+                            field = fields.email2,
+                            name = 'email2'
                         ) }}
 
                     </fieldset>
