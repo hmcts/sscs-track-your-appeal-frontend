@@ -1,4 +1,5 @@
 const moment = require('moment');
+const {STATUSES} = require('app/config');
 const DATE_FORMAT = 'YYYY-MM-DDHH:mm:ss ZZ';
 const locale = require('app/assets/locale/en');
 const FILTERS = {
@@ -23,6 +24,10 @@ const FILTERS = {
     return needed ?
       locale.hearingDetails.needed :
       locale.hearingDetails.notNeeded;
+  },
+
+  isActive: (currentStatus, status) => {
+    return STATUSES[currentStatus].value >= STATUSES[status].value ? 'active' : '';
   }
 };
 

@@ -36,7 +36,7 @@ Track your Appeal
                 </div>
 
                 <div class="dwp-respond">
-                    <div class="leg foot {{ isActive('DWP_RESPOND', data.status ) }}"></div>
+                    <div class="leg foot {{ data.status|isActive('DWP_RESPOND') }}"></div>
                     <h5 aria-hidden="true">{{ i18n.progressBar.dwpRespond }}</h5>
                     {% if data.status == 'APPEAL_RECEIVED' %}
                     <span class="screen-reader-text">{{ i18n.progressBar.screenReader.dwpRespond.due }}</span>
@@ -48,7 +48,7 @@ Track your Appeal
                 </div>
 
                 <div class="hearing-booked">
-                    <div class="leg foot {{ isActive('HEARING_BOOKED', data.status ) }}"></div>
+                    <div class="leg foot {{ data.status|isActive('HEARING_BOOKED') }}"></div>
                     <h5 aria-hidden="true">{{ i18n.progressBar.hearingBooked }}</h5>
                     {% if data.status == 'APPEAL_RECEIVED' or data.status == 'DWP_RESPOND' %}
                     <span class="screen-reader-text">{{ i18n.progressBar.screenReader.hearingBooked.due }}</span>
@@ -60,11 +60,11 @@ Track your Appeal
                 </div>
 
                 <div class="hearing-leg">
-                    <div class="leg {{ isActive('HEARING', data.status ) }}"></div>
+                    <div class="leg {{ data.status|isActive('HEARING') }}"></div>
                 </div>
 
                 <div class="hearing">
-                    <div class="ring {{ isActive('HEARING', data.status ) }}"></div>
+                    <div class="ring {{ data.status|isActive('HEARING') }}"></div>
                     <h5 aria-hidden="true">{{ i18n.progressBar.hearing }}</h5>
                     {% if data.status != 'HEARING' %}
                     <span class="screen-reader-text">{{ i18n.progressBar.screenReader.hearing.due }}</span>

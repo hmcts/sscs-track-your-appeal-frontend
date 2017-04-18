@@ -8,8 +8,5 @@ module.exports = (req, res, next) => {
   res.locals.cookieText = locale.cookiePolicy.banner.text;
   res.locals.cookieLink = locale.cookiePolicy.banner.link;
 
-  res.locals.isActive = function (status, currentStatus) {
-    return STATUSES[currentStatus].value >= STATUSES[status].value ? 'active' : '';
-  };
   next();
 };
