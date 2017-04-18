@@ -39,23 +39,23 @@ function getAppeal(req, res, next) {
 }
 
 router.get(`${progressRoot}/:id/abouthearing`, getAppeal, (req, res) => {
-  res.render('about-hearing', _getData(res.locals.appeal));
+  res.render('about-hearing', {data: res.locals.appeal});
 });
 
 router.get(`${progressRoot}/:id/trackyourappeal`, getAppeal, (req, res) => {
-  res.render('track-your-appeal', _getData(res.locals.appeal));
+  res.render('track-your-appeal', {data: res.locals.appeal});
 });
 
 router.get(`${progressRoot}/:id/evidence`, getAppeal, (req, res) => {
-  res.render('provide-evidence', _getData(res.locals.appeal));
+  res.render('provide-evidence', {data: res.locals.appeal});
 });
 
 router.get(`${progressRoot}/:id/expenses`, getAppeal, (req, res) => {
-  res.render('claim-expenses', _getData(res.locals.appeal));
+  res.render('claim-expenses', {data: res.locals.appeal});
 });
 
 router.get(`${progressRoot}/:id/hearingdetails`, getAppeal, (req, res) => {
-  res.render('hearing-details', Object.assign({i18n: locale}, {data: res.locals.appeal}));
+  res.render('hearing-details', {data: res.locals.appeal});
 });
 
 function validateToken(req, res, next) {
@@ -85,12 +85,12 @@ router.post(`${notificationRoot}/:mactoken`, validateToken, (req, res, next) => 
   const userSelection = req.body.emailNotify;
   if(userSelection === EMAIL.CHANGE) {
     res.render('email-address-change', {
-      i18n: locale.notifications.email.addressChange,
+      i18n: res.locals.i18n.notifications.email.addressChange,
       mactoken: req.params.mactoken,
     });
   } else if (userSelection === EMAIL.STOP) {
     res.render('confirm-emails-stop', {
-      i18n: locale.notifications.email.stop,
+      i18n: res.locals.i18n.notifications.email.stop,
       mactoken: req.params.mactoken,
     });
   }
@@ -101,7 +101,7 @@ router.post(`${notificationRoot}/:mactoken/stop`, validateToken, (req, res, next
   AppealsService.stopReceivingEmails(token.appealId, token.subscriptionId).then((result) => {
     res.render('stopped-email-notifications', {
       data: { id: token.appealId },
-      i18n: locale.notifications.email.stopConfirmation,
+      i18n: res.locals.i18n.notifications.email.stopConfirmation,
       mactoken: req.params.mactoken,
     });
   }).catch((error) => {
@@ -112,7 +112,7 @@ router.post(`${notificationRoot}/:mactoken/stop`, validateToken, (req, res, next
 
 router.get(`${notificationRoot}/:mactoken/change`, validateToken, (req, res, next) => {
   res.render('email-address-change', {
-    i18n: locale.notifications.email.addressChange,
+    i18n: res.locals.i18n.notifications.email.addressChange,
     mactoken: req.params.mactoken,
   });
 });
@@ -121,6 +121,7 @@ router.post(`${notificationRoot}/:mactoken/change`, validateToken, (req, res, ne
   const token = res.locals.token;
   const email = req.body.email;
   const email2 = req.body.email2;
+  const errorTexts = res.locals.i18n.notifications.email.errors;
 
   let errors = {
     email: {
@@ -132,42 +133,42 @@ router.post(`${notificationRoot}/:mactoken/change`, validateToken, (req, res, ne
   };
 
   if(email === '' && email2 === '') {
-    errors.heading = EMAIL.EMPTY_STRING_EMAIL_HEADING;
-    errors.heading2 = EMAIL.EMPTY_STRING_EMAIL_HEADING_TWO;
-    errors.email.field = EMAIL.EMPTY_STRING_EMAIL_FIELD;
-    errors.email2.field = EMAIL.EMPTY_STRING_EMAIL_FIELD_TWO;
+    errors.heading = errorTexts.emptyStringEmailHeading;
+    errors.heading2 = errorTexts.emptyStringEmailHeadingTwo;
+    errors.email.field = errorTexts.emptyStringEmailField;
+    errors.email2.field = errorTexts.emptyStringEmailFieldTwo;
     errors.isEmptyStringError = true;
 
     res.status(400);
     res.render('email-address-change', {
       errors: errors,
-      i18n: locale.notifications.email.addressChange,
+      i18n: res.locals.i18n.notifications.email.addressChange,
       mactoken: req.params.mactoken,
     });
     return;
   }
 
   if(email !== email2 ) {
-    errors.heading = EMAIL.NO_MATCH_HEADING;
-    errors.email.field = errors.email2.field = EMAIL.NO_MATCH_FIELD;
+    errors.heading = errorTexts.noMatchHeading;
+    errors.email.field = errors.email2.field = errorTexts.noMatchField;
 
     res.status(400);
     res.render('email-address-change', {
       errors: errors,
-      i18n: locale.notifications.email.addressChange,
+      i18n: res.locals.i18n.notifications.email.addressChange,
       mactoken: req.params.mactoken,
     });
     return;
   }
 
   if(!EMAIL_REGEX.test(email)) {
-    errors.heading = EMAIL.NOT_VALID_HEADING;
-    errors.email.field = errors.email2.field = EMAIL.NOT_VALID_FIELD;
+    errors.heading = errorTexts.notValidHeading;
+    errors.email.field = errors.email2.field = errorTexts.notValidField;
 
     res.status(400);
     res.render('email-address-change', {
       errors: errors,
-      i18n: locale.notifications.email.addressChange,
+      i18n: res.locals.i18n.notifications.email.addressChange,
       mactoken: req.params.mactoken,
     });
     return;
@@ -176,7 +177,7 @@ router.post(`${notificationRoot}/:mactoken/change`, validateToken, (req, res, ne
   const body = { subscription: { email: email } };
   AppealsService.changeEmailAddress(token.appealId, token.subscriptionId, body).then((result) => {
     res.render('email-address-change-confirmed', {
-      i18n: locale.notifications.email.addressChangeConfirmed,
+      i18n: res.locals.i18n.notifications.email.addressChangeConfirmed,
       data: { email: email },
       mactoken: req.params.mactoken,
     });
@@ -207,12 +208,5 @@ router.get('/_errors/500', (req, res, next) => {
   err.status = 500;
   next(err);
 });
-
-_getData = (appeal) => {
-  return {
-    i18n: locale,
-    data: appeal
-  };
-};
 
 module.exports = router;

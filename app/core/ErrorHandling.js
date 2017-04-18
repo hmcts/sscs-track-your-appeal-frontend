@@ -1,5 +1,4 @@
 'use strict'
-const locale = require('app/assets/locale/en');
 
 class ErrorHandling {
 
@@ -17,9 +16,9 @@ class ErrorHandling {
     if (process.env.NODE_ENV == 'development') {
       res.json(ErrorHandling._decorateError(status, err));
     } else if(status == 404) {
-      res.render('errors/404.html', {i18n: locale});
+      res.render('errors/404.html');
     } else {
-      res.render('errors/500.html', {i18n: locale});
+      res.render('errors/500.html');
     }
   }
 
