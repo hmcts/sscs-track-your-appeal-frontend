@@ -1,3 +1,9 @@
+const logging = require('nodejs-logging');
+logging.config({
+  microservice: "track-your-appeal-frontend",
+  team: "sscs",
+  environment: process.env.NODE_ENV,
+});
 const express = require('express');
 const nunjucks = require('express-nunjucks');
 const favicon = require('serve-favicon');
@@ -25,6 +31,8 @@ app.set('views', [
   __dirname + '/app/views',
   __dirname + '/app/views/notifications'
 ]);
+
+app.use(logging.express.accessLogger());
 
 // Protect against some well known web vulnerabilities
 // by setting HTTP headers appropriately.

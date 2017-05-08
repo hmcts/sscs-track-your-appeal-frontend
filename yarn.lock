@@ -2466,7 +2466,7 @@ lodash@~4.3.0:
   version "4.3.0"
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/lodash/-/lodash-4.3.0.tgz#efd9c4a6ec53f3b05412429915c3e4824e4d25a4"
 
-log4js@^1.1.1:
+log4js@^1.1.0, log4js@^1.1.1:
   version "1.1.1"
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/log4js/-/log4js-1.1.1.tgz#c21d29c7604089e4f255833e7f94b3461de1ff43"
   dependencies:
@@ -2665,7 +2665,7 @@ mockery@^2.0.0:
   version "2.0.0"
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/mockery/-/mockery-2.0.0.tgz#0569a11a1848461fdc347cf8cca2df2f3129bc03"
 
-moment@2.x.x, moment@^2.18.1:
+moment@2.x.x, moment@^2.17.1, moment@^2.18.1:
   version "2.18.1"
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
 
@@ -2812,6 +2812,15 @@ node.extend@^1.1.6, node.extend@~1.1.6:
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/node.extend/-/node.extend-1.1.6.tgz#a7b882c82d6c93a4863a5504bd5de8ec86258b96"
   dependencies:
     is "^3.1.0"
+
+nodejs-logging@^1.1.0:
+  version "1.1.0"
+  resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/nodejs-logging/-/nodejs-logging-1.1.0.tgz#e2eb317d3b51cead3c0c723369790c9b604dc0ee"
+  dependencies:
+    lodash "^4.17.4"
+    log4js "^1.1.0"
+    moment "^2.17.1"
+    on-finished "~2.3.0"
 
 nodemon@^1.7.1:
   version "1.11.0"
