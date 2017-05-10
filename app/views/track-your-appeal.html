@@ -85,7 +85,7 @@ Track your Appeal
                 {% endfor %}
 
                 {% if data.status == 'HEARING_BOOKED' %}
-                <a href="/progress/{{data.id}}/hearingdetails">{{ i18n.hearingDetails.checkDetails }}</a>
+                <a href="/progress/{{data.appealNumber}}/hearingdetails">{{ i18n.hearingDetails.checkDetails }}</a>
                 {% endif %}
 
                 {% if data.historicalEvents %}
@@ -107,7 +107,7 @@ Track your Appeal
                         {% endfor %}
 
                         {% if historicalEvent.contentKey === 'status.hearingBooked' %}
-                        <a href="/progress/{{data.id}}/hearingdetails">{{ i18n.hearingDetails.checkDetails }}</a>
+                        <a href="/progress/{{data.appealNumber}}/hearingdetails">{{ i18n.hearingDetails.checkDetails }}</a>
                         {% endif %}
                     </div>
                     {% endfor %}
@@ -120,7 +120,7 @@ Track your Appeal
             {% if data.status == 'DWP_RESPOND' or data.status == 'HEARING_BOOKED' %}
             <div class="panel panel-border-wide">
                 <p>{{ i18n.evidence.receivedBy }}<br/>
-                    <a href="/progress/{{data.id}}/evidence">{{ i18n.evidence.provide.title }}</a>
+                    <a href="/progress/{{data.appealNumber}}/evidence">{{ i18n.evidence.provide.title }}</a>
                 </p>
             </div>
             {% endif %}
@@ -129,9 +129,9 @@ Track your Appeal
 
             <h3 class="heading-small">{{ i18n.common.aboutYourAppeal }}</h3>
             <ul class="links">
-                <li><a href="/progress/{{data.id}}/abouthearing">{{ i18n.hearing.expectations.title }}</a></li>
-                <li><a href="/progress/{{data.id}}/expenses">{{ i18n.claimExpenses.link }}</a></li>
-                <li><a href="/progress/{{data.id}}/evidence">{{ i18n.evidence.provide.title }}</a></li>
+                <li><a href="/progress/{{data.appealNumber}}/abouthearing">{{ i18n.hearing.expectations.title }}</a></li>
+                <li><a href="/progress/{{data.appealNumber}}/expenses">{{ i18n.claimExpenses.link }}</a></li>
+                <li><a href="/progress/{{data.appealNumber}}/evidence">{{ i18n.evidence.provide.title }}</a></li>
             </ul>
 
         </div>
