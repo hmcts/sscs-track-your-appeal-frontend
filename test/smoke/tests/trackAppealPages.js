@@ -1,5 +1,16 @@
 Feature('Track your Appeal Page Tests');
 
+Scenario.only('verify appellant details  after DWP Response', function*(I, Properties) {
+  let result = yield I.retrieveAppealNumberForAppealCaseID();
+  console.log(result);
+  I.amOnPage('/progress/' + result + '/trackyourappeal');
+  I.See('Mr. B Bravo');
+});
+
+
+/*
+Feature('Track your Appeal Page Tests');
+
 Scenario('verify appellant details cannot be seen after appeal received', function*(I, Properties) {
   let result = yield I.postAppealReceivedEvent();
   I.amOnPage('/progress/' + result.appealId + '/trackyourappeal');
@@ -109,3 +120,4 @@ Scenario('verify expenses page', function*(I, Properties) {
   I.see('Claiming expenses to attend your hearing');
   I.see('You may be able to claim back some of the money you spend on attending your hearing.');
 });
+*/

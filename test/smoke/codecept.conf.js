@@ -13,6 +13,9 @@ exports.config = {
     },
     'messageAuthenticationCodeHelper': {
       'require': './helper/messageAuthenticationCode.js'
+    },
+    'dataBaseConnectionHelper': {
+      'require': './helper/dataBaseConnectionHelper.js'
     }
   },
   'include': {

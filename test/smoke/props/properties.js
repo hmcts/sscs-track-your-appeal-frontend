@@ -19,5 +19,10 @@ module.exports = {
     sub_headings_h3_css_path: {css: 'h3.bold-small'},
     sub_headings_h2_css_path: {css: 'h2.heading-medium'},
 
-  }
+  },
+  data_fields: {
+    connectionString : process.env.DB_CONNECTION_URL || 'postgres://postgres:postgres@localhost:5432/sscs-staging',
+    dwp_appeal_case_id : 222222,
+    }
+
 };

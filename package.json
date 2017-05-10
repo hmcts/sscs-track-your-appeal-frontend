@@ -67,6 +67,7 @@
     "superagent": "^3.5.2",
     "supertest": "^3.0.0",
     "urlsafe-base64": "^1.0.0",
-    "jsdom": "^9.12.0"
+    "jsdom": "^9.12.0",
+    "pg":"^6.1.5"
   }
 }
