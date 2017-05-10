@@ -29,11 +29,11 @@ Claim Expenses
                 <nav role="navigation" aria-labelledby="subsection-title">
                     <ul class="font-xsmall">
                         {% if data.status=='HEARING_BOOKED' or data.status=='HEARING' %}
-                        <li><a href="/progress/{{data.id}}/hearingdetails">{{ i18n.hearingDetails.checkDetails }}</a></li>
+                        <li><a href="/progress/{{data.appealNumber}}/hearingdetails">{{ i18n.hearingDetails.checkDetails }}</a></li>
                         {% endif %}
-                        <li><a href="/progress/{{data.id}}/abouthearing">{{ i18n.hearing.expectations.title }}</a></li>
-                        <li><a href="/progress/{{data.id}}/evidence">{{ i18n.evidence.provide.title }}</a></li>
-                        <li><a href="/progress/{{data.id}}/trackyourappeal">{{ i18n.common.trackYourAppeal}}</a></li>
+                        <li><a href="/progress/{{data.appealNumber}}/abouthearing">{{ i18n.hearing.expectations.title }}</a></li>
+                        <li><a href="/progress/{{data.appealNumber}}/evidence">{{ i18n.evidence.provide.title }}</a></li>
+                        <li><a href="/progress/{{data.appealNumber}}/trackyourappeal">{{ i18n.common.trackYourAppeal}}</a></li>
                     </ul>
                 </nav>
             </aside>

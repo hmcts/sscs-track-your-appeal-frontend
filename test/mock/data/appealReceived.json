@@ -2,7 +2,7 @@
   "appeal": {
     "caseReference": "SC123/45/00001",
     "name": "Mr Jason Mock",
-    "id": "md100",
+    "appealNumber": "md100",
     "status": "APPEAL_RECEIVED",
     "latestEvents": [
       {

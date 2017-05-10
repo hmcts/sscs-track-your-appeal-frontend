@@ -56,12 +56,12 @@ About Hearing
                     <ul class="font-xsmall">
 
                         {% if data.status=='HEARING_BOOKED' or data.status=='HEARING' %}
-                        <li><a href="/progress/{{data.id}}/hearingdetails">{{ i18n.hearingDetails.checkDetails }}</a></li>
+                        <li><a href="/progress/{{data.appealNumber}}/hearingdetails">{{ i18n.hearingDetails.checkDetails }}</a></li>
                         {% endif %}
 
-                        <li><a href="/progress/{{data.id}}/expenses">{{ i18n.claimExpenses.link }}</a></li>
-                        <li><a href="/progress/{{data.id}}/evidence">{{ i18n.evidence.provide.title }}</a></li>
-                        <li><a href="/progress/{{data.id}}/trackyourappeal">{{ i18n.common.trackYourAppeal }}</a></li>
+                        <li><a href="/progress/{{data.appealNumber}}/expenses">{{ i18n.claimExpenses.link }}</a></li>
+                        <li><a href="/progress/{{data.appealNumber}}/evidence">{{ i18n.evidence.provide.title }}</a></li>
+                        <li><a href="/progress/{{data.appealNumber}}/trackyourappeal">{{ i18n.common.trackYourAppeal }}</a></li>
                     </ul>
                 </nav>
             </aside>

@@ -2,7 +2,7 @@
   "appeal": {
     "caseReference": "SC123/04/56789",
     "name": "Mr Jason Mock",
-    "id": "md300",
+    "appealNumber": "md300",
     "status": "HEARING_BOOKED",
     "latestEvents": [
       {
