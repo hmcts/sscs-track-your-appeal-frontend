@@ -9,14 +9,9 @@
 ### Install application dependencies and generate assets
     In order for yarn to communicate with Artifactory we need to go through a proxy when installing our dependencies.
     $> http_proxy=http://proxyout.reform:8080 yarn install
-    $> yarn run setup
-
-Jenkins
-
-    $> make install
     
 ### Run development server
-    $> yarn run dev
+    $> yarn dev
 
 ### Run production server
     $> yarn start
@@ -27,11 +22,11 @@ Jenkins
 ### Running the tests
 
 #### Unit tests
-    $> make test-unit
-    $> make test-coverage
+    $> yarn test
+    $> yarn coverage
 
 #### Security checks
-    $> make test-security
+    $> yarn security-checks
 
 #### Accessibility tests
 Pass the `JUNIT_REPORT_PATH` environment variable to use the jenkins reporter.

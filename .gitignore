@@ -8,3 +8,4 @@ npm-debug.log
 lib/govuk_template.html
 testResults
 yarn-error.log
+app/services/ServiceLoader.js

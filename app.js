@@ -32,7 +32,7 @@ app.set('views', [
   __dirname + '/app/views/notifications'
 ]);
 
-//app.use(logging.express.accessLogger());
+app.use(logging.express.accessLogger());
 
 // Protect against some well known web vulnerabilities
 // by setting HTTP headers appropriately.

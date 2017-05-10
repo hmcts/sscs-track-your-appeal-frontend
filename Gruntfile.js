@@ -87,17 +87,6 @@ module.exports = function(grunt){
         },
 
         copy: {
-          main: {
-            files: [ {
-                expand: true,
-                cwd: 'test/mock',
-                src: ['ServiceLoader.js'],
-                dest: '/app'
-            }]
-          }
-        },
-
-        copy: {
           services: {
             src: "app/assets/javascripts/ServiceLoader.js",
             dest: "app/services/ServiceLoader.js"
@@ -165,21 +154,28 @@ module.exports = function(grunt){
         grunt.loadNpmTasks(task);
     });
 
+    grunt.registerTask('dev', [
+      'env:dev',
+      'generate-assets',
+      'concurrent:target'
+    ]);
+
     grunt.registerTask('generate-assets', [
-        'sync',
-        'sass',
-        'copy:services'
+      'sync',
+      'sass',
+      'copy:services'
+    ]);
+
+    grunt.registerTask('mock-services', [
+      'copy:mockServices'
+    ]);
+
+    grunt.registerTask('services', [
+      'copy:services'
     ]);
 
     grunt.registerTask('security-checks', [
-        'nsp:package',
-    ]);
-
-    grunt.registerTask('default', [
-        'env:dev',
-        'generate-assets',
-        'copy:mockServices',
-        'concurrent:target'
+      'nsp:package',
     ]);
 
 };

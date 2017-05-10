@@ -2,6 +2,7 @@ const _ = require('lodash');
 const ServiceLoader = require('app/services/ServiceLoader');
 const AppealsService = ServiceLoader.AppealService;
 const TokenService = ServiceLoader.TokenService;
+const HealthService = ServiceLoader.HealthService;
 const locale = require('app/assets/locale/en');
 const express = require('express');
 const router = express.Router();
