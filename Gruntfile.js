@@ -86,6 +86,28 @@ module.exports = function(grunt){
           }
         },
 
+        copy: {
+          main: {
+            files: [ {
+                expand: true,
+                cwd: 'test/mock',
+                src: ['ServiceLoader.js'],
+                dest: '/app'
+            }]
+          }
+        },
+
+        copy: {
+          services: {
+            src: "app/assets/javascripts/ServiceLoader.js",
+            dest: "app/services/ServiceLoader.js"
+          },
+          mockServices: {
+            src: "test/mock/MockServiceLoader.js",
+            dest: "app/services/ServiceLoader.js"
+          }
+        },
+
         // Watches assets and sass for changes
         watch: {
             css: {
@@ -135,6 +157,7 @@ module.exports = function(grunt){
         'grunt-env',
         'grunt-sync',
         'grunt-contrib-watch',
+        'grunt-contrib-copy',
         'grunt-sass',
         'grunt-nodemon',
         'grunt-concurrent'
@@ -144,16 +167,18 @@ module.exports = function(grunt){
 
     grunt.registerTask('generate-assets', [
         'sync',
-        'sass'
+        'sass',
+        'copy:services'
     ]);
 
     grunt.registerTask('security-checks', [
-      'nsp:package',
+        'nsp:package',
     ]);
 
     grunt.registerTask('default', [
         'env:dev',
         'generate-assets',
+        'copy:mockServices',
         'concurrent:target'
     ]);
 

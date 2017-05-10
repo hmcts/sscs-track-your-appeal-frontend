@@ -8,12 +8,12 @@
   },
   "scripts": {
     "start": "cross-env NODE_PATH=. node server.js",
-    "test": "cross-env NODE_PATH=. SSCS_MOCK_DATA=true mocha test/unit --recursive",
-    "coverage": "cross-env NODE_PATH=. SSCS_MOCK_DATA=true istanbul cover _mocha test/unit/** --dir test/coverage/html",
+    "test": "cross-env NODE_PATH=. mocha test/unit --recursive",
+    "coverage": "cross-env NODE_PATH=. istanbul cover _mocha test/unit/** --dir test/coverage/html",
     "dev": "cross-env NODE_PATH=. NODE_ENV=development LOG_OUTPUT=multi grunt",
     "setup": "cross-env NODE_PATH=. grunt generate-assets",
     "smoke-test": "cross-env NODE_PATH=. codeceptjs run test/smoke/ --steps",
-    "pa11y": "cross-env NODE_PATH=. SSCS_MOCK_DATA=true LOG_LEVEL=OFF mocha test/accessibility -r test/chai-sinon.js --reporter spec --recursive --timeout 10000",
+    "pa11y": "cross-env NODE_PATH=. LOG_LEVEL=OFF mocha test/accessibility -r test/chai-sinon.js --reporter spec --recursive --timeout 10000",
     "eslint": "cross-env NODE_PATH=. eslint .",
     "security-checks": "cross-env NODE_PATH=. grunt security-checks",
     "post-data": "cross-env NODE_PATH=. node post-data.js"
@@ -39,6 +39,7 @@
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-concurrent": "^2.3.1",
+    "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-env": "^0.4.4",
     "grunt-nodemon": "^0.4.2",
@@ -47,6 +48,7 @@
     "grunt-sync": "^0.6.2",
     "helmet": "^3.5.0",
     "istanbul": "^0.4.5",
+    "jsdom": "^9.12.0",
     "lodash": "^4.17.4",
     "log4js": "^1.1.1",
     "mocha": "^3.2.0",
@@ -58,6 +60,7 @@
     "nodejs-logging": "^1.1.0",
     "nsp": "^2.6.3",
     "nunjucks": "^3.0.0",
+    "pg":"^6.1.5",
     "pa11y": "^4.9.0",
     "portscanner": "^2.1.1",
     "request-json": "^0.6.1",
@@ -66,8 +69,6 @@
     "sinon-chai": "^2.9.0",
     "superagent": "^3.5.2",
     "supertest": "^3.0.0",
-    "urlsafe-base64": "^1.0.0",
-    "jsdom": "^9.12.0",
-    "pg":"^6.1.5"
+    "urlsafe-base64": "^1.0.0"
   }
 }
