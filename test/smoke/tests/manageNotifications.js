@@ -1,7 +1,6 @@
-/*
 Feature('Manage Notifications');
 
-Scenario.only('verify change password ', function*(I, Properties) {
+Scenario('verify change password ', function*(I, Properties) {
   let authenticationCode = yield I.getMACToken();
   I.amOnPage('/manage-email-notifications/' + authenticationCode);
   I.see('What do you want to do?');
@@ -31,4 +30,3 @@ Scenario('stop email subscription  ', function*(I, Properties) {
   I.see("You’ve stopped email notifications");
   I.see("You won’t receive any more emails about your ESA benefit appeal.");
 });
-*/

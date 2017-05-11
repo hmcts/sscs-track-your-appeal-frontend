@@ -21,8 +21,12 @@ module.exports = {
 
   },
   data_fields: {
-    connectionString : process.env.DB_CONNECTION_URL || 'postgres://postgres:postgres@localhost:5432/sscs-staging',
-    dwp_appeal_case_id : 222222,
-    }
+    connectionString: process.env.DB_CONNECTION_URL || 'postgres://postgres:postgres@localhost:5432/sscs-staging',
+    appealreceived_appeal_case_id: 111111,
+    dwp_appeal_case_id: 222222,
+    hearingBooked_appeal_case_id: 333333,
+    hearing_appeal_case_id: 444444,
+    subscription_appeal_case_id: 888888
+  }
 
 };
