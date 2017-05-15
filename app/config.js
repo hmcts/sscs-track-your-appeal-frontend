@@ -12,6 +12,18 @@ const STATUSES = {
     name: "DWP_RESPOND",
     value: 1
   },
+  POSTPONED: {
+    name: "POSTPONED",
+    value: 1
+  },
+  PAST_HEARTING_BOOKED: {
+    name: "PAST_HEARTING_BOOKED",
+    value: 1
+  },
+  ADJOURNED: {
+    name: "ADJOURNED",
+    value: 1
+  },
   HEARING_BOOKED: {
     name: "HEARING_BOOKED",
     value: 2
@@ -27,7 +39,11 @@ const CONTENT_KEYS = {
   DWP_RESPOND: 'status.dwpRespond',
   HEARING_BOOKED: 'status.hearingBooked',
   HEARING: 'status.hearing',
-  EVIDENCE_RECEIVED: 'status.evidenceReceived'
+  EVIDENCE_RECEIVED: 'status.evidenceReceived',
+  PAST_HEARING_BOOKED: "status.pastHearingBooked",
+  ADJOURNED: "status.adjourned",
+  DORMANT: "status.dormant",
+  POSTPONED: "status.postponed",
 };
 
 const CONTENT_SUBKEYS = {
