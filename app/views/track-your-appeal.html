@@ -23,6 +23,7 @@ Track your Appeal
 
             <div class="divider"></div>
 
+            {% if data.status != 'DORMANT' %}
             <section class="progress-bar">
 
                 <div class="appeal-received">
@@ -74,6 +75,7 @@ Track your Appeal
                 </div>
 
             </section>
+            {% endif %}
 
             <div class="events">
 
@@ -137,8 +139,6 @@ Track your Appeal
         </div>
 
     </div>
-
-    <!--<pre class="debug-data">{{ data.historicalEvents | json }}</pre>-->
 
 </main>
 

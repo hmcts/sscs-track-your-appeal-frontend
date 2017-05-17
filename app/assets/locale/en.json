@@ -25,6 +25,26 @@
     "evidenceReceived": {
       "heading": "Evidence received",
       "content": "The {{evidenceType}} evidence you sent was received by us on {{date|formatDate}}"
+    },
+    "pastHearingBooked": {
+      "content": "We’re still trying to find a suitable time for your ESA benefit appeal. We’ll contact you as soon as we’ve scheduled it. We apologise for any inconvenience this may cause you."
+    },
+    "adjourned": {
+      "content": [
+        "The hearing for your appeal didn’t take place as scheduled. We’ve sent you a letter explaining why, which you should receive by {{adjournedLetterReceivedByDate|formatDate}}.",
+        "We’ll contact you by {{hearingContactDate|formatDate}} to let you know the details of your new hearing."
+      ]
+    },
+    "dormant": {
+     "content": [
+       "The DWP have told us they changed their decision on your ESA benefit in your favour. We’ve therefore closed this appeal. If you don’t agree with their new decision you can start a new appeal.",
+      "If you have any questions relating to your benefits, contact the DWP. You can find their contact details on any correspondence you’ve received from them."]
+    },
+    "postponed": {
+      "content": [
+        "The hearing for your ESA benefit appeal has been postponed and will now take place on a different day.",
+        "We’ll book a new hearing for your appeal. We’ll contact you by {{hearingContactDate|formatDate}} with the details."
+      ]
     }
   },
   "progressBar": {
