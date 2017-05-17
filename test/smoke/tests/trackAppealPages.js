@@ -1,8 +1,8 @@
 Feature('Track your Appeal Page Tests');
 
 Scenario('verify appellant details after Appeal Received', function*(I, Properties) {
-  let result = yield I.retrieveAppealNumberForAppealReceivedAppealCaseID();
-  I.amOnPage('/progress/' + result + '/trackyourappeal');
+  let appealId = yield I.retrieveAppealNumberForAppealReceivedAppealCaseID();
+  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. A Alpha');
   I.see('Appeal reference number: SC111/11/1111', Properties.fields.form_hint_css_path);
   I.see('Appeal received. This is the current status of your appeal', Properties.fields.appeal_progbar_css_path);
@@ -11,8 +11,8 @@ Scenario('verify appellant details after Appeal Received', function*(I, Properti
 });
 
 Scenario('verify appellant details after DWP response received', function*(I, Properties) {
-  let result = yield I.retrieveAppealNumberForDwpAppealCaseID();
-  I.amOnPage('/progress/' + result + '/trackyourappeal');
+  let appealId = yield I.retrieveAppealNumberForDwpAppealCaseID();
+  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. B Bravo');
   I.see('Appeal reference number: SC222/22/22222', Properties.fields.form_hint_css_path);
   I.see('Appeal received. This step is complete.', Properties.fields.appeal_progbar_css_path);
@@ -28,8 +28,8 @@ Scenario('verify appellant details after DWP response received', function*(I, Pr
 });
 
 Scenario('verify appellant details after Hearing response received', function*(I, Properties) {
-  let result = yield I.retrieveAppealNumberForHearingBookedAppealCaseID();
-  I.amOnPage('/progress/' + result + '/trackyourappeal');
+  let appealId = yield I.retrieveAppealNumberForHearingBookedAppealCaseID();
+  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. C Charlie');
   I.see('Appeal reference number: SC333/33/33333', Properties.fields.form_hint_css_path);
   I.see('Appeal received. This step is complete.', Properties.fields.appeal_progbar_css_path);
@@ -46,22 +46,22 @@ Scenario('verify appellant details after Hearing response received', function*(I
 });
 
 Scenario('verify about your appeal section links', function*(I, Properties) {
-  let appeal_id = yield I.retrieveAppealNumberForHearingBookedAppealCaseID();
-  I.amOnPage('/progress/' + appeal_id + '/trackyourappeal');
+  let appealId = yield I.retrieveAppealNumberForHearingBookedAppealCaseID();
+  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('About your appeal');
   I.click('What to expect at your hearing');
   I.see('What to expect at your hearing');
-  I.amOnPage('/progress/' + appeal_id + '/trackyourappeal');
+  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.click('Claiming hearing expenses');
   I.see('Claiming expenses to attend your hearing');
-  I.amOnPage('/progress/' + appeal_id + '/trackyourappeal');
+  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.click('Providing evidence to support your appeal');
   I.see('Providing evidence to support your appeal');
 });
 
 Scenario('verify evidence page', function*(I, Properties) {
-  let appeal_id = yield I.retrieveAppealNumberForHearingBookedAppealCaseID();
-  I.amOnPage('/progress/' + appeal_id + '/evidence');
+  let appealId = yield I.retrieveAppealNumberForHearingBookedAppealCaseID();
+  I.amOnPage('/progress/' + appealId + '/evidence');
   I.see('Providing evidence to support your appeal');
   I.see('Medical evidence', Properties.fields.sub_headings_h2_css_path);
   I.see('Oral evidence', Properties.fields.sub_headings_h2_css_path);
@@ -74,8 +74,8 @@ Scenario('verify evidence page', function*(I, Properties) {
 });
 
 Scenario('verify what to expect at your hearing page', function*(I, Properties) {
-  let appeal_id = yield I.retrieveAppealNumberForHearingBookedAppealCaseID();
-  I.amOnPage('/progress/' + appeal_id + '/abouthearing');
+  let appealId = yield I.retrieveAppealNumberForHearingBookedAppealCaseID();
+  I.amOnPage('/progress/' + appealId + '/abouthearing');
   I.see('What to expect at your hearing');
   I.see('When you arrive', Properties.fields.sub_headings_h2_css_path);
   I.see('The hearing room', Properties.fields.sub_headings_h2_css_path);
@@ -86,15 +86,14 @@ Scenario('verify what to expect at your hearing page', function*(I, Properties) 
 });
 
 Scenario('verify expenses page', function*(I, Properties) {
-  let appeal_id = yield I.retrieveAppealNumberForHearingBookedAppealCaseID();
-  I.amOnPage('/progress/' + appeal_id + '/expenses');
+  let appealId = yield I.retrieveAppealNumberForHearingBookedAppealCaseID();
+  I.amOnPage('/progress/' + appealId + '/expenses');
   I.see('Claiming expenses to attend your hearing');
   I.see('You may be able to claim back some of the money you spend on attending your hearing.');
 });
 
 Scenario('verify appellant details for unmapped state', function*(I, Properties) {
-  let result = yield I.getMACToken()();
-  I.amOnPage('/progress/' + result.appealId + '/trackyourappeal');
+  let appealId = yield I.retrieveAppealNumberForUnmappedCaseID();
+  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.dontSee('Ms. L Lena');
 });
-
