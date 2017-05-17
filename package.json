@@ -10,7 +10,7 @@
     "start": "cross-env NODE_PATH=. node server.js",
     "setup": "cross-env NODE_PATH=. grunt generate-assets",
     "postinstall": "yarn setup",
-    "dev": "cross-env NODE_PATH=. NODE_ENV=development LOG_OUTPUT=multi grunt generate-assets",
+    "dev": "cross-env NODE_PATH=. NODE_ENV=development LOG_OUTPUT=multi grunt dev",
     "pretest": "grunt mock-services",
     "test": "cross-env NODE_PATH=. mocha test/unit --recursive",
     "posttest": "grunt services",
