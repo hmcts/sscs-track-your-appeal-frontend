@@ -8,9 +8,6 @@ exports.config = {
       'waitForTimeout': 10000,
       'show': false
     },
-    'postAppealHelper': {
-      'require': './helper/postAppealStatusRequests.js'
-    },
     'messageAuthenticationCodeHelper': {
       'require': './helper/messageAuthenticationCode.js'
     },
