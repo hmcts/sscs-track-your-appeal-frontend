@@ -23,7 +23,8 @@
     "smoke-test": "cross-env NODE_PATH=. codeceptjs run test/smoke/ --steps",
     "eslint": "cross-env NODE_PATH=. eslint .",
     "security-checks": "cross-env NODE_PATH=. grunt security-checks",
-    "post-data": "cross-env NODE_PATH=. node post-data.js"
+    "post-data": "cross-env NODE_PATH=. node post-data.js",
+    "sonar-scanner": "node_modules/sonar-scanner/bin/sonar-scanner"
   },
   "repository": {
     "type": "git",
@@ -75,6 +76,7 @@
     "serve-favicon": "^2.4.2",
     "sinon": "^2.1.0",
     "sinon-chai": "^2.9.0",
+    "sonar-scanner": "^1.0.1",
     "superagent": "^3.5.2",
     "supertest": "^3.0.0",
     "urlsafe-base64": "^1.0.0"

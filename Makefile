@@ -31,3 +31,5 @@ else
 	yarn smoke-test
 endif
 
+sonarscan:
+	yarn sonar-scanner
