@@ -198,7 +198,9 @@ router.post(`${notificationRoot}/:mactoken/change`, validateToken, (req, res, ne
 router.get('/status', (req, res, next) => {
   HealthService.health().then((health) => {
     res.json(health.body);
-  });
+  }).catch((error) => {
+    next(error);
+  })
 });
 
 router.get('/cookiepolicy', (req, res) => {
