@@ -36,7 +36,7 @@ class messageAuthenticationCodeHelper extends Helper {
       let pgClient = new pg.Client(props.data_fields.connectionString);
       let appealData = [];
       pgClient.connect();
-      let query = pgClient.query("Select id from subscriptions where appeal_case_id=$1", [props.data_fields.subscription_appeal_case_id]);
+      let query = pgClient.query("Select id from subscriptions where appeal_case_id=$1", [props.data_fields.lapsedRevisedAppealCaseId]);
 
       query.on('row', (row) => {
         appealData.push(row);

@@ -11,6 +11,7 @@ Scenario('verify change password ', function*(I, Properties) {
   I.click("Continue");
   I.see("Emails about your ESA benefit appeal will now be sent to");
   I.see("test2.test@hmcts.net");
+  I.wait(2);
   I.click("Change your email address");
   I.fillField('email', 'test.test@hmcts.net');
   I.fillField('email2', 'test.test@hmcts.net');
