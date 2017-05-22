@@ -21,6 +21,7 @@ Scenario('verify appellant details after DWP response received', function*(I, Pr
   I.click(Properties.fields.view_previous_updates_link_css_path, 'View previous updates');
   I.see('Appeal received', Properties.fields.sub_headings_h3_css_path);
   I.see('05 January 2017', Properties.fields.sub_headings_h3_css_path);
+  I.wait(1);
   I.see('DWP response', Properties.fields.sub_headings_h3_css_path);
   I.see('22 January 2015', Properties.fields.sub_headings_h3_css_path);
   I.click('Providing evidence to support your appeal');
@@ -92,8 +93,34 @@ Scenario('verify expenses page', function*(I, Properties) {
   I.see('You may be able to claim back some of the money you spend on attending your hearing.');
 });
 
-Scenario('verify appellant details for unmapped state', function*(I, Properties) {
-  let appealId = yield I.retrieveAppealNumberForUnmappedCaseID();
+Scenario('verify appellant details for lapsed revised state', function*(I, Properties) {
+  let appealId = yield I.retrieveAppealNumberForLapsedRevisedCaseID();
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
-  I.dontSee('Ms. L Lena');
+  I.see('Ms. F Foxtrot');
 });
+
+Scenario('verify appellant details for withdrawn state', function*(I, Properties) {
+  let appealId = yield I.retrieveAppealNumberForWithdrawnCaseID();
+  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.see('Ms. I Iglo');
+});
+
+
+Scenario('verify appellant details for adjurned state', function*(I, Properties) {
+  let appealId = yield I.retrieveAppealNumberForAdjurnedCaseID();
+  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.see('Ms. K Kilo');
+});
+
+Scenario('verify appellant details for postponed state', function*(I, Properties) {
+  let appealId = yield I.retrieveAppealNumberForPostponedCaseID();
+  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.see('Ms. L Lena');
+});
+
+Scenario('verify appellant details for dormant state', function*(I, Properties) {
+  let appealId = yield I.retrieveAppealNumberForDormantCaseID();
+  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.see('Mr. N November');
+});
+
