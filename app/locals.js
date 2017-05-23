@@ -1,5 +1,4 @@
 const packageJson = require('../package.json');
-const {STATUSES} = require('app/config');
 const locale = require('app/assets/locale/en');
 
 module.exports = (req, res, next) => {

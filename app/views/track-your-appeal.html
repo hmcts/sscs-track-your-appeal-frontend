@@ -23,7 +23,7 @@ Track your Appeal
 
             <div class="divider"></div>
 
-            {% if data.status != 'DORMANT' or data.status != 'LAPSED_REVISED' or data.status != 'WITHDRAWN' %}
+            {% if data.showProgressBar %}
             <section class="progress-bar">
 
                 <div class="appeal-received">

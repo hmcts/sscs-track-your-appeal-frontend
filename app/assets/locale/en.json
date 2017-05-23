@@ -52,12 +52,14 @@
       ]
     },
     "lapsedRevised": {
+      "heading": "Lapsed revised",
       "content": [
         "The DWP have told us they changed their decision on your ESA benefit in your favour. We’ve therefore closed this appeal. If you don’t agree with their new decision you can start a new appeal.",
         "If you have any questions relating to your benefits, contact the DWP. You can find their contact details on any correspondence you’ve received from them."
       ]
     },
     "withdrawn": {
+      "heading": "Withdrawn",
       "content": [
         "You told us you wanted to withdraw your appeal so we’ve closed it.",
         "If you have any questions relating to your benefits, contact the DWP. You can find their contact details on any correspondence you’ve received from them."
