@@ -1,3 +1,4 @@
+const logger = require('nodejs-logging').getLogger('routes.js');
 const _ = require('lodash');
 const ServiceLoader = require('app/services/ServiceLoader');
 const AppealsService = ServiceLoader.AppealService;
@@ -10,6 +11,7 @@ const progressRoot = '/progress';
 const notificationRoot = '/manage-email-notifications';
 const errors = locale.notifications.email.errors;
 const urls = require('app/urls');
+const { STATUSES } = require('app/config');
 const EMAIL = {
   CHANGE: 'changeEmailAddress',
   STOP: 'stopEmails',
@@ -27,7 +29,6 @@ const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"
 
 function getAppeal(req, res, next) {
   if (req.params.id) {
-    //console.log(`GET:/appeals/${id} : PATH:${req.url}`);
     AppealsService.status(req.params.id).then((appeal) => {
       res.locals.appeal = appeal;
       next();
@@ -39,11 +40,26 @@ function getAppeal(req, res, next) {
   }
 }
 
+function showProgressBar(req, res, next) {
+  let appeal = res.locals.appeal;
+  if(appeal) {
+    let status = STATUSES[appeal.status];
+    if(status) {
+      appeal.showProgressBar = (status.showProgressBar === undefined)? true : status.showProgressBar;
+    } else {
+      logger.error(`Unknown status: ${appeal.status}`);
+    }
+  } else {
+    logger.error(`Undefined appeal`);
+  }
+  next();
+}
+
 router.get(`${progressRoot}/:id/abouthearing`, getAppeal, (req, res) => {
   res.render('about-hearing', {data: res.locals.appeal});
 });
 
-router.get(`${progressRoot}/:id/trackyourappeal`, getAppeal, (req, res) => {
+router.get(`${progressRoot}/:id/trackyourappeal`, getAppeal, showProgressBar, (req, res) => {
   res.render('track-your-appeal', {data: res.locals.appeal});
 });
 

@@ -16,8 +16,8 @@ const STATUSES = {
     name: "POSTPONED",
     value: 1
   },
-  PAST_HEARTING_BOOKED: {
-    name: "PAST_HEARTING_BOOKED",
+  PAST_HEARING_BOOKED: {
+    name: "PAST_HEARING_BOOKED",
     value: 1
   },
   ADJOURNED: {
@@ -31,6 +31,18 @@ const STATUSES = {
   HEARING: {
     name: "HEARING",
     value: 3
+  },
+  WITHDRAWN: {
+    name: "WITHDRAWN",
+    showProgressBar: false
+  },
+  DORMANT: {
+    name: "DORMANT",
+    showProgressBar: false
+  },
+  LAPSED_REVISED: {
+    name: "LAPSED_REVISED",
+    showProgressBar: false
   }
 };
 
@@ -44,6 +56,8 @@ const CONTENT_KEYS = {
   ADJOURNED: "status.adjourned",
   DORMANT: "status.dormant",
   POSTPONED: "status.postponed",
+  WITHDRAWN: "status.withdrawn",
+  LAPSED_REVISED: "status.lapsedRevised"
 };
 
 const CONTENT_SUBKEYS = {

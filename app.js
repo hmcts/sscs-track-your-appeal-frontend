@@ -1,9 +1,4 @@
 const logging = require('nodejs-logging');
-logging.config({
-  microservice: "track-your-appeal-frontend",
-  team: "sscs",
-  environment: process.env.NODE_ENV,
-});
 const express = require('express');
 const nunjucks = require('express-nunjucks');
 const favicon = require('serve-favicon');
@@ -20,6 +15,12 @@ const app = express();
 
 const PORT = 3000;
 app.set('port', process.env.PORT || PORT);
+
+logging.config({
+  microservice: "track-your-appeal-frontend",
+  team: "sscs",
+  environment: process.env.NODE_ENV,
+});
 
 // Tests
 app.set('portFrom', PORT);
