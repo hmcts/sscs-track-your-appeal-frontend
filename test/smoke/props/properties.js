@@ -30,7 +30,8 @@ module.exports = {
     withdrawnAppealCaseId:666666,
     adjurnedAppealCaseId:777777,
     postponedAppealCaseId:888888,
-    dormantAppealCaseId:100001
+    pastHearingDateAppealCaseId:100000,
+    dormantAppealCaseId:100001,
   }
 
 };
