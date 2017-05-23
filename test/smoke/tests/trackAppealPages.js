@@ -21,9 +21,6 @@ Scenario('verify appellant details after DWP response received', function*(I, Pr
   I.click(Properties.fields.view_previous_updates_link_css_path, 'View previous updates');
   I.see('Appeal received', Properties.fields.sub_headings_h3_css_path);
   I.see('05 January 2017', Properties.fields.sub_headings_h3_css_path);
-  I.wait(1);
-  I.see('DWP response', Properties.fields.sub_headings_h3_css_path);
-  I.see('22 January 2015', Properties.fields.sub_headings_h3_css_path);
   I.click('Providing evidence to support your appeal');
   I.see('Providing evidence to support your appeal');
 });
@@ -110,12 +107,15 @@ Scenario('verify appellant details for adjurned state', function*(I, Properties)
   let appealId = yield I.retrieveAppealNumberForAdjurnedCaseID();
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. K Kilo');
+  I.see('The hearing for your appeal didn’t take place as scheduled. We’ve sent you a letter explaining why, which you should receive by 09 March 2017.')
 });
 
 Scenario('verify appellant details for postponed state', function*(I, Properties) {
   let appealId = yield I.retrieveAppealNumberForPostponedCaseID();
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. L Lena');
+  I.see('The hearing for your ESA benefit appeal has been postponed and will now take place on a different day.');
+  I.see('We’ll book a new hearing for your appeal. We’ll contact you by 13 April 2017 with the details.')
 });
 
 Scenario('verify appellant details for dormant state', function*(I, Properties) {
@@ -124,3 +124,8 @@ Scenario('verify appellant details for dormant state', function*(I, Properties) 
   I.see('Mr. N November');
 });
 
+Scenario('verify appellant details for past hearing date state', function*(I, Properties) {
+  let appealId = yield I.retrieveAppealNumberForPastHearingDateCaseID();
+  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.see('Mr. M Miao');
+});
