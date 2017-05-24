@@ -1,6 +1,6 @@
 const I18nHelper = require('app/core/I18nHelper');
 const mockedData = require('test/mock/data/index');
-const {CONTENT_KEYS, STATUSES} = require('app/config');
+const { EVENTS } = require('app/config');
 
 class MockAppealService {
 
@@ -17,12 +17,12 @@ class MockAppealService {
       I18nHelper.setRenderedContentOnEvents(appeal.latestEvents);
       I18nHelper.setHeadingAndRenderedContentOnEvents(appeal.historicalEvents);
 
-      if (appeal.status === STATUSES.HEARING_BOOKED.name) {
-        I18nHelper.setHearingOnAppeal(appeal, CONTENT_KEYS.HEARING_BOOKED);
+      if (appeal.status === EVENTS.HEARING_BOOKED.name) {
+        I18nHelper.setHearingOnAppeal(appeal, EVENTS.HEARING_BOOKED.contentKey);
       }
 
-      if (appeal.status === STATUSES.HEARING.name) {
-        I18nHelper.setHearingOnAppeal(appeal, CONTENT_KEYS.HEARING);
+      if (appeal.status === EVENTS.HEARING.name) {
+        I18nHelper.setHearingOnAppeal(appeal, EVENTS.HEARING.contentKey);
       }
 
       setTimeout(() => resolve(appeal), 50);

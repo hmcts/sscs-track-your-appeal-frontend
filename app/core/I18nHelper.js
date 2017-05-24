@@ -1,7 +1,7 @@
 const _ = require('lodash');
 const locale = require('app/assets/locale/en');
 const NunjucksUtils = require('app/core/NunjucksUtils');
-const {CONTENT_KEYS, CONTENT_SUBKEYS} = require('app/config');
+const {EVENTS, CONTENT_SUBKEYS} = require('app/config');
 
 const ADDRESS_LINE = 'addressLine';
 
@@ -34,7 +34,7 @@ class I18nHelper {
 
     // Safely remove this when the evidence received date has moved from
     // the event to the event.placeholder.
-    if(event.contentKey === CONTENT_KEYS.EVIDENCE_RECEIVED) {
+    if(event.contentKey === EVENTS.EVIDENCE_RECEIVED.contentKey) {
       event.placeholder.date = event.date;
     }
 

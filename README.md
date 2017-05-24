@@ -2,7 +2,7 @@
 
 ## Dependencies
  - [node.js](https://nodejs.org) >= v7
- - npm >= v4 (note that npm ships with node.js) 
+ - yarn
 
 ## Commands
 
