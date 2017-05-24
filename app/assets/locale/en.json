@@ -15,6 +15,10 @@
       "heading": "Hearing booked",
       "content": "A hearing has been booked for your appeal"
     },
+    "newHearingBooked": {
+      "heading": "New hearing booked",
+      "content": "A new hearing has been booked for your appeal."
+    },
     "hearing": {
       "heading": "Hearing",
       "content": [
