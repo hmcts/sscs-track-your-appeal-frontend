@@ -28,6 +28,10 @@ const STATUSES = {
     name: "HEARING_BOOKED",
     value: 2
   },
+  NEW_HEARING_BOOKED: {
+    name: "NEW_HEARING_BOOKED",
+    value: 2
+  },
   HEARING: {
     name: "HEARING",
     value: 3
@@ -50,6 +54,7 @@ const CONTENT_KEYS = {
   APPEAL_RECEIVED: 'status.appealReceived',
   DWP_RESPOND: 'status.dwpRespond',
   HEARING_BOOKED: 'status.hearingBooked',
+  NEW_HEARING_BOOKED: 'status.newHearingBooked',
   HEARING: 'status.hearing',
   EVIDENCE_RECEIVED: 'status.evidenceReceived',
   PAST_HEARING_BOOKED: "status.pastHearingBooked",
