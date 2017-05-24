@@ -11,7 +11,7 @@ const progressRoot = '/progress';
 const notificationRoot = '/manage-email-notifications';
 const errors = locale.notifications.email.errors;
 const urls = require('app/urls');
-const { STATUSES } = require('app/config');
+const { EVENTS, PROGRESS_BAR } = require('app/config');
 const EMAIL = {
   CHANGE: 'changeEmailAddress',
   STOP: 'stopEmails',
@@ -43,11 +43,11 @@ function getAppeal(req, res, next) {
 function showProgressBar(req, res, next) {
   let appeal = res.locals.appeal;
   if(appeal) {
-    let status = STATUSES[appeal.status];
-    if(status) {
-      appeal.showProgressBar = (status.showProgressBar === undefined)? true : status.showProgressBar;
+    let event = EVENTS[appeal.status];
+    if(event) {
+      appeal.showProgressBar = event.index !== PROGRESS_BAR.NONE;
     } else {
-      logger.error(`Unknown status: ${appeal.status}`);
+      logger.error(`Unable to map status to event: ${appeal.status}`);
     }
   } else {
     logger.error(`Undefined appeal`);

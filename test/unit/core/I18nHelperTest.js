@@ -1,7 +1,7 @@
 const {expect} = require('test/chai-sinon');
 const mockery = require('mockery');
 const testServer = require('test/testServer');
-const {CONTENT_KEYS} = require('app/config');
+const {EVENTS} = require('app/config');
 const appeal = require('test/mock/data/hearing.json').appeal;
 const nunjucksEnv = require('app/core/NunjucksUtils').env;
 
@@ -180,23 +180,23 @@ describe('I18nHelper', () => {
   describe('Calling the getEventWithMatchingContentKey() function on all historicalEvents', () => {
 
     it('should filter out the status.appealReceived event from a list of events', () => {
-      const appealReceivedEvent = I18nHelper.getEventWithMatchingContentKey(appeal.historicalEvents, CONTENT_KEYS.APPEAL_RECEIVED);
-      expect(appealReceivedEvent.contentKey).to.equal(CONTENT_KEYS.APPEAL_RECEIVED);
+      const appealReceivedEvent = I18nHelper.getEventWithMatchingContentKey(appeal.historicalEvents, EVENTS.APPEAL_RECEIVED.contentKey);
+      expect(appealReceivedEvent.contentKey).to.equal(EVENTS.APPEAL_RECEIVED.contentKey);
     });
 
     it('should filter out the status.dwpRespond event from a list of events', () => {
-      const dwpRespondEvent = I18nHelper.getEventWithMatchingContentKey(appeal.historicalEvents, CONTENT_KEYS.DWP_RESPOND);
-      expect(dwpRespondEvent.contentKey).to.equal(CONTENT_KEYS.DWP_RESPOND);
+      const dwpRespondEvent = I18nHelper.getEventWithMatchingContentKey(appeal.historicalEvents, EVENTS.DWP_RESPOND.contentKey);
+      expect(dwpRespondEvent.contentKey).to.equal(EVENTS.DWP_RESPOND.contentKey);
     });
 
     it('should filter out the status.hearingBooked event from a list of events', () => {
-      const hearingEvent = I18nHelper.getEventWithMatchingContentKey(appeal.historicalEvents, CONTENT_KEYS.HEARING_BOOKED);
-      expect(hearingEvent.contentKey).to.equal(CONTENT_KEYS.HEARING_BOOKED);
+      const hearingEvent = I18nHelper.getEventWithMatchingContentKey(appeal.historicalEvents, EVENTS.HEARING_BOOKED.contentKey);
+      expect(hearingEvent.contentKey).to.equal(EVENTS.HEARING_BOOKED.contentKey);
     });
 
     it('should filter out the status.evidenceReceived event from a list of events', () => {
-      const evidenceReceivedEvent = I18nHelper.getEventWithMatchingContentKey(appeal.historicalEvents, CONTENT_KEYS.EVIDENCE_RECEIVED);
-      expect(evidenceReceivedEvent.contentKey).to.equal(CONTENT_KEYS.EVIDENCE_RECEIVED);
+      const evidenceReceivedEvent = I18nHelper.getEventWithMatchingContentKey(appeal.historicalEvents, EVENTS.EVIDENCE_RECEIVED.contentKey);
+      expect(evidenceReceivedEvent.contentKey).to.equal(EVENTS.EVIDENCE_RECEIVED.contentKey);
     });
 
   });
@@ -210,13 +210,13 @@ describe('I18nHelper', () => {
     });
 
     it('should filter out the status.evidenceReceived from the latestEvents array', () => {
-      const evidenceReceivedEvent = I18nHelper.getEventWithMatchingContentKey(hearingBooked.latestEvents, CONTENT_KEYS.EVIDENCE_RECEIVED);
-      expect(evidenceReceivedEvent.contentKey).to.equal(CONTENT_KEYS.EVIDENCE_RECEIVED);
+      const evidenceReceivedEvent = I18nHelper.getEventWithMatchingContentKey(hearingBooked.latestEvents, EVENTS.EVIDENCE_RECEIVED.contentKey);
+      expect(evidenceReceivedEvent.contentKey).to.equal(EVENTS.EVIDENCE_RECEIVED.contentKey);
     });
 
     it('should filter out the status.hearingBooked event from the latestEvents array', () => {
-      const hearingBookedEvent = I18nHelper.getEventWithMatchingContentKey(hearingBooked.latestEvents, CONTENT_KEYS.HEARING_BOOKED);
-      expect(hearingBookedEvent.contentKey).to.equal(CONTENT_KEYS.HEARING_BOOKED);
+      const hearingBookedEvent = I18nHelper.getEventWithMatchingContentKey(hearingBooked.latestEvents, EVENTS.HEARING_BOOKED.contentKey);
+      expect(hearingBookedEvent.contentKey).to.equal(EVENTS.HEARING_BOOKED.contentKey);
     });
 
   });
@@ -226,7 +226,7 @@ describe('I18nHelper', () => {
     let hearingEvt;
 
     before(() => {
-      hearingEvt = I18nHelper.getEventWithMatchingContentKey(appeal.latestEvents, CONTENT_KEYS.HEARING);
+      hearingEvt = I18nHelper.getEventWithMatchingContentKey(appeal.latestEvents, EVENTS.HEARING.contentKey);
     });
 
     it('should return an event that contains the address in a new format', () => {
@@ -245,7 +245,7 @@ describe('I18nHelper', () => {
 
     before(() => {
       hearingBookedAppeal = require('test/mock/data/hearingBooked.json').appeal;
-      hearingBookedEvt = I18nHelper.getEventWithMatchingContentKey(hearingBookedAppeal.latestEvents, CONTENT_KEYS.HEARING_BOOKED);
+      hearingBookedEvt = I18nHelper.getEventWithMatchingContentKey(hearingBookedAppeal.latestEvents, EVENTS.HEARING_BOOKED.contentKey);
     });
 
     it('should return an event that contains the address in a new format', () => {

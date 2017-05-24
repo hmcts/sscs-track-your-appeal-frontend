@@ -1,5 +1,5 @@
 const moment = require('moment');
-const {STATUSES} = require('app/config');
+const {EVENTS} = require('app/config');
 const DATE_FORMAT = 'YYYY-MM-DDHH:mm:ss ZZ';
 const locale = require('app/assets/locale/en');
 const FILTERS = {
@@ -27,7 +27,7 @@ const FILTERS = {
   },
 
   isActive: (currentStatus, status) => {
-    return STATUSES[currentStatus].value >= STATUSES[status].value ? 'active' : '';
+    return EVENTS[currentStatus].index >= EVENTS[status].index ? 'active' : '';
   }
 };
 
