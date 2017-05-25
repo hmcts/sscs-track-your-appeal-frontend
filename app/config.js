@@ -62,8 +62,13 @@ const EVENTS = {
   },
   DORMANT: {
     name: "DORMANT",
-    index: PROGRESS_BAR.NONE,
+    index: PROGRESS_BAR.HEARING,
     contentKey: 'status.dormant',
+  },
+  CLOSED: {
+    name: "CLOSED",
+    index: PROGRESS_BAR.NONE,
+    contentKey: 'status.closed',
   },
   LAPSED_REVISED: {
     name: "LAPSED_REVISED",

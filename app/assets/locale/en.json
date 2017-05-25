@@ -48,6 +48,13 @@
         "If you have any questions relating to your benefits, contact the DWP. You can find their contact details on any correspondence you’ve received from them."
       ]
     },
+    "closed": {
+      "heading": "Closed",
+      "content": [
+        "Your ESA benefit appeal is now closed.",
+        "If you have any questions relating to your benefits, contact the DWP. You can find their contact details on any correspondence you’ve received from them."
+      ]
+    },
     "postponed": {
       "heading": "Postponed",
       "content": [

@@ -47,7 +47,7 @@ function showProgressBar(req, res, next) {
     if(event) {
       appeal.showProgressBar = event.index !== PROGRESS_BAR.NONE;
     } else {
-      logger.error(`Unable to map status to event: ${appeal.status}`);
+      logger.error(`Unable to map the status ${appeal.status} to an event:`);
     }
   } else {
     logger.error(`Undefined appeal`);
