@@ -136,3 +136,8 @@ Scenario('verify appellant details for Closed state', function*(I, Properties) {
   I.see('Mr. O Owl');
 });
 
+Scenario('verify appellant details for new hearing booked state', function*(I, Properties) {
+  let appealId = yield I.retrieveAppealNumberForNewHearingBookedCaseID();
+  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.see('Ms. Q Quack');
+});

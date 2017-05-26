@@ -164,7 +164,7 @@ class dataBaseConnectionHelper extends Helper {
     })
   }
 
-  retrieveAppealNumberForDormantCaseID(){
+  retrieveAppealNumberForDormantCaseID() {
     return new Promise((resolve, reject) => {
 
       let pgClient = new pg.Client(props.data_fields.connectionString);
@@ -184,7 +184,7 @@ class dataBaseConnectionHelper extends Helper {
     })
   }
 
-  retrieveAppealNumberForPastHearingDateCaseID(){
+  retrieveAppealNumberForPastHearingDateCaseID() {
     return new Promise((resolve, reject) => {
 
       let pgClient = new pg.Client(props.data_fields.connectionString);
@@ -204,7 +204,7 @@ class dataBaseConnectionHelper extends Helper {
     })
   }
 
-  retrieveAppealNumberForDormantClosedCaseID(){
+  retrieveAppealNumberForDormantClosedCaseID() {
     return new Promise((resolve, reject) => {
 
       let pgClient = new pg.Client(props.data_fields.connectionString);
@@ -224,13 +224,33 @@ class dataBaseConnectionHelper extends Helper {
     })
   }
 
-  retrieveAppealNumberForDwpOverdueRespondCaseID(){
+  retrieveAppealNumberForDwpOverdueRespondCaseID() {
     return new Promise((resolve, reject) => {
 
       let pgClient = new pg.Client(props.data_fields.connectionString);
       let appealData = [];
       pgClient.connect();
       let query = pgClient.query("Select appeal_number from subscriptions where appeal_case_id=$1", [props.data_fields.dwpRespondOverdueAppealCaseId]);
+
+      query.on('row', (row) => {
+        appealData.push(row);
+      });
+
+      query.on("end", (result) => {
+        pgClient.end();
+        resolve(appealData[0].appeal_number);
+      });
+
+    })
+  }
+
+  retrieveAppealNumberForNewHearingBookedCaseID() {
+    return new Promise((resolve, reject) => {
+
+      let pgClient = new pg.Client(props.data_fields.connectionString);
+      let appealData = [];
+      pgClient.connect();
+      let query = pgClient.query("Select appeal_number from subscriptions where appeal_case_id=$1", [props.data_fields.newHearingBookedAppealCaseId]);
 
       query.on('row', (row) => {
         appealData.push(row);
