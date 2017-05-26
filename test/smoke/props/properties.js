@@ -34,6 +34,7 @@ module.exports = {
     dormantAppealCaseId:100001,
     dormantClosedAppealCaseId:100002,
     dwpRespondOverdueAppealCaseId:100003,
+    newHearingBookedAppealCaseId:100004
   }
 
 };
