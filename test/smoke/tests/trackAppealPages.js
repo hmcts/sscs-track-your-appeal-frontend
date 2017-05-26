@@ -7,7 +7,7 @@ Scenario('verify appellant details after Appeal Received', function*(I, Properti
   I.see('Appeal reference number: SC111/11/1111', Properties.fields.form_hint_css_path);
   I.see('Appeal received. This is the current status of your appeal', Properties.fields.appeal_progbar_css_path);
   I.see('Latest update');
-  I.see('We’ve told the DWP that you’ve appealed against their decision. They should respond before 06 April 2017. We’ll contact you and explain the next steps when they’ve replied.')
+  I.see('We’ve told the DWP that you’ve appealed against their decision. They should respond before 29 June 2017. We’ll contact you and explain the next steps when they’ve replied.')
 });
 
 Scenario('verify appellant details after DWP response received', function*(I, Properties) {
@@ -129,3 +129,10 @@ Scenario('verify appellant details for past hearing date state', function*(I, Pr
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. M Miao');
 });
+
+Scenario('verify appellant details for Closed state', function*(I, Properties) {
+  let appealId = yield I.retrieveAppealNumberForDormantClosedCaseID();
+  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.see('Mr. O Owl');
+});
+
