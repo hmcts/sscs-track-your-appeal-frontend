@@ -12,68 +12,73 @@ const PROGRESS_BAR = {
 };
 
 const EVENTS = {
-  APPEAL_RECEIVED: {
-    name: "APPEAL_RECEIVED",
-    index: PROGRESS_BAR.APPEAL_RECEIVED,
-    contentKey: 'status.appealReceived'
-  },
-  DWP_RESPOND: {
-    name: "DWP_RESPOND",
-    index: PROGRESS_BAR.DWP_RESPOND,
-    contentKey: 'status.dwpRespond'
-  },
-  HEARING_BOOKED: {
-    name: "HEARING_BOOKED",
-    index: PROGRESS_BAR.HEARING_BOOKED,
-    contentKey: 'status.hearingBooked'
-  },
-  HEARING: {
-    name: "HEARING",
-    index: PROGRESS_BAR.HEARING,
-    contentKey: 'status.hearing'
-  },
-  POSTPONED: {
-    name: "POSTPONED",
-    index: PROGRESS_BAR.DWP_RESPOND,
-    contentKey: 'status.postponed'
-  },
-  PAST_HEARING_BOOKED: {
-    name: "PAST_HEARING_BOOKED",
-    index: PROGRESS_BAR.DWP_RESPOND,
-    contentKey: 'status.pastHearingBooked'
-  },
   ADJOURNED: {
     name: "ADJOURNED",
     index: PROGRESS_BAR.DWP_RESPOND,
     contentKey: 'status.adjourned'
   },
-  NEW_HEARING_BOOKED: {
-    name: "NEW_HEARING_BOOKED",
-    index: PROGRESS_BAR.HEARING_BOOKED,
-    contentKey: 'status.newHearingBooked'
-  },
-  EVIDENCE_RECEIVED: {
-    contentKey: 'status.evidenceReceived',
-  },
-  WITHDRAWN: {
-    name: "WITHDRAWN",
-    index: PROGRESS_BAR.NONE,
-    contentKey: 'status.withdrawn',
-  },
-  DORMANT: {
-    name: "DORMANT",
-    index: PROGRESS_BAR.HEARING,
-    contentKey: 'status.dormant',
+  APPEAL_RECEIVED: {
+    name: "APPEAL_RECEIVED",
+    index: PROGRESS_BAR.APPEAL_RECEIVED,
+    contentKey: 'status.appealReceived'
   },
   CLOSED: {
     name: "CLOSED",
     index: PROGRESS_BAR.NONE,
     contentKey: 'status.closed',
   },
+  DORMANT: {
+    name: "DORMANT",
+    index: PROGRESS_BAR.HEARING,
+    contentKey: 'status.dormant',
+  },
+  DWP_RESPOND: {
+    name: "DWP_RESPOND",
+    index: PROGRESS_BAR.DWP_RESPOND,
+    contentKey: 'status.dwpRespond'
+  },
+  DWP_RESPOND_OVERDUE: {
+    name: "DWP_RESPOND_OVERDUE",
+    index: PROGRESS_BAR.APPEAL_RECEIVED,
+    contentKey: 'status.dwpRespondOverdue'
+  },
+  EVIDENCE_RECEIVED: {
+    contentKey: 'status.evidenceReceived',
+  },
+  HEARING: {
+    name: "HEARING",
+    index: PROGRESS_BAR.HEARING,
+    contentKey: 'status.hearing'
+  },
+  HEARING_BOOKED: {
+    name: "HEARING_BOOKED",
+    index: PROGRESS_BAR.HEARING_BOOKED,
+    contentKey: 'status.hearingBooked'
+  },
   LAPSED_REVISED: {
     name: "LAPSED_REVISED",
     index: PROGRESS_BAR.NONE,
     contentKey: 'status.lapsedRevised'
+  },
+  NEW_HEARING_BOOKED: {
+    name: "NEW_HEARING_BOOKED",
+    index: PROGRESS_BAR.HEARING_BOOKED,
+    contentKey: 'status.newHearingBooked'
+  },
+  PAST_HEARING_BOOKED: {
+    name: "PAST_HEARING_BOOKED",
+    index: PROGRESS_BAR.DWP_RESPOND,
+    contentKey: 'status.pastHearingBooked'
+  },
+  POSTPONED: {
+    name: "POSTPONED",
+    index: PROGRESS_BAR.DWP_RESPOND,
+    contentKey: 'status.postponed'
+  },
+  WITHDRAWN: {
+    name: "WITHDRAWN",
+    index: PROGRESS_BAR.NONE,
+    contentKey: 'status.withdrawn',
   }
 };
 

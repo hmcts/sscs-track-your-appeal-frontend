@@ -1,44 +1,21 @@
 {
   "status": {
-    "appealReceived": {
-      "heading": "Appeal received",
-      "content": "We’ve told the DWP that you’ve appealed against their decision. They should respond before {{dwpResponseDate|formatDate}}. We’ll contact you and explain the next steps when they’ve replied."
-    },
-    "dwpRespond": {
-      "heading": "DWP response",
-      "content": [
-        "The DWP have written a response to your ESA benefit appeal. They should have sent you a copy in the post.",
-        "We’re now in the process of booking a hearing for your appeal. We’ll contact you by {{hearingContactDate|formatDate}} with the details."
-      ]
-    },
-    "hearingBooked": {
-      "heading": "Hearing booked",
-      "content": "A hearing has been booked for your appeal"
-    },
-    "newHearingBooked": {
-      "heading": "New hearing booked",
-      "content": "A new hearing has been booked for your appeal."
-    },
-    "hearing": {
-      "heading": "Hearing",
-      "content": [
-        "Your hearing took place on 5 June 2017. The decision was sent to you in the post and should have arrived at your registered address by 14 June 2017.",
-        "We can’t publish the decision online or tell you over the phone. This is to protect your personal information."
-      ]
-    },
-    "evidenceReceived": {
-      "heading": "Evidence received",
-      "content": "The {{evidenceType}} evidence you sent was received by us on {{date|formatDate}}"
-    },
-    "pastHearingBooked": {
-      "heading": "Past hearing booked",
-      "content": "We’re still trying to find a suitable time for your ESA benefit appeal. We’ll contact you as soon as we’ve scheduled it. We apologise for any inconvenience this may cause you."
-    },
     "adjourned": {
       "heading": "Adjourned",
       "content": [
         "The hearing for your appeal didn’t take place as scheduled. We’ve sent you a letter explaining why, which you should receive by {{adjournedLetterReceivedByDate|formatDate}}.",
         "We’ll contact you by {{hearingContactDate|formatDate}} to let you know the details of your new hearing."
+      ]
+    },
+    "appealReceived": {
+      "heading": "Appeal received",
+      "content": "We’ve told the DWP that you’ve appealed against their decision. They should respond before {{dwpResponseDate|formatDate}}. We’ll contact you and explain the next steps when they’ve replied."
+    },
+    "closed": {
+      "heading": "Closed",
+      "content": [
+        "Your ESA benefit appeal is now closed.",
+        "If you have any questions relating to your benefits, contact the DWP. You can find their contact details on any correspondence you’ve received from them."
       ]
     },
     "dormant": {
@@ -48,25 +25,54 @@
         "If you have any questions relating to your benefits, contact the DWP. You can find their contact details on any correspondence you’ve received from them."
       ]
     },
-    "closed": {
-      "heading": "Closed",
+    "dwpRespond": {
+      "heading": "DWP response",
       "content": [
-        "Your ESA benefit appeal is now closed.",
-        "If you have any questions relating to your benefits, contact the DWP. You can find their contact details on any correspondence you’ve received from them."
+        "The DWP have written a response to your ESA benefit appeal. They should have sent you a copy in the post.",
+        "We’re now in the process of booking a hearing for your appeal. We’ll contact you by {{hearingContactDate|formatDate}} with the details."
       ]
     },
-    "postponed": {
-      "heading": "Postponed",
+    "dwpRespondOverdue": {
+      "heading": "DWP response overdue",
       "content": [
-        "The hearing for your ESA benefit appeal has been postponed and will now take place on a different day.",
-        "We’ll book a new hearing for your appeal. We’ll contact you by {{hearingContactDate|formatDate}} with the details."
+        "The DWP were due to respond to your appeal by {{xxxx|formatDate}}. We’ve written to them again to remind them. We’ll let you know when they respond."
       ]
+    },
+    "evidenceReceived": {
+      "heading": "Evidence received",
+      "content": "The {{evidenceType}} evidence you sent was received by us on {{date|formatDate}}"
+    },
+    "hearing": {
+      "heading": "Hearing",
+      "content": [
+        "Your hearing took place on {{xxx|formatDate}}. The decision was sent to you in the post and should have arrived at your registered address by 14 June 2017.",
+        "We can’t publish the decision online or tell you over the phone. This is to protect your personal information."
+      ]
+    },
+    "hearingBooked": {
+      "heading": "Hearing booked",
+      "content": "A hearing has been booked for your appeal"
     },
     "lapsedRevised": {
       "heading": "Lapsed revised",
       "content": [
         "The DWP have told us they changed their decision on your ESA benefit in your favour. We’ve therefore closed this appeal. If you don’t agree with their new decision you can start a new appeal.",
         "If you have any questions relating to your benefits, contact the DWP. You can find their contact details on any correspondence you’ve received from them."
+      ]
+    },
+    "newHearingBooked": {
+      "heading": "New hearing booked",
+      "content": "A new hearing has been booked for your appeal."
+    },
+    "pastHearingBooked": {
+      "heading": "Past hearing booked",
+      "content": "We’re still trying to find a suitable time for your ESA benefit appeal. We’ll contact you as soon as we’ve scheduled it. We apologise for any inconvenience this may cause you."
+    },
+    "postponed": {
+      "heading": "Postponed",
+      "content": [
+        "The hearing for your ESA benefit appeal has been postponed and will now take place on a different day.",
+        "We’ll book a new hearing for your appeal. We’ll contact you by {{hearingContactDate|formatDate}} with the details."
       ]
     },
     "withdrawn": {
