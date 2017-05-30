@@ -6,9 +6,11 @@ Scenario('verify change password ', function*(I, Properties) {
   I.see('What do you want to do?');
   I.checkOption("Change your email address");
   I.click("Continue");
+  I.wait(1);
   I.fillField('email', 'test2.test@hmcts.net');
   I.fillField('email2', 'test2.test@hmcts.net');
   I.click("Continue");
+  I.wait(1);
   I.see("Emails about your ESA benefit appeal will now be sent to");
   I.see("test2.test@hmcts.net");
 
