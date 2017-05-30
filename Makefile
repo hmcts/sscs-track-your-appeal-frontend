@@ -33,3 +33,7 @@ endif
 
 sonarscan:
 	yarn sonar-scanner
+
+zapscan:
+	yarn security-scan
+

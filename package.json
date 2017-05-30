@@ -21,6 +21,7 @@
     "pa11y": "cross-env NODE_PATH=. LOG_LEVEL=OFF mocha test/accessibility -r test/chai-sinon.js --reporter spec --recursive --timeout 10000",
     "postpa11y": "grunt services",
     "smoke-test": "cross-env NODE_PATH=. codeceptjs run test/smoke/ --steps",
+    "security-scan": "cross-env NODE_PATH=. codeceptjs run --config test/smoke/securityScan.conf.js --steps",
     "eslint": "cross-env NODE_PATH=. eslint .",
     "security-checks": "cross-env NODE_PATH=. grunt security-checks",
     "post-data": "cross-env NODE_PATH=. node post-data.js",
