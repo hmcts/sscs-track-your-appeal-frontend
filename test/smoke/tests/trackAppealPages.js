@@ -118,16 +118,16 @@ Scenario('verify appellant details for postponed state', function*(I, Properties
   I.see('We’ll book a new hearing for your appeal. We’ll contact you by 13 April 2017 with the details.')
 });
 
-Scenario('verify appellant details for dormant state', function*(I, Properties) {
-  let appealId = yield I.retrieveAppealNumberForDormantCaseID();
-  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
-  I.see('Mr. N November');
-});
-
 Scenario('verify appellant details for past hearing date state', function*(I, Properties) {
   let appealId = yield I.retrieveAppealNumberForPastHearingDateCaseID();
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. M Miao');
+});
+
+Scenario('verify appellant details for dormant state', function*(I, Properties) {
+  let appealId = yield I.retrieveAppealNumberForDormantCaseID();
+  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.see('Mr. N November');
 });
 
 Scenario('verify appellant details for Closed state', function*(I, Properties) {
@@ -135,6 +135,13 @@ Scenario('verify appellant details for Closed state', function*(I, Properties) {
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. O Owl');
 });
+
+Scenario('verify appellant details for dwp respond overdue state', function*(I, Properties) {
+  let appealId = yield I.retrieveAppealNumberForDwpOverdueRespondCaseID();
+  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.see('Mr. P Papa');
+});
+
 
 Scenario('verify appellant details for new hearing booked state', function*(I, Properties) {
   let appealId = yield I.retrieveAppealNumberForNewHearingBookedCaseID();
