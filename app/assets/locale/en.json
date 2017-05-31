@@ -35,7 +35,7 @@
     "dwpRespondOverdue": {
       "heading": "DWP response overdue",
       "content": [
-        "The DWP were due to respond to your appeal by {{xxxx|formatDate}}. We’ve written to them again to remind them. We’ll let you know when they respond."
+        "The DWP were due to respond to your appeal by {{dwpResponseDate|formatDate}}. We’ve written to them again to remind them. We’ll let you know when they respond."
       ]
     },
     "evidenceReceived": {
@@ -45,7 +45,7 @@
     "hearing": {
       "heading": "Hearing",
       "content": [
-        "Your hearing took place on {{xxx|formatDate}}. The decision was sent to you in the post and should have arrived at your registered address by 14 June 2017.",
+        "Your hearing took place on {{xxx|formatDate}}. The decision was sent to you in the post and should have arrived at your registered address by {{xxx|formatDate}}.",
         "We can’t publish the decision online or tell you over the phone. This is to protect your personal information."
       ]
     },
