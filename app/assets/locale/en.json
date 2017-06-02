@@ -465,6 +465,33 @@
       ]
     }
   },
+  "contactUs": {
+    "title": "Contact us",
+    "description": "For help and support with your appeal call:",
+    "openingHours": "Monday to Friday, 8:30am to 5pm",
+    "callCharges": "Find out about call charges",
+    "englandWales": {
+      "heading": "England and Wales",
+      "phoneNumber": "Telephone: 0300 123 1142"
+    },
+    "scotland": {
+      "heading": " Scotland",
+      "phoneNumber": "Telephone: 0141 354 8400"
+    },
+    "regionalOffice": {
+      "preEvidence": "If you have any",
+      "evidence": "evidence to support your appeal",
+      "postEvidence": "send it to:",
+      "address": [
+        "Birmingham ASC",
+        "HM Courts and Tribunals Service",
+        "Administrative Support Centre (ASC)",
+        "PO Box 14620",
+        "Birmingham",
+        "B16 6FR"
+      ]
+    }
+  },
   "errors": {
     "error500": {
       "title": "Page could not be found",

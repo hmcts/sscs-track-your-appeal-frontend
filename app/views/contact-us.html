@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+Contact us
+{% endblock %}
+
+{% block content %}
+
+<main id="content" class="contact-us" role="main">
+
+    {% include "includes/phase_banner_beta.html" %}
+
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            <h1 class="heading-xlarge">{{ i18n.contactUs.title }}</h1>
+            <p>{{ i18n.contactUs.description }}</p>
+
+            <h2 class="heading-medium">{{ i18n.contactUs.englandWales.heading }}</h2>
+            <p>
+               {{ i18n.contactUs.englandWales.phoneNumber }}<br>
+               {{ i18n.contactUs.openingHours }}<br>
+               <a href="https://www.gov.uk/call-charges">{{ i18n.contactUs.callCharges }}</a>
+            </p>
+
+            <h2 class="heading-medium">{{ i18n.contactUs.scotland.heading }}</h2>
+            <p>
+                {{ i18n.contactUs.scotland.phoneNumber }}<br>
+                {{ i18n.contactUs.openingHours }}<br>
+                <a href="https://www.gov.uk/call-charges">{{ i18n.contactUs.callCharges }}</a>
+            </p>
+
+            <p>
+                {{ i18n.contactUs.regionalOffice.preEvidence }}
+                <a href="/progress/{{data.appealNumber}}/evidence">{{ i18n.contactUs.regionalOffice.evidence }}</a>
+                {{ i18n.contactUs.regionalOffice.postEvidence }}
+            </p>
+
+            <p>
+            {% for addressline in i18n.contactUs.regionalOffice.address %}
+            {{ addressline }}
+            <br>
+            {% endfor %}
+            </p>
+
+        </div>
+
+        <div class="column-third">
+            <aside class="govuk-related-items" role="complementary">
+                <h2 class="heading-medium" id="subsection-title">{{ i18n.common.aboutYourAppeal }}</h2>
+                <nav role="navigation" aria-labelledby="subsection-title">
+                    <ul class="font-xsmall">
+                        {% if data.status=='HEARING_BOOKED' or data.status=='HEARING' %}
+                        <li><a href="/progress/{{data.appealNumber}}/hearingdetails">{{ i18n.hearingDetails.checkDetails }}</a></li>
+                        {% endif %}
+                        <li><a href="/progress/{{data.appealNumber}}/expenses">{{ i18n.claimExpenses.link }}</a></li>
+                        <li><a href="/progress/{{data.appealNumber}}/evidence">{{ i18n.evidence.provide.title }}</a></li>
+                        <li><a href="/progress/{{data.appealNumber}}/trackyourappeal">{{ i18n.common.trackYourAppeal}}</a></li>
+                    </ul>
+                </nav>
+            </aside>
+        </div>
+
+    </div>
+
+</main>
+
+{% endblock %}

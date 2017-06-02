@@ -20,7 +20,8 @@ const accessibilityPages = [
   '/progress/md400/trackyourappeal',
   '/progress/md400/hearingdetails',
   '/progress/md400/expenses',
-  '/progress/md400/evidence'
+  '/progress/md400/evidence',
+  '/contactus/md100'
 ];
 
 accessibilityPages.forEach((page) => {

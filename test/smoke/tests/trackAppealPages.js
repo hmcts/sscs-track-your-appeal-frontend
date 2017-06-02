@@ -90,6 +90,13 @@ Scenario('verify expenses page', function*(I, Properties) {
   I.see('You may be able to claim back some of the money you spend on attending your hearing.');
 });
 
+Scenario('verify contact us page', function*(I, Properties) {
+  let appealId = yield I.retrieveAppealNumberForHearingBookedAppealCaseID();
+  I.amOnPage('/contactus/' + appealId);
+  I.see('Contact us');
+  I.see('For help and support with your appeal call:');
+});
+
 Scenario('verify appellant details for lapsed revised state', function*(I, Properties) {
   let appealId = yield I.retrieveAppealNumberForLapsedRevisedCaseID();
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');

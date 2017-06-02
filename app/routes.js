@@ -75,6 +75,10 @@ router.get(`${progressRoot}/:id/hearingdetails`, getAppeal, (req, res) => {
   res.render('hearing-details', {data: res.locals.appeal});
 });
 
+router.get('/contactus/:id', getAppeal, (req, res) => {
+  res.render('contact-us', {data: res.locals.appeal});
+});
+
 function validateToken(req, res, next) {
   if (req.params.mactoken) {
     TokenService.validateToken(req.params.mactoken).then((result) => {
