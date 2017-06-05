@@ -49,6 +49,12 @@ describe('Node.js application/server', () => {
         .expect(200, done);
     });
 
+    it('should respond to /progress/md100/contactus route with a HTTP 200:OK', function (done) {
+      request(httpServer)
+        .get('/progress/md100/contactus')
+        .expect(200, done);
+    });
+
     it('should respond to the /status route with a HTTP 200:OK', function (done) {
       request(httpServer)
         .get('/status')

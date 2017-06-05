@@ -75,7 +75,7 @@ router.get(`${progressRoot}/:id/hearingdetails`, getAppeal, (req, res) => {
   res.render('hearing-details', {data: res.locals.appeal});
 });
 
-router.get('/contactus/:id', getAppeal, (req, res) => {
+router.get(`${progressRoot}/:id/contactus`, getAppeal, (req, res) => {
   res.render('contact-us', {data: res.locals.appeal});
 });
 

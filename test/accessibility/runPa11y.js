@@ -13,6 +13,7 @@ const pa11yRunner = pa11y({
   hideElements: '.skiplink .govuk-box-highlight, #logo, #footer, link[rel=mask-icon], .skipAccessTest'
 });
 const accessibilityPages = [
+  '/progress/md100/contactus',
   '/progress/md100/abouthearing',
   '/progress/md100/trackyourappeal',
   '/progress/md200/trackyourappeal',
@@ -21,7 +22,6 @@ const accessibilityPages = [
   '/progress/md400/hearingdetails',
   '/progress/md400/expenses',
   '/progress/md400/evidence',
-  '/contactus/md100'
 ];
 
 accessibilityPages.forEach((page) => {

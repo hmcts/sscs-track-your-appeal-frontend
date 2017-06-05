@@ -92,7 +92,7 @@ Scenario('verify expenses page', function*(I, Properties) {
 
 Scenario('verify contact us page', function*(I, Properties) {
   let appealId = yield I.retrieveAppealNumberForHearingBookedAppealCaseID();
-  I.amOnPage('/contactus/' + appealId);
+  I.amOnPage('/progress/' + appealId + '/contactus');
   I.see('Contact us');
   I.see('For help and support with your appeal call:');
 });
