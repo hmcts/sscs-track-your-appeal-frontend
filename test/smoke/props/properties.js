@@ -20,7 +20,7 @@ module.exports = {
     sub_headings_h2_css_path: {css: 'h2.heading-medium'},
 
   },
-  data_fields: {
+  dataBaseFields: {
     connectionString: process.env.DB_CONNECTION_URL || 'postgres://postgres:postgres@localhost:5432/sscs-staging',
     appealReceivedAppealCaseId: 111111,
     dwpAppealCaseId: 222222,

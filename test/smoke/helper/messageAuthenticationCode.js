@@ -5,7 +5,7 @@ const secret_key = process.env.EMAIL_MAC_SECRET_TEXT || "our-big-secret",
   request = require('superagent'),
   assert = require('assert'),
   pg = require('pg'),
-  props = require('../props/properties');
+  dbProperties = require('../props/properties').dataBaseFields;
 
 
 class messageAuthenticationCodeHelper extends Helper {
@@ -33,10 +33,10 @@ class messageAuthenticationCodeHelper extends Helper {
   getSubscriptionID() {
     return new Promise((resolve, reject) => {
 
-      let pgClient = new pg.Client(props.data_fields.connectionString);
+      let pgClient = new pg.Client(dbProperties.connectionString);
       let appealData = [];
       pgClient.connect();
-      let query = pgClient.query("Select id from subscriptions where appeal_case_id=$1", [props.data_fields.lapsedRevisedAppealCaseId]);
+      let query = pgClient.query("Select id from subscriptions where appeal_case_id=$1", [dbProperties.lapsedRevisedAppealCaseId]);
 
       query.on('row', (row) => {
         appealData.push(row);

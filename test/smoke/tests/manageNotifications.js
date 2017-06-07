@@ -2,7 +2,7 @@ const emailText = require('public/locale/en').notifications.email;
 
 Feature('Manage Notifications');
 
-Scenario('verify change password ', function*(I, Properties) {
+Scenario('verify change password ', function*(I) {
   let authenticationCode = yield I.getMACToken();
   I.amOnPage('/manage-email-notifications/' + authenticationCode);
   I.see(emailText.manage.title);
@@ -18,7 +18,7 @@ Scenario('verify change password ', function*(I, Properties) {
   I.see(emailText.addressChangeConfirmed.content);
 });
 
-Scenario('stop email subscription  ', function*(I, Properties) {
+Scenario('stop email subscription  ', function*(I) {
   let authenticationCode = yield I.getMessageAuthenticationCode();
   I.amOnPage('/manage-email-notifications/' + authenticationCode);
   I.see(emailText.manage.title);

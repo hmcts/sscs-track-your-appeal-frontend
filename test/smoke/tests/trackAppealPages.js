@@ -1,19 +1,20 @@
 const pageText = require('public/locale/en');
+const dbProperties = require('../props/properties').dataBaseFields;
 
 Feature('Track your Appeal Page Tests');
 
-Scenario('verify appellant details after Appeal Received', function*(I, Properties) {
-  let appealId = yield I.retrieveAppealNumberForAppealReceivedAppealCaseID();
+Scenario('verify appellant details after Appeal Received', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.appealReceivedAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. A Alpha');
-  I.see('Appeal reference number: SC111/11/1111', Properties.fields.form_hint_css_path);
+  I.see('Appeal reference number: SC111/11/1111');
   I.see(pageText.progressBar.screenReader.appeal.happening);
   I.see(pageText.common.latestUpdate);
   I.see('We’ve told the DWP that you’ve appealed against their decision. They should respond before 29 June 2017. We’ll contact you and explain the next steps when they’ve replied.')
 });
 
 Scenario('verify appellant details after DWP response received', function*(I, Properties) {
-  let appealId = yield I.retrieveAppealNumberForDwpAppealCaseID();
+  let appealId = yield I.retrieveAppealNumber(dbProperties.dwpAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. B Bravo');
   I.see('Appeal reference number: SC222/22/22222');
@@ -28,7 +29,7 @@ Scenario('verify appellant details after DWP response received', function*(I, Pr
 });
 
 Scenario('verify appellant details after Hearing Booked', function*(I, Properties) {
-  let appealId = yield I.retrieveAppealNumberForHearingBookedAppealCaseID();
+  let appealId = yield I.retrieveAppealNumber(dbProperties.hearingBookedAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. C Charlie');
   I.see('Appeal reference number: SC333/33/33333');
@@ -45,8 +46,8 @@ Scenario('verify appellant details after Hearing Booked', function*(I, Propertie
   I.see(pageText.hearingDetails.checkDetails);
 });
 
-Scenario('verify appellant details after Hearing response received', function*(I, Properties) {
-  let appealId = yield I.retrieveAppealNumberForHearingAppealCaseID();
+Scenario('verify appellant details after Hearing response received', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.hearingAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. D Delta');
   I.see('Appeal reference number: SC444/44/44444');
@@ -54,8 +55,8 @@ Scenario('verify appellant details after Hearing response received', function*(I
 });
 
 
-Scenario('verify about your appeal section links', function*(I, Properties) {
-  let appealId = yield I.retrieveAppealNumberForHearingBookedAppealCaseID();
+Scenario('verify about your appeal section links', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.hearingAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('About your appeal');
   I.click('What to expect at your hearing');
@@ -68,8 +69,8 @@ Scenario('verify about your appeal section links', function*(I, Properties) {
   I.see('Providing evidence to support your appeal');
 });
 
-Scenario('verify evidence page', function*(I, Properties) {
-  let appealId = yield I.retrieveAppealNumberForHearingBookedAppealCaseID();
+Scenario('verify evidence page', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.hearingAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/evidence');
   I.see(pageText.evidence.provide.title);
   I.see(pageText.evidence.provide.medicalEvidence.heading);
@@ -82,8 +83,8 @@ Scenario('verify evidence page', function*(I, Properties) {
   I.see(pageText.evidence.provide.whereToSendEvidence.address[4]);
 });
 
-Scenario('verify what to expect at your hearing page', function*(I, Properties) {
-  let appealId = yield I.retrieveAppealNumberForHearingBookedAppealCaseID();
+Scenario('verify what to expect at your hearing page', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.hearingAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/abouthearing');
   I.see(pageText.hearing.details.title);
   I.see(pageText.hearing.expectations.whenYouArrive.heading);
@@ -96,15 +97,15 @@ Scenario('verify what to expect at your hearing page', function*(I, Properties) 
   I.see(pageText.hearing.expectations.gettingDecision.heading);
 });
 
-Scenario('verify expenses page', function*(I, Properties) {
-  let appealId = yield I.retrieveAppealNumberForHearingBookedAppealCaseID();
+Scenario('verify expenses page', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.hearingAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/expenses');
   I.see(pageText.claimExpenses.title);
   I.see(pageText.claimExpenses.content);
 });
 
-Scenario('verify contact us page', function*(I, Properties) {
-  let appealId = yield I.retrieveAppealNumberForHearingBookedAppealCaseID();
+Scenario('verify contact us page', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.hearingAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/contactus');
   I.see('Contact us');
   I.see(pageText.contactUs.title);
@@ -122,8 +123,8 @@ Scenario('verify contact us page', function*(I, Properties) {
   I.see(pageText.contactUs.regionalOffice.address[5]);
 });
 
-Scenario('verify appellant details for lapsed revised state', function*(I, Properties) {
-  let appealId = yield I.retrieveAppealNumberForLapsedRevisedCaseID();
+Scenario('verify appellant details for lapsed revised state', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.lapsedRevisedAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. F Foxtrot');
   I.see('Appeal reference number: SC555/55/55555');
@@ -132,8 +133,8 @@ Scenario('verify appellant details for lapsed revised state', function*(I, Prope
 
 });
 
-Scenario('verify appellant details for withdrawn state', function*(I, Properties) {
-  let appealId = yield I.retrieveAppealNumberForWithdrawnCaseID();
+Scenario('verify appellant details for withdrawn state', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.withdrawnAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. I Iglo');
   I.see('Appeal reference number: SC666/66/66666');
@@ -143,16 +144,16 @@ Scenario('verify appellant details for withdrawn state', function*(I, Properties
 });
 
 
-Scenario('verify appellant details for adjurned state', function*(I, Properties) {
-  let appealId = yield I.retrieveAppealNumberForAdjurnedCaseID();
+Scenario('verify appellant details for adjurned state', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.adjurnedAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. K Kilo');
   I.see('Appeal reference number: SC777/77/77777');
   I.see('The hearing for your appeal didn’t take place as scheduled. We’ve sent you a letter explaining why, which you should receive by 09 March 2017.')
 });
 
-Scenario('verify appellant details for postponed state', function*(I, Properties) {
-  let appealId = yield I.retrieveAppealNumberForPostponedCaseID();
+Scenario('verify appellant details for postponed state', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.postponedAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. L Lena');
   I.see('Appeal reference number: SC888/88/88888');
@@ -160,8 +161,8 @@ Scenario('verify appellant details for postponed state', function*(I, Properties
   I.see('We’ll book a new hearing for your appeal. We’ll contact you by 13 April 2017 with the details.')
 });
 
-Scenario('verify appellant details for past hearing date state', function*(I, Properties) {
-  let appealId = yield I.retrieveAppealNumberForPastHearingDateCaseID();
+Scenario('verify appellant details for past hearing date state', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.pastHearingDateAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. M Miao');
   I.see('Appeal reference number: SC100/00/00000');
@@ -169,8 +170,8 @@ Scenario('verify appellant details for past hearing date state', function*(I, Pr
 
 });
 
-Scenario('verify appellant details for dormant state', function*(I, Properties) {
-  let appealId = yield I.retrieveAppealNumberForDormantCaseID();
+Scenario('verify appellant details for dormant state', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.dormantAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. N November');
   I.see('Appeal reference number: SC100/00/00001');
@@ -178,8 +179,8 @@ Scenario('verify appellant details for dormant state', function*(I, Properties) 
   I.see(pageText.status.dormant.content[1]);
 });
 
-Scenario('verify appellant details for Closed state', function*(I, Properties) {
-  let appealId = yield I.retrieveAppealNumberForDormantClosedCaseID();
+Scenario('verify appellant details for Closed state', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.dormantClosedAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. O Owl');
   I.see('Appeal reference number: SC100/00/00002');
@@ -187,8 +188,8 @@ Scenario('verify appellant details for Closed state', function*(I, Properties) {
   I.see(pageText.status.closed.content[1]);
 });
 
-Scenario('verify appellant details for dwp respond overdue state', function*(I, Properties) {
-  let appealId = yield I.retrieveAppealNumberForDwpOverdueRespondCaseID();
+Scenario('verify appellant details for dwp respond overdue state', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.dwpRespondOverdueAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. P Papa');
   I.see('Appeal reference number: SC100/00/00003');
@@ -196,8 +197,8 @@ Scenario('verify appellant details for dwp respond overdue state', function*(I, 
 });
 
 
-Scenario('verify appellant details for new hearing booked state', function*(I, Properties) {
-  let appealId = yield I.retrieveAppealNumberForNewHearingBookedCaseID();
+Scenario('verify appellant details for new hearing booked state', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.newHearingBookedAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. Q Quack');
   I.see('Appeal reference number: SC100/00/00004');
