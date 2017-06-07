@@ -5,12 +5,13 @@ Feature('Track your Appeal Page Tests');
 
 Scenario('verify appellant details after Appeal Received', function*(I) {
   let appealId = yield I.retrieveAppealNumber(dbProperties.appealReceivedAppealCaseId);
+  let date = yield I.calculateDate(dbProperties.appealReceivedAppealCaseId,35);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. A Alpha');
   I.see('Appeal reference number: SC111/11/1111');
   I.see(pageText.progressBar.screenReader.appeal.happening);
   I.see(pageText.common.latestUpdate);
-  I.see('We’ve told the DWP that you’ve appealed against their decision. They should respond before 29 June 2017. We’ll contact you and explain the next steps when they’ve replied.')
+  I.see('We’ve told the DWP that you’ve appealed against their decision. They should respond before '+date+'. We’ll contact you and explain the next steps when they’ve replied.')
 });
 
 Scenario('verify appellant details after DWP response received', function*(I, Properties) {
@@ -146,19 +147,21 @@ Scenario('verify appellant details for withdrawn state', function*(I) {
 
 Scenario('verify appellant details for adjurned state', function*(I) {
   let appealId = yield I.retrieveAppealNumber(dbProperties.adjurnedAppealCaseId);
+  let date = yield I.calculateDate(dbProperties.adjurnedAppealCaseId,7);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. K Kilo');
   I.see('Appeal reference number: SC777/77/77777');
-  I.see('The hearing for your appeal didn’t take place as scheduled. We’ve sent you a letter explaining why, which you should receive by 09 March 2017.')
+  I.see('The hearing for your appeal didn’t take place as scheduled. We’ve sent you a letter explaining why, which you should receive by '+date+'.')
 });
 
 Scenario('verify appellant details for postponed state', function*(I) {
   let appealId = yield I.retrieveAppealNumber(dbProperties.postponedAppealCaseId);
+  let date = yield I.calculateDate(dbProperties.postponedAppealCaseId,42);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. L Lena');
   I.see('Appeal reference number: SC888/88/88888');
   I.see(pageText.status.postponed.content[0]);
-  I.see('We’ll book a new hearing for your appeal. We’ll contact you by 13 April 2017 with the details.')
+  I.see('We’ll book a new hearing for your appeal. We’ll contact you by '+date+' with the details.')
 });
 
 Scenario('verify appellant details for past hearing date state', function*(I) {
