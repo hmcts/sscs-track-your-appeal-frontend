@@ -29,42 +29,42 @@ describe('Track your appeal template', () => {
     httpServer.close();
   });
 
-  // describe('is status active', () => {
-  //   it('should show active if status is less than current value', (done) => {
-  //     request(httpServer)
-  //       .get('/progress/md300/trackyourappeal')
-  //       .expect(200)
-  //       .then(
-  //         assertIsActive(
-  //           done, '.dwp-respond',
-  //           status => { assert.include(status.className, 'active') }
-  //         )
-  //       );
-  //   });
-  //
-  //   it('should show active if status is equal to current value', (done) => {
-  //     request(httpServer)
-  //       .get('/progress/md300/trackyourappeal')
-  //       .expect(200)
-  //       .then(
-  //         assertIsActive(
-  //           done, '.hearing-booked',
-  //           status => { assert.include(status.className, 'active') }
-  //         )
-  //       );
-  //   });
-  //
-  //   it('should show inactive if status is greater than current value', (done) => {
-  //     request(httpServer)
-  //       .get('/progress/md300/trackyourappeal')
-  //       .expect(200)
-  //       .then(
-  //         assertIsActive(
-  //           done, '.hearing-leg',
-  //           status => { assert.notInclude(status.className, 'active') }
-  //         )
-  //       );
-  //   });
-  // });
+  describe('is status active', () => {
+    it('should show active if status is less than current value', (done) => {
+      request(httpServer)
+        .get('/progress/md300/trackyourappeal')
+        .expect(200)
+        .then(
+          assertIsActive(
+            done, '.dwp-respond',
+            status => { assert.include(status.className, 'active') }
+          )
+        );
+    });
+
+    it('should show active if status is equal to current value', (done) => {
+      request(httpServer)
+        .get('/progress/md300/trackyourappeal')
+        .expect(200)
+        .then(
+          assertIsActive(
+            done, '.hearing-booked',
+            status => { assert.include(status.className, 'active') }
+          )
+        );
+    });
+
+    it('should show inactive if status is greater than current value', (done) => {
+      request(httpServer)
+        .get('/progress/md300/trackyourappeal')
+        .expect(200)
+        .then(
+          assertIsActive(
+            done, '.hearing-leg',
+            status => { assert.notInclude(status.className, 'active') }
+          )
+        );
+    });
+  });
 
 });
