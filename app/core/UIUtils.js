@@ -1,6 +1,6 @@
 'use strict';
 
-const logger = require('nodejs-logging').getLogger('routes.js');
+const logger = require('nodejs-logging').getLogger('UIUtils.js');
 
 const { events, progressBar } = require('app/config');
 

@@ -1918,6 +1918,10 @@ http-signature@~1.1.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
+http-status-codes@^1.1.6:
+  version "1.1.6"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/http-status-codes/-/http-status-codes-1.1.6.tgz#7a75d2b94d35a93183f39a0c8a6eb8963c20e50d"
+
 https-proxy-agent@^1.0.0:
   version "1.0.0"
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/https-proxy-agent/-/https-proxy-agent-1.0.0.tgz#35f7da6c48ce4ddbfa264891ac593ee5ff8671e6"

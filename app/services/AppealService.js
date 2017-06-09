@@ -1,4 +1,4 @@
-const _ = require('lodash');
+const {get} = require('lodash');
 const request = require('superagent');
 const I18nHelper = require('app/core/I18nHelper');
 const { APPEALS_ENDPOINT, events } = require('app/config');
@@ -22,31 +22,16 @@ class AppealService {
         resolve(appeal);
 
       }).catch((error) => {
-        let err = {};
-        err.responseCode = error.status;
-        err.message = error.message;
-        err.fields = [];
+        // The responseCode is required for our logging.
+        error.responseCode = error.status;
 
-        // Pull out the server side exception.
-        let exception = _.get(error, 'response.body.Map.exception');
-        if (exception) {
-          err.fields.push({'exception': exception});
-        }
+        // Extract server side error details.
+        let message = get(error, 'response.body.Map.message');
+        let exception = get(error, 'response.body.Map.exception');
+        let path = get(error, 'response.body.Map.path');
+        error.message = `${message} - ${exception} - ${path}`;
 
-        // Pull out the server side message.
-        let message = _.get(error, 'response.body.Map.message');
-        if (message) {
-          err.fields.push({'message': message});
-        }
-
-        // Pull out the server side path.
-        let path = _.get(error, 'response.body.Map.path');
-        if (path) {
-          err.fields.push({'path': path})
-        }
-
-        reject(err);
-
+        reject(error);
       });
     });
   }

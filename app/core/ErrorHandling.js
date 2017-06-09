@@ -1,46 +1,36 @@
-'use strict'
+const HttpStatus = require('http-status-codes');
+const logger = require('nodejs-logging').getLogger('ErrorHandler.js');
 
-class ErrorHandling {
+class ErrorHandler {
 
   static handle404(req, res, next) {
-    let err = new Error('Not found');
-    err.status = 404;
+    const err = new Error(HttpStatus.getStatusText(HttpStatus.NOT_FOUND));
+    err.status = HttpStatus.NOT_FOUND;
     next(err);
   }
 
-  static handle500(err, req, res, next) {
-    const status = ErrorHandling._getStatus(err);
-
+  static handleError(err, req, res, next) {
+    const status = ErrorHandler.getStatus(err);
     res.status(status);
-
-    if (process.env.NODE_ENV == 'development') {
-      res.json(ErrorHandling._decorateError(status, err));
-    } else if(status == 404) {
-      res.render('errors/404.html');
-    } else {
-      res.render('errors/500.html');
-    }
+    res.render(status === HttpStatus.NOT_FOUND ? 'errors/404.html' : 'errors/500.html');
+    logger.error(err);
   }
 
-  static _decorateError(status, err) {
-    let error = {};
-
-    ['status', 'message', 'rawResponse', 'name', 'stack'].forEach(name => {
-      if (err[name]) {
-        error[name] = err[name];
-      }
-    })
-
-    if(err.fields && err.fields.length) {
-      error.fields = err.fields;
-    }
-
-    return error;
+  static handleErrorDuringDevelopment(err, req, res, next) {
+    const status = ErrorHandler.getStatus(err);
+    res.status(status);
+    const error = {
+      message: err.message,
+      status: status,
+      stack: err.stack.split('\n')
+    };
+    res.send(error);
+    logger.error(error);
   }
 
-  static _getStatus(err) {
-    return err.status || err.statusCode || err.responseCode || 500;
+  static getStatus(err) {
+    return err.status || err.statusCode || err.responseCode || HttpStatus.INTERNAL_SERVER_ERROR;
   }
 }
 
-module.exports = ErrorHandling
+module.exports = ErrorHandler;
