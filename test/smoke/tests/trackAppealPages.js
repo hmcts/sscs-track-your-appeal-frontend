@@ -47,11 +47,32 @@ Scenario('verify appellant details after Hearing Booked', function*(I, Propertie
   I.see(pageText.hearingDetails.checkDetails);
 });
 
+Scenario('verify hearing details', function*(I, Properties) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.hearingBookedAppealCaseId);
+  I.amOnPage('/progress/' + appealId + '/hearingdetails');
+  I.see('Mr. C Charlie');
+  I.see('Appeal reference number: SC333/33/33333');
+  I.see('Date');
+  I.see('17 May 2017');
+  I.see('Time');
+  I.see('14:16 (arrive 15 minutes before)');
+  I.see('Location');
+  I.see("Chester Magistrate's Court");
+  I.see("Grosvenor Street");
+  I.see("Chester");
+  I.see('CH1 2XA');
+  I.see(pageText.hearingDetails.incorrect);
+
+});
+
 Scenario('verify appellant details after Hearing response received', function*(I) {
   let appealId = yield I.retrieveAppealNumber(dbProperties.hearingAppealCaseId);
+  let date = yield I.calculateDate(dbProperties.hearingAppealCaseId,0);
+  let postReceivedDate = yield I.calculateDate(dbProperties.hearingAppealCaseId,7);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. D Delta');
   I.see('Appeal reference number: SC444/44/44444');
+  I.see('Your hearing took place on '+date+'. The decision was sent to you in the post and should have arrived at your registered address by '+postReceivedDate+'.');
   I.see(pageText.status.hearing.content[1]);
 });
 
@@ -92,6 +113,7 @@ Scenario('verify what to expect at your hearing page', function*(I) {
   I.see(pageText.hearing.expectations.whenYouArrive.content);
   I.see(pageText.hearing.expectations.theHearingRoom.heading);
   I.see(pageText.hearing.expectations.theHearingRoom.content);
+  I.see(pageText.hearing.expectations.theHearingRoom.imageAlt);
   I.see(pageText.hearing.expectations.peopleAtHearing.heading);
   I.see(pageText.hearing.expectations.dwp.heading);
   I.see(pageText.hearing.expectations.duringHearing.heading);
