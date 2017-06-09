@@ -6,14 +6,11 @@
     "status": "HEARING",
     "latestEvents": [
       {
-        "date": "2017-05-30T00:00:00Z",
+        "date": "2010-04-17T08:28:17.98Z",
         "type": "HEARING",
         "contentKey": "status.hearing",
         "placeholder": {
-          "hearingDate": "2016-11-30T14:30:00Z",
-          "addressLine1": "The Old Bakery",
-          "addressLine2": "115 Queens Road",
-          "postcode": "NR1 3PL"
+          "decisionLetterReceiveByDate": "2010-04-24T08:28:17.980Z"
         }
       }
     ],
@@ -27,15 +24,18 @@
         "contentKey": "status.evidenceReceived"
       },
       {
+        "placeholder": {
+          "date": "2016-11-30T14:30:00Z",
+          "postcode": "B4 6BJ",
+          "venueName": "Birmingham Youth Court",
+          "addressLine1": "Steelhouse Lane",
+          "addressLine2": "",
+          "addressLine3": "Birmingham",
+          "googleMapUrl": "https://www.google.com/maps"
+        },
         "date": "2017-05-01T00:00:00Z",
         "type": "HEARING_BOOKED",
-        "contentKey": "status.hearingBooked",
-        "placeholder": {
-          "hearingDate": "2016-11-30T14:30:00Z",
-          "addressLine1": "The Old Bakery",
-          "addressLine2": "115 Queens Road",
-          "postcode": "NR1 3PL"
-        }
+        "contentKey": "status.hearingBooked"
       },
       {
         "date": "2017-04-12T00:00:00Z",

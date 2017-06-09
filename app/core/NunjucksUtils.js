@@ -1,5 +1,5 @@
 const moment = require('moment');
-const {EVENTS} = require('app/config');
+const {events} = require('app/config');
 const DATE_FORMAT = 'YYYY-MM-DDHH:mm:ss ZZ';
 const locale = require('app/assets/locale/en');
 const FILTERS = {
@@ -16,18 +16,8 @@ const FILTERS = {
     return moment(date, DATE_FORMAT).format("HH:mm");
   },
 
-  needed: (needed) => {
-    if (needed === undefined) {
-      return '-'
-    }
-
-    return needed ?
-      locale.hearingDetails.needed :
-      locale.hearingDetails.notNeeded;
-  },
-
   isActive: (currentStatus, status) => {
-    return EVENTS[currentStatus].index >= EVENTS[status].index ? 'active' : '';
+    return events[currentStatus].index >= events[status].index ? 'active' : '';
   }
 };
 

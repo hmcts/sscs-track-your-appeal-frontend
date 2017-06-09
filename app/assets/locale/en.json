@@ -45,7 +45,7 @@
     "hearing": {
       "heading": "Hearing",
       "content": [
-        "Your hearing took place on {{xxx|formatDate}}. The decision was sent to you in the post and should have arrived at your registered address by {{xxx|formatDate}}.",
+        "Your hearing took place on {{date|formatDate}}. The decision was sent to you in the post and should have arrived at your registered address by {{decisionLetterReceiveByDate|formatDate}}.",
         "We can’t publish the decision online or tell you over the phone. This is to protect your personal information."
       ]
     },
@@ -256,12 +256,9 @@
         "content": "You’ll be greeted by a tribunal clerk. They’ll take care of you at the hearing venue and answer any questions you may have. You’ll sit in a waiting area until your hearing begins."
       },
       "theHearingRoom": {
-        "imageAlt": "A picture of a tribunal hearing with four people, dressed informally, sat around a table.",
+        "imageAlt": "A tribunal hearing with four people, dressed informally, sat around a table.",
         "heading": "The hearing room",
         "content": "The tribunal clerk will take you into a room for your hearing. It’s more like a meeting room than a courtroom. The judge and other panel members will be sat behind a table. You’ll be invited to sit opposite them. If you have someone to support you or to give evidence, they’ll sit next to you."
-      },
-      "image": {
-        "content": "A typical benefit appeal hearing. The judge sits in the middle. A doctor and a disability expert sits either side."
       },
       "peopleAtHearing": {
         "heading": "The people at your hearing",
@@ -304,8 +301,6 @@
     "disabledAccess": "Disabled access",
     "interpreter": "Interpreter",
     "representative": "Representative",
-    "needed": "Needed",
-    "notNeeded": "Not Needed",
     "interpretersBookedByUs": "Only interpreters booked by us can translate for you at the hearing.",
     "incorrect": "If anything above is incorrect or you cannot attend, call us on 0300 123 1142",
     "pleaseNote": {
@@ -475,7 +470,7 @@
       "phoneNumber": "Telephone: 0300 123 1142"
     },
     "scotland": {
-      "heading": " Scotland",
+      "heading": "Scotland",
       "phoneNumber": "Telephone: 0141 354 8400"
     },
     "regionalOffice": {

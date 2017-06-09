@@ -723,6 +723,10 @@ date-format@^0.0.0:
   version "0.0.0"
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/date-format/-/date-format-0.0.0.tgz#09206863ab070eb459acea5542cbd856b11966b3"
 
+dateformat@^2.0.0:
+  version "2.0.0"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/dateformat/-/dateformat-2.0.0.tgz#2743e3abb5c3fc2462e527dca445e04e9f4dee17"
+
 dateformat@~1.0.12:
   version "1.0.12"
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/dateformat/-/dateformat-1.0.12.tgz#9f124b67594c937ff706932e4a642cca8dbbfee9"
@@ -1447,6 +1451,10 @@ fstream@^1.0.0, fstream@^1.0.10, fstream@^1.0.2:
     inherits "~2.0.0"
     mkdirp ">=0.5 0"
     rimraf "2"
+
+fsu@^1.0.2:
+  version "1.0.3"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/fsu/-/fsu-1.0.3.tgz#82302b4c5d97c871422eda554cb3de46e61da347"
 
 function-source@^0.1.0:
   version "0.1.0"
@@ -2449,6 +2457,10 @@ lodash.isfinite@^3.3.2:
   version "3.3.2"
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/lodash.isfinite/-/lodash.isfinite-3.3.2.tgz#fb89b65a9a80281833f0b7478b3a5104f898ebb3"
 
+lodash.isfunction@^3.0.8:
+  version "3.0.8"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/lodash.isfunction/-/lodash.isfunction-3.0.8.tgz#4db709fc81bc4a8fd7127a458a5346c5cdce2c6b"
+
 lodash.keys@^3.0.0:
   version "3.1.2"
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/lodash.keys/-/lodash.keys-3.1.2.tgz#4dbc0472b156be50a0b286855d1bd0b0c656098a"
@@ -2671,30 +2683,34 @@ mocha@>=2.0.0, mocha@^3.1.2, mocha@^3.2.0:
     mkdirp "0.5.1"
     supports-color "3.1.2"
 
-mochawesome-report-generator@^1.1.0:
-  version "1.1.2"
-  resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/mochawesome-report-generator/-/mochawesome-report-generator-1.1.2.tgz#5ffb4187ea2910ad6d9c3d349c0cf92163d36450"
+mochawesome-report-generator@^2.0.2:
+  version "2.0.3"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/mochawesome-report-generator/-/mochawesome-report-generator-2.0.3.tgz#91a010b509fce2be5101ed723606804aa6bc7e48"
   dependencies:
+    chalk "^1.1.3"
+    dateformat "^2.0.0"
     fs-extra "^2.0.0"
+    fsu "^1.0.2"
+    lodash.isfunction "^3.0.8"
     opener "^1.4.2"
+    prop-types "^15.5.8"
     react "^15.3.2"
     react-dom "^15.3.2"
     tcomb "^3.2.17"
     tcomb-validation "^3.3.0"
     validator "^7.0.0"
-    yargs "^6.3.0"
+    yargs "^7.0.2"
 
-mochawesome@^2.0.4:
-  version "2.0.4"
-  resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/mochawesome/-/mochawesome-2.0.4.tgz#18c0ba1ce9db363c946618506bba1a73df6f4054"
+mochawesome@^2.2.0:
+  version "2.2.0"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/mochawesome/-/mochawesome-2.2.0.tgz#1ea59ffa9b26a5d811c394076ba9a8a5f0e6a35e"
   dependencies:
     babel-runtime "^6.20.0"
     chalk "^1.1.3"
     diff "^3.0.0"
-    fs-extra "^2.0.0"
     json-stringify-safe "^5.0.1"
     lodash "^4.17.3"
-    mochawesome-report-generator "^1.1.0"
+    mochawesome-report-generator "^2.0.2"
     uuid "^3.0.1"
 
 mockery@^2.0.0:
@@ -3314,7 +3330,7 @@ promised-io@0.3.5:
   version "0.3.5"
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/promised-io/-/promised-io-0.3.5.tgz#4ad217bb3658bcaae9946b17a8668ecd851e1356"
 
-prop-types@^15.5.7, prop-types@~15.5.7:
+prop-types@^15.5.7, prop-types@^15.5.8, prop-types@~15.5.7:
   version "15.5.8"
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/prop-types/-/prop-types-15.5.8.tgz#6b7b2e141083be38c8595aa51fc55775c7199394"
   dependencies:
@@ -3886,6 +3902,10 @@ sntp@1.x.x:
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/sntp/-/sntp-1.0.9.tgz#6541184cc90aeea6c6e7b35e2659082443c66198"
   dependencies:
     hoek "2.x.x"
+
+sonar-scanner@^1.0.1:
+  version "1.0.1"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/sonar-scanner/-/sonar-scanner-1.0.1.tgz#09ec309e30e5e9570a4ccaf21dcc1adc2b1856c5"
 
 source-map@^0.4.4:
   version "0.4.4"
@@ -4536,9 +4556,9 @@ yargs-parser@^2.4.1:
     camelcase "^3.0.0"
     lodash.assign "^4.0.6"
 
-yargs-parser@^4.2.0:
-  version "4.2.1"
-  resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/yargs-parser/-/yargs-parser-4.2.1.tgz#29cceac0dc4f03c6c87b4a9f217dd18c9f74871c"
+yargs-parser@^5.0.0:
+  version "5.0.0"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/yargs-parser/-/yargs-parser-5.0.0.tgz#275ecf0d7ffe05c77e64e7c86e4cd94bf0e1228a"
   dependencies:
     camelcase "^3.0.0"
 
@@ -4573,9 +4593,9 @@ yargs@^4.7.1:
     y18n "^3.2.1"
     yargs-parser "^2.4.1"
 
-yargs@^6.3.0:
-  version "6.6.0"
-  resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/yargs/-/yargs-6.6.0.tgz#782ec21ef403345f830a808ca3d513af56065208"
+yargs@^7.0.2:
+  version "7.1.0"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/yargs/-/yargs-7.1.0.tgz#6ba318eb16961727f5d284f8ea003e8d6154d0c8"
   dependencies:
     camelcase "^3.0.0"
     cliui "^3.2.0"
@@ -4589,7 +4609,7 @@ yargs@^6.3.0:
     string-width "^1.0.2"
     which-module "^1.0.0"
     y18n "^3.2.1"
-    yargs-parser "^4.2.0"
+    yargs-parser "^5.0.0"
 
 yargs@~3.10.0:
   version "3.10.0"
