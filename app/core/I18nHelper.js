@@ -1,7 +1,7 @@
-const _ = require('lodash');
+const { get, startsWith } = require('lodash');
 const locale = require('app/assets/locale/en');
 const NunjucksUtils = require('app/core/NunjucksUtils');
-const {EVENTS, CONTENT_SUBKEYS} = require('app/config');
+const {events, contentSubKeys} = require('app/config');
 
 const ADDRESS_LINE = 'addressLine';
 
@@ -23,28 +23,44 @@ class I18nHelper {
   }
 
   static setHeadingOnEvent(event) {
-    event.heading = I18nHelper.getContent(locale, event.contentKey + CONTENT_SUBKEYS.HEADING);
+    event.heading = I18nHelper.getContent(locale, event.contentKey + contentSubKeys.HEADING);
   }
 
   static setRenderedContentOnEvent(event) {
-    let content = I18nHelper.getContent(locale, event.contentKey + CONTENT_SUBKEYS.CONTENT);
+    let content = I18nHelper.getContent(locale, event.contentKey + contentSubKeys.CONTENT);
     if (typeof content === 'string') {
       content = [content];
     }
 
-    // Safely remove this when the evidence received date has moved from
-    // the event to the event.placeholder.
-    if(event.contentKey === EVENTS.EVIDENCE_RECEIVED.contentKey) {
+    if(event.type === events.EVIDENCE_RECEIVED.name || event.type === events.HEARING.name) {
       event.placeholder.date = event.date;
     }
 
     event.renderedContent = I18nHelper.getRenderedContent(content, event.placeholder);
   }
 
+  static reformatAndSetHearingDetailsOnEvents(evnts) {
+    evnts = evnts || [];
+    evnts.forEach(event => {
+      if(event.type === events.HEARING_BOOKED.name && event.placeholder) {
+        event.hearingAddress = {};
+        event.hearingAddress.lines = [event.placeholder.venueName];
+        for (const property in event.placeholder) {
+          if (startsWith(property, ADDRESS_LINE)) {
+            if(event.placeholder[property].trim()) {
+              event.hearingAddress.lines.push(event.placeholder[property]);
+            }
+          }
+        }
+        event.hearingAddress.lines.push(event.placeholder.postcode);
+      }
+    });
+  }
+
   static getContent(obj, contentKey) {
-    let content = _.get(obj, contentKey);
+    let content = get(obj, contentKey);
     if (content === undefined) {
-      throw new Error('Unkown content key: ' + contentKey);
+      throw new Error('Unknown content key: ' + contentKey);
     }
     return content;
   }
@@ -55,39 +71,10 @@ class I18nHelper {
     });
   }
 
-  static setHearingOnAppeal(appeal, contentKey) {
-    let event = I18nHelper.getEventWithMatchingContentKey(appeal.latestEvents, contentKey);
-    appeal.hearing = I18nHelper.copyEventAndSetHearingAddress(event);
-  }
-
   static getEventWithMatchingContentKey(events, contentKey) {
     return events.filter(event => {
       return event.contentKey === contentKey;
     })[0];
-  }
-
-  static copyEventAndSetHearingAddress(event) {
-    let copyEvent = Object.assign({}, event);
-
-    if(!copyEvent.placeholder) {
-      return copyEvent;
-    }
-
-    // Create the hearing address object.
-    copyEvent.address = {};
-    copyEvent.address.lines = [];
-
-    // Add the address lines.
-    for (let property in copyEvent.placeholder) {
-      if (_.startsWith(property, ADDRESS_LINE)) {
-        copyEvent.address.lines.push(copyEvent.placeholder[property]);
-      }
-    }
-
-    // Finally set the postcode.
-    copyEvent.address.postcode = copyEvent.placeholder.postcode;
-
-    return copyEvent;
   }
 }
 

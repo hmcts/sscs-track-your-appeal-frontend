@@ -1,7 +1,7 @@
 const _ = require('lodash');
 const request = require('superagent');
 const I18nHelper = require('app/core/I18nHelper');
-const { APPEALS_ENDPOINT, EVENTS } = require('app/config');
+const { APPEALS_ENDPOINT, events } = require('app/config');
 const METHODS = require('app/services/methods');
 
 class AppealService {
@@ -12,13 +12,11 @@ class AppealService {
         let appeal = result.body.appeal;
         I18nHelper.setRenderedContentOnEvents(appeal.latestEvents);
         I18nHelper.setHeadingAndRenderedContentOnEvents(appeal.historicalEvents);
+        I18nHelper.reformatAndSetHearingDetailsOnEvents(appeal.latestEvents);
+        I18nHelper.reformatAndSetHearingDetailsOnEvents(appeal.historicalEvents);
 
-        if (appeal.status === EVENTS.HEARING_BOOKED.name) {
-          I18nHelper.setHearingOnAppeal(appeal, EVENTS.HEARING_BOOKED.contentKey);
-        }
-
-        if (appeal.status === EVENTS.HEARING.name) {
-          I18nHelper.setHearingOnAppeal(appeal, EVENTS.HEARING.contentKey);
+        if(appeal.status === events.HEARING_BOOKED.name) {
+          appeal.latestHearingBookedEvent = I18nHelper.getEventWithMatchingContentKey(appeal.latestEvents, events.HEARING_BOOKED.contentKey);
         }
 
         resolve(appeal);

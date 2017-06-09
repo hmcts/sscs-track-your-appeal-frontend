@@ -11,7 +11,7 @@ const progressRoot = '/progress';
 const notificationRoot = '/manage-email-notifications';
 const errors = locale.notifications.email.errors;
 const urls = require('app/urls');
-const { EVENTS, PROGRESS_BAR } = require('app/config');
+const UIUtils = require('app/core/UIUtils');
 const EMAIL = {
   CHANGE: 'changeEmailAddress',
   STOP: 'stopEmails',
@@ -40,26 +40,11 @@ function getAppeal(req, res, next) {
   }
 }
 
-function showProgressBar(req, res, next) {
-  let appeal = res.locals.appeal;
-  if(appeal) {
-    let event = EVENTS[appeal.status];
-    if(event) {
-      appeal.showProgressBar = event.index !== PROGRESS_BAR.NONE;
-    } else {
-      logger.error(`Unable to map the status ${appeal.status} to an event:`);
-    }
-  } else {
-    logger.error(`Undefined appeal`);
-  }
-  next();
-}
-
 router.get(`${progressRoot}/:id/abouthearing`, getAppeal, (req, res) => {
   res.render('about-hearing', {data: res.locals.appeal});
 });
 
-router.get(`${progressRoot}/:id/trackyourappeal`, getAppeal, showProgressBar, (req, res) => {
+router.get(`${progressRoot}/:id/trackyourappeal`, getAppeal, UIUtils.showProgressBar, (req, res) => {
   res.render('track-your-appeal', {data: res.locals.appeal});
 });
 
@@ -71,8 +56,20 @@ router.get(`${progressRoot}/:id/expenses`, getAppeal, (req, res) => {
   res.render('claim-expenses', {data: res.locals.appeal});
 });
 
+// Hearing details relating to the latest event e.g. HEARING_BOOKED
 router.get(`${progressRoot}/:id/hearingdetails`, getAppeal, (req, res) => {
-  res.render('hearing-details', {data: res.locals.appeal});
+  res.render('hearing-details', {
+    data: res.locals.appeal,
+    event: res.locals.appeal.latestHearingBookedEvent
+  });
+});
+
+// Hearing details relating to historical events e.g. HEARING
+router.get(`${progressRoot}/:id/hearingdetails/:index`, getAppeal, (req, res) => {
+  res.render('hearing-details', {
+    appeal: res.locals.appeal,
+    event: res.locals.appeal.historicalEvents[req.params.index]
+  });
 });
 
 router.get(`${progressRoot}/:id/contactus`, getAppeal, (req, res) => {

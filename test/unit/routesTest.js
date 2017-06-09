@@ -2,7 +2,7 @@ const testServer = require('test/testServer');
 const request = require('supertest');
 const assert  = require('chai').assert;
 
-describe('Node.js application/server', () => {
+describe('routes.js', () => {
 
   let httpServer;
 
@@ -19,50 +19,56 @@ describe('Node.js application/server', () => {
 
   describe('making application route requests which result in a HTTP 200', () => {
 
-    it('should respond to /progress/md100/abouthearing route with a HTTP 200:OK', function (done) {
+    it('should respond to /progress/md100/abouthearing', function (done) {
       request(httpServer)
         .get('/progress/md100/abouthearing')
         .expect(200, done);
     });
 
-    it('should respond to /progress/md100/expenses route with a HTTP 200:OK', function (done) {
+    it('should respond to /progress/md100/expenses', function (done) {
       request(httpServer)
         .get('/progress/md100/expenses')
         .expect(200, done);
     });
 
-    it('should respond to /progress/md400/hearingdetails route with a HTTP 200:OK', function (done) {
+    it('should respond to /progress/md400/hearingdetails', function (done) {
       request(httpServer)
         .get('/progress/md400/hearingdetails')
         .expect(200, done);
     });
 
-    it('should respond to /progress/md100/evidence route with a HTTP 200:OK', function (done) {
+    it('should respond to /progress/md400/hearingdetails/10', function (done) {
+      request(httpServer)
+        .get('/progress/md400/hearingdetails/10')
+        .expect(200, done);
+    });
+
+    it('should respond to /progress/md100/evidence', function (done) {
       request(httpServer)
         .get('/progress/md100/evidence')
         .expect(200, done);
     });
 
-    it('should respond to /progress/md100/trackyourappeal route with a HTTP 200:OK', function (done) {
+    it('should respond to /progress/md100/trackyourappeal', function (done) {
       request(httpServer)
         .get('/progress/md100/trackyourappeal')
         .expect(200, done);
     });
 
-    it('should respond to /progress/md100/contactus route with a HTTP 200:OK', function (done) {
+    it('should respond to /progress/md100/contactus', function (done) {
       request(httpServer)
         .get('/progress/md100/contactus')
         .expect(200, done);
     });
 
-    it('should respond to the /status route with a HTTP 200:OK', function (done) {
+    it('should respond to /status', function (done) {
       request(httpServer)
         .get('/status')
         .expect('Content-Type', /json/)
         .expect(200, done);
     });
 
-    it('should respond to /cookiepolicy route with a HTTP 200:OK', function (done) {
+    it('should respond to /cookiepolicy', function (done) {
       request(httpServer)
         .get('/cookiepolicy')
         .expect(200, done);

@@ -109,7 +109,7 @@ Track your Appeal
                         {% endfor %}
 
                         {% if historicalEvent.contentKey === 'status.hearingBooked' %}
-                        <a href="/progress/{{data.appealNumber}}/hearingdetails">{{ i18n.hearingDetails.checkDetails }}</a>
+                        <a href="/progress/{{data.appealNumber}}/hearingdetails/{{loop.index0}}">{{ i18n.hearingDetails.checkDetails }}</a>
                         {% endif %}
                     </div>
                     {% endfor %}
