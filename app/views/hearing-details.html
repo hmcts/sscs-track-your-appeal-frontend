@@ -44,7 +44,9 @@ Hearing Details
                         {% for addressLine in event.hearingAddress.lines  %}
                         <span>{{ addressLine }}</span>
                         {% endfor %}
-                        <a id="googleMapLocation" name="googleMapLocation" href="{{event.placeholder.googleMapUrl}}">{{ i18n.hearingDetails.mapsAndDirections }}</a>
+                        <a class='link' id="googleMapLocation" name="googleMapLocation" href="{{event.placeholder.googleMapUrl}}">
+                            {{ i18n.hearingDetails.mapsAndDirections }}
+                        </a>
                     </dd>
                 </dl>
 

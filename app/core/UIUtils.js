@@ -1,8 +1,5 @@
-'use strict';
-
+const {events, progressBar} = require('app/core/events');
 const logger = require('nodejs-logging').getLogger('UIUtils.js');
-
-const { events, progressBar } = require('app/config');
 
 class UIUtils {
 
@@ -23,4 +20,6 @@ class UIUtils {
 
 }
 
-module.exports = UIUtils;
+module.exports = {
+  showProgressBar: UIUtils.showProgressBar,
+};
