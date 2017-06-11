@@ -1,4 +1,3 @@
-const testServer = require('test/testServer');
 const {expect, sinon} = require('test/chai-sinon');
 const HttpStatus = require('http-status-codes');
 const mockery = require('mockery');

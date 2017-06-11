@@ -9,9 +9,9 @@ class AppealService {
     if (req.params.id) {
       request('GET', appealsAPI + '/' + req.params.id)
         .then((result) => {
-          res.locals.appeal = result.body.appeal;
-          const appeal = new Appeal(res.locals.appeal);
+          const appeal = new Appeal(result.body.appeal);
           appeal.decorate();
+          res.locals.appeal = appeal;
           next();
         }).catch((error) => {
           error.responseCode = error.status;

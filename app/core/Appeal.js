@@ -8,16 +8,19 @@ const ADDRESS_LINE = 'addressLine';
 class Appeal {
 
   constructor(appeal) {
-    this.appeal = appeal;
+    this.caseReference = appeal.caseReference;
+    this.appealNumber = appeal.appealNumber;
+    this.name = appeal.name;
+    this.status = appeal.status;
     this.latestEvents = appeal.latestEvents || [];
-    this.historicalEvents = appeal.historicalEvents || []
+    this.historicalEvents = appeal.historicalEvents || [];
   }
 
   decorate() {
     this.setHeadingAndRenderedContentOnEvents(this.latestEvents);
     this.setHeadingAndRenderedContentOnEvents(this.historicalEvents);
-    this.reformatAndSetHearingDetailsOnEvents(this.latestEvents);
-    this.reformatAndSetHearingDetailsOnEvents(this.historicalEvents);
+    this.reformatHearingDetails(this.latestEvents);
+    this.reformatHearingDetails(this.historicalEvents);
     this.setLatestHearingBookedEventOnAppeal();
   }
 
@@ -29,18 +32,18 @@ class Appeal {
   }
 
   setLatestHearingBookedEventOnAppeal() {
-    if(this.appeal.status === events.HEARING_BOOKED.name) {
-      this.appeal.latestHearingBookedEvent = this.getFirstEventWithMatchingContentKey(
-        this.appeal.latestEvents, events.HEARING_BOOKED.contentKey);
+    if(this.status === events.HEARING_BOOKED.name) {
+      this.latestHearingBookedEvent = this.getFirstEventWithMatchingContentKey(
+        this.latestEvents, events.HEARING_BOOKED.contentKey);
     }
 
-    if(this.appeal.status === events.HEARING.name) {
-      this.appeal.latestHearingBookedEvent = this.getFirstEventWithMatchingContentKey(
-        this.appeal.historicalEvents, events.HEARING_BOOKED.contentKey);
+    if(this.status === events.HEARING.name) {
+      this.latestHearingBookedEvent = this.getFirstEventWithMatchingContentKey(
+        this.historicalEvents, events.HEARING_BOOKED.contentKey);
     }
   }
 
-  reformatAndSetHearingDetailsOnEvents(evnts) {
+  reformatHearingDetails(evnts) {
     evnts = evnts || [];
     evnts.forEach(event => {
       if(event.type === events.HEARING_BOOKED.name && event.placeholder) {
@@ -57,6 +60,12 @@ class Appeal {
         event.hearingAddress.lines.push(event.placeholder.postcode);
       }
     });
+  }
+
+  getFirstEventWithMatchingContentKey(events, contentKey) {
+    return events.filter(event => {
+      return event.contentKey === contentKey;
+    })[0];
   }
 
   setHeadingOnEvent(event) {
@@ -88,12 +97,6 @@ class Appeal {
     return content.map((str) => {
       return NunjucksUtils.renderString(str, placeholder);
     });
-  }
-
-  getFirstEventWithMatchingContentKey(events, contentKey) {
-    return events.filter(event => {
-      return event.contentKey === contentKey;
-    })[0];
   }
 }
 

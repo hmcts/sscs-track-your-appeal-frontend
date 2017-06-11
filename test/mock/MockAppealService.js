@@ -11,9 +11,9 @@ class MockAppealService {
       err.status = HttpStatus.NOT_FOUND;
       next(err);
     } else {
-      res.locals.appeal = mockedData[req.params.id].appeal;
-      const appeal = new Appeal(res.locals.appeal);
+      const appeal = new Appeal(mockedData[req.params.id].appeal);
       appeal.decorate();
+      res.locals.appeal = appeal;
       next();
     }
   }
