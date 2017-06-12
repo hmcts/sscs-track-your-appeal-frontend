@@ -23,6 +23,11 @@
       }
     }
 
+    a.link {
+      margin-top: 15px;
+      display: block;
+    }
+
     .date-time {
       span {
         font-weight: normal;
@@ -32,10 +37,6 @@
     .address {
       dd {
         span {
-          display: block;
-        },
-        a {
-          margin-top: 15px;
           display: block;
         }
       }

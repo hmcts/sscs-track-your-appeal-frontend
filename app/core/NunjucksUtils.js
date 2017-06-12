@@ -1,8 +1,9 @@
 const moment = require('moment');
-const {events} = require('app/config');
+const {events} = require('app/core/events');
 const DATE_FORMAT = 'YYYY-MM-DDHH:mm:ss ZZ';
 const locale = require('app/assets/locale/en');
-const FILTERS = {
+
+const filters = {
 
   json: (obj) => {
     return JSON.stringify(obj, null, 2);
@@ -41,7 +42,7 @@ class NunjucksUtils {
   }
 
   static get filters() {
-    return FILTERS;
+    return filters;
   }
 }
 

@@ -1,63 +1,40 @@
+const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const logger = require('nodejs-logging').getLogger('routes.js');
-const _ = require('lodash');
 const ServiceLoader = require('app/services/ServiceLoader');
 const AppealsService = ServiceLoader.AppealService;
 const TokenService = ServiceLoader.TokenService;
 const HealthService = ServiceLoader.HealthService;
 const locale = require('app/assets/locale/en');
+const errors = locale.notifications.email.errors;
 const express = require('express');
 const router = express.Router();
-const progressRoot = '/progress';
-const notificationRoot = '/manage-email-notifications';
-const errors = locale.notifications.email.errors;
 const urls = require('app/urls');
 const UIUtils = require('app/core/UIUtils');
+const progressRoot = '/progress';
+const notificationRoot = '/manage-email-notifications';
 const EMAIL = {
   CHANGE: 'changeEmailAddress',
-  STOP: 'stopEmails',
-  EMPTY_STRING_EMAIL_HEADING: errors.emptyStringEmailHeading,
-  EMPTY_STRING_EMAIL_HEADING_TWO: errors.emptyStringEmailHeadingTwo,
-  EMPTY_STRING_EMAIL_FIELD: errors.emptyStringEmailField,
-  EMPTY_STRING_EMAIL_FIELD_TWO: errors.emptyStringEmailFieldTwo,
-  NO_MATCH_HEADING: errors.noMatchHeading,
-  NO_MATCH_FIELD: errors.noMatchField,
-  NOT_VALID_HEADING: errors.notValidHeading,
-  NOT_VALID_FIELD: errors.notValidField,
-  SELECT_AN_OPTION: errors.selectAnOption
+  STOP: 'stopEmails'
 };
-const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-function getAppeal(req, res, next) {
-  if (req.params.id) {
-    AppealsService.status(req.params.id).then((appeal) => {
-      res.locals.appeal = appeal;
-      next();
-    }).catch((error) => {
-      next(error);
-    })
-  } else {
-    next();
-  }
-}
-
-router.get(`${progressRoot}/:id/abouthearing`, getAppeal, (req, res) => {
+router.get(`${progressRoot}/:id/abouthearing`, AppealsService.getAppeal, (req, res) => {
   res.render('about-hearing', {data: res.locals.appeal});
 });
 
-router.get(`${progressRoot}/:id/trackyourappeal`, getAppeal, UIUtils.showProgressBar, (req, res) => {
+router.get(`${progressRoot}/:id/trackyourappeal`, AppealsService.getAppeal, UIUtils.showProgressBar, (req, res) => {
   res.render('track-your-appeal', {data: res.locals.appeal});
 });
 
-router.get(`${progressRoot}/:id/evidence`, getAppeal, (req, res) => {
+router.get(`${progressRoot}/:id/evidence`, AppealsService.getAppeal, (req, res) => {
   res.render('provide-evidence', {data: res.locals.appeal});
 });
 
-router.get(`${progressRoot}/:id/expenses`, getAppeal, (req, res) => {
+router.get(`${progressRoot}/:id/expenses`, AppealsService.getAppeal, (req, res) => {
   res.render('claim-expenses', {data: res.locals.appeal});
 });
 
 // Hearing details relating to the latest event e.g. HEARING_BOOKED
-router.get(`${progressRoot}/:id/hearingdetails`, getAppeal, (req, res) => {
+router.get(`${progressRoot}/:id/hearingdetails`, AppealsService.getAppeal, (req, res) => {
   res.render('hearing-details', {
     data: res.locals.appeal,
     event: res.locals.appeal.latestHearingBookedEvent
@@ -65,14 +42,14 @@ router.get(`${progressRoot}/:id/hearingdetails`, getAppeal, (req, res) => {
 });
 
 // Hearing details relating to historical events e.g. HEARING
-router.get(`${progressRoot}/:id/hearingdetails/:index`, getAppeal, (req, res) => {
+router.get(`${progressRoot}/:id/hearingdetails/:index`, AppealsService.getAppeal, (req, res) => {
   res.render('hearing-details', {
     appeal: res.locals.appeal,
     event: res.locals.appeal.historicalEvents[req.params.index]
   });
 });
 
-router.get(`${progressRoot}/:id/contactus`, getAppeal, (req, res) => {
+router.get(`${progressRoot}/:id/contactus`, AppealsService.getAppeal, (req, res) => {
   res.render('contact-us', {data: res.locals.appeal});
 });
 
@@ -114,7 +91,7 @@ router.post(`${notificationRoot}/:mactoken`, validateToken, (req, res, next) => 
       mactoken: req.params.mactoken,
       field: {
         error: true,
-        errorMessage: EMAIL.SELECT_AN_OPTION
+        errorMessage: errors.selectAnOption
       }
     });
   }
@@ -223,12 +200,6 @@ router.get('/status', (req, res, next) => {
 router.get('/cookiepolicy', (req, res) => {
   res.render('cookie-policy', {i18n: locale.cookiePolicy, urls});
 });
-
-if (process.env.NODE_ENV == 'development') {
-  router.get('/components', (req, res) => {
-    res.render('components');
-  });
-}
 
 router.get('/_errors/404', (req, res, next) => {
   let err = new Error('Not found');

@@ -75,6 +75,8 @@ app.use(locals);
 app.use('/', routes);
 
 app.use(ErrorHandling.handle404);
-app.use(ErrorHandling.handle500);
+app.use(process.env.NODE_ENV === 'development' ?
+  ErrorHandling.handleErrorDuringDevelopment :
+  ErrorHandling.handleError);
 
 module.exports = app;

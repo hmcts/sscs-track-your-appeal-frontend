@@ -1,118 +1,136 @@
-const testServer = require('test/testServer');
-const {expect,sinon} = require('test/chai-sinon');
-const ErrorHandling = require('app/core/ErrorHandling');
+const {expect, sinon} = require('test/chai-sinon');
+const HttpStatus = require('http-status-codes');
+const mockery = require('mockery');
 
+describe('ErrorHandler.js', () => {
 
-describe('ErrorHandling', () => {
-  let err, req, res, next;
+  const logger = {
+    error: sinon.spy()
+  };
+
+  const mockLogger = class Logger {
+    static getLogger(name) {
+      return logger;
+    }
+  };
+
+  let err, req, res, next, ErrorHandler;
 
   before(() => {
     err = {};
     req = null;
     res = {
       status: sinon.spy(),
-      json:   sinon.spy(),
-      render: sinon.spy()
-    },
+      json: sinon.spy(),
+      render: sinon.spy(),
+      send: sinon.spy()
+    };
     next = sinon.spy();
+
+    mockery.registerMock('nodejs-logging', mockLogger);
+    mockery.enable({
+      useCleanCache: true,
+      warnOnReplace: false,
+      warnOnUnregistered: false
+    });
+
+    // Require the class under test.
+    ErrorHandler = require('app/core/ErrorHandling');
+
   });
 
-  describe('handle404', () => {
+  after(() => {
+    mockery.disable();
+    mockery.deregisterAll();
+  });
+
+  describe('handle404()', () => {
+
     it('should raise a 404 error', () => {
-      ErrorHandling.handle404(res, req, next);
-
-      expect(next).to.have.been.calledWithMatch({status: 404});
-    })
-  })
-
-  describe('handle500', () => {
-    describe('redering pages', () => {
-      it('should render a 404 error page', () => {
-        err.status = 404;
-        ErrorHandling.handle500(err, req, res, next);
-
-        expect(res.status).to.have.been.calledWith(404);
-        expect(res.render).to.have.been.calledWith('errors/404.html');
-      })
-
-      it('should render a 500 error page', () => {
-        err.status = 500;
-        ErrorHandling.handle500(err, req, res, next);
-
-        expect(res.status).to.have.been.calledWith(500);
-        expect(res.render).to.have.been.calledWith('errors/500.html');
-      })
+      ErrorHandler.handle404(res, req, next);
+      expect(next).to.have.been.calledWithMatch({status: HttpStatus.NOT_FOUND});
     })
 
-    describe('get status', () => {
-      it('should retrieve status', () => {
-        err.status = 404;
-        ErrorHandling.handle500(err, req, res, next);
+  });
 
-        expect(res.status).to.have.been.calledWith(404);
-      })
+  describe('handleError()', () => {
 
-      it('should retrieve statusCode', () => {
-        err.statusCode = 404;
-        ErrorHandling.handle500(err, req, res, next);
+    it('should render a 404 error page', () => {
+      err.status = HttpStatus.NOT_FOUND;
+      ErrorHandler.handleError(err, req, res, next);
+      expect(res.status).to.have.been.calledWith(HttpStatus.NOT_FOUND);
+      expect(res.render).to.have.been.calledWith('errors/404.html');
+    });
 
-        expect(res.status).to.have.been.calledWith(404);
-      })
+    it('should render a 500 error page', () => {
+      err.status = HttpStatus.INTERNAL_SERVER_ERROR;
+      ErrorHandler.handleError(err, req, res, next);
+      expect(res.status).to.have.been.calledWith(HttpStatus.INTERNAL_SERVER_ERROR);
+      expect(res.render).to.have.been.calledWith('errors/500.html');
+    });
 
-      it('should retrieve responseCode', () => {
-        err.responseCode = 404;
-        ErrorHandling.handle500(err, req, res, next);
+    it('should log the error', () => {
+      err.status = HttpStatus.INTERNAL_SERVER_ERROR;
+      ErrorHandler.handleError(err, req, res, next);
+      expect(logger.error).to.have.been.calledWith({ status: HttpStatus.INTERNAL_SERVER_ERROR });
+    });
 
-        expect(res.status).to.have.been.calledWith(404);
-      })
+  });
 
-      it('should default to 500', () => {
-        ErrorHandling.handle500(err, req, res, next);
+  describe('handleErrorDuringDevelopment()', () => {
 
-        expect(res.status).to.have.been.calledWith(500);
-      })
-    })
+    const expectedError = {
+      status: HttpStatus.NOT_FOUND,
+      message: 'An error message',
+      stack: ['a', 'stack', 'trace']
+    };
 
-    describe('decorate error', () => {
-      let node_env,
-          tests = [
-            'status', 'message', 'rawResponse', 'name', 'stack'
-          ];
+    it('should send a json error message', () => {
+      err.status = HttpStatus.NOT_FOUND;
+      err.message = 'An error message';
+      err.stack = 'a\nstack\ntrace';
+      ErrorHandler.handleErrorDuringDevelopment(err, req, res, next);
+      expect(res.status).to.have.been.calledWith(HttpStatus.NOT_FOUND);
+      expect(res.send).to.have.been.calledWith(expectedError);
+      expect(logger.error).to.have.been.calledWith(expectedError);
+    });
 
-      before(() => {
-        node_env = process.env.NODE_ENV;
-        process.env.NODE_ENV = 'development';
-      })
+    it('should log the error', () => {
+      err.status = HttpStatus.NOT_FOUND;
+      ErrorHandler.handleErrorDuringDevelopment(err, req, res, next);
+      expect(logger.error).to.have.been.calledWith(err);
+    });
 
-      after(() => {
-        process.env.NODE_ENV = node_env;
-      })
+  });
 
-      tests.forEach(function(name) {
-        it('should add ' + name, () => {
-          err[name] = 'example';
-          let match = {};
-          match[name] = 'example';
-          ErrorHandling.handle500(err, req, res, next);
+  describe('getStatus()', () => {
 
-          expect(res.json).to.have.been.calledWithMatch(match)
-        })
-      })
+    it('should retrieve status', () => {
+      err.status = HttpStatus.NOT_FOUND;
+      ErrorHandler.handleError(err, req, res, next);
+      expect(res.status).to.have.been.calledWith(HttpStatus.NOT_FOUND);
+    });
 
-      it('should add fields', () => {
-        err.fields = ['one', 'two']
-        ErrorHandling.handle500(err, req, res, next);
+    it('should retrieve statusCode', () => {
+      err.statusCode = HttpStatus.NOT_FOUND;
+      ErrorHandler.handleError(err, req, res, next);
+      expect(res.status).to.have.been.calledWith(HttpStatus.NOT_FOUND);
+    });
 
-        expect(res.json).to.have.been.calledWithMatch({'fields': ['one', 'two']})
-      })
+    it('should retrieve responseCode', () => {
+      err.responseCode = HttpStatus.NOT_FOUND;
+      ErrorHandler.handleError(err, req, res, next);
+      expect(res.status).to.have.been.calledWith(HttpStatus.NOT_FOUND);
+    });
 
-      it('should not add empty fields', () => {
-        err.fields = []
-        ErrorHandling.handle500(err, req, res, next);
+    it('should default to 500', () => {
+      err.status = undefined;
+      err.statusCode = undefined;
+      err.responseCode = undefined;
+      ErrorHandler.handleError(err, req, res, next);
+      expect(res.status).to.have.been.calledWith(HttpStatus.INTERNAL_SERVER_ERROR);
+    });
 
-        expect(res.json).not.to.have.been.calledWithMatch({'fields': []})
-      })
-    })
-  })
+  });
 
 });

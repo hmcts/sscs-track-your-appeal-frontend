@@ -1,5 +1,5 @@
 const {expect,sinon} = require('test/chai-sinon');
-const {events} = require('app/config');
+const {events} = require('app/core/events');
 const mockery = require('mockery');
 
 describe('UIUtils.js', () => {
