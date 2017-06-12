@@ -1,9 +1,11 @@
 const logging = require('nodejs-logging');
+const healthcheck = require('nodejs-healthcheck');
 const express = require('express');
 const nunjucks = require('express-nunjucks');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const locals = require('app/locals');
+const config = require('app/config');
 const routes = require('app/routes');
 const NunjucksUtils = require('app/core/NunjucksUtils');
 const ErrorHandling = require('app/core/ErrorHandling');
@@ -61,6 +63,12 @@ app.use('/public', express.static(__dirname + '/public'));
 app.use('/public', express.static(__dirname + '/govuk_modules/govuk_template/assets'));
 app.use('/public', express.static(__dirname + '/govuk_modules/govuk_frontend_toolkit'));
 app.use('/public/images/icons', express.static(__dirname + '/govuk_modules/govuk_frontend_toolkit/images'));
+
+app.use('/status', healthcheck.configure({
+  "checks": {
+    "track-your-appeal-api": healthcheck.web(config.healthAPI)
+  }
+}))
 
 // Elements refers to icon folder instead of images folder
 app.use(favicon(path.join(__dirname, 'govuk_modules', 'govuk_template', 'assets', 'images', 'favicon.ico')));
