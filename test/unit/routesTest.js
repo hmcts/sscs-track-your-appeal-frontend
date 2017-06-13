@@ -61,13 +61,6 @@ describe('routes.js', () => {
         .expect(200, done);
     });
 
-    it('should respond to /status', function (done) {
-      request(httpServer)
-        .get('/status')
-        .expect('Content-Type', /json/)
-        .expect(200, done);
-    });
-
     it('should respond to /cookiepolicy', function (done) {
       request(httpServer)
         .get('/cookiepolicy')

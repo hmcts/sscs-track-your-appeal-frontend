@@ -3,7 +3,6 @@ const logger = require('nodejs-logging').getLogger('routes.js');
 const ServiceLoader = require('app/services/ServiceLoader');
 const AppealsService = ServiceLoader.AppealService;
 const TokenService = ServiceLoader.TokenService;
-const HealthService = ServiceLoader.HealthService;
 const locale = require('app/assets/locale/en');
 const errors = locale.notifications.email.errors;
 const express = require('express');
@@ -187,14 +186,6 @@ router.post(`${notificationRoot}/:mactoken/change`, validateToken, (req, res, ne
   }).catch((error) => {
     next(error);
   });
-});
-
-router.get('/status', (req, res, next) => {
-  HealthService.health().then((health) => {
-    res.json(health.body);
-  }).catch((error) => {
-    next(error);
-  })
 });
 
 router.get('/cookiepolicy', (req, res) => {

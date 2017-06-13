@@ -69,6 +69,7 @@
     "nightmare": "^2.10.0",
     "nightmare-upload": "^0.1.1",
     "nodejs-logging": "^1.1.0",
+    "nodejs-healthcheck": "^1.1.0",
     "nsp": "^2.6.3",
     "nunjucks": "^3.0.0",
     "pa11y": "^4.9.0",
