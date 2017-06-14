@@ -4106,7 +4106,7 @@ sumchecker@^1.2.0:
 
 superagent@^3.0.0, superagent@^3.5.1, superagent@^3.5.2:
   version "3.5.2"
-  resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/superagent/-/superagent-3.5.2.tgz#3361a3971567504c351063abeaae0faa23dbf3f8"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/superagent/-/superagent-3.5.2.tgz#3361a3971567504c351063abeaae0faa23dbf3f8"
   dependencies:
     component-emitter "^1.2.0"
     cookiejar "^2.0.6"
