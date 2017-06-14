@@ -1,6 +1,6 @@
 const moment = require('moment');
+const {dateFormat} = require('app/config');
 const {events} = require('app/core/events');
-const DATE_FORMAT = 'YYYY-MM-DDHH:mm:ss ZZ';
 const locale = require('app/assets/locale/en');
 
 const filters = {
@@ -10,11 +10,11 @@ const filters = {
   },
 
   formatDate: (date) => {
-    return moment(date, DATE_FORMAT).format('DD MMMM YYYY');
+    return moment(date, dateFormat.utc).format(dateFormat.date);
   },
 
   formatTime: (date) => {
-    return moment(date, DATE_FORMAT).format("HH:mm");
+    return moment(date, dateFormat.utc).format(dateFormat.time);
   },
 
   isActive: (currentStatus, status) => {

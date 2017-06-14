@@ -1,4 +1,5 @@
+const logger = require('nodejs-logging').getLogger('server.js');
 const app = require('app.js');
 
 let server = app.listen(app.get('port'));
-console.log(`Server listening on port: ${server.address().port}`);
+logger.info(`Server listening on port: ${server.address().port}`);

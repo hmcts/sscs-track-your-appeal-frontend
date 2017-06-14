@@ -4,7 +4,7 @@ const logger = require('nodejs-logging').getLogger('ErrorHandler.js');
 class ErrorHandler {
 
   static handle404(req, res, next) {
-    const err = new Error(HttpStatus.getStatusText(HttpStatus.NOT_FOUND));
+    const err = new Error('Page Not Found');
     err.status = HttpStatus.NOT_FOUND;
     next(err);
   }
@@ -13,23 +13,35 @@ class ErrorHandler {
     const status = ErrorHandler.getStatus(err);
     res.status(status);
     res.render(status === HttpStatus.NOT_FOUND ? 'errors/404.html' : 'errors/500.html');
-    logger.error(err);
+    logger.error(ErrorHandler.reformatError(err));
   }
 
   static handleErrorDuringDevelopment(err, req, res, next) {
     const status = ErrorHandler.getStatus(err);
     res.status(status);
-    const error = {
-      message: err.message,
-      status: status,
-      stack: err.stack.split('\n')
-    };
-    res.send(error);
-    logger.error(error);
+    err = ErrorHandler.reformatError(err);
+    res.send(err);
+    logger.error(err);
   }
 
   static getStatus(err) {
     return err.status || err.statusCode || err.responseCode || HttpStatus.INTERNAL_SERVER_ERROR;
+  }
+
+  static reformatError(err) {
+    const error = {
+      responseCode: err.status,
+      message: err.message
+    };
+
+    if(err.stack) {
+      error.fields = err.stack.split('\n');
+      error.fields = error.fields.map((stackLine) => {
+        return stackLine.trim()
+      });
+    }
+
+    return error;
   }
 }
 

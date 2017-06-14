@@ -52,27 +52,14 @@ router.get(`${progressRoot}/:id/contactus`, AppealsService.getAppeal, (req, res)
   res.render('contact-us', {data: res.locals.appeal});
 });
 
-function validateToken(req, res, next) {
-  if (req.params.mactoken) {
-    TokenService.validateToken(req.params.mactoken).then((result) => {
-      res.locals.token = result.body.token;
-      next();
-    }).catch((error) => {
-      next(error);
-    });
-  } else {
-    next();
-  }
-}
-
-router.get(`${notificationRoot}/:mactoken`, validateToken, (req, res, next) => {
+router.get(`${notificationRoot}/:mactoken`, TokenService.validateToken, (req, res, next) => {
   res.render('manage-email-notifications', {
     i18n: locale.notifications.email.manage,
     mactoken: req.params.mactoken
   });
 });
 
-router.post(`${notificationRoot}/:mactoken`, validateToken, (req, res, next) => {
+router.post(`${notificationRoot}/:mactoken`, TokenService.validateToken, (req, res, next) => {
   const userSelection = req.body.emailNotify;
   if(userSelection === EMAIL.CHANGE) {
     res.render('email-address-change', {
@@ -96,7 +83,7 @@ router.post(`${notificationRoot}/:mactoken`, validateToken, (req, res, next) => 
   }
 });
 
-router.post(`${notificationRoot}/:mactoken/stop`, validateToken, (req, res, next) => {
+router.post(`${notificationRoot}/:mactoken/stop`, TokenService.validateToken, (req, res, next) => {
   const token = res.locals.token;
   AppealsService.stopReceivingEmails(token.appealId, token.subscriptionId).then((result) => {
     res.render('stopped-email-notifications', {
@@ -110,14 +97,14 @@ router.post(`${notificationRoot}/:mactoken/stop`, validateToken, (req, res, next
 });
 
 
-router.get(`${notificationRoot}/:mactoken/change`, validateToken, (req, res, next) => {
+router.get(`${notificationRoot}/:mactoken/change`, TokenService.validateToken, (req, res, next) => {
   res.render('email-address-change', {
     i18n: res.locals.i18n.notifications.email.addressChange,
     mactoken: req.params.mactoken,
   });
 });
 
-router.post(`${notificationRoot}/:mactoken/change`, validateToken, (req, res, next) => {
+router.post(`${notificationRoot}/:mactoken/change`, TokenService.validateToken, (req, res, next) => {
   const token = res.locals.token;
   const email = req.body.email;
   const email2 = req.body.email2;

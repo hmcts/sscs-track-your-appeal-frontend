@@ -3,6 +3,12 @@ const appealsAPI  = (process.env.SSCS_API_URL || 'http://localhost:8080') + '/ap
 const healthAPI   = (process.env.SSCS_API_URL || 'http://localhost:8080') + '/health';
 const tokenAPI    = (process.env.SSCS_API_URL || 'http://localhost:8080') + '/tokens';
 
+const dateFormat = {
+  utc: 'YYYY-MM-DDTHH:mm:ss:sssZ',
+  date: 'DD MMMM YYYY',
+  time: 'HH:mm'
+};
+
 const contentSubKeys = {
   HEADING: '.heading',
   CONTENT: '.content',
@@ -13,5 +19,6 @@ module.exports = {
   appealsAPI: appealsAPI,
   healthAPI: healthAPI,
   tokenAPI: tokenAPI,
-  contentSubKeys: contentSubKeys
+  contentSubKeys: contentSubKeys,
+  dateFormat: dateFormat
 };

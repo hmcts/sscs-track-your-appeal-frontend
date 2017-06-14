@@ -14,11 +14,23 @@ describe('ErrorHandler.js', () => {
     }
   };
 
-  let err, req, res, next, ErrorHandler;
+  let err, req, res, next, ErrorHandler, reformattedError;
 
-  before(() => {
-    err = {};
-    req = null;
+  beforeEach(() => {
+
+    err = {
+      status: HttpStatus.NOT_FOUND,
+      message: 'An error message',
+      stack: '  a  \n  stack  \n  trace  '
+    };
+
+    reformattedError = {
+      responseCode: HttpStatus.NOT_FOUND,
+      message: 'An error message',
+      fields: ['a', 'stack', 'trace']
+    };
+
+    req = {};
     res = {
       status: sinon.spy(),
       json: sinon.spy(),
@@ -39,7 +51,7 @@ describe('ErrorHandler.js', () => {
 
   });
 
-  after(() => {
+  afterEach(() => {
     mockery.disable();
     mockery.deregisterAll();
   });
@@ -48,57 +60,37 @@ describe('ErrorHandler.js', () => {
 
     it('should raise a 404 error', () => {
       ErrorHandler.handle404(res, req, next);
-      expect(next).to.have.been.calledWithMatch({status: HttpStatus.NOT_FOUND});
+      expect(next).to.have.been.calledWithMatch({ status: 404, message: 'Page Not Found'});
     })
 
   });
 
   describe('handleError()', () => {
 
-    it('should render a 404 error page', () => {
-      err.status = HttpStatus.NOT_FOUND;
+    it('should render a 404 error page and log it', () => {
       ErrorHandler.handleError(err, req, res, next);
       expect(res.status).to.have.been.calledWith(HttpStatus.NOT_FOUND);
       expect(res.render).to.have.been.calledWith('errors/404.html');
+      expect(logger.error).to.have.been.calledWith(reformattedError);
     });
 
-    it('should render a 500 error page', () => {
-      err.status = HttpStatus.INTERNAL_SERVER_ERROR;
+    it('should render a 500 error page and log it', () => {
+      err.status = reformattedError.responseCode = HttpStatus.INTERNAL_SERVER_ERROR;
       ErrorHandler.handleError(err, req, res, next);
       expect(res.status).to.have.been.calledWith(HttpStatus.INTERNAL_SERVER_ERROR);
       expect(res.render).to.have.been.calledWith('errors/500.html');
-    });
-
-    it('should log the error', () => {
-      err.status = HttpStatus.INTERNAL_SERVER_ERROR;
-      ErrorHandler.handleError(err, req, res, next);
-      expect(logger.error).to.have.been.calledWith({ status: HttpStatus.INTERNAL_SERVER_ERROR });
+      expect(logger.error).to.have.been.calledWith(reformattedError);
     });
 
   });
 
   describe('handleErrorDuringDevelopment()', () => {
 
-    const expectedError = {
-      status: HttpStatus.NOT_FOUND,
-      message: 'An error message',
-      stack: ['a', 'stack', 'trace']
-    };
-
     it('should send a json error message', () => {
-      err.status = HttpStatus.NOT_FOUND;
-      err.message = 'An error message';
-      err.stack = 'a\nstack\ntrace';
       ErrorHandler.handleErrorDuringDevelopment(err, req, res, next);
       expect(res.status).to.have.been.calledWith(HttpStatus.NOT_FOUND);
-      expect(res.send).to.have.been.calledWith(expectedError);
-      expect(logger.error).to.have.been.calledWith(expectedError);
-    });
-
-    it('should log the error', () => {
-      err.status = HttpStatus.NOT_FOUND;
-      ErrorHandler.handleErrorDuringDevelopment(err, req, res, next);
-      expect(logger.error).to.have.been.calledWith(err);
+      expect(res.send).to.have.been.calledWith(reformattedError);
+      expect(logger.error).to.have.been.calledWith(reformattedError);
     });
 
   });
