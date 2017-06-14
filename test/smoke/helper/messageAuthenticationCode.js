@@ -32,11 +32,11 @@ class messageAuthenticationCodeHelper extends Helper {
   getSubscriptionID() {
     return new Promise((resolve, reject) => {
       let pgClient = new pg.Client(dbProperties.connectionString);
-      let appealData = [];
+      let subscriptionData = [];
       pgClient.connect();
       let query = pgClient.query("Select id from subscriptions where appeal_case_id=$1", [dbProperties.lapsedRevisedAppealCaseId]);
       query.on('row', (row) => {
-        appealData.push(row);
+        subscriptionData.push(row);
       });
       query.on("end", (result) => {
         if(result.rowCount===0 || result.rowCount===null ) {
@@ -45,7 +45,7 @@ class messageAuthenticationCodeHelper extends Helper {
         }
         else{
           pgClient.end();
-          resolve(appealData[0].appeal_number);
+          resolve(subscriptionData[0].id);
         }
       });
     })
