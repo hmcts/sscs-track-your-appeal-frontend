@@ -35,8 +35,8 @@ class ErrorHandler {
     };
 
     if(err.stack) {
-      error.fields = err.stack.split('\n');
-      error.fields = error.fields.map((stackLine) => {
+      error.stackTrace = err.stack.split('\n');
+      error.stackTrace = error.stackTrace.map((stackLine) => {
         return stackLine.trim()
       });
     }

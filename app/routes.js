@@ -3,6 +3,7 @@ const logger = require('nodejs-logging').getLogger('routes.js');
 const ServiceLoader = require('app/services/ServiceLoader');
 const AppealsService = ServiceLoader.AppealService;
 const TokenService = ServiceLoader.TokenService;
+const HttpStatus = require('http-status-codes');
 const locale = require('app/assets/locale/en');
 const errors = locale.notifications.email.errors;
 const express = require('express');
@@ -128,7 +129,7 @@ router.post(`${notificationRoot}/:mactoken/change`, TokenService.validateToken, 
     fields.email.errorMessage = errorTexts.emptyStringEmailField;
     fields.email2.errorMessage = errorTexts.emptyStringEmailFieldTwo;
 
-    res.status(400);
+    res.status(HttpStatus.BAD_REQUEST);
     res.render('email-address-change', {
       fields: fields,
       i18n: res.locals.i18n.notifications.email.addressChange,
@@ -141,7 +142,7 @@ router.post(`${notificationRoot}/:mactoken/change`, TokenService.validateToken, 
     fields.heading = errorTexts.noMatchHeading;
     fields.email.errorMessage = fields.email2.errorMessage = errorTexts.noMatchField;
 
-    res.status(400);
+    res.status(HttpStatus.BAD_REQUEST);
     res.render('email-address-change', {
       fields: fields,
       i18n: res.locals.i18n.notifications.email.addressChange,
@@ -154,7 +155,7 @@ router.post(`${notificationRoot}/:mactoken/change`, TokenService.validateToken, 
     fields.heading = errorTexts.notValidHeading;
     fields.email.errorMessage = fields.email2.errorMessage = errorTexts.notValidField;
 
-    res.status(400);
+    res.status(HttpStatus.BAD_REQUEST);
     res.render('email-address-change', {
       fields: fields,
       i18n: res.locals.i18n.notifications.email.addressChange,
@@ -181,13 +182,13 @@ router.get('/cookiepolicy', (req, res) => {
 
 router.get('/_errors/404', (req, res, next) => {
   let err = new Error('Not found');
-  err.status = 404;
+  err.status = HttpStatus.NOT_FOUND;
   next(err);
 });
 
 router.get('/_errors/500', (req, res, next) => {
   let err = new Error('Broken');
-  err.status = 500;
+  err.status = HttpStatus.INTERNAL_SERVER_ERROR;
   next(err);
 });
 

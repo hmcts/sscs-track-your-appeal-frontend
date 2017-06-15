@@ -16,24 +16,11 @@ describe('ErrorHandler.js', () => {
 
   let err, req, res, next, ErrorHandler, reformattedError;
 
-  beforeEach(() => {
-
-    err = {
-      status: HttpStatus.NOT_FOUND,
-      message: 'An error message',
-      stack: '  a  \n  stack  \n  trace  '
-    };
-
-    reformattedError = {
-      responseCode: HttpStatus.NOT_FOUND,
-      message: 'An error message',
-      fields: ['a', 'stack', 'trace']
-    };
+  before(() => {
 
     req = {};
     res = {
       status: sinon.spy(),
-      json: sinon.spy(),
       render: sinon.spy(),
       send: sinon.spy()
     };
@@ -51,9 +38,23 @@ describe('ErrorHandler.js', () => {
 
   });
 
-  afterEach(() => {
+  after(() => {
     mockery.disable();
     mockery.deregisterAll();
+  });
+
+  beforeEach(()=> {
+
+    err = {
+      message: 'An error message',
+      stack: '  a  \n  stack  \n  trace  '
+    };
+
+    reformattedError = {
+      message: 'An error message',
+      stackTrace: ['a', 'stack', 'trace']
+    };
+
   });
 
   describe('handle404()', () => {
@@ -68,6 +69,7 @@ describe('ErrorHandler.js', () => {
   describe('handleError()', () => {
 
     it('should render a 404 error page and log it', () => {
+      err.status = reformattedError.responseCode = HttpStatus.NOT_FOUND;
       ErrorHandler.handleError(err, req, res, next);
       expect(res.status).to.have.been.calledWith(HttpStatus.NOT_FOUND);
       expect(res.render).to.have.been.calledWith('errors/404.html');
@@ -87,6 +89,7 @@ describe('ErrorHandler.js', () => {
   describe('handleErrorDuringDevelopment()', () => {
 
     it('should send a json error message', () => {
+      err.status = reformattedError.responseCode = HttpStatus.NOT_FOUND;
       ErrorHandler.handleErrorDuringDevelopment(err, req, res, next);
       expect(res.status).to.have.been.calledWith(HttpStatus.NOT_FOUND);
       expect(res.send).to.have.been.calledWith(reformattedError);
@@ -115,10 +118,7 @@ describe('ErrorHandler.js', () => {
       expect(res.status).to.have.been.calledWith(HttpStatus.NOT_FOUND);
     });
 
-    it('should default to 500', () => {
-      err.status = undefined;
-      err.statusCode = undefined;
-      err.responseCode = undefined;
+    it('should default to 500 when status is undefined', () => {
       ErrorHandler.handleError(err, req, res, next);
       expect(res.status).to.have.been.calledWith(HttpStatus.INTERNAL_SERVER_ERROR);
     });
