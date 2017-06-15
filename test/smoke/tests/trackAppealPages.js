@@ -55,14 +55,15 @@ Scenario('verify hearing details', function*(I, Properties) {
   I.see('Date');
   I.see('17 May 2017');
   I.see('Time');
-  I.see('14:16 (arrive 15 minutes before)');
+  I.see('13:16 (arrive 15 minutes before)');
   I.see('Location');
   I.see("Chester Magistrate's Court");
   I.see("Grosvenor Street");
   I.see("Chester");
   I.see('CH1 2XA');
   I.see(pageText.hearingDetails.incorrect);
-
+  I.click("Maps and directions");
+  I.seeInCurrentUrl("CH1+2XA");
 });
 
 Scenario('verify appellant details after Hearing response received', function*(I) {
