@@ -38,7 +38,4 @@ Ensure environment variable `NOTIFICATION_API_KEY` is set before running smoke t
 Pass `E2E_OUTPUT_DIR` environment variable to use mochawesome reporter.
 
     $> make test-end-to-end
- 
-## Error pages
-- `/_errors/404` HTTP 404 Not found
-- `/_errors/500` HTTP 500 Internal server error
+
