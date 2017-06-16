@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-{{ i18n.tab }}
+{{ i18n.notifications.email.manage.tab }}
 {% endblock %}
 
 {% block content %}
@@ -13,7 +13,7 @@
 
     <div class="grid-row">
         <div class="column-two-thirds">
-            <h1 class="heading-large">{{ i18n.title }}</h1>
+            <h1 class="heading-large">{{ i18n.notifications.email.manage.title }}</h1>
 
             <form action="/manage-email-notifications/{{ mactoken }}" method="post">
 
@@ -22,7 +22,7 @@
                     <fieldset>
 
                         <legend>
-                            <span class="visually-hidden">{{ i18n.visuallyHidden }}</span>
+                            <span class="visually-hidden">{{ i18n.notifications.email.manage.visuallyHidden }}</span>
                             {% if field.error %}
                             <span class="error-message">{{ field.errorMessage | safe }}</span>
                             {% endif %}
@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="submit" class="button" value="{{ i18n.continue }}">
+                    <input type="submit" class="button" value="{{ i18n.notifications.email.manage.continue }}">
                 </div>
 
             </form>

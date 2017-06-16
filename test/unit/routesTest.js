@@ -169,18 +169,4 @@ describe('routes.js', () => {
 
   });
 
-  describe('explicitly calling error pages', () => {
-    it('should respond to the 404 url', (done) => {
-      request(httpServer)
-        .get('/_errors/404')
-        .expect(404, done);
-    });
-
-    it('should respond to the 500 url', (done) => {
-      request(httpServer)
-        .get('/_errors/500')
-        .expect(500, done);
-    });
-  });
-
 });
