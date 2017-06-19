@@ -41,15 +41,42 @@ app.use(logging.express.accessLogger());
 // by setting HTTP headers appropriately.
 app.use(helmet());
 
-// Sets "X-XSS-Protection: 1; mode=block".
-app.use(helmet.xssFilter({ setOnOldIE: true }));
+// Helmet content security policy (CSP) to allow only assets from same domain.
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["'self'"],
+    fontSrc: ["'self' data:"],
+    scriptSrc: ["'self'", "'unsafe-inline'", 'www.google-analytics.com'],
+    connectSrc: ["'self'"],
+    mediaSrc: ["'self'"],
+    frameSrc: ["'none'"],
+    imgSrc: ["'self'", 'www.google-analytics.com'],
+  }
+}));
+
+// Helmet HTTP public key pinning
+app.use(helmet.hpkp({
+  maxAge: 900,
+  sha256s: ['AbCdEf123=', 'XyzABC123=']
+}));
+
+// Helmet referrer policy
+app.use(helmet.referrerPolicy({
+  policy: 'origin'
+}));
 
 // Disallow search index indexing
 app.use((req, res, next) => {
   // Setting headers stops pages being indexed even if indexed pages link to them.
   res.setHeader('X-Robots-Tag', 'noindex');
   res.setHeader('X-Served-By', os.hostname());
+  res.setHeader('Cache-Control' , 'no-cache, max-age=0, must-revalidate, no-store' );
   next();
+});
+
+app.get('/robots.txt', function (req, res) {
+  res.type('text/plain');
+  res.send('User-agent: *\nDisallow: /');
 });
 
 NunjucksUtils.env = nunjucks(app, {
@@ -64,14 +91,14 @@ app.use('/public', express.static(__dirname + '/govuk_modules/govuk_template/ass
 app.use('/public', express.static(__dirname + '/govuk_modules/govuk_frontend_toolkit'));
 app.use('/public/images/icons', express.static(__dirname + '/govuk_modules/govuk_frontend_toolkit/images'));
 
+// Elements refers to icon folder instead of images folder
+app.use(favicon(path.join(__dirname, 'govuk_modules', 'govuk_template', 'assets', 'images', 'favicon.ico')));
+
 app.use('/status', healthcheck.configure({
   "checks": {
     "track-your-appeal-api": healthcheck.web(config.healthAPI)
   }
 }));
-
-// Elements refers to icon folder instead of images folder
-app.use(favicon(path.join(__dirname, 'govuk_modules', 'govuk_template', 'assets', 'images', 'favicon.ico')));
 
 // Support for parsing data in POSTs
 app.use(bodyParser.json());
