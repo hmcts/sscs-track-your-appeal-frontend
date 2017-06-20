@@ -14,7 +14,7 @@
       width: 100%;
       dt {
         float: inherit;
-        width: 40%;
+        width: 25%;
       }
       dd {
         float: inherit;
@@ -26,11 +26,17 @@
     a.link {
       margin-top: 15px;
       display: block;
+      white-space: nowrap;
+      font-weight: normal;
     }
 
     .date-time {
       span {
         font-weight: normal;
+        white-space: nowrap;
+        .time {
+          font-weight: bold;
+        }
       }
     }
 
@@ -38,6 +44,7 @@
       dd {
         span {
           display: block;
+          white-space: nowrap;
         }
       }
     }
