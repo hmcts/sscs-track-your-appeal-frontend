@@ -6,7 +6,6 @@ const TokenService = ServiceLoader.TokenService;
 const HttpStatus = require('http-status-codes');
 const express = require('express');
 const router = express.Router();
-const urls = require('app/urls');
 const UIUtils = require('app/core/UIUtils');
 const progressRoot = '/progress';
 const notificationRoot = '/manage-email-notifications';
@@ -149,7 +148,7 @@ router.post(`${notificationRoot}/:mactoken/change`, TokenService.validateToken, 
 //------------------------------------------- COOKIE POLICY ------------------------------------------------------------
 
 router.get('/cookiepolicy', (req, res) => {
-  res.render('cookie-policy', { urls });
+  res.render('cookie-policy');
 });
 
 module.exports = router;
