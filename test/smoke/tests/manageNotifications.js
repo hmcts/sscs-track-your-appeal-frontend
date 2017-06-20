@@ -18,6 +18,15 @@ Scenario('verify change password ', function*(I) {
   I.see(emailText.addressChangeConfirmed.content);
 });
 
+Scenario('check feedback form link  ', function*(I) {
+  let authenticationCode = yield I.getMessageAuthenticationCode();
+  I.amOnPage('/manage-email-notifications/' + authenticationCode);
+  I.see(emailText.manage.title);
+  I.see("This is a new service – your feedback will help us to improve it.");
+  I.click("feedback");
+  I.see("Feedback survey");
+});
+
 Scenario('stop email subscription  ', function*(I) {
   let authenticationCode = yield I.getMessageAuthenticationCode();
   I.amOnPage('/manage-email-notifications/' + authenticationCode);
@@ -29,3 +38,4 @@ Scenario('stop email subscription  ', function*(I) {
   I.see(emailText.stopConfirmation.title);
   I.see(emailText.stopConfirmation.content);
 });
+
