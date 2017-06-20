@@ -2,8 +2,8 @@ var chai = require('chai');
 var expect = require('chai').expect;
 var chaiHttp = require('chai-http');
 
-var frontendURL = process.env.SSCS_TYA_FRONTEND_URL || "http://localhost:3000/";
-var backendURL = process.env.SSCS_TYA_BACKEND_URL ||"http://localhost:8080/";
+var frontendURL = process.env.SSCS_TYA_FRONTEND_URL;
+var backendURL = process.env.SSCS_TYA_BACKEND_URL;
 
 chai.use(chaiHttp);
 chai.request.Request = chai.request.Test;
@@ -19,7 +19,7 @@ var healthcheckProxyRequest = function(url) {
 
 describe('sscs tya health check', function () {
 
-  it('Returns a 200 status code for frontend service', function (done) {
+  it('Returns a 200 status code for frontend service check', function (done) {
 
     healthcheckProxyRequest(frontendURL).end(function (err, res) {
       expect(res).to.have.status(200);
@@ -27,7 +27,7 @@ describe('sscs tya health check', function () {
     });
   });
 
-  it('Returns a 200 status code for backend service', function (done) {
+  it('Returns a 200 status code for tya backend service check', function (done) {
 
     healthcheckProxyRequest(backendURL).end(function (err, res) {
       expect(res).to.have.status(200);
