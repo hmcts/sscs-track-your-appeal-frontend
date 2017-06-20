@@ -37,3 +37,6 @@ sonarscan:
 zapscan:
 	yarn security-scan
 
+health-check:
+	yarn healthcheck
+

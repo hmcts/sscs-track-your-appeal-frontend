@@ -24,6 +24,7 @@
     "security-scan": "cross-env NODE_PATH=. codeceptjs run --config test/smoke/securityScan.conf.js --steps",
     "eslint": "cross-env NODE_PATH=. eslint .",
     "security-checks": "cross-env NODE_PATH=. grunt security-checks",
+    "healthcheck": "cross-env NODE_PATH=. mocha test/healthcheck.js --timeout 15000 --reporter spec",
     "post-data": "cross-env NODE_PATH=. node post-data.js",
     "sonar-scanner": "node_modules/sonar-scanner/bin/sonar-scanner"
   },
@@ -34,6 +35,7 @@
   "dependencies": {
     "body-parser": "^1.17.1",
     "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
     "codeceptjs": "^0.5.1",
     "cross-env": "^4.0.0",
     "crypto-js": "^3.1.9-1",
@@ -68,8 +70,8 @@
     "moment": "^2.18.1",
     "nightmare": "^2.10.0",
     "nightmare-upload": "^0.1.1",
-    "nodejs-logging": "^1.1.0",
     "nodejs-healthcheck": "^1.1.0",
+    "nodejs-logging": "^1.1.0",
     "nsp": "^2.6.3",
     "nunjucks": "^3.0.0",
     "pa11y": "^4.9.0",
@@ -81,6 +83,7 @@
     "sinon-chai": "^2.9.0",
     "sonar-scanner": "^1.0.1",
     "superagent": "^3.5.2",
+    "superagent-proxy": "^1.0.2",
     "supertest": "^3.0.0",
     "urlsafe-base64": "^1.0.0"
   }
