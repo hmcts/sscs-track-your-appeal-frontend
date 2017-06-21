@@ -17,11 +17,19 @@ var healthcheckProxyRequest = function(url) {
   return req;
 };
 
+var healthcheckProxyRequestFrontEnd = function(url) {
+  var req = chai.request(url).get('status');
+  if (typeof(proxy) !== 'undefined') {
+    req = req.proxy(proxy)
+  }
+  return req;
+};
+
 describe('sscs tya health check', function () {
 
   it('Returns a 200 status code for TYA frontend service', function (done) {
 
-    healthcheckProxyRequest(frontendURL).end(function (err, res) {
+    healthcheckProxyRequestFrontEnd(frontendURL).end(function (err, res) {
       expect(res).to.have.status(200);
       done();
     });
