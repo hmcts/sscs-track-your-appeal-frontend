@@ -24,7 +24,7 @@
     "security-scan": "cross-env NODE_PATH=. codeceptjs run --config test/smoke/securityScan.conf.js --steps",
     "eslint": "cross-env NODE_PATH=. eslint .",
     "security-checks": "cross-env NODE_PATH=. grunt security-checks",
-    "healthcheck": "cross-env NODE_PATH=. mocha test/healthcheck.js --timeout 15000 --reporter spec",
+    "healthcheck": "cross-env NODE_PATH=. mocha test/healthCheck.js --timeout 15000 --reporter spec",
     "post-data": "cross-env NODE_PATH=. node post-data.js",
     "sonar-scanner": "node_modules/sonar-scanner/bin/sonar-scanner"
   },
