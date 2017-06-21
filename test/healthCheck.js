@@ -45,7 +45,6 @@ describe('sscs tya health check', function () {
 
   it('Returns status UP', function (done) {
     healthcheckProxyRequest(backendURL).end(function (err, res) {
-      console.log(res.body.Health.status);
       expect(res.body.Health.status).to.deep.equal('UP');
       done();
     });
@@ -53,7 +52,6 @@ describe('sscs tya health check', function () {
 
   it('Returns status db status', function (done) {
     healthcheckProxyRequest(backendURL).end(function (err, res) {
-      console.log(res.body.Health.status);
       expect(res.body.Health.db.status).to.deep.equal('UP');
       done();
     });
