@@ -29,7 +29,7 @@ Track your Appeal
                 <div class="appeal-received">
                     <div class="ring active"></div>
                     <h5 aria-hidden="true">{{ i18n.progressBar.appeal }}</h5>
-                    {% if data.status == 'APPEAL_RECEIVED' %}
+                    {% if data.status == 'APPEAL_RECEIVED' or data.status == 'DWP_RESPOND_OVERDUE'  %}
                     <span class="screen-reader-text">{{ i18n.progressBar.screenReader.appeal.happening }}</span>
                     {% else %}
                     <span class="screen-reader-text">{{ i18n.progressBar.screenReader.appeal.happened }}</span>
@@ -39,7 +39,7 @@ Track your Appeal
                 <div class="dwp-respond">
                     <div class="leg foot {{ data.status|isActive('DWP_RESPOND') }}"></div>
                     <h5 aria-hidden="true">{{ i18n.progressBar.dwpRespond }}</h5>
-                    {% if data.status == 'APPEAL_RECEIVED' %}
+                    {% if data.status == 'APPEAL_RECEIVED' or data.status == 'DWP_RESPOND_OVERDUE' %}
                     <span class="screen-reader-text">{{ i18n.progressBar.screenReader.dwpRespond.due }}</span>
                     {% elif data.status == 'DWP_RESPOND' %}
                     <span class="screen-reader-text">{{ i18n.progressBar.screenReader.dwpRespond.happening }}</span>
@@ -51,7 +51,7 @@ Track your Appeal
                 <div class="hearing-booked">
                     <div class="leg foot {{ data.status|isActive('HEARING_BOOKED') }}"></div>
                     <h5 aria-hidden="true">{{ i18n.progressBar.hearingBooked }}</h5>
-                    {% if data.status == 'APPEAL_RECEIVED' or data.status == 'DWP_RESPOND' %}
+                    {% if data.status == 'APPEAL_RECEIVED' or data.status == 'DWP_RESPOND_OVERDUE' or data.status == 'DWP_RESPOND' %}
                     <span class="screen-reader-text">{{ i18n.progressBar.screenReader.hearingBooked.due }}</span>
                     {% elif data.status == 'HEARING_BOOKED' %}
                     <span class="screen-reader-text">{{ i18n.progressBar.screenReader.hearingBooked.happening }}</span>
@@ -90,7 +90,7 @@ Track your Appeal
                 <a href="/progress/{{data.appealNumber}}/hearingdetails">{{ i18n.hearingDetails.checkDetails }}</a>
                 {% endif %}
 
-                {% if data.historicalEvents %}
+                {% if data.historicalEvents.length %}
                 <details>
 
                     <summary>
