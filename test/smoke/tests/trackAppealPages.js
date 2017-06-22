@@ -90,6 +90,9 @@ Scenario('verify about your appeal section links', function*(I) {
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.click('Providing evidence to support your appeal');
   I.see('Providing evidence to support your appeal');
+  I.see('Cookie');
+  I.click('Cookie');
+  I.see('Cookie Policy');
 });
 
 Scenario('verify evidence page', function*(I) {
