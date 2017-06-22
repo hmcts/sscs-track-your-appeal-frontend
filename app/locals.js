@@ -6,6 +6,7 @@ module.exports = (req, res, next) => {
   res.locals.asset_path = '/public/';
   res.locals.releaseVersion = 'v' + packageJson.version;
   res.locals.i18n = locale;
+  res.locals.cookies    = locale.cookiePolicy.footer.cookies;
   res.locals.cookieText = locale.cookiePolicy.banner.text;
   res.locals.cookieLink = locale.cookiePolicy.banner.link;
   res.locals.urls = urls;

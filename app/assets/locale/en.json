@@ -334,6 +334,9 @@
       "text": "GOV.UK uses cookies to make the site simpler.",
       "link": "Find out more about cookies"
     },
+    "footer": {
+      "cookies": "Cookies"
+    },
     "cookies": {
       "title": "Cookie Policy",
       "description": "The ‘track your benefit appeal’ website stores small files (known as cookies), on your computer. They are used to improve your experience of using the website.",
