@@ -119,13 +119,11 @@ Track your Appeal
 
             </div>
 
-            {% if data.status == 'DWP_RESPOND' or data.status == 'HEARING_BOOKED' %}
             <div class="panel panel-border-wide">
-                <p>{{ i18n.evidence.receivedBy }}<br/>
+                <p>{{ i18n.evidence.received if data.evidenceReceived else i18n.evidence.notReceived }}<br/>
                     <a href="/progress/{{data.appealNumber}}/evidence">{{ i18n.evidence.provide.title }}</a>
                 </p>
             </div>
-            {% endif %}
 
             <div class="updates-border"></div>
 

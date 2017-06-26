@@ -270,6 +270,56 @@ describe('Appeal', () => {
 
   });
 
+  describe('Calling the setEvidenceReceivedFlag() function', () => {
+
+
+    let mockAppeal = {
+      appeal: {
+        latestEvents: [],
+        historicalEvents: []
+      }
+    };
+
+    let evidenceRecived = {
+      contentKey: "status.evidenceReceived"
+    };
+
+    beforeEach(() => {
+      appeal = new Appeal(cloneDeep(mockAppeal.appeal));
+    });
+
+    let appeal;
+
+    it('should set evidenceReceived to false by default', () => {
+      expect(appeal.evidenceReceived).to.eq(false);
+    });
+
+    it('should set evidenceReceived to false when the evidence received event does not exist in either the latestEvents array or the historicalEvents array', () => {
+      appeal.setEvidenceReceivedFlag();
+      expect(appeal.evidenceReceived).to.eq(false);
+    });
+
+    it('should set evidenceReceived to true when the evidence received event exists in the latestEvents array', () => {
+      appeal.latestEvents.push(evidenceRecived);
+      appeal.setEvidenceReceivedFlag();
+      expect(appeal.evidenceReceived).to.eq(true);
+    });
+
+    it('should set evidenceReceived to true when the evidence received event exists in the historicalEvents array', () => {
+      appeal.historicalEvents.push(evidenceRecived);
+      appeal.setEvidenceReceivedFlag();
+      expect(appeal.evidenceReceived).to.eq(true);
+    });
+
+    it('should set evidenceReceived to true when the evidence received event exists in both the latestEvents and historicalEvents arrays', () => {
+      appeal.latestEvents.push(evidenceRecived);
+      appeal.historicalEvents.push(evidenceRecived);
+      appeal.setEvidenceReceivedFlag();
+      expect(appeal.evidenceReceived).to.eq(true);
+    });
+
+  });
+
   describe('Calling the reformatHearingDetails() function', () => {
 
     let appeal;

@@ -12,6 +12,7 @@ class Appeal {
     this.appealNumber = appeal.appealNumber;
     this.name = appeal.name;
     this.status = appeal.status;
+    this.evidenceReceived = false;
     this.latestEvents = appeal.latestEvents || [];
     this.historicalEvents = appeal.historicalEvents || [];
   }
@@ -22,6 +23,7 @@ class Appeal {
     this.reformatHearingDetails(this.latestEvents);
     this.reformatHearingDetails(this.historicalEvents);
     this.setLatestHearingBookedEventOnAppeal();
+    this.setEvidenceReceivedFlag();
   }
 
   setHeadingAndRenderedContentOnEvents(events) {
@@ -41,6 +43,15 @@ class Appeal {
       this.latestHearingBookedEvent = this.getFirstEventWithMatchingContentKey(
         this.historicalEvents, events.HEARING_BOOKED.contentKey);
     }
+  }
+
+  setEvidenceReceivedFlag() {
+    let evidenceRecievedInLatestEvents = this.getFirstEventWithMatchingContentKey(
+      this.latestEvents, events.EVIDENCE_RECEIVED.contentKey);
+    let evidenceRecievedInHistoricalEvents = this.getFirstEventWithMatchingContentKey(
+      this.historicalEvents, events.EVIDENCE_RECEIVED.contentKey);
+
+    this.evidenceReceived = !!(evidenceRecievedInLatestEvents || evidenceRecievedInHistoricalEvents);
   }
 
   reformatHearingDetails(evnts) {
