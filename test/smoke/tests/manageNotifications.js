@@ -19,7 +19,7 @@ Scenario('verify change password ', function*(I) {
 });
 
 Scenario('check feedback form link  ', function*(I) {
-  let authenticationCode = yield I.getMACToken();
+  let authenticationCode = yield I.getMessageAuthenticationCode();
   I.amOnPage('/manage-email-notifications/' + authenticationCode);
   I.see(emailText.manage.title);
   I.see("This is a new service – your feedback will help us to improve it.");
