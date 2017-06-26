@@ -1,7 +1,7 @@
 {
   "status": {
     "adjourned": {
-      "heading": "Adjourned",
+      "heading": "Hearing didn't take place",
       "content": [
         "The hearing for your appeal didn’t take place as scheduled. We’ve sent you a letter explaining why, which you should receive by {{adjournedLetterReceivedByDate|formatDate}}.",
         "We’ll contact you by {{hearingContactDate|formatDate}} to let you know the details of your new hearing."
@@ -9,41 +9,41 @@
     },
     "appealReceived": {
       "heading": "Appeal received",
-      "content": "We’ve told the DWP that you’ve appealed against their decision. They should respond before {{dwpResponseDate|formatDate}}. We’ll contact you and explain the next steps when they’ve replied."
+      "content": "We’ve told DWP that you’ve appealed against their decision. They should respond before {{dwpResponseDate|formatDate}}. We’ll contact you and explain the next steps when they’ve replied."
     },
     "closed": {
-      "heading": "Closed",
+      "heading": "Appeal closed",
       "content": [
         "Your ESA benefit appeal is now closed.",
-        "If you have any questions relating to your benefits, contact the DWP. You can find their contact details on any correspondence you’ve received from them."
+        "If you have any questions relating to your benefits, contact DWP. You can find their contact details on any correspondence you’ve received from them."
       ]
     },
     "dormant": {
-      "heading": "Dormant",
+      "heading": "Change of decision",
       "content": [
-        "The DWP have told us they changed their decision on your ESA benefit in your favour. We’ve therefore closed this appeal. If you don’t agree with their new decision you can start a new appeal.",
-        "If you have any questions relating to your benefits, contact the DWP. You can find their contact details on any correspondence you’ve received from them."
+        "DWP have told us they changed their decision on your entitlement to ESA in your favour. We’ve therefore closed this appeal. If you don’t agree with their new decision you can start a new appeal.",
+        "If you have any questions relating to your benefits, contact DWP. You can find their contact details on any correspondence you’ve received from them."
       ]
     },
     "dwpRespond": {
       "heading": "DWP response",
       "content": [
-        "The DWP have written a response to your ESA benefit appeal. They should have sent you a copy in the post.",
+        "DWP have written a response to your ESA benefit appeal. They should have sent you a copy in the post.",
         "We’re now in the process of booking a hearing for your appeal. We’ll contact you by {{hearingContactDate|formatDate}} with the details."
       ]
     },
     "dwpRespondOverdue": {
       "heading": "DWP response overdue",
       "content": [
-        "The DWP were due to respond to your appeal by {{dwpResponseDate|formatDate}}. We’ve written to them again to remind them. We’ll let you know when they respond."
+        "DWP were due to respond to your appeal by {{dwpResponseDate|formatDate}}. We’ve written to them again to remind them. We’ll let you know when they respond."
       ]
     },
     "evidenceReceived": {
       "heading": "Evidence received",
-      "content": "The {{evidenceType}} evidence you sent was received by us on {{date|formatDate}}"
+      "content": "The {{evidenceType}} evidence you sent was received by us on {{date|formatDate}}."
     },
     "hearing": {
-      "heading": "Hearing",
+      "heading": "Hearing took place",
       "content": [
         "Your hearing took place on {{date|formatDate}}. The decision was sent to you in the post and should have arrived at your registered address by {{decisionLetterReceiveByDate|formatDate}}.",
         "We can’t publish the decision online or tell you over the phone. This is to protect your personal information."
@@ -51,13 +51,13 @@
     },
     "hearingBooked": {
       "heading": "Hearing booked",
-      "content": "A hearing has been booked for your appeal"
+      "content": "A hearing has been booked for your appeal."
     },
     "lapsedRevised": {
-      "heading": "Lapsed revised",
+      "heading": "Change of decision",
       "content": [
-        "The DWP have told us they changed their decision on your ESA benefit in your favour. We’ve therefore closed this appeal. If you don’t agree with their new decision you can start a new appeal.",
-        "If you have any questions relating to your benefits, contact the DWP. You can find their contact details on any correspondence you’ve received from them."
+        "DWP have told us they changed their decision on your entitlement to ESA in your favour. We’ve therefore closed this appeal. If you don’t agree with their new decision you can start a new appeal.",
+        "If you have any questions relating to your benefits, contact DWP. You can find their contact details on any correspondence you’ve received from them."
       ]
     },
     "newHearingBooked": {
@@ -65,21 +65,21 @@
       "content": "A new hearing has been booked for your appeal."
     },
     "pastHearingBooked": {
-      "heading": "Past hearing booked",
+      "heading": "Still booking a hearing",
       "content": "We’re still trying to find a suitable time for your ESA benefit appeal. We’ll contact you as soon as we’ve scheduled it. We apologise for any inconvenience this may cause you."
     },
     "postponed": {
-      "heading": "Postponed",
+      "heading": "Hearing postponed",
       "content": [
         "The hearing for your ESA benefit appeal has been postponed and will now take place on a different day.",
         "We’ll book a new hearing for your appeal. We’ll contact you by {{hearingContactDate|formatDate}} with the details."
       ]
     },
     "withdrawn": {
-      "heading": "Withdrawn",
+      "heading": "Appeal withdrawn",
       "content": [
         "You told us you wanted to withdraw your appeal so we’ve closed it.",
-        "If you have any questions relating to your benefits, contact the DWP. You can find their contact details on any correspondence you’ve received from them."
+        "If you have any questions relating to your benefits, contact DWP. You can find their contact details on any correspondence you’ve received from them."
       ]
     }
   },
@@ -126,7 +126,7 @@
     "receivedBy": "All evidence should be received by 21 April 2017. This is so there’s time to read it before your hearing.",
     "dwp": {
       "heading": "DWP evidence received",
-      "content": "The evidence the DWP sent was received by us on 6 April 2017"
+      "content": "The evidence DWP sent was received by us on 6 April 2017."
     },
     "default": {
       "heading": "Evidence received",
@@ -134,15 +134,15 @@
     },
     "appellant": {
       "heading": "Evidence received",
-      "content": "The evidence that you sent was received by us on 6 April 2017"
+      "content": "The evidence that you sent was received by us on 6 April 2017."
     },
     "tribunalsService": {
       "heading": "Evidence received",
-      "content": "The evidence the Tribunal Service sent was received by us on 6 April 2017"
+      "content": "The evidence the Tribunal Service sent was received by us on 6 April 2017."
     },
     "representative": {
       "heading": "Evidence received",
-      "content": "The evidence the representative sent was received by us on 6 April 2017"
+      "content": "The evidence the representative sent was received by us on 6 April 2017."
     },
     "provide": {
       "title": "Providing evidence to support your appeal",
@@ -152,7 +152,7 @@
         "content": [
           "This is the most important form of evidence. Medical evidence helps the tribunal understand your condition and how it affects your life.",
           "As a patient, you have a right to a copy of your medical records. You’ll need to ask your doctor for them as early as possible in your appeal. Only get records going back 2 years from the time you made your appeal.",
-          "You might have other medical evidence which isn’t included in your medical records. For example a letter from a consultant, physiotherapist or mental health worker. Submit these too, if they are relevant to your condition at the time you received your decision from the DWP.",
+          "You might have other medical evidence which isn’t included in your medical records. For example a letter from a consultant, physiotherapist or mental health worker. Submit these too, if they are relevant to your condition at the time you received your decision from DWP.",
           "You’ll need to send evidence to the tribunal as early as possible. If you submit evidence too close to your hearing, it could be delayed to a different day because there hasn’t been enough time to review it.",
           "Please be aware your doctor or consultant may charge you for your medical records. We can’t reimburse you for this."
         ]
@@ -250,7 +250,7 @@
     "expectations": {
       "title": "What to expect at your hearing",
       "link": "Find out what your hearing is going to be like",
-      "content": "Your hearing is where you explain your case and get a decision on your benefit appeal. The tribunal is independent from the DWP and will listen to both sides of the dispute before making a decision.",
+      "content": "Your hearing is where you explain your case and get a decision on your benefit appeal. The tribunal is independent from DWP and will listen to both sides of the dispute before making a decision.",
       "whenYouArrive": {
         "heading": "When you arrive",
         "content": "You’ll be greeted by a tribunal clerk. They’ll take care of you at the hearing venue and answer any questions you may have. You’ll sit in a waiting area until your hearing begins."
@@ -269,9 +269,9 @@
         ]
       },
       "dwp": {
-        "heading": "The DWP",
+        "heading": "DWP",
         "content": [
-          "A representative from the DWP may be there. They are not on the panel and are there to speak on behalf of the DWP . This representative won’t be the person who made the decision about your benefits."
+          "A representative from DWP may be there. They are not on the panel and are there to speak on behalf of DWP . This representative won’t be the person who made the decision about your benefits."
         ]
       },
       "duringHearing": {
@@ -302,13 +302,13 @@
     "interpreter": "Interpreter",
     "representative": "Representative",
     "interpretersBookedByUs": "Only interpreters booked by us can translate for you at the hearing.",
-    "incorrect": "If anything above is incorrect or you cannot attend, call us on 0300 123 1142",
+    "incorrect": "If you can't attend, call us on 0300 123 1142",
     "pleaseNote": {
       "heading": "Please note",
       "content": [
         "You can bring people to support you at your hearing. For example family, friends or a support worker. There will be a limit to the number of people you can take into the hearing room because of space.",
         "Children are allowed in the waiting area but not in the hearing room. You’ll need to bring someone to supervise them while you’re in the hearing.",
-        "Bring all documents relating to your appeal to the hearing. For example letters or evidence we or the DWP have sent you."
+        "Bring all documents relating to your appeal to the hearing. For example letters or evidence we or DWP have sent you."
       ]
     }
   },
