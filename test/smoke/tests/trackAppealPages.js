@@ -24,9 +24,12 @@ Scenario('verify appellant details after DWP response received', function*(I, Pr
   I.see(pageText.common.latestUpdate);
   I.click(Properties.fields.view_previous_updates_link_css_path, 'View previous updates');
   I.see(pageText.status.appealReceived.heading);
+  I.see(pageText.evidence.notReceived);
   I.see('05 January 2017', Properties.fields.sub_headings_h3_css_path);
   I.click('Providing evidence to support your appeal');
   I.see('Providing evidence to support your appeal');
+
+
 });
 
 Scenario('verify appellant details after Hearing Booked', function*(I, Properties) {
@@ -64,7 +67,7 @@ Scenario('verify hearing details', function*(I, Properties) {
   I.see(pageText.hearingDetails.incorrect);
   I.click("Maps and directions");
   I.seeInCurrentUrl("CH1+2XA");
-});
+  });
 
 Scenario('verify appellant details after Hearing response received', function*(I) {
   let appealId = yield I.retrieveAppealNumber(dbProperties.hearingAppealCaseId);
@@ -75,6 +78,7 @@ Scenario('verify appellant details after Hearing response received', function*(I
   I.see('Appeal reference number: SC444/44/44444');
   I.see('Your hearing took place on '+date+'. The decision was sent to you in the post and should have arrived at your registered address by '+postReceivedDate+'.');
   I.see(pageText.status.hearing.content[1]);
+  I.see(pageText.evidence.received);
 });
 
 
@@ -125,7 +129,7 @@ Scenario('verify what to expect at your hearing page', function*(I) {
   I.see(pageText.hearing.expectations.dwp.heading);
   I.see(pageText.hearing.expectations.duringHearing.heading);
   I.see(pageText.hearing.expectations.gettingDecision.heading);
-});
+  });
 
 Scenario('verify expenses page', function*(I) {
   let appealId = yield I.retrieveAppealNumber(dbProperties.hearingAppealCaseId);
