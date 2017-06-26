@@ -123,7 +123,8 @@
     }
   },
   "evidence": {
-    "receivedBy": "All evidence should be received by {{evidenceSubmissionDate|formatDate}}. This is so there’s time to read it before your hearing.",
+    "notReceived": "If you have any evidence to support your appeal, you should send it as soon as possible. This so there's time to read it before your hearing.",
+    "received": "If you have any more evidence to support your appeal, you should send it as soon as possible. This is so there's time to read it before your hearing.",
     "provide": {
       "title": "Providing evidence to support your appeal",
       "content": "Evidence is anything that supports your appeal. It could be medical records, letters or documents. What you say at the hearing is also evidence. It all helps the tribunal understand the facts of your appeal.",
