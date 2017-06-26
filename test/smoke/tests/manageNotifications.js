@@ -19,12 +19,12 @@ Scenario('verify change password ', function*(I) {
 });
 
 Scenario('check feedback form link  ', function*(I) {
-  let authenticationCode = yield I.getMessageAuthenticationCode();
+  let authenticationCode = yield I.getMACToken();
   I.amOnPage('/manage-email-notifications/' + authenticationCode);
   I.see(emailText.manage.title);
   I.see("This is a new service – your feedback will help us to improve it.");
   I.click("feedback");
-  I.see("Feedback survey");
+  I.see("Your feedback");
 });
 
 Scenario('stop email subscription  ', function*(I) {
