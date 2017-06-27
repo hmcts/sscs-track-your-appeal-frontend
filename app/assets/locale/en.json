@@ -456,19 +456,6 @@
     "scotland": {
       "heading": "Scotland",
       "phoneNumber": "Telephone: 0141 354 8400"
-    },
-    "regionalOffice": {
-      "preEvidence": "If you have any",
-      "evidence": "evidence to support your appeal",
-      "postEvidence": "send it to:",
-      "address": [
-        "Birmingham ASC",
-        "HM Courts and Tribunals Service",
-        "Administrative Support Centre (ASC)",
-        "PO Box 14620",
-        "Birmingham",
-        "B16 6FR"
-      ]
     }
   },
   "errors": {
