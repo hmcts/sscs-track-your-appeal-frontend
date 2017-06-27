@@ -24,7 +24,7 @@ Scenario('check feedback form link  ', function*(I) {
   I.see(emailText.manage.title);
   I.see("This is a new service – your feedback will help us to improve it.");
   I.click("feedback");
-  I.see("Feedback survey");
+  I.see("Your feedback");
 });
 
 Scenario('stop email subscription  ', function*(I) {
