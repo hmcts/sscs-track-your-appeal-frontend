@@ -29,19 +29,6 @@ Contact us
                 <a href="https://www.gov.uk/call-charges">{{ i18n.contactUs.callCharges }}</a>
             </p>
 
-            <p>
-                {{ i18n.contactUs.regionalOffice.preEvidence }}
-                <a href="/progress/{{data.appealNumber}}/evidence">{{ i18n.contactUs.regionalOffice.evidence }}</a>
-                {{ i18n.contactUs.regionalOffice.postEvidence }}
-            </p>
-
-            <p>
-            {% for addressline in i18n.contactUs.regionalOffice.address %}
-            {{ addressline }}
-            <br>
-            {% endfor %}
-            </p>
-
         </div>
 
         <div class="column-third">

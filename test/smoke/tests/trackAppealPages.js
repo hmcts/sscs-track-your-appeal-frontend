@@ -149,12 +149,6 @@ Scenario('verify contact us page', function*(I) {
   I.see(pageText.contactUs.englandWales.phoneNumber);
   I.see(pageText.contactUs.scotland.heading);
   I.see(pageText.contactUs.scotland.phoneNumber);
-  I.see(pageText.contactUs.regionalOffice.address[0]);
-  I.see(pageText.contactUs.regionalOffice.address[1]);
-  I.see(pageText.contactUs.regionalOffice.address[2]);
-  I.see(pageText.contactUs.regionalOffice.address[3]);
-  I.see(pageText.contactUs.regionalOffice.address[4]);
-  I.see(pageText.contactUs.regionalOffice.address[5]);
 });
 
 Scenario('verify appellant details for lapsed revised state', function*(I) {
