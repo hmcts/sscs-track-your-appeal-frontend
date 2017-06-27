@@ -4,7 +4,7 @@
       "heading": "Hearing didn't take place",
       "content": [
         "The hearing for your appeal didn’t take place as scheduled. We’ve sent you a letter explaining why, which you should receive by {{adjournedLetterReceivedByDate|formatDate}}.",
-        "We’ll contact you by {{hearingContactDate|formatDate}} to let you know the details of your new hearing."
+        "We’ll contact you in the next 8 weeks to let you know the details of your new hearing."
       ]
     },
     "appealReceived": {
