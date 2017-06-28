@@ -237,7 +237,8 @@
         "content": "You’ll be greeted by a tribunal clerk. They’ll take care of you at the hearing venue and answer any questions you may have. You’ll sit in a waiting area until your hearing begins."
       },
       "theHearingRoom": {
-        "imageAlt": "A tribunal hearing with four people, dressed informally, sat around a table.",
+        "caption": "An ESA appeal hearing with a judge and a medical expert.",
+        "imageAlt": "A tribunal hearing with 4 people, dressed informally, sat around a table.",
         "heading": "The hearing room",
         "content": "The tribunal clerk will take you into a room for your hearing. It’s more like a meeting room than a courtroom. The judge and other panel members will be sat behind a table. You’ll be invited to sit opposite them. If you have someone to support you or to give evidence, they’ll sit next to you."
       },
