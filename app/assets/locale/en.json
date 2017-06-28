@@ -40,7 +40,7 @@
     },
     "evidenceReceived": {
       "heading": "Evidence received",
-      "content": "The {{evidenceType}} evidence you sent was received by us on {{date|formatDate}}."
+      "content": "The evidence you sent was received by us on {{date|formatDate}}."
     },
     "hearing": {
       "heading": "Hearing took place",
