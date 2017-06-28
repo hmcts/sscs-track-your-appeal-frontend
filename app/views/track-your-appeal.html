@@ -119,11 +119,13 @@ Track your Appeal
 
             </div>
 
+            {% if data.showEvidenceReminder %}
             <div class="panel panel-border-wide">
                 <p>{{ i18n.evidence.received if data.evidenceReceived else i18n.evidence.notReceived }}<br/>
                     <a href="/progress/{{data.appealNumber}}/evidence">{{ i18n.evidence.provide.title }}</a>
                 </p>
             </div>
+            {% endif %}
 
             <div class="updates-border"></div>
 

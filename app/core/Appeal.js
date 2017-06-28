@@ -1,9 +1,19 @@
-const {get,startsWith} = require('lodash');
+const {get,startsWith,includes} = require('lodash');
 const {contentSubKeys} = require('app/config');
 const {events} = require('app/core/events');
 const locale = require('app/assets/locale/en');
 const NunjucksUtils = require('app/core/NunjucksUtils');
 const ADDRESS_LINE = 'addressLine';
+const showEvidenceReminderStatuses = [
+  events.ADJOURNED.name,
+  events.APPEAL_RECEIVED.name,
+  events.DWP_RESPOND.name,
+  events.DWP_RESPOND_OVERDUE.name,
+  events.HEARING_BOOKED.name,
+  events.NEW_HEARING_BOOKED.name,
+  events.PAST_HEARING_BOOKED.name,
+  events.POSTPONED.name
+];
 
 class Appeal {
 
@@ -13,6 +23,7 @@ class Appeal {
     this.name = appeal.name;
     this.status = appeal.status;
     this.evidenceReceived = false;
+    this.showEvidenceReminder = includes(showEvidenceReminderStatuses, this.status);
     this.latestEvents = appeal.latestEvents || [];
     this.historicalEvents = appeal.historicalEvents || [];
   }
@@ -23,7 +34,10 @@ class Appeal {
     this.reformatHearingDetails(this.latestEvents);
     this.reformatHearingDetails(this.historicalEvents);
     this.setLatestHearingBookedEventOnAppeal();
-    this.setEvidenceReceivedFlag();
+
+    if(this.showEvidenceReminder) {
+      this.setEvidenceReceivedFlag();
+    }
   }
 
   setHeadingAndRenderedContentOnEvents(events) {
