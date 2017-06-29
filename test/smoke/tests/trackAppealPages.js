@@ -78,8 +78,7 @@ Scenario('verify appellant details after Hearing response received', function*(I
   I.see('Appeal reference number: SC444/44/44444');
   I.see('Your hearing took place on '+date+'. The decision was sent to you in the post and should have arrived at your registered address by '+postReceivedDate+'.');
   I.see(pageText.status.hearing.content[1]);
-  I.see(pageText.evidence.received);
-});
+ });
 
 
 Scenario('verify about your appeal section links', function*(I) {
@@ -124,7 +123,7 @@ Scenario('verify what to expect at your hearing page', function*(I) {
   I.see(pageText.hearing.expectations.whenYouArrive.content);
   I.see(pageText.hearing.expectations.theHearingRoom.heading);
   I.see(pageText.hearing.expectations.theHearingRoom.content);
-  I.see(pageText.hearing.expectations.theHearingRoom.imageAlt);
+  I.see(pageText.hearing.expectations.theHearingRoom.caption);
   I.see(pageText.hearing.expectations.peopleAtHearing.heading);
   I.see(pageText.hearing.expectations.dwp.heading);
   I.see(pageText.hearing.expectations.duringHearing.heading);
