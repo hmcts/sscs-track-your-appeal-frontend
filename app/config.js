@@ -4,7 +4,7 @@ const healthAPI   = (process.env.SSCS_API_URL || 'http://localhost:8080') + '/he
 const tokenAPI    = (process.env.SSCS_API_URL || 'http://localhost:8080') + '/tokens';
 
 const dateFormat = {
-  utc: 'YYYY-MM-DDTHH:mm:ss:sssZ',
+  utc: 'YYYY-MM-DDTHH:mm:ssZ',
   date: 'DD MMMM YYYY',
   time: 'HH:mm'
 };
