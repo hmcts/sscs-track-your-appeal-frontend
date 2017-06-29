@@ -270,6 +270,48 @@ describe('Appeal', () => {
 
   });
 
+  describe('Setting the showEvidenceReminder flag to true', () => {
+
+    const showEvidence = [
+      { status: events.ADJOURNED.name },
+      { status: events.APPEAL_RECEIVED.name },
+      { status: events.DWP_RESPOND.name },
+      { status: events.DWP_RESPOND_OVERDUE.name },
+      { status: events.HEARING_BOOKED.name },
+      { status: events.NEW_HEARING_BOOKED.name },
+      { status: events.PAST_HEARING_BOOKED.name },
+      { status: events.POSTPONED.name }
+    ];
+
+    showEvidence.forEach((appeal) => {
+      it(`should set showEvidenceReminder to true when the case status is ${appeal.status}`, () => {
+        const appealInstance = new Appeal(appeal);
+        expect(appealInstance.showEvidenceReminder).to.eq(true);
+      });
+    });
+
+  });
+
+  describe('Setting the showEvidenceReminder flag to false', () => {
+
+    const hideEvidence = [
+      { status: events.CLOSED.name },
+      { status: events.DORMANT.name },
+      { status: events.EVIDENCE_RECEIVED.name },
+      { status: events.HEARING.name },
+      { status: events.LAPSED_REVISED.name },
+      { status: events.WITHDRAWN.name }
+    ];
+
+    hideEvidence.forEach((appeal) => {
+      it(`should set showEvidenceReminder to false when the case status is ${appeal.status}`, () => {
+        const appealInstance = new Appeal(appeal);
+        expect(appealInstance.showEvidenceReminder).to.eq(false);
+      });
+    });
+
+  });
+
   describe('Calling the setEvidenceReceivedFlag() function', () => {
 
 
