@@ -67,6 +67,14 @@ describe('routes.js', () => {
         .expect(200, done);
     });
 
+    it('should respond to /robots.txt', function (done) {
+      request(httpServer)
+        .get('/robots.txt')
+        .expect('Content-Type', 'text/plain; charset=utf-8')
+        .expect('User-agent: *\nDisallow: /')
+        .expect(200, done);
+    });
+
   });
 
   describe('making email notifications route requests which result in a HTTP 200', () => {
@@ -162,7 +170,7 @@ describe('routes.js', () => {
         .expect(404)
         .end((err, resp) => {
           if (err) return done(err);
-          assert.include(resp.text, "Sorry, this page could not be found")
+          assert.include(resp.text, "Sorry, this page could not be found");
           done();
         })
     });
