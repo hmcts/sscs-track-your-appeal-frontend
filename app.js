@@ -74,7 +74,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/robots.txt', function (req, res) {
+app.get('/robots.txt', (req, res) => {
   res.type('text/plain');
   res.send('User-agent: *\nDisallow: /');
 });
