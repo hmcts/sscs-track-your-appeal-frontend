@@ -123,7 +123,7 @@
     }
   },
   "evidence": {
-    "notReceived": "If you have any evidence to support your appeal, you should send it as soon as possible. This so there's time to read it before your hearing.",
+    "notReceived": "If you have any evidence to support your appeal, you should send it as soon as possible. This is so there's time to read it before your hearing.",
     "received": "If you have any more evidence to support your appeal, you should send it as soon as possible. This is so there's time to read it before your hearing.",
     "provide": {
       "title": "Providing evidence to support your appeal",
@@ -231,43 +231,43 @@
     "expectations": {
       "title": "What to expect at your hearing",
       "link": "Find out what your hearing is going to be like",
-      "content": "Your hearing is where you explain your case and get a decision on your benefit appeal. The tribunal is independent from DWP and will listen to both sides of the dispute before making a decision.",
+      "content": "Your hearing is an opportunity for you to explain your appeal and get an impartial decision on your entitlement to Employment and Support Allowance (ESA). The tribunal is independent and will consider both sides of the appeal. ",
       "whenYouArrive": {
         "heading": "When you arrive",
-        "content": "You’ll be greeted by a tribunal clerk. They’ll take care of you at the hearing venue and answer any questions you may have. You’ll sit in a waiting area until your hearing begins."
+        "content": "You’ll be greeted by a tribunal clerk. They’ll take care of you at the hearing venue and answer any questions you have."
       },
       "theHearingRoom": {
-        "caption": "An ESA appeal hearing with a judge and a medical expert.",
+        "caption": "An ESA appeal hearing with a judge and medical expert.",
         "imageAlt": "A tribunal hearing with 4 people, dressed informally, sat around a table.",
         "heading": "The hearing room",
-        "content": "The tribunal clerk will take you into a room for your hearing. It’s more like a meeting room than a courtroom. The judge and other panel members will be sat behind a table. You’ll be invited to sit opposite them. If you have someone to support you or to give evidence, they’ll sit next to you."
+        "content": "The tribunal clerk will take you into a room for your hearing. The judge and medical expert will be sitting at a table. You’ll be invited to sit opposite them. If you have someone to support you or to give evidence, they’ll sit next to you."
       },
       "peopleAtHearing": {
         "heading": "The people at your hearing",
         "content": [
-          "The tribunal is made up of a panel of people who’ll make a balanced decision on your appeal.",
-          "The judge runs the hearing. They’ll explain how it works. They’ll also take notes throughout. This is to create a record of the hearing.",
-          "A doctor and a disability expert sit with the judge in Personal Independence Payment (PIP) appeals. They provide medical and disability advice. In Employment Support Allowance (ESA) appeals there’ll just be a doctor with the judge."
+          "The tribunal is made up of a judge and a medical expert who will make an impartial decision on your appeal. They are both independent from DWP.",
+          "The judge runs the hearing and will explain how it works. They’ll also take notes of what is said throughout the hearing.",
+          "The medical expert is there to give their medical opinion on your appeal."
         ]
       },
       "dwp": {
         "heading": "DWP",
         "content": [
-          "A representative from DWP may be there. They are not on the panel and are there to speak on behalf of DWP . This representative won’t be the person who made the decision about your benefits."
+          "A representative from DWP might be there. They are not on the panel and are there to speak on behalf of DWP. They won’t be the person who made the decision about your entitlement to ESA."
         ]
       },
       "duringHearing": {
         "heading": "During your hearing",
         "content": [
-          "The judge and the other panel members will ask you some straightforward questions. They’re trying to understand how your condition affects your life. They may ask how you cope with certain tasks or about the types of of things you need help with. This takes about an hour.",
-          "Sometimes the panel will need more evidence or information to help them make a decision. It’s important that you submit all your evidence well before the hearing so they have time to review it. Otherwise they may have to postpone the hearing to a different day."
+          "The judge and medical expert will ask you some straightforward questions. They’re trying to understand how your condition affects your life. It’s your opportunity to explain your side of the appeal. The whole hearing takes up to an hour.",
+          "Sometimes they will need more evidence to help them make a decision. It’s important that you submit all your evidence well before the hearing so they have time to review it. Otherwise they may have to postpone the hearing to a different day."
         ]
       },
       "gettingDecision": {
         "heading": "Getting a decision",
         "content": [
-          "After you’ve answered all the questions you’ll be asked to wait outside while the panel members discuss your appeal. You’ll then be asked back into the room to be told the decision.",
-          "The judge will explain whether you’re entitled to the benefit and if so, at what level.",
+          "After you’ve answered all the questions you’ll be asked to wait outside while the tribunal discusses your appeal. You’ll then be asked back into the room to be told the decision.",
+          "The judge will explain whether you’re entitled to ESA and if so, at what level.",
           "Sometimes the tribunal may need more time to make a decision. If that happens the decision about your appeal will be posted to you."
         ]
       }
