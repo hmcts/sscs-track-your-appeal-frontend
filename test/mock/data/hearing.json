@@ -2,14 +2,14 @@
   "appeal": {
     "caseReference": "SC123/45/00001",
     "appealNumber": "md400",
-    "name": "Miss SNJ Trigg",
+    "name": "Miss BST Same-time",
     "status": "HEARING",
     "latestEvents": [
       {
         "placeholder": {
           "decisionLetterReceiveByDate": "2010-09-18T13:02:09.770Z"
         },
-        "date": "2010-09-11T13:02:09.077Z",
+        "date": "2010-09-11T13:02:09.77Z",
         "type": "HEARING",
         "contentKey": "status.hearing"
       }
@@ -22,7 +22,7 @@
       },
       {
         "placeholder": {
-          "date": "2011-11-13T10:40:00+00:00Z",
+          "date": "2017-10-29T10:45:00.000Z",
           "postcode": "OX1 1TL",
           "venueName": "Oxford Combined Court Centre",
           "addressLine1": "St Aldates",
@@ -46,7 +46,7 @@
       },
       {
         "placeholder": {
-          "date": "2011-11-13T10:40:00+00:00Z",
+          "date": "2011-11-13T10:40:00.00Z",
           "postcode": "OX1 1TL",
           "venueName": "Oxford Combined Court Centre",
           "addressLine1": "St Aldates",

@@ -1,5 +1,4 @@
 const {expect} = require('test/chai-sinon');
-const {dateFormat} = require('app/config');
 const moment = require('moment');
 const testServer = require('test/testServer');
 const NunjucksUtils = require('app/core/NunjucksUtils');
@@ -21,7 +20,7 @@ describe('NunjucksUtils.js', () => {
 
   // Date & time in UTC.
   const utc = moment.utc();
-  const utcDateTimeStr = utc.format(dateFormat.utc);
+  const utcDateTimeStr = utc.format();
 
   // Date & time in local time.
   const local = utc.local();
