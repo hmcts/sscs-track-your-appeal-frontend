@@ -11,7 +11,7 @@ Scenario('verify appellant details after Appeal Received', function*(I) {
   I.see('Appeal reference number: SC111/11/1111');
   I.see(pageText.progressBar.screenReader.appeal.happening);
   I.see(pageText.common.latestUpdate);
-  I.see('We’ve told the DWP that you’ve appealed against their decision. They should respond before '+date+'. We’ll contact you and explain the next steps when they’ve replied.')
+  I.see('We’ve told DWP that you’ve appealed against their decision. They should respond before '+date+'. We’ll contact you and explain the next steps when they’ve replied.')
 });
 
 Scenario('verify appellant details after DWP response received', function*(I, Properties) {
@@ -56,9 +56,9 @@ Scenario('verify hearing details', function*(I, Properties) {
   I.see('Mr. C Charlie');
   I.see('Appeal reference number: SC333/33/33333');
   I.see('Date');
-  I.see('17 May 2017');
+  I.see('17 July 2017');
   I.see('Time');
-  I.see('13:16 (arrive 15 minutes before)');
+  I.see('13:15 (arrive 15 minutes before)');
   I.see('Location');
   I.see("Chester Magistrate's Court");
   I.see("Grosvenor Street");
