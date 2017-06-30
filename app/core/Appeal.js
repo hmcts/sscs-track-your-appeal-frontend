@@ -103,7 +103,12 @@ class Appeal {
       content = [content];
     }
 
-    if(event.type === events.EVIDENCE_RECEIVED.name || event.type === events.HEARING.name) {
+    // This should be done in the API.
+    if(event.type === events.EVIDENCE_RECEIVED.name ||
+       event.type === events.HEARING.name ||
+       event.type === events.DORMANT.name) {
+
+      // Copy the date into the placeholder so nunjucks can render it.
       event.placeholder.date = event.date;
     }
 
