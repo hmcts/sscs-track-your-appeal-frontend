@@ -26,9 +26,14 @@ describe('NunjucksUtils.js', () => {
   const local = utc.local();
 
   // Extract date, month & year.
-  const localDate = local.date();
+  let localDate = local.date();
   const localMonth = moment.months()[local.month()];
   const localYear = local.year();
+
+  // Format date
+  if(localDate < 10) {
+    localDate = `0${localDate}`;
+  }
 
   // Format hours.
   let localHours = local.hours();
