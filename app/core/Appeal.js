@@ -31,8 +31,8 @@ class Appeal {
   decorate() {
     this.setHeadingAndRenderedContentOnEvents(this.latestEvents);
     this.setHeadingAndRenderedContentOnEvents(this.historicalEvents);
-    this.reformatHearingDetails(this.latestEvents);
-    this.reformatHearingDetails(this.historicalEvents);
+    this.reformatAllHearingDetails(this.latestEvents);
+    this.reformatAllHearingDetails(this.historicalEvents);
     this.setLatestHearingBookedEventOnAppeal();
 
     if(this.showEvidenceReminder) {
@@ -68,23 +68,50 @@ class Appeal {
     this.evidenceReceived = !!(evidenceRecievedInLatestEvents || evidenceRecievedInHistoricalEvents);
   }
 
-  reformatHearingDetails(evnts) {
+  reformatAllHearingDetails(evnts) {
     evnts = evnts || [];
     evnts.forEach(event => {
-      if(event.type === events.HEARING_BOOKED.name && event.placeholder) {
-        event.hearingAddress = {};
-        event.hearingAddress.lines = [];
-        if(event.placeholder.venueName) {
-          event.hearingAddress.lines.push(event.placeholder.venueName);
-        }
-        for (const property in event.placeholder) {
-          if (startsWith(property, ADDRESS_LINE) && event.placeholder[property].trim()) {
-            event.hearingAddress.lines.push(event.placeholder[property]);
-          }
-        }
-        event.hearingAddress.lines.push(event.placeholder.postcode);
+      if(event.type === events.HEARING_BOOKED.name) {
+        this.reformatHearingDetails(event);
       }
     });
+  }
+
+  reformatHearingDetails(event) {
+
+    if(!event.placeholder) {
+      return;
+    }
+
+    event.hearingAddress = {
+      lines: []
+    };
+
+    // Venue name
+    if(event.placeholder.venueName) {
+      const venueName = event.placeholder.venueName.trim();
+      if(venueName) {
+        event.hearingAddress.lines.push(venueName);
+      }
+    }
+
+    // Address lines
+    for (const property in event.placeholder) {
+      if (startsWith(property, ADDRESS_LINE) && event.placeholder[property]) {
+        const addressLine = event.placeholder[property].trim();
+        if(addressLine) {
+          event.hearingAddress.lines.push(addressLine);
+        }
+      }
+    }
+
+    // Postcode
+    if(event.placeholder.postcode) {
+      const postcode = event.placeholder.postcode.trim();
+      if(postcode) {
+        event.hearingAddress.lines.push(postcode);
+      }
+    }
   }
 
   getFirstEventWithMatchingContentKey(events, contentKey) {

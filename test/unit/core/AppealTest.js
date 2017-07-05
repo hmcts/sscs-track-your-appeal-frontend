@@ -362,7 +362,7 @@ describe('Appeal', () => {
 
   });
 
-  describe('Calling the reformatHearingDetails() function', () => {
+  describe('Calling the reformatAllHearingDetails() function', () => {
 
     let appeal;
 
@@ -371,19 +371,19 @@ describe('Appeal', () => {
     });
 
     it('should not blow up if the events are undefined', () => {
-      appeal.reformatHearingDetails(undefined);
+      appeal.reformatAllHearingDetails(undefined);
       expect(appeal.latestEvents[0].hearingAddress).to.equal(undefined);
-      expect(appeal.latestEvents[1].hearingAddress).to.equal(undefined);
+      expect(appeal.historicalEvents[1].hearingAddress).to.equal(undefined);
     });
 
     it('should loop over the latest events and reformat the hearing address details', () => {
-      appeal.reformatHearingDetails(appeal.latestEvents);
+      appeal.reformatAllHearingDetails(appeal.latestEvents);
       expect(appeal.latestEvents[1].hearingAddress.lines.length).to.equal(4);
       expecttheHearingAddressToBeReformated(appeal.latestEvents, 1);
     });
 
     it('should loop over all historical events and reformat the hearing address details', () => {
-      appeal.reformatHearingDetails(appeal.historicalEvents);
+      appeal.reformatAllHearingDetails(appeal.historicalEvents);
       expecttheHearingAddressToBeReformated(appeal.historicalEvents, 2);
       expecttheHearingAddressToBeReformated(appeal.historicalEvents, 4);
       expecttheHearingAddressToBeReformated(appeal.historicalEvents, 8);
@@ -391,12 +391,41 @@ describe('Appeal', () => {
 
   });
 
+  describe('Calling the reformatHearingDetails() function', () => {
+
+    let hearingEvent = {
+      placeholder: {
+        venueName: '  Fox Court  ',
+        addressLine1: '  4th Floor  ',
+        addressLine2: '  30 Brooke Street ',
+        addressLine3: null,
+        addressLine4: undefined,
+        addressLine5: '   ',
+        postcode: '  EC1N 7RS  '
+      }
+    }, appeal;
+
+    before( ()=> {
+      appeal = new Appeal({});
+    });
+
+    it('should ignore address lines that are null or undefined and trim all address lines', () => {
+      appeal.reformatHearingDetails(hearingEvent);
+      expect(hearingEvent.hearingAddress.lines[0]).to.eq('Fox Court');
+      expect(hearingEvent.hearingAddress.lines[1]).to.eq('4th Floor');
+      expect(hearingEvent.hearingAddress.lines[2]).to.eq('30 Brooke Street');
+      expect(hearingEvent.hearingAddress.lines[3]).to.eq('EC1N 7RS');
+      expect(hearingEvent.hearingAddress.lines.length).to.eq(4);
+    });
+
+  });
+
   function expecttheHearingAddressToBeReformated(events, index) {
     expect(events[index].hearingAddress.lines.length).to.equal(4);
-    expect(events[index].hearingAddress.lines[0]).to.equal(events[index].placeholder.venueName);
-    expect(events[index].hearingAddress.lines[1]).to.equal(events[index].placeholder.addressLine1);
-    expect(events[index].hearingAddress.lines[2]).to.equal(events[index].placeholder.addressLine2);
-    expect(events[index].hearingAddress.lines[3]).to.equal(events[index].placeholder.postcode);
+    expect(events[index].hearingAddress.lines[0]).to.equal(events[index].placeholder.venueName.trim());
+    expect(events[index].hearingAddress.lines[1]).to.equal(events[index].placeholder.addressLine1.trim());
+    expect(events[index].hearingAddress.lines[2]).to.equal(events[index].placeholder.addressLine2.trim());
+    expect(events[index].hearingAddress.lines[3]).to.equal(events[index].placeholder.postcode.trim());
   }
 
 });
