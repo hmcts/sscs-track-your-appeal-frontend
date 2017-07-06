@@ -43,9 +43,9 @@ Scenario('verify appellant details after Hearing Booked', function*(I, Propertie
   I.see(pageText.common.latestUpdate);
   I.click(Properties.fields.view_previous_updates_link_css_path, 'View previous updates');
   I.see(pageText.status.appealReceived.heading);
-  I.see('24 October 2013', Properties.fields.sub_headings_h3_css_path);
+  I.see('24 June 2017', Properties.fields.sub_headings_h3_css_path);
   I.see(pageText.status.dwpRespond.heading);
-  I.see('24 October 2013', Properties.fields.sub_headings_h3_css_path);
+  I.see('24 June 2017', Properties.fields.sub_headings_h3_css_path);
   I.click(pageText.hearingDetails.checkDetails);
   I.see(pageText.hearingDetails.checkDetails);
 });
@@ -204,7 +204,7 @@ Scenario('verify appellant details for dormant state', function*(I) {
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. N November');
   I.see('Appeal reference number: SC100/00/00001');
-  I.see(pageText.status.dormant.content[0]);
+  //I.see(pageText.status.dormant.content[0]);
   I.see(pageText.status.dormant.content[1]);
 });
 
