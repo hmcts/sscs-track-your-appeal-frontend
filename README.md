@@ -1,16 +1,17 @@
 # SSCS - Track Your Appeal (TYA)
 
 Track your appeal is a node.js web application that allows an appellant to track the progress of their benefit appeal 
-online. An appellant may also wish to subscribe to receive updates about their appeal via email and SMS, however, that 
-is not part of this application.
+online. An appellant may also wish to subscribe to receive updates about their appeal via email and SMS, these are
+known as notifications and are not part of this application, they are part of the [API](https://git.reform.hmcts.net/sscs/track-your-appeal-api)
 
 ## Background
 
-An appellant can challenge a decision about a benefit claim from the Department for Work and Pensions (DWP) and ask
-for reconsideration of the decision before making an appeal, officially this is known as a mandatory reconsideration 
-notice (MRN). The DWP must reconsider the decision and provide a response before an appellant can appeal to an 
-independent tribunal. If an appellant is not not happy with the DWP’s reconsideration of the initial decision they may 
-go on to appeal.
+Someone who receives a decision about their entitlement to benefits has the right to appeal against that decision, if 
+they disagree with it. The first step is asking the Department for Work and Pensions to look at the decision again. 
+This is known as requesting ‘Mandatory Reconsideration’. If they still disagree, they can appeal to the Social Security 
+and Child Support tribunal. They are independent and will look at both sides before making a decision on the appeal.
+
+## TYA progress bar
  
 **There are 4 main statuses within TYA:**
 
@@ -50,7 +51,7 @@ in JSON format, processed and presented to the user. If you wish to view some of
 
 In order to track an appeal the appellant is required to be [subscribed](https://git.reform.hmcts.net/sscs/track-your-appeal-subscriptions-frontend/blob/master/README.md)
 
-## Dependencies
+## Application Dependencies
  - [node.js](https://nodejs.org) >= v7
  - yarn
 
