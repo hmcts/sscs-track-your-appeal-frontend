@@ -60,8 +60,9 @@ describe('ErrorHandler.js', () => {
   describe('handle404()', () => {
 
     it('should raise a 404 error', () => {
-      ErrorHandler.handle404(res, req, next);
-      expect(next).to.have.been.calledWithMatch({ status: 404, message: 'Page Not Found'});
+      req.originalUrl = '/path/not/found';
+      ErrorHandler.handle404(req, res, next);
+      expect(next).to.have.been.calledWithMatch({ message: `Page Not Found - ${req.originalUrl}`});
     })
 
   });
