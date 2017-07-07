@@ -1,12 +1,18 @@
-# SSCS - Track your appeal
+# SSCS - Track Your Appeal (TYA)
+
+Track your appeal is a node.js web application that allows an appellant to track the progress of their benefit appeal 
+online. An appellant may also wish to subscribe to receive updates about their appeal via email and SMS, however, that 
+is not part of this application.
 
 ## Background
-Track Your Appeal (TYA) is a node.js web application that allows an appellant to track their benefit appeal online.
 
-An appellant typically tracks their appeal after appealing to the Department for Work and Pensions (DWP) to reinstate their benefits.
-A subscribed appellant is also notified via email and SMS which is not part of this application.
-
-**There are 4 main statuses (happy path) within TYA:**
+An appellant can challenge a decision about a benefit claim from the Department for Work and Pensions (DWP) and ask
+for reconsideration of the decision before making an appeal, officially this is known as a mandatory reconsideration 
+notice (MRN). The DWP must reconsider the decision and provide a response before an appellant can appeal to an 
+independent tribunal. If an appellant is not not happy with the DWP’s reconsideration of the initial decision they may 
+go on to appeal.
+ 
+**There are 4 main statuses within TYA:**
 
 1. `Appeal received`
 2. `DWP respond`
@@ -15,20 +21,22 @@ A subscribed appellant is also notified via email and SMS which is not part of t
 
 ![Track your appeal progress bar](/app/assets/images/progress-bar.png?raw=true)
 
-**With 9 status exceptions (unhappy path):** 
+**With 10 status exceptions:** 
 
-1. `Adjourned`
-2. `Closed`
-3. `Dormant`
-4. `DWP respond overdue`
-5. `Lapsed revised`
-6. `New hearing booked`
-7. `Past hearing booked`
-8. `Postponed`
-9. `Withdrawn`
+1.  `Adjourned`
+2.  `Closed`
+3.  `Dormant`
+4.  `Evidence received`
+5.  `DWP respond overdue`
+6.  `Lapsed revised`
+7.  `New hearing booked`
+8.  `Past hearing booked`
+9.  `Postponed`
+10. `Withdrawn`
 
-From a progress bar standpoint each exception is paired with one of the 4 main statuses, technically they are all 
-classified as [events](/app/core/events.js)
+From a progress bar standpoint some exceptions are paired with one of the 4 main statuses, whilst some do not have a 
+progress bar, `Closed`, `Evidence received`, `Lapsed revised` and `Withdrawn`. All statuses are technically classified 
+as [events](/app/core/events.js).
 
 In the early stages of an appeal an email/letter is sent to the appellant containing a link/URL respectively 
 which looks like:

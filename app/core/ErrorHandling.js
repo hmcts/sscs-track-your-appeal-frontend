@@ -4,7 +4,7 @@ const logger = require('nodejs-logging').getLogger('ErrorHandler.js');
 class ErrorHandler {
 
   static handle404(req, res, next) {
-    const err = new Error('Page Not Found');
+    const err = new Error(`Page Not Found - ${req.originalUrl}`);
     err.status = HttpStatus.NOT_FOUND;
     next(err);
   }
