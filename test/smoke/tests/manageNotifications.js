@@ -8,11 +8,11 @@ Scenario('verify change password ', function*(I) {
   I.see(emailText.manage.title);
   I.checkOption(emailText.addressChangeConfirmed.link);
   I.click("Continue");
-  I.wait(1);
+  I.wait(2);
   I.fillField('email', 'test2.test@hmcts.net');
   I.fillField('email2', 'test2.test@hmcts.net');
   I.click("Continue");
-  I.wait(1);
+  I.wait(2);
   I.see(emailText.addressChangeConfirmed.title);
   I.see("test2.test@hmcts.net");
   I.see(emailText.addressChangeConfirmed.content);
