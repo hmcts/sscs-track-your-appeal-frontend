@@ -17,6 +17,10 @@ class TokenService {
         logger.info(`GET /tokens/${req.params.mactoken} ${HttpStatus.OK}`);
         next();
     }).catch((error) => {
+      if(error.statusCode === HttpStatus.BAD_REQUEST) {
+        // Provide a better error message.
+        error.message = error.rawResponse;
+      }
       next(error);
     });
   }
