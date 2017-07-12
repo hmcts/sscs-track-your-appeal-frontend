@@ -71,6 +71,14 @@ module.exports = function(grunt){
                   dest: 'public/javascripts'
                 }]
             },
+            google_analytics: {
+              files: [{
+                  cwd: 'govuk_modules/govuk_frontend_toolkit/javascripts/govuk/analytics',
+                  src: ['google-analytics-universal-tracker.js', 'analytics.js', 'govuk-tracker.js'],
+                  dest: 'public/javascripts'
+                }
+              ]
+            },
             font_awesome: {
               files: [{
                 cwd: 'node_modules/font-awesome/',
