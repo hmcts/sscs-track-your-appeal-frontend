@@ -1671,19 +1671,19 @@ got@^3.2.0:
     read-all-stream "^3.0.0"
     timed-out "^2.0.0"
 
-govuk-elements-sass@^3.0.2:
-  version "3.0.2"
-  resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/govuk-elements-sass/-/govuk-elements-sass-3.0.2.tgz#ab6ec0ded0270456870cd1ce30cf4ae704f498a3"
+govuk-elements-sass@^3.1.0:
+  version "3.1.0"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/govuk-elements-sass/-/govuk-elements-sass-3.1.0.tgz#55bf44479870c95000d50c3237456aef7866ac6a"
   dependencies:
-    govuk_frontend_toolkit "^5.1.2"
+    govuk_frontend_toolkit "^6.0.2"
 
-govuk_frontend_toolkit@^5.1.2, govuk_frontend_toolkit@^5.2.0:
-  version "5.2.0"
-  resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/govuk_frontend_toolkit/-/govuk_frontend_toolkit-5.2.0.tgz#f5f6c5ae48e431ecb97d8b808b1e8db7782abc7f"
+govuk_frontend_toolkit@^6.0.2, govuk_frontend_toolkit@^6.0.4:
+  version "6.0.4"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/govuk_frontend_toolkit/-/govuk_frontend_toolkit-6.0.4.tgz#fc4b741b16d27ec1a3cd1c4f3830972d333c7044"
 
-govuk_template_jinja@^0.19.2:
-  version "0.19.2"
-  resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/govuk_template_jinja/-/govuk_template_jinja-0.19.2.tgz#a0d0931c9acb9d882d5ec446be8732c56c536ab5"
+govuk_template_jinja@^0.22.2:
+  version "0.22.2"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/govuk_template_jinja/-/govuk_template_jinja-0.22.2.tgz#ec0b4f7be36cd62da1df20d255ee1e2cf7fb71f9"
 
 graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.1.9:
   version "4.1.11"
