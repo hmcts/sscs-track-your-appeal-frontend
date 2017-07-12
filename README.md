@@ -52,7 +52,7 @@ in JSON format, processed and presented to the user. If you wish to view some of
 In order to track an appeal the appellant is required to be [subscribed](https://git.reform.hmcts.net/sscs/track-your-appeal-subscriptions-frontend/blob/master/README.md)
 
 ## Application Dependencies
- - [node.js](https://nodejs.org) >= v7
+ - [node.js](https://nodejs.org) >= v8.14
  - yarn
 
 ## Commands
