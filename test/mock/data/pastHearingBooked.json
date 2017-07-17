@@ -1,0 +1,28 @@
+{
+  "appeal": {
+    "caseReference": "SC100/00/00000",
+    "appealNumber": "md011",
+    "name": "Mr. M Miao",
+    "status": "PAST_HEARING_BOOKED",
+    "latestEvents": [
+      {
+        "placeholder": {
+          "hearingContactDate": "2017-05-17T17:31:21.703Z"
+        },
+        "date": "2017-04-05T17:31:21.703Z",
+        "type": "PAST_HEARING_BOOKED",
+        "contentKey": "status.pastHearingBooked"
+      }
+    ],
+    "historicalEvents": [
+      {
+        "placeholder": {
+          "dwpResponseDate": "2017-02-09T17:30:53.293Z"
+        },
+        "date": "2017-01-05T17:30:53.293Z",
+        "type": "APPEAL_RECEIVED",
+        "contentKey": "status.appealReceived"
+      }
+    ]
+  }
+}

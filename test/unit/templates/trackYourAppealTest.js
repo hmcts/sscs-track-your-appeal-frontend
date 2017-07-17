@@ -32,7 +32,7 @@ describe('Track your appeal template', () => {
   describe('is status active', () => {
     it('should show active if status is less than current value', (done) => {
       request(httpServer)
-        .get('/progress/md300/trackyourappeal')
+        .get('/progress/md008/trackyourappeal')
         .expect(200)
         .then(
           assertIsActive(
@@ -44,7 +44,7 @@ describe('Track your appeal template', () => {
 
     it('should show active if status is equal to current value', (done) => {
       request(httpServer)
-        .get('/progress/md300/trackyourappeal')
+        .get('/progress/md008/trackyourappeal')
         .expect(200)
         .then(
           assertIsActive(
@@ -56,7 +56,7 @@ describe('Track your appeal template', () => {
 
     it('should show inactive if status is greater than current value', (done) => {
       request(httpServer)
-        .get('/progress/md300/trackyourappeal')
+        .get('/progress/md008/trackyourappeal')
         .expect(200)
         .then(
           assertIsActive(

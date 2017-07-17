@@ -1,0 +1,28 @@
+{
+  "appeal": {
+    "caseReference": "SC100/00/00003",
+    "appealNumber": "md006",
+    "name": "Mr. P Papa",
+    "status": "DWP_RESPOND_OVERDUE",
+    "latestEvents": [
+      {
+        "placeholder": {
+          "dwpResponseDate": "2017-03-02T16:37:18.693+00:00"
+        },
+        "date": "2017-03-02T16:37:18.693Z",
+        "type": "DWP_RESPOND_OVERDUE",
+        "contentKey": "status.dwpRespondOverdue"
+      }
+    ],
+    "historicalEvents": [
+      {
+        "placeholder": {
+          "dwpResponseDate": "2017-04-06T16:37:18.693Z"
+        },
+        "date": "2017-03-02T16:37:18.693Z",
+        "type": "APPEAL_RECEIVED",
+        "contentKey": "status.appealReceived"
+      }
+    ]
+  }
+}

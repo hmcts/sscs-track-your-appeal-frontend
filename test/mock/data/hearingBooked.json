@@ -1,7 +1,7 @@
 {
   "appeal": {
     "caseReference": "SC123/04/56789",
-    "appealNumber": "md300",
+    "appealNumber": "md008",
     "name": "Mr. PA Pestill",
     "status": "HEARING_BOOKED",
     "latestEvents": [
@@ -16,12 +16,12 @@
       },
       {
         "placeholder": {
-          "date": "2012-01-12T11:00:00+00:00",
+          "hearingDate": "2010-11-13T16:45:19.087Z",
+          "hearingTime": "2010-11-13T16:45:19.087Z",
           "postcode": "TW14 OLS",
           "venueName": "Hatton Cross SSCS Tribunal",
-          "addressLine1": "York House                      ",
+          "addressLine1": "York House",
           "addressLine2": "2-3 Dukes Green Avenue",
-          "addressLine3": "",
           "googleMapUrl": "https://www.google.com/maps"
         },
         "date": "2010-11-10T14:48:34.86Z",

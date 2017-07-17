@@ -19,45 +19,45 @@ describe('routes.js', () => {
 
   describe('making application route requests which result in a HTTP 200', () => {
 
-    it('should respond to /progress/md100/abouthearing', function (done) {
+    it('should respond to /progress/md002/abouthearing', function (done) {
       request(httpServer)
-        .get('/progress/md100/abouthearing')
+        .get('/progress/md002/abouthearing')
         .expect(200, done);
     });
 
-    it('should respond to /progress/md100/expenses', function (done) {
+    it('should respond to /progress/md002/expenses', function (done) {
       request(httpServer)
-        .get('/progress/md100/expenses')
+        .get('/progress/md002/expenses')
         .expect(200, done);
     });
 
-    it('should respond to /progress/md400/hearingdetails', function (done) {
+    it('should respond to /progress/md007/hearingdetails', function (done) {
       request(httpServer)
-        .get('/progress/md400/hearingdetails')
+        .get('/progress/md007/hearingdetails')
         .expect(200, done);
     });
 
-    it('should respond to /progress/md400/hearingdetails/10', function (done) {
+    it('should respond to /progress/md007/hearingdetails/10', function (done) {
       request(httpServer)
-        .get('/progress/md400/hearingdetails/10')
+        .get('/progress/md007/hearingdetails/10')
         .expect(200, done);
     });
 
-    it('should respond to /progress/md100/evidence', function (done) {
+    it('should respond to /progress/md002/evidence', function (done) {
       request(httpServer)
-        .get('/progress/md100/evidence')
+        .get('/progress/md002/evidence')
         .expect(200, done);
     });
 
-    it('should respond to /progress/md100/trackyourappeal', function (done) {
+    it('should respond to /progress/md002/trackyourappeal', function (done) {
       request(httpServer)
-        .get('/progress/md100/trackyourappeal')
+        .get('/progress/md002/trackyourappeal')
         .expect(200, done);
     });
 
-    it('should respond to /progress/md100/contactus', function (done) {
+    it('should respond to /progress/md002/contactus', function (done) {
       request(httpServer)
-        .get('/progress/md100/contactus')
+        .get('/progress/md002/contactus')
         .expect(200, done);
     });
 
