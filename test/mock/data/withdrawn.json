@@ -1,0 +1,15 @@
+{
+  "appeal": {
+    "caseReference": "SC666/66/66666",
+    "appealNumber": "md013",
+    "name": "Ms. I Iglo",
+    "status": "WITHDRAWN",
+    "latestEvents": [
+      {
+        "date": "2017-03-02T17:27:50.297Z",
+        "type": "WITHDRAWN",
+        "contentKey": "status.withdrawn"
+      }
+    ]
+  }
+}

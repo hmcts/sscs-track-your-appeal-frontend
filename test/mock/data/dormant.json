@@ -1,0 +1,18 @@
+{
+  "appeal": {
+    "caseReference": "SC100/00/00001",
+    "appealNumber": "md004",
+    "name": "Mr. N November",
+    "status": "DORMANT",
+    "latestEvents": [
+      {
+        "placeholder": {
+          "decisionLetterReceiveByDate": "2017-07-10T12:50:11.437Z"
+        },
+        "date": "2017-06-29T12:50:11.437Z",
+        "type": "DORMANT",
+        "contentKey": "status.dormant"
+      }
+    ]
+  }
+}

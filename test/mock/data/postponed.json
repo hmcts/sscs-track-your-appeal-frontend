@@ -1,0 +1,17 @@
+{
+  "appeal": {
+  "caseReference": "SC888/88/88888",
+    "appealNumber": "md012",
+    "name": "Ms. L Lena",
+    "status": "POSTPONED",
+    "latestEvents": [{
+      "placeholder": {
+        "date": "2017-02-09T10:45:00.000Z",
+        "hearingContactDate": "2017-04-13T17:27:50.297Z"
+      },
+      "date": "2017-03-02T17:27:50.297Z",
+      "type": "POSTPONED",
+      "contentKey": "status.postponed"
+    }]
+  }
+}

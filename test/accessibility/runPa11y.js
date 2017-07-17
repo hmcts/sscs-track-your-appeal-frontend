@@ -13,16 +13,16 @@ const pa11yRunner = pa11y({
   hideElements: '.skiplink .govuk-box-highlight, #logo, #footer, link[rel=mask-icon], .skipAccessTest'
 });
 const accessibilityPages = [
-  '/progress/md100/contactus',
-  '/progress/md100/abouthearing',
-  '/progress/md100/trackyourappeal',
-  '/progress/md200/trackyourappeal',
-  '/progress/md300/trackyourappeal',
-  '/progress/md400/trackyourappeal',
-  '/progress/md300/hearingdetails',    // hearing booked
-  '/progress/md400/hearingdetails/1',  // hearing
-  '/progress/md400/expenses',
-  '/progress/md400/evidence',
+  '/progress/md002/contactus',
+  '/progress/md002/abouthearing',
+  '/progress/md002/trackyourappeal',
+  '/progress/md005/trackyourappeal',
+  '/progress/md008/trackyourappeal',
+  '/progress/md007/trackyourappeal',
+  '/progress/md008/hearingdetails',    // hearing booked
+  '/progress/md007/hearingdetails/1',  // hearing
+  '/progress/md007/expenses',
+  '/progress/md007/evidence',
 ];
 
 accessibilityPages.forEach((page) => {
