@@ -72,11 +72,10 @@ Scenario('verify hearing details', function*(I, Properties) {
 Scenario('verify appellant details after Hearing response received', function*(I) {
   let appealId = yield I.retrieveAppealNumber(dbProperties.hearingAppealCaseId);
   let date = yield I.calculateDate(dbProperties.hearingAppealCaseId,0);
-  let postReceivedDate = yield I.calculateDate(dbProperties.hearingAppealCaseId,7);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. D Delta');
   I.see('Appeal reference number: SC444/44/44444');
-  I.see('Your hearing took place on '+date+'. The decision was sent to you in the post and should have arrived at your registered address by '+postReceivedDate+'.');
+  I.see('A hearing for your ESA appeal took place on '+date+' and a decision was made. You should receive the decision by post within 7 working days of the hearing.');
   I.see(pageText.status.hearing.content[1]);
  });
 
