@@ -1,15 +1,14 @@
 {
-    "appeal": {
-        "caseReference": "SC100/00/00002",
-        "appealNumber": "md003",
-        "name": "Mr. O Owl",
-        "status": "CLOSED",
-        "latestEvents": [
-            {
-                "date": "2016-12-11T12:50:11.437Z",
-                "type": "CLOSED",
-                "contentKey": "status.closed"
-            }
-        ]
-    }
+  "appeal": {
+    "caseReference": "SC100/00/00002",
+    "appealNumber": "md003",
+    "name": "Mr. O Owl",
+    "status": "CLOSED",
+    "latestEvents": [{
+        "date": "2016-12-11T12:50:11.437Z",
+        "type": "CLOSED",
+        "contentKey": "status.closed"
+      }
+    ]
+  }
 }

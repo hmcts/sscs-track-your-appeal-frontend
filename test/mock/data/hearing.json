@@ -25,15 +25,16 @@
       },
       {
         "placeholder": {
-          "date": "2017-10-29T10:45:00.000Z",
-          "postcode": "OX1 1TL",
-          "venueName": "Oxford Combined Court Centre",
-          "addressLine1": "St Aldates",
-          "addressLine2": "",
-          "addressLine3": "Galashiels",
-          "googleMapUrl": "https://www.google.co.uk/maps/"
+          "postcode": "CH1 2XA",
+          "venueName": "Chester Magistrate's Court",
+          "hearingDate": "2017-03-29T23:00:00.000Z",
+          "hearingTime": "2017-07-17T12:15:00.000Z",
+          "addressLine1": "Chester Magistrate's Court",
+          "addressLine2": "Grosvenor Street",
+          "addressLine3": "Chester",
+          "googleMapUrl": "https://www.google.com/maps/place/Chester+Magistrate%27s+Court+Grosvenor+Street+Chester+Cheshire+CH1+2XA/@53.187454,-2.893632"
         },
-        "date": "2009-12-25T11:28:59.963Z",
+        "date": "2017-06-24T14:11:34.013Z",
         "type": "HEARING_BOOKED",
         "contentKey": "status.hearingBooked"
       },
@@ -49,15 +50,16 @@
       },
       {
         "placeholder": {
-          "date": "2011-11-13T10:40:00.00Z",
-          "postcode": "OX1 1TL",
-          "venueName": "Oxford Combined Court Centre",
-          "addressLine1": "St Aldates",
-          "addressLine2": "",
-          "addressLine3": "Galashiels",
-          "googleMapUrl": "https://www.google.co.uk/maps/"
+          "postcode": "CH1 2XA",
+          "venueName": "Chester Magistrate's Court",
+          "hearingDate": "2017-03-29T23:00:00.000Z",
+          "hearingTime": "2017-07-17T12:15:00.000Z",
+          "addressLine1": "Chester Magistrate's Court",
+          "addressLine2": "Grosvenor Street",
+          "addressLine3": "Chester",
+          "googleMapUrl": "https://www.google.com/maps/place/Chester+Magistrate%27s+Court+Grosvenor+Street+Chester+Cheshire+CH1+2XA/@53.187454,-2.893632"
         },
-        "date": "2009-09-10T14:07:25.157Z",
+        "date": "2017-06-24T14:11:34.013Z",
         "type": "HEARING_BOOKED",
         "contentKey": "status.hearingBooked"
       },
