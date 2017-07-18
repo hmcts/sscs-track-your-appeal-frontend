@@ -21,7 +21,7 @@
     "dormant": {
       "heading": "Hearing took place",
       "content": [
-        "Your hearing took place on {{date|formatDate}}. The decision was sent to you in the post and should have arrived at your registered address by {{decisionLetterReceiveByDate|formatDate}}.",
+        "A hearing for your ESA appeal took place on {{date|formatDate}} and a decision was made. You should receive the decision by post within 7 working days of the hearing.",
         "We can’t publish the decision online or tell you over the phone. This is to protect your personal information."
       ]
     },
