@@ -200,10 +200,11 @@ Scenario('verify appellant details for past hearing date state', function*(I) {
 
 Scenario('verify appellant details for dormant state', function*(I) {
   let appealId = yield I.retrieveAppealNumber(dbProperties.dormantAppealCaseId);
+  let date = yield I.calculateDate(dbProperties.dormantAppealCaseId,0);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. N November');
   I.see('Appeal reference number: SC100/00/00001');
-  //I.see(pageText.status.dormant.content[0]);
+  I.see('A hearing for your ESA appeal took place on '+date+' and a decision was made. You should receive the decision by post within 7 working days of the hearing.');
   I.see(pageText.status.dormant.content[1]);
 });
 
