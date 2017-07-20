@@ -2807,7 +2807,13 @@ mockery@^2.0.0:
   version "2.0.0"
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/mockery/-/mockery-2.0.0.tgz#0569a11a1848461fdc347cf8cca2df2f3129bc03"
 
-moment@2.x.x, moment@^2.17.1, moment@^2.18.1:
+moment-timezone@^0.5.13:
+  version "0.5.13"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/moment-timezone/-/moment-timezone-0.5.13.tgz#99ce5c7d827262eb0f1f702044177f60745d7b90"
+  dependencies:
+    moment ">= 2.9.0"
+
+moment@2.x.x, "moment@>= 2.9.0", moment@^2.17.1, moment@^2.18.1:
   version "2.18.1"
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
 

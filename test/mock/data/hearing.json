@@ -27,8 +27,7 @@
         "placeholder": {
           "postcode": "CH1 2XA",
           "venueName": "Chester Magistrate's Court",
-          "hearingDate": "2017-03-29T23:00:00.000Z",
-          "hearingTime": "2017-07-17T12:15:00.000Z",
+          "hearingDateTime": "2017-03-29T23:00:00.000Z",
           "addressLine1": "Chester Magistrate's Court",
           "addressLine2": "Grosvenor Street",
           "addressLine3": "Chester",
@@ -52,8 +51,7 @@
         "placeholder": {
           "postcode": "CH1 2XA",
           "venueName": "Chester Magistrate's Court",
-          "hearingDate": "2017-03-29T23:00:00.000Z",
-          "hearingTime": "2017-07-17T12:15:00.000Z",
+          "hearingDateTime": "2017-03-29T23:00:00.000Z",
           "addressLine1": "Chester Magistrate's Court",
           "addressLine2": "Grosvenor Street",
           "addressLine3": "Chester",

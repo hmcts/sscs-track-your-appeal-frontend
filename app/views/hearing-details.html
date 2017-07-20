@@ -28,13 +28,13 @@ Hearing Details
 
                 <dl class="date-time">
                     <dt>{{ i18n.common.date }}</dt>
-                    <dd>{{ event.placeholder.hearingDate | formatDate }}</dd>
+                    <dd>{{ event.placeholder.hearingDateTime | formatDate }}</dd>
                 </dl>
 
                 <dl class="date-time">
                     <dt>{{ i18n.common.time }}</dt>
                     <dd>
-                        <span><span class="time">{{ event.placeholder.hearingTime | formatTime }}</span> ({{ i18n.hearingDetails.arriveEarly }})</span>
+                        <span><span class="time">{{ event.placeholder.hearingDateTime | formatTime }}</span> ({{ i18n.hearingDetails.arriveEarly }})</span>
                     </dd>
                 </dl>
 

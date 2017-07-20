@@ -9,6 +9,8 @@ const dateFormat = {
   time: 'HH:mm'
 };
 
+const timeZone = 'Europe/London';
+
 const contentSubKeys = {
   HEADING: '.heading',
   CONTENT: '.content',
@@ -20,5 +22,6 @@ module.exports = {
   healthAPI: healthAPI,
   tokenAPI: tokenAPI,
   contentSubKeys: contentSubKeys,
-  dateFormat: dateFormat
+  dateFormat: dateFormat,
+  timeZone: timeZone
 };

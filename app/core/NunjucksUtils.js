@@ -1,5 +1,5 @@
-const moment = require('moment');
-const {dateFormat} = require('app/config');
+const moment = require('moment-timezone');
+const {dateFormat, timeZone} = require('app/config');
 const {events} = require('app/core/events');
 const locale = require('app/assets/locale/en');
 
@@ -9,12 +9,12 @@ const filters = {
     return JSON.stringify(obj, null, 2);
   },
 
-  formatDate: (date) => {
-    return moment(date, dateFormat.utc).format(dateFormat.date);
+  formatDate: (utcDateTimeStr) => {
+    return moment.tz(utcDateTimeStr, timeZone).format(dateFormat.date);
   },
 
-  formatTime: (date) => {
-    return moment(date, dateFormat.utc).format(dateFormat.time);
+  formatTime: (utcDateTimeStr) => {
+    return moment.tz(utcDateTimeStr, timeZone).format(dateFormat.time);
   },
 
   isActive: (currentStatus, status) => {
