@@ -7,11 +7,9 @@
     "latestEvents": [
       {
         "placeholder": {
-          "date": "2017-07-31T16:00:00+01:00",
           "postcode": "L2 5UZ",
           "venueName": "Prudential House",
-          "hearingDate": "2017-05-24T23:00:00.000Z",
-          "hearingTime": "2017-07-31T15:00:00.000Z",
+          "hearingDateTime": "2017-05-24T23:00:00.000Z",
           "addressLine1": "36 Dale Street",
           "addressLine2": "",
           "addressLine3": "Liverpool",

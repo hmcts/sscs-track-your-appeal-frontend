@@ -57,6 +57,7 @@
     "lodash": "^4.17.4",
     "log4js": "^1.1.1",
     "moment": "^2.18.1",
+    "moment-timezone": "^0.5.13",
     "nodejs-healthcheck": "^1.1.0",
     "nodejs-logging": "^1.1.0",
     "nunjucks": "^3.0.0",

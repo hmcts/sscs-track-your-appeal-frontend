@@ -1,5 +1,6 @@
 const {expect} = require('test/chai-sinon');
-const moment = require('moment');
+const {timeZone} = require('app/config');
+const moment = require('moment-timezone');
 const testServer = require('test/testServer');
 const NunjucksUtils = require('app/core/NunjucksUtils');
 
@@ -22,8 +23,8 @@ describe('NunjucksUtils.js', () => {
   const utc = moment.utc();
   const utcDateTimeStr = utc.format();
 
-  // Date & time in local time.
-  const local = utc.local();
+  // Date & time based on our time zone (e.g. Europe/London)
+  const local = moment.tz(utcDateTimeStr, timeZone);
 
   // Extract date, month & year.
   let localDate = local.date();
@@ -73,6 +74,18 @@ describe('NunjucksUtils.js', () => {
         };
         let stringifiedObj = NunjucksUtils.renderString('{{obj|json}}', {obj: credentials});
         expect(stringifiedObj).to.eq('{\n  &quot;username&quot;: &quot;harrypotter&quot;,\n  &quot;password&quot;: &quot;123&quot;\n}');
+      });
+
+    });
+
+    describe('UTC to BST', () => {
+
+      it('should take a date time string defined in UTC and covert it to a local date', () => {
+        expect(NunjucksUtils.renderString('{{date|formatDate}}', { date: '2017-07-24T23:00:00.000Z' })).to.eq('25 July 2017');
+      });
+
+      it('should take a date time string defined in UTC and covert it to a local time', () => {
+        expect(NunjucksUtils.renderString('{{date|formatTime}}', { date: '2017-07-17T12:15:00.000Z' })).to.eq('13:15');
       });
 
     });
