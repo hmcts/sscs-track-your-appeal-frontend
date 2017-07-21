@@ -36,6 +36,9 @@ Scenario('stop email subscription  ', function*(I) {
   I.see(emailText.stop.title);
   I.click("Confirm");
   I.see(emailText.stopConfirmation.title);
+  I.see(emailText.stopConfirmation.exitFeedbackSurveyPreLink);
+  I.see(emailText.stopConfirmation.exitFeedbackSurveyLink);
   I.see(emailText.stopConfirmation.content);
+  I.click(emailText.stopConfirmation.exitFeedbackSurveyLink);
 });
 
