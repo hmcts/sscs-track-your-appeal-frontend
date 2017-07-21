@@ -190,6 +190,8 @@
         "tab": "Stopped notifications",
         "title": "You’ve stopped email notifications",
         "content": "You won’t receive any more emails about your ESA benefit appeal.",
+        "exitFeedbackSurveyPreLink": "Please provide some",
+        "exitFeedbackSurveyLink": "feedback to help us improve this service.",
         "linkPre": "You can still",
         "linkPost": "track your benefit appeal online"
       },
