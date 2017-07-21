@@ -25,3 +25,11 @@ Scenario('verify cookie message page', function*(I, Properties) {
   I.see("Cookie Policy");
   I.see("The ‘track your benefit appeal’ website stores small files (known as cookies), on your computer. They are used to improve your experience of using the website.");
 });
+
+Scenario('verify google analytics on page', function*(I, Properties) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.appealReceivedAppealCaseId);
+  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.seeInSource('<script src="/public/javascripts/google-analytics-universal-tracker.js"></script>');
+  I.amOnPage('/public/javascripts/tya-analytics-tracker.js');
+  I.seeInSource("universalId: 'UA-91309785-1'");
+  });
