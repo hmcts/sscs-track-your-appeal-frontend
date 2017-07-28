@@ -1,0 +1,64 @@
+@import 'colours';
+
+@mixin v-progress-bar {
+  @media screen and (max-width: 400px) {
+
+    margin: 20px 0;
+
+    .appeal-received,
+    .dwp-respond,
+    .hearing-booked,
+    .hearing {
+
+      .leg {
+        width: 4px;
+        height: 30px;
+        background-color: $grey-2;
+        margin-left: 13px;
+      }
+
+      .ring {
+        display: inherit;
+        position: relative;
+        z-index: 1;
+        border-radius: 50%;
+        border: 3px solid $green;
+        width: 24px;
+        height: 24px;
+      }
+
+      .fa-check {
+        display: none;
+      }
+
+      &.active {
+        .ring {
+          background-color: $green;
+          span {
+            display: none;
+          }
+        }
+        .leg {
+          background-color: $green;
+        }
+        .fa-check {
+          top: 2px;
+          left: 2px;
+          display: block;
+          position: absolute;
+          color: white;
+          font-size: 20px;
+        }
+      }
+
+      h4 {
+        float: left;
+        margin-left: 40px;
+        margin-top: -23px;
+        &.current {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

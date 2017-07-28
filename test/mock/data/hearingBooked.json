@@ -10,14 +10,14 @@
           "evidenceType": "Medical Evidence",
           "evidenceProvidedBy": "The Tribunals Service"
         },
-        "date": "2011-11-10T00:00:000Z",
+        "date": "2011-11-10T00:00:00Z",
         "type": "EVIDENCE_RECEIVED",
         "contentKey": "status.evidenceReceived"
       },
       {
         "placeholder": {
           "postcode": "CH1 2XA",
-          "hearingDateTime": "2017-07-17T23:00:00.000Z",
+          "hearingDateTime": "2017-07-17T23:00:00.00Z",
           "venueName": "Chester Magistrate's Court",
           "addressLine1": "Chester Magistrate's Court",
           "addressLine2": "Grosvenor Street",
@@ -32,7 +32,7 @@
     "historicalEvents": [
       {
         "placeholder": {
-          "hearingContactDate": "2017-08-05T14:09:24.883Z"
+          "hearingContactDate": "2017-08-05T14:09:24.00Z"
         },
         "date": "2017-06-24T14:09:24.883Z",
         "type": "DWP_RESPOND",
@@ -40,7 +40,7 @@
       },
       {
         "placeholder": {
-          "dwpResponseDate": "2017-07-29T14:07:07.807Z"
+          "dwpResponseDate": "2017-07-29T14:07:07.00Z"
         },
         "date": "2017-06-24T14:07:07.807Z",
         "type": "APPEAL_RECEIVED",

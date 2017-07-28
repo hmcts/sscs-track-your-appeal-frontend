@@ -1,0 +1,88 @@
+$ring-diameter: 32px;
+
+@mixin h-progress-bar {
+  @media screen and (min-width: 401px) {
+    margin: 10% 2% 15% 2%;
+
+    .appeal-received,
+    .dwp-respond,
+    .hearing-booked,
+    .hearing {
+      display: inline-block;
+      position: relative;
+
+      .leg {
+        display: inherit;
+        position: relative;
+        height: 4px;
+        width: calc(100% - 36px );
+        margin-right: -5px;
+        margin-bottom: 17px;
+        background-color: $green;
+      }
+
+      .ring {
+        display: inherit;
+        position: relative;
+        z-index: 1;
+        border-radius: 50%;
+        border: 3px solid $green;
+        width: 30px;
+        height: 30px;
+      }
+
+      .fa-check {
+        display: none;
+      }
+
+      &.active {
+        .ring {
+          background-color: $green;
+          span {
+            display: none;
+          }
+        }
+        .leg {
+          background-color: $green;
+        }
+        .fa-check {
+          top: 5px;
+          left: 5px;
+          display: block;
+          position: absolute;
+          color: white;
+          font-size: 20px;
+        }
+      }
+
+      h4 {
+        position: absolute;
+        top: 45px;
+        &.current {
+          font-weight: bold;
+        }
+      }
+    }
+
+    .appeal-received h4 {
+      left: -15px;
+    }
+
+    .dwp-respond h4,
+    .hearing-booked h4 {
+      right: -45px;
+    }
+
+    .hearing h4 {
+      right: -15px;
+    }
+
+    .dwp-respond,
+    .hearing-booked,
+    .hearing {
+      width: calc((100% - #{$ring-diameter} ) / 3);
+      margin-left: -7px;
+      margin-right: -1px;
+    }
+  }
+}
