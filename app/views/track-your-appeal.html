@@ -26,52 +26,35 @@ Track your Appeal
             {% if data.showProgressBar %}
             <section class="progress-bar">
 
-                <div class="appeal-received">
-                    <div class="ring active"></div>
-                    <h5 aria-hidden="true">{{ i18n.progressBar.appeal }}</h5>
-                    {% if data.status == 'APPEAL_RECEIVED' or data.status == 'DWP_RESPOND_OVERDUE'  %}
-                    <span class="screen-reader-text">{{ i18n.progressBar.screenReader.appeal.happening }}</span>
-                    {% else %}
-                    <span class="screen-reader-text">{{ i18n.progressBar.screenReader.appeal.happened }}</span>
-                    {% endif %}
+                <div class="appeal-received {{ data.status|isActive('APPEAL_RECEIVED') }}">
+                    <div class="ring">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                    </div>
+                    <h4 aria-hidden="true">{{ i18n.progressBar.appeal }}</h4>
                 </div>
 
-                <div class="dwp-respond">
-                    <div class="leg foot {{ data.status|isActive('DWP_RESPOND') }}"></div>
-                    <h5 aria-hidden="true">{{ i18n.progressBar.dwpRespond }}</h5>
-                    {% if data.status == 'APPEAL_RECEIVED' or data.status == 'DWP_RESPOND_OVERDUE' %}
-                    <span class="screen-reader-text">{{ i18n.progressBar.screenReader.dwpRespond.due }}</span>
-                    {% elif data.status == 'DWP_RESPOND' %}
-                    <span class="screen-reader-text">{{ i18n.progressBar.screenReader.dwpRespond.happening }}</span>
-                    {% else %}
-                    <span class="screen-reader-text">{{ i18n.progressBar.screenReader.dwpRespond.happened }}</span>
-                    {% endif %}
+                <div class="dwp-respond {{ data.status|isActive('DWP_RESPOND') }}">
+                    <div class="leg"></div>
+                    <div class="ring">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                    </div>
+                    <h4 aria-hidden="true">{{ i18n.progressBar.dwpRespond }}</h4>
                 </div>
 
-                <div class="hearing-booked">
-                    <div class="leg foot {{ data.status|isActive('HEARING_BOOKED') }}"></div>
-                    <h5 aria-hidden="true">{{ i18n.progressBar.hearingBooked }}</h5>
-                    {% if data.status == 'APPEAL_RECEIVED' or data.status == 'DWP_RESPOND_OVERDUE' or data.status == 'DWP_RESPOND' %}
-                    <span class="screen-reader-text">{{ i18n.progressBar.screenReader.hearingBooked.due }}</span>
-                    {% elif data.status == 'HEARING_BOOKED' %}
-                    <span class="screen-reader-text">{{ i18n.progressBar.screenReader.hearingBooked.happening }}</span>
-                    {% else %}
-                    <span class="screen-reader-text">{{ i18n.progressBar.screenReader.hearingBooked.happened }}</span>
-                    {% endif %}
+                <div class="hearing-booked {{ data.status|isActive('HEARING_BOOKED') }}">
+                    <div class="leg"></div>
+                    <div class="ring">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                    </div>
+                    <h4 aria-hidden="true">{{ i18n.progressBar.hearingBooked }}</h4>
                 </div>
 
-                <div class="hearing-leg">
-                    <div class="leg {{ data.status|isActive('HEARING') }}"></div>
-                </div>
-
-                <div class="hearing">
-                    <div class="ring {{ data.status|isActive('HEARING') }}"></div>
-                    <h5 aria-hidden="true">{{ i18n.progressBar.hearing }}</h5>
-                    {% if data.status != 'HEARING' %}
-                    <span class="screen-reader-text">{{ i18n.progressBar.screenReader.hearing.due }}</span>
-                    {% else %}
-                    <span class="screen-reader-text">{{ i18n.progressBar.screenReader.hearing.happening }}</span>
-                    {% endif %}
+                <div class="hearing {{ data.status|isActive('HEARING') }}">
+                    <div class="leg"></div>
+                    <div class="ring">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                    </div>
+                    <h4 aria-hidden="true">{{ i18n.progressBar.hearing }}</h4>
                 </div>
 
             </section>

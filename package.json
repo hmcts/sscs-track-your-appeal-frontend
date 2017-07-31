@@ -11,6 +11,7 @@
     "setup": "cross-env NODE_PATH=. grunt generate-assets",
     "postinstall": "yarn setup",
     "dev": "cross-env NODE_PATH=. NODE_ENV=development LOG_OUTPUT=multi grunt dev",
+    "dev-mock": "cross-env NODE_PATH=. NODE_ENV=development LOG_OUTPUT=multi grunt dev-mock",
     "pretest": "grunt mock-services",
     "test": "cross-env NODE_PATH=. mocha test/unit --recursive",
     "posttest": "grunt services",

@@ -1,18 +1,16 @@
-@import '_colours';
 @import 'mixins';
+@import 'h-progress-bar';
+@import 'v-progress-bar';
 
 #content.track-your-appeal {
 
   .progress-bar {
 
     // Display a horizontal progress bar when on larger devices.
-    @include horizontal-progress-bar;
+    @include h-progress-bar;
 
     // Display a vertical progress bar when on smaller devices.
-    @include vertical-progress-bar;
-
-    // Colour part of the progress bar given a particular status.
-    @include active-progress-bar;
+    @include v-progress-bar;
 
     // Wrap the progress bar text depending what device you're on.
     @include wrap-progress-bar-text;

@@ -2,9 +2,15 @@
 // in the govuk frontend toolkit's url-helpers partial
 $path: "/public/images/";
 
-// Import GOV.UK elements from /govuk-modules/, this will import the frontend toolkit and some base styles.
-// Take a look in /govuk-modules/_govuk-elements.scss to see which files are imported.
+// Pulls in /govuk-modules/govuk-elements-sass/_govuk-elements.scss
 @import 'govuk-elements';
+
+@import 'track-your-appeal';
+@import 'hearing';
+@import 'about-hearing';
+@import 'email-notifications';
+@import 'combined';
+@import 'footer';
 
 .govuk-related-items {
   margin-top: $gutter;
@@ -21,13 +27,6 @@ $path: "/public/images/";
     list-style-type: none;
   }
 }
-
-@import 'track-your-appeal';
-@import 'hearing';
-@import 'about-hearing';
-@import 'email-notifications';
-@import 'combined';
-@import 'footer';
 
 .debug-data {
   color: blue;
