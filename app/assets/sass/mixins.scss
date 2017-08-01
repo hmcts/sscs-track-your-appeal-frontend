@@ -1,17 +1,17 @@
-
 @mixin wrap-dwp-and-hearing-booked-text {
+  margin-bottom: 20%;
   .dwp-respond h4,
   .hearing-booked h4 {
+    position: absolute;
     white-space: normal;
     text-align: center;
-    width: 67px;
-    right: -15px;
-    top: 45px;
+    width: 75px;
+    right: -9%;
   }
 }
 
 @mixin wrap-progress-bar-text {
-  @media (min-width: 640px) and (max-width: 800px) {
+  @media (min-width: 640px) and (max-width: 900px) {
     @include wrap-dwp-and-hearing-booked-text;
   }
   @media (min-width: 401px) and (max-width: 520px) {

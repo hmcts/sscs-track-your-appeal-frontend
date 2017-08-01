@@ -28,33 +28,33 @@ Track your Appeal
 
                 <div class="appeal-received {{ data.status|isActive('APPEAL_RECEIVED') }}">
                     <div class="ring">
-                        <i class="fa fa-check" aria-hidden="true"></i>
+                        <img class="tick" src="/public/images/tick.png" alt="to be defined">
                     </div>
-                    <h4 aria-hidden="true">{{ i18n.progressBar.appeal }}</h4>
+                    <h4 class="{{ data.status|isCurrent('APPEAL_RECEIVED') }}" aria-hidden="true">{{ i18n.progressBar.appeal }}</h4>
                 </div>
 
                 <div class="dwp-respond {{ data.status|isActive('DWP_RESPOND') }}">
                     <div class="leg"></div>
                     <div class="ring">
-                        <i class="fa fa-check" aria-hidden="true"></i>
+                        <img class="tick" src="/public/images/tick.png" alt="to be defined">
                     </div>
-                    <h4 aria-hidden="true">{{ i18n.progressBar.dwpRespond }}</h4>
+                    <h4 class="{{ data.status|isCurrent('DWP_RESPOND') }}" aria-hidden="true">{{ i18n.progressBar.dwpRespond }}</h4>
                 </div>
 
                 <div class="hearing-booked {{ data.status|isActive('HEARING_BOOKED') }}">
                     <div class="leg"></div>
                     <div class="ring">
-                        <i class="fa fa-check" aria-hidden="true"></i>
+                        <img class="tick" src="/public/images/tick.png" alt="to be defined">
                     </div>
-                    <h4 aria-hidden="true">{{ i18n.progressBar.hearingBooked }}</h4>
+                    <h4 class="{{ data.status|isCurrent('HEARING_BOOKED') }}" aria-hidden="true">{{ i18n.progressBar.hearingBooked }}</h4>
                 </div>
 
                 <div class="hearing {{ data.status|isActive('HEARING') }}">
                     <div class="leg"></div>
                     <div class="ring">
-                        <i class="fa fa-check" aria-hidden="true"></i>
+                        <img class="tick" src="/public/images/tick.png" alt="to be defined">
                     </div>
-                    <h4 aria-hidden="true">{{ i18n.progressBar.hearing }}</h4>
+                    <h4 class="{{ data.status|isCurrent('HEARING') }}" aria-hidden="true">{{ i18n.progressBar.hearing }}</h4>
                 </div>
 
             </section>

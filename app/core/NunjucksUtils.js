@@ -19,6 +19,10 @@ const filters = {
 
   isActive: (currentStatus, status) => {
     return events[currentStatus].index >= events[status].index ? 'active' : '';
+  },
+
+  isCurrent: (currentStatus, status) => {
+    return events[currentStatus].index === events[status].index ? 'current' : ''
   }
 };
 

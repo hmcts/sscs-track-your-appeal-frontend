@@ -1,4 +1,5 @@
-$ring-diameter: 32px;
+$ring-diameter: 30px;
+$ring-border: 6px;
 
 @mixin h-progress-bar {
   @media screen and (min-width: 401px) {
@@ -14,11 +15,11 @@ $ring-diameter: 32px;
       .leg {
         display: inherit;
         position: relative;
-        height: 4px;
-        width: calc(100% - 36px );
+        height: 6px;
+        width: calc(100% - 45px);
         margin-right: -5px;
         margin-bottom: 17px;
-        background-color: $green;
+        border-bottom: 6px solid $green;
       }
 
       .ring {
@@ -26,38 +27,31 @@ $ring-diameter: 32px;
         position: relative;
         z-index: 1;
         border-radius: 50%;
-        border: 3px solid $green;
-        width: 30px;
-        height: 30px;
+        border: $ring-border solid $green;
+        width: $ring-diameter;
+        height: $ring-diameter;
       }
 
-      .fa-check {
+      .tick {
         display: none;
       }
 
       &.active {
         .ring {
           background-color: $green;
-          span {
-            display: none;
+          .tick {
+            top: 5px;
+            left: 3px;
+            width: 23px;
+            height: 19px;
+            display: block;
+            position: absolute;
           }
-        }
-        .leg {
-          background-color: $green;
-        }
-        .fa-check {
-          top: 5px;
-          left: 5px;
-          display: block;
-          position: absolute;
-          color: white;
-          font-size: 20px;
         }
       }
 
       h4 {
         position: absolute;
-        top: 45px;
         &.current {
           font-weight: bold;
         }
@@ -65,22 +59,22 @@ $ring-diameter: 32px;
     }
 
     .appeal-received h4 {
-      left: -15px;
+      left: -12%;
     }
 
     .dwp-respond h4,
     .hearing-booked h4 {
-      right: -45px;
+      right: -22%;
     }
 
     .hearing h4 {
-      right: -15px;
+      right: -3%;
     }
 
     .dwp-respond,
     .hearing-booked,
     .hearing {
-      width: calc((100% - #{$ring-diameter} ) / 3);
+      width: calc((100% - #{$ring-diameter} - #{$ring-border} ) / 3);
       margin-left: -7px;
       margin-right: -1px;
     }
