@@ -39,7 +39,6 @@
     "crypto-js": "^3.1.9-1",
     "express": "^4.15.2",
     "express-nunjucks": "^2.2.3",
-    "font-awesome": "^4.7.0",
     "govuk-elements-sass": "^3.1.0",
     "govuk_frontend_toolkit": "^6.0.4",
     "govuk_template_jinja": "^0.22.2",
