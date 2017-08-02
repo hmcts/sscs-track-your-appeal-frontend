@@ -9,7 +9,7 @@ Scenario('verify appellant details after Appeal Received', function*(I) {
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. A Alpha');
   I.see('Appeal reference number: SC111/11/1111');
-  I.see(pageText.progressBar.screenReader.appeal.happening);
+  //I.see(pageText.progressBar.screenReader.appeal.happening);
   I.see(pageText.common.latestUpdate);
   I.see('We’ve told DWP that you’ve appealed against their decision. They should respond before '+date+'. We’ll contact you and explain the next steps when they’ve replied.')
 });
@@ -19,8 +19,8 @@ Scenario('verify appellant details after DWP response received', function*(I, Pr
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. B Bravo');
   I.see('Appeal reference number: SC222/22/22222');
-  I.see(pageText.progressBar.screenReader.appeal.happened);
-  I.see(pageText.progressBar.screenReader.dwpRespond.happening);
+ //I.see(pageText.progressBar.screenReader.appeal.happened);
+  //I.see(pageText.progressBar.screenReader.dwpRespond.happening);
   I.see(pageText.common.latestUpdate);
   I.click(Properties.fields.view_previous_updates_link_css_path, 'View previous updates');
   I.see(pageText.status.appealReceived.heading);
@@ -37,9 +37,9 @@ Scenario('verify appellant details after Hearing Booked', function*(I, Propertie
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. C Charlie');
   I.see('Appeal reference number: SC333/33/33333');
-  I.see(pageText.progressBar.screenReader.appeal.happened);
-  I.see(pageText.progressBar.screenReader.dwpRespond.happened);
-  I.see(pageText.progressBar.screenReader.hearingBooked.happening);
+ // I.see(pageText.progressBar.screenReader.appeal.happened);
+ // I.see(pageText.progressBar.screenReader.dwpRespond.happened);
+ // I.see(pageText.progressBar.screenReader.hearingBooked.happening);
   I.see(pageText.common.latestUpdate);
   I.click(Properties.fields.view_previous_updates_link_css_path, 'View previous updates');
   I.see(pageText.status.appealReceived.heading);
