@@ -91,22 +91,18 @@
     "screenReader": {
       "heading": "Appeal process",
       "appeal": {
-        "happening": "Appeal received. This is the current status of your appeal",
         "happened": "Appeal received. This step is complete."
       },
       "dwpRespond": {
         "due": "DWP respond to your appeal. This has not happened yet.",
-        "happening": "DWP respond to your appeal. This is the current status of your appeal.",
         "happened": "DWP respond to your appeal. This step is complete."
       },
       "hearingBooked": {
         "due": "Hearing booked. This has not happened yet.",
-        "happening": "Hearing booked. This is the current status of your appeal.",
         "happened": "Hearing booked. This step is complete."
       },
       "hearing": {
         "due": "Hearing for your appeal. This has not happened yet.",
-        "happening": "Hearing for your appeal. This is the current status of your appeal.",
         "happened": "Hearing for your appeal. This step is complete"
       }
     }
