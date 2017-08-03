@@ -1,7 +1,7 @@
 const moment = require('moment-timezone');
 const {dateFormat, timeZone} = require('app/config');
 const {events} = require('app/core/events');
-const locale = require('app/assets/locale/en');
+const screenReaderHelper = require('app/core/ScreenReaderHelper');
 
 const filters = {
 
@@ -23,7 +23,11 @@ const filters = {
 
   isCurrent: (currentStatus, status) => {
     return events[currentStatus].index === events[status].index ? 'current' : ''
-  }
+  },
+
+  getScreenReaderTextFor: (currentStatus, progressBarTick) => {
+    return screenReaderHelper.getScreenReaderTextFor(currentStatus, progressBarTick);
+  },
 };
 
 let nunjucksEnv;

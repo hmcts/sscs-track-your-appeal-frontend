@@ -28,33 +28,37 @@ Track your Appeal
 
                 <div class="appeal-received {{ data.status|isActive('APPEAL_RECEIVED') }}">
                     <div class="ring">
-                        <img class="tick" src="/public/images/tick.png" alt="to be defined">
+                        <img class="tick" src="/public/images/tick.png" alt="ignored by screen readers" aria-hidden="true">
                     </div>
                     <h4 class="{{ data.status|isCurrent('APPEAL_RECEIVED') }}" aria-hidden="true">{{ i18n.progressBar.appeal }}</h4>
+                    <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('APPEAL_RECEIVED') }}</span>
                 </div>
 
                 <div class="dwp-respond {{ data.status|isActive('DWP_RESPOND') }}">
                     <div class="leg"></div>
                     <div class="ring">
-                        <img class="tick" src="/public/images/tick.png" alt="to be defined">
+                        <img class="tick" src="/public/images/tick.png" alt="ignored by screen readers" aria-hidden="true">
                     </div>
                     <h4 class="{{ data.status|isCurrent('DWP_RESPOND') }}" aria-hidden="true">{{ i18n.progressBar.dwpRespond }}</h4>
+                    <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('DWP_RESPOND') }}</span>
                 </div>
 
                 <div class="hearing-booked {{ data.status|isActive('HEARING_BOOKED') }}">
                     <div class="leg"></div>
                     <div class="ring">
-                        <img class="tick" src="/public/images/tick.png" alt="to be defined">
+                        <img class="tick" src="/public/images/tick.png" alt="ignored by screen readers" aria-hidden="true">
                     </div>
                     <h4 class="{{ data.status|isCurrent('HEARING_BOOKED') }}" aria-hidden="true">{{ i18n.progressBar.hearingBooked }}</h4>
+                    <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('HEARING_BOOKED') }}</span>
                 </div>
 
                 <div class="hearing {{ data.status|isActive('HEARING') }}">
                     <div class="leg"></div>
                     <div class="ring">
-                        <img class="tick" src="/public/images/tick.png" alt="to be defined">
+                        <img class="tick" src="/public/images/tick.png" alt="ignored by screen readers" aria-hidden="true">
                     </div>
                     <h4 class="{{ data.status|isCurrent('HEARING') }}" aria-hidden="true">{{ i18n.progressBar.hearing }}</h4>
+                    <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('HEARING') }}</span>
                 </div>
 
             </section>
