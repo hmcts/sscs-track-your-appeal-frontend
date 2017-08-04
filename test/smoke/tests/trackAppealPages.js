@@ -9,7 +9,10 @@ Scenario('verify appellant details after Appeal Received', function*(I) {
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. A Alpha');
   I.see('Appeal reference number: SC111/11/1111');
-  //I.see(pageText.progressBar.screenReader.appeal.happening);
+  I.see(pageText.progressBar.screenReader.appeal.happened);
+  I.see(pageText.progressBar.screenReader.dwpRespond.due);
+  I.see(pageText.progressBar.screenReader.hearingBooked.due);
+  I.see(pageText.progressBar.screenReader.hearing.due);
   I.see(pageText.common.latestUpdate);
   I.see('We’ve told DWP that you’ve appealed against their decision. They should respond before '+date+'. We’ll contact you and explain the next steps when they’ve replied.')
 });
@@ -19,8 +22,10 @@ Scenario('verify appellant details after DWP response received', function*(I, Pr
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. B Bravo');
   I.see('Appeal reference number: SC222/22/22222');
- //I.see(pageText.progressBar.screenReader.appeal.happened);
-  //I.see(pageText.progressBar.screenReader.dwpRespond.happening);
+  I.see(pageText.progressBar.screenReader.appeal.happened);
+  I.see(pageText.progressBar.screenReader.dwpRespond.happened);
+  I.see(pageText.progressBar.screenReader.hearingBooked.due);
+  I.see(pageText.progressBar.screenReader.hearing.due);
   I.see(pageText.common.latestUpdate);
   I.click(Properties.fields.view_previous_updates_link_css_path, 'View previous updates');
   I.see(pageText.status.appealReceived.heading);
@@ -37,9 +42,10 @@ Scenario('verify appellant details after Hearing Booked', function*(I, Propertie
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. C Charlie');
   I.see('Appeal reference number: SC333/33/33333');
- // I.see(pageText.progressBar.screenReader.appeal.happened);
- // I.see(pageText.progressBar.screenReader.dwpRespond.happened);
- // I.see(pageText.progressBar.screenReader.hearingBooked.happening);
+  I.see(pageText.progressBar.screenReader.appeal.happened);
+  I.see(pageText.progressBar.screenReader.dwpRespond.happened);
+  I.see(pageText.progressBar.screenReader.hearingBooked.happened);
+  I.see(pageText.progressBar.screenReader.hearing.due);
   I.see(pageText.common.latestUpdate);
   I.click(Properties.fields.view_previous_updates_link_css_path, 'View previous updates');
   I.see(pageText.status.appealReceived.heading);
@@ -75,6 +81,10 @@ Scenario('verify appellant details after Hearing response received', function*(I
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. D Delta');
   I.see('Appeal reference number: SC444/44/44444');
+  I.see(pageText.progressBar.screenReader.appeal.happened);
+  I.see(pageText.progressBar.screenReader.dwpRespond.happened);
+  I.see(pageText.progressBar.screenReader.hearingBooked.happened);
+  I.see(pageText.progressBar.screenReader.hearing.happened);
   I.see('A hearing for your ESA appeal took place on '+date+' and a decision was made. You should receive the decision by post within 7 working days of the hearing.');
   I.see(pageText.status.hearing.content[1]);
  });
@@ -176,6 +186,10 @@ Scenario('verify appellant details for adjurned state', function*(I) {
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. K Kilo');
   I.see('Appeal reference number: SC777/77/77777');
+  I.see(pageText.progressBar.screenReader.appeal.happened);
+  I.see(pageText.progressBar.screenReader.dwpRespond.happened);
+  I.see(pageText.progressBar.screenReader.hearingBooked.due);
+  I.see(pageText.progressBar.screenReader.hearing.due);
   I.see('The hearing for your appeal didn’t take place as scheduled. We’ve sent you a letter explaining why, which you should receive by '+date+'.')
 });
 
@@ -185,6 +199,10 @@ Scenario('verify appellant details for postponed state', function*(I) {
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. L Lena');
   I.see('Appeal reference number: SC888/88/88888');
+  I.see(pageText.progressBar.screenReader.appeal.happened);
+  I.see(pageText.progressBar.screenReader.dwpRespond.happened);
+  I.see(pageText.progressBar.screenReader.hearingBooked.due);
+  I.see(pageText.progressBar.screenReader.hearing.due);
   I.see(pageText.status.postponed.content[0]);
   I.see('We’ll book a new hearing for your appeal. We’ll contact you by '+date+' with the details.')
 });
@@ -194,6 +212,10 @@ Scenario('verify appellant details for past hearing date state', function*(I) {
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. M Miao');
   I.see('Appeal reference number: SC100/00/00000');
+  I.see(pageText.progressBar.screenReader.appeal.happened);
+  I.see(pageText.progressBar.screenReader.dwpRespond.happened);
+  I.see(pageText.progressBar.screenReader.hearingBooked.due);
+  I.see(pageText.progressBar.screenReader.hearing.due);
   I.see(pageText.status.pastHearingBooked.content);
 
 });
@@ -222,6 +244,10 @@ Scenario('verify appellant details for dwp respond overdue state', function*(I) 
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. P Papa');
   I.see('Appeal reference number: SC100/00/00003');
+  I.see(pageText.progressBar.screenReader.appeal.happened);
+  I.see(pageText.progressBar.screenReader.dwpRespond.due);
+  I.see(pageText.progressBar.screenReader.hearingBooked.due);
+  I.see(pageText.progressBar.screenReader.hearing.due);
   I.see('We’ve written to them again to remind them. We’ll let you know when they respond.');
 });
 
@@ -231,5 +257,9 @@ Scenario('verify appellant details for new hearing booked state', function*(I) {
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. Q Quack');
   I.see('Appeal reference number: SC100/00/00004');
+  I.see(pageText.progressBar.screenReader.appeal.happened);
+  I.see(pageText.progressBar.screenReader.dwpRespond.happened);
+  I.see(pageText.progressBar.screenReader.hearingBooked.happened);
+  I.see(pageText.progressBar.screenReader.hearing.due);
   I.see(pageText.status.newHearingBooked.content);
 });
