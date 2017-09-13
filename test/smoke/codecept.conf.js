@@ -1,5 +1,5 @@
 exports.config = {
-  'tests': './tests/*.js',
+  'tests': './scenarios/**/*.js',
   'output': './testResults',
   'timeout': 1000,
   'helpers': {
@@ -9,17 +9,17 @@ exports.config = {
       'show': false
     },
     'messageAuthenticationCodeHelper': {
-      'require': './helper/messageAuthenticationCode.js'
+      'require': './helpers/MessageAuthenticationCode.js'
     },
     'dataBaseConnectionHelper': {
-      'require': './helper/dataBaseConnectionHelper.js'
+      'require': './helpers/DataBaseConnectionHelper.js'
     }
   },
   'include': {
     'I': './pages/steps.js',
     'Properties': './props/properties.js'
   },
-  'bootstrap': false,
+  'bootstrap': true,
   'mocha': {
     'reporterOptions': {
       'reportDir': process.env.E2E_OUTPUT_DIR || './testResults',

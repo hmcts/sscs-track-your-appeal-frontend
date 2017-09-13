@@ -20,8 +20,8 @@ module.exports = {
     sub_headings_h2_css_path: {css: 'h2.heading-medium'},
 
   },
-  dataBaseFields: {
-    connectionString: process.env.DB_CONNECTION_URL || 'postgres://postgres:postgres@localhost:5432/sscs-staging',
+   dataBaseFields: {
+     connectionString: process.env.DB_CONNECTION_URL || 'postgres://postgres:postgres@localhost:5432/sscs-staging',
     appealReceivedAppealCaseId: 111111,
     dwpAppealCaseId: 222222,
     hearingBookedAppealCaseId: 333333,
@@ -35,6 +35,6 @@ module.exports = {
     dormantClosedAppealCaseId:100002,
     dwpRespondOverdueAppealCaseId:100003,
     newHearingBookedAppealCaseId:100004
-  }
+   }
 
 };

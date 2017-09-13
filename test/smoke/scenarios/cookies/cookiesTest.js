@@ -1,9 +1,9 @@
-const dbProperties = require('../props/properties').dataBaseFields;
-
+const dbProperties = require('../../props/properties').dataBaseFields;
+let testData = require('test/smoke/helpers/TestDataMap.js');
 Feature('Track your Appeal Cookies Tests');
 
-Scenario('clear cookies and check for cookie message', function*(I, Properties) {
-    let appealId = yield I.retrieveAppealNumber(dbProperties.appealReceivedAppealCaseId);
+Scenario('clear cookies and check for cookie message',  function*(I, Properties) {
+    let appealId = yield I.retrieveAppealNumber(testData.getTestAppealNo());
     I.amOnPage('/progress/' + appealId + '/trackyourappeal');
     I.clearCookie();
     I.see("GOV.UK uses cookies to make the site simpler. Find out more about cookies");

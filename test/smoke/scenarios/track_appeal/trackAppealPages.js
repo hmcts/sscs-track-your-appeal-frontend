@@ -1,5 +1,5 @@
 const pageText = require('public/locale/en');
-const dbProperties = require('../props/properties').dataBaseFields;
+const dbProperties = require('../../props/properties').dataBaseFields;
 
 Feature('Track your Appeal Page Tests');
 
