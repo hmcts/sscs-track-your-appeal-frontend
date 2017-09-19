@@ -21,7 +21,8 @@
     "prepa11y": "grunt mock-services",
     "pa11y": "cross-env NODE_PATH=. LOG_LEVEL=OFF mocha test/accessibility -r test/chai-sinon.js --reporter spec --recursive --timeout 10000",
     "postpa11y": "grunt services",
-    "smoke-test": "cross-env NODE_PATH=. codeceptjs run test/smoke/ --steps",
+    "smoke-test": "cross-env NODE_PATH=. codeceptjs run -c test/smoke --steps",
+    "cross-browser": "NODE_ENV=TESTING LOG_LEVEL=OFF NODE_PATH=. codeceptjs run -c test/smoke/saucelabs.conf.js --steps",
     "security-scan": "cross-env NODE_PATH=. codeceptjs run --config test/smoke/securityScan.conf.js --steps",
     "eslint": "cross-env NODE_PATH=. eslint .",
     "security-checks": "cross-env NODE_PATH=. grunt security-checks",
@@ -68,7 +69,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
-    "codeceptjs": "^0.5.1",
+    "codeceptjs": "^1.0.0",
     "eslint": "^3.19.0",
     "eslint-plugin-mocha": "^4.9.0",
     "istanbul": "^0.4.5",
@@ -88,6 +89,7 @@
     "sinon-chai": "^2.9.0",
     "sonar-scanner": "^1.0.1",
     "supertest": "^3.0.0",
-    "urlsafe-base64": "^1.0.0"
+    "urlsafe-base64": "^1.0.0",
+    "webdriverio": "^4.7.1"
   }
 }

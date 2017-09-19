@@ -13,10 +13,10 @@ const setupConfig = {
     },
 
     'messageAuthenticationCodeHelper': {
-      'require': './test/smoke/helper/messageAuthenticationCode.js'
+      'require': './test/smoke/helper/MessageAuthenticationCode.js'
     },
     'dataBaseConnectionHelper': {
-      'require': './test/smoke/helper/dataBaseConnectionHelper.js'
+      'require': './test/smoke/helper/DataBaseConnectionHelper.js'
     }
   },
   'include': {

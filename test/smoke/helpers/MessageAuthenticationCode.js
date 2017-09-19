@@ -7,8 +7,7 @@ const secret_key = process.env.EMAIL_MAC_SECRET_TEXT || "our-big-secret",
   pg = require('pg'),
   dbProperties = require('../props/properties').dataBaseFields;
 
-
-class messageAuthenticationCodeHelper extends Helper {
+class messageAuthenticationCodeHelper extends codecept_helper {
   constructor(config) {
     super(config);
     this.appeal_id = null;
