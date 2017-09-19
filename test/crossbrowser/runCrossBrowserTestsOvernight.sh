@@ -14,5 +14,5 @@ echo
 for i in "${browsersArray[@]}"
 do
     echo "*** Testing $i ***"
-    SAUCELABS_BROWSER=$i TUNNEL_IDENTIFIER=sscs-saucelabs-overnight-tunnel yarn run test-crossbrowser-e2e -- --reporter mochawesome
+    SAUCELABS_BROWSER=$i TUNNEL_IDENTIFIER=sscs-saucelabs-overnight-tunnel yarn run cross-browser -- --reporter mochawesome
 done

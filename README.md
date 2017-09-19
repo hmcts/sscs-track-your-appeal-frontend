@@ -78,6 +78,10 @@ In order to track an appeal the appellant is required to be [subscribed](https:/
 #### Security checks
     $> yarn security-checks
 
+#### Crossbrowser tests
+Ensure environment variables 'TUNNEL_IDENTIFIER', 
+    $> yarn cross-browser
+    
 #### Accessibility tests
 Pass the `JUNIT_REPORT_PATH` environment variable to use the jenkins reporter.
 
