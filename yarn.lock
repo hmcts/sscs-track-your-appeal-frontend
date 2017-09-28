@@ -835,7 +835,7 @@ data-uri-to-buffer@0:
 
 date-format@^0.0.0:
   version "0.0.0"
-  resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/date-format/-/date-format-0.0.0.tgz#09206863ab070eb459acea5542cbd856b11966b3"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/date-format/-/date-format-0.0.0.tgz#09206863ab070eb459acea5542cbd856b11966b3"
 
 dateformat@^2.0.0:
   version "2.0.0"
@@ -1844,7 +1844,7 @@ grunt-contrib-copy@^1.0.0:
 
 grunt-contrib-watch@^1.0.0:
   version "1.0.0"
-  resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/grunt-contrib-watch/-/grunt-contrib-watch-1.0.0.tgz#84a1a7a1d6abd26ed568413496c73133e990018f"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/grunt-contrib-watch/-/grunt-contrib-watch-1.0.0.tgz#84a1a7a1d6abd26ed568413496c73133e990018f"
   dependencies:
     async "^1.5.0"
     gaze "^1.0.0"
@@ -2751,9 +2751,9 @@ lodash@~4.3.0:
   version "4.3.0"
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/lodash/-/lodash-4.3.0.tgz#efd9c4a6ec53f3b05412429915c3e4824e4d25a4"
 
-log4js@^1.1.0, log4js@^1.1.1:
+log4js@^1.1.0:
   version "1.1.1"
-  resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/log4js/-/log4js-1.1.1.tgz#c21d29c7604089e4f255833e7f94b3461de1ff43"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/log4js/-/log4js-1.1.1.tgz#c21d29c7604089e4f255833e7f94b3461de1ff43"
   dependencies:
     debug "^2.2.0"
     semver "^5.3.0"
@@ -3139,9 +3139,9 @@ nodejs-healthcheck@^1.1.0:
   dependencies:
     superagent "^3.5.1"
 
-nodejs-logging@^1.1.0:
-  version "1.1.0"
-  resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/nodejs-logging/-/nodejs-logging-1.1.0.tgz#e2eb317d3b51cead3c0c723369790c9b604dc0ee"
+nodejs-logging@^1.1.1:
+  version "1.1.1"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/nodejs-logging/-/nodejs-logging-1.1.1.tgz#2da870e07a3c70bdfa676dff77e81be8ecbe47bb"
   dependencies:
     lodash "^4.17.4"
     log4js "^1.1.0"
@@ -4401,8 +4401,8 @@ stream-shift@^1.0.0:
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/stream-shift/-/stream-shift-1.0.0.tgz#d5c752825e5367e786f78e18e445ea223a155952"
 
 streamroller@^0.4.0:
-  version "0.4.0"
-  resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/streamroller/-/streamroller-0.4.0.tgz#a273f1f91994549a2ddd112ccaa2d1dd23cb758c"
+  version "0.4.1"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/streamroller/-/streamroller-0.4.1.tgz#d435bd5974373abd9bd9068359513085106cc05f"
   dependencies:
     date-format "^0.0.0"
     debug "^0.7.2"
