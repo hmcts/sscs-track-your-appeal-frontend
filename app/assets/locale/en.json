@@ -29,7 +29,7 @@
       "heading": "DWP response",
       "content": [
         "DWP have written a response to your ESA benefit appeal. They should have sent you a copy in the post.",
-        "We’re now in the process of booking a hearing for your appeal. We’ll contact you by {{hearingContactDate|formatDate}} with the details."
+        "We now need to book your hearing. You don’t need to do anything. We’ll contact you again when we have a date for your hearing. Unfortunately we can’t say how long it will take to book but it may be some time. It will depend on how busy the hearing venues are."
       ]
     },
     "dwpRespondOverdue": {
