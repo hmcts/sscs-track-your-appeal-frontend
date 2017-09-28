@@ -72,7 +72,7 @@ Scenario('verify hearing details', function*(I, Properties) {
   I.see('CH1 2XA');
   I.see(pageText.hearingDetails.incorrect);
   I.click("Maps and directions");
-  I.seeInCurrentUrl("CH1+2XA");
+  I.seeInCurrentUrl("Chester+Magistrates");
   });
 
 Scenario('verify appellant details after Hearing response received', function*(I) {
