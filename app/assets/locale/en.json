@@ -4,7 +4,7 @@
       "heading": "Hearing didn't take place",
       "content": [
         "The hearing for your appeal didn’t take place as scheduled. We’ve sent you a letter explaining why, which you should receive by {{adjournedLetterReceivedByDate|formatDate}}.",
-        "We’ll now set a new date for your hearing. We’ll contact you within 8 weeks with the details."
+        "We’ll now set a new date for your hearing. You don’t need to do anything. Unfortunately we can’t say how long it will take to book but it may be some time. It will depend on how busy the hearing venues are."
       ]
     },
     "appealReceived": {
@@ -72,7 +72,7 @@
       "heading": "Hearing postponed",
       "content": [
         "The hearing for your ESA benefit appeal has been postponed and will now take place on a different day.",
-        "We’ll book a new hearing for your appeal. We’ll contact you by {{hearingContactDate|formatDate}} with the details."
+        "We’ll now book a new hearing for your appeal. You don’t need to do anything. Unfortunately we can’t say how long it will take to book but it may be some time. It will depend on how busy the hearing venues are."
       ]
     },
     "withdrawn": {
