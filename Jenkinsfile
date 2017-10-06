@@ -62,7 +62,7 @@ timestamps {
                 }
 
                 stage("a11y test") {
-                    withEnv(["JUNIT_REPORT_PATH='test-reports.xml'",
+                    withEnv(["JUNIT_REPORT_PATH='test-reports.xml'"]) {
                         try {
                             sh 'make test-accessibility'
                         } finally {
