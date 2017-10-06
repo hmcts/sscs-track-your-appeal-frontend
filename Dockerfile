@@ -1,18 +1,17 @@
-FROM node:7.2
+FROM node:8.1.4
 
-RUN ["mkdir", "/app"]
-ADD . /app
+RUN mkdir /app
 WORKDIR /app
 
-# Add package.json separately to bust docker build cache
-ADD package.json /app/package.json
-RUN ["npm", "install"]
+COPY Gruntfile.js package.json yarn.lock /app/
+RUN yarn install
 
 ENV PATH="./node_modules/.bin:$PATH"
 
-# Add Gruntfile.js separately to bust docker build cache
-ADD Gruntfile.js /app/Gruntfile.js
-RUN ["npm", "run", "generate-assets"]
+COPY app /app/app
+COPY server.js app.js post-data.js /app/
+
+RUN yarn setup
 
 EXPOSE 3000
-CMD ["/usr/local/bin/npm", "run", "dev"]
+ENTRYPOINT ["/usr/local/bin/npm", "run", "dev"]
