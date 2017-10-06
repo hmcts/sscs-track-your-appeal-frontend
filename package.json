@@ -1,10 +1,10 @@
 {
   "name": "track-your-appeal-frontend",
   "description": "Track your appeal",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "engines": {
-    "node": ">=6.0"
+    "node": ">=8.1.4"
   },
   "scripts": {
     "start": "cross-env NODE_PATH=. LOG_OUTPUT=single node server.js",
