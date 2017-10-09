@@ -25,6 +25,7 @@ timestamps {
                 def trackYourAppealFrontendRPMVersion
                 def version
                 def ansibleCommitId
+                def trackYourAppealFrontendVersion
 
                 _env_vars = []
 
@@ -69,6 +70,10 @@ timestamps {
                             step([$class: 'JUnitResultArchiver', testResults: env.JUNIT_REPORT_PATH])
                         }
                     }
+                }
+
+                stage('Package (Docker)') {
+                    trackYourAppealFrontendVersion = dockerImage imageName: 'sscs/track-your-appeal-frontend'
                 }
 
                 stage('Package application (RPM)') {
