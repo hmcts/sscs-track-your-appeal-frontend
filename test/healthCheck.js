@@ -49,11 +49,4 @@ describe('sscs tya health check', function () {
       done();
     });
   });
-
-  it('Returns status db status', function (done) {
-    healthcheckProxyRequest(backendURL).end(function (err, res) {
-      expect(res.body.Health.db.status).to.deep.equal('UP');
-      done();
-    });
-  });
 });
