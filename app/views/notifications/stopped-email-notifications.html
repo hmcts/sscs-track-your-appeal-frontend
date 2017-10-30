@@ -13,7 +13,7 @@
     <div class="grid-row">
         <div class="column-two-thirds">
             <h1 class="heading-large">{{ i18n.notifications.email.stopConfirmation.title }}</h1>
-            <p>{{ i18n.notifications.email.stopConfirmation.content }}</p>
+            <p>{{ i18n.notifications.email.stopConfirmation.content | benefitType(appeal.benefitType) }}</p>
             <p>{{ i18n.notifications.email.stopConfirmation.exitFeedbackSurveyPreLink }}
                 <a href='{{urls.exitFeedbackSurvey}}'>{{ i18n.notifications.email.stopConfirmation.exitFeedbackSurveyLink }}</a>
             </p>

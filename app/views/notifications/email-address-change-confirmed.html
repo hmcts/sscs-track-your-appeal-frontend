@@ -15,7 +15,7 @@
         <div class="column-full">
 
             <div class="govuk-box-highlight">
-                <h1 class="bold-small">{{ i18n.notifications.email.addressChangeConfirmed.title }}</h1>
+                <h1 class="bold-small">{{ i18n.notifications.email.addressChangeConfirmed.title | benefitType(appeal.benefitType) }}</h1>
                 <br>
                 <p class="bold-large">{{ data.email }}</p>
             </div>
