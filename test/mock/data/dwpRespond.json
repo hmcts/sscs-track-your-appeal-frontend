@@ -3,6 +3,7 @@
     "caseReference": "SC123/45/00001",
     "name": "Mr Jason Mock",
     "appealNumber": "md005",
+    "benefitType": "esa",
     "status": "DWP_RESPOND",
     "latestEvents": [
       {

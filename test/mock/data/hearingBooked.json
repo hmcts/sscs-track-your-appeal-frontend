@@ -2,6 +2,7 @@
   "appeal": {
     "caseReference": "SC333/33/33333",
     "appealNumber": "md008",
+    "benefitType": "pip",
     "name": "Mr. C Charlie",
     "status": "HEARING_BOOKED",
     "latestEvents": [

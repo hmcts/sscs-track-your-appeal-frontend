@@ -2,6 +2,7 @@
   "appeal": {
     "caseReference": "SC777/77/77777",
     "appealNumber": "md001",
+    "benefitType": "pip",
     "name": "Ms. K Kilo",
     "status": "ADJOURNED",
     "latestEvents": [

@@ -2,6 +2,7 @@
   "appeal": {
     "caseReference": "SC100/00/00004",
     "appealNumber": "md010",
+    "benefitType": "pip",
     "name": "Ms. Q Quack",
     "status": "NEW_HEARING_BOOKED",
     "latestEvents": [
