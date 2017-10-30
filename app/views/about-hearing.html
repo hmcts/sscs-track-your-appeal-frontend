@@ -44,7 +44,7 @@ About Hearing
 
             <h2 class="heading-medium">{{ i18n.hearing.expectations.gettingDecision.heading }}</h2>
             {% for content in i18n.hearing.expectations.gettingDecision.content %}
-            <p>{{content | benefitType(appeal.benefitType) }}</p>
+            <p>{{content | benefitType(appeal.benefitType, 'long') }}</p>
             {% endfor %}
 
         </div>

@@ -1,9 +1,11 @@
-const {get,startsWith,includes} = require('lodash');
+const {getContent} = require('app/core/contentLookup');
+const {startsWith,includes} = require('lodash');
 const {contentSubKeys} = require('app/config');
 const {events} = require('app/core/events');
-const locale = require('app/assets/locale/en');
 const NunjucksUtils = require('app/core/NunjucksUtils');
+
 const ADDRESS_LINE = 'addressLine';
+
 const showEvidenceReminderStatuses = [
   events.ADJOURNED.name,
   events.APPEAL_RECEIVED.name,
@@ -21,6 +23,7 @@ class Appeal {
     this.caseReference = appeal.caseReference;
     this.appealNumber = appeal.appealNumber;
     this.name = appeal.name;
+    this.benefitType = appeal.benefitType;
     this.status = appeal.status;
     this.evidenceReceived = false;
     this.showEvidenceReminder = includes(showEvidenceReminderStatuses, this.status);
@@ -121,39 +124,53 @@ class Appeal {
   }
 
   setHeadingOnEvent(event) {
-    event.heading = this.getContent(event.contentKey + contentSubKeys.HEADING);
+    event.heading = getContent(event.contentKey + contentSubKeys.HEADING);
   }
 
   setRenderedContentOnEvent(event) {
-    let content = this.getContent(event.contentKey + contentSubKeys.CONTENT);
+    let content= getContent(event.contentKey + contentSubKeys.CONTENT);
+
     if (typeof content === 'string') {
       content = [content];
     }
 
-    // This should be done in the API.
-    if(event.type === events.EVIDENCE_RECEIVED.name ||
-       event.type === events.HEARING.name ||
-       event.type === events.DORMANT.name) {
-
-      // Copy the date into the placeholder so nunjucks can render it.
-      event.placeholder.date = event.date;
-    }
+    // Both of these should be done in the API.
+    this.setDateOnPlaceholderFields(event);
+    this.setBenefitTypeOnPlaceholderFields(event);
 
     event.renderedContent = this.getRenderedContent(content, event.placeholder);
-  }
-
-  getContent(contentKey) {
-    let content = get(locale, contentKey);
-    if (!content) {
-      throw new Error('Unknown content key: ' + contentKey);
-    }
-    return content;
   }
 
   getRenderedContent(content, placeholder) {
     return content.map((str) => {
       return NunjucksUtils.renderString(str, placeholder);
     });
+  }
+
+  setDateOnPlaceholderFields(event) {
+    if(event.type === events.EVIDENCE_RECEIVED.name ||
+       event.type === events.HEARING.name ||
+       event.type === events.DORMANT.name) {
+
+       event.placeholder.date = event.date;
+    }
+  }
+
+  setBenefitTypeOnPlaceholderFields(event) {
+    if(event.type === events.CLOSED.name ||
+       event.type === events.DORMANT.name ||
+       event.type === events.DWP_RESPOND.name ||
+       event.type === events.HEARING.name ||
+       event.type === events.LAPSED_REVISED.name ||
+       event.type === events.PAST_HEARING_BOOKED.name ||
+       event.type === events.POSTPONED.name) {
+
+      if(!event.placeholder) {
+        event.placeholder = {};
+      }
+
+      event.placeholder.benefitType = this.benefitType;
+    }
   }
 }
 

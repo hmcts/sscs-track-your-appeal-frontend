@@ -17,11 +17,11 @@ const contentSubKeys = {
 };
 
 module.exports = {
-  serviceName: serviceName,
-  appealsAPI: appealsAPI,
-  healthAPI: healthAPI,
-  tokenAPI: tokenAPI,
-  contentSubKeys: contentSubKeys,
-  dateFormat: dateFormat,
-  timeZone: timeZone
+  serviceName,
+  appealsAPI,
+  healthAPI,
+  tokenAPI,
+  contentSubKeys,
+  dateFormat,
+  timeZone
 };
