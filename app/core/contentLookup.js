@@ -10,7 +10,7 @@ const getContentFromFile = (key) => {
   return content;
 };
 
-const getContent = (key) => {
+const getContentAsString = (key) => {
   let content;
   try{
     content = getContentFromFile(key)
@@ -21,4 +21,14 @@ const getContent = (key) => {
   return content;
 };
 
-module.exports = { getContent };
+const getContentAsArray = (key) => {
+  let content = getContentAsString(key);
+
+  if (typeof content === 'string') {
+    content = [content];
+  }
+
+  return content;
+};
+
+module.exports = { getContentFromFile, getContentAsString, getContentAsArray };

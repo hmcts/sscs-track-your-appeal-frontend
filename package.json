@@ -83,6 +83,7 @@
     "pa11y": "^4.9.0",
     "pg": "^6.1.5",
     "portscanner": "^2.1.1",
+    "proxyquire": "^1.8.0",
     "request-json": "^0.6.1",
     "sinon": "^2.1.0",
     "sinon-chai": "^2.9.0",

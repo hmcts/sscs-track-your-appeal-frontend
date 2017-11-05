@@ -1,7 +1,7 @@
+const {getContentAsString} = require('app/core/contentLookup');
 const screenReaderHelper = require('app/core/ScreenReaderHelper');
 const {dateFormat, timeZone} = require('app/config');
 const {events} = require('app/core/events');
-const {getContent} = require('app/core/contentLookup');
 const moment = require('moment-timezone');
 
 const keys = {
@@ -38,16 +38,16 @@ const filters = {
 
   benefitType: (str, benefitType, format = keys.SHORT) => {
     return NunjucksUtils.renderString(str, {
-      benefitType: getContent(`${keys.BENEFIT_TYPES}.${benefitType}.${format}`)
+      benefitType: getContentAsString(`${keys.BENEFIT_TYPES}.${benefitType}.${format}`)
     });
   },
 
   short: (benefitType) => {
-    return getContent(`${keys.BENEFIT_TYPES}.${benefitType}.${keys.SHORT}`);
+    return getContentAsString(`${keys.BENEFIT_TYPES}.${benefitType}.${keys.SHORT}`);
   },
 
   long: (benefitType) => {
-    return getContent(`${keys.BENEFIT_TYPES}.${benefitType}.${keys.LONG}`);
+    return getContentAsString(`${keys.BENEFIT_TYPES}.${benefitType}.${keys.LONG}`);
   }
 
 };

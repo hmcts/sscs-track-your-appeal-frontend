@@ -2,7 +2,6 @@ const {cloneDeep} = require('lodash');
 const {expect} = require('test/chai-sinon');
 const {events} = require('app/core/events');
 const mockery = require('mockery');
-const testServer = require('test/testServer');
 const nunjucksEnv = require('app/core/NunjucksUtils').env;
 const hearingBooked = require('test/mock/data/hearingBooked.json').appeal;
 const hearing = require('test/mock/data/hearing.json').appeal;
@@ -181,46 +180,6 @@ describe('Appeal', () => {
       expect(appeal.latestEvents[0].renderedContent[0]).to.equal('Your hearing took place on 11 September 2010... should have arrived at your registered address by 18 September 2010.');
       expect(appeal.latestEvents[0].renderedContent[1]).to.equal('We can’t publish the decision online or tell you over the phone...');
       expect(appeal.latestEvents[0].renderedContent.length).to.equal(2);
-    });
-
-  });
-
-  describe('Calling the getContent() function', () => {
-
-    let appeal;
-
-    before( ()=> {
-      appeal = new Appeal(cloneDeep(hearing));
-    });
-
-    it('should retrieve the content when using the status.hearing.content key', () => {
-      const content = appeal.getContent('status.hearing.content');
-      expect(content).to.equal(mockedContent.status.hearing.content);
-    });
-
-    it('should retrieve the content when using the status.hearingBooked.content key', () => {
-      const content = appeal.getContent('status.hearingBooked.content');
-      expect(content).to.equal('A hearing has been booked for your appeal');
-    });
-
-    it('should retrieve the content when using the status.dwpRespond.content key', () => {
-      const content = appeal.getContent('status.dwpRespond.content');
-      expect(content[0]).to.equal('The DWP have written a response to your ESA benefit appeal...');
-      expect(content[1]).to.equal('We’re now in the process of booking a hearing... {{hearingContactDate|formatDate}}');
-    });
-
-    it('should retrieve the content when using the status.appealReceived.content key', () => {
-      const content = appeal.getContent('status.appealReceived.content');
-      expect(content).to.equal('DWP should respond by respond: {{dwpResponseDate|formatDate}}');
-    });
-
-    it('should retrieve the content when using the status.evidenceReceived.content key', () => {
-      const content = appeal.getContent('status.evidenceReceived.content');
-      expect(content).to.equal('The {{evidenceType}} evidence you sent was received by us on {{date|formatDate}}');
-    });
-
-    it('should throw an error when encountering an unknown content key', () => {
-      expect(() => appeal.getContent('unknown')).to.throw(Error, 'Unknown content key: unknown');
     });
 
   });

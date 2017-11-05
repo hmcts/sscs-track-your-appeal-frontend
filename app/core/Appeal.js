@@ -1,4 +1,5 @@
-const {getContent} = require('app/core/contentLookup');
+const {getContentAsString, getContentAsArray} = require('app/core/contentLookup');
+const {setDateOnPlaceholder, setBenefitTypeOnPlaceholder} = require('app/core/placeHolder');
 const {startsWith,includes} = require('lodash');
 const {contentSubKeys} = require('app/config');
 const {events} = require('app/core/events');
@@ -50,6 +51,20 @@ class Appeal {
     });
   }
 
+  setHeadingOnEvent(event) {
+    event.heading = getContentAsString(event.contentKey + contentSubKeys.HEADING);
+  }
+
+  setRenderedContentOnEvent(event) {
+
+    // Update the placeholders - both of these should be done in the API.
+    setDateOnPlaceholder(event);
+    setBenefitTypeOnPlaceholder(event, this.benefitType);
+
+    let contentArray = getContentAsArray(event.contentKey + contentSubKeys.CONTENT);
+    event.renderedContent = this.renderArrayContent(contentArray, event.placeholder);
+  }
+
   setLatestHearingBookedEventOnAppeal() {
     if(this.status === events.HEARING_BOOKED.name) {
       this.latestHearingBookedEvent = this.getFirstEventWithMatchingContentKey(
@@ -69,6 +84,12 @@ class Appeal {
       this.historicalEvents, events.EVIDENCE_RECEIVED.contentKey);
 
     this.evidenceReceived = !!(evidenceRecievedInLatestEvents || evidenceRecievedInHistoricalEvents);
+  }
+
+  getFirstEventWithMatchingContentKey(events, contentKey) {
+    return events.filter(event => {
+      return event.contentKey === contentKey;
+    })[0];
   }
 
   reformatAllHearingDetails(evnts) {
@@ -117,61 +138,9 @@ class Appeal {
     }
   }
 
-  getFirstEventWithMatchingContentKey(events, contentKey) {
-    return events.filter(event => {
-      return event.contentKey === contentKey;
-    })[0];
-  }
-
-  setHeadingOnEvent(event) {
-    event.heading = getContent(event.contentKey + contentSubKeys.HEADING);
-  }
-
-  setRenderedContentOnEvent(event) {
-    let content= getContent(event.contentKey + contentSubKeys.CONTENT);
-
-    if (typeof content === 'string') {
-      content = [content];
-    }
-
-    // Both of these should be done in the API.
-    this.setDateOnPlaceholderFields(event);
-    this.setBenefitTypeOnPlaceholderFields(event);
-
-    event.renderedContent = this.getRenderedContent(content, event.placeholder);
-  }
-
-  getRenderedContent(content, placeholder) {
-    return content.map((str) => {
-      return NunjucksUtils.renderString(str, placeholder);
-    });
-  }
-
-  setDateOnPlaceholderFields(event) {
-    if(event.type === events.EVIDENCE_RECEIVED.name ||
-       event.type === events.HEARING.name ||
-       event.type === events.DORMANT.name) {
-
-       event.placeholder.date = event.date;
-    }
-  }
-
-  setBenefitTypeOnPlaceholderFields(event) {
-    if(event.type === events.CLOSED.name ||
-       event.type === events.DORMANT.name ||
-       event.type === events.DWP_RESPOND.name ||
-       event.type === events.HEARING.name ||
-       event.type === events.LAPSED_REVISED.name ||
-       event.type === events.PAST_HEARING_BOOKED.name ||
-       event.type === events.POSTPONED.name) {
-
-      if(!event.placeholder) {
-        event.placeholder = {};
-      }
-
-      event.placeholder.benefitType = this.benefitType;
-    }
-  }
+  renderArrayContent(content, placeholder) {
+    return content.map(str => NunjucksUtils.renderString(str, placeholder));
+  };
 }
 
 module.exports = Appeal;
