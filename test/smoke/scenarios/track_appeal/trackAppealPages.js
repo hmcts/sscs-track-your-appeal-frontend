@@ -195,7 +195,6 @@ Scenario('verify appellant details for adjurned state', function*(I) {
 
 Scenario('verify appellant details for postponed state', function*(I) {
   let appealId = yield I.retrieveAppealNumber(dbProperties.postponedAppealCaseId);
-  let date = yield I.calculateDate(dbProperties.postponedAppealCaseId,42);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. L Lena');
   I.see('Appeal reference number: SC888/88/88888');
@@ -204,7 +203,7 @@ Scenario('verify appellant details for postponed state', function*(I) {
   I.see(pageText.progressBar.screenReader.hearingBooked.due);
   I.see(pageText.progressBar.screenReader.hearing.due);
   I.see(pageText.status.postponed.content[0]);
-  I.see('We’ll book a new hearing for your appeal. We’ll contact you by '+date+' with the details.')
+  I.see('We’ll now book a new hearing for your appeal. You don’t need to do anything. Unfortunately we can’t say how long it will take to book but it may be some time. It will depend on how busy the hearing venues are.');
 });
 
 Scenario('verify appellant details for past hearing date state', function*(I) {
