@@ -2,6 +2,10 @@ const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"
 const logger = require('nodejs-logging').getLogger('routes.js');
 const ServiceLoader = require('app/services/ServiceLoader');
 const AppealsService = ServiceLoader.AppealService;
+const {applyPlaceholders} = require('app/middleware/placeHolder');
+const {applyContentToHeadingsAndEvents} = require('app/middleware/headingsAndEvents');
+const {applyEvidence} = require('app/middleware/evidence');
+const {reformatHearingDetails} = require('app/middleware/hearing');
 const TokenService = ServiceLoader.TokenService;
 const HttpStatus = require('http-status-codes');
 const express = require('express');
@@ -14,13 +18,21 @@ const EMAIL = {
   STOP: 'stopEmails'
 };
 
+const tyaMiddleware = [
+  AppealsService.getAppeal,
+  applyPlaceholders,
+  applyEvidence,
+  applyContentToHeadingsAndEvents,
+  UIUtils.showProgressBar
+];
+
 //------------------------------------ TRACK YOUR APPEAL ---------------------------------------------------------------
 
 router.get(`${progressRoot}/:id/abouthearing`, AppealsService.getAppeal, (req, res) => {
   res.render('about-hearing', {data: res.locals.appeal});
 });
 
-router.get(`${progressRoot}/:id/trackyourappeal`, AppealsService.getAppeal, UIUtils.showProgressBar, (req, res) => {
+router.get(`${progressRoot}/:id/trackyourappeal`, tyaMiddleware, (req, res) => {
   res.render('track-your-appeal', {data: res.locals.appeal});
 });
 
@@ -33,7 +45,7 @@ router.get(`${progressRoot}/:id/expenses`, AppealsService.getAppeal, (req, res) 
 });
 
 // Hearing details relating to the latest event e.g. HEARING_BOOKED
-router.get(`${progressRoot}/:id/hearingdetails`, AppealsService.getAppeal, (req, res) => {
+router.get(`${progressRoot}/:id/hearingdetails`, AppealsService.getAppeal, reformatHearingDetails, (req, res) => {
   res.render('hearing-details', {
     data: res.locals.appeal,
     event: res.locals.appeal.latestHearingBookedEvent
@@ -41,7 +53,7 @@ router.get(`${progressRoot}/:id/hearingdetails`, AppealsService.getAppeal, (req,
 });
 
 // Hearing details relating to historical events e.g. HEARING
-router.get(`${progressRoot}/:id/hearingdetails/:index`, AppealsService.getAppeal, (req, res) => {
+router.get(`${progressRoot}/:id/hearingdetails/:index`, AppealsService.getAppeal, reformatHearingDetails, (req, res) => {
   res.render('hearing-details', {
     appeal: res.locals.appeal,
     event: res.locals.appeal.historicalEvents[req.params.index]

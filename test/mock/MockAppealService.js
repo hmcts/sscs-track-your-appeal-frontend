@@ -1,4 +1,3 @@
-const Appeal = require('app/core/Appeal');
 const mockedData = require('test/mock/data/index');
 const HttpStatus = require('http-status-codes');
 
@@ -11,9 +10,13 @@ class MockAppealService {
       err.status = HttpStatus.NOT_FOUND;
       next(err);
     } else {
-      const appeal = new Appeal(mockedData[req.params.id].appeal);
-      appeal.decorate();
+
+      const appeal = mockedData[req.params.id].appeal;
+      appeal.evidenceReceived = false;
+      appeal.latestEvents = appeal.latestEvents || [];
+      appeal.historicalEvents = appeal.historicalEvents || [];
       res.locals.appeal = appeal;
+
       next();
     }
   }

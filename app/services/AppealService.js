@@ -2,7 +2,6 @@ const {get} = require('lodash');
 const {appealsAPI} = require('app/config');
 const HttpStatus = require('http-status-codes');
 const request = require('superagent');
-const Appeal = require('app/core/Appeal');
 const logger = require('nodejs-logging').getLogger('AppealService.js');
 
 class AppealService {
@@ -15,9 +14,13 @@ class AppealService {
 
     request.get(`${appealsAPI}/${req.params.id}`)
       .then((result) => {
-        const appeal = new Appeal(result.body.appeal);
-        appeal.decorate();
+        const appeal = result.body.appeal;
+
+        appeal.evidenceReceived = false;
+        appeal.latestEvents = appeal.latestEvents || [];
+        appeal.historicalEvents = appeal.historicalEvents || [];
         res.locals.appeal = appeal;
+
         logger.info(`GET /appeals/${req.params.id} ${HttpStatus.OK}`);
         next();
       }).catch((error) => {
