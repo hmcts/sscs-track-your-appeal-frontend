@@ -2,7 +2,7 @@ const {getContentAsString, getContentAsArray} = require('app/core/contentLookup'
 const {contentSubKeys} = require('app/config');
 const NunjucksUtils = require('app/core/NunjucksUtils');
 
-const applyContentToHeadingsAndEvents = (req, res, next) => {
+const applyContentToEvents = (req, res, next) => {
   apply(res.locals.appeal);
   next();
 };
@@ -32,4 +32,4 @@ const renderArrayContent = (content, placeholder) => {
   return content.map(str => NunjucksUtils.renderString(str, placeholder));
 };
 
-module.exports = { applyContentToHeadingsAndEvents };
+module.exports = { applyContentToEvents };

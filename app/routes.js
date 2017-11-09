@@ -3,7 +3,7 @@ const logger = require('nodejs-logging').getLogger('routes.js');
 const ServiceLoader = require('app/services/ServiceLoader');
 const AppealsService = ServiceLoader.AppealService;
 const {applyPlaceholders} = require('app/middleware/placeHolder');
-const {applyContentToHeadingsAndEvents} = require('app/middleware/headingsAndEvents');
+const {applyContentToEvents} = require('app/middleware/events');
 const {applyEvidence} = require('app/middleware/evidence');
 const {reformatHearingDetails} = require('app/middleware/hearing');
 const TokenService = ServiceLoader.TokenService;
@@ -22,7 +22,7 @@ const tyaMiddleware = [
   AppealsService.getAppeal,
   applyPlaceholders,
   applyEvidence,
-  applyContentToHeadingsAndEvents,
+  applyContentToEvents,
   UIUtils.showProgressBar
 ];
 
