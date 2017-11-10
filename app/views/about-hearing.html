@@ -16,10 +16,10 @@ About Hearing
 
             <h1 class="heading-xlarge">{{ i18n.hearing.expectations.title }}</h1>
 
-            <p class="lede">{{ i18n.hearing.expectations.content | benefitType(appeal.benefitType) }}</p>
+            <p class="lede">{{ i18n.hearing.expectations.content }}</p>
 
             <img src="/public/images/hearing-room.png" alt="{{i18n.hearing.expectations.theHearingRoom.imageAlt}}">
-            <p>{{ i18n.hearing.expectations.theHearingRoom.caption | benefitType(appeal.benefitType) }}</p>
+            <p>{{ i18n.hearing.expectations.theHearingRoom.caption }}</p>
 
             <h2 class="heading-medium">{{ i18n.hearing.expectations.whenYouArrive.heading }}</h2>
             <p>{{ i18n.hearing.expectations.whenYouArrive.content }}</p>
@@ -34,7 +34,7 @@ About Hearing
 
             <h2 class="heading-medium">{{ i18n.hearing.expectations.dwp.heading }}</h2>
             {% for content in i18n.hearing.expectations.dwp.content %}
-            <p>{{content | benefitType(appeal.benefitType)}}</p>
+            <p>{{content}}</p>
             {% endfor %}
 
             <h2 class="heading-medium">{{ i18n.hearing.expectations.duringHearing.heading }}</h2>
@@ -44,7 +44,7 @@ About Hearing
 
             <h2 class="heading-medium">{{ i18n.hearing.expectations.gettingDecision.heading }}</h2>
             {% for content in i18n.hearing.expectations.gettingDecision.content %}
-            <p>{{content | benefitType(appeal.benefitType, 'long') }}</p>
+            <p>{{content }}</p>
             {% endfor %}
 
         </div>
