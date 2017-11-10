@@ -10,6 +10,23 @@ const keys = {
   LONG: 'long'
 };
 
+const tyaNunjucks = {
+
+  nunjucksEnv: null,
+
+  get env() {
+    if(!this.nunjucksEnv) {
+      throw Error('The nunjucks environment has not been set.');
+    }
+    return this.nunjucksEnv;
+  },
+
+  set env(env) {
+    this.nunjucksEnv = env;
+  }
+
+};
+
 const filters = {
 
   json: (obj) => {
@@ -36,12 +53,6 @@ const filters = {
     return screenReaderHelper.getScreenReaderTextFor(currentStatus, progressBarTick);
   },
 
-  benefitType: (str, benefitType, format = keys.SHORT) => {
-    return NunjucksUtils.renderString(str, {
-      benefitType: getContentAsString(`${keys.BENEFIT_TYPES}.${benefitType}.${format}`)
-    });
-  },
-
   short: (benefitType) => {
     return getContentAsString(`${keys.BENEFIT_TYPES}.${benefitType}.${keys.SHORT}`);
   },
@@ -52,28 +63,17 @@ const filters = {
 
 };
 
-let nunjucksEnv;
-
-class NunjucksUtils {
-
-  static get env() {
-    return nunjucksEnv;
+const renderContent = (content, placeholder) => {
+  if (Array.isArray(content)) {
+    return content.map(str => renderContent(str, placeholder));
   }
-
-  static set env(value) {
-    nunjucksEnv = value;
+  if (typeof content === 'object') {
+    const newKeys = Object.keys(content).map((key) => { return { [key]: renderContent(content[key], placeholder)}; });
+    return Object.assign({}, ...newKeys);
   }
-
-  static renderString(str, placeholder) {
-    if(!nunjucksEnv) {
-      throw Error('The nunjucksEnv has not been set!');
-    }
-    return nunjucksEnv.renderString(str, placeholder);
+  if (typeof content === 'string') {
+    return tyaNunjucks.env.renderString(content, placeholder);
   }
+};
 
-  static get filters() {
-    return filters;
-  }
-}
-
-module.exports = NunjucksUtils;
+module.exports = { tyaNunjucks, filters, renderContent };
