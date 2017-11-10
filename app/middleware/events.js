@@ -1,6 +1,6 @@
 const {getContentAsString, getContentAsArray} = require('app/core/contentLookup');
 const {contentSubKeys} = require('app/config');
-const NunjucksUtils = require('app/core/NunjucksUtils');
+const {tyaNunjucks} = require('app/core/tyaNunjucks');
 
 const applyContentToEvents = (req, res, next) => {
   apply(res.locals.appeal);
@@ -29,7 +29,7 @@ const setRenderedContentOnEvent = (event) => {
 };
 
 const renderArrayContent = (content, placeholder) => {
-  return content.map(str => NunjucksUtils.renderString(str, placeholder));
+  return content.map(str => tyaNunjucks.env.renderString(str, placeholder));
 };
 
 module.exports = { applyContentToEvents };

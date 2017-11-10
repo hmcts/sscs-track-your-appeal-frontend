@@ -4,6 +4,7 @@ const ServiceLoader = require('app/services/ServiceLoader');
 const AppealsService = ServiceLoader.AppealService;
 const {applyPlaceholders} = require('app/middleware/placeHolder');
 const {applyContentToEvents} = require('app/middleware/events');
+const {aboutHearingContent, manageEmailNotifications} = require('app/middleware/content');
 const {applyEvidence} = require('app/middleware/evidence');
 const {reformatHearingDetails} = require('app/middleware/hearing');
 const TokenService = ServiceLoader.TokenService;
@@ -28,7 +29,7 @@ const tyaMiddleware = [
 
 //------------------------------------ TRACK YOUR APPEAL ---------------------------------------------------------------
 
-router.get(`${progressRoot}/:id/abouthearing`, AppealsService.getAppeal, (req, res) => {
+router.get(`${progressRoot}/:id/abouthearing`, AppealsService.getAppeal, aboutHearingContent, (req, res) => {
   res.render('about-hearing', {data: res.locals.appeal});
 });
 
@@ -66,8 +67,8 @@ router.get(`${progressRoot}/:id/contactus`, AppealsService.getAppeal, (req, res)
 
 //------------------------------------ EMAIL NOTIFICATIONS -------------------------------------------------------------
 
-router.get(`${notificationRoot}/:mactoken`, TokenService.validateToken, (req, res, next) => {
-  res.render('manage-email-notifications', { mactoken: req.params.mactoken });
+router.get(`${notificationRoot}/:mactoken`, TokenService.validateToken, manageEmailNotifications, (req, res, next) => {
+  res.render('manage-emails', { mactoken: req.params.mactoken });
 });
 
 router.post(`${notificationRoot}/:mactoken`, TokenService.validateToken, (req, res, next) => {
@@ -75,10 +76,10 @@ router.post(`${notificationRoot}/:mactoken`, TokenService.validateToken, (req, r
   if(userSelection === EMAIL.CHANGE) {
     res.render('email-address-change', { mactoken: req.params.mactoken });
   } else if (userSelection === EMAIL.STOP) {
-    res.render('confirm-emails-stop', { mactoken: req.params.mactoken });
+    res.render('emails-stop', { mactoken: req.params.mactoken });
   } else {
     let errorMsg = res.locals.i18n.notifications.email.errors.selectAnOption;
-    res.render('manage-email-notifications', {
+    res.render('manage-emails', {
       mactoken: req.params.mactoken,
       field: {
         error: true,
@@ -91,7 +92,7 @@ router.post(`${notificationRoot}/:mactoken`, TokenService.validateToken, (req, r
 router.post(`${notificationRoot}/:mactoken/stop`, TokenService.validateToken, (req, res, next) => {
   const token = res.locals.token;
   AppealsService.stopReceivingEmails(token.appealId, token.subscriptionId).then((result) => {
-    res.render('stopped-email-notifications', {
+    res.render('emails-stop-confirmed', {
       data: { appealNumber: token.appealId },
       mactoken: req.params.mactoken,
     });
@@ -101,7 +102,7 @@ router.post(`${notificationRoot}/:mactoken/stop`, TokenService.validateToken, (r
 });
 
 
-router.get(`${notificationRoot}/:mactoken/change`, TokenService.validateToken, (req, res, next) => {
+router.get(`${notificationRoot}/:mactoken/change`, TokenService.validateToken, manageEmailNotifications, (req, res, next) => {
   res.render('email-address-change', { mactoken: req.params.mactoken });
 });
 
