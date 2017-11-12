@@ -104,15 +104,11 @@ describe('routes.js', () => {
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
-    it('should respond with a HTTP 500 when encountering an \'unknown\' type', (done) => {
+    it('should respond with a HTTP 400 when POSTing an \'unknown\' type', (done) => {
       request(httpServer)
         .post(url)
         .send({'type': 'unknown'})
-        .expect(HttpStatus.INTERNAL_SERVER_ERROR)
-        .end((err, resp) => {
-          assert.include(resp.text, "Sorry, we&#39;re experiencing technical difficulties");
-          done();
-        });
+        .expect(HttpStatus.BAD_REQUEST, done);
     });
 
   });
@@ -152,6 +148,27 @@ describe('routes.js', () => {
         .post(url)
         .send({'email': 'person@example.com', 'confirmEmail': 'person@example.com'})
         .expect(HttpStatus.OK, done);
+    });
+
+    it('should respond with a HTTP 400 when POSTing empty strings as email addresses', (done) => {
+      request(httpServer)
+        .post(url)
+        .send({'email': '', 'confirmEmail': ''})
+        .expect(HttpStatus.BAD_REQUEST, done);
+    });
+
+    it('should respond with a HTTP 400 when POSTing non email addresses', (done) => {
+      request(httpServer)
+        .post(url)
+        .send({'email': 'rubb@ish', 'confirmEmail': 'rubb@ish'})
+        .expect(HttpStatus.BAD_REQUEST, done);
+    });
+
+    it('should respond with a HTTP 400 when POSTing email address that do not match', (done) => {
+      request(httpServer)
+        .post(url)
+        .send({'email': 'person@example.com', 'confirmEmail': 'person@example.net'})
+        .expect(HttpStatus.BAD_REQUEST, done);
     });
 
   });

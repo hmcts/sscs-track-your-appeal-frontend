@@ -1,14 +1,16 @@
-{% if fields.hasErrors %}
-<div class="error-summary" role="group" aria-labelledby="error-summary-heading-example-1" tabindex="-1">
-
-    <h1 class="heading-medium error-summary-heading">
-        {{ fields.heading }}
-    </h1>
+{% if fields.error %}
+<div class="error-summary" role="group" aria-labelledby="error-summary-heading" tabindex="-1">
 
     <ul class="error-summary-list">
-        {% for key, value in fields %}
-        <li><a href="#{{key}}">{{ fields[key].errorMessage }}</a></li>
-        {% endfor %}
+        {% if fields.noSelection.errorHeading %}
+        <li><a href="#email">{{ fields.noSelection.errorHeading }}</a></li>
+        {% endif %}
+        {% if fields.email.errorHeading %}
+        <li><a href="#email">{{ fields.email.errorHeading }}</a></li>
+        {% endif %}
+        {% if fields.confirmEmail.errorHeading %}
+        <li><a href="#confirmEmail">{{ fields.confirmEmail.errorHeading }}</a></li>
+        {% endif %}
     </ul>
 
 </div>

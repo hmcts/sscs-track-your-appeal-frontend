@@ -3,9 +3,9 @@
 
 {% block page_title %}
 {% if errors %}
-    {{ i18n.notifications.email.addressChange.tabError }}
+{{ i18n.notifications.email.addressChange.tabError }}
 {% else %}
-    {{ i18n.notifications.email.addressChange.tab }}
+{{ i18n.notifications.email.addressChange.tab }}
 {% endif %}
 {% endblock %}
 
@@ -17,37 +17,21 @@
 
     <div class="grid-row">
 
-        {% include "errors/summary.html" %}
-
         <div class="column-two-thirds">
 
+          {% include "errors/summary.html" %}
+
+          <h1 class="heading-large">{{ i18n.notifications.email.addressChange.title }}</h1>
+
           <form action="/manage-email-notifications/{{ mactoken }}/change" method="post">
-
-              {% if fields.error %}
-              <div class="error-summary" role="group" aria-labelledby="error-summary-heading" tabindex="-1">
-                  <h1 class="heading-medium error-summary-heading" id="error-summary-heading">
-                      {{ i18n.notifications.email.addressChange.errors.title }}
-                  </h1>
-                  <ul class="error-summary-list">
-                      {% if fields.email.errorHeading %}
-                      <li><a href="#email">{{ fields.email.errorHeading }}</a></li>
-                      {% endif %}
-                      {% if fields.confirmEmail.errorHeading %}
-                      <li><a href="#confirmEmail">{{ fields.confirmEmail.errorHeading }}</a></li>
-                      {% endif %}
-                  </ul>
-
-              </div>
-              {% endif %}
 
                 <div class="form-group">
 
                     <fieldset>
 
-                        <legend class="visually-hidden">{{ i18n.notifications.email.addressChange.visuallyHidden }}</legend>
-
-                        <h1 class="heading-large">{{ i18n.notifications.email.addressChange.title }}</h1>
-
+                        <legend>
+                            <span class="visually-hidden">{{ i18n.notifications.email.addressChange.visuallyHidden }}</span>
+                        </legend>
 
                         {{ textField(
                             label = 'Enter your new email address',

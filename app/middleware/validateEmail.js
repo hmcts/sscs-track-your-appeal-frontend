@@ -1,3 +1,4 @@
+const HttpStatus = require('http-status-codes');
 const Joi = require('joi');
 
 const validateEmail = (req, res, next) => {
@@ -6,6 +7,7 @@ const validateEmail = (req, res, next) => {
   const errors = res.locals.i18n.notifications.email.errors;
   const fields = validateFields(email, confirmEmail, errors);
   if(fields.error) {
+    res.status(HttpStatus.BAD_REQUEST);
     res.render('email-address-change', { mactoken: req.params.mactoken, fields } );
   } else {
     res.locals.email = { subscription: { email: req.body.email } };

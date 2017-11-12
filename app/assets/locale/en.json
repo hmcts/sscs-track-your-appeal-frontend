@@ -219,13 +219,14 @@
         "link": "Change your email address"
       },
       "errors": {
+        "selectAnOptionHeading": "Please select an option",
+        "selectAnOptionField": "You have not selected an option. Select an option.",
         "emptyStringHeading": "New email address not entered",
-        "notValidHeading": "New email address is invalid",
-        "noMatchHeading": "Email addresses do not match",
         "emptyStringEmailField": "You have not entered your email address. Enter your email address.",
+        "notValidHeading": "New email address is invalid",
         "notValidField": "The email address you’ve entered is invalid. Check it and enter it again.",
-        "noMatchField": "Your email addresses don’t match. Check and enter them again.",
-        "selectAnOption": "Please select an option"
+        "noMatchHeading": "Email addresses do not match",
+        "noMatchField": "Your email addresses don’t match. Check and enter them again."
       }
     }
   },

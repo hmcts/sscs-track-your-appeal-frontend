@@ -4,36 +4,41 @@ const { applyContentToEvents } = require('app/middleware/events');
 const { aboutHearingContent, manageEmailNotifications } = require('app/middleware/content');
 const { applyEvidence } = require('app/middleware/evidence');
 const { reformatHearingDetails } = require('app/middleware/hearing');
+const { notificationChoiceRedirect } = require('app/middleware/notificationChoiceRedirect');
 const { validateEmail } = require('app/middleware/validateEmail');
 const { showProgressBar } = require('app/core/UIUtils');
-const types = require('app/core/notifications/types');
+
 const express = require('express');
 const router = express.Router();
 
-const progressRoot = '/progress';
-const notificationRoot = '/manage-email-notifications';
-const tyaMiddleware = [ getAppeal, applyPlaceholders, applyEvidence, applyContentToEvents, showProgressBar ];
+const tyaMiddleware = [
+  getAppeal,
+  applyPlaceholders,
+  applyEvidence,
+  applyContentToEvents,
+  showProgressBar
+];
 
 //------------------------------------ TRACK YOUR APPEAL ---------------------------------------------------------------
 
-router.get(`${progressRoot}/:id/abouthearing`, getAppeal, aboutHearingContent, (req, res) => {
+router.get('/progress/:id/abouthearing', getAppeal, aboutHearingContent, (req, res) => {
   res.render('about-hearing', {data: res.locals.appeal});
 });
 
-router.get(`${progressRoot}/:id/trackyourappeal`, tyaMiddleware, (req, res) => {
+router.get('/progress/:id/trackyourappeal', tyaMiddleware, (req, res) => {
   res.render('track-your-appeal', {data: res.locals.appeal});
 });
 
-router.get(`${progressRoot}/:id/evidence`, getAppeal, (req, res) => {
+router.get('/progress/:id/evidence', getAppeal, (req, res) => {
   res.render('provide-evidence', {data: res.locals.appeal});
 });
 
-router.get(`${progressRoot}/:id/expenses`, getAppeal, (req, res) => {
+router.get('/progress/:id/expenses', getAppeal, (req, res) => {
   res.render('claim-expenses', {data: res.locals.appeal});
 });
 
 // Hearing details relating to the latest event e.g. HEARING_BOOKED
-router.get(`${progressRoot}/:id/hearingdetails`, getAppeal, reformatHearingDetails, (req, res) => {
+router.get('/progress/:id/hearingdetails', getAppeal, reformatHearingDetails, (req, res) => {
   res.render('hearing-details', {
     data: res.locals.appeal,
     event: res.locals.appeal.latestHearingBookedEvent
@@ -41,14 +46,14 @@ router.get(`${progressRoot}/:id/hearingdetails`, getAppeal, reformatHearingDetai
 });
 
 // Hearing details relating to historical events e.g. HEARING
-router.get(`${progressRoot}/:id/hearingdetails/:index`, getAppeal, reformatHearingDetails, (req, res) => {
+router.get('/progress/:id/hearingdetails/:index', getAppeal, reformatHearingDetails, (req, res) => {
   res.render('hearing-details', {
     appeal: res.locals.appeal,
     event: res.locals.appeal.historicalEvents[req.params.index]
   });
 });
 
-router.get(`${progressRoot}/:id/contactus`, getAppeal, (req, res) => {
+router.get('/progress/:id/contactus', getAppeal, (req, res) => {
   res.render('contact-us', {data: res.locals.appeal});
 });
 
@@ -58,36 +63,25 @@ router.get('/cookiepolicy', (req, res) => {
 
 //------------------------------------ EMAIL NOTIFICATIONS -------------------------------------------------------------
 
-router.get(`${notificationRoot}/:mactoken`, validateToken, manageEmailNotifications, (req, res, next) => {
-  res.render('manage-emails', { mactoken: req.params.mactoken, fields: { type: { value: types.CHANGE_EMAIL } } });
+router.get('/manage-email-notifications/:mactoken', validateToken, manageEmailNotifications, (req, res, next) => {
+  res.render('manage-emails', { mactoken: req.params.mactoken } );
 });
 
-router.post(`${notificationRoot}/:mactoken`, validateToken, (req, res, next) => {
-  switch(req.body.type) {
-    case types.CHANGE_EMAIL:
-      res.redirect(`${notificationRoot}/${req.params.mactoken}/change`);
-      break;
-    case types.STOP_EMAIL:
-      res.redirect(`${notificationRoot}/${req.params.mactoken}/stop`);
-      break;
-    default:
-      next(new Error(`Unknown type: ${req.body.type}`))
-  }
-});
+router.post('/manage-email-notifications/:mactoken', validateToken, notificationChoiceRedirect, (req, res, next) => {});
 
-router.get(`${notificationRoot}/:mactoken/stop`, validateToken, (req, res) => {
+router.get('/manage-email-notifications/:mactoken/stop', validateToken, (req, res) => {
   res.render('emails-stop', { mactoken: req.params.mactoken });
 });
 
-router.get(`${notificationRoot}/:mactoken/stopconfirm`, validateToken, stopReceivingEmails, (req, res, next) => {
+router.get('/manage-email-notifications/:mactoken/stopconfirm', validateToken, stopReceivingEmails, (req, res, next) => {
   res.render('emails-stop-confirmed', { data: { appealNumber: res.locals.token.appealId }, mactoken: req.params.mactoken });
 });
 
-router.get(`${notificationRoot}/:mactoken/change`, validateToken, manageEmailNotifications, (req, res) => {
+router.get('/manage-email-notifications/:mactoken/change', validateToken, manageEmailNotifications, (req, res) => {
   res.render('email-address-change', { mactoken: req.params.mactoken });
 });
 
-router.post(`${notificationRoot}/:mactoken/change`, validateToken, validateEmail, changeEmailAddress, (req, res, next) => {
+router.post('/manage-email-notifications/:mactoken/change', validateToken, validateEmail, changeEmailAddress, (req, res, next) => {
   res.render('email-address-change-confirmed', { data: { email: req.body.email }, mactoken: req.params.mactoken });
 });
 
