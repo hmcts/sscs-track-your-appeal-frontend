@@ -122,65 +122,6 @@ describe(`Text areas should render as expected`, () => {
   });
 });
 
-describe(`Yes no radio buttons should render as expected`, () => {
-
-  const yesNoRadioButton = `
-    {% from "app/views/components/formElements.html" import yesNoRadio %}
-    {{ yesNoRadio(hint, field, name) }}
-  `;
-
-  it('name, field and label are rendered correctly', () => {
-
-    let input = {
-      label: 'testLabel',
-      name: 'testName',
-      field: { value: 'Yes' }
-    };
-
-    const res = nunjucks.renderString(yesNoRadioButton, input);
-
-    expect(res).to.not.contain('<legend>');
-    expect(res).to.contain('id="testName_no');
-    expect(res).to.contain('id="testName_yes');
-    expect(res).to.contain('value="no"');
-
-  });
-
-  it('errors are shown if present', () => {
-
-    let input = {
-      label: 'testLabel',
-      field: {
-        value: 'Yes',
-        error: true,
-        errorMessage: "My Error Message"
-      },
-      name: 'testName'
-    };
-
-    const res = nunjucks.renderString(yesNoRadioButton, input);
-
-    expect(res).to.contain('class="form-group form-group-error">');
-    expect(res).to.contain('<span class="error-message">');
-    expect(res).to.contain(input.field.errorMessage);
-
-  });
-
-  it('hint is shown when present', () => {
-    let input = {
-      label: 'testLabel',
-      hint: 'hintText',
-      field: { value: 'Yes' },
-      name: 'testName'
-    };
-
-    const res = nunjucks.renderString(yesNoRadioButton, input);
-
-    expect(res).to.contain('<span class="form-label">hintText</span>');
-
-  });
-});
-
 describe(`Date fields should render as expected`, () => {
 
   const date = `
