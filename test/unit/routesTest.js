@@ -1,6 +1,7 @@
 const testServer = require('test/testServer');
 const request = require('supertest');
 const assert  = require('chai').assert;
+const HttpStatus = require('http-status-codes');
 
 describe('routes.js', () => {
 
@@ -19,155 +20,160 @@ describe('routes.js', () => {
 
   describe('making application route requests which result in a HTTP 200', () => {
 
-    it('should respond to /progress/md002/abouthearing', function (done) {
+    it('should respond to /progress/md002/abouthearing', (done) => {
       request(httpServer)
         .get('/progress/md002/abouthearing')
-        .expect(200, done);
+        .expect(HttpStatus.OK, done);
     });
 
-    it('should respond to /progress/md002/expenses', function (done) {
+    it('should respond to /progress/md002/expenses', (done) => {
       request(httpServer)
         .get('/progress/md002/expenses')
-        .expect(200, done);
+        .expect(HttpStatus.OK, done);
     });
 
-    it('should respond to /progress/md007/hearingdetails', function (done) {
+    it('should respond to /progress/md007/hearingdetails', (done) => {
       request(httpServer)
         .get('/progress/md007/hearingdetails')
-        .expect(200, done);
+        .expect(HttpStatus.OK, done);
     });
 
-    it('should respond to /progress/md007/hearingdetails/10', function (done) {
+    it('should respond to /progress/md007/hearingdetails/10', (done) => {
       request(httpServer)
         .get('/progress/md007/hearingdetails/10')
-        .expect(200, done);
+        .expect(HttpStatus.OK, done);
     });
 
-    it('should respond to /progress/md002/evidence', function (done) {
+    it('should respond to /progress/md002/evidence', (done) => {
       request(httpServer)
         .get('/progress/md002/evidence')
-        .expect(200, done);
+        .expect(HttpStatus.OK, done);
     });
 
-    it('should respond to /progress/md002/trackyourappeal', function (done) {
+    it('should respond to /progress/md002/trackyourappeal', (done) => {
       request(httpServer)
         .get('/progress/md002/trackyourappeal')
-        .expect(200, done);
+        .expect(HttpStatus.OK, done);
     });
 
-    it('should respond to /progress/md002/contactus', function (done) {
+    it('should respond to /progress/md002/contactus', (done) => {
       request(httpServer)
         .get('/progress/md002/contactus')
-        .expect(200, done);
+        .expect(HttpStatus.OK, done);
     });
 
-    it('should respond to /cookiepolicy', function (done) {
+    it('should respond to /cookiepolicy', (done) => {
       request(httpServer)
         .get('/cookiepolicy')
-        .expect(200, done);
+        .expect(HttpStatus.OK, done);
     });
 
-    it('should respond to /robots.txt', function (done) {
+    it('should respond to /robots.txt', (done) => {
       request(httpServer)
         .get('/robots.txt')
         .expect('Content-Type', 'text/plain; charset=utf-8')
         .expect('User-agent: *\nDisallow: /')
-        .expect(200, done);
+        .expect(HttpStatus.OK, done);
     });
 
   });
 
-  describe('making email notifications route requests which result in a HTTP 200', () => {
+  describe('/manage-email-notifications/mactoken', () => {
 
-    it('should respond to the /manage-email-notifications/:mactoken route', function (done) {
+    const url = '/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=';
+
+    it('should respond with a HTTP 200 when performing a GET', (done) => {
       request(httpServer)
-        .get('/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=')
-        .expect(200, done);
+        .get(url)
+        .expect(HttpStatus.OK, done);
     });
 
-    it('should respond to the /manage-email-notifications route when posting "changeEmailAddress" ', function (done) {
+    it('should respond with a HTTP 302 when POSTing \'changeEmail\'', (done) => {
       request(httpServer)
-        .post('/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=')
-        .send({'emailNotify': 'changeEmailAddress'})
-        .expect(200, done);
+        .post(url)
+        .send({'type': 'changeEmail'})
+        .expect('Location', `${url}/change`)
+        .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
-    it('should respond to the /manage-email-notifications route when posting "stopEmails" ', function (done) {
+    it('should respond with a HTTP 302 when POSTing \'stopEmail\'', (done) => {
       request(httpServer)
-        .post('/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=')
-        .send({'emailNotify': 'stopEmails'})
-        .expect(200, done);
+        .post(url)
+        .send({'type': 'stopEmail'})
+        .expect('Location', `${url}/stop`)
+        .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
-    it('should respond to the /manage-email-notifications/token/stop route', function (done) {
+    it('should respond with a HTTP 500 when encountering an \'unknown\' type', (done) => {
       request(httpServer)
-        .post('/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=/stop')
-        .expect(200, done);
+        .post(url)
+        .send({'type': 'unknown'})
+        .expect(HttpStatus.INTERNAL_SERVER_ERROR)
+        .end((err, resp) => {
+          assert.include(resp.text, "Sorry, we&#39;re experiencing technical difficulties");
+          done();
+        });
     });
 
-    it('should respond to the /manage-email-notifications/token/change route', function (done) {
-      request(httpServer)
-        .post('/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=/change')
-        .send({'email': 'person@example.com', 'email2': 'person@example.com'})
-        .expect(200, done);
-    });
   });
 
-  describe('making email notifications route requests which result in an HTTP 400', () => {
-    [
-      {path: '/manage-email-notifications/invalid', method: 'get'},
-      {path: '/manage-email-notifications/invalid', method: 'post', data: {
-        'emailNotify': 'changeEmailAddress'
-      }},
-      {path: '/manage-email-notifications/invalid/stop', method: 'post'},
-      {path: '/manage-email-notifications/invalid/change', method: 'post', data: {
-        'email': 'person@example.com', 'email2': 'person@example.com'
-      }},
-    ].forEach((value) => {
-      it('should respond to the ' + value.path + ' route when given an invalid token', function (done) {
-        let call = request(httpServer)[value.method](value.path)
-        if (value.data) {
-          call = call.send(value.data);
-        }
-        call.expect(400, done);
-      });
+  describe('/manage-email-notifications/mactoken/stop', () => {
+
+    it('should respond with a HTTP 200 when performing a GET', (done) => {
+      request(httpServer)
+        .get('/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=/stop')
+        .expect(HttpStatus.OK, done);
     });
 
-    it('should respond to the /manage-email-notifications/token/change route when both emails are empty', (done) => {
+  });
+
+  describe('/manage-email-notifications/mactoken/stopconfirm', () => {
+
+    it('should respond with a HTTP 200 when performing a GET', (done) => {
       request(httpServer)
-      .post('/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=/change')
-      .send({'email': '', 'email2': ''})
-      .expect(400, done);
+        .get('/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=/stopconfirm')
+        .expect(HttpStatus.OK, done);
     });
 
+  });
 
-    it('should respond to the /manage-email-notifications-change route when given mismatched emails', (done) => {
+  describe('/manage-email-notifications/mactoken/change', () => {
+
+    const url = '/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=/change';
+
+    it('should respond with a HTTP 200 when performing a GET', (done) => {
       request(httpServer)
-        .post('/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=/change')
-        .send({'email': 'person@example.com', 'email2': 'other@example.com'})
-        .expect(400, done);
+        .get(url)
+        .expect(HttpStatus.OK, done);
+    });
+
+    it('should respond with a HTTP 200 when POSTing both email addresses', (done) => {
+      request(httpServer)
+        .post(url)
+        .send({'email': 'person@example.com', 'confirmEmail': 'person@example.com'})
+        .expect(HttpStatus.OK, done);
     });
 
   });
 
   describe('making application route requests which result in a HTTP 404', () => {
 
-    it('should respond to / route with a HTTP 404:Not found', function (done) {
+    it('should respond to / route with a HTTP 404:Not found', (done) => {
       request(httpServer)
         .get('/')
-        .expect(404, done);
+        .expect(HttpStatus.NOT_FOUND, done);
     });
 
-    it('should respond to an unknown route with a HTTP 404:Not found', function (done) {
+    it('should respond to an unknown route with a HTTP 404:Not found', (done) => {
       request(httpServer)
         .get('/foo')
-        .expect(404, done);
+        .expect(HttpStatus.NOT_FOUND, done);
     });
 
-    it('should respond to an unknown id with a HTTP 404:Not found', function (done) {
+    it('should respond to an unknown id with a HTTP 404:Not found', (done) => {
       request(httpServer)
         .get('/progress/999/trackyourappeal')
-        .expect(404)
+        .expect(HttpStatus.NOT_FOUND)
         .end((err, resp) => {
           if (err) return done(err);
           assert.include(resp.text, "Sorry, this page could not be found");

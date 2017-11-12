@@ -17,26 +17,28 @@
 
     <div class="grid-row">
 
+        {% include "errors/summary.html" %}
+
         <div class="column-two-thirds">
 
           <form action="/manage-email-notifications/{{ mactoken }}/change" method="post">
 
-                {% if fields.hasErrors %}
-                <div class="error-summary" role="group" aria-labelledby="error-summary-heading" tabindex="-1">
-                    <h1 class="heading-medium error-summary-heading" id="error-summary-heading">
-                        {{ i18n.notifications.email.addressChange.errors.title }}
-                    </h1>
-                    <ul class="error-summary-list">
-                        {% if fields.heading %}
-                        <li><a href="#email">{{ fields.heading }}</a></li>
-                        {% endif %}
-                        {% if fields.heading2 %}
-                        <li><a href="#email2">{{ fields.heading2 }}</a></li>
-                        {% endif %}
-                    </ul>
+              {% if fields.error %}
+              <div class="error-summary" role="group" aria-labelledby="error-summary-heading" tabindex="-1">
+                  <h1 class="heading-medium error-summary-heading" id="error-summary-heading">
+                      {{ i18n.notifications.email.addressChange.errors.title }}
+                  </h1>
+                  <ul class="error-summary-list">
+                      {% if fields.email.errorHeading %}
+                      <li><a href="#email">{{ fields.email.errorHeading }}</a></li>
+                      {% endif %}
+                      {% if fields.confirmEmail.errorHeading %}
+                      <li><a href="#confirmEmail">{{ fields.confirmEmail.errorHeading }}</a></li>
+                      {% endif %}
+                  </ul>
 
-                </div>
-                {% endif %}
+              </div>
+              {% endif %}
 
                 <div class="form-group">
 
@@ -46,6 +48,7 @@
 
                         <h1 class="heading-large">{{ i18n.notifications.email.addressChange.title }}</h1>
 
+
                         {{ textField(
                             label = 'Enter your new email address',
                             field = fields.email,
@@ -54,8 +57,8 @@
 
                         {{ textField(
                             label = 'Enter your new email address again',
-                            field = fields.email2,
-                            name = 'email2'
+                            field = fields.confirmEmail,
+                            name = 'confirmEmail'
                         ) }}
 
                     </fieldset>

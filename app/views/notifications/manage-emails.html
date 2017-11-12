@@ -29,16 +29,18 @@
                         </legend>
 
                         {{ radioButton(
-                            name = 'emailNotify',
-                            value = 'changeEmailAddress',
-                            label = 'Change your email address'
-                        ) }}
+                            label='Change your email address',
+                            name='type',
+                            field=fields.type,
+                            value=types.CHANGE_EMAIL
+                        )}}
 
                         {{ radioButton(
-                            name = 'emailNotify',
-                            value = 'stopEmails',
-                            label = 'Stop receiving emails'
-                        ) }}
+                            label='Stop receiving emails',
+                            name='type',
+                            field=fields.type,
+                            value=types.STOP_EMAIL
+                        )}}
 
                     </fieldset>
 

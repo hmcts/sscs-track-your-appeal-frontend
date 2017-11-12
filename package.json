@@ -4,7 +4,7 @@
   "version": "0.0.2",
   "private": true,
   "engines": {
-    "node": ">=8.1.4"
+    "node": ">=9.1.0"
   },
   "scripts": {
     "start": "cross-env NODE_PATH=. LOG_OUTPUT=single node server.js",
@@ -55,6 +55,7 @@
     "grunt-sync": "^0.6.2",
     "helmet": "^3.5.0",
     "http-status-codes": "^1.1.6",
+    "joi": "^13.0.1",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
     "moment-timezone": "^0.5.13",
