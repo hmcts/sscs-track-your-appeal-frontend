@@ -89,12 +89,12 @@ module.exports = function(grunt){
 
         copy: {
           services: {
-            src: "app/assets/javascripts/ServiceLoader.js",
-            dest: "app/services/ServiceLoader.js"
+            src: "app/assets/javascripts/index.js",
+            dest: "app/services/index.js"
           },
           mockServices: {
-            src: "test/mock/MockServiceLoader.js",
-            dest: "app/services/ServiceLoader.js"
+            src: "test/mock/index.js",
+            dest: "app/services/index.js"
           }
         },
 
