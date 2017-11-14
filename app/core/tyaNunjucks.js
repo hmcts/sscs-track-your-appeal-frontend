@@ -53,11 +53,11 @@ const filters = {
     return screenReaderHelper.getScreenReaderTextFor(currentStatus, progressBarTick);
   },
 
-  short: (benefitType) => {
+  acronym: (benefitType) => {
     return getContentAsString(`${keys.BENEFIT_TYPES}.${benefitType}.${keys.SHORT}`);
   },
 
-  long: (benefitType) => {
+  fullDescription: (benefitType) => {
     return getContentAsString(`${keys.BENEFIT_TYPES}.${benefitType}.${keys.LONG}`);
   }
 
