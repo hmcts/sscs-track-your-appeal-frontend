@@ -37,14 +37,18 @@ const getAppeal = (req, res, next) => {
 const changeEmailAddress = (req, res, next) => {
   const token = res.locals.token;
 
-  if(!token || ! token.id || !token.subscriptionId) {
-    next(new Error(`Unable to make API call to POST: ${appealsAPI}/${token.id}/subscriptions/${token.subscriptionId}`));
+  const endpoint = `${appealsAPI}/${token.appealId}/subscriptions/${token.subscriptionId}`;
+
+  if(!token || !token.appealId || !token.subscriptionId) {
+    next(new Error(`Unable to make API call to POST: ${endpoint}`));
     return;
   }
 
-  request.post(`${appealsAPI}/${id}/subscriptions/${subscriptionId}`).send(body)
+  const body = { subscription: { email: req.body.email } };
+
+  request.post(endpoint).send(body)
     .then((result) => {
-        logger.info(`POST ${appealsAPI}/${token.id}/subscriptions/${token.subscriptionId} ${HttpStatus.OK}`);
+        logger.info(`POST ${endpoint} ${HttpStatus.OK}`);
         next();
       }).catch((error) => {
         next(error);
@@ -54,14 +58,16 @@ const changeEmailAddress = (req, res, next) => {
 const stopReceivingEmails = (req, res, next) => {
   const token = res.locals.token;
 
-  if(!token || ! token.id || !token.subscriptionId) {
-    next(new Error(`Unable to make API call to DELETE: ${appealsAPI}/${token.id}/subscriptions/${token.subscriptionId}`));
+  const endpoint = `${appealsAPI}/${token.appealId}/subscriptions/${token.subscriptionId}`;
+
+  if(!token || !token.appealId || !token.subscriptionId) {
+    next(new Error(`Unable to make API call to DELETE: ${endpoint}`));
     return;
   }
 
-  request.delete(`${appealsAPI}/${token.id}/subscriptions/${token.subscriptionId}`)
+  request.delete(endpoint)
     .then((result) => {
-      logger.info(`DELETE ${appealsAPI}/${token.id}/subscriptions/${token.subscriptionId} ${HttpStatus.OK}`);
+      logger.info(`DELETE ${endpoint} ${HttpStatus.OK}`);
       next();
     }).catch((error) => {
       next(error);

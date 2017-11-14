@@ -8,12 +8,12 @@ const aboutHearingContent = (req, res, next) => {
   next();
 };
 
-const manageEmailNotifications = (req, res, next) => {
-  const benefitType = 'pip';
-  const placeholder = { benefitType: benefitType };
+const emailNotifications = (req, res, next) => {
+  const token = res.locals.token;
+  const placeholder = { benefitType: token.benefitType };
   res.locals.i18n.notifications = renderContent(res.locals.i18n.notifications, placeholder);
 
   next();
 };
 
-module.exports = { aboutHearingContent, manageEmailNotifications };
+module.exports = { aboutHearingContent, emailNotifications };

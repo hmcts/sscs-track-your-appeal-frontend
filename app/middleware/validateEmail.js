@@ -10,7 +10,6 @@ const validateEmail = (req, res, next) => {
     res.status(HttpStatus.BAD_REQUEST);
     res.render('email-address-change', { mactoken: req.params.mactoken, fields } );
   } else {
-    res.locals.email = { subscription: { email: req.body.email } };
     next();
   }
 };
