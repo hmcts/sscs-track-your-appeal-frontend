@@ -85,12 +85,12 @@
   },
   "benefitTypes": {
     "esa": {
-      "short": "ESA",
-      "long": "Employment and Support Allowance (ESA)"
+      "acronym": "ESA",
+      "fullDescription": "Employment and Support Allowance (ESA)"
     },
     "pip": {
-      "short": "PIP",
-      "long": "Personal Independence Payment (PIP)"
+      "acronym": "PIP",
+      "fullDescription": "Personal Independence Payment (PIP)"
     }
   },
   "progressBar": {

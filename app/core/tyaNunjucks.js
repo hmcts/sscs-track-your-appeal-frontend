@@ -4,12 +4,6 @@ const {dateFormat, timeZone} = require('app/config');
 const {events} = require('app/core/events');
 const moment = require('moment-timezone');
 
-const keys = {
-  BENEFIT_TYPES: 'benefitTypes',
-  SHORT: 'short',
-  LONG: 'long'
-};
-
 const tyaNunjucks = {
 
   nunjucksEnv: null,
@@ -54,11 +48,11 @@ const filters = {
   },
 
   acronym: (benefitType) => {
-    return getContentAsString(`${keys.BENEFIT_TYPES}.${benefitType}.${keys.SHORT}`);
+    return getContentAsString(`benefitTypes.${benefitType}.acronym`);
   },
 
   fullDescription: (benefitType) => {
-    return getContentAsString(`${keys.BENEFIT_TYPES}.${benefitType}.${keys.LONG}`);
+    return getContentAsString(`benefitTypes.${benefitType}.fullDescription`);
   }
 
 };
