@@ -2,6 +2,7 @@
   "appeal": {
     "caseReference": "SC888/88/88888",
     "appealNumber": "md012",
+    "benefitType": "pip",
     "name": "Ms. L Lena",
     "status": "POSTPONED",
     "latestEvents": [{

@@ -2,6 +2,7 @@
   "appeal": {
     "caseReference": "SC123/45/00001",
     "appealNumber": "md007",
+    "benefitType": "pip",
     "name": "Miss BST Same-time",
     "status": "HEARING",
     "latestEvents": [

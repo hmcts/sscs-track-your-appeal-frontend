@@ -2,6 +2,7 @@
   "appeal": {
     "caseReference": "SC555/55/55555",
     "appealNumber": "md009",
+    "benefitType": "pip",
     "name": "Ms. F Foxtrot",
     "status": "LAPSED_REVISED",
     "latestEvents": [

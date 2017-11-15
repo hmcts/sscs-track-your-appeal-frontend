@@ -89,7 +89,6 @@ Scenario('verify appellant details after Hearing response received', function*(I
   I.see(pageText.status.hearing.content[1]);
  });
 
-
 Scenario('verify about your appeal section links', function*(I) {
   let appealId = yield I.retrieveAppealNumber(dbProperties.hearingAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
@@ -128,15 +127,18 @@ Scenario('verify what to expect at your hearing page', function*(I) {
   let appealId = yield I.retrieveAppealNumber(dbProperties.hearingAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/abouthearing');
   I.see(pageText.hearing.details.title);
+  I.see('Your hearing is an opportunity for you to explain your appeal and get an impartial decision on your entitlement to Employment and Support Allowance (ESA). The tribunal is independent and will consider both sides of the appeal.');
+  I.see('An ESA appeal hearing with a judge and a medical expert.');
   I.see(pageText.hearing.expectations.whenYouArrive.heading);
   I.see(pageText.hearing.expectations.whenYouArrive.content);
   I.see(pageText.hearing.expectations.theHearingRoom.heading);
   I.see(pageText.hearing.expectations.theHearingRoom.content);
-  I.see(pageText.hearing.expectations.theHearingRoom.caption);
   I.see(pageText.hearing.expectations.peopleAtHearing.heading);
   I.see(pageText.hearing.expectations.dwp.heading);
+  I.see('A representative from DWP might be there. They are not on the panel and are there to speak on behalf of DWP. They won’t be the person who made the decision about your entitlement to ESA.');
   I.see(pageText.hearing.expectations.duringHearing.heading);
   I.see(pageText.hearing.expectations.gettingDecision.heading);
+  I.see('The judge will explain whether you’re entitled to ESA and if so, at what level.');
   });
 
 Scenario('verify expenses page', function*(I) {
@@ -164,7 +166,7 @@ Scenario('verify appellant details for lapsed revised state', function*(I) {
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. F Foxtrot');
   I.see('Appeal reference number: SC555/55/55555');
-  I.see(pageText.status.lapsedRevised.content[0]);
+  I.see('DWP have told us they changed their decision on your entitlement to ESA in your favour. We’ve therefore closed this appeal. If you don’t agree with their new decision you can start a new appeal.');
   I.see(pageText.status.lapsedRevised.content[1]);
 
 });
@@ -202,8 +204,8 @@ Scenario('verify appellant details for postponed state', function*(I) {
   I.see(pageText.progressBar.screenReader.dwpRespond.happened);
   I.see(pageText.progressBar.screenReader.hearingBooked.due);
   I.see(pageText.progressBar.screenReader.hearing.due);
-  I.see(pageText.status.postponed.content[0]);
-  I.see('We’ll now book a new hearing for your appeal. You don’t need to do anything. Unfortunately we can’t say how long it will take to book but it may be some time. It will depend on how busy the hearing venues are.');
+  I.see('The hearing for your ESA benefit appeal has been postponed and will now take place on a different day.');
+  I.see(pageText.status.postponed.content[1]);
 });
 
 Scenario('verify appellant details for past hearing date state', function*(I) {
@@ -215,7 +217,7 @@ Scenario('verify appellant details for past hearing date state', function*(I) {
   I.see(pageText.progressBar.screenReader.dwpRespond.happened);
   I.see(pageText.progressBar.screenReader.hearingBooked.due);
   I.see(pageText.progressBar.screenReader.hearing.due);
-  I.see(pageText.status.pastHearingBooked.content);
+  I.see('We’re still trying to find a suitable time for your ESA benefit appeal. We’ll contact you as soon as we’ve scheduled it. We apologise for any inconvenience this may cause you.');
 
 });
 
@@ -234,7 +236,7 @@ Scenario('verify appellant details for Closed state', function*(I) {
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. O Owl');
   I.see('Appeal reference number: SC100/00/00002');
-  I.see(pageText.status.closed.content[0]);
+  I.see('Your ESA benefit appeal is now closed.');
   I.see(pageText.status.closed.content[1]);
 });
 

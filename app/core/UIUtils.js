@@ -1,25 +1,22 @@
 const {events, progressBar} = require('app/core/events');
 const logger = require('nodejs-logging').getLogger('UIUtils.js');
 
-class UIUtils {
+const showProgressBar = (req, res, next) => {
 
-  static showProgressBar(req, res, next) {
-    let appeal = res.locals.appeal;
-    if(appeal) {
-      let event = events[appeal.status];
-      if(event) {
-        appeal.showProgressBar = event.index !== progressBar.NONE;
-      } else {
-        logger.error(`Unable to map the status ${appeal.status} to an event:`);
-      }
+  let appeal = res.locals.appeal;
+
+  if (appeal) {
+    let event = events[appeal.status];
+    if(event) {
+      appeal.showProgressBar = event.index !== progressBar.NONE;
     } else {
-      logger.error(`Undefined appeal`);
+      logger.error(`Unable to map the status ${appeal.status} to an event:`);
     }
-    next();
+  } else {
+    logger.error(`Undefined appeal`);
   }
 
-}
-
-module.exports = {
-  showProgressBar: UIUtils.showProgressBar,
+  next();
 };
+
+module.exports = { showProgressBar };

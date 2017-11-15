@@ -1,10 +1,10 @@
 const {expect} = require('test/chai-sinon');
 const {timeZone} = require('app/config');
+const {tyaNunjucks} = require('app/core/tyaNunjucks');
 const moment = require('moment-timezone');
 const testServer = require('test/testServer');
-const NunjucksUtils = require('app/core/NunjucksUtils');
 
-describe('NunjucksUtils.js', () => {
+describe('tyaNunjucks.js', () => {
 
   let httpServer;
 
@@ -51,19 +51,19 @@ describe('NunjucksUtils.js', () => {
   describe('renderString()', () => {
 
     it('should render a Hello SSCS string', () => {
-      let helloSSCS = NunjucksUtils.renderString('Hello {{ name }}', { name: 'SSCS' });
-      expect(helloSSCS).equal('Hello SSCS');
+      let helloSSCS = tyaNunjucks.env.renderString('Hello {{ name }}', { name: 'SSCS' });
+      expect(helloSSCS).to.equal('Hello SSCS');
     });
 
     describe('filters', () => {
 
       it('should take a date defined in UTC and covert it to a local date', () => {
-        let localDateTimeStr = NunjucksUtils.renderString('{{date|formatDate}}', { date: utcDateTimeStr });
+        let localDateTimeStr = tyaNunjucks.env.renderString('{{date|formatDate}}', { date: utcDateTimeStr });
         expect(localDateTimeStr).to.equal(`${localDate} ${localMonth} ${localYear}`);
       });
 
       it('should take a time defined in UTC and covert it to local time', () => {
-        let localDateTimeStr = NunjucksUtils.renderString('{{time|formatTime}}', { time: utcDateTimeStr });
+        let localDateTimeStr = tyaNunjucks.env.renderString('{{time|formatTime}}', { time: utcDateTimeStr });
         expect(localDateTimeStr).to.equal(`${localHours}:${localMinutes}`);
       });
 
@@ -72,7 +72,7 @@ describe('NunjucksUtils.js', () => {
           username: 'harrypotter',
           password: '123'
         };
-        let stringifiedObj = NunjucksUtils.renderString('{{obj|json}}', {obj: credentials});
+        let stringifiedObj = tyaNunjucks.env.renderString('{{obj|json}}', {obj: credentials});
         expect(stringifiedObj).to.eq('{\n  &quot;username&quot;: &quot;harrypotter&quot;,\n  &quot;password&quot;: &quot;123&quot;\n}');
       });
 
@@ -81,30 +81,30 @@ describe('NunjucksUtils.js', () => {
     describe('UTC to BST', () => {
 
       it('should take a date time string defined in UTC and covert it to a local date', () => {
-        expect(NunjucksUtils.renderString('{{date|formatDate}}', { date: '2017-07-24T23:00:00.000Z' })).to.eq('25 July 2017');
+        expect(tyaNunjucks.env.renderString('{{date|formatDate}}', { date: '2017-07-24T23:00:00.000Z' })).to.eq('25 July 2017');
       });
 
       it('should take a date time string defined in UTC and covert it to a local time', () => {
-        expect(NunjucksUtils.renderString('{{date|formatTime}}', { date: '2017-07-17T12:15:00.000Z' })).to.eq('13:15');
+        expect(tyaNunjucks.env.renderString('{{date|formatTime}}', { date: '2017-07-17T12:15:00.000Z' })).to.eq('13:15');
       });
 
     });
 
     describe('throwing an error', () => {
 
-      let nunJucksEnv;
+      let savedNunJucksEnv;
 
       before(() => {
-        nunJucksEnv = NunjucksUtils.env;
-        NunjucksUtils.env = undefined;
+        savedNunJucksEnv = tyaNunjucks.env;
+        tyaNunjucks.env = undefined;
       });
 
       after(() => {
-        NunjucksUtils.env = nunJucksEnv;
+        tyaNunjucks.env = savedNunJucksEnv;
       });
 
       it('should throw an error', () => {
-        expect(() => NunjucksUtils.renderString('Hello {{ username }}', { name: 'SSCS' })).to.throw(Error, 'The nunjucksEnv has not been set!');
+        expect(() => tyaNunjucks.env.renderString('Hello {{ username }}', { name: 'SSCS' })).to.throw(Error, 'The nunjucks environment has not been set.');
       });
 
     });

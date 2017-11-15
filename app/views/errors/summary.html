@@ -1,0 +1,17 @@
+{% if fields.error %}
+<div class="error-summary" role="group" aria-labelledby="error-summary-heading" tabindex="-1">
+
+    <ul class="error-summary-list">
+        {% if fields.noSelection.errorHeading %}
+        <li><a href="#email">{{ fields.noSelection.errorHeading }}</a></li>
+        {% endif %}
+        {% if fields.email.errorHeading %}
+        <li><a href="#email">{{ fields.email.errorHeading }}</a></li>
+        {% endif %}
+        {% if fields.confirmEmail.errorHeading %}
+        <li><a href="#confirmEmail">{{ fields.confirmEmail.errorHeading }}</a></li>
+        {% endif %}
+    </ul>
+
+</div>
+{% endif %}

@@ -2,6 +2,7 @@
   "appeal": {
     "caseReference": "SC666/66/66666",
     "appealNumber": "md013",
+    "benefitType": "pip",
     "name": "Ms. I Iglo",
     "status": "WITHDRAWN",
     "latestEvents": [

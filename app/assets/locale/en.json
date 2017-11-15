@@ -14,21 +14,21 @@
     "closed": {
       "heading": "Appeal closed",
       "content": [
-        "Your ESA benefit appeal is now closed.",
+        "Your {{benefitType|acronym}} benefit appeal is now closed.",
         "If you have any questions relating to your benefits, contact DWP. You can find their contact details on any correspondence you’ve received from them."
       ]
     },
     "dormant": {
       "heading": "Hearing took place",
       "content": [
-        "A hearing for your ESA appeal took place on {{date|formatDate}} and a decision was made. You should receive the decision by post within 7 working days of the hearing.",
+        "A hearing for your {{benefitType|acronym}} appeal took place on {{date|formatDate}} and a decision was made. You should receive the decision by post within 7 working days of the hearing.",
         "We can’t publish the decision online or tell you over the phone. This is to protect your personal information."
       ]
     },
     "dwpRespond": {
       "heading": "DWP response",
       "content": [
-        "DWP have written a response to your ESA benefit appeal. They should have sent you a copy in the post.",
+        "DWP have written a response to your {{benefitType|acronym}} benefit appeal. They should have sent you a copy in the post.",
         "We now need to book your hearing. You don’t need to do anything. We’ll contact you again when we have a date for your hearing. Unfortunately we can’t say how long it will take to book but it may be some time. It will depend on how busy the hearing venues are."
       ]
     },
@@ -45,7 +45,7 @@
     "hearing": {
       "heading": "Hearing took place",
       "content": [
-        "A hearing for your ESA appeal took place on {{date|formatDate}} and a decision was made. You should receive the decision by post within 7 working days of the hearing.",
+        "A hearing for your {{benefitType|acronym}} appeal took place on {{date|formatDate}} and a decision was made. You should receive the decision by post within 7 working days of the hearing.",
         "We can’t publish the decision online or tell you over the phone. This is to protect your personal information."
       ]
     },
@@ -56,7 +56,7 @@
     "lapsedRevised": {
       "heading": "Change of decision",
       "content": [
-        "DWP have told us they changed their decision on your entitlement to ESA in your favour. We’ve therefore closed this appeal. If you don’t agree with their new decision you can start a new appeal.",
+        "DWP have told us they changed their decision on your entitlement to {{benefitType|acronym}} in your favour. We’ve therefore closed this appeal. If you don’t agree with their new decision you can start a new appeal.",
         "If you have any questions relating to your benefits, contact DWP. You can find their contact details on any correspondence you’ve received from them."
       ]
     },
@@ -66,12 +66,12 @@
     },
     "pastHearingBooked": {
       "heading": "Still booking a hearing",
-      "content": "We’re still trying to find a suitable time for your ESA benefit appeal. We’ll contact you as soon as we’ve scheduled it. We apologise for any inconvenience this may cause you."
+      "content": "We’re still trying to find a suitable time for your {{benefitType|acronym}} benefit appeal. We’ll contact you as soon as we’ve scheduled it. We apologise for any inconvenience this may cause you."
     },
     "postponed": {
       "heading": "Hearing postponed",
       "content": [
-        "The hearing for your ESA benefit appeal has been postponed and will now take place on a different day.",
+        "The hearing for your {{benefitType|acronym}} benefit appeal has been postponed and will now take place on a different day.",
         "We’ll now book a new hearing for your appeal. You don’t need to do anything. Unfortunately we can’t say how long it will take to book but it may be some time. It will depend on how busy the hearing venues are."
       ]
     },
@@ -81,6 +81,16 @@
         "You told us you wanted to withdraw your appeal so we’ve closed it.",
         "If you have any questions relating to your benefits, contact DWP. You can find their contact details on any correspondence you’ve received from them."
       ]
+    }
+  },
+  "benefitTypes": {
+    "esa": {
+      "acronym": "ESA",
+      "fullDescription": "Employment and Support Allowance (ESA)"
+    },
+    "pip": {
+      "acronym": "PIP",
+      "fullDescription": "Personal Independence Payment (PIP)"
     }
   },
   "progressBar": {
@@ -178,14 +188,14 @@
       },
       "stop": {
         "tab": "Manage email notifications",
-        "title": "You’ll stop receiving email updates and reminders about your ESA benefit appeal.",
+        "title": "You’ll stop receiving email updates and reminders about your {{benefitType|acronym}} benefit appeal.",
         "confirm": "Confirm",
         "link": "Cancel"
       },
       "stopConfirmation": {
         "tab": "Stopped notifications",
         "title": "You’ve stopped email notifications",
-        "content": "You won’t receive any more emails about your ESA benefit appeal.",
+        "content": "You won’t receive any more emails about your {{benefitType|acronym}} benefit appeal.",
         "exitFeedbackSurveyPreLink": "Please provide some",
         "exitFeedbackSurveyLink": "feedback to help us improve this service.",
         "linkPre": "You can still",
@@ -204,20 +214,19 @@
       },
       "addressChangeConfirmed": {
         "tab": "Email address confirmation",
-        "title": "Emails about your ESA benefit appeal will now be sent to",
+        "title": "Emails about your {{benefitType|acronym}} benefit appeal will now be sent to",
         "content": "We’ve sent a confirmation email to that address. Check it in a few minutes.",
         "link": "Change your email address"
       },
       "errors": {
-        "emptyStringEmailHeading": "New email address not entered",
-        "emptyStringEmailHeadingTwo": "New email address not entered again",
+        "selectAnOptionHeading": "Please select an option",
+        "selectAnOptionField": "You have not selected an option. Select an option.",
+        "emptyStringHeading": "New email address not entered",
         "emptyStringEmailField": "You have not entered your email address. Enter your email address.",
-        "emptyStringEmailFieldTwo": "You have not entered your email address again. Enter your email address again.",
-        "noMatchHeading": "Email addresses do not match",
-        "noMatchField": "Your email addresses don’t match. Check and enter them again.",
         "notValidHeading": "New email address is invalid",
         "notValidField": "The email address you’ve entered is invalid. Check it and enter it again.",
-        "selectAnOption": "Please select an option"
+        "noMatchHeading": "Email addresses do not match",
+        "noMatchField": "Your email addresses don’t match. Check and enter them again."
       }
     }
   },
@@ -229,13 +238,13 @@
     "expectations": {
       "title": "What to expect at your hearing",
       "link": "Find out what your hearing is going to be like",
-      "content": "Your hearing is an opportunity for you to explain your appeal and get an impartial decision on your entitlement to Employment and Support Allowance (ESA). The tribunal is independent and will consider both sides of the appeal.",
+      "content": "Your hearing is an opportunity for you to explain your appeal and get an impartial decision on your entitlement to {{benefitType|fullDescription}}. The tribunal is independent and will consider both sides of the appeal.",
       "whenYouArrive": {
         "heading": "When you arrive",
         "content": "You’ll be greeted by a tribunal clerk. They’ll take care of you at the hearing venue and answer any questions you have."
       },
       "theHearingRoom": {
-        "caption": "An ESA appeal hearing with a judge and a medical expert.",
+        "caption": "An {{benefitType|acronym}} appeal hearing with a judge and a medical expert.",
         "imageAlt": "A tribunal hearing with 4 people, dressed informally, sat around a table.",
         "heading": "The hearing room",
         "content": "The tribunal clerk will take you into the hearing room. The judge and medical expert will be sitting at a table. You’ll be invited to sit opposite them. If you have someone to support you or to give evidence, they’ll sit next to you."
@@ -251,7 +260,7 @@
       "dwp": {
         "heading": "DWP",
         "content": [
-          "A representative from DWP might be there. They are not on the panel and are there to speak on behalf of DWP. They won’t be the person who made the decision about your entitlement to ESA."
+          "A representative from DWP might be there. They are not on the panel and are there to speak on behalf of DWP. They won’t be the person who made the decision about your entitlement to {{benefitType|acronym}}."
         ]
       },
       "duringHearing": {
@@ -265,7 +274,7 @@
         "heading": "Getting a decision",
         "content": [
           "After you’ve answered all the questions you’ll be asked to wait outside while the tribunal discusses your appeal. You’ll then be asked back into the room to be told the decision.",
-          "The judge will explain whether you’re entitled to ESA and if so, at what level.",
+          "The judge will explain whether you’re entitled to {{benefitType|acronym}} and if so, at what level.",
           "Sometimes the tribunal may need more time to make a decision. If that happens the decision about your appeal will be posted to you."
         ]
       }

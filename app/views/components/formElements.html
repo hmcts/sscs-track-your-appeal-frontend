@@ -24,35 +24,10 @@
 </div>
 {% endmacro %}
 
-{% macro yesNoRadio(hint, field, name) %}
-<div class="form-group {{'form-group-error' if field.error}}">
-    <fieldset class="inline">
-
-        {% if hint or field.error %}
-        <legend>
-
-            {% if hint %}
-            <span class="form-label">{{ hint | safe }}</span>
-            {% endif %}
-
-            {% if field.error %}
-            <span class="error-message">{{ field.errorMessage | safe }}</span>
-            {% endif %}
-
-        </legend>
-        {% endif %}
-
-        {{ radioButton(name, 'yes', 'Yes') }}
-        {{ radioButton(name, 'no', 'No') }}
-
-    </fieldset>
-</div>
-{% endmacro %}
-
-{% macro radioButton(name, value, label) %}
-<div class="multiple-choice">
-    <input id="{{ name }}_{{ value }}" type="radio" name="{{name}}" value="{{ value }}">
-    <label for="{{ name }}_{{ value }}">{{label}}</label>
+{% macro radioButton(label, name, field, value, dataTarget) %}
+<div class="multiple-choice" data-target="{{ dataTarget }}">
+    <input id="{{ name }}_{{ value }}" type="radio" name="{{ name }}" value="{{ value }}" {{ 'checked="checked" ' if field.value == value }}}>
+    <label for="{{ name }}_{{ value }}">{{ label }}</label>
 </div>
 {% endmacro %}
 

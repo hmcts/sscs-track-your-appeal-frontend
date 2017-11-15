@@ -1,13 +1,13 @@
 const logging = require('nodejs-logging');
 const healthcheck = require('nodejs-healthcheck');
 const express = require('express');
-const nunjucks = require('express-nunjucks');
+const expressNunjucks = require('express-nunjucks');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const locals = require('app/locals');
 const config = require('app/config');
 const routes = require('app/routes');
-const NunjucksUtils = require('app/core/NunjucksUtils');
+const {tyaNunjucks, filters} = require('app/core/tyaNunjucks');
 const ErrorHandling = require('app/core/ErrorHandling');
 const os = require('os');
 const path = require('path');
@@ -79,11 +79,11 @@ app.get('/robots.txt', (req, res) => {
   res.send('User-agent: *\nDisallow: /');
 });
 
-NunjucksUtils.env = nunjucks(app, {
+tyaNunjucks.env = expressNunjucks(app, {
   autoescape: true,
   watch: true,
   noCache: false,
-  filters: NunjucksUtils.filters
+  filters: filters
 }).env;
 
 app.use('/public', express.static(__dirname + '/public'));

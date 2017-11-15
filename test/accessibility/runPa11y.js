@@ -13,6 +13,9 @@ const pa11yRunner = pa11y({
 
   hideElements: '.skiplink .govuk-box-highlight, #logo, #footer, link[rel=mask-icon], .skipAccessTest'
 });
+
+const manageEmailNotifications = '/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=';
+
 const accessibilityPages = [
   '/progress/md002/contactus',
   '/progress/md002/abouthearing',
@@ -24,6 +27,10 @@ const accessibilityPages = [
   '/progress/md007/hearingdetails/1',  // hearing
   '/progress/md007/expenses',
   '/progress/md007/evidence',
+  manageEmailNotifications,
+  `${manageEmailNotifications}/change`,
+  `${manageEmailNotifications}/stop`,
+  `${manageEmailNotifications}/stopconfirm`,
 ];
 
 accessibilityPages.forEach((page) => {

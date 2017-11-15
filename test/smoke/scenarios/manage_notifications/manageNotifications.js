@@ -2,7 +2,7 @@ const emailText = require('public/locale/en').notifications.email;
 
 Feature('Manage Notifications');
 
-Scenario('verify change password ', function*(I) {
+Scenario('verify change password', function*(I) {
   let authenticationCode = yield I.getMACToken();
   I.amOnPage('/manage-email-notifications/' + authenticationCode);
   I.see(emailText.manage.title);
@@ -10,15 +10,16 @@ Scenario('verify change password ', function*(I) {
   I.click("Continue");
   I.wait(2);
   I.fillField('email', 'test2.test@hmcts.net');
-  I.fillField('email2', 'test2.test@hmcts.net');
+  I.fillField('confirmEmail', 'test2.test@hmcts.net');
   I.click("Continue");
   I.wait(2);
-  I.see(emailText.addressChangeConfirmed.title);
+  I.see("Emails about your ESA benefit appeal will now be sent to");
   I.see("test2.test@hmcts.net");
   I.see(emailText.addressChangeConfirmed.content);
 });
 
-Scenario('check feedback form link  ', function*(I) {
+Scenario('check feedback form link', function*(I) {
+  yield I.getMACToken();
   let authenticationCode = yield I.getMessageAuthenticationCode();
   I.amOnPage('/manage-email-notifications/' + authenticationCode);
   I.see(emailText.manage.title);
@@ -27,18 +28,18 @@ Scenario('check feedback form link  ', function*(I) {
   I.see("Your feedback");
 });
 
-Scenario('stop email subscription  ', function*(I) {
+Scenario('stop email subscription', function*(I) {
+  yield I.getMACToken();
   let authenticationCode = yield I.getMessageAuthenticationCode();
   I.amOnPage('/manage-email-notifications/' + authenticationCode);
   I.see(emailText.manage.title);
   I.checkOption("Stop receiving emails");
   I.click("Continue");
-  I.see(emailText.stop.title);
+  I.see("You’ll stop receiving email updates and reminders about your ESA benefit appeal.");
   I.click("Confirm");
   I.see(emailText.stopConfirmation.title);
   I.see(emailText.stopConfirmation.exitFeedbackSurveyPreLink);
   I.see(emailText.stopConfirmation.exitFeedbackSurveyLink);
-  I.see(emailText.stopConfirmation.content);
+  I.see("You won’t receive any more emails about your ESA benefit appeal.");
   I.click(emailText.stopConfirmation.exitFeedbackSurveyLink);
 });
-

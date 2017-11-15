@@ -1,24 +1,24 @@
-var chai = require('chai');
-var expect = require('chai').expect;
-var chaiHttp = require('chai-http');
+const chai = require('chai');
+const expect = require('chai').expect;
+const chaiHttp = require('chai-http');
 
-var frontendURL = process.env.SSCS_TYA_FRONTEND_URL;
-var backendURL = process.env.SSCS_TYA_BACKEND_URL || "http://localhost:8080/";
+const frontendURL = process.env.SSCS_TYA_FRONTEND_URL;
+const backendURL = process.env.SSCS_TYA_BACKEND_URL || "http://localhost:8080/";
 
 chai.use(chaiHttp);
 chai.request.Request = chai.request.Test;
 require('superagent-proxy')(chai.request);
 
-var healthcheckProxyRequest = function(url) {
-  var req = chai.request(url).get('health');
+const healthcheckProxyRequest = function(url) {
+  let req = chai.request(url).get('health');
   if (typeof(proxy) !== 'undefined') {
     req = req.proxy(proxy)
   }
   return req;
 };
 
-var healthcheckProxyRequestFrontEnd = function(url) {
-  var req = chai.request(url).get('status');
+const healthcheckProxyRequestFrontEnd = function(url) {
+  let req = chai.request(url).get('status');
   if (typeof(proxy) !== 'undefined') {
     req = req.proxy(proxy)
   }
