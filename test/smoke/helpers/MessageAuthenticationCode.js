@@ -33,7 +33,7 @@ class messageAuthenticationCodeHelper extends codecept_helper {
       let pgClient = new pg.Client(dbProperties.connectionString);
       let subscriptionData = [];
       pgClient.connect();
-      let query = pgClient.query("Select id from subscriptions where appeal_case_id=$1", [dbProperties.lapsedRevisedAppealCaseId]);
+      let query = pgClient.query("Select id from subscriptions where appeal_case_id=$1", [dbProperties.lapsedRevisedESAAppealCaseId]);
       query.on('row', (row) => {
         subscriptionData.push(row);
       });

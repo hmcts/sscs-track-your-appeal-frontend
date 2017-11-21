@@ -75,9 +75,9 @@ Scenario('verify hearing details', function*(I, Properties) {
   I.seeInCurrentUrl("Chester+Magistrates");
   });
 
-Scenario('verify appellant details after Hearing response received', function*(I) {
-  let appealId = yield I.retrieveAppealNumber(dbProperties.hearingAppealCaseId);
-  let date = yield I.calculateDate(dbProperties.hearingAppealCaseId,0);
+Scenario('verify appellant details after Hearing response received for ESA appeal', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.hearingESAAppealCaseId);
+  let date = yield I.calculateDate(dbProperties.hearingESAAppealCaseId,0);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. D Delta');
   I.see('Appeal reference number: SC444/44/44444');
@@ -89,8 +89,22 @@ Scenario('verify appellant details after Hearing response received', function*(I
   I.see(pageText.status.hearing.content[1]);
  });
 
+Scenario('verify appellant details after Hearing response received for PIP appeal', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.hearingPIPAppealCaseId);
+  let date = yield I.calculateDate(dbProperties.hearingPIPAppealCaseId,0);
+  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.see('Ms. D Date');
+  I.see('Appeal reference number: SC300/04/44444');
+  I.see(pageText.progressBar.screenReader.appeal.happened);
+  I.see(pageText.progressBar.screenReader.dwpRespond.happened);
+  I.see(pageText.progressBar.screenReader.hearingBooked.happened);
+  I.see(pageText.progressBar.screenReader.hearing.happened);
+  I.see('A hearing for your PIP appeal took place on '+date+' and a decision was made. You should receive the decision by post within 7 working days of the hearing.');
+  I.see(pageText.status.hearing.content[1]);
+ });
+
 Scenario('verify about your appeal section links', function*(I) {
-  let appealId = yield I.retrieveAppealNumber(dbProperties.hearingAppealCaseId);
+  let appealId = yield I.retrieveAppealNumber(dbProperties.hearingESAAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('About your appeal');
   I.click('What to expect at your hearing');
@@ -110,7 +124,7 @@ Scenario('verify about your appeal section links', function*(I) {
 });
 
 Scenario('verify evidence page', function*(I) {
-  let appealId = yield I.retrieveAppealNumber(dbProperties.hearingAppealCaseId);
+  let appealId = yield I.retrieveAppealNumber(dbProperties.hearingESAAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/evidence');
   I.see(pageText.evidence.provide.title);
   I.see(pageText.evidence.provide.medicalEvidence.heading);
@@ -123,8 +137,8 @@ Scenario('verify evidence page', function*(I) {
   I.see(pageText.evidence.provide.whereToSendEvidence.address[4]);
 });
 
-Scenario('verify what to expect at your hearing page', function*(I) {
-  let appealId = yield I.retrieveAppealNumber(dbProperties.hearingAppealCaseId);
+Scenario('verify what to expect at your hearing page for an ESA appeal', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.hearingESAAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/abouthearing');
   I.see(pageText.hearing.details.title);
   I.see('Your hearing is an opportunity for you to explain your appeal and get an impartial decision on your entitlement to Employment and Support Allowance (ESA). The tribunal is independent and will consider both sides of the appeal.');
@@ -141,15 +155,33 @@ Scenario('verify what to expect at your hearing page', function*(I) {
   I.see('The judge will explain whether you’re entitled to ESA and if so, at what level.');
   });
 
+Scenario('verify what to expect at your hearing page for a PIP appeal', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.hearingPIPAppealCaseId);
+  I.amOnPage('/progress/' + appealId + '/abouthearing');
+  I.see(pageText.hearing.details.title);
+  I.see('Your hearing is an opportunity for you to explain your appeal and get an impartial decision on your entitlement to Personal Independence Payment (PIP). The tribunal is independent and will consider both sides of the appeal.');
+  I.see('An PIP appeal hearing with a judge and a medical expert.');
+  I.see(pageText.hearing.expectations.whenYouArrive.heading);
+  I.see(pageText.hearing.expectations.whenYouArrive.content);
+  I.see(pageText.hearing.expectations.theHearingRoom.heading);
+  I.see(pageText.hearing.expectations.theHearingRoom.content);
+  I.see(pageText.hearing.expectations.peopleAtHearing.heading);
+  I.see(pageText.hearing.expectations.dwp.heading);
+  I.see('A representative from DWP might be there. They are not on the panel and are there to speak on behalf of DWP. They won’t be the person who made the decision about your entitlement to PIP.');
+  I.see(pageText.hearing.expectations.duringHearing.heading);
+  I.see(pageText.hearing.expectations.gettingDecision.heading);
+  I.see('The judge will explain whether you’re entitled to PIP and if so, at what level.');
+  });
+
 Scenario('verify expenses page', function*(I) {
-  let appealId = yield I.retrieveAppealNumber(dbProperties.hearingAppealCaseId);
+  let appealId = yield I.retrieveAppealNumber(dbProperties.hearingESAAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/expenses');
   I.see(pageText.claimExpenses.title);
   I.see(pageText.claimExpenses.content);
 });
 
 Scenario('verify contact us page', function*(I) {
-  let appealId = yield I.retrieveAppealNumber(dbProperties.hearingAppealCaseId);
+  let appealId = yield I.retrieveAppealNumber(dbProperties.hearingESAAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/contactus');
   I.see('Contact us');
   I.see(pageText.contactUs.title);
@@ -161,8 +193,8 @@ Scenario('verify contact us page', function*(I) {
   I.see(pageText.contactUs.scotland.phoneNumber);
 });
 
-Scenario('verify appellant details for lapsed revised state', function*(I) {
-  let appealId = yield I.retrieveAppealNumber(dbProperties.lapsedRevisedAppealCaseId);
+Scenario('verify appellant details for lapsed revised state for ESA appeal', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.lapsedRevisedESAAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. F Foxtrot');
   I.see('Appeal reference number: SC555/55/55555');
@@ -171,11 +203,31 @@ Scenario('verify appellant details for lapsed revised state', function*(I) {
 
 });
 
-Scenario('verify appellant details for withdrawn state', function*(I) {
-  let appealId = yield I.retrieveAppealNumber(dbProperties.withdrawnAppealCaseId);
+Scenario('verify appellant details for lapsed revised state for PIP appeal', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.lapsedRevisedPIPAppealCaseId);
+  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.see('Ms. F Fruit');
+  I.see('Appeal reference number: SC300/05/55555');
+  I.see('DWP have told us they changed their decision on your entitlement to PIP in your favour. We’ve therefore closed this appeal. If you don’t agree with their new decision you can start a new appeal.');
+  I.see(pageText.status.lapsedRevised.content[1]);
+
+});
+
+Scenario('verify appellant details for withdrawn state for ESA appeal', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.withdrawnESAAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. I Iglo');
   I.see('Appeal reference number: SC666/66/66666');
+  I.see(pageText.status.withdrawn.content[0]);
+  I.see(pageText.status.withdrawn.content[1]);
+
+});
+
+Scenario('verify appellant details for withdrawn state for PIP appeal', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.withdrawnPIPAppealCaseId);
+  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.see('Ms. I Iceberg');
+  I.see('Appeal reference number: SC300/06/66666');
   I.see(pageText.status.withdrawn.content[0]);
   I.see(pageText.status.withdrawn.content[1]);
 
@@ -195,8 +247,8 @@ Scenario('verify appellant details for adjurned state', function*(I) {
   I.see('The hearing for your appeal didn’t take place as scheduled. We’ve sent you a letter explaining why, which you should receive by '+date+'.')
 });
 
-Scenario('verify appellant details for postponed state', function*(I) {
-  let appealId = yield I.retrieveAppealNumber(dbProperties.postponedAppealCaseId);
+Scenario('verify appellant details for postponed state for ESA appeal', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.postponedESAAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. L Lena');
   I.see('Appeal reference number: SC888/88/88888');
@@ -208,8 +260,21 @@ Scenario('verify appellant details for postponed state', function*(I) {
   I.see(pageText.status.postponed.content[1]);
 });
 
-Scenario('verify appellant details for past hearing date state', function*(I) {
-  let appealId = yield I.retrieveAppealNumber(dbProperties.pastHearingDateAppealCaseId);
+Scenario('verify appellant details for postponed state PIP appeal', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.postponedPIPAppealCaseId);
+  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.see('Ms. L Lemon');
+  I.see('Appeal reference number: SC300/08/88888');
+  I.see(pageText.progressBar.screenReader.appeal.happened);
+  I.see(pageText.progressBar.screenReader.dwpRespond.happened);
+  I.see(pageText.progressBar.screenReader.hearingBooked.due);
+  I.see(pageText.progressBar.screenReader.hearing.due);
+  I.see('The hearing for your PIP benefit appeal has been postponed and will now take place on a different day.');
+  I.see(pageText.status.postponed.content[1]);
+});
+
+Scenario('verify appellant details for past hearing date state for ESA appeal', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.pastHearingDateESAAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. M Miao');
   I.see('Appeal reference number: SC100/00/00000');
@@ -221,9 +286,22 @@ Scenario('verify appellant details for past hearing date state', function*(I) {
 
 });
 
-Scenario('verify appellant details for dormant state', function*(I) {
-  let appealId = yield I.retrieveAppealNumber(dbProperties.dormantAppealCaseId);
-  let date = yield I.calculateDate(dbProperties.dormantAppealCaseId,0);
+Scenario('verify appellant details for past hearing date state for PIP appeal', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.pastHearingDatePIPAppealCaseId);
+  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.see('Mr. M Melon');
+  I.see('Appeal reference number: SC300/10/00000');
+  I.see(pageText.progressBar.screenReader.appeal.happened);
+  I.see(pageText.progressBar.screenReader.dwpRespond.happened);
+  I.see(pageText.progressBar.screenReader.hearingBooked.due);
+  I.see(pageText.progressBar.screenReader.hearing.due);
+  I.see('We’re still trying to find a suitable time for your PIP benefit appeal. We’ll contact you as soon as we’ve scheduled it. We apologise for any inconvenience this may cause you.');
+
+});
+
+Scenario('verify appellant details for dormant state for ESA appeal', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.dormantESAAppealCaseId);
+  let date = yield I.calculateDate(dbProperties.dormantESAAppealCaseId,0);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. N November');
   I.see('Appeal reference number: SC100/00/00001');
@@ -231,12 +309,31 @@ Scenario('verify appellant details for dormant state', function*(I) {
   I.see(pageText.status.dormant.content[1]);
 });
 
+Scenario('verify appellant details for dormant state for PIP appeal', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.dormantPIPAppealCaseId);
+  let date = yield I.calculateDate(dbProperties.dormantPIPAppealCaseId,0);
+  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.see('Mr. N Nut');
+  I.see('Appeal reference number: SC300/11/00001');
+  I.see('A hearing for your PIP appeal took place on '+date+' and a decision was made. You should receive the decision by post within 7 working days of the hearing.');
+  I.see(pageText.status.dormant.content[1]);
+});
+
 Scenario('verify appellant details for Closed state', function*(I) {
-  let appealId = yield I.retrieveAppealNumber(dbProperties.dormantClosedAppealCaseId);
+  let appealId = yield I.retrieveAppealNumber(dbProperties.dormantClosedESAAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. O Owl');
   I.see('Appeal reference number: SC100/00/00002');
   I.see('Your ESA benefit appeal is now closed.');
+  I.see(pageText.status.closed.content[1]);
+});
+
+Scenario('verify appellant details for Closed state', function*(I) {
+  let appealId = yield I.retrieveAppealNumber(dbProperties.dormantClosedPIPAppealCaseId);
+  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.see('Mr. O Opel');
+  I.see('Appeal reference number: SC300/12/00002');
+  I.see('Your PIP benefit appeal is now closed.');
   I.see(pageText.status.closed.content[1]);
 });
 
