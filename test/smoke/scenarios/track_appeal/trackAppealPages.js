@@ -155,24 +155,6 @@ Scenario('verify what to expect at your hearing page for an ESA appeal', functio
   I.see('The judge will explain whether you’re entitled to ESA and if so, at what level.');
   });
 
-Scenario('verify what to expect at your hearing page for a PIP appeal', function*(I) {
-  let appealId = yield I.retrieveAppealNumber(dbProperties.hearingPIPAppealCaseId);
-  I.amOnPage('/progress/' + appealId + '/abouthearing');
-  I.see(pageText.hearing.details.title);
-  I.see('Your hearing is an opportunity for you to explain your appeal and get an impartial decision on your entitlement to Personal Independence Payment (PIP). The tribunal is independent and will consider both sides of the appeal.');
-  I.see('An PIP appeal hearing with a judge and a medical expert.');
-  I.see(pageText.hearing.expectations.whenYouArrive.heading);
-  I.see(pageText.hearing.expectations.whenYouArrive.content);
-  I.see(pageText.hearing.expectations.theHearingRoom.heading);
-  I.see(pageText.hearing.expectations.theHearingRoom.content);
-  I.see(pageText.hearing.expectations.peopleAtHearing.heading);
-  I.see(pageText.hearing.expectations.dwp.heading);
-  I.see('A representative from DWP might be there. They are not on the panel and are there to speak on behalf of DWP. They won’t be the person who made the decision about your entitlement to PIP.');
-  I.see(pageText.hearing.expectations.duringHearing.heading);
-  I.see(pageText.hearing.expectations.gettingDecision.heading);
-  I.see('The judge will explain whether you’re entitled to PIP and if so, at what level.');
-  });
-
 Scenario('verify expenses page', function*(I) {
   let appealId = yield I.retrieveAppealNumber(dbProperties.hearingESAAppealCaseId);
   I.amOnPage('/progress/' + appealId + '/expenses');
