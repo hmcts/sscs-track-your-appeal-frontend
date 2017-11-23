@@ -4,7 +4,7 @@
   "version": "0.0.2",
   "private": true,
   "engines": {
-    "node": "8.9.1"
+    "node": ">=8.9.1"
   },
   "scripts": {
     "start": "cross-env NODE_PATH=. LOG_OUTPUT=single node server.js",
@@ -61,6 +61,7 @@
     "moment-timezone": "^0.5.13",
     "nodejs-healthcheck": "^1.1.0",
     "nodejs-logging": "^1.1.1",
+    "node-sass": "4.5.3",
     "nunjucks": "^3.0.0",
     "serve-favicon": "^2.4.2",
     "superagent": "^3.5.2",
