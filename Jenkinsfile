@@ -72,9 +72,9 @@ timestamps {
                     }
                 }
 
-                stage('Package (Docker)') {
-                    trackYourAppealFrontendVersion = dockerImage imageName: 'sscs/track-your-appeal-frontend'
-                }
+//                stage('Package (Docker)') {
+//                    trackYourAppealFrontendVersion = dockerImage imageName: 'sscs/track-your-appeal-frontend'
+//                }
 
                 stage('Package application (RPM)') {
                         trackYourAppealFrontendRPMVersion = packager.nodeRPM('track-your-appeal-frontend')
