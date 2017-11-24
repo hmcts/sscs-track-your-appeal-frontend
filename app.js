@@ -1,5 +1,5 @@
 const logging = require('nodejs-logging');
-const healthcheck = require('nodejs-healthcheck');
+const healthcheck = require('@hmcts/nodejs-healthcheck');
 const express = require('express');
 const expressNunjucks = require('express-nunjucks');
 const favicon = require('serve-favicon');
