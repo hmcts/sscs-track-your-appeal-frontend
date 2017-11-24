@@ -2,6 +2,14 @@
 # yarn lockfile v1
 
 
+"@hmcts/nodejs-healthcheck@^1.4.3":
+  version "1.4.3"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/@hmcts/nodejs-healthcheck/-/nodejs-healthcheck-1.4.3.tgz#d26b72106411bd820b4ae43cf1a7ec9814ca8f58"
+  dependencies:
+    fs-extra "^3.0.1"
+    js-yaml "^3.8.4"
+    superagent "^3.5.1"
+
 a-sync-waterfall@^1.0.0:
   version "1.0.0"
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/a-sync-waterfall/-/a-sync-waterfall-1.0.0.tgz#38e8319d79379e24628845b53b96722b29e0e47c"
@@ -140,7 +148,7 @@ are-we-there-yet@~1.1.2:
     delegates "^1.0.0"
     readable-stream "^2.0.0 || ^1.1.13"
 
-argparse@^1.0.2:
+argparse@^1.0.2, argparse@^1.0.7:
   version "1.0.9"
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/argparse/-/argparse-1.0.9.tgz#73d83bc263f86e97f8cc4f6bae1b0e90a7d22c86"
   dependencies:
@@ -715,6 +723,10 @@ cookiejar@2.0.x, cookiejar@^2.0.6:
   version "2.0.6"
   resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/cookiejar/-/cookiejar-2.0.6.tgz#0abf356ad00d1c5a219d88d44518046dd026acfe"
 
+cookiejar@^2.1.0:
+  version "2.1.1"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/cookiejar/-/cookiejar-2.1.1.tgz#41ad57b1b555951ec171412a81942b1e8200d34a"
+
 core-js@^1.0.0:
   version "1.2.7"
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
@@ -869,6 +881,12 @@ debug@2.6.3, debug@^2.1.3:
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/debug/-/debug-2.6.3.tgz#0f7eb8c30965ec08c72accfa0130c8b79984141d"
   dependencies:
     ms "0.7.2"
+
+debug@^3.1.0:
+  version "3.1.0"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
+  dependencies:
+    ms "2.0.0"
 
 decamelize@^1.0.0, decamelize@^1.1.1, decamelize@^1.1.2:
   version "1.2.0"
@@ -1215,6 +1233,10 @@ esprima@3.x.x:
   version "3.1.3"
   resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/esprima/-/esprima-3.1.3.tgz#fdca51cee6133895e3c88d535ce49dbff62a4633"
 
+esprima@^4.0.0:
+  version "4.0.0"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/esprima/-/esprima-4.0.0.tgz#4499eddcd1110e0b218bacf2fa7f7f59f55ca804"
+
 esquery@^1.0.0:
   version "1.0.0"
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/esquery/-/esquery-1.0.0.tgz#cfba8b57d7fba93f17298a8a006a04cda13d80fa"
@@ -1524,6 +1546,14 @@ form-data@^2.1.1, form-data@~2.1.1:
     combined-stream "^1.0.5"
     mime-types "^2.1.12"
 
+form-data@^2.3.1:
+  version "2.3.1"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/form-data/-/form-data-2.3.1.tgz#6fb94fbd71885306d73d15cc497fe4cc4ecd44bf"
+  dependencies:
+    asynckit "^0.4.0"
+    combined-stream "^1.0.5"
+    mime-types "^2.1.12"
+
 formatio@1.2.0:
   version "1.2.0"
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/formatio/-/formatio-1.2.0.tgz#f3b2167d9068c4698a8d51f4f760a39a54d818eb"
@@ -1570,6 +1600,14 @@ fs-extra@^2.0.0:
   dependencies:
     graceful-fs "^4.1.2"
     jsonfile "^2.1.0"
+
+fs-extra@^3.0.1:
+  version "3.0.1"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/fs-extra/-/fs-extra-3.0.1.tgz#3794f378c58b342ea7dbbb23095109c4b3b62291"
+  dependencies:
+    graceful-fs "^4.1.2"
+    jsonfile "^3.0.0"
+    universalify "^0.1.0"
 
 fs-extra@~1.0.0:
   version "1.0.0"
@@ -2514,6 +2552,13 @@ js-yaml@3.x, js-yaml@^3.5.1, js-yaml@~3.5.2:
     argparse "^1.0.2"
     esprima "^2.6.0"
 
+js-yaml@^3.8.4:
+  version "3.10.0"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/js-yaml/-/js-yaml-3.10.0.tgz#2e78441646bd4682e963f22b6e92823c309c62dc"
+  dependencies:
+    argparse "^1.0.7"
+    esprima "^4.0.0"
+
 jsbn@~0.1.0:
   version "0.1.1"
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
@@ -2571,6 +2616,12 @@ json3@3.3.2:
 jsonfile@^2.1.0:
   version "2.4.0"
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/jsonfile/-/jsonfile-2.4.0.tgz#3736a2b428b87bbda0cc83b53fa3d633a35c2ae8"
+  optionalDependencies:
+    graceful-fs "^4.1.6"
+
+jsonfile@^3.0.0:
+  version "3.0.1"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/jsonfile/-/jsonfile-3.0.1.tgz#a5ecc6f65f53f662c4415c7675a0331d0992ec66"
   optionalDependencies:
     graceful-fs "^4.1.6"
 
@@ -2905,6 +2956,10 @@ mime@1.3.4, mime@^1.3.4:
   version "1.3.4"
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/mime/-/mime-1.3.4.tgz#115f9e3b6b3daf2959983cb38f149a2d40eb5d53"
 
+mime@^1.4.1:
+  version "1.5.0"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/mime/-/mime-1.5.0.tgz#59c20e03ae116089edeb7d3b34a6788c5b3cccea"
+
 mimic-fn@^1.0.0:
   version "1.1.0"
   resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/mimic-fn/-/mimic-fn-1.1.0.tgz#e667783d92e89dbd342818b5230b9d62a672ad18"
@@ -3025,6 +3080,10 @@ ms@0.7.2:
 ms@1.0.0:
   version "1.0.0"
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/ms/-/ms-1.0.0.tgz#59adcd22edc543f7b5381862d31387b1f4bc9473"
+
+ms@2.0.0:
+  version "2.0.0"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
 
 mute-stream@0.0.5:
   version "0.0.5"
@@ -3188,12 +3247,6 @@ node.extend@^1.1.6, node.extend@~1.1.6:
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/node.extend/-/node.extend-1.1.6.tgz#a7b882c82d6c93a4863a5504bd5de8ec86258b96"
   dependencies:
     is "^3.1.0"
-
-nodejs-healthcheck@^1.1.0:
-  version "1.1.0"
-  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/nodejs-healthcheck/-/nodejs-healthcheck-1.1.0.tgz#3128e7300e87ed290864ece6994ce0b69aeead64"
-  dependencies:
-    superagent "^3.5.1"
 
 nodejs-logging@^1.1.1:
   version "1.1.1"
@@ -3776,6 +3829,10 @@ qs@5.2.0:
 qs@6.4.0, qs@^6.1.0, qs@^6.2.0, qs@~6.4.0:
   version "6.4.0"
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/qs/-/qs-6.4.0.tgz#13e26d28ad6b0ffaa91312cd3bf708ed351e7233"
+
+qs@^6.5.1:
+  version "6.5.1"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/qs/-/qs-6.5.1.tgz#349cdf6eef89ec45c12d7d5eb3fc0c870343a6d8"
 
 qs@~5.1.0:
   version "5.1.0"
@@ -4580,7 +4637,7 @@ superagent@^2.0.0:
     qs "^6.1.0"
     readable-stream "^2.0.5"
 
-superagent@^3.0.0, superagent@^3.5.1, superagent@^3.5.2:
+superagent@^3.0.0, superagent@^3.5.2:
   version "3.5.2"
   resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/superagent/-/superagent-3.5.2.tgz#3361a3971567504c351063abeaae0faa23dbf3f8"
   dependencies:
@@ -4593,6 +4650,21 @@ superagent@^3.0.0, superagent@^3.5.1, superagent@^3.5.2:
     methods "^1.1.1"
     mime "^1.3.4"
     qs "^6.1.0"
+    readable-stream "^2.0.5"
+
+superagent@^3.5.1:
+  version "3.8.1"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/superagent/-/superagent-3.8.1.tgz#2571fd921f3fcdba43ac68c3b35c91951532701f"
+  dependencies:
+    component-emitter "^1.2.0"
+    cookiejar "^2.1.0"
+    debug "^3.1.0"
+    extend "^3.0.0"
+    form-data "^2.3.1"
+    formidable "^1.1.1"
+    methods "^1.1.1"
+    mime "^1.4.1"
+    qs "^6.5.1"
     readable-stream "^2.0.5"
 
 supertest@^3.0.0:
@@ -4849,6 +4921,10 @@ undefsafe@0.0.3:
 underscore.string@~3.2.3:
   version "3.2.3"
   resolved "http://artifactory.reform.hmcts.net:80/artifactory/api/npm/npm/underscore.string/-/underscore.string-3.2.3.tgz#806992633665d5e5fcb4db1fb3a862eb68e9e6da"
+
+universalify@^0.1.0:
+  version "0.1.1"
+  resolved "https://artifactory.reform.hmcts.net:443/artifactory/api/npm/npm/universalify/-/universalify-0.1.1.tgz#fa71badd4437af4c148841e3b3b165f9e9e590b7"
 
 unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"
