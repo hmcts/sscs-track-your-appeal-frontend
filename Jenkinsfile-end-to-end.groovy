@@ -9,7 +9,7 @@ node("Slave1") {
 
     stage("Run smoke tests") {
         ws('workspace/track-your-appeal/smoke-tests') {
-            git url: 'git@git.reform:sscs/track-your-appeal-frontend.git', branch: "$BRANCH"
+            git url: 'https://github.com/hmcts/track-your-appeal-frontend.git', branch: "$BRANCH"
             echo "Running Smoke Tests using Codeceptjs"
             wrap([$class: 'Xvfb']) {
                 sh "make test-end-to-end"
