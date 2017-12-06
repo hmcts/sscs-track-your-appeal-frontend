@@ -3,7 +3,7 @@ FROM node:8.9.0-alpine
 RUN mkdir /app
 WORKDIR /app
 
-COPY package.json yarn.lock /app/
+COPY Gruntfile.js package.json yarn.lock /app/
 RUN yarn install
 
 ENV PATH="./node_modules/.bin:$PATH"
