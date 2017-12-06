@@ -72,9 +72,9 @@ timestamps {
                     }
                 }
 
-//                stage('Package (Docker)') {
-//                    trackYourAppealFrontendVersion = dockerImage imageName: 'sscs/track-your-appeal-frontend'
-//                }
+                stage('Package (Docker)') {
+                    trackYourAppealFrontendVersion = dockerImage imageName: 'sscs/track-your-appeal-frontend'
+                }
 
                 stage('Package application (RPM)') {
                         trackYourAppealFrontendRPMVersion = packager.nodeRPM('track-your-appeal-frontend')
@@ -101,7 +101,7 @@ timestamps {
                     }
                     stage('Smoke Test (Dev)') {
                       ws('workspace/sscsHealthCheck/build') {
-                        git url: 'git@github.com:hmcts/track-your-appeal-frontend.git'
+                        git url: 'https://github.com/hmcts/track-your-appeal-frontend.git'
                         env.SSCS_TYA_FRONTEND_URL = "https://www-" + 'dev' + ".sscs.reform.hmcts.net/"
                         env.SSCS_TYA_BACKEND_URL="https://track-your-appeal-api-dev.sscs.reform.hmcts.net:4204/"
                         sh 'make install'
