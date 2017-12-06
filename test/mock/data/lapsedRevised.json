@@ -14,56 +14,44 @@
     ],
     "historicalEvents": [
       {
-        "placeholder": {
-          "decisionLetterReceiveByDate": "2017-03-10T17:27:50.297Z"
-        },
+        "decisionLetterReceiveByDate": "2017-03-10T17:27:50.297Z",
         "date": "2017-03-01T17:27:50.297Z",
         "type": "HEARING",
         "contentKey": "status.hearing"
       },
       {
-        "placeholder": {
-          "decisionLetterReceiveByDate": "2017-02-22T12:50:11.437Z"
-        },
+        "decisionLetterReceiveByDate": "2017-02-22T12:50:11.437Z",
         "date": "2017-02-11T12:50:11.437Z",
         "type": "DORMANT",
         "contentKey": "status.dormant"
       },
       {
-        "placeholder": {
-          "evidenceType": "General",
-          "evidenceProvidedBy": "Appellant"
-        },
+        "evidenceType": "General",
+        "evidenceProvidedBy": "Appellant",
         "date": "2016-12-30T00:00:00Z",
         "type": "EVIDENCE_RECEIVED",
         "contentKey": "status.evidenceReceived"
       },
       {
-        "placeholder": {
-          "hearingContactDate": "2016-12-15T15:11:45.827Z"
-        },
+        "hearingContactDate": "2016-12-15T15:11:45.827Z",
         "date": "2016-11-03T15:11:45.827Z",
         "type": "DWP_RESPOND",
         "contentKey": "status.dwpRespond"
       },
       {
-        "placeholder": {
-          "dwpResponseDate": "2016-11-03T08:32:44.633Z"
-        },
+        "dwpResponseDate": "2016-11-03T08:32:44.633Z",
         "date": "2016-09-29T08:32:44.633Z",
         "type": "APPEAL_RECEIVED",
         "contentKey": "status.appealReceived"
       },
       {
-        "placeholder": {
-          "postcode": "L2 5UZ",
-          "venueName": "Prudential House",
-          "hearingDateTime": "2017-02-09T00:00:00.000Z",
-          "addressLine1": "36 Dale Street",
-          "addressLine2": "",
-          "addressLine3": "Liverpool",
-          "googleMapUrl": "https://www.google.com/maps/place/36+Dale+Street+Liverpool+Merseyside+L2+5UZ/@53.407820,-2.988509"
-        },
+        "postcode": "L2 5UZ",
+        "venueName": "Prudential House",
+        "hearingDateTime": "2017-02-09T00:00:00.000Z",
+        "addressLine1": "36 Dale Street",
+        "addressLine2": "",
+        "addressLine3": "Liverpool",
+        "googleMapUrl": "https://www.google.com/maps/place/36+Dale+Street+Liverpool+Merseyside+L2+5UZ/@53.407820,-2.988509",
         "date": "2016-01-20T15:15:06.223Z",
         "type": "HEARING_BOOKED",
         "contentKey": "status.hearingBooked"

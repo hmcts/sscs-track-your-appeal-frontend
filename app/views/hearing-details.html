@@ -28,13 +28,13 @@ Hearing Details
 
                 <dl class="date-time">
                     <dt>{{ i18n.common.date }}</dt>
-                    <dd>{{ event.placeholder.hearingDateTime | formatDate }}</dd>
+                    <dd>{{ event.hearingDateTime | formatDate }}</dd>
                 </dl>
 
                 <dl class="date-time">
                     <dt>{{ i18n.common.time }}</dt>
                     <dd>
-                        <span><span class="time">{{ event.placeholder.hearingDateTime | formatTime }}</span> ({{ i18n.hearingDetails.arriveEarly }})</span>
+                        <span><span class="time">{{ event.hearingDateTime | formatTime }}</span> ({{ i18n.hearingDetails.arriveEarly }})</span>
                     </dd>
                 </dl>
 
@@ -44,7 +44,7 @@ Hearing Details
                         {% for addressLine in event.hearingAddress.lines  %}
                         <span>{{ addressLine }}</span>
                         {% endfor %}
-                        <a class='link' id="googleMapLocation" name="googleMapLocation" href="{{event.placeholder.googleMapUrl}}">
+                        <a class='link' id="googleMapLocation" name="googleMapLocation" href="{{event.googleMapUrl}}">
                             {{ i18n.hearingDetails.mapsAndDirections }}
                         </a>
                     </dd>

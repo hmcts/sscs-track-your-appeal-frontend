@@ -6,10 +6,8 @@
     "name": "Ms. L Lena",
     "status": "POSTPONED",
     "latestEvents": [{
-        "placeholder": {
-          "date": "2017-02-09T10:45:00+00:00",
-          "hearingContactDate": "2017-04-13T17:27:50.297Z"
-        },
+        "date": "2017-02-09T10:45:00+00:00",
+        "hearingContactDate": "2017-04-13T17:27:50.297Z",
         "date": "2017-03-02T17:27:50.297Z",
         "type": "POSTPONED",
         "contentKey": "status.postponed"
@@ -17,15 +15,13 @@
     ],
     "historicalEvents": [
       {
-        "placeholder": {
-          "postcode": "CH1 2XA",
-          "venueName": "Chester Magistrate's Court",
-          "hearingDateTime": "2017-03-29T23:00:00.000Z",
-          "addressLine1": "Chester Magistrate's Court",
-          "addressLine2": "Grosvenor Street",
-          "addressLine3": "Chester",
-          "googleMapUrl": "https://www.google.com/maps/place/Chester+Magistrate%27s+Court+Grosvenor+Street+Chester+Cheshire+CH1+2XA/@53.187454,-2.893632"
-        },
+        "postcode": "CH1 2XA",
+        "venueName": "Chester Magistrate's Court",
+        "hearingDateTime": "2017-03-29T23:00:00.000Z",
+        "addressLine1": "Chester Magistrate's Court",
+        "addressLine2": "Grosvenor Street",
+        "addressLine3": "Chester",
+        "googleMapUrl": "https://www.google.com/maps/place/Chester+Magistrate%27s+Court+Grosvenor+Street+Chester+Cheshire+CH1+2XA/@53.187454,-2.893632",
         "date": "2017-06-24T14:11:34.013Z",
         "type": "HEARING_BOOKED",
         "contentKey": "status.hearingBooked"
