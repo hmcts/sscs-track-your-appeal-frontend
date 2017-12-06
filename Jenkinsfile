@@ -1,7 +1,7 @@
 #!groovy
 
 properties(
-  [[$class: 'GithubProjectProperty', displayName: 'track your appeal frontend', projectUrlStr: 'http://git.reform.hmcts.net/sscs/track-your-appeal-frontend/'],
+  [[$class: 'GithubProjectProperty', displayName: 'track your appeal frontend', projectUrlStr: 'https://github.com/hmcts/track-your-appeal-frontend/'],
    pipelineTriggers([
      [$class: 'hudson.triggers.TimerTrigger', spec  : 'H 1 * * *']
    ])]
@@ -101,7 +101,7 @@ timestamps {
                     }
                     stage('Smoke Test (Dev)') {
                       ws('workspace/sscsHealthCheck/build') {
-                        git url: 'git@git.reform.hmcts.net:sscs/track-your-appeal-frontend.git'
+                        git url: 'git@github.com:hmcts/track-your-appeal-frontend.git'
                         env.SSCS_TYA_FRONTEND_URL = "https://www-" + 'dev' + ".sscs.reform.hmcts.net/"
                         env.SSCS_TYA_BACKEND_URL="https://track-your-appeal-api-dev.sscs.reform.hmcts.net:4204/"
                         sh 'make install'
