@@ -1,0 +1,12 @@
+---
+version: '2.1'
+
+services:
+  tya-frontend:
+    build:
+      context: .
+    environment:
+      - http_proxy
+      - https_proxy
+      - no_proxy
+    image: docker.artifactory.reform.hmcts.net/sscs/track-your-appeal-frontend
