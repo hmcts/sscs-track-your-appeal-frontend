@@ -20,7 +20,7 @@ def channel = '#sscs-tech'
 timestamps {
     milestone()
     lock(resource: "track-your-appeal-frontend-${env.BRANCH_NAME}", inversePrecedence: true) {
-        node('reformMgmtDevBuildAgent02.reform.hmcts.net') {
+        node('reformMgmtDevBuildAgent03.reform.hmcts.net') {
             try {
                 def trackYourAppealFrontendRPMVersion
                 def version
