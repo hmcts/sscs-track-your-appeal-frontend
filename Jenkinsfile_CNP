@@ -1,0 +1,14 @@
+#!groovy
+properties(
+        [[$class: 'GithubProjectProperty', projectUrlStr: 'https://github.com/hmcts/track-your-appeal-frontend'],
+         pipelineTriggers([[$class: 'GitHubPushTrigger']])]
+)
+
+@Library("Infrastructure")
+
+def product = "sscs-tribunals"
+def component = "tya-frontend"
+
+withPipeline("nodejs", product, component) {
+
+}
