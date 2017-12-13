@@ -1,5 +1,4 @@
 const { getAppeal, changeEmailAddress, stopReceivingEmails, validateToken } = require('app/services');
-const { applyPlaceholders } = require('app/middleware/placeHolder');
 const { applyContentToEvents } = require('app/middleware/events');
 const { aboutHearingContent, emailNotifications } = require('app/middleware/content');
 const { applyEvidence } = require('app/middleware/evidence');
@@ -13,7 +12,6 @@ const router = express.Router();
 
 const tyaMiddleware = [
   getAppeal,
-  applyPlaceholders,
   applyEvidence,
   applyContentToEvents,
   showProgressBar

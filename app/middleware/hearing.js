@@ -25,26 +25,22 @@ const reformatAllHearingDetails = (evnts) => {
 
 const reformat = (event) => {
 
-  if(!event.placeholder) {
-    return;
-  }
-
   event.hearingAddress = {
     lines: []
   };
 
   // Venue name
-  if(event.placeholder.venueName) {
-    const venueName = event.placeholder.venueName.trim();
+  if(event.venueName) {
+    const venueName = event.venueName.trim();
     if(venueName) {
       event.hearingAddress.lines.push(venueName);
     }
   }
 
   // Address lines
-  for (const property in event.placeholder) {
-    if (startsWith(property, ADDRESS_LINE) && event.placeholder[property]) {
-      const addressLine = event.placeholder[property].trim();
+  for (const property in event) {
+    if (startsWith(property, ADDRESS_LINE) && event[property]) {
+      const addressLine = event[property].trim();
       if(addressLine) {
         event.hearingAddress.lines.push(addressLine);
       }
@@ -52,8 +48,8 @@ const reformat = (event) => {
   }
 
   // Postcode
-  if(event.placeholder.postcode) {
-    const postcode = event.placeholder.postcode.trim();
+  if(event.postcode) {
+    const postcode = event.postcode.trim();
     if(postcode) {
       event.hearingAddress.lines.push(postcode);
     }

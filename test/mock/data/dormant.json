@@ -7,9 +7,7 @@
     "status": "DORMANT",
     "latestEvents": [
       {
-        "placeholder": {
-          "decisionLetterReceiveByDate": "2017-07-10T12:50:11.437Z"
-        },
+        "decisionLetterReceiveByDate": "2017-07-10T12:50:11.437Z",
         "date": "2017-06-29T12:50:11.437Z",
         "type": "DORMANT",
         "contentKey": "status.dormant"

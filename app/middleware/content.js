@@ -2,8 +2,8 @@ const {renderContent} = require('app/core/tyaNunjucks');
 
 const aboutHearingContent = (req, res, next) => {
   const appeal = res.locals.appeal;
-  const placeholder = { benefitType: appeal.benefitType };
-  res.locals.i18n.hearing = renderContent(res.locals.i18n.hearing, placeholder);
+  const benefitType = { benefitType: appeal.benefitType };
+  res.locals.i18n.hearing = renderContent(res.locals.i18n.hearing, benefitType);
 
   next();
 };
