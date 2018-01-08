@@ -2,7 +2,7 @@ const chai = require('chai');
 const expect = require('chai').expect;
 const chaiHttp = require('chai-http');
 
-const frontendURL = process.env.SSCS_TYA_FRONTEND_URL;
+const frontendURL = process.env.SSCS_TYA_FRONTEND_URL  || "http://localhost:3000/";
 const backendURL = process.env.SSCS_TYA_BACKEND_URL || "http://localhost:8080/";
 
 chai.use(chaiHttp);
@@ -45,7 +45,7 @@ describe('sscs tya health check', function () {
 
   it('Returns status UP', function (done) {
     healthcheckProxyRequest(backendURL).end(function (err, res) {
-      expect(res.body.health.status).to.deep.equal('UP');
+      expect(res.body.status).to.deep.equal('UP');
       done();
     });
   });
