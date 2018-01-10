@@ -13,14 +13,14 @@ getTestAppeal(desc)
 
 getTestAppealCaseId(desc)
 {
-   let caseId = this.getTestAppeal(desc).appealCaseId;
+   const caseId = this.getTestAppeal(desc).appealCaseId;
    return caseId;
 }
 
 calcAppealDate(desc, numberOfDays) {
-    let calcDate = new Date(this.getTestAppeal(desc).hearingDate);
+    const calcDate = new Date(this.getTestAppeal(desc).hearingDate);
     calcDate.setDate(calcDate.getDate() + numberOfDays);
-    let result = moment(calcDate).format('DD MMMM YYYY');
+    const result = moment(calcDate).format('DD MMMM YYYY');
   return result;
 }
 
