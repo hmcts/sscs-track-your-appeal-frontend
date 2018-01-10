@@ -3,7 +3,7 @@ const emailText = require('public/locale/en').notifications.email;
 Feature('Manage Notifications');
 
 Scenario('verify change password', function*(I) {
-  caseId = yield I.getTestAppealCaseId("lapsedRevisedESAAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("lapsedRevisedESAAppealCaseId")
   let authenticationCode = yield I.getMACToken(caseId);
   I.amOnPage('/manage-email-notifications/' + authenticationCode);
   I.see(emailText.manage.title);
@@ -20,7 +20,7 @@ Scenario('verify change password', function*(I) {
 });
 
 Scenario('check feedback form link', function*(I) {
-  caseId = yield I.getTestAppealCaseId("lapsedRevisedESAAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("lapsedRevisedESAAppealCaseId")
   yield I.getMACToken(caseId);
   let authenticationCode = yield I.getMessageAuthenticationCode();
   I.amOnPage('/manage-email-notifications/' + authenticationCode);
@@ -31,7 +31,7 @@ Scenario('check feedback form link', function*(I) {
 });
 
 Scenario('stop email subscription', function*(I) {
-  caseId = yield I.getTestAppealCaseId("lapsedRevisedESAAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("lapsedRevisedESAAppealCaseId")
   yield I.getMACToken(caseId);
   let authenticationCode = yield I.getMessageAuthenticationCode();
   I.amOnPage('/manage-email-notifications/' + authenticationCode);

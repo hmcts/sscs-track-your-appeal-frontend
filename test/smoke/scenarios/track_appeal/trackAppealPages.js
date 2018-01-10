@@ -4,9 +4,9 @@ const dbProperties = require('../../props/properties').dataBaseFields;
 Feature('Track your Appeal Page Tests');
 
 Scenario('verify appellant details after Appeal Received', function*(I) {
-  caseId = yield I.getTestAppealCaseId("appealReceivedAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("appealReceivedAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
-  date = yield I.calcAppealDate("appealReceivedAppealCaseId", 35);
+  let date = yield I.calcAppealDate("appealReceivedAppealCaseId", 35);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. A Alpha');
   I.see('Appeal reference number: SC111/11/1111');
@@ -19,7 +19,7 @@ Scenario('verify appellant details after Appeal Received', function*(I) {
 });
 
 Scenario('verify appellant details after DWP response received', function*(I, Properties) {
-  caseId = yield I.getTestAppealCaseId("dwpAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("dwpAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. B Bravo');
@@ -40,7 +40,7 @@ Scenario('verify appellant details after DWP response received', function*(I, Pr
 });
 
 Scenario('verify appellant details after Hearing Booked', function*(I, Properties) {
-  caseId = yield I.getTestAppealCaseId("hearingBookedAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("hearingBookedAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. C Charlie');
@@ -60,7 +60,7 @@ Scenario('verify appellant details after Hearing Booked', function*(I, Propertie
 });
 
 Scenario('verify hearing details', function*(I, Properties) {
-  caseId = yield I.getTestAppealCaseId("hearingBookedAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("hearingBookedAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   I.amOnPage('/progress/' + appealId + '/hearingdetails');
   I.see('Mr. C Charlie');
@@ -80,7 +80,7 @@ Scenario('verify hearing details', function*(I, Properties) {
   });
 
 Scenario('verify appellant details after Hearing response received for ESA appeal', function*(I) {
-  caseId = yield I.getTestAppealCaseId("hearingESAAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("hearingESAAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   date = yield I.calcAppealDate("hearingESAAppealCaseId", 0);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
@@ -95,7 +95,7 @@ Scenario('verify appellant details after Hearing response received for ESA appea
  });
 
 Scenario('verify appellant details after Hearing response received for PIP appeal', function*(I) {
-  caseId = yield I.getTestAppealCaseId("hearingPIPAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("hearingPIPAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   date = yield I.calcAppealDate("hearingPIPAppealCaseId", 0);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
@@ -110,7 +110,7 @@ Scenario('verify appellant details after Hearing response received for PIP appea
  });
 
 Scenario('verify about your appeal section links', function*(I) {
-  caseId = yield I.getTestAppealCaseId("hearingESAAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("hearingESAAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('About your appeal');
@@ -131,7 +131,7 @@ Scenario('verify about your appeal section links', function*(I) {
 });
 
 Scenario('verify evidence page', function*(I) {
-  caseId = yield I.getTestAppealCaseId("hearingESAAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("hearingESAAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   I.amOnPage('/progress/' + appealId + '/evidence');
   I.see(pageText.evidence.provide.title);
@@ -146,7 +146,7 @@ Scenario('verify evidence page', function*(I) {
 });
 
 Scenario('verify what to expect at your hearing page for an ESA appeal', function*(I) {
-  caseId = yield I.getTestAppealCaseId("hearingESAAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("hearingESAAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   I.amOnPage('/progress/' + appealId + '/abouthearing');
   I.see(pageText.hearing.details.title);
@@ -165,7 +165,7 @@ Scenario('verify what to expect at your hearing page for an ESA appeal', functio
   });
 
 Scenario('verify expenses page', function*(I) {
-  caseId = yield I.getTestAppealCaseId("hearingESAAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("hearingESAAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   I.amOnPage('/progress/' + appealId + '/expenses');
   I.see(pageText.claimExpenses.title);
@@ -173,7 +173,7 @@ Scenario('verify expenses page', function*(I) {
 });
 
 Scenario('verify contact us page', function*(I) {
-  caseId = yield I.getTestAppealCaseId("hearingESAAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("hearingESAAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   I.amOnPage('/progress/' + appealId + '/contactus');
   I.see('Contact us');
@@ -187,7 +187,7 @@ Scenario('verify contact us page', function*(I) {
 });
 
 Scenario('verify appellant details for lapsed revised state for ESA appeal', function*(I) {
-  caseId = yield I.getTestAppealCaseId("lapsedRevisedESAAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("lapsedRevisedESAAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. F Foxtrot');
@@ -198,7 +198,7 @@ Scenario('verify appellant details for lapsed revised state for ESA appeal', fun
 });
 
 Scenario('verify appellant details for lapsed revised state for PIP appeal', function*(I) {
-  caseId = yield I.getTestAppealCaseId("lapsedRevisedPIPAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("lapsedRevisedPIPAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. F Fruit');
@@ -209,7 +209,7 @@ Scenario('verify appellant details for lapsed revised state for PIP appeal', fun
 });
 
 Scenario('verify appellant details for withdrawn state for ESA appeal', function*(I) {
-  caseId = yield I.getTestAppealCaseId("withdrawnESAAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("withdrawnESAAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. I Iglo');
@@ -220,7 +220,7 @@ Scenario('verify appellant details for withdrawn state for ESA appeal', function
 });
 
 Scenario('verify appellant details for withdrawn state for PIP appeal', function*(I) {
-  caseId = yield I.getTestAppealCaseId("withdrawnPIPAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("withdrawnPIPAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. I Iceberg');
@@ -232,7 +232,7 @@ Scenario('verify appellant details for withdrawn state for PIP appeal', function
 
 
 Scenario('verify appellant details for adjourned state', function*(I) {
-  caseId = yield I.getTestAppealCaseId("adjurnedAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("adjurnedAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   date = yield I.calcAppealDate("adjurnedAppealCaseId", 7);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
@@ -246,7 +246,7 @@ Scenario('verify appellant details for adjourned state', function*(I) {
 });
 
 Scenario('verify appellant details for postponed state for ESA appeal', function*(I) {
-  caseId = yield I.getTestAppealCaseId("postponedESAAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("postponedESAAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. L Lena');
@@ -260,7 +260,7 @@ Scenario('verify appellant details for postponed state for ESA appeal', function
 });
 
 Scenario('verify appellant details for postponed state PIP appeal', function*(I) {
-  caseId = yield I.getTestAppealCaseId("postponedPIPAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("postponedPIPAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. L Lemon');
@@ -274,7 +274,7 @@ Scenario('verify appellant details for postponed state PIP appeal', function*(I)
 });
 
 Scenario('verify appellant details for past hearing date state for ESA appeal', function*(I) {
-  caseId = yield I.getTestAppealCaseId("pastHearingDateESAAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("pastHearingDateESAAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. M Miao');
@@ -288,7 +288,7 @@ Scenario('verify appellant details for past hearing date state for ESA appeal', 
 });
 
 Scenario('verify appellant details for past hearing date state for PIP appeal', function*(I) {
-  caseId = yield I.getTestAppealCaseId("pastHearingDatePIPAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("pastHearingDatePIPAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. M Melon');
@@ -302,9 +302,9 @@ Scenario('verify appellant details for past hearing date state for PIP appeal', 
 });
 
 Scenario('verify appellant details for dormant state for ESA appeal', function*(I) {
-  caseId = yield I.getTestAppealCaseId("dormantESAAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("dormantESAAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
-  date = yield I.calcAppealDate("dormantESAAppealCaseId", 0);
+  let date = yield I.calcAppealDate("dormantESAAppealCaseId", 0);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. N November');
   I.see('Appeal reference number: SC100/00/00001');
@@ -313,9 +313,9 @@ Scenario('verify appellant details for dormant state for ESA appeal', function*(
 });
 
 Scenario('verify appellant details for dormant state for PIP appeal', function*(I) {
-  caseId = yield I.getTestAppealCaseId("dormantPIPAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("dormantPIPAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
-  date = yield I.calcAppealDate("dormantPIPAppealCaseId", 0);
+  let date = yield I.calcAppealDate("dormantPIPAppealCaseId", 0);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. N Nut');
   I.see('Appeal reference number: SC300/11/00001');
@@ -324,7 +324,7 @@ Scenario('verify appellant details for dormant state for PIP appeal', function*(
 });
 
 Scenario('verify appellant details for Closed state', function*(I) {
-  caseId = yield I.getTestAppealCaseId("dormantClosedESAAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("dormantClosedESAAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. O Owl');
@@ -334,7 +334,7 @@ Scenario('verify appellant details for Closed state', function*(I) {
 });
 
 Scenario('verify appellant details for Closed state', function*(I) {
-  caseId = yield I.getTestAppealCaseId("dormantClosedPIPAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("dormantClosedPIPAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. O Opel');
@@ -344,7 +344,7 @@ Scenario('verify appellant details for Closed state', function*(I) {
 });
 
 Scenario('verify appellant details for dwp respond overdue state', function*(I) {
-  caseId = yield I.getTestAppealCaseId("dwpRespondOverdueAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("dwpRespondOverdueAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Mr. P Papa');
@@ -358,7 +358,7 @@ Scenario('verify appellant details for dwp respond overdue state', function*(I) 
 
 
 Scenario('verify appellant details for new hearing booked state', function*(I) {
-  caseId = yield I.getTestAppealCaseId("newHearingBookedAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("newHearingBookedAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.see('Ms. Q Quack');

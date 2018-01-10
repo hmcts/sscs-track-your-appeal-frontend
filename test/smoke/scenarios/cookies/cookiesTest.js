@@ -2,7 +2,7 @@ const dbProperties = require('../../props/properties').dataBaseFields;
 Feature('Track your Appeal Cookies Tests');
 
 Scenario('clear cookies and check for cookie message',  function*(I, Properties) {
-  caseId = yield I.getTestAppealCaseId("appealReceivedAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("appealReceivedAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.clearCookie();
@@ -10,7 +10,7 @@ Scenario('clear cookies and check for cookie message',  function*(I, Properties)
 });
 
 Scenario('accept cookie and verify cookie', function*(I, Properties) {
-  caseId = yield I.getTestAppealCaseId("appealReceivedAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("appealReceivedAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.click('What to expect at your hearing');
@@ -19,7 +19,7 @@ Scenario('accept cookie and verify cookie', function*(I, Properties) {
 });
 
 Scenario('verify cookie message page', function*(I, Properties) {
-  caseId = yield I.getTestAppealCaseId("appealReceivedAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("appealReceivedAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.click('Find out more about cookies');
@@ -29,7 +29,7 @@ Scenario('verify cookie message page', function*(I, Properties) {
 });
 
 Scenario('verify google analytics on page', function*(I, Properties) {
-  caseId = yield I.getTestAppealCaseId("appealReceivedAppealCaseId")
+  let caseId = yield I.getTestAppealCaseId("appealReceivedAppealCaseId")
   let appealId = yield I.retrieveAppealNumber(caseId);
   I.amOnPage('/progress/' + appealId + '/trackyourappeal');
   I.seeInSource('<script src="/public/javascripts/google-analytics-universal-tracker.js"></script>');
