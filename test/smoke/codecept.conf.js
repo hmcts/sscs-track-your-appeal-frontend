@@ -13,6 +13,9 @@ exports.config = {
     },
     'dataBaseConnectionHelper': {
       'require': './helpers/DataBaseConnectionHelper.js'
+    },
+    'testDataHelper': {
+      'require': './helpers/TestDataHelper.js'
     }
   },
   'include': {
