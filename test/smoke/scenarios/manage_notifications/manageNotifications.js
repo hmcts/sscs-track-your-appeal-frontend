@@ -3,7 +3,8 @@ const emailText = require('public/locale/en').notifications.email;
 Feature('Manage Notifications');
 
 Scenario('verify change password', function*(I) {
-  let authenticationCode = yield I.getMACToken();
+  const caseId = yield I.getTestAppealCaseId("lapsedRevisedESAAppealCaseId")
+  const authenticationCode = yield I.getMACToken(caseId);
   I.amOnPage('/manage-email-notifications/' + authenticationCode);
   I.see(emailText.manage.title);
   I.checkOption(emailText.addressChangeConfirmed.link);
@@ -19,8 +20,9 @@ Scenario('verify change password', function*(I) {
 });
 
 Scenario('check feedback form link', function*(I) {
-  yield I.getMACToken();
-  let authenticationCode = yield I.getMessageAuthenticationCode();
+  const caseId = yield I.getTestAppealCaseId("lapsedRevisedESAAppealCaseId")
+  yield I.getMACToken(caseId);
+  const authenticationCode = yield I.getMessageAuthenticationCode();
   I.amOnPage('/manage-email-notifications/' + authenticationCode);
   I.see(emailText.manage.title);
   I.see("This is a new service – your feedback will help us to improve it.");
@@ -29,8 +31,9 @@ Scenario('check feedback form link', function*(I) {
 });
 
 Scenario('stop email subscription', function*(I) {
-  yield I.getMACToken();
-  let authenticationCode = yield I.getMessageAuthenticationCode();
+  const caseId = yield I.getTestAppealCaseId("lapsedRevisedESAAppealCaseId")
+  yield I.getMACToken(caseId);
+  const authenticationCode = yield I.getMessageAuthenticationCode();
   I.amOnPage('/manage-email-notifications/' + authenticationCode);
   I.see(emailText.manage.title);
   I.checkOption("Stop receiving emails");

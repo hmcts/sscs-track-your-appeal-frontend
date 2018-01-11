@@ -14,8 +14,8 @@ class messageAuthenticationCodeHelper extends codecept_helper {
     this.authentication_code = null;
   }
 
-  getMACToken() {
-    return this.getSubscriptionID()
+  getMACToken(caseId) {
+    return this.getSubscriptionID(caseId)
       .then(result => {
         const unixTimeStamp = Math.floor((new Date).getTime() / 1000);
         const subscriptionId = result;
@@ -28,12 +28,12 @@ class messageAuthenticationCodeHelper extends codecept_helper {
       });
   }
 
-  getSubscriptionID() {
+  getSubscriptionID(caseId) {
     return new Promise((resolve, reject) => {
       let pgClient = new pg.Client(dbProperties.connectionString);
       let subscriptionData = [];
       pgClient.connect();
-      let query = pgClient.query("Select id from subscriptions where appeal_case_id=$1", [dbProperties.lapsedRevisedESAAppealCaseId]);
+      let query = pgClient.query("Select id from subscriptions where appeal_case_id=$1", [caseId]);
       query.on('row', (row) => {
         subscriptionData.push(row);
       });
