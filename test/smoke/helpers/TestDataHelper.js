@@ -3,27 +3,28 @@ moment = require('moment');
 
 class testDataHelper extends codecept_helper {
 
-getTestAppeal(desc)
-  {
-  let result = [];
-  appeals.forEach(function(element)
-  { if (element.appealDesc == desc) result.push(element); })
-  return result[0];
-  }
+getTestAppeal(desc) {
 
-getTestAppealCaseId(desc)
-{
-   const caseId = this.getTestAppeal(desc).appealCaseId;
-   return caseId;
+  return appeals.filter(element => element.appealDesc === desc)[0]
+
+}
+
+getTestAppealCaseId(desc) {
+
+  return this.getTestAppeal(desc).appealCaseId;
+
 }
 
 calcAppealDate(desc, numberOfDays) {
-    const calcDate = new Date(this.getTestAppeal(desc).hearingDate);
-    calcDate.setDate(calcDate.getDate() + numberOfDays);
-    const result = moment(calcDate).format('DD MMMM YYYY');
-  return result;
-}
+
+    const calcDate = new Date(this.getTestAppeal(desc).hearingDate)
+
+    calcDate.setDate(calcDate.getDate() + numberOfDays)
+
+  return moment(calcDate).format('DD MMMM YYYY')
 
 }
 
-module.exports = testDataHelper;
+}
+
+module.exports = testDataHelper
