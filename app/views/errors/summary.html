@@ -2,6 +2,7 @@
 <div class="error-summary" role="group" aria-labelledby="error-summary-heading" tabindex="-1">
 
     <ul class="error-summary-list">
+        There was a problem
         {% if fields.noSelection.errorHeading %}
         <li><a href="#email">{{ fields.noSelection.errorHeading }}</a></li>
         {% endif %}
@@ -10,6 +11,9 @@
         {% endif %}
         {% if fields.confirmEmail.errorHeading %}
         <li><a href="#confirmEmail">{{ fields.confirmEmail.errorHeading }}</a></li>
+        {% endif %}
+        {% if fields.surname.errorHeading %}
+        <li><a href="#surname">{{ fields.surname.errorHeading }}</a></li>
         {% endif %}
     </ul>
 

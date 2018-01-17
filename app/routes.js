@@ -1,10 +1,11 @@
-const { getAppeal, changeEmailAddress, stopReceivingEmails, validateToken } = require('app/services');
+const { getAppeal, changeEmailAddress, stopReceivingEmails, validateToken, matchSurnameToAppeal  } = require('app/services');
 const { applyContentToEvents } = require('app/middleware/events');
 const { aboutHearingContent, emailNotifications } = require('app/middleware/content');
 const { applyEvidence } = require('app/middleware/evidence');
 const { reformatHearingDetails } = require('app/middleware/hearing');
 const { notificationChoiceRedirect } = require('app/middleware/notificationChoiceRedirect');
 const { validateEmail } = require('app/middleware/validateEmail');
+const { validateSurname } = require('app/middleware/validateSurname');
 const { showProgressBar } = require('app/core/UIUtils');
 const {Logger} = require('@hmcts/nodejs-logging');
 const logger = Logger.getLogger('routes.js');
@@ -20,6 +21,14 @@ const tyaMiddleware = [
 ];
 
 //------------------------------------ TRACK YOUR APPEAL ---------------------------------------------------------------
+
+router.get('/validate-surname/:mactoken', validateToken, (req, res) => {
+  res.render('validate-surname', { mactoken: req.params.mactoken });
+});
+
+router.post('/validate-surname/:mactoken', validateSurname, matchSurnameToAppeal, (req, res) => {
+  res.render('validate-surname');
+});
 
 router.get('/progress/:id/abouthearing', getAppeal, aboutHearingContent, (req, res) => {
   res.render('about-hearing', {data: res.locals.appeal});
