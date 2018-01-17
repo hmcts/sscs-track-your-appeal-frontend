@@ -2,6 +2,7 @@
   "appeal": {
     "caseReference": "SC123/45/00001",
     "name": "Mr Jason Mock",
+    "surname": "Mock",
     "appealNumber": "md002",
     "benefitType": "pip",
     "status": "APPEAL_RECEIVED",
