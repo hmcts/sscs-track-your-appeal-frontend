@@ -6,8 +6,8 @@ properties(
 
 @Library("Infrastructure")
 
-def product = "sscs-tribunals"
-def component = "tya-frontend"
+def product = "sscs-track-your-appeal"
+def component = "frontend"
 
 withPipeline("nodejs", product, component) {
 

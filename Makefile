@@ -32,7 +32,7 @@ else
 endif
 
 sonarscan:
-	yarn sonar-scanner
+	yarn sonar-scan
 
 zapscan:
 	yarn security-scan
