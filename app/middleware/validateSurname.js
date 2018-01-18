@@ -1,4 +1,5 @@
 const Joi = require('joi');
+const surnameRegex = /^([a-zA-z]+([ '-][a-zA-Z]+)*){2,}$/;
 
 const validateSurname = (req, res, next) => {
   const mactoken = req.params.mactoken;
@@ -6,7 +7,6 @@ const validateSurname = (req, res, next) => {
   const errors = res.locals.i18n.validateSurname.surname.errors;
   const fields = validateField(surname, errors);
   if(fields.error) {
-    console.log(fields);
     res.render('validate-surname', { mactoken, fields });
   } else {
     next();
@@ -15,11 +15,16 @@ const validateSurname = (req, res, next) => {
 
 const validateField = (surname, errors) => {
 
-  const schema = Joi.string().alphanum().required().options({
+  const schema = Joi.string().regex(surnameRegex).required().options({
     language: {
       any: {
         empty: `!!${errors.emptyField}`,
         invalid: `!!${errors.invalid}`
+      },
+      string: {
+        regex: {
+          base: `!!${errors.invalid}`
+        }
       }
     }
   });
