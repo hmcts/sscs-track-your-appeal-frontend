@@ -28,7 +28,7 @@
     "security-checks": "cross-env NODE_PATH=. grunt security-checks",
     "healthcheck": "cross-env NODE_PATH=. mocha test/healthCheck.js --timeout 15000 --reporter spec",
     "post-data": "cross-env NODE_PATH=. node post-data.js",
-    "sonar-scanner": "node_modules/sonar-scanner/bin/sonar-scanner"
+    "sonar-scan": "node_modules/sonar-scanner/bin/sonar-scanner"
   },
   "repository": {
     "type": "git",
