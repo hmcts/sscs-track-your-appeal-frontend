@@ -9,11 +9,26 @@ const matchSurnameToAppeal = (req, res, next) => {
 
   request.get(`${appealsAPI}/validate/${mactoken}/${surname}`)
     .then(result => {
-
+      const appealId = result.body.appealId;
+      res.redirect(`/progress/${appealId}/trackyourappeal`);
     })
     .catch(error => {
-      console.log('----------------------');
-      console.log(error);
+      if (error.value === HttpStatus.BAD_REQUEST && error.reason === 'Given token is invalid') {
+        const fields = {
+          error: true,
+          surname: {
+            value: surname,
+            error: true,
+            errorMessage: res.locals.i18n.validateSurname.surname.errors.noMatch,
+            errorHeading: res.locals.i18n.validateSurname.surname.errors.noMatch
+          }
+        };
+        res.locals.mactoken = mactoken;
+        res.locals.fields = fields;
+        next();
+      } else {
+        next(error);
+      }
     });
 
 };

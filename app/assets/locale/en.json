@@ -327,7 +327,8 @@
     "appealReferenceNumber": "Appeal reference number",
     "availableInAnotherLanguage": "This page is also available in Welsh (Cymraeg).",
     "latestUpdate": "Latest update",
-    "viewAllUpdates": "View previous updates"
+    "viewAllUpdates": "View previous updates",
+    "errorHeading": "There was a problem"
   },
   "cookiePolicy": {
     "banner": {
