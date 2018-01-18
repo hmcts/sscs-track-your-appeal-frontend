@@ -73,6 +73,7 @@
     "superagent-proxy": "^1.0.2"
   },
   "devDependencies": {
+    "assert": "^1.4.1",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "codeceptjs": "^1.0.0",
@@ -85,6 +86,7 @@
     "mochawesome": "^2.2.0",
     "nightmare": "^2.10.0",
     "nightmare-upload": "^0.1.1",
+    "nock": "^9.1.6",
     "nsp": "^2.6.3",
     "pa11y": "^4.9.0",
     "pg": "^6.1.5",

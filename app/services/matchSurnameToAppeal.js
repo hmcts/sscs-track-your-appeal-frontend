@@ -7,7 +7,7 @@ const matchSurnameToAppeal = (req, res, next) => {
   const mactoken = req.params.mactoken;
   const surname = req.body.surname;
 
-  request.get(`${appealsAPI}/validate/${mactoken}/${surname}`)
+  return request.get(`${appealsAPI}/validate/${mactoken}/${surname}`)
     .then(result => {
       const appealId = result.body.appealId;
       res.redirect(`/progress/${appealId}/trackyourappeal`);
