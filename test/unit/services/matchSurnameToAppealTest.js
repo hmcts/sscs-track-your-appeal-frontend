@@ -78,7 +78,7 @@ describe('matchSurnameToAppeal.js', () => {
     });
 
     it('should set locals and call next when code is 404', () => {
-      const error = { value: HttpStatus.BAD_REQUEST, reason: 'Given token is invalid' };
+      const error = { statusCode: HttpStatus.BAD_REQUEST, rawResponse: `Invalid surname provided: ${invalidSurname}` };
       api = requestError(error);
 
       return matchSurnameToAppeal(req, res, next)

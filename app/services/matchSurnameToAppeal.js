@@ -13,7 +13,7 @@ const matchSurnameToAppeal = (req, res, next) => {
       res.redirect(`/progress/${appealId}/trackyourappeal`);
     })
     .catch(error => {
-      if (error.value === HttpStatus.BAD_REQUEST && error.reason === 'Given token is invalid') {
+      if (error.statusCode === HttpStatus.BAD_REQUEST && error.rawResponse === `Invalid surname provided: ${surname}`) {
         const fields = {
           error: true,
           surname: {
