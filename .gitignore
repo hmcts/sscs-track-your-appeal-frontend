@@ -9,3 +9,5 @@ lib/govuk_template.html
 testResults
 yarn-error.log
 app/services/index.js
+.scannerwork/
+track-your-appeal-frontend.iml
