@@ -1,17 +1,6 @@
+const { setErrorFields } = require('app/core/fieldErrors');
 const HttpStatus = require('http-status-codes');
 const Joi = require('joi');
-
-const setErrorFields = (field, fields, result, errors) => {
-  fields.error = true;
-  fields[field].error = true;
-  fields[field].errorMessage = result.error.message;
-
-  const type = result.error.details[0].type;
-  fields[field].errorHeading = (type === 'any.empty') ?
-    errors.emptyStringHeading : errors.notValidHeading;
-
-  return fields;
-};
 
 const validateFields = (email, confirmEmail, errors) => {
 

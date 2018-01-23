@@ -54,10 +54,7 @@ describe('matchSurnameToAppeal.js', () => {
 
       return matchSurnameToAppeal(req, res, next)
         .then(() => {
-          res.redirect.should.have.been.calledWith(`/progress/${appealId}/trackyourappeal`);
-        })
-        .catch(err => {
-          fail(err);
+          expect(res.redirect).to.have.been.calledWith(`/progress/${appealId}/trackyourappeal`);
         });
 
     });
@@ -88,7 +85,7 @@ describe('matchSurnameToAppeal.js', () => {
         .catch(() => {
           expect(res.locals.mactoken).to.equal(invalidmactoken);
           expect(res.locals.fields).to.eql(errorFields);
-          next.should.have.been.called;
+          expect(next).to.have.been.called;
         });
 
     });
@@ -102,7 +99,7 @@ describe('matchSurnameToAppeal.js', () => {
           fail('Should return an error');
         })
         .catch(() => {
-          next.should.have.been.calledWith(error);
+          expect(next).to.have.been.calledWith(error);
         });
 
     });

@@ -1,5 +1,5 @@
 const { validateSurname } = require('app/middleware/validateSurname');
-const { sinon } = require('test/chai-sinon');
+const { expect, sinon } = require('test/chai-sinon');
 const validateSurnameContent = require('app/assets/locale/en').validateSurname;
 
 describe('validateSurname.js', () => {
@@ -30,7 +30,7 @@ describe('validateSurname.js', () => {
     it('calls next when there are no field errors', () => {
       req.body.surname = 'validSurname';
       validateSurname(req, res, next);
-      next.should.have.been.called;
+      expect(next).to.have.been.called;
     });
 
   });
@@ -57,7 +57,7 @@ describe('validateSurname.js', () => {
       fields.surname.errorMessage = validateSurnameContent.surname.errors.emptyField;
       req.body.surname = '';
       validateSurname(req, res, next);
-      res.render.should.have.been.calledWith('validate-surname', { mactoken, fields });
+      expect(res.render).to.have.been.calledWith('validate-surname', { mactoken, fields })
     });
 
     it('calls res.render when the field is invalid', () => {
@@ -66,7 +66,7 @@ describe('validateSurname.js', () => {
       fields.surname.errorMessage = validateSurnameContent.surname.errors.invalid;
       req.body.surname = '12345';
       validateSurname(req, res, next);
-      res.render.should.have.been.calledWith('validate-surname', { mactoken, fields });
+      expect(res.render).to.have.been.calledWith('validate-surname', { mactoken, fields });
     });
 
   });

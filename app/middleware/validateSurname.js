@@ -1,4 +1,5 @@
 const Joi = require('joi');
+const { setErrorFields } = require('app/core/fieldErrors');
 const surnameRegex = /^([a-zA-z]+([ '-][a-zA-Z]+)*){2,}$/;
 
 const validateSurname = (req, res, next) => {
@@ -41,18 +42,6 @@ const validateField = (surname, errors) => {
 
   return fields;
 
-};
-
-const setErrorFields = (field, fields, result, errors) => {
-  fields.error = true;
-  fields[field].error = true;
-  fields[field].errorMessage = result.error.message;
-
-  const type = result.error.details[0].type;
-  fields[field].errorHeading = (type === 'any.empty') ?
-    errors.emptyField : errors.invalid;
-
-  return fields;
 };
 
 module.exports = { validateSurname };
