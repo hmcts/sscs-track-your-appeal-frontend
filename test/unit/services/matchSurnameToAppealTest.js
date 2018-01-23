@@ -79,9 +79,6 @@ describe('matchSurnameToAppeal.js', () => {
       api = requestError(error);
 
       return matchSurnameToAppeal(req, res, next)
-        .then(() => {
-          fail('Should return an error');
-        })
         .catch(() => {
           expect(res.locals.mactoken).to.equal(invalidmactoken);
           expect(res.locals.fields).to.eql(errorFields);
@@ -95,9 +92,6 @@ describe('matchSurnameToAppeal.js', () => {
       api = requestError(error);
 
       return matchSurnameToAppeal(req, res, next)
-        .then(() => {
-          fail('Should return an error');
-        })
         .catch(() => {
           expect(next).to.have.been.calledWith(error);
         });
