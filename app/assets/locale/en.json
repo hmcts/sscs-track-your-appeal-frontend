@@ -306,8 +306,8 @@
     "submit": "Track your appeal",
     "surname": {
       "errors": {
-        "emptyField": "Enter your last name to continue",
-        "invalid": "You have entered an invalid last name. Enter your last name in full",
+        "emptyStringHeading": "Enter your last name to continue",
+        "notValidHeading": "You have entered an invalid last name. Enter your last name in full",
         "noMatch": "Your last name does not match the last name on the appeal you are trying to access. Enter your last name again."
       }
     }

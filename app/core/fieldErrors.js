@@ -5,9 +5,8 @@ const setErrorFields = (field, fields, result, errors) => {
 
   const type = result.error.details[0].type;
   fields[field].errorHeading = (type === 'any.empty') ?
-    errors.emptyField : errors.invalid;
+    errors.emptyStringHeading : errors.notValidHeading;
 
-  console.log(fields);
   return fields;
 };
 

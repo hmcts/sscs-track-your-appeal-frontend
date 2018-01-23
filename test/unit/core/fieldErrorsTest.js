@@ -1,6 +1,4 @@
-const {expect, sinon} = require('test/chai-sinon');
-const HttpStatus = require('http-status-codes');
-const mockery = require('mockery');
+const { expect } = require('test/chai-sinon');
 const { setErrorFields } = require('app/core/fieldErrors');
 
 describe('fieldErrors.js', () => {
@@ -9,8 +7,8 @@ describe('fieldErrors.js', () => {
 
     const fieldName = 'fieldName';
     const errorContent = {
-      emptyField: 'This field is empty',
-      invalid: 'This field is invalid'
+      emptyStringHeading: 'This field is empty',
+      notValidHeading: 'This field is invalid'
     };
     let fieldsObj = {};
     let fields, joiResult, expectedResult;
@@ -32,7 +30,7 @@ describe('fieldErrors.js', () => {
     });
 
     it('returns fields with empty field error message', () => {
-      joiResult.error.message = errorContent.emptyField;
+      joiResult.error.message = errorContent.emptyStringHeading;
       joiResult.error.details[0].type = 'any.empty';
       expectedResult.fieldName.errorMessage = joiResult.error.message;
       expectedResult.fieldName.errorHeading = joiResult.error.message;
@@ -41,7 +39,7 @@ describe('fieldErrors.js', () => {
     });
 
     it('returns fields with invalid field error message', () => {
-      joiResult.error.message = errorContent.invalid;
+      joiResult.error.message = errorContent.notValidHeading;
       joiResult.error.details[0].type = 'any.invalid';
       expectedResult.fieldName.errorMessage = joiResult.error.message;
       expectedResult.fieldName.errorHeading = joiResult.error.message;

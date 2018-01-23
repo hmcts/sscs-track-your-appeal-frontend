@@ -53,17 +53,17 @@ describe('validateSurname.js', () => {
 
     it('calls res.render when the field is empty', () => {
       fields.surname.value = '';
-      fields.surname.errorHeading = validateSurnameContent.surname.errors.emptyField;
-      fields.surname.errorMessage = validateSurnameContent.surname.errors.emptyField;
+      fields.surname.errorHeading = validateSurnameContent.surname.errors.emptyStringHeading;
+      fields.surname.errorMessage = validateSurnameContent.surname.errors.emptyStringHeading;
       req.body.surname = '';
       validateSurname(req, res, next);
-      expect(res.render).to.have.been.calledWith('validate-surname', { mactoken, fields })
+      expect(res.render).to.have.been.calledWith('validate-surname', { mactoken, fields });
     });
 
     it('calls res.render when the field is invalid', () => {
       fields.surname.value = '12345';
-      fields.surname.errorHeading = validateSurnameContent.surname.errors.invalid;
-      fields.surname.errorMessage = validateSurnameContent.surname.errors.invalid;
+      fields.surname.errorHeading = validateSurnameContent.surname.errors.notValidHeading;
+      fields.surname.errorMessage = validateSurnameContent.surname.errors.notValidHeading;
       req.body.surname = '12345';
       validateSurname(req, res, next);
       expect(res.render).to.have.been.calledWith('validate-surname', { mactoken, fields });

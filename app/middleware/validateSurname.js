@@ -19,12 +19,12 @@ const validateField = (surname, errors) => {
   const schema = Joi.string().regex(surnameRegex).required().options({
     language: {
       any: {
-        empty: `!!${errors.emptyField}`,
-        invalid: `!!${errors.invalid}`
+        empty: `!!${errors.emptyStringHeading}`,
+        invalid: `!!${errors.notValidHeading}`
       },
       string: {
         regex: {
-          base: `!!${errors.invalid}`
+          base: `!!${errors.notValidHeading}`
         }
       }
     }
