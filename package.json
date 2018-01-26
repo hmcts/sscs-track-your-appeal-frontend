@@ -19,7 +19,7 @@
     "coverage": "cross-env NODE_PATH=. istanbul cover _mocha test/unit/** --dir test/coverage/html",
     "postcoverage": "grunt services",
     "prepa11y": "grunt mock-services",
-    "a11y": "cross-env NODE_PATH=. LOG_LEVEL=OFF mocha test/accessibility -r test/chai-sinon.js --reporter spec --recursive --timeout 10000",
+    "pa11y": "cross-env NODE_PATH=. LOG_LEVEL=OFF mocha test/accessibility -r test/chai-sinon.js --reporter spec --recursive --timeout 10000",
     "postpa11y": "grunt services",
     "smoke-test": "cross-env NODE_PATH=. codeceptjs run -c test/smoke --steps",
     "cross-browser": "NODE_ENV=TESTING LOG_LEVEL=OFF NODE_PATH=. codeceptjs run -c test/smoke/saucelabs.conf.js --steps",
@@ -30,7 +30,7 @@
     "post-data": "cross-env NODE_PATH=. node post-data.js",
     "sonar-scan": "sonar-scanner",
     "test:coverage": "yarn precoverage && yarn coverage && yarn postcoverage",
-    "test:a11y": "yarn prepa11y && yarn a11y && yarn postpa11y",
+    "test:a11y": "yarn prepa11y && yarn pa11y && yarn postpa11y",
     "lint": "echo 'linting not implemented'",
     "test:nsp": "echo 'nsp not implemented'"
   },
