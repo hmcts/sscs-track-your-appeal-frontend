@@ -7,7 +7,8 @@ Scenario('verify appellant details after Appeal Received', function*(I) {
   const caseId = yield I.getTestAppealCaseId("appealReceivedAppealCaseId")
   const appealId = yield I.retrieveAppealNumber(caseId);
   const date = yield I.calcAppealDate("appealReceivedAppealCaseId", 35);
-  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  console.log(date);
+  I.setSurnameValidationCookieAndGoToPage(`/progress/${appealId}/trackyourappeal`);
   I.see('Mr. A Alpha');
   I.see('Appeal reference number: SC111/11/1111');
   I.see(pageText.progressBar.screenReader.appeal.happened);
@@ -15,13 +16,13 @@ Scenario('verify appellant details after Appeal Received', function*(I) {
   I.see(pageText.progressBar.screenReader.hearingBooked.due);
   I.see(pageText.progressBar.screenReader.hearing.due);
   I.see(pageText.common.latestUpdate);
-  I.see('We’ve told DWP that you’ve appealed against their decision. They should respond before '+date+'. We’ll contact you and explain the next steps when they’ve replied.')
+  I.see(`We’ve told DWP that you’ve appealed against their decision. They should respond before ${date}. We’ll contact you and explain the next steps when they’ve replied.`)
 });
 
 Scenario('verify appellant details after DWP response received', function*(I, Properties) {
   const caseId = yield I.getTestAppealCaseId("dwpAppealCaseId")
   const appealId = yield I.retrieveAppealNumber(caseId);
-  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.setSurnameValidationCookieAndGoToPage(`/progress/${appealId}/trackyourappeal`);
   I.see('Mr. B Bravo');
   I.see('Appeal reference number: SC222/22/22222');
   I.see(pageText.progressBar.screenReader.appeal.happened);
@@ -39,10 +40,10 @@ Scenario('verify appellant details after DWP response received', function*(I, Pr
 
 });
 
-Scenario('verify appellant details after Hearing Booked', function*(I, Properties) {
+Scenario.only('verify appellant details after Hearing Booked', function*(I, Properties) {
   const caseId = yield I.getTestAppealCaseId("hearingBookedAppealCaseId")
   const appealId = yield I.retrieveAppealNumber(caseId);
-  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.setSurnameValidationCookieAndGoToPage(`/progress/${appealId}/trackyourappeal`);
   I.see('Mr. C Charlie');
   I.see('Appeal reference number: SC333/33/33333');
   I.see(pageText.progressBar.screenReader.appeal.happened);
@@ -62,7 +63,7 @@ Scenario('verify appellant details after Hearing Booked', function*(I, Propertie
 Scenario('verify hearing details', function*(I, Properties) {
   const caseId = yield I.getTestAppealCaseId("hearingBookedAppealCaseId")
   const appealId = yield I.retrieveAppealNumber(caseId);
-  I.amOnPage('/progress/' + appealId + '/hearingdetails');
+  I.setSurnameValidationCookieAndGoToPage(`/progress/${appealId}/hearingdetails`);
   I.see('Mr. C Charlie');
   I.see('Appeal reference number: SC333/33/33333');
   I.see('Date');
@@ -83,7 +84,7 @@ Scenario('verify appellant details after Hearing response received for ESA appea
   const caseId = yield I.getTestAppealCaseId("hearingESAAppealCaseId")
   const appealId = yield I.retrieveAppealNumber(caseId);
   const date = yield I.calcAppealDate("hearingESAAppealCaseId", 0);
-  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.setSurnameValidationCookieAndGoToPage(`/progress/${appealId}/trackyourappeal`);
   I.see('Ms. D Delta');
   I.see('Appeal reference number: SC444/44/44444');
   I.see(pageText.progressBar.screenReader.appeal.happened);
@@ -98,7 +99,7 @@ Scenario('verify appellant details after Hearing response received for PIP appea
   const caseId = yield I.getTestAppealCaseId("hearingPIPAppealCaseId")
   const appealId = yield I.retrieveAppealNumber(caseId);
   const date = yield I.calcAppealDate("hearingPIPAppealCaseId", 0);
-  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.setSurnameValidationCookieAndGoToPage(`/progress/${appealId}/trackyourappeal`);
   I.see('Ms. D Date');
   I.see('Appeal reference number: SC300/04/44444');
   I.see(pageText.progressBar.screenReader.appeal.happened);
@@ -112,7 +113,7 @@ Scenario('verify appellant details after Hearing response received for PIP appea
 Scenario('verify about your appeal section links', function*(I) {
   const caseId = yield I.getTestAppealCaseId("hearingESAAppealCaseId")
   const appealId = yield I.retrieveAppealNumber(caseId);
-  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.setSurnameValidationCookieAndGoToPage(`/progress/${appealId}/trackyourappeal`);
   I.see('About your appeal');
   I.click('What to expect at your hearing');
   I.see('What to expect at your hearing');
@@ -133,7 +134,7 @@ Scenario('verify about your appeal section links', function*(I) {
 Scenario('verify evidence page', function*(I) {
   const caseId = yield I.getTestAppealCaseId("hearingESAAppealCaseId")
   const appealId = yield I.retrieveAppealNumber(caseId);
-  I.amOnPage('/progress/' + appealId + '/evidence');
+  I.setSurnameValidationCookieAndGoToPage(`/progress/${appealId}/evidence`);
   I.see(pageText.evidence.provide.title);
   I.see(pageText.evidence.provide.medicalEvidence.heading);
   I.see(pageText.evidence.provide.oralEvidence.heading);
@@ -148,7 +149,7 @@ Scenario('verify evidence page', function*(I) {
 Scenario('verify what to expect at your hearing page for an ESA appeal', function*(I) {
   const caseId = yield I.getTestAppealCaseId("hearingESAAppealCaseId")
   const appealId = yield I.retrieveAppealNumber(caseId);
-  I.amOnPage('/progress/' + appealId + '/abouthearing');
+  I.setSurnameValidationCookieAndGoToPage(`/progress/${appealId}/abouthearing`);
   I.see(pageText.hearing.details.title);
   I.see('Your hearing is an opportunity for you to explain your appeal and get an impartial decision on your entitlement to Employment and Support Allowance (ESA). The tribunal is independent and will consider both sides of the appeal.');
   I.see('An ESA appeal hearing with a judge and a medical expert.');
@@ -167,7 +168,7 @@ Scenario('verify what to expect at your hearing page for an ESA appeal', functio
 Scenario('verify expenses page', function*(I) {
   const caseId = yield I.getTestAppealCaseId("hearingESAAppealCaseId")
   const appealId = yield I.retrieveAppealNumber(caseId);
-  I.amOnPage('/progress/' + appealId + '/expenses');
+  I.setSurnameValidationCookieAndGoToPage(`/progress/${appealId}/expenses`);
   I.see(pageText.claimExpenses.title);
   I.see(pageText.claimExpenses.content);
 });
@@ -175,7 +176,7 @@ Scenario('verify expenses page', function*(I) {
 Scenario('verify contact us page', function*(I) {
   const caseId = yield I.getTestAppealCaseId("hearingESAAppealCaseId")
   const appealId = yield I.retrieveAppealNumber(caseId);
-  I.amOnPage('/progress/' + appealId + '/contactus');
+  I.setSurnameValidationCookieAndGoToPage(`/progress/${appealId}/contactus`);
   I.see('Contact us');
   I.see(pageText.contactUs.title);
   I.see(pageText.contactUs.description);
@@ -189,7 +190,7 @@ Scenario('verify contact us page', function*(I) {
 Scenario('verify appellant details for lapsed revised state for ESA appeal', function*(I) {
   const caseId = yield I.getTestAppealCaseId("lapsedRevisedESAAppealCaseId")
   const appealId = yield I.retrieveAppealNumber(caseId);
-  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.setSurnameValidationCookieAndGoToPage(`/progress/${appealId}/trackyourappeal`);
   I.see('Ms. F Foxtrot');
   I.see('Appeal reference number: SC555/55/55555');
   I.see('DWP have told us they changed their decision on your entitlement to ESA in your favour. We’ve therefore closed this appeal. If you don’t agree with their new decision you can start a new appeal.');
@@ -200,7 +201,7 @@ Scenario('verify appellant details for lapsed revised state for ESA appeal', fun
 Scenario('verify appellant details for lapsed revised state for PIP appeal', function*(I) {
   const caseId = yield I.getTestAppealCaseId("lapsedRevisedPIPAppealCaseId")
   const appealId = yield I.retrieveAppealNumber(caseId);
-  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.setSurnameValidationCookieAndGoToPage(`/progress/${appealId}/trackyourappeal`);
   I.see('Ms. F Fruit');
   I.see('Appeal reference number: SC300/05/55555');
   I.see('DWP have told us they changed their decision on your entitlement to PIP in your favour. We’ve therefore closed this appeal. If you don’t agree with their new decision you can start a new appeal.');
@@ -211,7 +212,7 @@ Scenario('verify appellant details for lapsed revised state for PIP appeal', fun
 Scenario('verify appellant details for withdrawn state for ESA appeal', function*(I) {
   const caseId = yield I.getTestAppealCaseId("withdrawnESAAppealCaseId")
   const appealId = yield I.retrieveAppealNumber(caseId);
-  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.setSurnameValidationCookieAndGoToPage(`/progress/${appealId}/trackyourappeal`);
   I.see('Ms. I Iglo');
   I.see('Appeal reference number: SC666/66/66666');
   I.see(pageText.status.withdrawn.content[0]);
@@ -222,7 +223,7 @@ Scenario('verify appellant details for withdrawn state for ESA appeal', function
 Scenario('verify appellant details for withdrawn state for PIP appeal', function*(I) {
   const caseId = yield I.getTestAppealCaseId("withdrawnPIPAppealCaseId")
   const appealId = yield I.retrieveAppealNumber(caseId);
-  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.setSurnameValidationCookieAndGoToPage(`/progress/${appealId}/trackyourappeal`);
   I.see('Ms. I Iceberg');
   I.see('Appeal reference number: SC300/06/66666');
   I.see(pageText.status.withdrawn.content[0]);
@@ -235,7 +236,7 @@ Scenario('verify appellant details for adjourned state', function*(I) {
   const caseId = yield I.getTestAppealCaseId("adjurnedAppealCaseId")
   const appealId = yield I.retrieveAppealNumber(caseId);
   const date = yield I.calcAppealDate("adjurnedAppealCaseId", 7);
-  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.setSurnameValidationCookieAndGoToPage(`/progress/${appealId}/trackyourappeal`);
   I.see('Ms. K Kilo');
   I.see('Appeal reference number: SC777/77/77777');
   I.see(pageText.progressBar.screenReader.appeal.happened);
@@ -248,7 +249,7 @@ Scenario('verify appellant details for adjourned state', function*(I) {
 Scenario('verify appellant details for postponed state for ESA appeal', function*(I) {
   const caseId = yield I.getTestAppealCaseId("postponedESAAppealCaseId")
   const appealId = yield I.retrieveAppealNumber(caseId);
-  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.setSurnameValidationCookieAndGoToPage(`/progress/${appealId}/trackyourappeal`);
   I.see('Ms. L Lena');
   I.see('Appeal reference number: SC888/88/88888');
   I.see(pageText.progressBar.screenReader.appeal.happened);
@@ -262,7 +263,7 @@ Scenario('verify appellant details for postponed state for ESA appeal', function
 Scenario('verify appellant details for postponed state PIP appeal', function*(I) {
   const caseId = yield I.getTestAppealCaseId("postponedPIPAppealCaseId")
   const appealId = yield I.retrieveAppealNumber(caseId);
-  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.setSurnameValidationCookieAndGoToPage(`/progress/${appealId}/trackyourappeal`);
   I.see('Ms. L Lemon');
   I.see('Appeal reference number: SC300/08/88888');
   I.see(pageText.progressBar.screenReader.appeal.happened);
@@ -276,7 +277,7 @@ Scenario('verify appellant details for postponed state PIP appeal', function*(I)
 Scenario('verify appellant details for past hearing date state for ESA appeal', function*(I) {
   const caseId = yield I.getTestAppealCaseId("pastHearingDateESAAppealCaseId")
   const appealId = yield I.retrieveAppealNumber(caseId);
-  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.setSurnameValidationCookieAndGoToPage(`/progress/${appealId}/trackyourappeal`);
   I.see('Mr. M Miao');
   I.see('Appeal reference number: SC100/00/00000');
   I.see(pageText.progressBar.screenReader.appeal.happened);
@@ -290,7 +291,7 @@ Scenario('verify appellant details for past hearing date state for ESA appeal', 
 Scenario('verify appellant details for past hearing date state for PIP appeal', function*(I) {
   const caseId = yield I.getTestAppealCaseId("pastHearingDatePIPAppealCaseId")
   const appealId = yield I.retrieveAppealNumber(caseId);
-  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.setSurnameValidationCookieAndGoToPage(`/progress/${appealId}/trackyourappeal`);
   I.see('Mr. M Melon');
   I.see('Appeal reference number: SC300/10/00000');
   I.see(pageText.progressBar.screenReader.appeal.happened);
@@ -305,7 +306,7 @@ Scenario('verify appellant details for dormant state for ESA appeal', function*(
   const caseId = yield I.getTestAppealCaseId("dormantESAAppealCaseId")
   const appealId = yield I.retrieveAppealNumber(caseId);
   const date = yield I.calcAppealDate("dormantESAAppealCaseId", 0);
-  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.setSurnameValidationCookieAndGoToPage(`/progress/${appealId}/trackyourappeal`);
   I.see('Mr. N November');
   I.see('Appeal reference number: SC100/00/00001');
   I.see('A hearing for your ESA appeal took place on '+date+' and a decision was made. You should receive the decision by post within 7 working days of the hearing.');
@@ -316,7 +317,7 @@ Scenario('verify appellant details for dormant state for PIP appeal', function*(
   const caseId = yield I.getTestAppealCaseId("dormantPIPAppealCaseId")
   const appealId = yield I.retrieveAppealNumber(caseId);
   const date = yield I.calcAppealDate("dormantPIPAppealCaseId", 0);
-  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.setSurnameValidationCookieAndGoToPage(`/progress/${appealId}/trackyourappeal`);
   I.see('Mr. N Nut');
   I.see('Appeal reference number: SC300/11/00001');
   I.see('A hearing for your PIP appeal took place on '+date+' and a decision was made. You should receive the decision by post within 7 working days of the hearing.');
@@ -326,7 +327,7 @@ Scenario('verify appellant details for dormant state for PIP appeal', function*(
 Scenario('verify appellant details for Closed state', function*(I) {
   const caseId = yield I.getTestAppealCaseId("dormantClosedESAAppealCaseId")
   const appealId = yield I.retrieveAppealNumber(caseId);
-  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.setSurnameValidationCookieAndGoToPage(`/progress/${appealId}/trackyourappeal`);
   I.see('Mr. O Owl');
   I.see('Appeal reference number: SC100/00/00002');
   I.see('Your ESA benefit appeal is now closed.');
@@ -336,7 +337,7 @@ Scenario('verify appellant details for Closed state', function*(I) {
 Scenario('verify appellant details for Closed state', function*(I) {
   const caseId = yield I.getTestAppealCaseId("dormantClosedPIPAppealCaseId")
   const appealId = yield I.retrieveAppealNumber(caseId);
-  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.setSurnameValidationCookieAndGoToPage(`/progress/${appealId}/trackyourappeal`);
   I.see('Mr. O Opel');
   I.see('Appeal reference number: SC300/12/00002');
   I.see('Your PIP benefit appeal is now closed.');
@@ -346,7 +347,7 @@ Scenario('verify appellant details for Closed state', function*(I) {
 Scenario('verify appellant details for dwp respond overdue state', function*(I) {
   const caseId = yield I.getTestAppealCaseId("dwpRespondOverdueAppealCaseId")
   const appealId = yield I.retrieveAppealNumber(caseId);
-  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.setSurnameValidationCookieAndGoToPage(`/progress/${appealId}/trackyourappeal`);
   I.see('Mr. P Papa');
   I.see('Appeal reference number: SC100/00/00003');
   I.see(pageText.progressBar.screenReader.appeal.happened);
@@ -358,9 +359,9 @@ Scenario('verify appellant details for dwp respond overdue state', function*(I) 
 
 
 Scenario('verify appellant details for new hearing booked state', function*(I) {
-  const caseId = yield I.getTestAppealCaseId("newHearingBookedAppealCaseId")
+  const caseId = yield I.getTestAppealCaseId("newHearingBookedAppealCaseId");
   const appealId = yield I.retrieveAppealNumber(caseId);
-  I.amOnPage('/progress/' + appealId + '/trackyourappeal');
+  I.setSurnameValidationCookieAndGoToPage(`/progress/${appealId}/trackyourappeal`);
   I.see('Ms. Q Quack');
   I.see('Appeal reference number: SC100/00/00004');
   I.see(pageText.progressBar.screenReader.appeal.happened);

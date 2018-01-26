@@ -6,7 +6,7 @@ Feature('Validate Surname page');
 
 Before(function*(I) {
 
-  const caseId = yield I.getTestAppealCaseId("lapsedRevisedESAAppealCaseId")
+  const caseId = yield I.getTestAppealCaseId("lapsedRevisedESAAppealCaseId");
   const authenticationCode = yield I.getMACToken(caseId);
   appealId = yield I.retrieveAppealNumber(caseId);
   I.amOnPage(`/validate-surname/${authenticationCode}`);

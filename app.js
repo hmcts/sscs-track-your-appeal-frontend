@@ -108,7 +108,10 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-// app.use(cookieParser('meow'));
+app.use(cookieParser());
+app.use(cookieSession({
+  name
+}));
 
 app.use(locals);
 app.use('/', routes);

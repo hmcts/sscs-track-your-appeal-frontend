@@ -13,24 +13,27 @@ class testDataHelper extends codecept_helper {
 
     calcAppealDate(desc, numberOfDays) {
         const calcDate = new Date(this.getTestAppeal(desc).hearingDate);
+        console.log('------')
+        console.log(this.getTestAppeal(desc).hearingDate);
+        console.log(calcDate)
         calcDate.setDate(calcDate.getDate() + numberOfDays);
+        console.log(calcDate.getDate() + numberOfDays);
+        console.log(calcDate);
         return moment(calcDate).format('DD MMMM YYYY');
     }
 
-    async setCookieeee(appealId) {
-      let cookies = await this.helpers['Nightmare'].browser
+    async setSurnameValidationCookieAndGoToPage(route) {
+      //s%3Atrue.Xik2GYciTLcfdSbE%2FSQ1W1mMmcJg8OrQAdsI6yDQNp8
+      const nightmare = this.helpers['Nightmare'].browser;
+      await nightmare
         .cookies.set({
-          url: "http://localhost:3000",
-          name: "surnameValidated",
-          value: 'true'
+          url: nightmare.options.url,
+          name: 'surnameValidated',
+          value: 's%3Atrue.Xik2GYciTLcfdSbE%2FSQ1W1mMmcJg8OrQAdsI6yDQNp8'
         })
-        .goto('http://localhost:3000/progress/' + appealId + '/trackyourappeal')
-        .cookies.get();
-
-      console.log(cookies);
+        .goto(`${nightmare.options.url}${route}`);
     }
 
 }
 
-module.exports = testDataHelper
-
+module.exports = testDataHelper;
