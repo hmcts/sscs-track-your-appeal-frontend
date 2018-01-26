@@ -17,6 +17,19 @@ class testDataHelper extends codecept_helper {
         return moment(calcDate).format('DD MMMM YYYY');
     }
 
+    async setCookieeee(appealId) {
+      let cookies = await this.helpers['Nightmare'].browser
+        .cookies.set({
+          url: "http://localhost:3000",
+          name: "surnameValidated",
+          value: 'true'
+        })
+        .goto('http://localhost:3000/progress/' + appealId + '/trackyourappeal')
+        .cookies.get();
+
+      console.log(cookies);
+    }
+
 }
 
 module.exports = testDataHelper

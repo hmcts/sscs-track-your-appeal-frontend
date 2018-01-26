@@ -4,13 +4,19 @@ const HttpStatus = require('http-status-codes');
 
 const matchSurnameToAppeal = (req, res, next) => {
 
-  const mactoken = req.params.mactoken;
+  const id = req.params.id;
   const surname = req.body.surname;
+  const originalUrl = req.query.redirect;
 
-  return request.get(`${appealsAPI}/validate/${mactoken}/${surname}`)
+  return request.get(`${appealsAPI}/validate/${id}/${surname}`)
     .then(result => {
-      const appealId = result.body.appealId;
-      res.redirect(`/progress/${appealId}/trackyourappeal`);
+      res.cookie('surnameValidated', true, {
+        httpOnly: true,
+        maxAge: 90000,
+        // secure: true,
+        signed: true
+      });
+      res.redirect(originalUrl);
     })
     .catch(error => {
       if (error.statusCode === HttpStatus.BAD_REQUEST && error.rawResponse === `Invalid surname provided: ${surname}`) {
@@ -23,8 +29,9 @@ const matchSurnameToAppeal = (req, res, next) => {
             errorHeading: res.locals.i18n.validateSurname.surname.errors.noMatch
           }
         };
-        res.locals.mactoken = mactoken;
+        res.locals.id = id;
         res.locals.fields = fields;
+        res.locals.originalUrl = originalUrl;
         next();
       } else {
         next(error);

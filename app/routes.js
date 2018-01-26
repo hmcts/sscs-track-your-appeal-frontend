@@ -6,6 +6,7 @@ const { reformatHearingDetails } = require('app/middleware/hearing');
 const { notificationChoiceRedirect } = require('app/middleware/notificationChoiceRedirect');
 const { validateEmail } = require('app/middleware/validateEmail');
 const { validateSurname } = require('app/middleware/validateSurname');
+const { surnameValidationCookieCheck } = require('app/middleware/surnameValidationCookieCheck');
 const { showProgressBar } = require('app/core/UIUtils');
 const {Logger} = require('@hmcts/nodejs-logging');
 const logger = Logger.getLogger('routes.js');
@@ -22,11 +23,14 @@ const tyaMiddleware = [
 
 //------------------------------------ TRACK YOUR APPEAL ---------------------------------------------------------------
 
-router.get('/validate-surname/:mactoken', validateToken, (req, res) => {
-  res.render('validate-surname', { mactoken: req.params.mactoken });
+router.get('/validate-surname/:id', validateToken, (req, res) => {
+  res.render('validate-surname', {
+    id: req.params.id,
+    originalUrl: req.query.redirect
+  });
 });
 
-router.post('/validate-surname/:mactoken', validateSurname, matchSurnameToAppeal, (req, res) => {
+router.post('/validate-surname/:id', validateSurname, matchSurnameToAppeal, (req, res) => {
   res.render('validate-surname');
 });
 

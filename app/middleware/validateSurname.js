@@ -3,12 +3,12 @@ const { setErrorFields } = require('app/core/fieldErrors');
 const surnameRegex = /^([a-zA-z]+([ '-][a-zA-Z]+)*){2,}$/;
 
 const validateSurname = (req, res, next) => {
-  const mactoken = req.params.mactoken;
+  const id = req.params.id;
   const surname = req.body.surname;
   const errors = res.locals.i18n.validateSurname.surname.errors;
   const fields = validateField(surname, errors);
   if(fields.error) {
-    res.render('validate-surname', { mactoken, fields });
+    res.render('validate-surname', { id, fields });
   } else {
     next();
   }

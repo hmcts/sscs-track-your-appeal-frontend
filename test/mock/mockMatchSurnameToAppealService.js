@@ -1,17 +1,27 @@
 const mockedData = require('test/mock/data/index');
-const { map, find, includes } = require('lodash');
+const { map, includes } = require('lodash');
 
 const matchSurnameToAppeal = (req, res, next) => {
 
+  console.log('hello');
+
   const flattenData = map(mockedData, 'appeal');
   const mockedDataSurname = map(flattenData, 'surname');
-  const mactoken = req.params.mactoken;
+  const id = req.params.id;
   const surname = req.body.surname;
+  const originalUrl = req.query.redirect;
+
+  console.log(originalUrl);
 
   if (includes(mockedDataSurname, surname)) {
-    const appeal = find(flattenData, { surname });
-    const appealId = appeal.appealNumber;
-    res.redirect(`/progress/${appealId}/trackyourappeal`);
+    console.log('here');
+    res.cookie('surnameValidated', true, {
+      httpOnly: true,
+      maxAge: 90000,
+      // secure: true,
+      signed: true
+    });
+    res.redirect(originalUrl);
   } else {
     const fields = {
       error: true,
@@ -22,7 +32,7 @@ const matchSurnameToAppeal = (req, res, next) => {
         errorHeading: res.locals.i18n.validateSurname.surname.errors.noMatch
       }
     };
-    res.locals.mactoken = mactoken;
+    res.locals.id = id;
     res.locals.fields = fields;
     next();
   }

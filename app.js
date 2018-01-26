@@ -4,6 +4,8 @@ const express = require('express');
 const expressNunjucks = require('express-nunjucks');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const cookieSession = require('cookie-session');
 const locals = require('app/locals');
 const config = require('app/config');
 const routes = require('app/routes');
@@ -105,6 +107,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
+// app.use(cookieParser('meow'));
 
 app.use(locals);
 app.use('/', routes);
