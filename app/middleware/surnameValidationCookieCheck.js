@@ -1,6 +1,5 @@
 const surnameValidationCookieCheck = (req, res, next) => {
-  const surnameValidated =  req.cookies.surnameValidated;
-  // const surnameValidated =  req.signedCookies.surnameValidated;
+  const surnameValidated = req.session.validatedSurname;
   if (surnameValidated) {
     next();
   } else {

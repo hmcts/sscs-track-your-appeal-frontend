@@ -10,12 +10,7 @@ const matchSurnameToAppeal = (req, res, next) => {
 
   return request.get(`${appealsAPI}/validate/${id}/${surname}`)
     .then(result => {
-      res.cookie('surnameValidated', true, {
-        httpOnly: true,
-        maxAge: 90000,
-        // secure: true,
-        signed: true
-      });
+      req.session.validatedSurname = true;
       res.redirect(originalUrl);
     })
     .catch(error => {

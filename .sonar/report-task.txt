@@ -1,0 +1,6 @@
+projectKey=SSCSTYAF
+serverUrl=http://localhost:9000
+serverVersion=6.7.1.35068
+dashboardUrl=http://localhost:9000/dashboard/index/SSCSTYAF
+ceTaskId=AWEzRSF4GquweDrE0rNr
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AWEzRSF4GquweDrE0rNr

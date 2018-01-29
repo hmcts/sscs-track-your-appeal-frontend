@@ -23,7 +23,6 @@ class testDataHelper extends codecept_helper {
     }
 
     async setSurnameValidationCookieAndGoToPage(route) {
-      //s%3Atrue.Xik2GYciTLcfdSbE%2FSQ1W1mMmcJg8OrQAdsI6yDQNp8
       const nightmare = this.helpers['Nightmare'].browser;
       await nightmare
         .cookies.set({
@@ -32,6 +31,10 @@ class testDataHelper extends codecept_helper {
           value: 's%3Atrue.Xik2GYciTLcfdSbE%2FSQ1W1mMmcJg8OrQAdsI6yDQNp8'
         })
         .goto(`${nightmare.options.url}${route}`);
+    }
+
+    getSurnameFromAppeal(desc) {
+      return this.getTestAppeal(desc).surname;
     }
 
 }

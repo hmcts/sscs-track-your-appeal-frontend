@@ -108,9 +108,14 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-app.use(cookieParser());
+app.set('trust proxy', 1);
+app.use(cookieParser(config.cookieSecret));
 app.use(cookieSession({
-  name
+  name: 'appealValidated',
+  secret: config.cookieSecret,
+  maxAge: 9000,
+  secure: process.env.NODE_ENV !== 'development',
+  httpOnly: true
 }));
 
 app.use(locals);

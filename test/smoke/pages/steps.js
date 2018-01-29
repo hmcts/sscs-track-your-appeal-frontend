@@ -1,11 +1,22 @@
 'use strict';
-// in this file you can append custom step methods to 'I' object
 
 module.exports = function () {
   return actor({
 
-    // Define custom steps here, use 'this' to access default methods of I.
-    // It is recommended to place a general 'login' function here.
+    goToPageAfterSurnameValidation: function*(path, caseType) {
+
+      const caseId = yield this.getTestAppealCaseId(caseType);
+      const appealId = yield this.retrieveAppealNumber(caseId);
+      const appealSurname = yield this.getSurnameFromAppeal(caseType);
+      path = path.replace(':id', appealId);
+
+      this.amOnPage(path);
+      this.seeInCurrentUrl(`/validate-surname/${appealId}?redirect=${path}`);
+      this.see('Enter your last name');
+      this.fillField('#surname', appealSurname);
+      this.click('Track your appeal');
+
+    }
 
   });
-}
+};

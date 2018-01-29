@@ -3,24 +3,14 @@ const { map, includes } = require('lodash');
 
 const matchSurnameToAppeal = (req, res, next) => {
 
-  console.log('hello');
-
   const flattenData = map(mockedData, 'appeal');
   const mockedDataSurname = map(flattenData, 'surname');
   const id = req.params.id;
   const surname = req.body.surname;
   const originalUrl = req.query.redirect;
 
-  console.log(originalUrl);
-
   if (includes(mockedDataSurname, surname)) {
-    console.log('here');
-    res.cookie('surnameValidated', true, {
-      httpOnly: true,
-      maxAge: 90000,
-      // secure: true,
-      signed: true
-    });
+    req.session.validatedSurname = true;
     res.redirect(originalUrl);
   } else {
     const fields = {
