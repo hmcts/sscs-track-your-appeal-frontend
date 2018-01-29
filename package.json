@@ -28,7 +28,11 @@
     "security-checks": "cross-env NODE_PATH=. grunt security-checks",
     "healthcheck": "cross-env NODE_PATH=. mocha test/healthCheck.js --timeout 15000 --reporter spec",
     "post-data": "cross-env NODE_PATH=. node post-data.js",
-    "sonar-scan": "sonar-scanner"
+    "sonar-scan": "sonar-scanner",
+    "test:coverage": "yarn coverage",
+    "test:a11y": "yarn pa11y",
+    "lint": "echo 'linting not implemented'",
+    "test:nsp": "yarn security-checks"
   },
   "repository": {
     "type": "git",
