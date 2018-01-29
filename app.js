@@ -113,7 +113,7 @@ app.use(cookieParser(config.cookieSecret));
 app.use(cookieSession({
   name: 'appealValidated',
   secret: config.cookieSecret,
-  maxAge: 9000,
+  maxAge: 90000,
   secure: process.env.NODE_ENV !== 'development',
   httpOnly: true
 }));

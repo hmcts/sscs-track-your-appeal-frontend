@@ -4,13 +4,13 @@ const validateSurnameContent = require('app/assets/locale/en').validateSurname;
 
 describe('validateSurname.js', () => {
 
-  const mactoken = 'validToken';
+  const id = 'validId';
   let req, res, next;
 
   beforeEach(() => {
     req = {
       params: {
-        mactoken
+        id
       },
       body: {}
     };
@@ -57,7 +57,7 @@ describe('validateSurname.js', () => {
       fields.surname.errorMessage = validateSurnameContent.surname.errors.emptyStringHeading;
       req.body.surname = '';
       validateSurname(req, res, next);
-      expect(res.render).to.have.been.calledWith('validate-surname', { mactoken, fields });
+      expect(res.render).to.have.been.calledWith('validate-surname', { id, fields });
     });
 
     it('calls res.render when the field is invalid', () => {
@@ -66,7 +66,7 @@ describe('validateSurname.js', () => {
       fields.surname.errorMessage = validateSurnameContent.surname.errors.notValidHeading;
       req.body.surname = '12345';
       validateSurname(req, res, next);
-      expect(res.render).to.have.been.calledWith('validate-surname', { mactoken, fields });
+      expect(res.render).to.have.been.calledWith('validate-surname', { id, fields });
     });
 
   });

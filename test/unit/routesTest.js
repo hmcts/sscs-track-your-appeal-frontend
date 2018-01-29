@@ -6,6 +6,8 @@ const HttpStatus = require('http-status-codes');
 describe('routes.js', () => {
 
   let httpServer;
+  let url;
+  let locationUrl;
 
   before((done) => {
     testServer.connect().then((server) => {
@@ -21,45 +23,59 @@ describe('routes.js', () => {
   describe('making application route requests which result in a HTTP 200', () => {
 
     it('should respond to /progress/md002/abouthearing', (done) => {
+      url = '/progress/md002/abouthearing';
       request(httpServer)
-        .get('/progress/md002/abouthearing')
-        .expect(HttpStatus.OK, done);
+        .get(url)
+        .expect('Location', `/validate-surname/md002?redirect=${url}`)
+        .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
     it('should respond to /progress/md002/expenses', (done) => {
+      url = '/progress/md002/expenses';
       request(httpServer)
-        .get('/progress/md002/expenses')
-        .expect(HttpStatus.OK, done);
+        .get(url)
+        .expect('Location', `/validate-surname/md002?redirect=${url}`)
+        .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
     it('should respond to /progress/md007/hearingdetails', (done) => {
+      url = '/progress/md007/hearingdetails';
       request(httpServer)
-        .get('/progress/md007/hearingdetails')
-        .expect(HttpStatus.OK, done);
+        .get(url)
+        .expect('Location', `/validate-surname/md007?redirect=${url}`)
+        .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
     it('should respond to /progress/md007/hearingdetails/10', (done) => {
+      url = '/progress/md007/hearingdetails/10';
       request(httpServer)
-        .get('/progress/md007/hearingdetails/10')
-        .expect(HttpStatus.OK, done);
+        .get(url)
+        .expect('Location', `/validate-surname/md007?redirect=${url}`)
+        .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
     it('should respond to /progress/md002/evidence', (done) => {
+      url = '/progress/md002/evidence';
       request(httpServer)
-        .get('/progress/md002/evidence')
-        .expect(HttpStatus.OK, done);
+        .get(url)
+        .expect('Location', `/validate-surname/md002?redirect=${url}`)
+        .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
     it('should respond to /progress/md002/trackyourappeal', (done) => {
+      url = '/progress/md002/trackyourappeal';
       request(httpServer)
-        .get('/progress/md002/trackyourappeal')
-        .expect(HttpStatus.OK, done);
+        .get(url)
+        .expect('Location', `/validate-surname/md002?redirect=${url}`)
+        .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
     it('should respond to /progress/md002/contactus', (done) => {
+      url = '/progress/md002/contactus';
       request(httpServer)
-        .get('/progress/md002/contactus')
-        .expect(HttpStatus.OK, done);
+        .get(url)
+        .expect('Location', `/validate-surname/md002?redirect=${url}`)
+        .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
     it('should respond to /cookiepolicy', (done) => {
@@ -190,12 +206,7 @@ describe('routes.js', () => {
     it('should respond to an unknown id with a HTTP 404:Not found', (done) => {
       request(httpServer)
         .get('/progress/999/trackyourappeal')
-        .expect(HttpStatus.NOT_FOUND)
-        .end((err, resp) => {
-          if (err) return done(err);
-          assert.include(resp.text, "Sorry, this page could not be found");
-          done();
-        })
+        .expect(HttpStatus.MOVED_TEMPORARILY, done)
     });
 
   });
