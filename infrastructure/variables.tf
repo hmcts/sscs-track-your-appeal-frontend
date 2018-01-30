@@ -17,4 +17,9 @@ variable "infrastructure_env" {
   description = "Infrastructure environment to point to"
 }
 
+variable "subscription" {
+  type = "string"
+}
+
+variable "ilbIp"{}
 
