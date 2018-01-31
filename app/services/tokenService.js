@@ -1,7 +1,8 @@
 const {tokenAPI} = require('app/config');
 const request = require('superagent');
 const HttpStatus = require('http-status-codes');
-const logger = require('nodejs-logging').getLogger('TokenService.js');
+const {Logger} = require('@hmcts/nodejs-logging');
+const logger = Logger.getLogger('TokenService.js');
 
 const validateToken = (req, res, next) => {
 

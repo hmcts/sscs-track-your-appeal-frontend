@@ -30,7 +30,9 @@ describe('Calling the getContentAsString() function', () => {
       error: sinon.stub()
     };
 
-    const contentLookupStub = proxyquire('app/core/contentLookup', { 'nodejs-logging': { getLogger: ()=> logger } });
+    const contentLookupStub = proxyquire('app/core/contentLookup', {
+      '@hmcts/nodejs-logging': { Logger: { getLogger: ()=> logger } }
+    });
 
     it('should log the error when encountering an unknown content key', () => {
       contentLookupStub.getContentAsString('unknown');

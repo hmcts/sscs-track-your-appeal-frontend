@@ -2,7 +2,8 @@ const {get} = require('lodash');
 const {appealsAPI} = require('app/config');
 const HttpStatus = require('http-status-codes');
 const request = require('superagent');
-const logger = require('nodejs-logging').getLogger('AppealService.js');
+const {Logger} = require('@hmcts/nodejs-logging');
+const logger = Logger.getLogger('AppealService.js');
 
 const getAppeal = (req, res, next) => {
 

@@ -1,22 +1,12 @@
 const {expect,sinon} = require('test/chai-sinon');
 const {events} = require('app/core/events');
-const mockery = require('mockery');
+const proxyquire = require('proxyquire');
 
 describe('UIUtils.js', () => {
 
-  describe('Calling the showProgressBar() function', () => {
+  describe('showProgressBar()', () => {
 
-    let logger = {
-      error: sinon.spy()
-    };
-
-    let mockLogger = {
-      getLogger: ()=> {
-        return logger;
-      },
-    };
-
-    let UIUtils, req, res, next;
+    let req, res, next, logger, UIUtils;
 
     before(() => {
 
@@ -28,21 +18,17 @@ describe('UIUtils.js', () => {
           }
         }
       };
+
       next = sinon.spy();
 
-      mockery.registerMock('nodejs-logging', mockLogger);
-      mockery.enable({
-        useCleanCache: true,
-        warnOnReplace: false,
-        warnOnUnregistered: false
+      logger = {
+        error: sinon.spy()
+      };
+
+      UIUtils = proxyquire('app/core/UIUtils', {
+        '@hmcts/nodejs-logging': { Logger: { getLogger: ()=> logger } }
       });
 
-      UIUtils = require('app/core/UIUtils');
-    });
-
-    after(() => {
-      mockery.disable();
-      mockery.deregisterAll();
     });
 
     it('should show the progress bar', () => {

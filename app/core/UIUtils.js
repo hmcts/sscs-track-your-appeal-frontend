@@ -1,5 +1,6 @@
 const {events, progressBar} = require('app/core/events');
-const logger = require('nodejs-logging').getLogger('UIUtils.js');
+const {Logger} = require('@hmcts/nodejs-logging');
+const logger = Logger.getLogger('UIUtils.js');
 
 const showProgressBar = (req, res, next) => {
 
@@ -13,7 +14,7 @@ const showProgressBar = (req, res, next) => {
       logger.error(`Unable to map the status ${appeal.status} to an event:`);
     }
   } else {
-    logger.error(`Undefined appeal`);
+    logger.error('Undefined appeal');
   }
 
   next();

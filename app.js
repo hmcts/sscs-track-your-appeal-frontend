@@ -1,4 +1,4 @@
-const logging = require('nodejs-logging');
+const {Logger, Express} = require('@hmcts/nodejs-logging');
 const healthcheck = require('@hmcts/nodejs-healthcheck');
 const express = require('express');
 const expressNunjucks = require('express-nunjucks');
@@ -18,9 +18,9 @@ const app = express();
 const PORT = 3000;
 app.set('port', process.env.PORT || PORT);
 
-logging.config({
-  microservice: "track-your-appeal-frontend",
-  team: "sscs",
+Logger.config({
+  microservice: 'track-your-appeal-frontend',
+  team: 'sscs',
   environment: process.env.NODE_ENV,
 });
 
@@ -35,7 +35,7 @@ app.set('views', [
   __dirname + '/app/views/notifications'
 ]);
 
-app.use(logging.express.accessLogger());
+app.use(Express.accessLogger());
 
 // Protect against some well known web vulnerabilities
 // by setting HTTP headers appropriately.
@@ -95,8 +95,8 @@ app.use('/public/images/icons', express.static(__dirname + '/govuk_modules/govuk
 app.use(favicon(path.join(__dirname, 'govuk_modules', 'govuk_template', 'assets', 'images', 'favicon.ico')));
 
 app.use('/status', healthcheck.configure({
-  "checks": {
-    "track-your-appeal-api": healthcheck.web(config.healthAPI)
+  checks: {
+    'track-your-appeal-api': healthcheck.web(config.healthAPI)
   }
 }));
 
