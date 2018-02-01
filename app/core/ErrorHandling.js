@@ -1,7 +1,8 @@
 const HttpStatus = require('http-status-codes');
-const logger = require('nodejs-logging').getLogger('ErrorHandler.js');
+const {Logger} = require('@hmcts/nodejs-logging');
+const logger = Logger.getLogger('ErrorHandling.js');
 
-class ErrorHandler {
+class ErrorHandling {
 
   static handle404(req, res, next) {
     const err = new Error(`Page Not Found - ${req.originalUrl}`);
@@ -10,16 +11,16 @@ class ErrorHandler {
   }
 
   static handleError(err, req, res, next) {
-    const status = ErrorHandler.getStatus(err);
+    const status = ErrorHandling.getStatus(err);
     res.status(status);
     res.render(status === HttpStatus.NOT_FOUND ? 'errors/404.html' : 'errors/500.html');
-    logger.error(ErrorHandler.reformatError(err));
+    logger.error(ErrorHandling.reformatError(err));
   }
 
   static handleErrorDuringDevelopment(err, req, res, next) {
-    const status = ErrorHandler.getStatus(err);
+    const status = ErrorHandling.getStatus(err);
     res.status(status);
-    err = ErrorHandler.reformatError(err);
+    err = ErrorHandling.reformatError(err);
     res.send(err);
     logger.error(err);
   }
@@ -45,4 +46,4 @@ class ErrorHandler {
   }
 }
 
-module.exports = ErrorHandler;
+module.exports = ErrorHandling;

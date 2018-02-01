@@ -1,20 +1,14 @@
 const {expect, sinon} = require('test/chai-sinon');
 const HttpStatus = require('http-status-codes');
-const mockery = require('mockery');
+const proxyquire = require('proxyquire');
 
-describe('ErrorHandler.js', () => {
+describe('ErrorHandling.js', () => {
 
   const logger = {
     error: sinon.spy()
   };
 
-  const mockLogger = class Logger {
-    static getLogger(name) {
-      return logger;
-    }
-  };
-
-  let err, req, res, next, ErrorHandler, reformattedError;
+  let err, req, res, next, ErrorHandling, reformattedError;
 
   before(() => {
 
@@ -26,21 +20,10 @@ describe('ErrorHandler.js', () => {
     };
     next = sinon.spy();
 
-    mockery.registerMock('nodejs-logging', mockLogger);
-    mockery.enable({
-      useCleanCache: true,
-      warnOnReplace: false,
-      warnOnUnregistered: false
+    ErrorHandling = proxyquire('app/core/ErrorHandling', {
+      '@hmcts/nodejs-logging': { Logger: { getLogger: ()=> logger } }
     });
 
-    // Require the class under test.
-    ErrorHandler = require('app/core/ErrorHandling');
-
-  });
-
-  after(() => {
-    mockery.disable();
-    mockery.deregisterAll();
   });
 
   beforeEach(()=> {
@@ -61,7 +44,7 @@ describe('ErrorHandler.js', () => {
 
     it('should raise a 404 error', () => {
       req.originalUrl = '/path/not/found';
-      ErrorHandler.handle404(req, res, next);
+      ErrorHandling.handle404(req, res, next);
       expect(next).to.have.been.calledWithMatch({ message: `Page Not Found - ${req.originalUrl}`});
     })
 
@@ -71,7 +54,7 @@ describe('ErrorHandler.js', () => {
 
     it('should render a 404 error page and log it', () => {
       err.status = reformattedError.responseCode = HttpStatus.NOT_FOUND;
-      ErrorHandler.handleError(err, req, res, next);
+      ErrorHandling.handleError(err, req, res, next);
       expect(res.status).to.have.been.calledWith(HttpStatus.NOT_FOUND);
       expect(res.render).to.have.been.calledWith('errors/404.html');
       expect(logger.error).to.have.been.calledWith(reformattedError);
@@ -79,7 +62,7 @@ describe('ErrorHandler.js', () => {
 
     it('should render a 500 error page and log it', () => {
       err.status = reformattedError.responseCode = HttpStatus.INTERNAL_SERVER_ERROR;
-      ErrorHandler.handleError(err, req, res, next);
+      ErrorHandling.handleError(err, req, res, next);
       expect(res.status).to.have.been.calledWith(HttpStatus.INTERNAL_SERVER_ERROR);
       expect(res.render).to.have.been.calledWith('errors/500.html');
       expect(logger.error).to.have.been.calledWith(reformattedError);
@@ -91,7 +74,7 @@ describe('ErrorHandler.js', () => {
 
     it('should send a json error message', () => {
       err.status = reformattedError.responseCode = HttpStatus.NOT_FOUND;
-      ErrorHandler.handleErrorDuringDevelopment(err, req, res, next);
+      ErrorHandling.handleErrorDuringDevelopment(err, req, res, next);
       expect(res.status).to.have.been.calledWith(HttpStatus.NOT_FOUND);
       expect(res.send).to.have.been.calledWith(reformattedError);
       expect(logger.error).to.have.been.calledWith(reformattedError);
@@ -103,24 +86,24 @@ describe('ErrorHandler.js', () => {
 
     it('should retrieve status', () => {
       err.status = HttpStatus.NOT_FOUND;
-      ErrorHandler.handleError(err, req, res, next);
+      ErrorHandling.handleError(err, req, res, next);
       expect(res.status).to.have.been.calledWith(HttpStatus.NOT_FOUND);
     });
 
     it('should retrieve statusCode', () => {
       err.statusCode = HttpStatus.NOT_FOUND;
-      ErrorHandler.handleError(err, req, res, next);
+      ErrorHandling.handleError(err, req, res, next);
       expect(res.status).to.have.been.calledWith(HttpStatus.NOT_FOUND);
     });
 
     it('should retrieve responseCode', () => {
       err.responseCode = HttpStatus.NOT_FOUND;
-      ErrorHandler.handleError(err, req, res, next);
+      ErrorHandling.handleError(err, req, res, next);
       expect(res.status).to.have.been.calledWith(HttpStatus.NOT_FOUND);
     });
 
     it('should default to 500 when status is undefined', () => {
-      ErrorHandler.handleError(err, req, res, next);
+      ErrorHandling.handleError(err, req, res, next);
       expect(res.status).to.have.been.calledWith(HttpStatus.INTERNAL_SERVER_ERROR);
     });
 

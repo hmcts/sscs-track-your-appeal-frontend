@@ -1,4 +1,5 @@
-const logger = require('nodejs-logging').getLogger('contentLookup.js');
+const {Logger} = require('@hmcts/nodejs-logging');
+const logger = Logger.getLogger('contentLookup.js');
 const {get} = require('lodash');
 const locale = require('app/assets/locale/en');
 
@@ -13,7 +14,7 @@ const getContentFromFile = (key) => {
 const getContentAsString = (key) => {
   let content;
   try{
-    content = getContentFromFile(key)
+    content = getContentFromFile(key);
   } catch(ReferenceError) {
     logger.error(ReferenceError);
   }
