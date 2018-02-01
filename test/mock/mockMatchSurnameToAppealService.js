@@ -1,7 +1,7 @@
 const mockedData = require('test/mock/data/index');
 const HttpStatus = require('http-status-codes');
 
-const matchSurnameToAppeal = (req, res, next) => {
+const matchSurnameToAppeal = (req, res) => {
 
   const mockedAppeal = mockedData[req.params.id].appeal;
   const id = req.params.id;
@@ -15,7 +15,7 @@ const matchSurnameToAppeal = (req, res, next) => {
   } else {
     res.status(HttpStatus.BAD_REQUEST);
     res.render('validate-surname', {
-      id: id,
+      id,
       fields: {
         error: true,
         surname: {

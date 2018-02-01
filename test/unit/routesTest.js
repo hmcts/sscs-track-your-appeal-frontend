@@ -1,22 +1,20 @@
 const testServer = require('test/testServer');
 const request = require('supertest');
-const assert  = require('chai').assert;
 const HttpStatus = require('http-status-codes');
 
 describe('routes.js', () => {
 
   let httpServer;
   let url;
-  let locationUrl;
 
-  before((done) => {
+  beforeEach((done) => {
     testServer.connect().then((server) => {
       httpServer = server;
       done();
-    })
+    });
   });
 
-  after(() => {
+  afterEach(() => {
     httpServer.close();
   });
 
@@ -26,7 +24,7 @@ describe('routes.js', () => {
       url = '/progress/md002/abouthearing';
       request(httpServer)
         .get(url)
-        .expect('Location', `/validate-surname/md002?redirect=${url}`)
+        .expect('Location', '/validate-surname/md002')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
@@ -34,7 +32,7 @@ describe('routes.js', () => {
       url = '/progress/md002/expenses';
       request(httpServer)
         .get(url)
-        .expect('Location', `/validate-surname/md002?redirect=${url}`)
+        .expect('Location', '/validate-surname/md002')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
@@ -42,7 +40,7 @@ describe('routes.js', () => {
       url = '/progress/md007/hearingdetails';
       request(httpServer)
         .get(url)
-        .expect('Location', `/validate-surname/md007?redirect=${url}`)
+        .expect('Location', '/validate-surname/md007')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
@@ -50,7 +48,7 @@ describe('routes.js', () => {
       url = '/progress/md007/hearingdetails/10';
       request(httpServer)
         .get(url)
-        .expect('Location', `/validate-surname/md007?redirect=${url}`)
+        .expect('Location', '/validate-surname/md007')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
@@ -58,7 +56,7 @@ describe('routes.js', () => {
       url = '/progress/md002/evidence';
       request(httpServer)
         .get(url)
-        .expect('Location', `/validate-surname/md002?redirect=${url}`)
+        .expect('Location', '/validate-surname/md002')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
@@ -66,7 +64,7 @@ describe('routes.js', () => {
       url = '/progress/md002/trackyourappeal';
       request(httpServer)
         .get(url)
-        .expect('Location', `/validate-surname/md002?redirect=${url}`)
+        .expect('Location', '/validate-surname/md002')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
@@ -74,7 +72,7 @@ describe('routes.js', () => {
       url = '/progress/md002/contactus';
       request(httpServer)
         .get(url)
-        .expect('Location', `/validate-surname/md002?redirect=${url}`)
+        .expect('Location', '/validate-surname/md002')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
@@ -206,7 +204,7 @@ describe('routes.js', () => {
     it('should respond to an unknown id with a HTTP 404:Not found', (done) => {
       request(httpServer)
         .get('/progress/999/trackyourappeal')
-        .expect(HttpStatus.MOVED_TEMPORARILY, done)
+        .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
   });

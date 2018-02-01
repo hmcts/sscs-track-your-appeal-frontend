@@ -4,10 +4,10 @@ const portscanner = require('portscanner');
 let testServer = {
 
   connect() {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       this.findAvailablePort().then((port)=> {
         let server = app.listen(port);
-        resolve(server)
+        resolve(server);
       }).catch((error) => {
         console.log(error);
       });

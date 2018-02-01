@@ -9,7 +9,7 @@ describe('Application initialisation', () => {
     testServer.connect().then((server) => {
       httpServer = server;
       done();
-    })
+    });
   });
 
   after(() => {

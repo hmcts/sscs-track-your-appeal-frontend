@@ -17,7 +17,7 @@ const matchSurnameToAppeal = (req, res, next) => {
       if (error.statusCode === HttpStatus.BAD_REQUEST) {
         res.status(HttpStatus.BAD_REQUEST);
         res.render('validate-surname', {
-          id: id,
+          id,
           fields: {
             error: true,
             surname: {

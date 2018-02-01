@@ -10,26 +10,22 @@ describe('matchSurnameToAppeal.js', () => {
   const invalidId = 'invalidId';
   const invalidSurname = 'invalidSurname';
   const appealId = '1234';
-  const errorFields = {
-    error: true,
-    surname: {
-      value: invalidSurname,
-      error: true,
-      errorMessage: validateSurname.surname.errors.noMatch,
-      errorHeading: validateSurname.surname.errors.noMatch
-    }
-  };
+
   let req, res, next, api;
 
   beforeEach(() => {
+
     req = {
       session: {},
       params: {},
       query: {},
       body: {}
     };
+
     res = {
       redirect: sinon.stub(),
+      status: sinon.stub(),
+      render: sinon.stub(),
       locals: {
         appeal: {},
         i18n: {
@@ -37,7 +33,9 @@ describe('matchSurnameToAppeal.js', () => {
         }
       }
     };
+
     next = sinon.stub();
+
   });
 
   afterEach(() => {
@@ -49,14 +47,13 @@ describe('matchSurnameToAppeal.js', () => {
     it('should call res.redirect', () => {
       req.params.id = 'md002';
       req.body.surname = 'validSurname';
-      req.query.redirect = '/redirect/url';
       api = nock(appealsAPI)
         .get(`/validate/${req.params.id}/${req.body.surname}`)
         .reply(200, { appealId });
 
       return matchSurnameToAppeal(req, res, next)
         .then(() => {
-          expect(res.redirect).to.have.been.calledWith(req.query.redirect);
+          expect(res.redirect).to.have.been.calledWith(`/progress/${req.params.id}/trackyourappeal`);
         });
 
     });
@@ -74,19 +71,28 @@ describe('matchSurnameToAppeal.js', () => {
     beforeEach(() => {
       req.params.id = invalidId;
       req.body.surname = invalidSurname;
-      req.query.redirect = '/redirect/url';
     });
 
     it('should set locals and call next when code is 404', () => {
-      const error = { statusCode: HttpStatus.BAD_REQUEST, rawResponse: `Invalid surname provided: ${invalidSurname}` };
+      const error = { statusCode: HttpStatus.BAD_REQUEST };
       api = requestError(error);
 
       return matchSurnameToAppeal(req, res, next)
-        .catch(() => {
-          expect(res.locals.id).to.equal(invalidId);
-          expect(res.locals.fields).to.eql(errorFields);
-          expect(res.locals.originalUrl).to.equal('/redirect/url');
-          expect(next).to.have.been.called;
+        .then(() => {
+          expect(res.status).calledWith(HttpStatus.BAD_REQUEST);
+          expect(res.render).calledWith('validate-surname', {
+            id: req.params.id,
+            fields: {
+              error: true,
+              surname: {
+                value: invalidSurname,
+                error: true,
+                errorMessage: validateSurname.surname.errors.noMatch,
+                errorHeading: validateSurname.surname.errors.noMatch
+              }
+            }
+          });
+
         });
 
     });
