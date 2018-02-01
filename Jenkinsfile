@@ -1,10 +1,7 @@
 #!groovy
 
 properties(
-  [[$class: 'GithubProjectProperty', displayName: 'track your appeal frontend', projectUrlStr: 'https://github.com/hmcts/track-your-appeal-frontend/'],
-   pipelineTriggers([
-     [$class: 'hudson.triggers.TimerTrigger', spec  : 'H 1 * * *']
-   ])]
+  [[$class: 'GithubProjectProperty', displayName: 'track your appeal frontend', projectUrlStr: 'https://github.com/hmcts/track-your-appeal-frontend/']]
 )
 
 @Library('Reform')
