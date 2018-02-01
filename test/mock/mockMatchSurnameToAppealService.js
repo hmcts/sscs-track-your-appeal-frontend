@@ -1,30 +1,31 @@
 const mockedData = require('test/mock/data/index');
-const { map, includes } = require('lodash');
+const HttpStatus = require('http-status-codes');
 
 const matchSurnameToAppeal = (req, res, next) => {
 
-  const flattenData = map(mockedData, 'appeal');
-  const mockedDataSurname = map(flattenData, 'surname');
+  const mockedAppeal = mockedData[req.params.id].appeal;
   const id = req.params.id;
   const surname = req.body.surname;
-  const originalUrl = req.query.redirect;
 
-  if (includes(mockedDataSurname, surname)) {
-    req.session.validatedSurname = true;
-    res.redirect(originalUrl);
+  req.session.surnameHasValidated =
+    mockedAppeal.surname.toLowerCase() === surname.toLowerCase();
+
+  if (req.session.surnameHasValidated) {
+    res.redirect(`/progress/${id}/trackyourappeal`);
   } else {
-    const fields = {
-      error: true,
-      surname: {
-        value: surname,
+    res.status(HttpStatus.BAD_REQUEST);
+    res.render('validate-surname', {
+      id: id,
+      fields: {
         error: true,
-        errorMessage: res.locals.i18n.validateSurname.surname.errors.noMatch,
-        errorHeading: res.locals.i18n.validateSurname.surname.errors.noMatch
+        surname: {
+          value: surname,
+          error: true,
+          errorMessage: res.locals.i18n.validateSurname.surname.errors.noMatch,
+          errorHeading: res.locals.i18n.validateSurname.surname.errors.noMatch
+        }
       }
-    };
-    res.locals.id = id;
-    res.locals.fields = fields;
-    next();
+    });
   }
 };
 

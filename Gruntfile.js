@@ -83,18 +83,18 @@ module.exports = function(grunt){
 
         env : {
           dev : {
-            NODE_PATH : '.',
+            NODE_PATH : '.'
           }
         },
 
         copy: {
           services: {
-            src: "app/assets/javascripts/index.js",
-            dest: "app/services/index.js"
+            src: 'app/assets/javascripts/index.js',
+            dest: 'app/services/index.js'
           },
           mockServices: {
-            src: "test/mock/index.js",
-            dest: "app/services/index.js"
+            src: 'test/mock/index.js',
+            dest: 'app/services/index.js'
           }
         },
 
@@ -186,7 +186,7 @@ module.exports = function(grunt){
     ]);
 
     grunt.registerTask('security-checks', [
-      'nsp:package',
+      'nsp:package'
     ]);
 
 };

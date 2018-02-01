@@ -17,6 +17,8 @@ const helmet = require('helmet');
 
 const app = express();
 
+const COOKIE_MAX_AGE = 30 * 60000; // 30 minutes.
+
 const PORT = 3000;
 app.set('port', process.env.PORT || PORT);
 
@@ -52,7 +54,7 @@ app.use(helmet.contentSecurityPolicy({
     connectSrc: ["'self'"],
     mediaSrc: ["'self'"],
     frameSrc: ["'none'"],
-    imgSrc: ["'self'", 'www.google-analytics.com'],
+    imgSrc: ["'self'", 'www.google-analytics.com']
   }
 }));
 
@@ -111,9 +113,9 @@ app.use(bodyParser.urlencoded({
 app.set('trust proxy', 1);
 app.use(cookieParser(config.cookieSecret));
 app.use(cookieSession({
-  name: 'appealValidated',
+  name: 'tya-surname-appeal-validated',
   secret: config.cookieSecret,
-  maxAge: 90000,
+  maxAge: COOKIE_MAX_AGE,
   secure: process.env.NODE_ENV !== 'development',
   httpOnly: true
 }));

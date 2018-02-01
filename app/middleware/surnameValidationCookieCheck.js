@@ -1,12 +1,5 @@
 const surnameValidationCookieCheck = (req, res, next) => {
-  const surnameValidated = req.session.validatedSurname;
-  if (surnameValidated) {
-    next();
-  } else {
-    const originalUrl = req.originalUrl;
-    const id = req.params.id;
-    res.redirect(`/validate-surname/${id}?redirect=${originalUrl}`);
-  }
+  req.session.surnameHasValidated ? next() : res.redirect(`/validate-surname/${req.params.id}`);
 };
 
 module.exports = { surnameValidationCookieCheck };

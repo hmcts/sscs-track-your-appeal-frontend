@@ -17,14 +17,14 @@
 
         <h1 class="heading-large">{{ i18n.validateSurname.heading }}</h1>
 
-        <form action="/validate-surname/{{ id }}?redirect={{ originalUrl }}" method="post">
+        <form action="/validate-surname/{{ id }}" method="post">
 
-                    {{ textField(
-                        label='',
-                        hint='',
-                        name='surname',
-                        field=fields.surname
-                    ) }}
+            {{ textField(
+                label='',
+                hint='',
+                name='surname',
+                field=fields.surname
+            ) }}
 
             <div class="form-group">
                 <input type="submit" class="button" value="{{ i18n.validateSurname.submit }}">

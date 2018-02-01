@@ -24,15 +24,10 @@ const tyaMiddleware = [
 //------------------------------------ TRACK YOUR APPEAL ---------------------------------------------------------------
 
 router.get('/validate-surname/:id', validateToken, (req, res) => {
-  res.render('validate-surname', {
-    id: req.params.id,
-    originalUrl: req.query.redirect
-  });
+  res.render('validate-surname', { id: req.params.id });
 });
 
-router.post('/validate-surname/:id', validateSurname, matchSurnameToAppeal, (req, res) => {
-  res.render('validate-surname');
-});
+router.post('/validate-surname/:id', validateSurname, matchSurnameToAppeal, (req, res, next) => {});
 
 router.get('/progress/:id/abouthearing', surnameValidationCookieCheck, getAppeal, aboutHearingContent, (req, res) => {
   res.render('about-hearing', {data: res.locals.appeal});
