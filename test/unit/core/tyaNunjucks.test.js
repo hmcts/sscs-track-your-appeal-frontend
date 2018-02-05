@@ -2,22 +2,8 @@ const {expect} = require('test/chai-sinon');
 const {timeZone} = require('app/config');
 const {tyaNunjucks} = require('app/core/tyaNunjucks');
 const moment = require('moment-timezone');
-const testServer = require('test/testServer');
 
 describe('tyaNunjucks.js', () => {
-
-  let httpServer;
-
-  before((done) => {
-    testServer.connect().then((server) => {
-      httpServer = server;
-      done();
-    })
-  });
-
-  after(() => {
-    httpServer.close();
-  });
 
   // Date & time in UTC.
   const utc = moment.utc();

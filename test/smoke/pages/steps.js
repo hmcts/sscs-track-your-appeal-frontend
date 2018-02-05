@@ -11,7 +11,7 @@ module.exports = function () {
       path = path.replace(':id', appealId);
 
       this.amOnPage(path);
-      this.seeInCurrentUrl(`/validate-surname/${appealId}?redirect=${path}`);
+      this.seeInCurrentUrl(`/validate-surname/${appealId}`);
       this.see('Enter your last name');
       this.fillField('#surname', appealSurname);
       this.click('Track your appeal');

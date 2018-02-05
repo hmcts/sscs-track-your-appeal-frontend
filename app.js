@@ -17,15 +17,16 @@ const helmet = require('helmet');
 
 const app = express();
 
-const COOKIE_MAX_AGE = 30 * 60000; // 30 minutes.
-
 const PORT = 3000;
 app.set('port', process.env.PORT || PORT);
+
+const ONE_MINUTE = 60000;
+const COOKIE_MAX_AGE = 30 * ONE_MINUTE;
 
 Logger.config({
   microservice: 'track-your-appeal-frontend',
   team: 'sscs',
-  environment: process.env.NODE_ENV,
+  environment: process.env.NODE_ENV
 });
 
 // Tests
