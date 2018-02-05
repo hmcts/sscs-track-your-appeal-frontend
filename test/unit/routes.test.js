@@ -1,8 +1,6 @@
-const path = require('path');
-delete require.cache[path.join(__dirname, '../../app/routes.js')];
+const HttpStatus = require('http-status-codes');
 const app = require('app');
 const request = require('supertest');
-const HttpStatus = require('http-status-codes');
 
 describe('routes.js', () => {
 

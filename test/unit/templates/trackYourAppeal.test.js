@@ -1,9 +1,11 @@
 const path = require('path');
+delete require.cache[path.join(__dirname, '../../../app/routes.js')];
 delete require.cache[path.join(__dirname, '../../../app.js')];
-const request = require('supertest');
-const assert = require('chai').assert;
-const jsdom = require('jsdom');
+
 const proxyquire = require('proxyquire');
+const assert = require('chai').assert;
+const request = require('supertest');
+const jsdom = require('jsdom');
 
 proxyquire('app/routes', {
   'app/middleware/surnameValidationCookieCheck': {

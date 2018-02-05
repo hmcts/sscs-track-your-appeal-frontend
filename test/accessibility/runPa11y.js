@@ -1,4 +1,4 @@
-const testServer = require('test/testServer');
+const app = require('app');
 const request = require('supertest');
 const {expect} = require('test/chai-sinon');
 const pa11y = require('pa11y');
@@ -37,23 +37,16 @@ accessibilityPages.forEach((page) => {
 
   describe('Running Accessibility tests for: ' + page, () => {
 
-    let pageResults, httpServer;
+    let pageResults;
 
     before((done) => {
-      testServer.connect().then((server) => {
-        httpServer = server;
-        pa11yRunner.run(request(httpServer).get(page).url, (error, results) => {
+        pa11yRunner.run(request(app).get(page).url, (error, results) => {
           if (error) {
             throw new Error('Pa11y errored whilst testing page:' + page);
           }
           pageResults = results;
           done();
         });
-      })
-    });
-
-    after(() => {
-      httpServer.close();
     });
 
     it('should pass without errors or warnings', () => {
