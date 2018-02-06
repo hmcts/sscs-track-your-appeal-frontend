@@ -23,7 +23,7 @@ const tyaMiddleware = [
 
 //------------------------------------ TRACK YOUR APPEAL ---------------------------------------------------------------
 
-router.get('/validate-surname/:id', validateToken, (req, res) => {
+router.get('/validate-surname/:id', (req, res) => {
   res.render('validate-surname', { id: req.params.id });
 });
 
