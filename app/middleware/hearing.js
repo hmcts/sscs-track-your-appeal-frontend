@@ -3,26 +3,6 @@ const {startsWith} = require('lodash');
 
 const ADDRESS_LINE = 'addressLine';
 
-const reformatHearingDetails = (req, res, next) => {
-  apply(res.locals.appeal);
-  next();
-};
-
-const apply = (appeal) => {
-  reformatAllHearingDetails(appeal.latestEvents);
-  reformatAllHearingDetails(appeal.historicalEvents);
-  setLatestHearingBookedEventOnAppeal(appeal);
-};
-
-const reformatAllHearingDetails = (evnts) => {
-  evnts = evnts || [];
-  evnts.forEach(event => {
-    if(event.type === events.HEARING_BOOKED.name) {
-      reformat(event);
-    }
-  });
-};
-
 const reformat = (event) => {
 
   event.hearingAddress = {
@@ -56,6 +36,18 @@ const reformat = (event) => {
   }
 };
 
+const getFirstEventWithMatchingContentKey = (events, contentKey) =>
+  events.filter(event => event.contentKey === contentKey)[0];
+
+const reformatAllHearingDetails = (evnts) => {
+  evnts = evnts || [];
+  evnts.forEach(event => {
+    if(event.type === events.HEARING_BOOKED.name) {
+      reformat(event);
+    }
+  });
+};
+
 const setLatestHearingBookedEventOnAppeal = (appeal) => {
   if(appeal.status === events.HEARING_BOOKED.name) {
     appeal.latestHearingBookedEvent = getFirstEventWithMatchingContentKey(
@@ -66,7 +58,15 @@ const setLatestHearingBookedEventOnAppeal = (appeal) => {
   }
 };
 
-const getFirstEventWithMatchingContentKey = (events, contentKey) =>
-  events.filter(event => event.contentKey === contentKey)[0];
+const apply = (appeal) => {
+  reformatAllHearingDetails(appeal.latestEvents);
+  reformatAllHearingDetails(appeal.historicalEvents);
+  setLatestHearingBookedEventOnAppeal(appeal);
+};
+
+const reformatHearingDetails = (req, res, next) => {
+  apply(res.locals.appeal);
+  next();
+};
 
 module.exports = { reformatHearingDetails };

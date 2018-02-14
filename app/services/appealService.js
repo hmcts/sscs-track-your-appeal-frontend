@@ -47,7 +47,7 @@ const changeEmailAddress = (req, res, next) => {
   const body = { subscription: { email: req.body.email } };
 
   return request.post(endpoint).send(body)
-    .then((result) => {
+    .then(() => {
         logger.info(`POST ${endpoint} ${HttpStatus.OK}`);
         next();
       }).catch((error) => {
@@ -66,7 +66,7 @@ const stopReceivingEmails = (req, res, next) => {
   }
 
   return request.delete(endpoint)
-    .then((result) => {
+    .then(() => {
       logger.info(`DELETE ${endpoint} ${HttpStatus.OK}`);
       next();
     }).catch((error) => {
