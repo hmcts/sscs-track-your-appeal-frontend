@@ -1,9 +1,9 @@
-const nock = require('nock');
-const HttpStatus = require('http-status-codes');
 const { getAppeal, changeEmailAddress, stopReceivingEmails } = require('app/services/appealService');
 const { expect, sinon } = require('test/chai-sinon');
 const { appealsAPI } = require('app/config');
 const { appeal } = require('test/mock/data/appealReceived');
+const nock = require('nock');
+const HttpStatus = require('http-status-codes');
 
 describe('appealService.js', () => {
 
