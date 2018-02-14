@@ -1,9 +1,9 @@
+const nock = require('nock');
+const HttpStatus = require('http-status-codes');
 const { getAppeal, changeEmailAddress, stopReceivingEmails } = require('app/services/appealService');
 const { expect, sinon } = require('test/chai-sinon');
-const nock = require('nock');
 const { appealsAPI } = require('app/config');
-const HttpStatus = require('http-status-codes');
-const mockAppeal = require('test/mock/data').md002.appeal;
+const { appeal } = require('test/mock/data/appealReceived');
 
 describe('appealService.js', () => {
 
@@ -44,8 +44,7 @@ describe('appealService.js', () => {
 
       it('should call next', () => {
 
-        const appeal = mockAppeal;
-        req.params.id = 'md002';
+        req.params.id = appeal.appealNumber;
 
         api = nock(appealsAPI)
           .get(`/${req.params.id}`)
@@ -63,7 +62,7 @@ describe('appealService.js', () => {
 
     });
 
-    describe('get request to api us unsuccessful', () => {
+    describe('get request to api is unsuccessful', () => {
 
       const requestError = errResponse => {
         return nock(appealsAPI)
@@ -75,7 +74,7 @@ describe('appealService.js', () => {
 
         const error = { value: 500, reason: 'server error' };
         api = requestError(error);
-        req.params.id = 'md002';
+        req.params.id = appeal.appealNumber;
 
         return getAppeal(req, res, next)
           .catch(() => {
@@ -88,7 +87,7 @@ describe('appealService.js', () => {
 
         const error = { status: HttpStatus.NOT_FOUND };
         api = requestError(error);
-        req.params.id = 'md002';
+        req.params.id = appeal.appealNumber;
 
         return getAppeal(req, res, next)
           .catch(() => {
@@ -184,6 +183,5 @@ describe('appealService.js', () => {
     });
 
   });
-
 
 });
