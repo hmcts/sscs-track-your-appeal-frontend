@@ -7,7 +7,7 @@ const matchSurnameToAppeal = (req, res, next) => {
   const id = req.params.id;
   const surname = req.body.surname;
 
-  return request.get(`${appealsAPI}/validate/${id}/${surname}`)
+  return request.get(`${appealsAPI}/${id}/surname/${surname}`)
     .then(() => {
       req.session.surnameHasValidated = true;
       res.redirect(`/progress/${id}/trackyourappeal`);
