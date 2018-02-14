@@ -1,4 +1,7 @@
-'use strict'
+'use strict';
+
+const {Logger} = require('@hmcts/nodejs-logging');
+const logger = Logger.getLogger('post-data.js');
 
 let apiHelper = require("test/smoke/helpers/apiHelper"),
     readline = require("readline");
@@ -10,7 +13,7 @@ let api = new apiHelper.APIHelper();
 
 function step(text) {
   return (res) => {
-    console.log(text);
+    logger.info(text);
     return new Promise((resolve) => {
       rl.question(text, (_) => { resolve(res); });
     });
@@ -25,7 +28,7 @@ function evidence(n) {
 
 let appeal = api.createDefaultAppeal()
   .then(res => {
-    console.log("Appeal created " + res.appealId);
+    logger.info("Appeal created " + res.appealId);
     return api.createAppealReceivedEvent(res.appealId);
   })
   .then(res => {
@@ -57,5 +60,5 @@ let appeal = api.createDefaultAppeal()
     return process.exit(0);
   })
   .catch(err => {
-    console.log("ERR: " + JSON.stringify(err));
+    logger.info("ERR: " + JSON.stringify(err));
   });
