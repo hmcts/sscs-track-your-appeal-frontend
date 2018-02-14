@@ -48,7 +48,7 @@ describe('matchSurnameToAppeal.js', () => {
       req.params.id = 'md002';
       req.body.surname = 'validSurname';
       api = nock(appealsAPI)
-        .get(`/validate/${req.params.id}/${req.body.surname}`)
+        .get(`/${req.params.id}/surname/${req.body.surname}`)
         .reply(200, { appealId });
 
       return matchSurnameToAppeal(req, res, next)
@@ -64,7 +64,7 @@ describe('matchSurnameToAppeal.js', () => {
 
     const requestError = errResponse => {
       return nock(appealsAPI)
-        .get(`/validate/${invalidId}/${invalidSurname}`)
+        .get(`/${invalidId}/surname/${invalidSurname}`)
         .replyWithError(errResponse);
     };
 
