@@ -1,18 +1,20 @@
-'use strict'
+'use strict';
 
-let apiHelper = require("test/smoke/helpers/apiHelper"),
-    readline = require("readline");
+const {Logger} = require('@hmcts/nodejs-logging');
+const logger = Logger.getLogger('post-data.js');
+const apiHelper = require('test/smoke/helpers/apiHelper');
+const readline = require('readline');
 
 const rl = readline.createInterface({
   input: process.stdin
 });
-let api = new apiHelper.APIHelper();
+const api = new apiHelper.APIHelper();
 
 function step(text) {
   return (res) => {
-    console.log(text);
+    logger.info(text);
     return new Promise((resolve) => {
-      rl.question(text, (_) => { resolve(res); });
+      rl.question(text, () => { resolve(res); });
     });
   }
 }
@@ -25,7 +27,7 @@ function evidence(n) {
 
 let appeal = api.createDefaultAppeal()
   .then(res => {
-    console.log("Appeal created " + res.appealId);
+    logger.info("Appeal created " + res.appealId);
     return api.createAppealReceivedEvent(res.appealId);
   })
   .then(res => {
@@ -53,9 +55,9 @@ let appeal = api.createDefaultAppeal()
   .then(res => {
     return api.createHearingEvent(res.appealId);
   })
-  .then(res => {
+  .then(() => {
     return process.exit(0);
   })
   .catch(err => {
-    console.log("ERR: " + JSON.stringify(err));
+    logger.info("ERR: " + JSON.stringify(err));
   });

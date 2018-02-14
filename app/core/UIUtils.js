@@ -4,10 +4,10 @@ const logger = Logger.getLogger('UIUtils.js');
 
 const showProgressBar = (req, res, next) => {
 
-  let appeal = res.locals.appeal;
+  const appeal = res.locals.appeal;
 
   if (appeal) {
-    let event = events[appeal.status];
+    const event = events[appeal.status];
     if(event) {
       appeal.showProgressBar = event.index !== progressBar.NONE;
     } else {

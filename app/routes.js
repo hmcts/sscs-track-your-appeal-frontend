@@ -6,6 +6,8 @@ const { reformatHearingDetails } = require('app/middleware/hearing');
 const { notificationChoiceRedirect } = require('app/middleware/notificationChoiceRedirect');
 const { validateEmail } = require('app/middleware/validateEmail');
 const { showProgressBar } = require('app/core/UIUtils');
+const {Logger} = require('@hmcts/nodejs-logging');
+const logger = Logger.getLogger('routes.js');
 
 const express = require('express');
 const router = express.Router();
@@ -65,9 +67,7 @@ router.get('/manage-email-notifications/:mactoken', validateToken, (req, res, ne
   res.render('manage-emails', { mactoken: req.params.mactoken } );
 });
 
-router.post('/manage-email-notifications/:mactoken', validateToken, notificationChoiceRedirect, (req, res, next) => {
-  console.log('');
-});
+router.post('/manage-email-notifications/:mactoken', validateToken, notificationChoiceRedirect, (req, res, next) => {});
 
 router.get('/manage-email-notifications/:mactoken/stop', validateToken, emailNotifications, (req, res) => {
   res.render('emails-stop', { mactoken: req.params.mactoken } );

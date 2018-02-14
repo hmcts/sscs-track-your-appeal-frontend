@@ -2,22 +2,8 @@ const {getContentAsString, getContentAsArray} = require('app/core/contentLookup'
 const {contentSubKeys} = require('app/config');
 const {tyaNunjucks} = require('app/core/tyaNunjucks');
 
-const applyContentToEvents = (req, res, next) => {
-  apply(res.locals.appeal);
-  next();
-};
-
-const apply = (appeal) => {
-  setHeadingAndRenderedContentOnEvents(appeal.latestEvents, appeal);
-  setHeadingAndRenderedContentOnEvents(appeal.historicalEvents, appeal);
-};
-
-const setHeadingAndRenderedContentOnEvents = (events, appeal) => {
-  events.forEach(event => {
-    setHeadingOnEvent(event);
-    setBenefitTypeOnEvent(event, appeal.benefitType);
-    setRenderedContentOnEvent(event);
-  });
+const renderArrayContent = (content, event) => {
+  return content.map(str => tyaNunjucks.env.renderString(str, event));
 };
 
 const setHeadingOnEvent = (event) => {
@@ -33,8 +19,22 @@ const setRenderedContentOnEvent = (event) => {
   event.renderedContent = renderArrayContent(contentArray, event);
 };
 
-const renderArrayContent = (content, event) => {
-  return content.map(str => tyaNunjucks.env.renderString(str, event));
+const setHeadingAndRenderedContentOnEvents = (events, appeal) => {
+  events.forEach(event => {
+    setHeadingOnEvent(event);
+    setBenefitTypeOnEvent(event, appeal.benefitType);
+    setRenderedContentOnEvent(event);
+  });
+};
+
+const apply = (appeal) => {
+  setHeadingAndRenderedContentOnEvents(appeal.latestEvents, appeal);
+  setHeadingAndRenderedContentOnEvents(appeal.historicalEvents, appeal);
+};
+
+const applyContentToEvents = (req, res, next) => {
+  apply(res.locals.appeal);
+  next();
 };
 
 module.exports = { applyContentToEvents };

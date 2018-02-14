@@ -1,17 +1,16 @@
 const HttpStatus = require('http-status-codes');
 const Joi = require('joi');
 
-const validateEmail = (req, res, next) => {
-  const email = req.body.email.trim();
-  const confirmEmail = req.body.confirmEmail.trim();
-  const errors = res.locals.i18n.notifications.email.errors;
-  const fields = validateFields(email, confirmEmail, errors);
-  if(fields.error) {
-    res.status(HttpStatus.BAD_REQUEST);
-    res.render('email-address-change', { mactoken: req.params.mactoken, fields } );
-  } else {
-    next();
-  }
+const setErrorFields = (field, fields, result, errors) => {
+  fields.error = true;
+  fields[field].error = true;
+  fields[field].errorMessage = result.error.message;
+
+  const type = result.error.details[0].type;
+  fields[field].errorHeading = (type === 'any.empty') ?
+    errors.emptyStringHeading : errors.notValidHeading;
+
+  return fields;
 };
 
 const validateFields = (email, confirmEmail, errors) => {
@@ -60,16 +59,17 @@ const validateFields = (email, confirmEmail, errors) => {
   return fields;
 };
 
-const setErrorFields = (field, fields, result, errors) => {
-  fields.error = true;
-  fields[field].error = true;
-  fields[field].errorMessage = result.error.message;
-
-  const type = result.error.details[0].type;
-  fields[field].errorHeading = (type === 'any.empty') ?
-    errors.emptyStringHeading : errors.notValidHeading;
-
-  return fields;
+const validateEmail = (req, res, next) => {
+  const email = req.body.email.trim();
+  const confirmEmail = req.body.confirmEmail.trim();
+  const errors = res.locals.i18n.notifications.email.errors;
+  const fields = validateFields(email, confirmEmail, errors);
+  if(fields.error) {
+    res.status(HttpStatus.BAD_REQUEST);
+    res.render('email-address-change', { mactoken: req.params.mactoken, fields } );
+  } else {
+    next();
+  }
 };
 
 module.exports = { validateEmail };

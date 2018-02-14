@@ -12,21 +12,9 @@ const evidenceReminderStatuses = [
   events.POSTPONED.name
 ];
 
-const applyEvidence = (req, res, next) => {
-  apply(res.locals.appeal);
-  next();
-};
 
-const apply = (appeal) => {
-  appeal.showEvidenceReminder = showEvidenceReminderStatuses(appeal);
-  if(appeal.showEvidenceReminder) {
-    setEvidenceReceivedFlag(appeal);
-  }
-};
-
-const showEvidenceReminderStatuses = (appeal) => {
-  return includes(evidenceReminderStatuses, appeal.status);
-};
+const getFirstEventWithMatchingType = (events, type) =>
+  events.filter(event => event.type === type)[0];
 
 const setEvidenceReceivedFlag = (appeal) => {
   const evidenceRecievedInLatestEvents = getFirstEventWithMatchingType(
@@ -37,7 +25,20 @@ const setEvidenceReceivedFlag = (appeal) => {
   appeal.evidenceReceived = !!(evidenceRecievedInLatestEvents || evidenceRecievedInHistoricalEvents);
 };
 
-const getFirstEventWithMatchingType = (events, type) =>
-  events.filter(event => event.type === type)[0];
+const showEvidenceReminderStatuses = (appeal) => {
+  return includes(evidenceReminderStatuses, appeal.status);
+};
+
+const apply = (appeal) => {
+  appeal.showEvidenceReminder = showEvidenceReminderStatuses(appeal);
+  if(appeal.showEvidenceReminder) {
+    setEvidenceReceivedFlag(appeal);
+  }
+};
+
+const applyEvidence = (req, res, next) => {
+  apply(res.locals.appeal);
+  next();
+};
 
 module.exports = { applyEvidence, evidenceReminderStatuses };
