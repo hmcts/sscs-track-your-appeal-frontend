@@ -12,10 +12,9 @@ const getAppeal = (req, res, next) => {
     return;
   }
 
-  request.get(`${appealsAPI}/${req.params.id}`)
+  return request.get(`${appealsAPI}/${req.params.id}`)
     .then((result) => {
       const appeal = result.body.appeal;
-
       appeal.evidenceReceived = false;
       appeal.latestEvents = appeal.latestEvents || [];
       appeal.historicalEvents = appeal.historicalEvents || [];
@@ -47,7 +46,7 @@ const changeEmailAddress = (req, res, next) => {
 
   const body = { subscription: { email: req.body.email } };
 
-  request.post(endpoint).send(body)
+  return request.post(endpoint).send(body)
     .then((result) => {
         logger.info(`POST ${endpoint} ${HttpStatus.OK}`);
         next();
@@ -66,7 +65,7 @@ const stopReceivingEmails = (req, res, next) => {
     return;
   }
 
-  request.delete(endpoint)
+  return request.delete(endpoint)
     .then((result) => {
       logger.info(`DELETE ${endpoint} ${HttpStatus.OK}`);
       next();

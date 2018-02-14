@@ -11,7 +11,7 @@ const validateToken = (req, res, next) => {
     return;
   }
 
-  request.get(`${tokenAPI}/${req.params.mactoken}`)
+  return request.get(`${tokenAPI}/${req.params.mactoken}`)
     .then((result) => {
       res.locals.token = result.body.token;
       logger.info(`GET /tokens/${req.params.mactoken} ${HttpStatus.OK}`);
