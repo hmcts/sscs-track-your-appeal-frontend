@@ -24,11 +24,9 @@ const getAppeal = (req, res, next) => {
       next();
     }).catch((error) => {
       if(error.status === HttpStatus.NOT_FOUND) {
-        let message, path, exception;
-        message = get(error, 'response.body.Map.message');
-        path = get(error, 'response.body.Map.path');
-        exception = get(error, 'response.body.Map.exception');
-        error.message = `${message} ${path} : ${exception}`;
+        const message = get(error, 'response.body.message');
+        const path = get(error, 'response.body.path');
+        error.message = `${message} ${path}`;
       }
       next(error);
     });
