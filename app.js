@@ -4,6 +4,8 @@ const express = require('express');
 const expressNunjucks = require('express-nunjucks');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const cookieSession = require('cookie-session');
 const locals = require('app/locals');
 const config = require('app/config');
 const routes = require('app/routes');
@@ -18,10 +20,13 @@ const app = express();
 const PORT = 3000;
 app.set('port', process.env.PORT || PORT);
 
+const ONE_MINUTE = 60000;
+const COOKIE_MAX_AGE = 30 * ONE_MINUTE;
+
 Logger.config({
   microservice: 'track-your-appeal-frontend',
   team: 'sscs',
-  environment: process.env.NODE_ENV,
+  environment: process.env.NODE_ENV
 });
 
 // Tests
@@ -50,7 +55,7 @@ app.use(helmet.contentSecurityPolicy({
     connectSrc: ["'self'"],
     mediaSrc: ["'self'"],
     frameSrc: ["'none'"],
-    imgSrc: ["'self'", 'www.google-analytics.com'],
+    imgSrc: ["'self'", 'www.google-analytics.com']
   }
 }));
 
@@ -104,6 +109,16 @@ app.use('/status', healthcheck.configure({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
+}));
+
+app.set('trust proxy', 1);
+app.use(cookieParser(config.cookieSecret));
+app.use(cookieSession({
+  name: 'tya-surname-appeal-validated',
+  secret: config.cookieSecret,
+  maxAge: COOKIE_MAX_AGE,
+  secure: process.env.NODE_ENV !== 'development',
+  httpOnly: true
 }));
 
 app.use(locals);

@@ -4,6 +4,7 @@
     "appealNumber": "md003",
     "benefitType": "esa",
     "name": "Mr. O Owl",
+    "surname": "Owl",
     "status": "CLOSED",
     "latestEvents": [{
         "date": "2016-12-11T12:50:11.437Z",

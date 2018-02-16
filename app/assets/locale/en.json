@@ -301,6 +301,17 @@
       ]
     }
   },
+  "validateSurname": {
+    "heading": "Enter your last name",
+    "submit": "Track your appeal",
+    "surname": {
+      "errors": {
+        "emptyStringHeading": "Enter your last name to continue",
+        "notValidHeading": "You have entered an invalid last name. Enter your last name in full",
+        "noMatch": "Your last name does not match the last name on the appeal you are trying to access. Enter your last name again."
+      }
+    }
+  },
   "trackYourAppeal": {
     "title": "Track your benefit appeal",
     "enterReference": "Enter your appeal reference number",
@@ -316,7 +327,8 @@
     "appealReferenceNumber": "Appeal reference number",
     "availableInAnotherLanguage": "This page is also available in Welsh (Cymraeg).",
     "latestUpdate": "Latest update",
-    "viewAllUpdates": "View previous updates"
+    "viewAllUpdates": "View previous updates",
+    "errorHeading": "There was a problem"
   },
   "cookiePolicy": {
     "banner": {

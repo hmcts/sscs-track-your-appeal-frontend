@@ -17,7 +17,10 @@ class testDataHelper extends codecept_helper {
         return moment(calcDate).format('DD MMMM YYYY');
     }
 
+    getSurnameFromAppeal(desc) {
+      return this.getTestAppeal(desc).surname;
+    }
+
 }
 
-module.exports = testDataHelper
-
+module.exports = testDataHelper;

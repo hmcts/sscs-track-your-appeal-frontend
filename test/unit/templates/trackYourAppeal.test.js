@@ -1,7 +1,22 @@
-const testServer = require('test/testServer');
-const request = require('supertest');
+const path = require('path');
+delete require.cache[path.join(__dirname, '../../../app/routes.js')];
+delete require.cache[path.join(__dirname, '../../../app.js')];
+
+const proxyquire = require('proxyquire');
 const assert = require('chai').assert;
+const request = require('supertest');
 const jsdom = require('jsdom');
+
+proxyquire('app/routes', {
+  'app/middleware/surnameValidationCookieCheck': {
+    surnameValidationCookieCheck: function(res, req, next) {
+      // Continue to the next piece of middleware and
+      // bypass the surname validation check.
+      next();
+    }
+  }
+});
+const app = require('app.js');
 
 describe('Track your appeal template', () => {
 
@@ -17,112 +32,99 @@ describe('Track your appeal template', () => {
         }
         done();
       });
-    }
+    };
   };
 
   const requestPageAndAssertActive = (url, stage, active, done) => {
-    request(httpServer)
+    request(app)
       .get(url)
       .expect(200)
       .then(assertIsActive(stage, active, done))
   };
 
-  let httpServer;
-
-  before((done) => {
-    testServer.connect().then((server) => {
-      httpServer = server;
-      done();
-    })
-  });
-
-  after(() => {
-    httpServer.close();
-  });
-
-  describe("how the class 'active' is added to the progress bar when the status is APPEAL_RECEIVED", () => {
+  describe('how the class \'active\' is added to the progress bar when the status is APPEAL_RECEIVED', () => {
 
     const url = '/progress/md002/trackyourappeal';
 
-    it("should add the 'active' class to appeal received", (done) => {
+    it('should add the \'active\' class to appeal received', (done) => {
       requestPageAndAssertActive(url, '.appeal-received', true, done);
     });
 
-    it("should omit the 'active' class from DWP respond", (done) => {
+    it('should omit the \'active\' class from DWP respond', (done) => {
       requestPageAndAssertActive(url, '.dwp-respond', false, done);
     });
 
-    it("should omit the 'active' class from hearing booked", (done) => {
+    it('should omit the \'active\' class from hearing booked', (done) => {
       requestPageAndAssertActive(url, '.hearing-booked', false, done);
     });
 
-    it("should omit the 'active' class from hearing", (done) => {
+    it('should omit the \'active\' class from hearing', (done) => {
       requestPageAndAssertActive(url, '.hearing', false, done);
     });
 
   });
 
-  describe("how the class 'active' is added to the progress bar when the status is DWP_RESPOND", () => {
+  describe('how the class \'active\' is added to the progress bar when the status is DWP_RESPOND', () => {
 
     const url = '/progress/md005/trackyourappeal';
 
-    it("should add the 'active' class to appeal received", (done) => {
+    it('should add the \'active\' class to appeal received', (done) => {
       requestPageAndAssertActive(url, '.appeal-received', true, done);
     });
 
-    it("should add the 'active' class to DWP respond", (done) => {
+    it('should add the \'active\' class to DWP respond', (done) => {
       requestPageAndAssertActive(url, '.dwp-respond', true, done);
     });
 
-    it("should omit the 'active' class from hearing booked", (done) => {
+    it('should omit the \'active\' class from hearing booked', (done) => {
       requestPageAndAssertActive(url, '.hearing-booked', false, done);
     });
 
-    it("should omit the 'active' class from hearing", (done) => {
+    it('should omit the \'active\' class from hearing', (done) => {
       requestPageAndAssertActive(url, '.hearing', false, done);
     });
 
   });
 
-  describe("how the class 'active' is added to the progress bar when the status is HEARING_BOOKED", () => {
+  describe('how the class \'active\' is added to the progress bar when the status is HEARING_BOOKED', () => {
 
     const url = '/progress/md008/trackyourappeal';
 
-    it("should add the 'active' class to appeal received", (done) => {
+    it('should add the \'active\' class to appeal received', (done) => {
       requestPageAndAssertActive(url, '.appeal-received', true, done);
     });
 
-    it("should add the 'active' class to DWP respond", (done) => {
+    it('should add the \'active\' class to DWP respond', (done) => {
       requestPageAndAssertActive(url, '.dwp-respond', true, done);
     });
 
-    it("should add the 'active' class to hearing booked", (done) => {
+    it('should add the \'active\' class to hearing booked', (done) => {
       requestPageAndAssertActive(url, '.hearing-booked', true, done);
     });
 
-    it("should omit the 'active' class from hearing", (done) => {
+    it('should omit the \'active\' class from hearing', (done) => {
       requestPageAndAssertActive(url, '.hearing', false, done);
     });
 
   });
 
-  describe("how the class 'active' is added to the progress bar when the status is HEARING", () => {
+  describe('how the class \'active\' is added to the progress bar when the status is HEARING', () => {
 
     const url = '/progress/md007/trackyourappeal';
 
-    it("should add the 'active' class to appeal received", (done) => {
+    it('should add the \'active\' class to appeal received', (done) => {
       requestPageAndAssertActive(url, '.appeal-received', true, done);
     });
 
-    it("should add the 'active' class to DWP respond", (done) => {
+    it('should add the \'active\' class to DWP respond', (done) => {
       requestPageAndAssertActive(url, '.dwp-respond', true, done);
     });
 
-    it("should add the 'active' class to hearing booked", (done) => {
+    it('should add the \'active\' class to hearing booked', (done) => {
       requestPageAndAssertActive(url, '.hearing-booked', true, done);
     });
 
-    it("should add the 'active' class to hearing", (done) => {
+    it('should add the \'active\' class to hearing', (done) => {
       requestPageAndAssertActive(url, '.hearing', true, done);
     });
 

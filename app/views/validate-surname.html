@@ -1,0 +1,39 @@
+{% from "components/formElements.html" import textField %}
+{% extends "layout.html" %}
+
+{% block page_title %}
+{{ i18n.validateSurname.heading }}
+{% endblock %}
+
+{% block content %}
+
+<main id="content" class="validate-surname" role="main">
+
+    {% include "includes/phase_banner_beta.html" %}
+
+    <div class="column-two-thirds">
+
+        {% include "errors/summary.html" %}
+
+        <h1 class="heading-large">{{ i18n.validateSurname.heading }}</h1>
+
+        <form action="/validate-surname/{{ id }}" method="post">
+
+            {{ textField(
+                label='',
+                hint='',
+                name='surname',
+                field=fields.surname
+            ) }}
+
+            <div class="form-group">
+                <input type="submit" class="button" value="{{ i18n.validateSurname.submit }}">
+            </div>
+
+        </form>
+
+    </div>
+
+</main>
+
+{% endblock %}
