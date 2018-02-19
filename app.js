@@ -99,7 +99,7 @@ app.use('/public/images/icons', express.static(__dirname + '/govuk_modules/govuk
 // Elements refers to icon folder instead of images folder
 app.use(favicon(path.join(__dirname, 'govuk_modules', 'govuk_template', 'assets', 'images', 'favicon.ico')));
 
-app.use('/status', healthcheck.configure({
+app.use('/health', healthcheck.configure({
   checks: {
     'track-your-appeal-api': healthcheck.web(config.healthAPI)
   }
