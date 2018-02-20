@@ -1,5 +1,5 @@
 exports.config = {
-  'tests': './scenarios/**/*.js',
+  'tests': './scenarios/mock-smoke.js',
   'output': './testResults',
   'timeout': 1000,
   'helpers': {
