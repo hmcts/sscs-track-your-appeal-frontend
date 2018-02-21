@@ -22,6 +22,7 @@
     "pa11y": "cross-env NODE_PATH=. LOG_LEVEL=OFF mocha test/accessibility -r test/chai-sinon.js --reporter spec --recursive --timeout 10000",
     "postpa11y": "grunt services",
     "test:smoke": "cross-env NODE_PATH=. codeceptjs run -c test/smoke --steps",
+    "test:functional": "echo 'test:functional not implemented'",
     "cross-browser": "NODE_ENV=TESTING LOG_LEVEL=OFF NODE_PATH=. codeceptjs run -c test/smoke/saucelabs.conf.js --steps",
     "security-scan": "cross-env NODE_PATH=. codeceptjs run --config test/smoke/securityScan.conf.js --steps",
     "eslint": "cross-env NODE_PATH=. eslint .",
