@@ -74,7 +74,7 @@ Track your Appeal
                 {% endfor %}
 
                 {% if data.status == 'HEARING_BOOKED' %}
-                <a href="/progress/{{data.appealNumber}}/hearingdetails">{{ i18n.hearingDetails.checkDetails }}</a>
+                <a href="/hearingdetails/{{data.appealNumber}}">{{ i18n.hearingDetails.checkDetails }}</a>
                 {% endif %}
 
                 {% if data.historicalEvents.length %}
@@ -96,7 +96,7 @@ Track your Appeal
                         {% endfor %}
 
                         {% if historicalEvent.contentKey === 'status.hearingBooked' %}
-                        <a href="/progress/{{data.appealNumber}}/hearingdetails/{{loop.index0}}">{{ i18n.hearingDetails.checkDetails }}</a>
+                        <a href="/hearingdetails/{{data.appealNumber}}/{{loop.index0}}">{{ i18n.hearingDetails.checkDetails }}</a>
                         {% endif %}
                     </div>
                     {% endfor %}

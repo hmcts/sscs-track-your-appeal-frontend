@@ -56,7 +56,7 @@ About Hearing
                     <ul class="font-xsmall">
 
                         {% if data.status=='HEARING_BOOKED' or data.status=='HEARING' %}
-                        <li><a href="/progress/{{data.appealNumber}}/hearingdetails">{{ i18n.hearingDetails.checkDetails }}</a></li>
+                        <li><a href="/hearingdetails/{{data.appealNumber}}">{{ i18n.hearingDetails.checkDetails }}</a></li>
                         {% endif %}
 
                         <li><a href="/expenses/{{data.appealNumber}}">{{ i18n.claimExpenses.link }}</a></li>

@@ -52,7 +52,7 @@ Scenario('verify appellant details after Hearing Booked', function*(I, Propertie
 });
 
 Scenario('verify hearing details', function*(I) {
-  yield * I.goToPageAfterSurnameValidation('/progress/:id/hearingdetails', 'hearingBookedAppealCaseId');
+  yield * I.goToPageAfterSurnameValidation('/hearingdetails/:id', 'hearingBookedAppealCaseId');
   I.see('Mr. C Charlie');
   I.see('Appeal reference number: SC333/33/33333');
   I.see('Date');

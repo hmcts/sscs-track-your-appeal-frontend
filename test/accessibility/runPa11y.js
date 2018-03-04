@@ -23,8 +23,8 @@ const accessibilityPages = [
   '/trackyourappeal/md005',
   '/trackyourappeal/md008',
   '/trackyourappeal/md007',
-  '/progress/md008/hearingdetails',    // hearing booked
-  '/progress/md007/hearingdetails/1',  // hearing
+  '/hearingdetails/md008',    // hearing booked
+  '/hearingdetails/md007/1',  // hearing
   '/expenses/md007',
   '/evidence/md007',
   manageEmailNotifications,

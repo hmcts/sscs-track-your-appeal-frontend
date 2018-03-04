@@ -24,16 +24,16 @@ describe('routes.js', () => {
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
-    it('should respond to /progress/md007/hearingdetails', (done) => {
-      url = '/progress/md007/hearingdetails';
+    it('should respond to /hearingdetails/md007', (done) => {
+      url = '/hearingdetails/md007';
       request(app)
         .get(url)
         .expect('Location', '/validate-surname/md007')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
-    it('should respond to /progress/md007/hearingdetails/10', (done) => {
-      url = '/progress/md007/hearingdetails/10';
+    it('should respond to /hearingdetails/md007/10', (done) => {
+      url = '/hearingdetails/md007/10';
       request(app)
         .get(url)
         .expect('Location', '/validate-surname/md007')
