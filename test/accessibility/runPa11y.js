@@ -26,7 +26,7 @@ const accessibilityPages = [
   '/progress/md008/hearingdetails',    // hearing booked
   '/progress/md007/hearingdetails/1',  // hearing
   '/progress/md007/expenses',
-  '/progress/md007/evidence',
+  '/evidence/md007',
   manageEmailNotifications,
   `${manageEmailNotifications}/change`,
   `${manageEmailNotifications}/stop`,

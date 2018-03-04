@@ -40,8 +40,8 @@ describe('routes.js', () => {
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
-    it('should respond to /progress/md002/evidence', (done) => {
-      url = '/progress/md002/evidence';
+    it('should respond to /evidence/md002', (done) => {
+      url = '/evidence/md002';
       request(app)
         .get(url)
         .expect('Location', '/validate-surname/md002')

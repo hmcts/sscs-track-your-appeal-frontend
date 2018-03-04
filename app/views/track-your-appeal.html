@@ -109,7 +109,7 @@ Track your Appeal
             {% if data.showEvidenceReminder %}
             <div class="panel panel-border-wide">
                 <p>{{ i18n.evidence.received if data.evidenceReceived else i18n.evidence.notReceived }}<br/>
-                    <a href="/progress/{{data.appealNumber}}/evidence">{{ i18n.evidence.provide.title }}</a>
+                    <a href="/evidence/{{data.appealNumber}}">{{ i18n.evidence.provide.title }}</a>
                 </p>
             </div>
             {% endif %}
@@ -120,7 +120,7 @@ Track your Appeal
             <ul class="links">
                 <li><a href="/abouthearing/{{data.appealNumber}}">{{ i18n.hearing.expectations.title }}</a></li>
                 <li><a href="/progress/{{data.appealNumber}}/expenses">{{ i18n.claimExpenses.link }}</a></li>
-                <li><a href="/progress/{{data.appealNumber}}/evidence">{{ i18n.evidence.provide.title }}</a></li>
+                <li><a href="/evidence/{{data.appealNumber}}">{{ i18n.evidence.provide.title }}</a></li>
                 <li><a href="/progress/{{data.appealNumber}}/contactus">{{ i18n.contactUs.title }}</a></li>
             </ul>
 

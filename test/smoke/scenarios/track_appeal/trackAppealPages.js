@@ -115,7 +115,7 @@ Scenario('verify about your appeal section links', function*(I) {
 });
 
 Scenario('verify evidence page', function*(I) {
-  yield * I.goToPageAfterSurnameValidation('/progress/:id/evidence', 'hearingESAAppealCaseId');
+  yield * I.goToPageAfterSurnameValidation('/evidence/:id', 'hearingESAAppealCaseId');
   I.see(pageText.evidence.provide.title);
   I.see(pageText.evidence.provide.medicalEvidence.heading);
   I.see(pageText.evidence.provide.oralEvidence.heading);
