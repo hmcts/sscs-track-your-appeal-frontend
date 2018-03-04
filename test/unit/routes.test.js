@@ -16,8 +16,8 @@ describe('routes.js', () => {
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
-    it('should respond to /progress/md002/expenses', (done) => {
-      url = '/progress/md002/expenses';
+    it('should respond to /expenses/md002', (done) => {
+      url = '/expenses/md002';
       request(app)
         .get(url)
         .expect('Location', '/validate-surname/md002')

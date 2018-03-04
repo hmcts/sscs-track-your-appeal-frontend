@@ -145,7 +145,7 @@ Scenario('verify what to expect at your hearing page for an ESA appeal', functio
   });
 
 Scenario('verify expenses page', function*(I) {
-  yield * I.goToPageAfterSurnameValidation('/progress/:id/expenses', 'hearingESAAppealCaseId');
+  yield * I.goToPageAfterSurnameValidation('/expenses/:id', 'hearingESAAppealCaseId');
   I.see(pageText.claimExpenses.title);
   I.see(pageText.claimExpenses.content);
 });
