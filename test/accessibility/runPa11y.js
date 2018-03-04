@@ -17,7 +17,7 @@ const pa11yRunner = pa11y({
 const manageEmailNotifications = '/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=';
 
 const accessibilityPages = [
-  '/progress/md002/contactus',
+  '/contactus/md002',
   '/abouthearing/md002',
   '/trackyourappeal/md002',
   '/trackyourappeal/md005',

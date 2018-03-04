@@ -151,7 +151,7 @@ Scenario('verify expenses page', function*(I) {
 });
 
 Scenario('verify contact us page', function*(I) {
-  yield * I.goToPageAfterSurnameValidation('/progress/:id/contactus', 'hearingESAAppealCaseId');
+  yield * I.goToPageAfterSurnameValidation('/contactus/:id', 'hearingESAAppealCaseId');
   I.see('Contact us');
   I.see(pageText.contactUs.title);
   I.see(pageText.contactUs.description);
