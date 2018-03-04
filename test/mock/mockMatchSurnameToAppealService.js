@@ -11,7 +11,7 @@ const matchSurnameToAppeal = (req, res) => {
     mockedAppeal.surname.toLowerCase() === surname.toLowerCase();
 
   if (req.session.surnameHasValidated) {
-    res.redirect(`/progress/${id}/trackyourappeal`);
+    res.redirect(`/trackyourappeal/${id}`);
   } else {
     res.status(HttpStatus.BAD_REQUEST);
     res.render('validate-surname', {

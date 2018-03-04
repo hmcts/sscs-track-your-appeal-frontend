@@ -42,7 +42,7 @@ as [events](/app/core/events.js).
 In the early stages of an appeal an email/letter is sent to the appellant containing a link/URL respectively 
 which looks like:
 
-    http://www.sscs.reform.hmcts.net/progress/hmUr1moTZj/trackyourappeal 
+    http://www.sscs.reform.hmcts.net/trackyourappeal/hmUr1moTZj
 
 The ID `hmUr1moTZj` defined within the URL is randomly generated via the backend. When a user clicks on the URL the 
 node app performs a HTTP GET request to the Java API /appeals endpoint passing the ID, the response returns the appeal 
@@ -67,7 +67,7 @@ In order to track an appeal the appellant is required to be [subscribed](https:/
     $> yarn start
 
 ### Open a browser including the ID
-    http://localhost:3000/progress/id/trackyourappeal 
+    http://localhost:3000/trackyourappeal/id 
 
 ### Running the tests
 

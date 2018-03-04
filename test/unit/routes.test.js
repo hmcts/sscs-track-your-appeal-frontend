@@ -48,8 +48,8 @@ describe('routes.js', () => {
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
-    it('should respond to /progress/md002/trackyourappeal', (done) => {
-      url = '/progress/md002/trackyourappeal';
+    it('should respond to /trackyourappeal/md002', (done) => {
+      url = '/trackyourappeal/md002';
       request(app)
         .get(url)
         .expect('Location', '/validate-surname/md002')
@@ -191,7 +191,7 @@ describe('routes.js', () => {
 
     it('should respond to an unknown id with a HTTP 404:Not found', (done) => {
       request(app)
-        .get('/progress/999/trackyourappeal')
+        .get('/trackyourappeal/999')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 

@@ -44,7 +44,7 @@ describe('Track your appeal template', () => {
 
   describe('how the class \'active\' is added to the progress bar when the status is APPEAL_RECEIVED', () => {
 
-    const url = '/progress/md002/trackyourappeal';
+    const url = '/trackyourappeal/md002';
 
     it('should add the \'active\' class to appeal received', (done) => {
       requestPageAndAssertActive(url, '.appeal-received', true, done);
@@ -66,7 +66,7 @@ describe('Track your appeal template', () => {
 
   describe('how the class \'active\' is added to the progress bar when the status is DWP_RESPOND', () => {
 
-    const url = '/progress/md005/trackyourappeal';
+    const url = '/trackyourappeal/md005';
 
     it('should add the \'active\' class to appeal received', (done) => {
       requestPageAndAssertActive(url, '.appeal-received', true, done);
@@ -88,7 +88,7 @@ describe('Track your appeal template', () => {
 
   describe('how the class \'active\' is added to the progress bar when the status is HEARING_BOOKED', () => {
 
-    const url = '/progress/md008/trackyourappeal';
+    const url = '/trackyourappeal/md008';
 
     it('should add the \'active\' class to appeal received', (done) => {
       requestPageAndAssertActive(url, '.appeal-received', true, done);
@@ -110,7 +110,7 @@ describe('Track your appeal template', () => {
 
   describe('how the class \'active\' is added to the progress bar when the status is HEARING', () => {
 
-    const url = '/progress/md007/trackyourappeal';
+    const url = '/trackyourappeal/md007';
 
     it('should add the \'active\' class to appeal received', (done) => {
       requestPageAndAssertActive(url, '.appeal-received', true, done);

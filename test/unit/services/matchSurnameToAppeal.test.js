@@ -53,7 +53,7 @@ describe('matchSurnameToAppeal.js', () => {
 
       return matchSurnameToAppeal(req, res, next)
         .then(() => {
-          expect(res.redirect).to.have.been.calledWith(`/progress/${req.params.id}/trackyourappeal`);
+          expect(res.redirect).to.have.been.calledWith(`/trackyourappeal/${req.params.id}`);
         });
 
     });
