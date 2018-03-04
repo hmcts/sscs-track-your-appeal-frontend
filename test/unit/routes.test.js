@@ -8,8 +8,8 @@ describe('routes.js', () => {
 
     let url;
 
-    it('should respond to /progress/md002/abouthearing', (done) => {
-      url = '/progress/md002/abouthearing';
+    it('should respond to /abouthearing/md002', (done) => {
+      url = '/abouthearing/md002';
       request(app)
         .get(url)
         .expect('Location', '/validate-surname/md002')

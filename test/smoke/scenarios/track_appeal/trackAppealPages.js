@@ -128,7 +128,7 @@ Scenario('verify evidence page', function*(I) {
 });
 
 Scenario('verify what to expect at your hearing page for an ESA appeal', function*(I) {
-  yield * I.goToPageAfterSurnameValidation('/progress/:id/abouthearing', 'hearingESAAppealCaseId');
+  yield * I.goToPageAfterSurnameValidation('/abouthearing/:id', 'hearingESAAppealCaseId');
   I.see(pageText.hearing.details.title);
   I.see('Your hearing is an opportunity for you to explain your appeal and get an impartial decision on your entitlement to Employment and Support Allowance (ESA). The tribunal is independent and will consider both sides of the appeal.');
   I.see('An ESA appeal hearing with a judge and a medical expert.');

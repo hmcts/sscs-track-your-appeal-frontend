@@ -18,7 +18,7 @@ const manageEmailNotifications = '/manage-email-notifications/NnwxNDg3MDY1ODI4fD
 
 const accessibilityPages = [
   '/progress/md002/contactus',
-  '/progress/md002/abouthearing',
+  '/abouthearing/md002',
   '/trackyourappeal/md002',
   '/trackyourappeal/md005',
   '/trackyourappeal/md008',
