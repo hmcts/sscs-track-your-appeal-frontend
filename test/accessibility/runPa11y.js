@@ -17,6 +17,7 @@ const pa11yRunner = pa11y({
 const manageEmailNotifications = '/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=';
 
 const accessibilityPages = [
+  '/validate-surname/md002',
   '/contactus/md002',
   '/abouthearing/md002',
   '/trackyourappeal/md002',
@@ -30,28 +31,35 @@ const accessibilityPages = [
   manageEmailNotifications,
   `${manageEmailNotifications}/change`,
   `${manageEmailNotifications}/stop`,
-  `${manageEmailNotifications}/stopconfirm`,
+  `${manageEmailNotifications}/stopconfirm`
 ];
 
 accessibilityPages.forEach((page) => {
 
   describe('Running Accessibility tests for: ' + page, () => {
 
-    let pageResults;
+    let pageResults, server;
 
     before((done) => {
-        pa11yRunner.run(request(app).get(page).url, (error, results) => {
-          if (error) {
-            throw new Error('Pa11y errored whilst testing page:' + page);
-          }
-          pageResults = results;
-          done();
+        const port = app.get('port');
+        server = app.listen(port, ()=> {
+          pa11yRunner.run(request(server).get(page).url, (error, results) => {
+            if (error) {
+              throw new Error('Pa11y error whilst testing page:' + page);
+            }
+            pageResults = results;
+            done();
+          });
         });
+    });
+
+    after(() => {
+      server.close();
     });
 
     it('should pass without errors or warnings', () => {
       let errors = pageResults.filter((result) => {
-        return result.type === 'error' || result.type === 'warning'
+        return result.type === 'error' || result.type === 'warning';
       });
       expect(errors.length).to.equal(0, JSON.stringify(errors, null, 2));
     });
