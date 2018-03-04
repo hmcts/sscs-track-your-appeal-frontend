@@ -8,8 +8,6 @@ const { validateEmail } = require('app/middleware/validateEmail');
 const { validateSurname } = require('app/middleware/validateSurname');
 const { surnameValidationCookieCheck } = require('app/middleware/surnameValidationCookieCheck');
 const { showProgressBar } = require('app/core/UIUtils');
-const {Logger} = require('@hmcts/nodejs-logging');
-const logger = Logger.getLogger('routes.js');
 
 const express = require('express');
 const router = express.Router();
@@ -29,24 +27,24 @@ router.get('/validate-surname/:id', (req, res) => {
 
 router.post('/validate-surname/:id', validateSurname, matchSurnameToAppeal, (req, res, next) => {});
 
-router.get('/progress/:id/abouthearing', surnameValidationCookieCheck, getAppeal, aboutHearingContent, (req, res) => {
+router.get('/abouthearing/:id', surnameValidationCookieCheck, getAppeal, aboutHearingContent, (req, res) => {
   res.render('about-hearing', {data: res.locals.appeal});
 });
 
-router.get('/progress/:id/trackyourappeal', surnameValidationCookieCheck, tyaMiddleware, (req, res) => {
+router.get('/trackyourappeal/:id', surnameValidationCookieCheck, tyaMiddleware, (req, res) => {
   res.render('track-your-appeal', {data: res.locals.appeal});
 });
 
-router.get('/progress/:id/evidence', surnameValidationCookieCheck, getAppeal, (req, res) => {
+router.get('/evidence/:id', surnameValidationCookieCheck, getAppeal, (req, res) => {
   res.render('provide-evidence', {data: res.locals.appeal});
 });
 
-router.get('/progress/:id/expenses', surnameValidationCookieCheck, getAppeal, (req, res) => {
+router.get('/expenses/:id', surnameValidationCookieCheck, getAppeal, (req, res) => {
   res.render('claim-expenses', {data: res.locals.appeal});
 });
 
 // Hearing details relating to the latest event e.g. HEARING_BOOKED
-router.get('/progress/:id/hearingdetails', surnameValidationCookieCheck, getAppeal, reformatHearingDetails, (req, res) => {
+router.get('/hearingdetails/:id', surnameValidationCookieCheck, getAppeal, reformatHearingDetails, (req, res) => {
   res.render('hearing-details', {
     data: res.locals.appeal,
     event: res.locals.appeal.latestHearingBookedEvent
@@ -54,14 +52,14 @@ router.get('/progress/:id/hearingdetails', surnameValidationCookieCheck, getAppe
 });
 
 // Hearing details relating to historical events e.g. HEARING
-router.get('/progress/:id/hearingdetails/:index', surnameValidationCookieCheck, getAppeal, reformatHearingDetails, (req, res) => {
+router.get('/hearingdetails/:id/:index', surnameValidationCookieCheck, getAppeal, reformatHearingDetails, (req, res) => {
   res.render('hearing-details', {
     appeal: res.locals.appeal,
     event: res.locals.appeal.historicalEvents[req.params.index]
   });
 });
 
-router.get('/progress/:id/contactus', surnameValidationCookieCheck, getAppeal, (req, res) => {
+router.get('/contactus/:id', surnameValidationCookieCheck, getAppeal, (req, res) => {
   res.render('contact-us', {data: res.locals.appeal});
 });
 
