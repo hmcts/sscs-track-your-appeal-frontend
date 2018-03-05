@@ -1,7 +1,7 @@
 const { matchSurnameToAppeal } = require('app/services/matchSurnameToAppeal');
 const {expect, sinon} = require('test/chai-sinon');
 const nock = require('nock');
-const { appealsAPI } = require('app/config');
+const apiURL = require('config').get('api.url');
 const HttpStatus = require('http-status-codes');
 const validateSurname = require('app/assets/locale/en').validateSurname;
 
@@ -11,7 +11,7 @@ describe('matchSurnameToAppeal.js', () => {
   const invalidSurname = 'invalidSurname';
   const appealId = '1234';
 
-  let req, res, next, api;
+  let req, res, next;
 
   beforeEach(() => {
 
@@ -38,18 +38,16 @@ describe('matchSurnameToAppeal.js', () => {
 
   });
 
-  afterEach(() => {
-    api.isDone();
-  });
+  describe('matchSurnameToAppeal() - HTTP GET /appeals/id/surname/my-surname 200', ()=> {
 
-  describe('get request to api is successful', ()=> {
+    it('should redirect to /trackyourappeal/id', () => {
 
-    it('should call res.redirect', () => {
       req.params.id = 'md002';
       req.body.surname = 'validSurname';
-      api = nock(appealsAPI)
-        .get(`/${req.params.id}/surname/${req.body.surname}`)
-        .reply(200, { appealId });
+
+      nock(apiURL)
+        .get(`/appeals/${req.params.id}/surname/${req.body.surname}`)
+        .reply(HttpStatus.OK, { appealId });
 
       return matchSurnameToAppeal(req, res, next)
         .then(() => {
@@ -60,22 +58,18 @@ describe('matchSurnameToAppeal.js', () => {
 
   });
 
-  describe('get request to api is unsuccessful', ()=> {
+  describe('matchSurnameToAppeal() - HTTP GET /appeals/id/surname/invalidSurname 400', ()=> {
 
-    const requestError = errResponse => {
-      return nock(appealsAPI)
-        .get(`/${invalidId}/surname/${invalidSurname}`)
-        .replyWithError(errResponse);
-    };
+    it('should set both res.status() and res.render() when the response is a 400', () => {
 
-    beforeEach(() => {
+      const error = { statusCode: HttpStatus.BAD_REQUEST };
+
       req.params.id = invalidId;
       req.body.surname = invalidSurname;
-    });
 
-    it('should set locals and call next when code is 404', () => {
-      const error = { statusCode: HttpStatus.BAD_REQUEST };
-      api = requestError(error);
+      nock(apiURL)
+        .get(`/appeals/${invalidId}/surname/${invalidSurname}`)
+        .replyWithError(error);
 
       return matchSurnameToAppeal(req, res, next)
         .then(() => {
@@ -92,14 +86,17 @@ describe('matchSurnameToAppeal.js', () => {
               }
             }
           });
-
         });
 
     });
 
-    it('should call next', () => {
-      const error = { value: 500, reason: 'server error' };
-      api = requestError(error);
+    it('should call next() passing an error containing a 500', () => {
+
+      const error = { value: HttpStatus.INTERNAL_SERVER_ERROR, reason: 'server error' };
+
+      nock(apiURL)
+        .get(`/appeals/${invalidId}/surname/${invalidSurname}`)
+        .replyWithError(error);
 
       return matchSurnameToAppeal(req, res, next)
         .catch(() => {

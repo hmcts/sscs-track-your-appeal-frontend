@@ -2,7 +2,7 @@ const HttpStatus = require('http-status-codes');
 const app = require('app');
 const request = require('supertest');
 const nock = require('nock');
-const config = require('app/config');
+const apiUrl = require('config').get('api.url');
 
 describe('routes.js', () => {
 
@@ -10,7 +10,7 @@ describe('routes.js', () => {
   before(()=> {
 
     // Mock GET /tokens/macToken
-    nock(config.api)
+    nock(apiUrl)
       .persist()
       .get('/tokens/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=')
       .reply(HttpStatus.OK, {
@@ -22,7 +22,7 @@ describe('routes.js', () => {
       });
 
     // Mock POST /appeals/id/subscriptions/id
-    nock(config.api)
+    nock(apiUrl)
       .post('/appeals/md005/subscriptions/1', {
         subscription: {
           email: 'person@example.com'
@@ -31,7 +31,7 @@ describe('routes.js', () => {
       .reply(HttpStatus.OK);
 
     // Mock DELETE /appeals/id/subscriptions/id
-    nock(config.api)
+    nock(apiUrl)
       .delete('/appeals/md005/subscriptions/1')
       .reply(HttpStatus.OK);
 

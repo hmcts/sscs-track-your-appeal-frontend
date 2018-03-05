@@ -1,6 +1,10 @@
 const {getContentAsString, getContentAsArray} = require('app/core/contentLookup');
-const {contentSubKeys} = require('app/config');
 const {tyaNunjucks} = require('app/core/tyaNunjucks');
+
+const contentSubKeys = {
+  HEADING: '.heading',
+  CONTENT: '.content'
+};
 
 const renderArrayContent = (content, event) => {
   return content.map(str => tyaNunjucks.env.renderString(str, event));

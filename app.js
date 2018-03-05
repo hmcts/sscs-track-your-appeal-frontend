@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cookieSession = require('cookie-session');
 const locals = require('app/locals');
-const config = require('app/config');
+const config = require('config');
 const routes = require('app/routes');
 const {tyaNunjucks, filters} = require('app/core/tyaNunjucks');
 const ErrorHandling = require('app/core/ErrorHandling');
@@ -22,6 +22,8 @@ app.set('port', process.env.PORT || PORT);
 
 const ONE_MINUTE = 60000;
 const COOKIE_MAX_AGE = 30 * ONE_MINUTE;
+const cookieSecret = config.get('session.cookieSecret');
+const apiUrl = config.get('api.url');
 
 Logger.config({
   microservice: 'track-your-appeal-frontend',
@@ -101,7 +103,7 @@ app.use(favicon(path.join(__dirname, 'govuk_modules', 'govuk_template', 'assets'
 
 app.use('/health', healthcheck.configure({
   checks: {
-    'track-your-appeal-api': healthcheck.web(config.healthAPI)
+    'track-your-appeal-api': healthcheck.web(`${apiUrl}/health`)
   }
 }));
 
@@ -112,10 +114,10 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.set('trust proxy', 1);
-app.use(cookieParser(config.cookieSecret));
+app.use(cookieParser(cookieSecret));
 app.use(cookieSession({
   name: 'tya-surname-appeal-validated',
-  secret: config.cookieSecret,
+  secret: cookieSecret,
   maxAge: COOKIE_MAX_AGE,
   secure: process.env.NODE_ENV !== 'development',
   httpOnly: true

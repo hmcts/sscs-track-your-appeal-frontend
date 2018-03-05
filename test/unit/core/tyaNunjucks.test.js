@@ -1,5 +1,5 @@
 const {expect} = require('test/chai-sinon');
-const {timeZone} = require('app/config');
+const {timeZone} = require('app/core/dateUtils');
 const {tyaNunjucks} = require('app/core/tyaNunjucks');
 const moment = require('moment-timezone');
 
