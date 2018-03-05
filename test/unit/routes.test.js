@@ -1,10 +1,43 @@
 const HttpStatus = require('http-status-codes');
 const app = require('app');
 const request = require('supertest');
+const nock = require('nock');
+const config = require('app/config');
 
 describe('routes.js', () => {
 
-  describe('making application route requests which result in a HTTP 200', () => {
+
+  before(()=> {
+
+    // Mock GET /tokens/macToken
+    nock(config.api)
+      .persist()
+      .get('/tokens/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=')
+      .reply(HttpStatus.OK, {
+        token: {
+          appealId: 'md005',
+          subscriptionId: 1,
+          decryptedToken: '3|1487025828|147plJ7kQ7'
+        }
+      });
+
+    // Mock POST /appeals/id/subscriptions/id
+    nock(config.api)
+      .post('/appeals/md005/subscriptions/1', {
+        subscription: {
+          email: 'person@example.com'
+        }
+      })
+      .reply(HttpStatus.OK);
+
+    // Mock DELETE /appeals/id/subscriptions/id
+    nock(config.api)
+      .delete('/appeals/md005/subscriptions/1')
+      .reply(HttpStatus.OK);
+
+  });
+
+  describe('making application route requests which result in a HTTP 302', () => {
 
     let url;
 

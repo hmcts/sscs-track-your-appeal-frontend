@@ -163,7 +163,7 @@ module.exports = function(grunt){
       'concurrent:target'
     ]);
 
-    grunt.registerTask('dev-mock', [
+    grunt.registerTask('dev-mock-services', [
       'env:dev',
       'sync',
       'sass',
