@@ -1,6 +1,6 @@
 const {getContentAsString} = require('app/core/contentLookup');
 const screenReaderHelper = require('app/core/ScreenReaderHelper');
-const {dateFormat, timeZone} = require('app/config');
+const {dateFormat, timeZone} = require('app/core/dateUtils');
 const {events} = require('app/core/events');
 const moment = require('moment-timezone');
 

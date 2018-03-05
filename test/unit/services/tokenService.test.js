@@ -1,12 +1,12 @@
 const { validateToken } = require('app/services/tokenService');
 const { expect, sinon } = require('test/chai-sinon');
-const nock = require('nock');
-const { tokenAPI } = require('app/config');
+const apiUrl = require('config').get('api.url');
 const HttpStatus = require('http-status-codes');
+const nock = require('nock');
 
 describe('tokenService.js', () => {
 
-  let req, res, next, api;
+  let req, res, next;
 
   beforeEach(() => {
 
@@ -26,70 +26,66 @@ describe('tokenService.js', () => {
 
   });
 
-  afterEach(() => {
-    api.isDone();
-  });
+  describe('validateToken() - HTTP GET /tokens/mactoken 200', () => {
 
-  describe('validateToken', () => {
+    it('should call next() with no arguments', () => {
 
-    describe('get request to api is successful', () => {
+      const token = 'qwerty123';
 
-      it('should call next', () => {
+      nock(apiUrl)
+        .get(`/tokens/${req.params.mactoken}`)
+        .reply(HttpStatus.OK, { token });
 
-        const token = 'qwerty123';
-
-        api = nock(tokenAPI)
-          .get(`/${req.params.mactoken}`)
-          .reply(200, { token });
-
-        return validateToken(req, res, next)
-          .then(() => {
-            expect(res.locals.token).to.equal(token);
-            expect(next).to.have.been.called;
-          });
-
-      });
-
-    });
-
-    describe('get request to api is unsuccessful', () => {
-
-      const requestError = errResponse => {
-        return nock(tokenAPI)
-          .get(`/${req.params.mactoken}`)
-          .replyWithError(errResponse);
-      };
-
-      it('should call next with the error when code is not 400', () => {
-
-        const error = { value: 500, reason: 'server error' };
-
-        api = requestError(error);
-
-        return validateToken(req, res, next)
-          .then(() => {
-            expect(next).to.have.been.calledWith(error);
-          });
-
-      });
-
-      it('should call next with the error when code is 400', () => {
-
-        const error = { statusCode: HttpStatus.BAD_REQUEST, rawResponse: 'Bad request error' };
-
-        api = requestError(error);
-
-        return validateToken(req, res, next)
-          .then(() => {
-            error.message = error.rawResponse;
-            expect(next).to.have.been.calledWith(error);
-          });
-
-      });
+      return validateToken(req, res, next)
+        .then(() => {
+          expect(res.locals.token).to.equal(token);
+          expect(next).to.have.been.called;
+        });
 
     });
 
   });
 
+  describe('validateToken() - HTTP GET /tokens/mactoken 400', () => {
+
+    it('should call next() passing an error containing a 400', () => {
+
+      const error = { statusCode: HttpStatus.BAD_REQUEST, rawResponse: 'Bad request error' };
+
+      nock(apiUrl)
+        .get(`/tokens/${req.params.mactoken}`)
+        .replyWithError(error);
+
+      return validateToken(req, res, next)
+        .then(() => {
+          error.message = error.rawResponse;
+          expect(next).to.have.been.calledWith(error);
+        });
+
+    });
+
+  });
+
+  describe('validateToken() - HTTP GET /tokens/mactoken 500', () => {
+
+    it('should call next() passing an error containing a 500', () => {
+
+      const error = { value: HttpStatus.INTERNAL_SERVER_ERROR, reason: 'server error' };
+
+      nock(apiUrl)
+        .get(`/tokens/${req.params.mactoken}`)
+        .replyWithError(error);
+
+      return validateToken(req, res, next)
+        .then(() => {
+          expect(next).to.have.been.calledWith(error);
+        });
+
+    });
+
+  });
 
 });
+
+
+

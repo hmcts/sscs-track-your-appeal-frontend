@@ -1,14 +1,14 @@
 const { getAppeal, changeEmailAddress, stopReceivingEmails } = require('app/services/appealService');
 const { expect, sinon } = require('test/chai-sinon');
-const { appealsAPI } = require('app/config');
 const { appeal } = require('test/mock/data/appealReceived');
-const nock = require('nock');
 const HttpStatus = require('http-status-codes');
+const apiURL = require('config').get('api.url');
+const nock = require('nock');
 
 describe('appealService.js', () => {
 
   const invalidId = 'invalidId';
-  let req, res, next, api;
+  let req, res, next;
 
   beforeEach(() => {
 
@@ -33,152 +33,141 @@ describe('appealService.js', () => {
 
   });
 
-  afterEach(() => {
-    api.isDone();
-    res.locals.appeal = {};
-  });
+  describe('getAppeal() - HTTP GET /appeals/id 200', () => {
 
-  describe('getAppeal', () => {
+    it('should call next() with no arguments', () => {
 
-    describe('get request to api is successful', () => {
+      req.params.id = appeal.appealNumber;
 
-      it('should call next', () => {
+      nock(apiURL)
+        .get(`/appeals/${req.params.id}`)
+        .reply(HttpStatus.OK, { appeal });
 
-        req.params.id = appeal.appealNumber;
-
-        api = nock(appealsAPI)
-          .get(`/${req.params.id}`)
-          .reply(200, { appeal });
-
-        return getAppeal(req, res, next)
-          .then(() => {
-            appeal.evidenceReceived = false;
-            appeal.historicalEvents = [];
-            expect(res.locals.appeal).to.eql(appeal);
-            expect(next).to.have.been.called;
-          });
-
-      });
-
-    });
-
-    describe('get request to api is unsuccessful', () => {
-
-      const requestError = errResponse => {
-        return nock(appealsAPI)
-          .get(`/${invalidId}`)
-          .replyWithError(errResponse);
-      };
-
-      it('should call next with the error from api when code is not 404', () => {
-
-        const error = { value: 500, reason: 'server error' };
-        api = requestError(error);
-        req.params.id = appeal.appealNumber;
-
-        return getAppeal(req, res, next)
-          .catch(() => {
-            expect(next).to.have.been.calledWith(error);
-          });
-
-      });
-
-      it('should next with the error when code is 404', () => {
-
-        const error = { status: HttpStatus.NOT_FOUND };
-        api = requestError(error);
-        req.params.id = appeal.appealNumber;
-
-        return getAppeal(req, res, next)
-          .catch(() => {
-            expect(next).to.have.been.calledWith(error);
-          });
-
-      });
+      return getAppeal(req, res, next)
+        .then(() => {
+          appeal.evidenceReceived = false;
+          appeal.historicalEvents = [];
+          expect(res.locals.appeal).to.eql(appeal);
+          expect(next).to.have.been.called;
+        });
 
     });
 
   });
 
-  describe('changeEmailAddress', () => {
+  describe('getAppeal() - HTTP GET /appeals/invalidId 404', ()=> {
 
-    describe('post request to api is successful', () => {
+    it('should call next() passing an error containing a 404', () => {
 
-      it('should call next', () => {
+      const error = { status: HttpStatus.NOT_FOUND };
 
-        api = nock(appealsAPI)
-          .post(`/${res.locals.token.appealId}/subscriptions/${res.locals.token.subscriptionId}`, {
-            subscription: { email: req.body.email }
-          })
-          .reply(200);
+      req.params.id = appeal.appealNumber;
 
-        return changeEmailAddress(req, res, next)
-          .then(() => {
-            expect(next).to.have.been.called;
-          });
+      nock(apiURL)
+        .get(`/appeals/${invalidId}`)
+        .replyWithError(error);
 
-      });
-
-    });
-
-    describe('post request to api is unsuccessful', () => {
-
-      it('should call next with the error', () => {
-
-        const error = { value: 500, reason: 'server error' };
-
-        api = nock(appealsAPI)
-          .post(`/${res.locals.token.appealId}/subscriptions/${res.locals.token.subscriptionId}`, {
-            subscription: { email: req.body.email }
-          })
-          .replyWithError(error);
-
-        return changeEmailAddress(req, res, next)
-          .catch(() => {
-            expect(next).to.have.been.calledWith(error);
-          });
-
-      });
+      return getAppeal(req, res, next)
+        .catch(() => {
+          expect(next).to.have.been.calledWith(error);
+        });
 
     });
 
   });
 
-  describe('stopReceivingEmails', () => {
+  describe('getAppeal() - HTTP GET /appeals/invalidId 500', ()=> {
 
-    describe('delete request to api is successful', () => {
+    it('should call next() passing an error containing a 500', () => {
 
-      it('should call next', () => {
+      const error = { value: HttpStatus.INTERNAL_SERVER_ERROR, reason: 'server error' };
 
-        api = nock(appealsAPI)
-          .delete(`/${res.locals.token.appealId}/subscriptions/${res.locals.token.subscriptionId}`)
-          .reply(200);
+      req.params.id = appeal.appealNumber;
 
-        return stopReceivingEmails(req, res, next)
-          .then(() => {
-            expect(next).to.have.been.called;
-          });
+      nock(apiURL)
+        .get(`/appeals/${invalidId}`)
+        .replyWithError(error);
 
-      });
+      return getAppeal(req, res, next)
+        .catch(() => {
+          expect(next).to.have.been.calledWith(error);
+        });
 
     });
 
-    describe('post request to api is unsuccessful', () => {
+  });
 
-      it('should call next with the error', () => {
+  describe('changeEmailAddress() - HTTP POST /appeals/appealId/subscriptions/subscriptionId 200', () => {
 
-        const error = { value: 500, reason: 'server error' };
+    it('should call next() passing zero arguments', () => {
 
-        api = nock(appealsAPI)
-          .delete(`/${res.locals.token.appealId}/subscriptions/${res.locals.token.subscriptionId}`)
-          .replyWithError(error);
+      nock(apiURL)
+        .post(`/appeals/${res.locals.token.appealId}/subscriptions/${res.locals.token.subscriptionId}`, {
+          subscription: { email: req.body.email }
+        })
+        .reply(HttpStatus.OK);
 
-        return stopReceivingEmails(req, res, next)
-          .catch(() => {
-            expect(next).to.have.been.calledWith(error);
-          });
+      return changeEmailAddress(req, res, next)
+        .then(() => {
+          expect(next).to.have.been.called;
+        });
 
-      });
+    });
+
+  });
+
+  describe('changeEmailAddress() - HTTP POST /appeals/appealId/subscriptions/subscriptionId 500', () => {
+
+    const error = { value: HttpStatus.INTERNAL_SERVER_ERROR, reason: 'server error' };
+
+    it('should call next() with the error', () => {
+
+      nock(apiURL)
+        .post(`/appeals/${res.locals.token.appealId}/subscriptions/${res.locals.token.subscriptionId}`, {
+          subscription: { email: req.body.email }
+        })
+        .replyWithError(error);
+
+      return changeEmailAddress(req, res, next)
+        .catch(() => {
+          expect(next).to.have.been.calledWith(error);
+        });
+
+    });
+
+  });
+
+  describe('stopReceivingEmails() - HTTP DELETE /appeals/appealId/subscriptions/subscriptionId 200', () => {
+
+    it('should call next() passing zero arguments', () => {
+
+      nock(apiURL)
+        .delete(`/appeals/${res.locals.token.appealId}/subscriptions/${res.locals.token.subscriptionId}`)
+        .reply(HttpStatus.OK);
+
+      return stopReceivingEmails(req, res, next)
+        .then(() => {
+          expect(next).to.have.been.called;
+        });
+
+    });
+
+  });
+
+  describe('stopReceivingEmails() - HTTP DELETE /appeals/appealId/subscriptions/subscriptionId 500', () => {
+
+    it('should call next() passing an error containing a 500', () => {
+
+      const error = { value: HttpStatus.INTERNAL_SERVER_ERROR, reason: 'server error' };
+
+      nock(apiURL)
+        .delete(`/appeals/${res.locals.token.appealId}/subscriptions/${res.locals.token.subscriptionId}`)
+        .replyWithError(error);
+
+      return stopReceivingEmails(req, res, next)
+        .catch(() => {
+          expect(next).to.have.been.calledWith(error);
+        });
 
     });
 

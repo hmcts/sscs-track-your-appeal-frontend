@@ -9,7 +9,7 @@ const hearing = require('test/mock/data/hearing').appeal;
 
 const HttpStatus = require('http-status-codes');
 const proxyquire = require('proxyquire');
-const config = require('app/config');
+const apiUrl = require('config').get('api.url');
 const assert = require('chai').assert;
 const request = require('supertest');
 const jsdom = require('jsdom');
@@ -51,7 +51,7 @@ describe('Track your appeal template', () => {
     const appealId = 'md002';
     const url = `/trackyourappeal/${appealId}`;
 
-    nock(config.api)
+    nock(apiUrl)
       .persist()
       .get(`/appeals/${appealId}`)
       .reply(HttpStatus.OK, {
@@ -81,7 +81,7 @@ describe('Track your appeal template', () => {
     const appealId = 'md005';
     const url = `/trackyourappeal/${appealId}`;
 
-    nock(config.api)
+    nock(apiUrl)
       .persist()
       .get(`/appeals/${appealId}`)
       .reply(HttpStatus.OK, {
@@ -111,7 +111,7 @@ describe('Track your appeal template', () => {
     const appealId = 'md008';
     const url = `/trackyourappeal/${appealId}`;
 
-    nock(config.api)
+    nock(apiUrl)
       .persist()
       .get(`/appeals/${appealId}`)
       .reply(HttpStatus.OK, {
@@ -141,7 +141,7 @@ describe('Track your appeal template', () => {
     const appealId = 'md007';
     const url = `/trackyourappeal/${appealId}`;
 
-    nock(config.api)
+    nock(apiUrl)
       .persist()
       .get(`/appeals/${appealId}`)
       .reply(HttpStatus.OK, {

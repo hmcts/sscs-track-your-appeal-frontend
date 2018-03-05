@@ -1,5 +1,5 @@
 const request = require('superagent');
-const { appealsAPI } = require('app/config');
+const api = require('config').get('api.url');
 const HttpStatus = require('http-status-codes');
 
 const matchSurnameToAppeal = (req, res, next) => {
@@ -7,7 +7,7 @@ const matchSurnameToAppeal = (req, res, next) => {
   const id = req.params.id;
   const surname = req.body.surname;
 
-  return request.get(`${appealsAPI}/${id}/surname/${surname}`)
+  return request.get(`${api}/appeals/${id}/surname/${surname}`)
     .then(() => {
       req.session.surnameHasValidated = true;
       res.redirect(`/trackyourappeal/${id}`);

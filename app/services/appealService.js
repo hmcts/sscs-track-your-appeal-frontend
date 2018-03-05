@@ -1,5 +1,5 @@
 const {get} = require('lodash');
-const {appealsAPI} = require('app/config');
+const apiUrl = require('config').get('api.url');
 const HttpStatus = require('http-status-codes');
 const request = require('superagent');
 const {Logger} = require('@hmcts/nodejs-logging');
@@ -8,11 +8,11 @@ const logger = Logger.getLogger('AppealService.js');
 const getAppeal = (req, res, next) => {
 
   if(!req.params.id) {
-    next(new Error(`Unable to make API call to ${appealsAPI}/${req.params.id}`));
+    next(new Error(`Unable to make API call to ${apiUrl}/appeals/${req.params.id}`));
     return;
   }
 
-  return request.get(`${appealsAPI}/${req.params.id}`)
+  return request.get(`${apiUrl}/appeals/${req.params.id}`)
     .then((result) => {
       const appeal = result.body.appeal;
       appeal.evidenceReceived = false;
@@ -35,7 +35,7 @@ const getAppeal = (req, res, next) => {
 const changeEmailAddress = (req, res, next) => {
   const token = res.locals.token;
 
-  const endpoint = `${appealsAPI}/${token.appealId}/subscriptions/${token.subscriptionId}`;
+  const endpoint = `${apiUrl}/appeals/${token.appealId}/subscriptions/${token.subscriptionId}`;
 
   if(!token || !token.appealId || !token.subscriptionId) {
     next(new Error(`Unable to make API call to POST: ${endpoint}`));
@@ -56,7 +56,7 @@ const changeEmailAddress = (req, res, next) => {
 const stopReceivingEmails = (req, res, next) => {
   const token = res.locals.token;
 
-  const endpoint = `${appealsAPI}/${token.appealId}/subscriptions/${token.subscriptionId}`;
+  const endpoint = `${apiUrl}/appeals/${token.appealId}/subscriptions/${token.subscriptionId}`;
 
   if(!token || !token.appealId || !token.subscriptionId) {
     next(new Error(`Unable to make API call to DELETE: ${endpoint}`));
