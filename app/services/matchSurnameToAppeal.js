@@ -10,7 +10,7 @@ const matchSurnameToAppeal = (req, res, next) => {
   return request.get(`${appealsAPI}/${id}/surname/${surname}`)
     .then(() => {
       req.session.surnameHasValidated = true;
-      res.redirect(`/progress/${id}/trackyourappeal`);
+      res.redirect(`/trackyourappeal/${id}`);
     })
     .catch(error => {
       req.session.surnameHasValidated = false;

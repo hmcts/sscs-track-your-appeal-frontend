@@ -8,56 +8,56 @@ describe('routes.js', () => {
 
     let url;
 
-    it('should respond to /progress/md002/abouthearing', (done) => {
-      url = '/progress/md002/abouthearing';
+    it('should respond to /abouthearing/md002', (done) => {
+      url = '/abouthearing/md002';
       request(app)
         .get(url)
         .expect('Location', '/validate-surname/md002')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
-    it('should respond to /progress/md002/expenses', (done) => {
-      url = '/progress/md002/expenses';
+    it('should respond to /expenses/md002', (done) => {
+      url = '/expenses/md002';
       request(app)
         .get(url)
         .expect('Location', '/validate-surname/md002')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
-    it('should respond to /progress/md007/hearingdetails', (done) => {
-      url = '/progress/md007/hearingdetails';
+    it('should respond to /hearingdetails/md007', (done) => {
+      url = '/hearingdetails/md007';
       request(app)
         .get(url)
         .expect('Location', '/validate-surname/md007')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
-    it('should respond to /progress/md007/hearingdetails/10', (done) => {
-      url = '/progress/md007/hearingdetails/10';
+    it('should respond to /hearingdetails/md007/10', (done) => {
+      url = '/hearingdetails/md007/10';
       request(app)
         .get(url)
         .expect('Location', '/validate-surname/md007')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
-    it('should respond to /progress/md002/evidence', (done) => {
-      url = '/progress/md002/evidence';
+    it('should respond to /evidence/md002', (done) => {
+      url = '/evidence/md002';
       request(app)
         .get(url)
         .expect('Location', '/validate-surname/md002')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
-    it('should respond to /progress/md002/trackyourappeal', (done) => {
-      url = '/progress/md002/trackyourappeal';
+    it('should respond to /trackyourappeal/md002', (done) => {
+      url = '/trackyourappeal/md002';
       request(app)
         .get(url)
         .expect('Location', '/validate-surname/md002')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
-    it('should respond to /progress/md002/contactus', (done) => {
-      url = '/progress/md002/contactus';
+    it('should respond to /contactus/md002', (done) => {
+      url = '/contactus/md002';
       request(app)
         .get(url)
         .expect('Location', '/validate-surname/md002')
@@ -191,7 +191,7 @@ describe('routes.js', () => {
 
     it('should respond to an unknown id with a HTTP 404:Not found', (done) => {
       request(app)
-        .get('/progress/999/trackyourappeal')
+        .get('/trackyourappeal/999')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 

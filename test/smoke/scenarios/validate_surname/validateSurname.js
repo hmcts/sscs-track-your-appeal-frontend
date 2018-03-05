@@ -18,7 +18,7 @@ Scenario('When I enter the correct surname that matches to the mactoken, I am ta
 
   I.fillField('#surname', data.appeal.surname);
   I.click(validateSurnameContent.submit);
-  I.seeInCurrentUrl(`/progress/${appealId}/trackyourappeal`);
+  I.seeInCurrentUrl(`/trackyourappeal/${appealId}`);
 
 });
 

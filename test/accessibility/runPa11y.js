@@ -17,41 +17,49 @@ const pa11yRunner = pa11y({
 const manageEmailNotifications = '/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=';
 
 const accessibilityPages = [
-  '/progress/md002/contactus',
-  '/progress/md002/abouthearing',
-  '/progress/md002/trackyourappeal',
-  '/progress/md005/trackyourappeal',
-  '/progress/md008/trackyourappeal',
-  '/progress/md007/trackyourappeal',
-  '/progress/md008/hearingdetails',    // hearing booked
-  '/progress/md007/hearingdetails/1',  // hearing
-  '/progress/md007/expenses',
-  '/progress/md007/evidence',
+  '/validate-surname/md002',
+  '/contactus/md002',
+  '/abouthearing/md002',
+  '/trackyourappeal/md002',
+  '/trackyourappeal/md005',
+  '/trackyourappeal/md008',
+  '/trackyourappeal/md007',
+  '/hearingdetails/md008',    // hearing booked
+  '/hearingdetails/md007/1',  // hearing
+  '/expenses/md007',
+  '/evidence/md007',
   manageEmailNotifications,
   `${manageEmailNotifications}/change`,
   `${manageEmailNotifications}/stop`,
-  `${manageEmailNotifications}/stopconfirm`,
+  `${manageEmailNotifications}/stopconfirm`
 ];
 
 accessibilityPages.forEach((page) => {
 
   describe('Running Accessibility tests for: ' + page, () => {
 
-    let pageResults;
+    let pageResults, server;
 
     before((done) => {
-        pa11yRunner.run(request(app).get(page).url, (error, results) => {
-          if (error) {
-            throw new Error('Pa11y errored whilst testing page:' + page);
-          }
-          pageResults = results;
-          done();
+        const port = app.get('port');
+        server = app.listen(port, ()=> {
+          pa11yRunner.run(request(server).get(page).url, (error, results) => {
+            if (error) {
+              throw new Error('Pa11y error whilst testing page:' + page);
+            }
+            pageResults = results;
+            done();
+          });
         });
+    });
+
+    after(() => {
+      server.close();
     });
 
     it('should pass without errors or warnings', () => {
       let errors = pageResults.filter((result) => {
-        return result.type === 'error' || result.type === 'warning'
+        return result.type === 'error' || result.type === 'warning';
       });
       expect(errors.length).to.equal(0, JSON.stringify(errors, null, 2));
     });
