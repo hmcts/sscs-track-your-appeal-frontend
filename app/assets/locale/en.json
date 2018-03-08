@@ -245,7 +245,10 @@
       },
       "theHearingRoom": {
         "caption": "An {{benefitType|acronym}} appeal hearing with a judge and a medical expert.",
-        "imageAlt": "A tribunal hearing with 4 people, dressed informally, sat around a table.",
+        "imageAlt": {
+          "pip": "A tribunal hearing with 5 people, dressed informally, sat around a table.",
+          "esa": "A tribunal hearing with 4 people, dressed informally, sat around a table."
+        },
         "heading": "The hearing room",
         "content": "The tribunal clerk will take you into the hearing room. The judge and medical expert will be sitting at a table. You’ll be invited to sit opposite them. If you have someone to support you or to give evidence, they’ll sit next to you."
       },
