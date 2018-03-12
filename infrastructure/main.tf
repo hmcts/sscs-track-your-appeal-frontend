@@ -10,7 +10,7 @@ module "tract-your-appeal-frontend" {
 
   app_settings = {
     SSCS_API_URL       = "http://sscs-tribunals-api-${var.env}.service.${data.terraform_remote_state.core_apps_compute.ase_name[0]}.internal"
-    WEBSITE_NODE_DEFAULT_VERSION = "8.9.3"
+    WEBSITE_NODE_DEFAULT_VERSION = "8.10.0"
   }
 }
 
