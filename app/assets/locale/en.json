@@ -244,7 +244,10 @@
         "content": "You’ll be greeted by a tribunal clerk. They’ll take care of you at the hearing venue and answer any questions you have."
       },
       "theHearingRoom": {
-        "caption": "An {{benefitType|acronym}} appeal hearing with a judge and a medical expert.",
+        "caption": {
+          "pip": "A PIP benefit appeal with a judge, doctor and disability expert",
+          "esa": "An ESA hearing with a judge and a doctor"
+        },
         "imageAlt": {
           "pip": "A tribunal hearing with 5 people, dressed informally, sat around a table.",
           "esa": "A tribunal hearing with 4 people, dressed informally, sat around a table."
