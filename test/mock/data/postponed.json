@@ -27,6 +27,19 @@
         "type": "HEARING_BOOKED",
         "contentKey": "status.hearingBooked"
       }
-    ]
+    ],
+    "regionalProcessingCenter": {
+      "name": "SUTTON",
+      "addressLines": [
+        "HM Courts & Tribunals Service",
+        "Social Security & Child Support Appeals",
+        "Copthall House",
+        "9 The Pavement, Grove Road"
+      ],
+      "city": "SUTTON",
+      "postcode": "SM1 1DA",
+      "phoneNumber": "0300 123 1142",
+      "faxNumber": "0870 739 4229"
+    }
   }
 }

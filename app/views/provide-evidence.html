@@ -34,9 +34,14 @@ Provide Evidence
             {% for content in i18n.evidence.provide.whereToSendEvidence.content %}
             <p>{{content}}</p>
             {% endfor %}
-            {% for addressLine in i18n.evidence.provide.whereToSendEvidence.address %}
-            <div>{{addressLine}}</div>
-            {% endfor %}
+
+            <div>
+                {% for addressLine in data.regionalProcessingCenter.addressLines %}
+                    {{ addressLine }}<br>
+                {% endfor %}
+                {{ data.regionalProcessingCenter.city | capitalize }}<br>
+                {{ data.regionalProcessingCenter.postcode }}
+            </div>
 
         </div>
 
