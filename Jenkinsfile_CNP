@@ -4,7 +4,7 @@ properties(
          pipelineTriggers([[$class: 'GitHubPushTrigger']])]
 )
 
-@Library("Infrastructure@global-fix")
+@Library("Infrastructure")
 
 def product = "sscs-track-your-appeal"
 def component = "frontend"
