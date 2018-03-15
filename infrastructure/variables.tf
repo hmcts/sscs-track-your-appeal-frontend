@@ -23,3 +23,6 @@ variable "subscription" {
 
 variable "ilbIp"{}
 
+variable "node_environment" {
+  default = "aat"
+}
