@@ -8,7 +8,7 @@ Before((I) => {
   I.enterSurnameAndSubmitAndSeeTYA(appeal);
 });
 
-Scenario('Clicking the \'What to expect at your hearing\' link ', function*(I) {
+Scenario('Clicking the \'What to expect at your hearing\' link ', (I) => {
 
   I.click(hearing.expectations.title);
   I.see(hearing.expectations.title);
@@ -16,7 +16,7 @@ Scenario('Clicking the \'What to expect at your hearing\' link ', function*(I) {
 
 });
 
-Scenario('Clicking the \'Claiming hearing expenses\' link ', function*(I) {
+Scenario('Clicking the \'Claiming hearing expenses\' link ', (I) => {
 
   I.click(claimExpenses.link);
   I.see(claimExpenses.title);
@@ -24,7 +24,7 @@ Scenario('Clicking the \'Claiming hearing expenses\' link ', function*(I) {
 
 });
 
-Scenario('Clicking the \'Providing evidence to support your appeal\' link ', function*(I) {
+Scenario('Clicking the \'Providing evidence to support your appeal\' link ', (I) => {
 
   I.click(evidence.provide.title);
   I.see(evidence.provide.title);
@@ -32,7 +32,7 @@ Scenario('Clicking the \'Providing evidence to support your appeal\' link ', fun
 
 });
 
-Scenario('Clicking the \'Contact us\' link ', function*(I) {
+Scenario('Clicking the \'Contact us\' link ', (I) => {
 
   I.click(contactUs.title);
   I.see(evidence.provide.title);
@@ -40,7 +40,7 @@ Scenario('Clicking the \'Contact us\' link ', function*(I) {
 
 });
 
-Scenario('Clicking the \'Cookies\' link ', function*(I) {
+Scenario('Clicking the \'Cookies\' link ', (I) => {
 
   I.click(cookiePolicy.footer.cookies);
   I.see(cookiePolicy.cookies.title);

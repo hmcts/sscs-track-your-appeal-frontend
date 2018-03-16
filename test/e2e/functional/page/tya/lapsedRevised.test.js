@@ -6,7 +6,7 @@ Before((I) => {
   I.enterSurnameAndSubmitAndSeeTYA(appeal);
 });
 
-Scenario('Verify lapsed revised appeal details and no progress bar', function*(I) {
+Scenario('Verify lapsed revised appeal details and no progress bar', (I) => {
 
   I.seeAppealDetails(appeal);
   I.dontSeeAProgressBar();

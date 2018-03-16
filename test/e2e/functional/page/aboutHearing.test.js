@@ -11,7 +11,7 @@ Before((I) => {
   I.enterSurnameAndSubmitAndSeeTYA(appeal);
 });
 
-Scenario('Verify the dynamic content of the /abouthearing page', function*(I) {
+Scenario('Verify the dynamic content of the /abouthearing page', (I) => {
 
   I.click(hearing.details.title);
 

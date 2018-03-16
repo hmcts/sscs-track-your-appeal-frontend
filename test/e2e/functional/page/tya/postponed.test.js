@@ -6,7 +6,7 @@ Before((I) => {
   I.enterSurnameAndSubmitAndSeeTYA(appeal);
 });
 
-Scenario('Verify postponed appeal details, progress bar status and screen reader text', function*(I) {
+Scenario('Verify postponed appeal details, progress bar status and screen reader text', (I) => {
 
   I.seeAppealDetails(appeal);
   I.seeProgressBarAtDWPRespond();

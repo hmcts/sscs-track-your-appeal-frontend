@@ -10,7 +10,7 @@ Before((I) => {
   I.enterSurnameAndSubmitAndSeeTYA(appeal);
 });
 
-Scenario('Verify closed appeal details, no progress bar and content', function*(I) {
+Scenario('Verify closed appeal details, no progress bar and content', (I) => {
 
   I.seeAppealDetails(appeal);
   I.dontSeeAProgressBar();

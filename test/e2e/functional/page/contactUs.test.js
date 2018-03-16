@@ -7,7 +7,7 @@ Before((I) => {
   I.enterSurnameAndSubmitAndSeeTYA(appeal);
 });
 
-Scenario('verify contact us page', function*(I) {
+Scenario('verify contact us page', (I) => {
 
   // Click into 'Contact us'
   I.click(contactUs.title);
