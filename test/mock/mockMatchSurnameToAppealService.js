@@ -6,11 +6,10 @@ const matchSurnameToAppeal = (req, res) => {
   const mockedAppeal = mockedData[req.params.id].appeal;
   const id = req.params.id;
   const surname = req.body.surname;
+  const surnameHasValidated = mockedAppeal.surname.toLowerCase() === surname.toLowerCase();
 
-  req.session.surnameHasValidated =
-    mockedAppeal.surname.toLowerCase() === surname.toLowerCase();
-
-  if (req.session.surnameHasValidated) {
+  if (surnameHasValidated) {
+    req.session.surnameHasValidated = true;
     res.redirect(`/trackyourappeal/${id}`);
   } else {
     res.status(HttpStatus.BAD_REQUEST);

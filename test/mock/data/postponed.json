@@ -7,7 +7,6 @@
     "surname": "Lena",
     "status": "POSTPONED",
     "latestEvents": [{
-        "date": "2017-02-09T10:45:00+00:00",
         "hearingContactDate": "2017-04-13T17:27:50.297Z",
         "date": "2017-03-02T17:27:50.297Z",
         "type": "POSTPONED",
@@ -27,6 +26,19 @@
         "type": "HEARING_BOOKED",
         "contentKey": "status.hearingBooked"
       }
-    ]
+    ],
+    "regionalProcessingCenter": {
+      "name": "SUTTON",
+      "addressLines": [
+        "HM Courts & Tribunals Service",
+        "Social Security & Child Support Appeals",
+        "Copthall House",
+        "9 The Pavement, Grove Road"
+      ],
+      "city": "SUTTON",
+      "postcode": "SM1 1DA",
+      "phoneNumber": "0300 123 1142",
+      "faxNumber": "0870 739 4229"
+    }
   }
 }

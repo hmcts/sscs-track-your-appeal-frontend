@@ -4,5 +4,11 @@
   },
   "session": {
     "cookieSecret": "my-secret"
+  },
+  "e2e": {
+    "waitForTimeout": "1000",
+    "waitForAction": "500",
+    "outputDir": "./output",
+    "frontendUrl": "http://localhost:3000"
   }
 }

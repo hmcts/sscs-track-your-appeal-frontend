@@ -2,7 +2,7 @@
   "appeal": {
     "caseReference": "SC100/00/00002",
     "appealNumber": "md003",
-    "benefitType": "esa",
+    "benefitType": "pip",
     "name": "Mr. O Owl",
     "surname": "Owl",
     "status": "CLOSED",
@@ -12,5 +12,18 @@
         "contentKey": "status.closed"
       }
     ]
+  },
+  "regionalProcessingCenter": {
+    "name": "CARDIFF",
+    "addressLines": [
+      "HM Courts & Tribunals Service",
+      "Social Security & Child Support Appeals",
+      "Eastgate House",
+      "Newport Road"
+    ],
+    "city": "CARDIFF",
+    "postcode": "CF24 0AB",
+    "phoneNumber": "0300 123 1142",
+    "faxNumber": "0870 739 4438"
   }
 }

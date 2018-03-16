@@ -12,3 +12,4 @@ app/services/index.js
 .scannerwork/
 track-your-appeal-frontend.iml
 .sonar/
+test/e2e/output/

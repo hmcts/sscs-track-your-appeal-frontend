@@ -75,7 +75,7 @@ const events = {
   WITHDRAWN: {
     name: 'WITHDRAWN',
     index: progressBar.NONE,
-    contentKey: 'status.withdrawn',
+    contentKey: 'status.withdrawn'
   }
 };
 

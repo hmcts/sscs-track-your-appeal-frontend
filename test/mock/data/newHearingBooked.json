@@ -22,13 +22,25 @@
     ],
     "historicalEvents": [
       {
-        "date": "2017-07-31T16:00:00+01:00",
+        "date": "2017-03-02T17:27:50.297Z",
         "adjournedLetterReceivedByDate": "2017-03-09T17:27:50.297Z",
         "hearingContactDate": "2017-04-13T17:27:50.297Z",
-        "date": "2017-03-02T17:27:50.297Z",
         "type": "ADJOURNED",
         "contentKey": "status.adjourned"
       }
-    ]
+    ],
+    "regionalProcessingCenter": {
+      "name": "CARDIFF",
+      "addressLines": [
+        "HM Courts & Tribunals Service",
+        "Social Security & Child Support Appeals",
+        "Eastgate House",
+        "Newport Road"
+      ],
+      "city": "CARDIFF",
+      "postcode": "CF24 0AB",
+      "phoneNumber": "0300 123 1142",
+      "faxNumber": "0870 739 4438"
+    }
   }
 }
