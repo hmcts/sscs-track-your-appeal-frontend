@@ -6,8 +6,22 @@ const contentSubKeys = {
   CONTENT: '.content'
 };
 
-const renderArrayContent = (content, event) => {
-  return content.map(str => tyaNunjucks.env.renderString(str, event));
+const applyContentToEvents = (req, res, next) => {
+  apply(res.locals.appeal);
+  next();
+};
+
+const apply = (appeal) => {
+  setHeadingAndRenderedContentOnEvents(appeal.latestEvents, appeal);
+  setHeadingAndRenderedContentOnEvents(appeal.historicalEvents, appeal);
+};
+
+const setHeadingAndRenderedContentOnEvents = (events, appeal) => {
+  events.forEach(event => {
+    setHeadingOnEvent(event);
+    setBenefitTypeOnEvent(event, appeal.benefitType);
+    setRenderedContentOnEvent(event);
+  });
 };
 
 const setHeadingOnEvent = (event) => {
@@ -23,22 +37,8 @@ const setRenderedContentOnEvent = (event) => {
   event.renderedContent = renderArrayContent(contentArray, event);
 };
 
-const setHeadingAndRenderedContentOnEvents = (events, appeal) => {
-  events.forEach(event => {
-    setHeadingOnEvent(event);
-    setBenefitTypeOnEvent(event, appeal.benefitType);
-    setRenderedContentOnEvent(event);
-  });
-};
-
-const apply = (appeal) => {
-  setHeadingAndRenderedContentOnEvents(appeal.latestEvents, appeal);
-  setHeadingAndRenderedContentOnEvents(appeal.historicalEvents, appeal);
-};
-
-const applyContentToEvents = (req, res, next) => {
-  apply(res.locals.appeal);
-  next();
+const renderArrayContent = (content, event) => {
+  return content.map(str => tyaNunjucks.env.renderString(str, event));
 };
 
 module.exports = { applyContentToEvents };

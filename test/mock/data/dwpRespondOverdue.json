@@ -21,6 +21,19 @@
         "type": "APPEAL_RECEIVED",
         "contentKey": "status.appealReceived"
       }
-    ]
+    ],
+    "regionalProcessingCenter": {
+      "name": "NEWCASTLE",
+      "addressLines": [
+        "HM Courts & Tribunals Service",
+        "Social Security & Child Support Appeals",
+        "Manorview House",
+        "Kings Manor"
+      ],
+      "city": "NEWCASTLE UPON TYNE",
+      "postcode": "NE1 6PA",
+      "phoneNumber": "0300 123 1142",
+      "faxNumber": "0870 739 5784"
+    }
   }
 }

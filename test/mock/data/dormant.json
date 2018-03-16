@@ -13,6 +13,19 @@
         "type": "DORMANT",
         "contentKey": "status.dormant"
       }
-    ]
+    ],
+    "regionalProcessingCenter": {
+      "name": "LEEDS",
+      "addressLines": [
+        "HM Courts & Tribunals Service",
+        "Social Security & Child Support Appeals",
+        "York House",
+        "31 York Place"
+      ],
+      "city": "LEEDS",
+      "postcode": "LS1 2ED",
+      "phoneNumber": "0300 123 1142",
+      "faxNumber": "0870 739 4331"
+    }
   }
 }

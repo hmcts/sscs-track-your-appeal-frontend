@@ -40,7 +40,7 @@ const filters = {
   },
 
   isCurrent: (currentStatus, status) => {
-    return events[currentStatus].index === events[status].index ? 'current' : ''
+    return events[currentStatus].index === events[status].index ? 'current' : '';
   },
 
   getScreenReaderTextFor: (currentStatus, progressBarTick) => {
