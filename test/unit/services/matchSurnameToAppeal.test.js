@@ -52,6 +52,7 @@ describe('matchSurnameToAppeal.js', () => {
       return matchSurnameToAppeal(req, res, next)
         .then(() => {
           expect(res.redirect).to.have.been.calledWith(`/trackyourappeal/${req.params.id}`);
+          expect(req.session).to.have.property(req.params.id).that.equals(true);
         });
 
     });
@@ -86,6 +87,7 @@ describe('matchSurnameToAppeal.js', () => {
               }
             }
           });
+          expect(req.session).to.not.have.property(req.params.id);
         });
 
     });
@@ -101,6 +103,7 @@ describe('matchSurnameToAppeal.js', () => {
       return matchSurnameToAppeal(req, res, next)
         .catch(() => {
           expect(next).to.have.been.calledWith(error);
+          expect(req.session).to.not.have.property(req.params.id);
         });
 
     });
