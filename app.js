@@ -1,3 +1,4 @@
+require('app-insights')();
 const {Logger, Express} = require('@hmcts/nodejs-logging');
 const healthcheck = require('@hmcts/nodejs-healthcheck');
 const express = require('express');
@@ -17,9 +18,6 @@ const helmet = require('helmet');
 
 const app = express();
 
-const PORT = 3000;
-app.set('port', process.env.PORT || PORT);
-
 const ONE_MINUTE = 60000;
 const COOKIE_MAX_AGE = 30 * ONE_MINUTE;
 const cookieSecret = config.get('session.cookieSecret');
@@ -30,10 +28,6 @@ Logger.config({
   team: 'sscs',
   environment: process.env.NODE_ENV
 });
-
-// Tests
-app.set('portFrom', PORT);
-app.set('portTo', PORT + 50);
 
 app.set('view engine', 'html');
 app.set('views', [

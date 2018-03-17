@@ -1,4 +1,7 @@
 {
+  "node": {
+    "port": "PORT"
+  },
   "api": {
     "url": "SSCS_API_URL"
   },
@@ -10,5 +13,8 @@
     "waitForAction": "E2E_WAIT_FOR_ACTION_VALUE",
     "outputDir": "E2E_OUTPUT_DIR",
     "frontendUrl": "E2E_FRONTEND_URL"
+  },
+  "appInsights": {
+    "instrumentationKey": "APPINSIGHTS_INSTRUMENTATIONKEY"
   }
 }
