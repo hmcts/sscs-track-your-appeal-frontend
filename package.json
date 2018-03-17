@@ -12,7 +12,7 @@
     "postinstall": "yarn setup",
     "dev": "cross-env NODE_PATH=. NODE_ENV=development LOG_OUTPUT=multi grunt dev",
     "dev-mock-api": "cross-env NODE_PATH=. NODE_ENV=development LOG_LEVEL=OFF grunt dev-mock-services",
-    "test": "cross-env NODE_PATH=. mocha test/unit --recursive",
+    "test": "cross-env NODE_PATH=. NODE_ENV=test mocha test/unit --recursive",
     "coverage": "cross-env NODE_PATH=. istanbul cover _mocha test/unit/** --dir test/coverage/html",
     "pa11y": "cross-env NODE_PATH=. LOG_LEVEL=OFF mocha test/accessibility -r test/chai-sinon.js --reporter spec --recursive --timeout 10000",
     "test:smoke": "cross-env NODE_PATH=. codeceptjs run -c test/e2e/ --grep @smoke --steps ",
@@ -36,6 +36,7 @@
   "dependencies": {
     "@hmcts/nodejs-healthcheck": "^1.4.5",
     "@hmcts/nodejs-logging": "^2.2.0",
+    "applicationinsights": "1.0.1",
     "body-parser": "^1.17.1",
     "config": "^1.30.0",
     "cookie-parser": "^1.4.3",
