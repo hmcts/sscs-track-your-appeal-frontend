@@ -171,6 +171,13 @@ module.exports = function(grunt){
       'concurrent:target'
     ]);
 
+    grunt.registerTask('dev-mock-services-debug', [
+      'env:dev',
+      'sync',
+      'sass',
+      'copy:mockServices'
+    ]);
+
     grunt.registerTask('generate-assets', [
       'sync',
       'sass',

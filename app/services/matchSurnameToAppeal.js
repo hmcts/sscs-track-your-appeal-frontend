@@ -9,11 +9,10 @@ const matchSurnameToAppeal = (req, res, next) => {
 
   return request.get(`${api}/appeals/${id}/surname/${surname}`)
     .then(() => {
-      req.session.surnameHasValidated = true;
+      req.session[id] = true;
       res.redirect(`/trackyourappeal/${id}`);
     })
     .catch(error => {
-      req.session.surnameHasValidated = false;
       if (error.statusCode === HttpStatus.BAD_REQUEST) {
         res.status(HttpStatus.BAD_REQUEST);
         res.render('validate-surname', {

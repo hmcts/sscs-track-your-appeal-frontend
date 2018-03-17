@@ -1,15 +1,25 @@
 const mockedData = require('test/mock/data/index');
 const HttpStatus = require('http-status-codes');
 
+const getMockedAppeal = (appealNumber) => {
+
+  const mockedAppeal = mockedData[appealNumber];
+
+  if(!mockedAppeal) {
+    throw new ReferenceError(`Unknown mocked appeal number '${appealNumber}'`);
+  }
+
+  return mockedAppeal.appeal;
+};
+
 const matchSurnameToAppeal = (req, res) => {
 
-  const mockedAppeal = mockedData[req.params.id].appeal;
+  const mockedAppeal = getMockedAppeal(req.params.id);
   const id = req.params.id;
   const surname = req.body.surname;
-  const surnameHasValidated = mockedAppeal.surname.toLowerCase() === surname.toLowerCase();
 
-  if (surnameHasValidated) {
-    req.session.surnameHasValidated = true;
+  if (mockedAppeal.surname.toLowerCase() === surname.toLowerCase()) {
+    req.session[id] = true;
     res.redirect(`/trackyourappeal/${id}`);
   } else {
     res.status(HttpStatus.BAD_REQUEST);
@@ -28,4 +38,4 @@ const matchSurnameToAppeal = (req, res) => {
   }
 };
 
-module.exports = { matchSurnameToAppeal };
+module.exports = { matchSurnameToAppeal, getMockedAppeal };
