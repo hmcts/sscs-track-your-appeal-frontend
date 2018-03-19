@@ -22,4 +22,3 @@ variable "subscription" {
 }
 
 variable "ilbIp"{}
-
