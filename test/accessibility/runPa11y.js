@@ -1,8 +1,11 @@
-const app = require('app');
-const request = require('supertest');
 const {expect} = require('test/chai-sinon');
+
+const supertest = require('supertest');
+const app = require('app');
+const agent = supertest.agent(app);
+
 const pa11y = require('pa11y');
-const pa11yRunner = pa11y({
+const pa11yTest = pa11y({
   ignore: [
     'WCAG2AA.Principle1.Guideline1_3.1_3_1.H49.I',
     'WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.BgImage',
@@ -10,17 +13,16 @@ const pa11yRunner = pa11y({
     'WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.Abs',
     'WCAG2AA.Principle1.Guideline1_3.1_3_1_A.G141'
   ],
-
   hideElements: '.skiplink .govuk-box-highlight, #logo, #footer, link[rel=mask-icon], .skipAccessTest'
 });
 
 const manageEmailNotifications = '/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=';
 
 const accessibilityPages = [
-  '/validate-surname/md002',
-  '/contactus/md002',
-  '/abouthearing/md002',
-  '/trackyourappeal/md002',
+  '/validate-surname/OEk16aq6uk',
+  '/contactus/OEk16aq6uk',
+  '/abouthearing/OEk16aq6uk',
+  '/trackyourappeal/OEk16aq6uk',
   '/trackyourappeal/md005',
   '/trackyourappeal/md008',
   '/trackyourappeal/md007',
@@ -38,23 +40,16 @@ accessibilityPages.forEach((page) => {
 
   describe('Running Accessibility tests for: ' + page, () => {
 
-    let pageResults, server;
+    let pageResults;
 
     before((done) => {
-        const port = app.get('port');
-        server = app.listen(port, ()=> {
-          pa11yRunner.run(request(server).get(page).url, (error, results) => {
-            if (error) {
-              throw new Error('Pa11y error whilst testing page:' + page);
-            }
-            pageResults = results;
-            done();
-          });
-        });
-    });
-
-    after(() => {
-      server.close();
+      pa11yTest.run(agent.get(page).url, (error, results) => {
+        if (error) {
+          throw new Error('Pa11y error whilst testing page:' + page);
+        }
+        pageResults = results;
+        done();
+      });
     });
 
     it('should pass without errors or warnings', () => {
