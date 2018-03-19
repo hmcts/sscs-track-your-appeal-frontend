@@ -41,19 +41,19 @@ describe('routes.js', () => {
 
     let url;
 
-    it('should respond to /abouthearing/md002', (done) => {
-      url = '/abouthearing/md002';
+    it('should respond to /abouthearing/OEk16aq6uk', (done) => {
+      url = '/abouthearing/OEk16aq6uk';
       request(app)
         .get(url)
-        .expect('Location', '/validate-surname/md002')
+        .expect('Location', '/validate-surname/OEk16aq6uk')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
-    it('should respond to /expenses/md002', (done) => {
-      url = '/expenses/md002';
+    it('should respond to /expenses/OEk16aq6uk', (done) => {
+      url = '/expenses/OEk16aq6uk';
       request(app)
         .get(url)
-        .expect('Location', '/validate-surname/md002')
+        .expect('Location', '/validate-surname/OEk16aq6uk')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
@@ -73,27 +73,27 @@ describe('routes.js', () => {
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
-    it('should respond to /evidence/md002', (done) => {
-      url = '/evidence/md002';
+    it('should respond to /evidence/OEk16aq6uk', (done) => {
+      url = '/evidence/OEk16aq6uk';
       request(app)
         .get(url)
-        .expect('Location', '/validate-surname/md002')
+        .expect('Location', '/validate-surname/OEk16aq6uk')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
-    it('should respond to /trackyourappeal/md002', (done) => {
-      url = '/trackyourappeal/md002';
+    it('should respond to /trackyourappeal/OEk16aq6uk', (done) => {
+      url = '/trackyourappeal/OEk16aq6uk';
       request(app)
         .get(url)
-        .expect('Location', '/validate-surname/md002')
+        .expect('Location', '/validate-surname/OEk16aq6uk')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
-    it('should respond to /contactus/md002', (done) => {
-      url = '/contactus/md002';
+    it('should respond to /contactus/OEk16aq6uk', (done) => {
+      url = '/contactus/OEk16aq6uk';
       request(app)
         .get(url)
-        .expect('Location', '/validate-surname/md002')
+        .expect('Location', '/validate-surname/OEk16aq6uk')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
