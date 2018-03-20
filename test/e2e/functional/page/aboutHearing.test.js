@@ -25,7 +25,7 @@ Scenario('When I have a PIP appeal, I see the PIP image and caption', function*(
   I.enterSurnameAndSubmitAndSeeTYA(appealReceived);
   I.click(hearing.details.title);
 
-  let imageAlt = yield I.grabAttributeFrom('#hearing-room-image', 'alt');
+  const imageAlt = yield I.grabAttributeFrom('#hearing-room-image', 'alt');
   assert.equal(imageAlt, hearing.expectations.theHearingRoom.imageAlt.pip);
   I.see(hearing.expectations.theHearingRoom.caption.pip);
 
@@ -36,7 +36,7 @@ Scenario('When I have an ESA appeal, I see the ESA image and caption', function*
   I.enterSurnameAndSubmitAndSeeTYA(dwpRespond);
   I.click(hearing.details.title);
 
-  let imageAlt = yield I.grabAttributeFrom('#hearing-room-image', 'alt');
+  const imageAlt = yield I.grabAttributeFrom('#hearing-room-image', 'alt');
   assert.equal(imageAlt, hearing.expectations.theHearingRoom.imageAlt.esa);
   I.see(hearing.expectations.theHearingRoom.caption.esa);
 
