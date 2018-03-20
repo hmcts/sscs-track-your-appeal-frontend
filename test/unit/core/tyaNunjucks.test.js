@@ -62,6 +62,80 @@ describe('tyaNunjucks.js', () => {
         expect(stringifiedObj).to.eq('{\n  &quot;username&quot;: &quot;harrypotter&quot;,\n  &quot;password&quot;: &quot;123&quot;\n}');
       });
 
+      describe('isActive', () => {
+
+        let locals;
+
+        before(() => {
+          locals = { data: { status: 'APPEAL_RECEIVED'} };
+        });
+
+        it('returns the string active', () => {
+          const isActive = tyaNunjucks.env.renderString('{{ data.status | isActive("APPEAL_RECEIVED")}}', locals);
+          expect(isActive).to.equal('active');
+        });
+
+        it('returns an empty string', () => {
+          const isActive = tyaNunjucks.env.renderString('{{ data.status | isActive("HEARING")}}', locals);
+          expect(isActive).to.equal('');
+        });
+
+      });
+
+      describe('isCurrent', () => {
+
+        let locals;
+
+        before(() => {
+          locals = { data: { status: 'APPEAL_RECEIVED'} };
+        });
+
+        it('returns the string active', () => {
+          const isCurrent = tyaNunjucks.env.renderString('{{ data.status | isCurrent("APPEAL_RECEIVED")}}', locals);
+          expect(isCurrent).to.equal('current');
+        });
+
+        it('returns an empty string', () => {
+          const isCurrent = tyaNunjucks.env.renderString('{{ data.status | isCurrent("HEARING")}}', locals);
+          expect(isCurrent).to.equal('');
+        });
+
+      });
+
+      describe('fullDescription', () => {
+
+        it('returns pip benefit type description', () => {
+          const description = tyaNunjucks.env.renderString('{{ benefitType | fullDescription }}', { benefitType: 'pip' });
+          expect(description).to.equal('Personal Independence Payment (PIP)');
+        });
+
+        it('returns esa benefit type description', () => {
+          const description = tyaNunjucks.env.renderString('{{ benefitType | fullDescription }}', { benefitType: 'esa' });
+          expect(description).to.equal('Employment and Support Allowance (ESA)');
+        });
+
+      });
+
+      describe('getScreenReaderTextFor', () => {
+
+        let locals;
+
+        before(() => {
+          locals = { data: { status: 'APPEAL_RECEIVED'} };
+        });
+
+        it('it returns screen reader text for the appeal received status', () => {
+          const screenReader = tyaNunjucks.env.renderString('{{ data.status | getScreenReaderTextFor("APPEAL_RECEIVED") }}', locals);
+          expect(screenReader).to.equal('Appeal received. This step is complete.');
+        });
+
+        it('it returns screen reader text for the appeal received status', () => {
+          const screenReader = tyaNunjucks.env.renderString('{{ data.status | getScreenReaderTextFor("HEARING_BOOKED") }}', locals);
+          expect(screenReader).to.equal('Hearing booked. This has not happened yet.');
+        });
+
+      });
+
     });
 
     describe('UTC to BST', () => {
