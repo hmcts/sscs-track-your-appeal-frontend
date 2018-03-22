@@ -13,8 +13,8 @@ const matchSurnameToAppeal = (req, res, next) => {
       res.redirect(`/trackyourappeal/${id}`);
     })
     .catch(error => {
-      if (error.statusCode === HttpStatus.BAD_REQUEST) {
-        res.status(HttpStatus.BAD_REQUEST);
+      if (error.statusCode === HttpStatus.NOT_FOUND) {
+        res.status(HttpStatus.NOT_FOUND);
         res.render('validate-surname', {
           id,
           fields: {
