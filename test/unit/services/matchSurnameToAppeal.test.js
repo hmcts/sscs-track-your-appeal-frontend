@@ -63,7 +63,7 @@ describe('matchSurnameToAppeal.js', () => {
 
     it('should set both res.status() and res.render() when the response is a 400', () => {
 
-      const error = { statusCode: HttpStatus.BAD_REQUEST };
+      const error = { statusCode: HttpStatus.NOT_FOUND };
 
       req.params.id = invalidId;
       req.body.surname = invalidSurname;
@@ -74,7 +74,7 @@ describe('matchSurnameToAppeal.js', () => {
 
       return matchSurnameToAppeal(req, res, next)
         .then(() => {
-          expect(res.status).calledWith(HttpStatus.BAD_REQUEST);
+          expect(res.status).calledWith(HttpStatus.NOT_FOUND);
           expect(res.render).calledWith('validate-surname', {
             id: req.params.id,
             fields: {
