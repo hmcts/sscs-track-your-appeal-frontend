@@ -15,6 +15,7 @@ const getAppeal = (req, res, next) => {
   return request.get(`${apiUrl}/appeals/${req.params.id}`)
     .then((result) => {
       const appeal = result.body.appeal;
+      logger.info(appeal);
       appeal.evidenceReceived = false;
       appeal.latestEvents = appeal.latestEvents || [];
       appeal.historicalEvents = appeal.historicalEvents || [];
