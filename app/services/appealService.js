@@ -15,13 +15,11 @@ const getAppeal = (req, res, next) => {
   return request.get(`${apiUrl}/appeals/${req.params.id}`)
     .then((result) => {
       const appeal = result.body.appeal;
-      logger.info(`Appeal status: ${appeal.status}`);
       appeal.evidenceReceived = false;
       appeal.latestEvents = appeal.latestEvents || [];
       appeal.historicalEvents = appeal.historicalEvents || [];
       res.locals.appeal = appeal;
       logger.info(`GET /appeals/${req.params.id} ${HttpStatus.OK}`);
-
       next();
     }).catch((error) => {
       if(error.status === HttpStatus.NOT_FOUND) {
