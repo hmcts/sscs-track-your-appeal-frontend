@@ -4,7 +4,6 @@ const HttpStatus = require('http-status-codes');
 const request = require('superagent');
 const {Logger} = require('@hmcts/nodejs-logging');
 const logger = Logger.getLogger('AppealService.js');
-const { cloneDeep } = require('lodash');
 
 const getAppeal = (req, res, next) => {
 
@@ -16,7 +15,7 @@ const getAppeal = (req, res, next) => {
   return request.get(`${apiUrl}/appeals/${req.params.id}`)
     .then((result) => {
       const appeal = result.body.appeal;
-      logger.info(cloneDeep(appeal));
+      logger.info(`Appeal status: ${appeal.status}`);
       appeal.evidenceReceived = false;
       appeal.latestEvents = appeal.latestEvents || [];
       appeal.historicalEvents = appeal.historicalEvents || [];
