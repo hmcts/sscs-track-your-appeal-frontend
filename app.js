@@ -55,16 +55,17 @@ app.use(helmet.contentSecurityPolicy({
   }
 }));
 
+const maxAge = config.get('ssl.hpkp.maxAge');
+const sha256s = [
+  config.get('ssl.hpkp.sha256s'),
+  config.get('ssl.hpkp.sha256sBackup')
+] ;
+
 // Helmet HTTP public key pinning
-app.use(helmet.hpkp({
-  maxAge: 900,
-  sha256s: ['AbCdEf123=', 'XyzABC123=']
-}));
+app.use(helmet.hpkp( { maxAge, sha256s }));
 
 // Helmet referrer policy
-app.use(helmet.referrerPolicy({
-  policy: 'origin'
-}));
+app.use(helmet.referrerPolicy( { policy: 'origin' } ));
 
 // Disallow search index indexing
 app.use((req, res, next) => {

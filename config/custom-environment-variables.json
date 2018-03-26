@@ -16,5 +16,12 @@
   },
   "appInsights": {
     "instrumentationKey": "APPINSIGHTS_INSTRUMENTATIONKEY"
+  },
+  "ssl": {
+    "hpkp": {
+      "maxAge": "TO_BE_DEFINED",
+      "sha256s": "TO_BE_DEFINED",
+      "sha256sBackup": "TO_BE_DEFINED"
+    }
   }
 }
