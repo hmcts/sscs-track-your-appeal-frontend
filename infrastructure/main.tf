@@ -23,7 +23,7 @@ module "tract-your-appeal-frontend" {
   is_frontend          = true
   subscription         = "${var.subscription}"
   additional_host_name = "${var.additional_hostname}"
-
+  https_only           = true
 
   app_settings = {
     SSCS_API_URL                 = "http://sscs-tribunals-api-${var.env}.service.${data.terraform_remote_state.core_apps_compute.ase_name[0]}.internal"
