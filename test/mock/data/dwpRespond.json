@@ -1,8 +1,8 @@
 {
   "appeal": {
     "caseReference": "SC123/45/00001",
-    "name": "Mr Jason Mock",
-    "surname": "Mock",
+    "name": "Mr Jason Test",
+    "surname": "Test",
     "appealNumber": "md005",
     "benefitType": "esa",
     "status": "DWP_RESPOND",

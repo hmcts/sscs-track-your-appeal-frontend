@@ -9,7 +9,7 @@ RUN yarn install
 ENV PATH="./node_modules/.bin:$PATH"
 
 COPY app /app/app
-COPY server.js app.js post-data.js /app/
+COPY server.js app.js /app/
 
 RUN yarn setup
 

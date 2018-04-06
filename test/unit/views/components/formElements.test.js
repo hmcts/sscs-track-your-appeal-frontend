@@ -1,20 +1,18 @@
-const {expect} = require('test/chai-sinon');
+const { expect } = require('test/chai-sinon');
 const nunjucks = require('nunjucks');
 
 
-describe(`Text fields should render as expected`, () => {
-
+describe('Text fields should render as expected', () => {
   const textField = `
     {% from "app/views/components/formElements.html" import textField %}
     {{ textField(label, hint, field, name) }}
   `;
 
   it('name, field and label are rendered correctly', () => {
-
-    let input = {
+    const input = {
       label: 'testLabel',
       field: { value: 'some text' },
-      name: 'testName',
+      name: 'testName'
     };
 
     const res = nunjucks.renderString(textField, input);
@@ -24,18 +22,17 @@ describe(`Text fields should render as expected`, () => {
     expect(res).to.contain('name="testName"');
     expect(res).to.contain(input.field.value);
     expect(res).to.not.contain('<span class="form-hint">');
-
   });
 
   it('errors are shown if present', () => {
-    let input = {
+    const input = {
       label: 'testLabel',
       field: {
         value: 'some text',
         error: true,
         errorMessage: 'error-message'
       },
-      name: 'testName',
+      name: 'testName'
     };
 
     const res = nunjucks.renderString(textField, input);
@@ -43,27 +40,24 @@ describe(`Text fields should render as expected`, () => {
     expect(res).to.contain('<div class="form-group form-group-error">');
     expect(res).to.contain('<span class="error-message">');
     expect(res).to.contain(input.field.errorMessage);
-
   });
 
   it('hint is shown when present', () => {
-    let input = {
+    const input = {
       label: 'testLabel',
       hint: 'hint',
       field: { value: 'some text' },
-      name: 'testName',
+      name: 'testName'
     };
 
     const res = nunjucks.renderString(textField, input);
     expect(res).to.contain('<span class="form-hint">');
     expect(res).to.contain(input.hint);
-
   });
 });
 
 
-describe(`Text areas should render as expected`, () => {
-
+describe('Text areas should render as expected', () => {
   const textArea = `
     {% from "app/views/components/formElements.html" import textArea %}
     {{ textArea(label, hint, field, name) }}
@@ -71,11 +65,10 @@ describe(`Text areas should render as expected`, () => {
 
 
   it('name, field and label are rendered correctly', () => {
-
-    let input = {
+    const input = {
       label: 'testLabel',
       field: { value: 'some text' },
-      name: 'testName',
+      name: 'testName'
     };
 
     const res = nunjucks.renderString(textArea, input);
@@ -85,18 +78,17 @@ describe(`Text areas should render as expected`, () => {
     expect(res).to.contain('name="testName"');
     expect(res).to.contain(input.field.value);
     expect(res).to.not.contain('<span class="form-hint">');
-
   });
 
   it('errors are shown if present', () => {
-    let input = {
+    const input = {
       label: 'testLabel',
       field: {
         value: 'some text',
         error: true,
         errorMessage: 'error-message'
       },
-      name: 'testName',
+      name: 'testName'
     };
 
     const res = nunjucks.renderString(textArea, input);
@@ -104,26 +96,23 @@ describe(`Text areas should render as expected`, () => {
     expect(res).to.contain('<div class="form-group form-group-error">');
     expect(res).to.contain('<span class="error-message">');
     expect(res).to.contain(input.field.errorMessage);
-
   });
 
   it('hint is shown when present', () => {
-    let input = {
+    const input = {
       label: 'testLabel',
       hint: 'hint',
       field: { value: 'some text' },
-      name: 'testName',
+      name: 'testName'
     };
 
     const res = nunjucks.renderString(textArea, input);
     expect(res).to.contain('<span class="form-hint">');
     expect(res).to.contain(input.hint);
-
   });
 });
 
-describe(`Date fields should render as expected`, () => {
-
+describe('Date fields should render as expected', () => {
   const date = `
     {% from "app/views/components/formElements.html" import date %}
     {{ date(
@@ -140,11 +129,10 @@ describe(`Date fields should render as expected`, () => {
   `;
 
   it('name, field and label are rendered correctly', () => {
-
-    let input = {
-      day:  { value: '01'  },
-      month:{ value: '02'  },
-      year: { value: '1980'},
+    const input = {
+      day: { value: '01' },
+      month: { value: '02' },
+      year: { value: '1980' },
       date: {},
       label: 'dateLabel',
       id: 'testDate'
@@ -160,11 +148,10 @@ describe(`Date fields should render as expected`, () => {
     expect(res).to.not.contain('<legend class="form-label-bold">');
     expect(res).to.not.contain('<legend class="visually-hidden">');
     expect(res).to.not.contain('<span class="form-hint">');
-
   });
 
   it('errors are shown if present', () => {
-    let input = {
+    const input = {
       day: {
         value: '01',
         error: true,
@@ -190,18 +177,15 @@ describe(`Date fields should render as expected`, () => {
 
     const res = nunjucks.renderString(date, input);
 
-
     expect(res).to.contain(input.day.errorMessage);
     expect(res).to.contain(input.month.errorMessage);
     expect(res).to.contain(input.year.errorMessage);
     expect(res).to.contain(input.dateField.errorMessage);
     expect(res).to.contain('<fieldset class="form-group form-date error" id="testDate">');
-
   });
 
   it('hint, legend and hidden legend are shown when present', () => {
-
-    let input = {
+    const input = {
       day: {},
       month: {},
       year: {},
@@ -213,11 +197,9 @@ describe(`Date fields should render as expected`, () => {
       hint: 'testHint'
     };
 
-
     const res = nunjucks.renderString(date, input);
     expect(res).to.contain(input.hint);
     expect(res).to.contain(input.legend);
     expect(res).to.contain(input.hiddenLegend);
-
   });
 });

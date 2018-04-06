@@ -102,7 +102,6 @@ timestamps {
                         env.SSCS_TYA_FRONTEND_URL = "https://www-" + 'dev' + ".sscs.reform.hmcts.net/"
                         env.SSCS_TYA_BACKEND_URL="https://track-your-appeal-api-dev.sscs.reform.hmcts.net:4204/"
                         sh 'make install'
-                        sh 'make health-check'
                         deleteDir()
                       }
                     }

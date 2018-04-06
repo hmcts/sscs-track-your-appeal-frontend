@@ -1,21 +1,20 @@
-const { environment } = require('test/e2e/helpers/nunjucksHelper');
+const { env } = require('test/e2e/helpers/nunjucksHelper');
 const { appeal } = require('test/mock/data/closed');
-const { closed } = require('public/locale/en').status;
-
-const env = environment();
+const { common, status } = require('public/locale/en');
 
 Feature('TYA - Closed');
 
-Before((I) => {
+Before(I => {
   I.enterSurnameAndSubmitAndSeeTYA(appeal);
 });
 
-Scenario('Verify closed appeal details, no progress bar and content', (I) => {
-
+Scenario('Verify closed appeal details, no progress bar and content', I => {
   I.seeAppealDetails(appeal);
   I.dontSeeAProgressBar();
 
-  // Content specific to Closed.
-  I.see(env.renderString(closed.content[0], { benefitType: appeal.benefitType }));
-  I.see(closed.content[1]);
+  // Content.
+  I.see(common.latestUpdate);
+  status.closed.content.forEach(content => {
+    I.see(env.renderString(content, { benefitType: appeal.benefitType }));
+  });
 });
