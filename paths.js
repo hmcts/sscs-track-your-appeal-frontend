@@ -1,20 +1,18 @@
 module.exports = {
 
-  health:                           '/health',
+  health: '/health',
 
   tya: {
-    aboutHearing:                   '/abouthearing',
-    contactus:                      '/contactus',
-    cookiepolicy:                   '/cookiepolicy',
-    evidence:                       '/evidence',
-    expenses:                       '/expenses',
-    hearingDetails:                 '/hearingdetails',
-    trackYourAppeal:                '/trackyourappeal',
-    validateSurname:                '/validate-surname'
+    aboutHearing: '/abouthearing',
+    contactus: '/contactus',
+    cookiepolicy: '/cookiepolicy',
+    evidence: '/evidence',
+    expenses: '/expenses',
+    hearingDetails: '/hearingdetails',
+    trackYourAppeal: '/trackyourappeal',
+    validateSurname: '/validate-surname'
   },
 
-  notifications: {
-    manageEmailNotifications:       'manage-email-notifications'
-  }
+  notifications: { manageEmailNotifications: 'manage-email-notifications' }
 
 };

@@ -3,7 +3,6 @@ const api = require('config').get('api.url');
 const HttpStatus = require('http-status-codes');
 
 const matchSurnameToAppeal = (req, res, next) => {
-
   const id = req.params.id;
   const surname = req.body.surname;
 
@@ -31,7 +30,6 @@ const matchSurnameToAppeal = (req, res, next) => {
         next(error);
       }
     });
-
 };
 
 module.exports = { matchSurnameToAppeal };

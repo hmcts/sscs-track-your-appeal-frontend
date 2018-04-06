@@ -3,41 +3,31 @@ const { expect, sinon } = require('test/chai-sinon');
 const validateSurnameContent = require('app/assets/locale/en').validateSurname;
 
 describe('validateSurname.js', () => {
-
   const id = 'validId';
-  let req, res, next;
+  let req = null, res = null, next = null;
 
   beforeEach(() => {
     req = {
-      params: {
-        id
-      },
+      params: { id },
       body: {}
     };
     res = {
       render: sinon.stub(),
-      locals: {
-        i18n: {
-          validateSurname: validateSurnameContent
-        }
-      }
+      locals: { i18n: { validateSurname: validateSurnameContent } }
     };
     next = sinon.stub();
   });
 
-  describe('no field errors', ()=> {
-
+  describe('no field errors', () => {
     it('calls next when there are no field errors', () => {
       req.body.surname = 'validSurname';
       validateSurname(req, res, next);
-      expect(next).to.have.been.called;
+      return expect(next).to.have.been.called;
     });
-
   });
 
-  describe('field errors', ()=> {
-
-    let fields;
+  describe('field errors', () => {
+    let fields = null;
 
     beforeEach(() => {
       fields = {
@@ -68,7 +58,5 @@ describe('validateSurname.js', () => {
       validateSurname(req, res, next);
       expect(res.render).to.have.been.calledWith('validate-surname', { id, fields });
     });
-
   });
-
 });

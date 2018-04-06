@@ -1,10 +1,10 @@
 {
   "appeal": {
-    "caseReference": "SC100/00/00002",
-    "appealNumber": "md003",
-    "benefitType": "pip",
-    "name": "Mr. O Owl",
-    "surname": "Owl",
+    "caseReference": "SC285/18/00006",
+    "appealNumber": "D8dg4cGLHZ",
+    "benefitType": "esa",
+    "name": "Mrs. AN Test",
+    "surname": "Test",
     "status": "CLOSED",
     "latestEvents": [{
         "date": "2016-12-11T12:50:11.437Z",

@@ -12,26 +12,30 @@ const evidenceReminderStatuses = [
   events.POSTPONED.name
 ];
 
+const getFirstEventWithMatchingType = (evnts, type) => {
+  return evnts.filter(event => {
+    return event.type === type;
+  })[0];
+};
 
-const getFirstEventWithMatchingType = (events, type) =>
-  events.filter(event => event.type === type)[0];
+const setEvidenceReceivedFlag = appeal => {
 
-const setEvidenceReceivedFlag = (appeal) => {
   const evidenceRecievedInLatestEvents = getFirstEventWithMatchingType(
     appeal.latestEvents, events.EVIDENCE_RECEIVED.name);
+
   const evidenceRecievedInHistoricalEvents = getFirstEventWithMatchingType(
     appeal.historicalEvents, events.EVIDENCE_RECEIVED.name);
 
   appeal.evidenceReceived = !!(evidenceRecievedInLatestEvents || evidenceRecievedInHistoricalEvents);
 };
 
-const showEvidenceReminderStatuses = (appeal) => {
+const showEvidenceReminderStatuses = appeal => {
   return includes(evidenceReminderStatuses, appeal.status);
 };
 
-const apply = (appeal) => {
+const apply = appeal => {
   appeal.showEvidenceReminder = showEvidenceReminderStatuses(appeal);
-  if(appeal.showEvidenceReminder) {
+  if (appeal.showEvidenceReminder) {
     setEvidenceReceivedFlag(appeal);
   }
 };

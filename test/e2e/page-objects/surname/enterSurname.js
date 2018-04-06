@@ -1,8 +1,8 @@
+/* eslint-disable no-invalid-this  */
 const { validateSurname } = require('app/assets/locale/en');
 const paths = require('paths');
 
 function enterSurnameAndSubmit(surname) {
-
   const I = this;
 
   I.fillField('#surname', surname);
@@ -10,7 +10,6 @@ function enterSurnameAndSubmit(surname) {
 }
 
 function enterSurnameAndSubmitAndSeeTYA(appeal) {
-
   const I = this;
 
   I.amOnPage(`${paths.tya.validateSurname}/${appeal.appealNumber}`);

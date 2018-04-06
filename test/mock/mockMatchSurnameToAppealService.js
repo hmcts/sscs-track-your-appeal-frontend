@@ -1,11 +1,10 @@
 const mockedData = require('test/mock/data/index');
 const HttpStatus = require('http-status-codes');
 
-const getMockedAppeal = (appealNumber) => {
-
+const getMockedAppeal = appealNumber => {
   const mockedAppeal = mockedData[appealNumber];
 
-  if(!mockedAppeal) {
+  if (!mockedAppeal) {
     throw new ReferenceError(`Unknown mocked appeal number '${appealNumber}'`);
   }
 
@@ -13,7 +12,6 @@ const getMockedAppeal = (appealNumber) => {
 };
 
 const matchSurnameToAppeal = (req, res) => {
-
   const mockedAppeal = getMockedAppeal(req.params.id);
   const id = req.params.id;
   const surname = req.body.surname;

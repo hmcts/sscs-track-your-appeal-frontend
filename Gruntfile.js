@@ -1,199 +1,200 @@
-module.exports = function(grunt){
+module.exports = grunt => {
+  grunt.initConfig({
 
-    grunt.initConfig({
-
-        // Covert Sass to CSS
-        sass: {
-            dev: {
-                options: {
-                    style: 'expanded',
-                    sourcemap: true,
-                    includePaths: [
-                        'govuk_modules/govuk_template/assets/stylesheets',
-                        'govuk_modules/govuk_frontend_toolkit/stylesheets',
-                        'govuk_modules/govuk-elements-sass/'
-                    ],
-                    outputStyle: 'expanded'
-                },
-                files: [{
-                    expand: true,
-                    cwd: 'app/assets/sass/',
-                    src: ['*.scss'],
-                    dest: 'public/stylesheets/',
-                    ext: '.css'
-                }]
-            }
+    // Covert Sass to CSS
+    sass: {
+      dev: {
+        options: {
+          style: 'expanded',
+          sourcemap: true,
+          includePaths: [
+            'govuk_modules/govuk_template/assets/stylesheets',
+            'govuk_modules/govuk_frontend_toolkit/stylesheets',
+            'govuk_modules/govuk-elements-sass/'
+          ],
+          outputStyle: 'expanded'
         },
-
-        // Copy over GOV.UK and assets.
-        sync: {
-            assets: {
-                files: [{
-                    expand: true,
-                    cwd: 'app/assets/',
-                    src: ['**/*', '!sass/**'],
-                    dest: 'public/'
-                    }
-                ],
-                ignoreInDest: '**/stylesheets/**',
-                updateAndDelete: true
-            },
-            govuk: {
-                files: [{
-                    cwd: 'node_modules/govuk_frontend_toolkit/',
-                    src: '**',
-                    dest: 'govuk_modules/govuk_frontend_toolkit/'
-                },
-                {
-                    cwd: 'node_modules/govuk_template_jinja/assets/',
-                    src: '**',
-                    dest: 'govuk_modules/govuk_template/assets/'
-                },
-                {
-                    cwd: 'node_modules/govuk_template_jinja/views/layouts/',
-                    src: '**',
-                    dest: 'govuk_modules/govuk_template/views/layouts/'
-                },
-                {
-                    cwd: 'node_modules/govuk-elements-sass/public/sass/',
-                    src: ['**', '!node_modules', '!elements-page.scss', '!elements-page-ie6.scss', '!elements-page-ie7.scss', '!elements-page-ie8.scss', '!main.scss', '!main-ie6.scss', '!main-ie7.scss', '!main-ie8.scss', '!prism.scss'],
-                    dest: 'govuk_modules/govuk-elements-sass/'
-                }]
-            },
-            govuk_template_jinja: {
-                files: [{
-                    cwd: 'govuk_modules/govuk_template/views/layouts/',
-                    src: '**',
-                    dest: 'lib/'
-                }, {
-                  cwd: 'govuk_modules/govuk_template/assets/javascripts',
-                  src: 'govuk-template.js',
-                  dest: 'public/javascripts'
-                }]
-            },
-            google_analytics: {
-              files: [{
-                  cwd: 'govuk_modules/govuk_frontend_toolkit/javascripts/govuk/analytics',
-                  src: ['google-analytics-universal-tracker.js', 'analytics.js', 'govuk-tracker.js'],
-                  dest: 'public/javascripts'
-                }
-              ]
-            }
-        },
-
-        env : {
-          dev : {
-            NODE_PATH : '.'
+        files: [
+          {
+            expand: true,
+            cwd: 'app/assets/sass/',
+            src: ['*.scss'],
+            dest: 'public/stylesheets/',
+            ext: '.css'
           }
-        },
+        ]
+      }
+    },
 
-        copy: {
-          services: {
-            src: 'app/assets/javascripts/index.js',
-            dest: 'app/services/index.js'
+    // Copy over GOV.UK and assets.
+    sync: {
+      assets: {
+        files: [
+          {
+            expand: true,
+            cwd: 'app/assets/',
+            src: ['**/*', '!sass/**'],
+            dest: 'public/'
+          }
+        ],
+        ignoreInDest: '**/stylesheets/**',
+        updateAndDelete: true
+      },
+      govuk: {
+        files: [
+          {
+            cwd: 'node_modules/govuk_frontend_toolkit/',
+            src: '**',
+            dest: 'govuk_modules/govuk_frontend_toolkit/'
           },
-          mockServices: {
-            src: 'test/mock/index.js',
-            dest: 'app/services/index.js'
+          {
+            cwd: 'node_modules/govuk_template_jinja/assets/',
+            src: '**',
+            dest: 'govuk_modules/govuk_template/assets/'
+          },
+          {
+            cwd: 'node_modules/govuk_template_jinja/views/layouts/',
+            src: '**',
+            dest: 'govuk_modules/govuk_template/views/layouts/'
+          },
+          {
+            cwd: 'node_modules/govuk-elements-sass/public/sass/',
+            src: [
+              '**', '!node_modules',
+              '!elements-page.scss',
+              '!elements-page-ie6.scss',
+              '!elements-page-ie7.scss',
+              '!elements-page-ie8.scss',
+              '!main.scss',
+              '!main-ie6.scss',
+              '!main-ie7.scss',
+              '!main-ie8.scss',
+              '!prism.scss'
+            ],
+            dest: 'govuk_modules/govuk-elements-sass/'
           }
-        },
+        ]
+      },
+      govuk_template_jinja: {
+        files: [
+          {
+            cwd: 'govuk_modules/govuk_template/views/layouts/',
+            src: '**',
+            dest: 'lib/'
+          }, {
+            cwd: 'govuk_modules/govuk_template/assets/javascripts',
+            src: 'govuk-template.js',
+            dest: 'public/javascripts'
+          }
+        ]
+      },
+      google_analytics: {
+        files: [
+          {
+            cwd: 'govuk_modules/govuk_frontend_toolkit/javascripts/govuk/analytics',
+            src: [
+              'google-analytics-universal-tracker.js',
+              'analytics.js',
+              'govuk-tracker.js'
+            ],
+            dest: 'public/javascripts'
+          }
+        ]
+      }
+    },
 
-        // Watches assets and sass for changes
-        watch: {
-            css: {
-                files: ['app/assets/sass/**/*.scss'],
-                tasks: ['sass'],
-                options: {
-                    spawn: false
-                }
-            },
-            assets:{
-                files: ['app/assets/**/*', '!app/assets/sass/**'],
-                tasks: ['sync:assets'],
-                options: {
-                    spawn: false
-                }
-            }
-        },
+    env: { dev: { NODE_PATH: '.' } },
 
-        // nodemon watches for changes and restarts app
-        nodemon: {
-            dev: {
-                script: 'server.js',
-                options: {
-                    ext: 'js, json',
-                    ignore: ['node_modules/**', 'app/assets/**', 'public/**'],
-                    args: grunt.option.flags()
-                }
-            }
-        },
+    copy: {
+      services: {
+        src: 'app/assets/javascripts/index.js',
+        dest: 'app/services/index.js'
+      },
+      mockServices: {
+        src: 'test/mock/index.js',
+        dest: 'app/services/index.js'
+      }
+    },
 
-        concurrent: {
-            target: {
-                tasks: ['watch', 'nodemon'],
-                options: {
-                    logConcurrentOutput: true
-                }
-            }
-        },
+    // Watches assets and sass for changes
+    watch: {
+      css: {
+        files: ['app/assets/sass/**/*.scss'],
+        tasks: ['sass'],
+        options: { spawn: false }
+      },
+      assets: {
+        files: ['app/assets/**/*', '!app/assets/sass/**'],
+        tasks: ['sync:assets'],
+        options: { spawn: false }
+      }
+    },
 
-        nsp: {
-          package: grunt.file.readJSON('package.json')
+    // nodemon watches for changes and restarts app
+    nodemon: {
+      dev: {
+        script: 'server.js',
+        options: {
+          ext: 'js, json',
+          ignore: ['node_modules/**', 'app/assets/**', 'public/**'],
+          args: grunt.option.flags()
         }
-    });
+      }
+    },
 
-    [
-        'grunt-nsp',
-        'grunt-env',
-        'grunt-sync',
-        'grunt-contrib-watch',
-        'grunt-contrib-copy',
-        'grunt-sass',
-        'grunt-nodemon',
-        'grunt-concurrent'
-    ].forEach(function (task) {
-        grunt.loadNpmTasks(task);
-    });
+    concurrent: {
+      target: {
+        tasks: ['watch', 'nodemon'],
+        options: { logConcurrentOutput: true }
+      }
+    },
 
-    grunt.registerTask('dev', [
-      'env:dev',
-      'sync',
-      'sass',
-      'copy:services',
-      'concurrent:target'
-    ]);
+    nsp: { package: grunt.file.readJSON('package.json') }
+  });
 
-    grunt.registerTask('dev-mock-services', [
-      'env:dev',
-      'sync',
-      'sass',
-      'copy:mockServices',
-      'concurrent:target'
-    ]);
+  [
+    'grunt-nsp',
+    'grunt-env',
+    'grunt-sync',
+    'grunt-contrib-watch',
+    'grunt-contrib-copy',
+    'grunt-sass',
+    'grunt-nodemon',
+    'grunt-concurrent'
+  ].forEach(task => {
+    grunt.loadNpmTasks(task);
+  });
 
-    grunt.registerTask('dev-mock-services-debug', [
-      'env:dev',
-      'sync',
-      'sass',
-      'copy:mockServices'
-    ]);
+  grunt.registerTask('dev', [
+    'env:dev',
+    'sync',
+    'sass',
+    'copy:services',
+    'concurrent:target'
+  ]);
 
-    grunt.registerTask('generate-assets', [
-      'sync',
-      'sass',
-      'copy:services'
-    ]);
+  grunt.registerTask('dev-mock-services', [
+    'env:dev',
+    'sync',
+    'sass',
+    'copy:mockServices',
+    'concurrent:target'
+  ]);
 
-    grunt.registerTask('mock-services', [
-      'copy:mockServices'
-    ]);
+  grunt.registerTask('dev-mock-services-debug', [
+    'env:dev',
+    'sync',
+    'sass',
+    'copy:mockServices'
+  ]);
 
-    grunt.registerTask('services', [
-      'copy:services'
-    ]);
+  grunt.registerTask('generate-assets', [
+    'sync',
+    'sass',
+    'copy:services'
+  ]);
 
-    grunt.registerTask('security-checks', [
-      'nsp:package'
-    ]);
-
+  grunt.registerTask('mock-services', ['copy:mockServices']);
+  grunt.registerTask('services', ['copy:services']);
+  grunt.registerTask('security-checks', ['nsp:package']);
 };

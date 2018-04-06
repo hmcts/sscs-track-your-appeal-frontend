@@ -1,19 +1,28 @@
-const {getContentAsString, getContentAsArray} = require('app/core/contentLookup');
-const {tyaNunjucks} = require('app/core/tyaNunjucks');
+const { getContentAsString, getContentAsArray } = require('app/core/contentLookup');
+const { tyaNunjucks } = require('app/core/tyaNunjucks');
 
 const contentSubKeys = {
   HEADING: '.heading',
   CONTENT: '.content'
 };
 
-const applyContentToEvents = (req, res, next) => {
-  apply(res.locals.appeal);
-  next();
+const renderArrayContent = (content, event) => {
+  return content.map(str => {
+    return tyaNunjucks.env.renderString(str, event);
+  });
 };
 
-const apply = (appeal) => {
-  setHeadingAndRenderedContentOnEvents(appeal.latestEvents, appeal);
-  setHeadingAndRenderedContentOnEvents(appeal.historicalEvents, appeal);
+const setRenderedContentOnEvent = event => {
+  const contentArray = getContentAsArray(event.contentKey + contentSubKeys.CONTENT);
+  event.renderedContent = renderArrayContent(contentArray, event);
+};
+
+const setBenefitTypeOnEvent = (event, benefitType) => {
+  event.benefitType = benefitType;
+};
+
+const setHeadingOnEvent = event => {
+  event.heading = getContentAsString(event.contentKey + contentSubKeys.HEADING);
 };
 
 const setHeadingAndRenderedContentOnEvents = (events, appeal) => {
@@ -24,21 +33,14 @@ const setHeadingAndRenderedContentOnEvents = (events, appeal) => {
   });
 };
 
-const setHeadingOnEvent = (event) => {
-  event.heading = getContentAsString(event.contentKey + contentSubKeys.HEADING);
+const apply = appeal => {
+  setHeadingAndRenderedContentOnEvents(appeal.latestEvents, appeal);
+  setHeadingAndRenderedContentOnEvents(appeal.historicalEvents, appeal);
 };
 
-const setBenefitTypeOnEvent = (event, benefitType) => {
-  event.benefitType = benefitType;
-};
-
-const setRenderedContentOnEvent = (event) => {
-  const contentArray = getContentAsArray(event.contentKey + contentSubKeys.CONTENT);
-  event.renderedContent = renderArrayContent(contentArray, event);
-};
-
-const renderArrayContent = (content, event) => {
-  return content.map(str => tyaNunjucks.env.renderString(str, event));
+const applyContentToEvents = (req, res, next) => {
+  apply(res.locals.appeal);
+  next();
 };
 
 module.exports = { applyContentToEvents };
