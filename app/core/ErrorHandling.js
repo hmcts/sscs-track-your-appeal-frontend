@@ -1,48 +1,51 @@
 const HttpStatus = require('http-status-codes');
-const {Logger} = require('@hmcts/nodejs-logging');
+const { Logger } = require('@hmcts/nodejs-logging');
+
 const logger = Logger.getLogger('ErrorHandling.js');
 
 class ErrorHandling {
-
   static handle404(req, res, next) {
-    const err = new Error(`Page Not Found - ${req.originalUrl}`);
-    err.status = HttpStatus.NOT_FOUND;
-    next(err);
+    const error = new Error(`Page Not Found - ${req.originalUrl}`);
+    error.status = HttpStatus.NOT_FOUND;
+    next(error);
   }
 
-  static handleError(err, req, res, next) {
-    const status = ErrorHandling.getStatus(err);
+  static handleError(error, req, res) {
+    const status = ErrorHandling.getStatus(error);
     res.status(status);
     res.render(status === HttpStatus.NOT_FOUND ? 'errors/404.html' : 'errors/500.html');
-    logger.error(ErrorHandling.reformatError(err));
+    logger.error(ErrorHandling.reformatError(error));
   }
 
-  static handleErrorDuringDevelopment(err, req, res, next) {
-    const status = ErrorHandling.getStatus(err);
+  static handleErrorDuringDevelopment(error, req, res) {
+    const status = ErrorHandling.getStatus(error);
     res.status(status);
-    err = ErrorHandling.reformatError(err);
-    res.send(err);
-    logger.error(err);
+    const reformatedError = ErrorHandling.reformatError(error);
+    res.send(reformatedError);
+    logger.error(reformatedError);
   }
 
-  static getStatus(err) {
-    return err.status || err.statusCode || err.responseCode || HttpStatus.INTERNAL_SERVER_ERROR;
+  static getStatus(error) {
+    return error.status ||
+           error.statusCode ||
+           error.responseCode ||
+           HttpStatus.INTERNAL_SERVER_ERROR;
   }
 
-  static reformatError(err) {
-    const error = {
-      responseCode: err.status,
-      message: err.message
+  static reformatError(error) {
+    const refErr = {
+      responseCode: error.status,
+      message: error.message
     };
 
-    if(err.stack) {
-      error.stackTrace = err.stack.split('\n');
-      error.stackTrace = error.stackTrace.map((stackLine) => {
+    if (error.stack) {
+      refErr.stackTrace = error.stack.split('\n');
+      refErr.stackTrace = refErr.stackTrace.map(stackLine => {
         return stackLine.trim();
       });
     }
 
-    return error;
+    return refErr;
   }
 }
 

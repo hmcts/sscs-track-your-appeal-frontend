@@ -1,47 +1,37 @@
 const { matchSurnameToAppeal } = require('app/services/matchSurnameToAppeal');
-const {expect, sinon} = require('test/chai-sinon');
+const { expect, sinon } = require('test/chai-sinon');
 const nock = require('nock');
 const apiURL = require('config').get('api.url');
 const HttpStatus = require('http-status-codes');
 const validateSurname = require('app/assets/locale/en').validateSurname;
 
 describe('matchSurnameToAppeal.js', () => {
-
   const invalidId = 'invalidId';
   const invalidSurname = 'invalidSurname';
   const appealId = '1234';
 
-  let req, res, next;
+  let req = null, res = null, next = sinon.stub();
 
   beforeEach(() => {
-
-    req = {
-      session: {},
-      params: {},
-      query: {},
-      body: {}
-    };
-
-    res = {
-      redirect: sinon.stub(),
-      status: sinon.stub(),
-      render: sinon.stub(),
-      locals: {
-        appeal: {},
-        i18n: {
-          validateSurname
-        }
-      }
-    };
-
+    req = {};
+    res = {};
     next = sinon.stub();
 
+    req.session = {};
+    req.params = {};
+    req.query = {};
+    req.body = {};
+
+    res.redirect = sinon.stub();
+    res.status = sinon.stub();
+    res.render = sinon.stub();
+    res.locals = {};
+    res.locals.appeal = {};
+    res.locals.i18n = { validateSurname };
   });
 
-  describe('matchSurnameToAppeal() - HTTP GET /appeals/id/surname/my-surname 200', ()=> {
-
+  describe('matchSurnameToAppeal() - HTTP GET /appeals/id/surname/my-surname 200', () => {
     it('should redirect to /trackyourappeal/id', () => {
-
       req.params.id = 'md002';
       req.body.surname = 'validSurname';
 
@@ -54,15 +44,11 @@ describe('matchSurnameToAppeal.js', () => {
           expect(res.redirect).to.have.been.calledWith(`/trackyourappeal/${req.params.id}`);
           expect(req.session).to.have.property(req.params.id).that.equals(true);
         });
-
     });
-
   });
 
-  describe('matchSurnameToAppeal() - HTTP GET /appeals/id/surname/invalidSurname 400', ()=> {
-
+  describe('matchSurnameToAppeal() - HTTP GET /appeals/id/surname/invalidSurname 400', () => {
     it('should set both res.status() and res.render() when the response is a 400', () => {
-
       const error = { statusCode: HttpStatus.NOT_FOUND };
 
       req.params.id = invalidId;
@@ -89,11 +75,9 @@ describe('matchSurnameToAppeal.js', () => {
           });
           expect(req.session).to.not.have.property(req.params.id);
         });
-
     });
 
     it('should call next() passing an error containing a 500', () => {
-
       const error = { value: HttpStatus.INTERNAL_SERVER_ERROR, reason: 'server error' };
 
       nock(apiURL)
@@ -105,9 +89,6 @@ describe('matchSurnameToAppeal.js', () => {
           expect(next).to.have.been.calledWith(error);
           expect(req.session).to.not.have.property(req.params.id);
         });
-
     });
-
   });
-
 });

@@ -1,38 +1,25 @@
-'use strict';
-
 const { applyContentToEvents } = require('app/middleware/events');
 const { expect, sinon } = require('test/chai-sinon');
 const { appeal } = require('test/mock/data/dwpRespond');
 
 describe('events.js', () => {
-
   const req = sinon.stub();
   const next = sinon.stub();
-  let res;
+  let res = null;
 
   beforeEach(() => {
-
-    res = {
-      locals: {
-        appeal
-      }
-    };
-
+    res = { locals: { appeal } };
     applyContentToEvents(req, res, next);
-
   });
 
   describe('applyContentToEvents', () => {
-
     it('should call next', () => {
-      expect(next).to.have.been.called;
+      return expect(next).to.have.been.called;
     });
-
   });
 
   describe('latestEvents', () => {
-
-    let latestEvents;
+    let latestEvents = null;
 
     before(() => {
       latestEvents = res.locals.appeal.historicalEvents[0];
@@ -52,12 +39,10 @@ describe('events.js', () => {
       expect(latestEvents).to.have.any.keys('renderedContent');
       expect(latestEvents.renderedContent).to.be.an('array');
     });
-
   });
 
   describe('historicalEvents', () => {
-
-    let historicalEvents;
+    let historicalEvents = null;
 
     before(() => {
       historicalEvents = res.locals.appeal.historicalEvents[1];
@@ -77,7 +62,5 @@ describe('events.js', () => {
       expect(historicalEvents).to.have.any.keys('renderedContent');
       expect(historicalEvents.renderedContent).to.be.an('array');
     });
-
   });
-
 });

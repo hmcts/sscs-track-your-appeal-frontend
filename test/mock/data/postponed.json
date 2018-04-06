@@ -1,10 +1,10 @@
 {
   "appeal": {
     "caseReference": "SC888/88/88888",
-    "appealNumber": "md012",
-    "benefitType": "pip",
-    "name": "Ms. L Lena",
-    "surname": "Lena",
+    "appealNumber": "VYDZFffG49",
+    "benefitType": "esa",
+    "name": "Ms. L Test",
+    "surname": "Test",
     "status": "POSTPONED",
     "latestEvents": [{
         "hearingContactDate": "2017-04-13T17:27:50.297Z",

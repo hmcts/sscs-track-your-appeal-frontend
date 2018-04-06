@@ -3,12 +3,11 @@ const { contactUs } = require('app/assets/locale/en');
 
 Feature('Contact us');
 
-Before((I) => {
+Before(I => {
   I.enterSurnameAndSubmitAndSeeTYA(appeal);
 });
 
-Scenario('verify contact us page', (I) => {
-
+Scenario('verify contact us page', I => {
   // Click into 'Contact us'
   I.click(contactUs.title);
 
@@ -24,5 +23,4 @@ Scenario('verify contact us page', (I) => {
   I.see(contactUs.englandWales.phoneNumber);
   I.see(contactUs.scotland.heading);
   I.see(contactUs.scotland.phoneNumber);
-
 });

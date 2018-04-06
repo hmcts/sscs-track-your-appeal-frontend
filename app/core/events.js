@@ -79,7 +79,4 @@ const events = {
   }
 };
 
-module.exports = {
-  events: events,
-  progressBar: progressBar
-};
+module.exports = { events, progressBar };

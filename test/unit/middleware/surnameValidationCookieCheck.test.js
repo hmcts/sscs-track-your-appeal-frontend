@@ -1,32 +1,26 @@
 const { expect, sinon } = require('test/chai-sinon');
-const { surnameValidationCookieCheck } = require('app/middleware/surnameValidationCookieCheck');
+const { cookieCheck } = require('app/middleware/cookieCheck');
 
-describe('surnameValidationCookieCheck.js', () => {
-
+describe('cookieCheck.js', () => {
   const next = sinon.stub();
-  const res = {
-    redirect: sinon.stub()
-  };
-  let req;
+  const res = { redirect: sinon.stub() };
+  let req = null;
 
   beforeEach(() => {
     req = {
       session: {},
-      params: {
-        id: 'appealId'
-      }
+      params: { id: 'appealId' }
     };
   });
 
   it('should call next if cookie is present', () => {
     req.session.appealId = true;
-    surnameValidationCookieCheck(req, res, next);
-    expect(next).to.have.been.called;
+    cookieCheck(req, res, next);
+    return expect(next).to.have.been.called;
   });
 
   it('should redirect to /validate-surname if there is no cookie', () => {
-    surnameValidationCookieCheck(req, res, next);
-    expect(res.redirect).to.have.been.calledWith(`/validate-surname/${req.params.id}`);
+    cookieCheck(req, res, next);
+    return expect(res.redirect).to.have.been.calledWith(`/validate-surname/${req.params.id}`);
   });
-
 });

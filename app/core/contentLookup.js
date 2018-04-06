@@ -1,9 +1,10 @@
-const {Logger} = require('@hmcts/nodejs-logging');
-const logger = Logger.getLogger('contentLookup.js');
-const {get} = require('lodash');
+const { Logger } = require('@hmcts/nodejs-logging');
+const { get } = require('lodash');
 const locale = require('app/assets/locale/en');
 
-const getContentFromFile = (key) => {
+const logger = Logger.getLogger('contentLookup.js');
+
+const getContentFromFile = key => {
   const content = get(locale, key);
   if (!content) {
     throw new ReferenceError(`Unknown key: ${key}`);
@@ -11,18 +12,18 @@ const getContentFromFile = (key) => {
   return content;
 };
 
-const getContentAsString = (key) => {
-  let content;
-  try{
+const getContentAsString = key => {
+  let content = null;
+  try {
     content = getContentFromFile(key);
-  } catch(ReferenceError) {
+  } catch (ReferenceError) {
     logger.error(ReferenceError);
   }
 
   return content;
 };
 
-const getContentAsArray = (key) => {
+const getContentAsArray = key => {
   let content = getContentAsString(key);
 
   if (typeof content === 'string') {

@@ -1,3 +1,4 @@
+
 function ViewHideUpdates() {
   let self = this;
 
@@ -13,6 +14,18 @@ function ViewHideUpdates() {
 }
 
 $(document).ready(function () {
+
+  // Use GOV.UK shim-links-with-button-role.js to trigger a link styled to look like a
+  // button, with role="button" when the space key is pressed.
+  GOVUK.shimLinksWithButtonRole.init();
+
+  // Show and hide toggled content
+  // Where .block-label uses the data-target attribute
+  // to toggle hidden content
+  const showHideContent = new GOVUK.ShowHideContent();
+  showHideContent.init();
+
+  // Toggle the historic events label on TYA.
   let viewHideUpdates = new ViewHideUpdates();
   viewHideUpdates.toggleUpdates();
 });

@@ -1,15 +1,17 @@
-module.exports = {
-  md001: require('./adjourned.json'),
-  OEk16aq6uk: require('./appealReceived.json'),
-  md003: require('./closed.json'),
-  md004: require('./dormant.json'),
-  md005: require('./dwpRespond.json'),
-  md006: require('./dwpRespondOverdue.json'),
-  md007: require('./hearing.json'),
-  md008: require('./hearingBooked.json'),
-  md009: require('./lapsedRevised.json'),
-  md010: require('./newHearingBooked.json'),
-  md011: require('./pastHearingBooked.json'),
-  md012: require('./postponed.json'),
-  md013: require('./withdrawn.json')
-};
+const obj = {};
+
+obj.md001 = require('./adjourned.json');
+obj['1CA27vtZ1z'] = require('./appealReceived.json');
+obj.D8dg4cGLHZ = require('./closed.json');
+obj['8bgBLDf1E5'] = require('./dormant.json');
+obj.md005 = require('./dwpRespond.json');
+obj.aAIlOULP63 = require('./dwpRespondOverdue.json');
+obj.md007 = require('./hearing.json');
+obj.iRsJYdNkwN = require('./hearingBooked.json');
+obj['7zdZjlV8Bu'] = require('./lapsedRevised.json');
+obj.md010 = require('./newHearingBooked.json');
+obj.QOtMVmnhao = require('./pastHearingBooked.json');
+obj.VYDZFffG49 = require('./postponed.json');
+obj.xnfPfeKbJn = require('./withdrawn.json');
+
+module.exports = obj;
