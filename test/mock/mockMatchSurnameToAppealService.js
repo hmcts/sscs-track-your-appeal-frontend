@@ -20,7 +20,7 @@ const matchSurnameToAppeal = (req, res) => {
     req.session[id] = true;
     res.redirect(`/trackyourappeal/${id}`);
   } else {
-    res.status(HttpStatus.BAD_REQUEST);
+    res.status(HttpStatus.NOT_FOUND);
     res.render('validate-surname', {
       id,
       fields: {

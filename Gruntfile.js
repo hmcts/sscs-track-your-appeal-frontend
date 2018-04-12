@@ -102,9 +102,6 @@ module.exports = grunt => {
         ]
       }
     },
-
-    env: { dev: { NODE_PATH: '.' } },
-
     copy: {
       services: {
         src: 'app/assets/javascripts/index.js',
@@ -154,7 +151,6 @@ module.exports = grunt => {
 
   [
     'grunt-nsp',
-    'grunt-env',
     'grunt-sync',
     'grunt-contrib-watch',
     'grunt-contrib-copy',
@@ -166,26 +162,15 @@ module.exports = grunt => {
   });
 
   grunt.registerTask('dev', [
-    'env:dev',
-    'sync',
-    'sass',
-    'copy:services',
+    'generate-assets',
     'concurrent:target'
   ]);
 
   grunt.registerTask('dev-mock-services', [
-    'env:dev',
     'sync',
     'sass',
     'copy:mockServices',
     'concurrent:target'
-  ]);
-
-  grunt.registerTask('dev-mock-services-debug', [
-    'env:dev',
-    'sync',
-    'sass',
-    'copy:mockServices'
   ]);
 
   grunt.registerTask('generate-assets', [

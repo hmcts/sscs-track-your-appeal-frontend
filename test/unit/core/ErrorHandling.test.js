@@ -49,33 +49,20 @@ describe('ErrorHandling.js', () => {
   });
 
   describe('handleError()', () => {
-    it('should render a 404 error page and log it', () => {
+    it('should render a 404 error page', () => {
       error.status = HttpStatus.NOT_FOUND;
       reformattedError.responseCode = HttpStatus.NOT_FOUND;
       ErrorHandling.handleError(error, req, res, next);
       expect(res.status).to.have.been.calledWith(HttpStatus.NOT_FOUND);
       expect(res.render).to.have.been.calledWith('errors/404.html');
-      expect(logger.error).to.have.been.calledWith(reformattedError);
     });
 
-    it('should render a 500 error page and log it', () => {
+    it('should render a 500 error page', () => {
       error.status = HttpStatus.INTERNAL_SERVER_ERROR;
       reformattedError.responseCode = HttpStatus.INTERNAL_SERVER_ERROR;
       ErrorHandling.handleError(error, req, res, next);
       expect(res.status).to.have.been.calledWith(HttpStatus.INTERNAL_SERVER_ERROR);
       expect(res.render).to.have.been.calledWith('errors/500.html');
-      expect(logger.error).to.have.been.calledWith(reformattedError);
-    });
-  });
-
-  describe('handleErrorDuringDevelopment()', () => {
-    it('should send a json error message', () => {
-      error.status = HttpStatus.NOT_FOUND;
-      reformattedError.responseCode = HttpStatus.NOT_FOUND;
-      ErrorHandling.handleErrorDuringDevelopment(error, req, res, next);
-      expect(res.status).to.have.been.calledWith(HttpStatus.NOT_FOUND);
-      expect(res.send).to.have.been.calledWith(reformattedError);
-      expect(logger.error).to.have.been.calledWith(reformattedError);
     });
   });
 

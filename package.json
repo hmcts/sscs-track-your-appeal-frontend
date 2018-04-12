@@ -51,7 +51,6 @@
     "grunt-concurrent": "^2.3.1",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0",
-    "grunt-env": "^0.4.4",
     "grunt-nodemon": "^0.4.2",
     "grunt-nsp": "^2.3.1",
     "grunt-sass": "^2.0.0",
