@@ -122,13 +122,7 @@ app.use(cookieSession({
 
 app.use(locals);
 app.use('/', routes);
-
 app.use(ErrorHandling.handle404);
-
-if (process.env.NODE_ENV === 'development') {
-  app.use(ErrorHandling.handleErrorDuringDevelopment);
-} else {
-  app.use(ErrorHandling.handleError);
-}
+app.use(ErrorHandling.handleError);
 
 module.exports = app;

@@ -47,9 +47,9 @@ describe('matchSurnameToAppeal.js', () => {
     });
   });
 
-  describe('matchSurnameToAppeal() - HTTP GET /appeals/id/surname/invalidSurname 400', () => {
-    it('should set both res.status() and res.render() when the response is a 400', () => {
-      const error = { statusCode: HttpStatus.NOT_FOUND };
+  describe('matchSurnameToAppeal() - HTTP GET /appeals/id/surname/invalidSurname 404', () => {
+    it('should set both res.status() and res.render() when the response is a 404', () => {
+      const error = { status: HttpStatus.NOT_FOUND };
 
       req.params.id = invalidId;
       req.body.surname = invalidSurname;
