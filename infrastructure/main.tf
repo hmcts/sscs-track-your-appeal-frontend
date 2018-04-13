@@ -33,7 +33,7 @@ module "tract-your-appeal-frontend" {
 
 
   app_settings = {
-    SSCS_API_URL                 = "${locals.ApiUrl}"
+    SSCS_API_URL                 = "${local.ApiUrl}"
     WEBSITE_NODE_DEFAULT_VERSION = "8.9.4"
     NODE_ENV                     = "${var.infrastructure_env}"
     COOKIE_SECRET                = "${data.vault_generic_secret.cookiesecret.data["value"]}"
