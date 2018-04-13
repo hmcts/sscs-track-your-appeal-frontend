@@ -30,7 +30,7 @@ module "tya-frontend" {
   is_frontend          = true
   subscription         = "${var.subscription}"
   additional_host_name = "${var.additional_hostname}"
-  https_only           = true
+  https_only           = "true"
 
   app_settings = {
     SSCS_API_URL                 = "${local.ApiUrl}"
