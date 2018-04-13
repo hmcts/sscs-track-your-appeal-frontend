@@ -23,7 +23,7 @@ locals {
 
 module "tract-your-appeal-frontend" {
   source               = "git@github.com:contino/moj-module-webapp?ref=master"
-  product              = "${var.product}-frontend"
+  product              = "${var.product}-${var.component}"
   location             = "${var.location}"
   env                  = "${var.env}"
   ilbIp                = "${var.ilbIp}"
