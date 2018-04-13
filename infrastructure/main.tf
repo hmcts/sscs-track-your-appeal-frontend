@@ -21,7 +21,7 @@ locals {
   ApiUrl = "${var.env == "preview" ? "http://sscs-tribunals-api-aat.service.core-compute-aat.internal" : local.localApiUrl}"
 }
 
-module "tract-your-appeal-frontend" {
+module "tya-frontend" {
   source               = "git@github.com:contino/moj-module-webapp?ref=master"
   product              = "${var.product}-${var.component}"
   location             = "${var.location}"
