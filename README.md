@@ -2,7 +2,7 @@
 
 Track your appeal is a node.js web application that allows an appellant to track the progress of their benefit appeal 
 online. An appellant may also wish to subscribe to receive updates about their appeal via email and SMS, these are
-known as notifications and are not part of this application, they are part of the [API](https://git.reform.hmcts.net/sscs/track-your-appeal-api)
+known as notifications and are not part of this application, they are part of the [API](https://github.com/hmcts/tribunals-case-api)
 
 ## Background
 
@@ -44,7 +44,7 @@ which looks like:
 
     http://www.sscs.reform.hmcts.net/trackyourappeal/hmUr1moTZj
 
-The ID `hmUr1moTZj` defined within the URL is randomly generated via the backend. When a user clicks on the URL the 
+The ID `hmUr1moTZj` defined within the URL is randomly generated via the API. When a user clicks on the URL the 
 node app performs a HTTP GET request to the Java API /appeals endpoint passing the ID, the response returns the appeal 
 in JSON format, processed and presented to the user. If you wish to view some of the responses take a look at the 
 [mocked responses](/test/mock/data)
@@ -86,10 +86,4 @@ Ensure environment variables 'TUNNEL_IDENTIFIER',
 Pass the `JUNIT_REPORT_PATH` environment variable to use the jenkins reporter.
 
     $> make test-accessibility
-    
-#### Smoke tests
-Ensure environment variable `NOTIFICATION_API_KEY` is set before running smoke tests.
-Pass `E2E_OUTPUT_DIR` environment variable to use mochawesome reporter.
-
-    $> make test-end-to-end
     
