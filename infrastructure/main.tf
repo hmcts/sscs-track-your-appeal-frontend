@@ -20,8 +20,8 @@ locals {
   localApiUrl = "http://sscs-tribunals-api-${var.env}.service.${local.aseName}.internal"
   ApiUrl = "${var.env == "preview" ? "http://sscs-tribunals-api-aat.service.core-compute-aat.internal" : local.localApiUrl}"
 
-  localAdditionalHostname = "${var.sya_hostname}"
-  AdditionalHostname = "${var.env == "preview" ? "${var.deployment_namespace}-sya.internal" : local.localAdditionalHostname}"
+  localAdditionalHostname = "${var.additional_hostname}"
+  AdditionalHostname = "${var.env == "preview" ? "${var.deployment_namespace}-tya.internal" : local.localAdditionalHostname}"
 }
 
 module "tya-frontend" {
