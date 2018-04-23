@@ -32,7 +32,7 @@ module "tya-frontend" {
   ilbIp                = "${var.ilbIp}"
   is_frontend          = true
   subscription         = "${var.subscription}"
-  additional_host_name = "${local.AdditionaHostname}"
+  additional_host_name = "${local.AdditionalHostname}"
   https_only           = "true"
 
   app_settings = {
