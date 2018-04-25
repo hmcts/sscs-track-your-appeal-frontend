@@ -10,9 +10,10 @@ def product = "sscs-tya"
 def component = "frontend"
 
 withPipeline("nodejs", product, component) {
-  after('Smoke Test - ${environment} (production slot)') {
+  after('Smoke Test - preview (production slot)') {
     stage('Access URL') {
       echo "$env.TEST_URL"
+      println $env.TEST_URL.replace("https", "http")
     }
   }
 
