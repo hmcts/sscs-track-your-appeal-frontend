@@ -10,9 +10,9 @@ def product = "sscs-tya"
 def component = "frontend"
 
 withPipeline("nodejs", product, component) {
-  after('build') {
+  after('Smoke Test - ${environment} (production slot)') {
     stage('Access URL') {
-      echo "something"
+      echo "$env.TEST_URL"
     }
   }
 
