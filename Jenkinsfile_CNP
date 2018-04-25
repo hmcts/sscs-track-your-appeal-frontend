@@ -10,5 +10,10 @@ def product = "sscs-tya"
 def component = "frontend"
 
 withPipeline("nodejs", product, component) {
+  after('build') {
+    stage('Access URL') {
+      echo "something"
+    }
+  }
 
 }
