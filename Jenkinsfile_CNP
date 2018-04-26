@@ -15,6 +15,7 @@ withPipeline("nodejs", product, component) {
         def App123 = "https://pr-153-sscs-case-loader-preview-staging.service.core-compute-preview.internal".replace("https", "http")
         App123 = App123.replace("-staging.", ".")
         println "Frontend URL: " + App123
+        println "Health URL: " + App123 + "/health"
         println "Kudu URL: " + App123.replace(".service.", ".scm.service.")
       }
   }
