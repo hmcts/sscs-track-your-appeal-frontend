@@ -2,9 +2,8 @@ const applicationInsights = require('applicationinsights');
 const config = require('config');
 
 const appInsights = () => {
-  applicationInsights.setup(config.get('appInsights.instrumentationKey'))
-    .setAutoCollectConsole(true, true)
-    .start();
+  const iKey = config.get('appInsights.instrumentationKey');
+  applicationInsights.setup(iKey).start();
 };
 
 module.exports = appInsights;

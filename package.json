@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@hmcts/nodejs-healthcheck": "^1.4.5",
-    "@hmcts/nodejs-logging": "^2.2.0",
+    "@hmcts/nodejs-logging": "^3.0.0",
     "applicationinsights": "1.0.1",
     "body-parser": "^1.17.1",
     "config": "^1.30.0",
