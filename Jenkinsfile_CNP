@@ -10,10 +10,10 @@ def product = "sscs-tya"
 def component = "frontend"
 
 withPipeline("nodejs", product, component) {
-}
-//  after("Build Infrastructure - preview") {
+//}
+  after("Build Infrastructure - preview") {
       stage('Access URL') {
         echo "'$env.TEST_URL'"
       }
-//  }
-//}
+  }
+}
