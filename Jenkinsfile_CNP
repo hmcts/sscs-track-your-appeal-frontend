@@ -10,12 +10,12 @@ def product = "sscs-tya"
 def component = "frontend"
 
 withPipeline("nodejs", product, component) {
-  before("smoketest:preview") {
-      stage('Url replace') {
+  after("smoketest:preview") {
+      stage('Application URLs') {
         def App123 = env.TEST_URL.replace("https", "http")
         App123 = App123.replace("-staging.", ".")
-        println "Frontend URL: " + App123
-        println "Health URL: " + App123 + "/health"
+        println "Application URL: " + App123
+        println "Healthcheck URL: " + App123 + "/health"
         println "Kudu URL: " + App123.replace(".service.", ".scm.service.")
       }
   }
