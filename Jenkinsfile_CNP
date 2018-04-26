@@ -13,14 +13,12 @@ withPipeline("nodejs", product, component) {
   after("functionalTest:preview") {
       stage('Access URL') {
         echo "'$env.TEST_URL'"
-        AppUrl = $env.TEST_URL
-        println AppUrl.replace("-staging.", ".")
       }
   }
 
   after("smoketest:preview") {
       stage('Access URL X') {
-        AppUr2 = $env.TEST_URL
+        def AppUr2 = env.TEST_URL 
         println AppUr2.replace("-staging.", ".")
       }
   }
