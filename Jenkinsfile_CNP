@@ -10,7 +10,7 @@ def product = "sscs-tya"
 def component = "frontend"
 
 withPipeline("nodejs", product, component) {
-  after("smoketest:preview") {
+  after("promote:preview") {
       stage('Application URLs') {
         def App123 = env.TEST_URL.replace("https", "http")
         App123 = App123.replace("-staging.", ".")
