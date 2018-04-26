@@ -11,8 +11,9 @@ def component = "frontend"
 
 withPipeline("nodejs", product, component) {
   before("build") {
-      stage('Test') {
-        def App123 = "OneTwoThree".replace("Two", "Zero")
+      stage('Url replace') {
+        def App123 = "https://pr-153-sscs-case-loader-preview-staging.service.core-compute-preview.internal".replace("https", "http")
+        App123 = App123.replace("-staging.", ".")
         println App123
       }
   }
