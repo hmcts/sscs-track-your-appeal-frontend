@@ -37,5 +37,24 @@ withPipeline("nodejs", product, component) {
       }
   }
 
+  after("smoketest:dev") {
+      stage('Access URL U') {
+        echo "'$env.TEST_URL'"
+      }
+  }
+
+  after("smoketest:preview") {
+      stage('Access URL X') {
+        echo "'$env.TEST_URL'"
+      }
+  }
+
+
+  after("smoketest:prod") {
+      stage('Access URL Z') {
+        echo "'$env.TEST_URL'"
+      }
+  }
+
 
 }
