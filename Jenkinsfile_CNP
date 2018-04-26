@@ -10,6 +10,14 @@ def product = "sscs-tya"
 def component = "frontend"
 
 withPipeline("nodejs", product, component) {
+  before("build") {
+      stage('Test') {
+        def App123 = "OneTwoThree".replace("Two", "Zero")
+        println App123
+      }
+  }
+
+
   after("functionalTest:preview") {
       stage('Access URL') {
         echo "'$env.TEST_URL'"
