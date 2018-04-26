@@ -13,9 +13,7 @@ withPipeline("nodejs", product, component) {
 }
 //  after("Build Infrastructure - preview") {
       stage('Access URL') {
-        //echo ${TEST_URL}
-        println ${TEST_URL}
-        //.replace("https", "http")
+        echo "'$env.TEST_URL'"
       }
 //  }
 //}
