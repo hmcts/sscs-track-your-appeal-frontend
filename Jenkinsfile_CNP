@@ -10,8 +10,26 @@ def product = "sscs-tya"
 def component = "frontend"
 
 withPipeline("nodejs", product, component) {
-  after("deploy:dev") {
+  after("functionalTest:dev") {
       stage('Access URL') {
+        echo "'$env.TEST_URL'"
+        AppUrl = $env.TEST_URL
+        AppUrl = AppUrl.replace("https", "http")
+        println AppUrl.replace("-staging.", ".")
+      }
+  }
+
+  after("smoketest:dev") {
+      stage('Access URL 2') {
+        echo "'$env.TEST_URL'"
+        AppUrl = $env.TEST_URL
+        AppUrl = AppUrl.replace("https", "http")
+        println AppUrl.replace("-staging.", ".")
+      }
+  }
+
+  after("smoketest") {
+      stage('Access 3') {
         echo "'$env.TEST_URL'"
         AppUrl = $env.TEST_URL
         AppUrl = AppUrl.replace("https", "http")
