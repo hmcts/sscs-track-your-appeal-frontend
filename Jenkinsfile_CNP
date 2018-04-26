@@ -11,22 +11,11 @@ def component = "frontend"
 
 withPipeline("nodejs", product, component) {
 
-  after("smoketest:dev") {
-      stage('Access URL') {
-        echo "'$env.TEST_URL'"
-      }
-  }
-
-  after("smoketest:preview") {
-      stage('Access URL') {
-        echo "'$env.TEST_URL'"
-      }
-  }
-
-
   after("smoketest:prod") {
       stage('Access URL') {
         echo "'$env.TEST_URL'"
+        AppUrl = $env.TEST_URL
+        println AppUrl.replace("https", "http")
       }
   }
 
