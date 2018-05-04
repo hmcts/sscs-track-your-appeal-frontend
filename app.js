@@ -1,5 +1,5 @@
 require('app-insights')();
-const { Logger, Express } = require('@hmcts/nodejs-logging');
+const { Express } = require('@hmcts/nodejs-logging');
 const { tyaNunjucks, filters } = require('app/core/tyaNunjucks');
 const health = require('app/services/health');
 const ErrorHandling = require('app/core/ErrorHandling');
@@ -21,12 +21,6 @@ const app = express();
 const ONE_MINUTE = 60000;
 const THIRTY = 30;
 const cookieSecret = config.get('session.cookieSecret');
-
-Logger.config({
-  microservice: 'track-your-appeal-frontend',
-  team: 'sscs',
-  environment: process.env.NODE_ENV
-});
 
 app.set('view engine', 'html');
 app.set('views', [
