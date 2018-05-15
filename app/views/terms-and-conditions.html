@@ -1,0 +1,107 @@
+{% from "components/cookie-table.html" import cookieTable %}
+
+{% extends "layout.html" %}
+
+{% block page_title %}
+    {{ i18n.termsAndConditions.titleHead }}
+{% endblock %}
+
+{% block content %}
+
+<main id="content" class="about-hearing" role="main">
+
+    {% include "includes/phase_banner_beta.html" %}
+
+    <div class="grid-row">
+
+        <div class="column-two-thirds">
+            <h1 class="heading-large">{{ i18n.termsAndConditions.title }}</h1>
+            <p>
+                {{ i18n.termsAndConditions.termsAndConditions.termsOfUse }}
+                <a href="/privacy-policy/{{ data.appealNumber }}">{{ i18n.termsAndConditions.termsAndConditions.links.privacy.name }}</a>
+            </p>
+
+            <h2 class="heading-medium">{{ i18n.termsAndConditions.whoWeAre.title }}</h2>
+            <p>{{ i18n.termsAndConditions.whoWeAre.managedBy }}</p>
+            <p>{{ i18n.termsAndConditions.whoWeAre.changeInLaw }}</p>
+
+            <h2 class="heading-medium">{{ i18n.termsAndConditions.informationProvided.title }}</h2>
+            <p>{{ i18n.termsAndConditions.informationProvided.support }}</p>
+            <p>{{ i18n.termsAndConditions.informationProvided.questions }}</p>
+
+            <h2 class="heading-medium">{{ i18n.termsAndConditions.dataStored.title }}</h2>
+            <p>
+                {{ i18n.termsAndConditions.dataStored.our }}
+                <a href="/privacy-policy/{{ data.appealNumber }}">{{ i18n.termsAndConditions.termsAndConditions.links.privacy.name }}</a>
+                {{ i18n.termsAndConditions.dataStored.privacy }}
+            </p>
+            <p>
+                {{ i18n.termsAndConditions.dataStored.our }}
+                <a href="/cookiepolicy">{{ i18n.termsAndConditions.termsAndConditions.links.cookie.name }}</a>
+                {{ i18n.termsAndConditions.dataStored.cookie }}
+            </p>
+
+            <h2 class="heading-medium">{{ i18n.termsAndConditions.laws.title }}</h2>
+            <p>{{ i18n.termsAndConditions.laws.use }}</p>
+            <ul class="list list-bullet">
+                {% for act in i18n.termsAndConditions.laws.acts %}
+                <li>{{ act }}</li>
+                {% endfor %}
+            </ul>
+
+            <h2 class="heading-medium">{{ i18n.termsAndConditions.responsibleUse.title }}</h2>
+            <p>{{ i18n.termsAndConditions.responsibleUse.aware }}</p>
+            <p>{{ i18n.termsAndConditions.responsibleUse.precautions }}</p>
+            <ul class="list list-bullet">
+                {% for risk in i18n.termsAndConditions.responsibleUse.risks %}
+                <li>{{ risk }}</li>
+                {% endfor %}
+            </ul>
+            <p>{{ i18n.termsAndConditions.responsibleUse.mustNot }}</p>
+
+            <h2 class="heading-medium">{{ i18n.termsAndConditions.sensitiveInfo.title }}</h2>
+            <p>{{ i18n.termsAndConditions.sensitiveInfo.freeText }}</p>
+            <p>{{ i18n.termsAndConditions.sensitiveInfo.enter }}</p>
+            <ul class="list list-bullet">
+                {% for info in i18n.termsAndConditions.sensitiveInfo.infoList %}
+                <li>{{ info }}</li>
+                {% endfor %}
+            </ul>
+            <p>{{ i18n.termsAndConditions.sensitiveInfo.consent }}</p>
+            <p>{{ i18n.termsAndConditions.sensitiveInfo.moreInfo }}</p>
+
+            <h2 class="heading-medium">{{ i18n.termsAndConditions.disclaimer.title }}</h2>
+            <p>{{ i18n.termsAndConditions.disclaimer.upToDate }}</p>
+            <ul class="list list-bullet">
+                {% for condition in i18n.termsAndConditions.disclaimer.conditions %}
+                <li>{{ condition }}</li>
+                {% endfor %}
+            </ul>
+            <p>{{ i18n.termsAndConditions.disclaimer.publish }}</p>
+            <p>{{ i18n.termsAndConditions.disclaimer.loss }}</p>
+            <ul class="list list-bullet">
+                {% for damage in i18n.termsAndConditions.disclaimer.damages %}
+                <li>{{ damage }}</li>
+                {% endfor %}
+            </ul>
+            <p>{{ i18n.termsAndConditions.disclaimer.applies }}</p>
+            <p>{{ i18n.termsAndConditions.disclaimer.includes }}</p>
+            <ul class="list list-bullet">
+                {% for loss in i18n.termsAndConditions.disclaimer.losses %}
+                <li>{{ loss }}</li>
+                {% endfor %}
+            </ul>
+            <p>{{ i18n.termsAndConditions.disclaimer.liable }}</p>
+            <ul class="list list-bullet">
+                {% for liability in i18n.termsAndConditions.disclaimer.liabilities %}
+                <li>{{ liability }}</li>
+                {% endfor %}
+            </ul>
+            <p><a href="/contactus/{{ data.appealNumber }}">{{ i18n.termsAndConditions.termsAndConditions.links.contact.name }}</a>{{ i18n.termsAndConditions.disclaimer.furtherInfo }}</p>
+        </div>
+
+    </div>
+
+</main>
+
+{% endblock %}
