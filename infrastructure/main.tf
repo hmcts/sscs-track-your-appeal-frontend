@@ -27,9 +27,9 @@ module "tya-frontend" {
   location             = "${var.location}"
   env                  = "${var.env}"
   ilbIp                = "${var.ilbIp}"
-  is_frontend          = "${var.env != "preview" ? 1: 0}"
+  is_frontend          = "${(var.env != "preview" || var.env != "saat") ? 1: 0}"
   subscription         = "${var.subscription}"
-  additional_host_name = "${var.env != "preview" ? var.additional_hostname : "null"}"
+  additional_host_name = "${(var.env != "preview" || var.env != "saat") ? var.additional_hostname : "null"}"
   https_only           = "${var.env != "preview" ? "true" : "true"}"
 
   app_settings = {
