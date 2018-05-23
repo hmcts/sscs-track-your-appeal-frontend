@@ -13,5 +13,5 @@ trap shutdownDocker INT TERM QUIT EXIT
 
 export FRONTEND_URL=${TEST_URL}
 
-docker-compose -f ${COMPOSE_FILE} run smoke-tests
+docker-compose -f ${COMPOSE_FILE} run $1
 shutdownDocker
