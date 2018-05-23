@@ -16,7 +16,7 @@
     "coverage": "cross-env NODE_PATH=. istanbul cover _mocha test/unit/** --dir test/coverage/html",
     "pa11y": "cross-env NODE_PATH=. LOG_LEVEL=OFF mocha test/accessibility -r test/chai-sinon.js --reporter spec --recursive --timeout 10000",
     "test:smoke": "./bin/run-tests.sh smoke-tests",
-    "test:functional": "echo 'this will be implemented as a seperate story",
+    "test:functional": "echo 'this will be implemented as a seperate story'",
     "cross-browser": "NODE_ENV=TESTING LOG_LEVEL=OFF NODE_PATH=. codeceptjs run -c test/smoke/saucelabs.conf.js --steps",
     "security-scan": "cross-env NODE_PATH=. codeceptjs run --config test/smoke/securityScan.conf.js --steps",
     "eslint": "cross-env NODE_PATH=. eslint .",
