@@ -1,6 +1,5 @@
-const { env } = require('test/e2e/helpers/nunjucksHelper');
 const { appeal } = require('test/mock/data/smokeTest');
-const { common, status } = require('public/locale/en');
+const { common } = require('public/locale/en');
 
 
 Feature('TYA - Access an appeal');
