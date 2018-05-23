@@ -10,7 +10,7 @@ Before(I => {
   I.enterSurnameAndSubmitAndSeeTYA(appeal);
 });
 
-Scenario('Verify appeal received details, progress bar status, screen reader text and content @smoke', I => {
+Scenario('Verify appeal received details, progress bar status, screen reader text and content', I => {
   I.seeAppealDetails(appeal);
   I.seeProgressBarAtAppealReceived();
   I.seeScreenReaderTextAtAppealReceived();
