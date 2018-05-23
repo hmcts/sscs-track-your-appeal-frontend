@@ -9,7 +9,7 @@ Before(I => {
 });
 
 Scenario('Verify appeal details, progress bar status, screen reader text and content @smoke', I => {
-  I.wait(2);
+  I.wait('2');
   I.seeAppealDetails(appeal);
 
   // Content.
