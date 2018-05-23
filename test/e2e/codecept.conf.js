@@ -30,7 +30,7 @@ exports.config = {
         options: { mochaFile: './functional-output/result.xml' }
       },
       mochawesome: {
-        stdout: './functional-output/console.log',
+        stdout: '-',
         options: {
           reportDir: process.env.OUTPUT_DIR || './functional-output',
           reportName: 'index',
