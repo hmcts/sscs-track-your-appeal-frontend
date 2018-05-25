@@ -1,0 +1,175 @@
+{% from "components/cookie-table.html" import cookieTable %}
+
+{% extends "layout.html" %}
+
+{% block page_title %}
+    {{ i18n.privacyPolicy.titleHead }}
+{% endblock %}
+
+{% block content %}
+
+<main id="content" class="about-hearing" role="main">
+
+    {% include "includes/phase_banner_beta.html" %}
+
+    <div class="grid-row">
+
+        <h1 class="heading-large">{{ i18n.privacyPolicy.privacy.title }}</h1>
+        <p>{{ i18n.privacyPolicy.privacy.description }}</p>
+
+        <h2 class="heading-medium">{{ i18n.privacyPolicy.manages.title }}</h2>
+        <p>{{ i18n.privacyPolicy.manages.managedBy }}</p>
+        <p>
+            {{ i18n.privacyPolicy.manages.data.controller }}
+            <a href="https://www.gov.uk/government/organisations/ministry-of-justice/about/personal-information-charter">{{ i18n.privacyPolicy.manages.data.link }}</a>
+            {{ i18n.privacyPolicy.manages.data.process }}
+        </p>
+
+        <p>{{ i18n.privacyPolicy.manages.responsible }}</p>
+        <p>
+            {{ i18n.privacyPolicy.manages.moreInfo.service }}
+            <a href="/terms-and-conditions/{{ data.appealNumber }}">{{ i18n.privacyPolicy.manages.moreInfo.link }}</a>
+        </p>
+
+        <h2 class="heading-medium">{{ i18n.privacyPolicy.whyWeCollect.title }}</h2>
+        <p>{{ i18n.privacyPolicy.whyWeCollect.collect }}</p>
+        <ul class="list list-bullet">
+            {% for collect in i18n.privacyPolicy.whyWeCollect.collectList %}
+            <li>{{ collect }}</li>
+            {% endfor %}
+        </ul>
+        <p>{{ i18n.privacyPolicy.whyWeCollect.staffUseData }}</p>
+
+        <h2 class="heading-medium">{{ i18n.privacyPolicy.personalData.title }}</h2>
+        <p>{{ i18n.privacyPolicy.personalData.collect }}</p>
+        <ul class="list list-bullet">
+            {% for collect in i18n.privacyPolicy.personalData.collectList %}
+            <li>{{ collect }}</li>
+            {% endfor %}
+        </ul>
+        <p>
+            {{ i18n.privacyPolicy.personalData.more.data }}
+            <a href="#using-data">{{ i18n.privacyPolicy.personalData.more.link }}</a>
+        </p>
+
+        <h2 id="using-data" class="heading-medium">{{ i18n.privacyPolicy.usingYourData.title }}</h2>
+        <p>{{ i18n.privacyPolicy.usingYourData.account }}</p>
+        <p>{{ i18n.privacyPolicy.usingYourData.permission }}</p>
+        <p>
+            {{ i18n.privacyPolicy.usingYourData.cookies.we }}
+            <a href="/cookiepolicy">{{ i18n.privacyPolicy.usingYourData.cookies.link }}</a>
+            {{ i18n.privacyPolicy.usingYourData.cookies.collect }}
+        </p>
+        <ul class="list list-bullet">
+            {% for data in i18n.privacyPolicy.usingYourData.dataList %}
+            <li>{{ data }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2 class="heading-medium">{{ i18n.privacyPolicy.storingData.title }}</h2>
+        <p>{{ i18n.privacyPolicy.storingData.dataProvided }}</p>
+        <p>
+            {{ i18n.privacyPolicy.storingData.findOut.more }}
+            <a href="#appeal-benefit-heading">{{ i18n.privacyPolicy.storingData.findOut.link }}</a>
+        </p>
+
+        <h2 class="heading-medium">{{ i18n.privacyPolicy.shareDate.title }}</h2>
+        <p>{{ i18n.privacyPolicy.shareDate.involved }}</p>
+        <p>{{ i18n.privacyPolicy.shareDate.contact }}</p>
+        <p>{{ i18n.privacyPolicy.shareDate.share }}</p>
+        <p>
+            {{ i18n.privacyPolicy.shareDate.google.used }}
+            <a href="/terms-and-conditions/{{ data.appealNumber }}">{{ i18n.privacyPolicy.shareDate.google.link }}</a>
+        </p>
+
+        <h2 class="heading-medium">{{ i18n.privacyPolicy.internationally.title }}</h2>
+        <p>{{ i18n.privacyPolicy.internationally.outsideUK }}</p>
+
+        <h2 class="heading-medium">{{ i18n.privacyPolicy.yourRights.title }}</h2>
+        <p>{{ i18n.privacyPolicy.yourRights.ask }}</p>
+        <ul class="list list-bullet">
+            {% for question in i18n.privacyPolicy.yourRights.questions %}
+            <li>{{ question }}</li>
+            {% endfor %}
+        </ul>
+        <p>{{ i18n.privacyPolicy.yourRights.seeData }}</p>
+        <ul class="list list-bullet">
+            <li>
+                {{ i18n.privacyPolicy.yourRights.form.complete }}
+                <a href="https://www.gov.uk/government/publications/request-your-personal-data-from-moj">{{ i18n.privacyPolicy.yourRights.form.link }}</a>
+                {{ i18n.privacyPolicy.yourRights.form.controller }}
+            </li>
+            <li>{{ i18n.privacyPolicy.yourRights.write }}</li>
+        </ul>
+        <p>{{ i18n.privacyPolicy.yourRights.moreInfo }}</p>
+        <ul class="list list-bullet">
+            {% for info in i18n.privacyPolicy.yourRights.infoList %}
+            <li>{{ info }}</li>
+            {% endfor %}
+        </ul>
+        <p>{{ i18n.privacyPolicy.yourRights.contactOfficer }}</p>
+        <ul class="list list-bullet">
+            {% for contact in i18n.privacyPolicy.yourRights.contactList %}
+            <li>{{ contact }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2 class="heading-medium">{{ i18n.privacyPolicy.complain.title }}</h2>
+        <p>
+            {{ i18n.privacyPolicy.complain.complaints.procedure }}
+            <a href="https://www.gov.uk/government/organisations/hm-courts-and-tribunals-service/about/complaints-procedure">{{ i18n.privacyPolicy.complain.complaints.link }}</a>
+            {{ i18n.privacyPolicy.complain.complaints.personalData }}
+        </p>
+        <p>
+            {{ i18n.privacyPolicy.complain.write }}<br>
+            {{ i18n.privacyPolicy.complain.email }}
+        </p>
+        <p>
+            {{ i18n.privacyPolicy.complain.commissioner.canAlso }}
+            <a href="https://ico.org.uk/global/contact-us">{{ i18n.privacyPolicy.complain.commissioner.link }}</a>
+            {{ i18n.privacyPolicy.complain.commissioner.notSatisifed }}
+        </p>
+
+        <h2 id="appeal-benefit-heading" class="heading-large">{{ i18n.privacyPolicy.appealBenefit.title }}</h2>
+
+        <h3 class="heading-medium">{{ i18n.privacyPolicy.appealBenefit.personalData.title }}</h3>
+        <p>{{ i18n.privacyPolicy.appealBenefit.personalData.weAskFor }}</p>
+        <ul class="list list-bullet">
+            {% for details in i18n.privacyPolicy.appealBenefit.personalData.yourDetails %}
+            <li>{{ details }}</li>
+            {% endfor %}
+        </ul>
+        <p>{{ i18n.privacyPolicy.appealBenefit.personalData.rep }}</p>
+        <ul class="list list-bullet">
+            {% for details in i18n.privacyPolicy.appealBenefit.personalData.repDetails %}
+            <li>{{ details }}</li>
+            {% endfor %}
+        </ul>
+        <p>{{ i18n.privacyPolicy.appealBenefit.personalData.onBehalf }}</p>
+        <ul class="list list-bullet">
+            {% for details in appealBenefit.personalData.theirDetails %}
+            <li>{{ details }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3 class="heading-medium">{{ i18n.privacyPolicy.appealBenefit.notifications.title }}</h3>
+        <p>{{ i18n.privacyPolicy.appealBenefit.notifications.receive }}</p>
+        <p>{{ i18n.privacyPolicy.appealBenefit.notifications.cancel }}</p>
+        <p>
+            {{ i18n.privacyPolicy.appealBenefit.notifications.updates.rep }}
+            <a href="/contactus/{{ data.appealNumber }}">{{ i18n.privacyPolicy.appealBenefit.notifications.updates.link }}</a>
+        </p>
+
+        <h3 class="heading-medium">{{ i18n.privacyPolicy.appealBenefit.storing.title }}</h3>
+        <p>{{ i18n.privacyPolicy.appealBenefit.storing.shared }}</p>
+
+        <h3 class="heading-medium">{{ i18n.privacyPolicy.appealBenefit.after.title }}</h3>
+        <p>{{ i18n.privacyPolicy.appealBenefit.after.deleted }}</p>
+        <p>{{ i18n.privacyPolicy.appealBenefit.after.noDecision }}</p>
+        <p>{{ i18n.privacyPolicy.appealBenefit.after.complaint }}</p>
+
+    </div>
+
+</main>
+
+{% endblock %}
