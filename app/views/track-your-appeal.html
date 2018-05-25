@@ -96,7 +96,7 @@ Track your Appeal
                         <p>{{ content }}</p>
                         {% endfor %}
 
-                        {% if historicalEvent.contentKey === 'status.hearingBooked' %}
+                        {% if historicalEvent.contentKey === 'status.hearingBooked' and historicalEvent.hearingAddress.lines > 0 %}
                         <a href="/hearingdetails/{{data.appealNumber}}/{{loop.index0}}">{{ i18n.hearingDetails.checkDetails }}</a>
                         {% endif %}
                     </div>
