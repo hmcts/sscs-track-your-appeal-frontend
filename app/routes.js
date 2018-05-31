@@ -75,6 +75,14 @@ router.get('/cookiepolicy', (req, res) => {
   res.render('cookie-policy');
 });
 
+router.get('/terms-and-conditions/:id', cookieCheck, getAppeal, (req, res) => {
+  res.render('terms-and-conditions', {data: res.locals.appeal});
+});
+
+router.get('/privacy-policy/:id', cookieCheck, getAppeal, (req, res) => {
+  res.render('privacy-policy', {data: res.locals.appeal});
+});
+
 // -------------------------- EMAIL NOTIFICATIONS ----------------------------------------
 
 router.get('/manage-email-notifications/:mactoken', validateToken, (req, res, next) => {
