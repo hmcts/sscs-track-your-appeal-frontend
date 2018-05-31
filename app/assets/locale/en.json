@@ -308,7 +308,7 @@
     }
   },
   "validateSurname": {
-    "heading": "Enter your last name",
+    "heading": "Enter your last name - Track your benefit appeal - GOV.UK",
     "submit": "Track your appeal",
     "surname": {
       "errors": {
@@ -334,7 +334,8 @@
     "availableInAnotherLanguage": "This page is also available in Welsh (Cymraeg).",
     "latestUpdate": "Latest update",
     "viewAllUpdates": "View previous updates",
-    "errorHeading": "There was a problem"
+    "errorHeading": "There was a problem",
+    "titleContext": "- Appeal a benefit decision - GOV.UK"
   },
   "cookiePolicy": {
     "titleHead": "Cookie Policy - Appeal a benefit decision - GOV.UK",
