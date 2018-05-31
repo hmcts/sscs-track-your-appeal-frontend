@@ -13,3 +13,5 @@ app/services/index.js
 track-your-appeal-frontend.iml
 .sonar/
 test/e2e/output/
+functional-output/
+smoke-output/
