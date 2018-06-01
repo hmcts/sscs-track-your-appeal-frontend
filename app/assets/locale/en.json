@@ -308,7 +308,7 @@
     }
   },
   "validateSurname": {
-    "heading": "Enter your last name - Track your benefit appeal - GOV.UK",
+    "heading": "Enter your last name - Appeal a benefit decision - GOV.UK",
     "submit": "Track your appeal",
     "surname": {
       "errors": {
