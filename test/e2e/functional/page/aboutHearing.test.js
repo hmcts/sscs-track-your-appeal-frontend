@@ -11,7 +11,7 @@ Before(I => {
 });
 
 Scenario('Verify the dynamic content of the /abouthearing page', I => {
-  I.click(hearing.details.title);
+  I.navByClick(hearing.details.title);
 
   // What to expect at your hearing
   I.see(env.renderString(hearing.expectations.content, benefitType));
