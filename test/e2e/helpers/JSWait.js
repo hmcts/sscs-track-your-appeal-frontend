@@ -9,7 +9,7 @@ class JSWait extends codecept_helper {
       return helper.waitForElement('#content', 10);
     }
   };
-
+  // eslint-disable-line Parsing error
   async navByClick (text, locator) {
     const helper = this.helpers['WebDriverIO'] || this.helpers['Puppeteer'];
     const helperIsPuppeteer = this.helpers['Puppeteer'];

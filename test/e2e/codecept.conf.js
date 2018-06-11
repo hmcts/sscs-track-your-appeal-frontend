@@ -2,7 +2,7 @@ const config = require('config');
 
 exports.config = {
   tests: './**/*.test.js',
-  output: process.cwd()+'/functional-output',
+  output: process.cwd() + '/functional-output', // eslint-disable-line prefer-template
   timeout: 1000,
   helpers: {
     Puppeteer: {
@@ -14,13 +14,13 @@ exports.config = {
       windowSize: ' 800x1000',
       chrome: {
         ignoreHTTPSErrors: true,
-        args: ['--no-sandbox',
-        "--proxy-server=proxyout.reform.hmcts.net:8080"]
+        args: [
+          '--no-sandbox',
+          '--proxy-server=proxyout.reform.hmcts.net:8080'
+        ]
       }
     },
-    MyPuppeteer: {
-          "require": "./helpers/JSWait.js"
-        }
+    MyPuppeteer: { require: './helpers/JSWait.js' }
   },
   include: { I: './page-objects/steps.js' },
   bootstrap: false,
@@ -32,7 +32,7 @@ exports.config = {
       },
       'mocha-junit-reporter': {
         stdout: '-',
-        options: { mochaFile: process.cwd()+ '/functional-output/result.xml' }
+        options: { mochaFile: process.cwd() + '/functional-output/result.xml' } // eslint-disable-line prefer-template
       },
       mochawesome: {
         stdout: '-',

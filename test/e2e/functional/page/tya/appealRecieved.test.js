@@ -1,8 +1,5 @@
-const { env } = require('test/e2e/helpers/nunjucksHelper');
 const { appeal } = require('test/mock/data/appealReceived');
-const { common, status } = require('public/locale/en');
-
-const dwpResponseDate = { dwpResponseDate: appeal.latestEvents[0].dwpResponseDate };
+const { common } = require('public/locale/en');
 
 Feature('TYA - Appeal Received');
 
@@ -18,6 +15,6 @@ Scenario('Verify appeal received details, progress bar status, screen reader tex
   // Content.
   I.see(common.latestUpdate);
 
-  //below commented out because it requires a new appeal being pushed everytime so after three months this step will fail for known appeal.
-  //I.see(env.renderString(status.appealReceived.content, dwpResponseDate));
+  // below commented out because it requires a new appeal being pushed everytime so after three months this step will fail for known appeal.
+  // I.see(env.renderString(status.appealReceived.content, dwpResponseDate));
 });
