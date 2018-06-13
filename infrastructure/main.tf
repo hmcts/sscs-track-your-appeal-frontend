@@ -31,6 +31,7 @@ module "tya-frontend" {
   subscription         = "${var.subscription}"
   additional_host_name = "${var.env != "preview" ? var.additional_hostname : "null"}"
   https_only           = "${var.env != "preview" ? "true" : "true"}"
+  capacity             = "${(var.env == "preview") ? 1 : 2}"
 
   app_settings = {
     SSCS_API_URL                 = "${local.ApiUrl}"
