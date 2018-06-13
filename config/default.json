@@ -1,6 +1,6 @@
 {
   "node": {
-    "port": "3000"
+    "port": "3003"
   },
   "api": {
     "url": "http://localhost:8080"
@@ -12,7 +12,7 @@
     "waitForTimeout": "1000",
     "waitForAction": "500",
     "outputDir": "./output",
-    "frontendUrl": "http://localhost:3000"
+    "frontendUrl": "http://localhost:3003"
   },
   "appInsights": {
     "instrumentationKey": "iKey"
