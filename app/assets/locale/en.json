@@ -181,19 +181,19 @@
     },
     "email": {
       "manage": {
-        "tab": "Manage notifications",
+        "tab": "Manage email notifications",
         "title": "What do you want to do?",
         "visuallyHidden": "What do you want to do?",
         "continue": "Continue"
       },
       "stop": {
-        "tab": "Manage email notifications",
+        "tab": "Stop recieving email updates",
         "title": "You’ll stop receiving email updates and reminders about your {{benefitType|acronym}} benefit appeal.",
         "confirm": "Confirm",
         "link": "Cancel"
       },
       "stopConfirmation": {
-        "tab": "Stopped notifications",
+        "tab": "Email notifications stopped",
         "title": "You’ve stopped email notifications",
         "content": "You won’t receive any more emails about your {{benefitType|acronym}} benefit appeal.",
         "exitFeedbackSurveyPreLink": "Please provide some",
@@ -202,7 +202,7 @@
         "linkPost": "track your benefit appeal online"
       },
       "addressChange": {
-        "tab": "Change email address",
+        "tab": "Your new email address",
         "tabError": "Errors on page",
         "title": "Your new email address",
         "visuallyHidden": "What do you want to do?",
@@ -213,7 +213,7 @@
         }
       },
       "addressChangeConfirmed": {
-        "tab": "Email address confirmation",
+        "tab": "Email address change confirmation",
         "title": "Emails about your {{benefitType|acronym}} benefit appeal will now be sent to",
         "content": "We’ve sent a confirmation email to that address. Check it in a few minutes.",
         "link": "Change your email address"
