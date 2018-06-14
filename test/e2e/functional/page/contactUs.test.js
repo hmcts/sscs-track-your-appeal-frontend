@@ -9,7 +9,7 @@ Before(I => {
 
 Scenario('verify contact us page', I => {
   // Click into 'Contact us'
-  I.click(contactUs.title);
+  I.navByClick(contactUs.title);
 
   // See the title
   I.see(contactUs.title);

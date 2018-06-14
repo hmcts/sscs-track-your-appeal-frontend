@@ -9,31 +9,31 @@ Before(I => {
 });
 
 Scenario('Clicking the \'What to expect at your hearing\' link ', I => {
-  I.click(hearing.expectations.title);
+  I.navByClick(hearing.expectations.title);
   I.see(hearing.expectations.title);
   I.seeCurrentUrlEquals(`${paths.tya.aboutHearing}/${appeal.appealNumber}`);
 });
 
 Scenario('Clicking the \'Claiming hearing expenses\' link ', I => {
-  I.click(claimExpenses.link);
+  I.navByClick(claimExpenses.link);
   I.see(claimExpenses.title);
   I.seeCurrentUrlEquals(`${paths.tya.expenses}/${appeal.appealNumber}`);
 });
 
 Scenario('Clicking the \'Providing evidence to support your appeal\' link ', I => {
-  I.click(evidence.provide.title);
+  I.navByClick(evidence.provide.title);
   I.see(evidence.provide.title);
   I.seeCurrentUrlEquals(`${paths.tya.evidence}/${appeal.appealNumber}`);
 });
 
 Scenario('Clicking the \'Contact us\' link ', I => {
-  I.click(contactUs.title);
+  I.navByClick(contactUs.title);
   I.see(evidence.provide.title);
   I.seeCurrentUrlEquals(`${paths.tya.contactus}/${appeal.appealNumber}`);
 });
 
 Scenario('Clicking the \'Cookies\' link ', I => {
-  I.click(cookiePolicy.footer.cookies);
+  I.navByClick(cookiePolicy.footer.cookies);
   I.see(cookiePolicy.cookies.title);
   I.seeCurrentUrlEquals(paths.tya.cookiepolicy);
 });

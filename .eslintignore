@@ -11,6 +11,7 @@ app/services/appealService.js
 app/services/tokenService.js
 app/middleware/evidence.js
 test/unit/core/tyaNunjucks.test.js
+test/e2e/helpers/JSWait.js
 test/e2e/page-objects/tya/screenReader.js
 test/e2e/page-objects/tya/progressBar.js
 test/e2e/page-objects/steps.js

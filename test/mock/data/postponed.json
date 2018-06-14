@@ -1,44 +1,62 @@
 {
   "appeal": {
-    "caseReference": "SC888/88/88888",
+    "caseReference": "SC285/18/00011",
     "appealNumber": "VYDZFffG49",
-    "benefitType": "esa",
-    "name": "Ms. L Test",
-    "surname": "Test",
     "status": "POSTPONED",
-    "latestEvents": [{
-        "hearingContactDate": "2017-04-13T17:27:50.297Z",
-        "date": "2017-03-02T17:27:50.297Z",
+    "benefitType": "pip",
+    "name": "Miss S Test",
+    "surname": "Test",
+    "latestEvents": [
+      {
+        "date": "2018-05-30T23:00:00.000Z",
         "type": "POSTPONED",
-        "contentKey": "status.postponed"
+        "contentKey": "status.postponed",
+        "hearingContactDate": "2018-07-11T23:00:00.000Z"
       }
     ],
     "historicalEvents": [
       {
-        "postcode": "CH1 2XA",
-        "venueName": "Chester Magistrate's Court",
-        "hearingDateTime": "2017-03-29T23:00:00.000Z",
-        "addressLine1": "Chester Magistrate's Court",
-        "addressLine2": "Grosvenor Street",
-        "addressLine3": "Chester",
-        "googleMapUrl": "https://www.google.com/maps/place/Chester+Magistrate%27s+Court+Grosvenor+Street+Chester+Cheshire+CH1+2XA/@53.187454,-2.893632",
-        "date": "2017-06-24T14:11:34.013Z",
+        "date": "2018-04-24T08:56:25.463Z",
+        "type": "HEARING_BOOKED",
+        "contentKey": "status.hearingBooked",
+        "postcode": "L2 5UZ",
+        "hearingDateTime": "2018-05-31T08:00:00.000Z",
+        "venueName": "Prudential House",
+        "addressLine1": "36 Dale Street",
+        "addressLine2": "",
+        "addressLine3": "Liverpool",
+        "googleMapUrl": "https://www.google.com/maps/place/36+Dale+Street+Liverpool+Merseyside+L2+5UZ/@53.407820,-2.988509"
+      },
+      {
+        "date": "2018-03-27T17:08:24.263Z",
         "type": "HEARING_BOOKED",
         "contentKey": "status.hearingBooked"
+      },
+      {
+        "date": "2018-03-26T09:44:40.230Z",
+        "type": "DWP_RESPOND",
+        "contentKey": "status.dwpRespond",
+        "hearingContactDate": "2018-05-07T09:44:40.230Z"
+      },
+      {
+        "date": "2018-03-06T07:33:56.070Z",
+        "type": "APPEAL_RECEIVED",
+        "contentKey": "status.appealReceived",
+        "dwpResponseDate": "2018-04-10T06:33:56.070Z"
       }
     ],
     "regionalProcessingCenter": {
-      "name": "SUTTON",
+      "name": "BIRMINGHAM",
       "addressLines": [
         "HM Courts & Tribunals Service",
         "Social Security & Child Support Appeals",
-        "Copthall House",
-        "9 The Pavement, Grove Road"
+        "Administrative Support Centre",
+        "PO Box 14620"
       ],
-      "city": "SUTTON",
-      "postcode": "SM1 1DA",
+      "city": "BIRMINGHAM",
+      "postcode": "B16 6FR",
       "phoneNumber": "0300 123 1142",
-      "faxNumber": "0870 739 4229"
+      "faxNumber": "0126 434 7983"
     }
   }
 }

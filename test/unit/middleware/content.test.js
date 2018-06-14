@@ -30,7 +30,7 @@ describe('content.js', () => {
     });
 
     it('should replace the placeholder with the string', () => {
-      expect(res.locals.i18n.hearing).to.equal('Hearing benefit type = pip');
+      expect(res.locals.i18n.hearing).to.equal('Hearing benefit type = esa');
     });
   });
 
