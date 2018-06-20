@@ -32,8 +32,6 @@ const { tya } = require('paths');
 // -------------------------- TRACK YOUR APPEAL ------------------------------------------
 
 router.get(`${tya.validateSurname}/:id/:originalPage`, (req, res) => {
-  console.log(req.url);
-  console.log('here');
   res.render('validate-surname', {
     id: req.params.id,
     originalPage: req.params.originalPage
