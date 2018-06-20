@@ -5,10 +5,7 @@ const { tya } = require('paths');
 const getMockedAppeal = appealNumber => {
   const mockedAppeal = mockedData[appealNumber];
 
-  console.log(mockedAppeal);
-
   if (!mockedAppeal) {
-    console.log('error')
     throw new ReferenceError(`Unknown mocked appeal number '${appealNumber}'`);
   }
 
@@ -16,16 +13,12 @@ const getMockedAppeal = appealNumber => {
 };
 
 const matchSurnameToAppeal = (req, res) => {
-  console.log('chicken')
   const mockedAppeal = getMockedAppeal(req.params.id);
   const id = req.params.id;
   const originalPage = req.params.originalPage || 'trackyourappeal';
   const surname = req.body.surname;
 
-  console.log('eggs');
-
   if (mockedAppeal.surname.toLowerCase() === surname.toLowerCase()) {
-    console.log('meow')
     req.session[id] = true;
     const pageExists = Object.values(tya).includes(`/${originalPage}`);
     const page = pageExists ? `/${originalPage}` : tya.trackYourAppeal;

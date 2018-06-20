@@ -8,8 +8,6 @@ const matchSurnameToAppeal = (req, res, next) => {
   const originalPage = req.params.originalPage;
   const surname = req.body.surname;
 
-  console.log('blah')
-
   return request.get(`${api}/appeals/${id}/surname/${surname}`)
     .then(() => {
       req.session[id] = true;

@@ -30,17 +30,14 @@ const validateField = (surname, errors) => {
 };
 
 const validateSurname = (req, res, next) => {
-
   const id = req.params.id;
   const originalPage = req.params.originalPage;
   const surname = req.body.surname;
   const errors = res.locals.i18n.validateSurname.surname.errors;
   const fields = validateField(surname, errors);
-  console.log('a');
   if (fields.error) {
     res.render('validate-surname', { id, fields, originalPage });
   } else {
-    console.log('next');
     next();
   }
 };
