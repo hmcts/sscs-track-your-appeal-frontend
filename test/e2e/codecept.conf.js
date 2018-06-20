@@ -6,7 +6,7 @@ exports.config = {
   timeout: 1000,
   helpers: {
     Puppeteer: {
-      url: process.env.TEST_URL || 'https://localhost:3000',
+      url: process.env.TEST_URL || 'http://localhost:3000',
       waitForTimeout: parseInt(config.get('e2e.waitForTimeout')),
       waitForAction: parseInt(config.get('e2e.waitForAction')),
       smartWait: '5000',
@@ -15,8 +15,8 @@ exports.config = {
       chrome: {
         ignoreHTTPSErrors: true,
         args: [
-          '--no-sandbox',
-          '--proxy-server=proxyout.reform.hmcts.net:8080'
+          '--no-sandbox'
+          // '--proxy-server=proxyout.reform.hmcts.net:8080'
         ]
       }
     },

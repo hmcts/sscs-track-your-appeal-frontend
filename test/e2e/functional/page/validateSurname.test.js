@@ -5,7 +5,7 @@ const paths = require('paths');
 Feature('Verify surname');
 
 Before(I => {
-  I.amOnPage(`${paths.tya.validateSurname}/${appeal.appealNumber}`);
+  I.amOnPage(`${paths.tya.validateSurname}/${appeal.appealNumber}${paths.tya.trackYourAppeal}`);
 });
 
 Scenario('I enter a surname that matches the appeal, I am taken to /trackyourappeal', I => {

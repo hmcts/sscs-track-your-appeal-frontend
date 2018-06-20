@@ -30,6 +30,8 @@ class JSWait extends codecept_helper {
         url = helper.options.url + url;
       }
 
+      console.log(url)
+
       helper.page.goto(url);
       await helper.page.waitForNavigation({waitUntil: 'networkidle0'});
 

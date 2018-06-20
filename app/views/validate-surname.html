@@ -17,7 +17,7 @@
 
         <h1 class="heading-large">{{ i18n.validateSurname.heading }}</h1>
 
-        <form action="/validate-surname/{{ id }}" method="post">
+        <form action="/validate-surname/{{ id }}/{{ originalPage }}" method="post">
 
             {{ textField(
                 label='',

@@ -9,13 +9,13 @@ Scenario('Verify a 404 when the page does not exist', I => {
 });
 
 Scenario('Verify a 404 when the appeal number does not exist', I => {
-  I.amOnPage('/validate-surname/xxx');
+  I.amOnPage('/validate-surname/xxx/trackyourappeal');
   I.enterSurnameAndSubmit(appeal.surname);
   I.see(validateSurname.surname.errors.noMatch);
 });
 
 Scenario('Verify a 404 when the surname does not match', I => {
-  I.amOnPage(`/validate-surname/${appeal.appealNumber}`);
+  I.amOnPage(`/validate-surname/${appeal.appealNumber}/trackyourappeal`);
   I.enterSurnameAndSubmit('surname');
   I.see(validateSurname.surname.errors.noMatch);
 });

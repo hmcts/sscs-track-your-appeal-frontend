@@ -27,32 +27,39 @@ const tyaMiddleware = [
   showProgressBar
 ];
 
+const { tya } = require('paths');
+
 // -------------------------- TRACK YOUR APPEAL ------------------------------------------
 
-router.get('/validate-surname/:id', (req, res) => {
-  res.render('validate-surname', { id: req.params.id });
+router.get(`${tya.validateSurname}/:id/:originalPage`, (req, res) => {
+  console.log(req.url);
+  console.log('here');
+  res.render('validate-surname', {
+    id: req.params.id,
+    originalPage: req.params.originalPage
+  });
 });
 
-router.post('/validate-surname/:id', validateSurname, matchSurnameToAppeal);
+router.post(`${tya.validateSurname}/:id/:originalPage`, validateSurname, matchSurnameToAppeal);
 
-router.get('/abouthearing/:id', cookieCheck, getAppeal, aboutHearingContent, (req, res) => {
+router.get(`${tya.aboutHearing}/:id`, cookieCheck, getAppeal, aboutHearingContent, (req, res) => {
   res.render('about-hearing', { data: res.locals.appeal});
 });
 
-router.get('/trackyourappeal/:id', cookieCheck, tyaMiddleware, (req, res) => {
+router.get(`${tya.trackYourAppeal}/:id`, cookieCheck, tyaMiddleware, (req, res) => {
   res.render('track-your-appeal', { data: res.locals.appeal});
 });
 
-router.get('/evidence/:id', cookieCheck, getAppeal, (req, res) => {
+router.get(`${tya.evidence}/:id`, cookieCheck, getAppeal, (req, res) => {
   res.render('provide-evidence', { data: res.locals.appeal});
 });
 
-router.get('/expenses/:id', cookieCheck, getAppeal, (req, res) => {
+router.get(`${tya.expenses}/:id`, cookieCheck, getAppeal, (req, res) => {
   res.render('claim-expenses', { data: res.locals.appeal});
 });
 
 // Hearing details relating to the latest event e.g. HEARING_BOOKED
-router.get('/hearingdetails/:id', cookieCheck, getAppeal, reformatHearingDetails, (req, res) => {
+router.get(`${tya.hearingDetails}/:id`, cookieCheck, getAppeal, reformatHearingDetails, (req, res) => {
   res.render('hearing-details', {
     data: res.locals.appeal,
     event: res.locals.appeal.latestHearingBookedEvent
@@ -60,26 +67,26 @@ router.get('/hearingdetails/:id', cookieCheck, getAppeal, reformatHearingDetails
 });
 
 // Hearing details relating to historical events e.g. HEARING
-router.get('/hearingdetails/:id/:index', cookieCheck, getAppeal, reformatHearingDetails, (req, res) => {
+router.get(`${tya.hearingDetails}/:id/:index`, cookieCheck, getAppeal, reformatHearingDetails, (req, res) => {
   res.render('hearing-details', {
     appeal: res.locals.appeal,
     event: res.locals.appeal.historicalEvents[req.params.index]
   });
 });
 
-router.get('/contactus/:id', cookieCheck, getAppeal, (req, res) => {
+router.get(`${tya.contactus}/:id`, cookieCheck, getAppeal, (req, res) => {
   res.render('contact-us', {data: res.locals.appeal});
 });
 
-router.get('/cookiepolicy', (req, res) => {
+router.get(tya.cookiepolicy, (req, res) => {
   res.render('cookie-policy');
 });
 
-router.get('/terms-and-conditions/:id', cookieCheck, getAppeal, (req, res) => {
+router.get(`${tya.terms}/:id`, cookieCheck, getAppeal, (req, res) => {
   res.render('terms-and-conditions', {data: res.locals.appeal});
 });
 
-router.get('/privacy-policy/:id', cookieCheck, getAppeal, (req, res) => {
+router.get(`${tya.privacy}/:id`, cookieCheck, getAppeal, (req, res) => {
   res.render('privacy-policy', {data: res.locals.appeal});
 });
 
