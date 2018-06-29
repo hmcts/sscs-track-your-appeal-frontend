@@ -9,7 +9,8 @@ describe('cookieCheck.js', () => {
   beforeEach(() => {
     req = {
       session: {},
-      params: { id: 'appealId' }
+      params: { id: 'appealId' },
+      originalUrl: '/abouthearing/appealId'
     };
   });
 
@@ -21,6 +22,6 @@ describe('cookieCheck.js', () => {
 
   it('should redirect to /validate-surname if there is no cookie', () => {
     cookieCheck(req, res, next);
-    return expect(res.redirect).to.have.been.calledWith(`/validate-surname/${req.params.id}`);
+    return expect(res.redirect).to.have.been.calledWith(`/validate-surname/${req.params.id}/abouthearing`);
   });
 });

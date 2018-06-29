@@ -9,6 +9,7 @@ describe('matchSurnameToAppeal.js', () => {
   const invalidId = 'invalidId';
   const invalidSurname = 'invalidSurname';
   const appealId = '1234';
+  const originalPage = 'abouthearing';
 
   let req = null, res = null, next = sinon.stub();
 
@@ -52,6 +53,7 @@ describe('matchSurnameToAppeal.js', () => {
       const error = { status: HttpStatus.NOT_FOUND };
 
       req.params.id = invalidId;
+      req.params.originalPage = originalPage;
       req.body.surname = invalidSurname;
 
       nock(apiURL)
@@ -63,6 +65,7 @@ describe('matchSurnameToAppeal.js', () => {
           expect(res.status).calledWith(HttpStatus.NOT_FOUND);
           expect(res.render).calledWith('validate-surname', {
             id: req.params.id,
+            originalPage: req.params.originalPage,
             fields: {
               error: true,
               surname: {

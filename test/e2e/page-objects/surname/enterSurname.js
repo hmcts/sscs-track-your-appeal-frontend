@@ -12,7 +12,7 @@ function enterSurnameAndSubmit(surname) {
 function enterSurnameAndSubmitAndSeeTYA(appeal) {
   const I = this;
 
-  I.amOnLoadedPage(`${paths.tya.validateSurname}/${appeal.appealNumber}`);
+  I.amOnLoadedPage(`${paths.tya.validateSurname}/${appeal.appealNumber}${paths.tya.trackYourAppeal}`);
   I.enterSurnameAndSubmit(appeal.surname);
   I.seeCurrentUrlEquals(`${paths.tya.trackYourAppeal}/${appeal.appealNumber}`);
 }

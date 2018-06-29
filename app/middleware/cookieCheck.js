@@ -4,7 +4,8 @@ const cookieCheck = (req, res, next) => {
   if (surnameHasValidated) {
     next();
   } else {
-    res.redirect(`/validate-surname/${req.params.id}`);
+    const originalPage = req.originalUrl.split('/')[1];
+    res.redirect(`/validate-surname/${req.params.id}/${originalPage}`);
   }
 };
 
