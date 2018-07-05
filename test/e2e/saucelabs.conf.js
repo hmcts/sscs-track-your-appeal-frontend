@@ -1,37 +1,35 @@
 const supportedBrowsers = require('../crossbrowser/supportedBrowsers.js');
+const browser = 'chrome_mac_previous';
 
-const browser = process.env.SAUCELABS_BROWSER || 'chrome_mac_latest';
-const tunnelName = process.env.TUNNEL_IDENTIFIER || '';
+const tunnelName = 'sscs-test';
 
-const getDesiredCapabilities = () => {
+function getDesiredCapabilities() {
   const desiredCapability = supportedBrowsers[browser];
   desiredCapability.tunnelIdentifier = tunnelName;
+  desiredCapability.extendedDebugging = true;
   return desiredCapability;
-};
+}
 
-const setupConfig = {
+const saucelabsconfig = {
   tests: './functional/**/*.test.js',
   output: './output',
   timeout: 20000,
   helpers: {
     WebDriverIO: {
-      url: process.env.E2E_FRONTEND_URL || 'http://localhost:3000',
+      url: process.env.TEST_URL || 'http://localhost:3000',
       browser: supportedBrowsers[browser].browserName,
+      excludeSwitches:["ignore-certificate-errors"],
       waitforTimeout: 60000,
-      cssSelectorsEnabled: 'true',
-      windowSize: '1600x900',
-      timeouts: {
-        script: 60000,
-        'page load': 60000,
-        implicit: 20000
-      },
+      smartWait: 30000,
       host: 'ondemand.saucelabs.com',
       port: 80,
       user: process.env.SAUCE_USERNAME,
       key: process.env.SAUCE_ACCESS_KEY,
       desiredCapabilities: getDesiredCapabilities()
     },
-    SauceLabsReportingHelper: { require: './helpers/SauceLabsReportingHelper.js' },
+    JSWait: { 'require': './helpers/JSWait.js' },
+    SauceLabsReportingHelper: { require: './helpers/SauceLabsReportingHelper.js' }
+    },
     include: { I: './page-objects/steps.js' },
     bootstrap: true,
     mocha: {
@@ -42,8 +40,13 @@ const setupConfig = {
         inlineAssets: true
       }
     },
+    multiple: {
+        parallel: {
+          chunks: 2,
+          browsers: supportedBrowsers[browser].browserName
+        }
+     },
     name: 'TYA cross-browser tests'
-  }
-};
+  };
 
-exports.config = setupConfig;
+exports.config = saucelabsconfig;
