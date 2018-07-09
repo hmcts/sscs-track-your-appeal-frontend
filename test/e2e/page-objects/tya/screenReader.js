@@ -7,10 +7,10 @@ const screenReaderText = (I, dwpRespond=false, hearingBooked=false, hearing=fals
   const hearingBookedTxt = hearingBooked ? screenReader.hearingBooked.happened : screenReader.hearingBooked.due;
   const hearingTxt = hearing ? screenReader.hearing.happened : screenReader.hearing.due;
 
-  I.see(appealReceivedTxt);
-  I.see(dwpRespondTxt);
-  I.see(hearingBookedTxt);
-  I.see(hearingTxt);
+  I.seeInSource(appealReceivedTxt);
+  I.seeInSource(dwpRespondTxt);
+  I.seeInSource(hearingBookedTxt);
+  I.seeInSource(hearingTxt);
 
 };
 

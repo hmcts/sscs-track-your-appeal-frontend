@@ -11,7 +11,7 @@ Before(I => {
   I.enterSurnameAndSubmitAndSeeTYA(appeal);
 });
 
-Scenario('Verify adjourned appeal details, progress bar status, screen reader text and content', I => {
+Scenario('Verify adjourned appeal details, progress bar status, screen reader text and content ', I => {
   I.seeAppealDetails(appeal);
   I.seeProgressBarAtDWPRespond();
   I.seeScreenReaderTextAtDWPRespond();

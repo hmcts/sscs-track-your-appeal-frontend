@@ -10,11 +10,13 @@ Before(I => {
 
 Scenario('I enter a surname that matches the appeal, I am taken to /trackyourappeal', I => {
   I.enterSurnameAndSubmit(appeal.surname);
+  I.wait('2');
   I.seeInCurrentUrl(`/trackyourappeal/${appeal.appealNumber}`);
 });
 
 Scenario('I enter a surname that does not match the appeal, I see errors', I => {
   I.enterSurnameAndSubmit('invalid');
+  I.wait('2');
   I.see(validateSurname.surname.errors.noMatch);
 });
 
