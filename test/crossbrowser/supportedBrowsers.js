@@ -23,25 +23,12 @@ const supportedBrowsers = {
     platform: 'Windows 10',
     version: 'latest'
   },
-  chrome_win_previous: {
-    browserName: 'chrome',
-    name: 'WIN_CHROME_PREVIOUS',
-    platform: 'Windows 8.1',
-    version: 'latest-1'
-  },
   chrome_mac_latest: {
     browserName: 'chrome',
     name: 'MAC_CHROME_LATEST',
-    platform: 'OS X 10.12',
+    platform: 'OS X 10.13',
     version: 'latest'
   },
-  chrome_mac_previous: {
-    browserName: 'chrome',
-    name: 'MAC_CHROME_PREVIOUS',
-    platform: 'OS X 10.11',
-    version: 'latest-1'
-  },
-
   firefox_win_latest: {
     browserName: 'firefox',
     name: 'WIN_FIREFOX_LATEST',
@@ -51,8 +38,14 @@ const supportedBrowsers = {
   firefox_mac_latest: {
     browserName: 'firefox',
     name: 'MAC_FIREFOX_LATEST',
-    platform: 'OS X 10.12',
+    platform: 'OS X 10.13',
     version: 'latest'
+  },
+  safari11: {
+    browserName: 'safari',
+    name: 'SAFARI_11',
+    platform: 'macOS 10.13',
+    version: '11.1'
   }
 };
 

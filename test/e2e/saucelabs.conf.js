@@ -63,8 +63,10 @@ const saucelabsconfig = {
   multiple: {
     parallel: {
       chunks: files => {
-        const tests = files.filter((file => file.includes('page'))); // eslint-disable-line
-        return getChunks('3', '5', tests);
+        const testPages = files.filter(file => file.includes('page')); // eslint-disable-line
+        const testLinks = files.filter(file => file.includes('links')); // eslint-disable-line
+        const tests = [...testPages, ...testLinks];
+        return getChunks('3', '6', tests);
       },
       browsers: supportedBrowsers[browser].browserName
     }
