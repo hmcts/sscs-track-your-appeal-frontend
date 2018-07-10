@@ -1,14 +1,14 @@
 {
   "appeal": {
-    "caseReference": "SC285/18/00020",
-    "appealNumber": "akEe9AZ7dt",
+    "caseReference": "SC285/18/10020",
+    "appealNumber": "gghCoPUjOP",
     "status": "DORMANT",
     "benefitType": "esa",
     "name": "Miss AN Test",
     "surname": "Test",
     "latestEvents": [
       {
-        "date": "2018-06-08T13:38:26.443Z",
+        "date": "2018-07-08T13:38:26.443Z",
         "type": "DORMANT",
         "contentKey": "status.dormant",
         "decisionLetterReceiveByDate": "2018-06-19T13:38:26.443Z"
