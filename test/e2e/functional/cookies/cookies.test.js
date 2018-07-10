@@ -24,6 +24,7 @@ Scenario('I enter a valid surname and verify the cookie', I => {
   I.amOnPage(`${paths.tya.validateSurname}/${appeal.appealNumber}${paths.tya.trackYourAppeal}`);
   I.dontSeeCookie('tya-surname-appeal-validated');
   I.enterSurnameAndSubmit(appeal.surname);
+  I.wait('2');
   I.seeCookie('tya-surname-appeal-validated');
 });
 
