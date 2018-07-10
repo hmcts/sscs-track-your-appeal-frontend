@@ -1,13 +1,4 @@
 const supportedBrowsers = {
-  ie10_win7: {
-    browserName: 'internet explorer',
-    name: 'IE10_Win7',
-    platform: 'Windows 7',
-    ignoreZoomSetting: true,
-    nativeEvents: false,
-    ignoreProtectedModeSettings: true,
-    version: '10'
-  },
   ie11_win10: {
     browserName: 'internet explorer',
     name: 'IE11_Win10',
@@ -26,7 +17,7 @@ const supportedBrowsers = {
   chrome_mac_latest: {
     browserName: 'chrome',
     name: 'MAC_CHROME_LATEST',
-    platform: 'OS X 10.13',
+    platform: 'macOS 10.13',
     version: 'latest'
   },
   firefox_win_latest: {
@@ -38,7 +29,7 @@ const supportedBrowsers = {
   firefox_mac_latest: {
     browserName: 'firefox',
     name: 'MAC_FIREFOX_LATEST',
-    platform: 'OS X 10.13',
+    platform: 'macOS 10.13',
     version: 'latest'
   },
   safari11: {

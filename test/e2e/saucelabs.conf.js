@@ -66,7 +66,7 @@ const saucelabsconfig = {
         const testPages = files.filter(file => file.includes('page')); // eslint-disable-line
         const testLinks = files.filter(file => file.includes('links')); // eslint-disable-line
         const tests = [...testPages, ...testLinks];
-        return getChunks('3', '6', tests);
+        return getChunks('2', '9', tests);
       },
       browsers: supportedBrowsers[browser].browserName
     }
