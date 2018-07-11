@@ -10,6 +10,7 @@ function getDesiredCapabilities() {
   const desiredCapability = supportedBrowsers[browser];
   desiredCapability.tunnelIdentifier = tunnelName;
   desiredCapability.extendedDebugging = true;
+  desiredCapability.tags = ['sscs-tya'];
   return desiredCapability;
 }
 
