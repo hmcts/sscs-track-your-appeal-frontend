@@ -7,7 +7,7 @@ function updateSauceLabsResult(result, sessionId) {
   return `curl -X PUT -s -d '{"passed": ${result}}' -u ${process.env.SAUCE_USERNAME}:${process.env.SAUCE_ACCESS_KEY} https://saucelabs.com/rest/v1/${process.env.SAUCE_USERNAME}/jobs/${sessionId}`;
 }
 
-module.exports = function() {
+module.exports = function() { // eslint-disable-line
   // Setting test success on SauceLabs
   event.dispatcher.on(event.test.passed, () => {
     const sessionId = container.helpers('WebDriverIO').browser.requestHandler.sessionID;
