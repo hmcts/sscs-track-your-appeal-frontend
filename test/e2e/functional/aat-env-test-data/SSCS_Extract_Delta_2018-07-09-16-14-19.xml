@@ -1,0 +1,1173 @@
+<?xml version="1.0" standalone="yes"?>
+<Appeal_Cases>
+
+  <!-- Smoke Test -->
+  <Appeal_Case>
+    <Extract_Time_UTC>2018-03-06T20:26:05.1+00:00</Extract_Time_UTC>
+    <Appeal_Case_Id>3553607</Appeal_Case_Id>
+    <Appeal_Case_RefNum>SC068/18/01217</Appeal_Case_RefNum>
+    <Appeal_Case_Confidential>N</Appeal_Case_Confidential>
+    <Appeal_Case_Case_Code_Id>1707</Appeal_Case_Case_Code_Id>
+    <Tribunal_Type_Id>2</Tribunal_Type_Id>
+    <Appeal_Case_Date_Appeal_Received>2018-03-05T00:00:00+00:00</Appeal_Case_Date_Appeal_Received>
+    <Appeal_Case_Date_of_Decision>2018-02-25T00:00:00+00:00</Appeal_Case_Date_of_Decision>
+    <Appeal_Case_Date_Appeal_Made>2018-03-05T00:00:00+00:00</Appeal_Case_Date_Appeal_Made>
+    <Appeal_Case_NINO>NW 23 34 45 A</Appeal_Case_NINO>
+    <Appeal_Case_Major_Id>3</Appeal_Case_Major_Id>
+    <Appeal_Case_BF_Date>2018-04-10T00:00:00+01:00</Appeal_Case_BF_Date>
+    <Originating_Office_Id>1682</Originating_Office_Id>
+    <Admin_Team_Id>68</Admin_Team_Id>
+    <Parties>
+      <PTTP_ID>5534639</PTTP_ID>
+      <Title>Miss</Title>
+      <INITIALS>S</INITIALS>
+      <Surname>Test</Surname>
+      <Email>shuvla@hotmail.com</Email>
+      <Phone_1>07704244054</Phone_1>
+      <Postcode>L24 4BG</Postcode>
+      <Role_Id>4</Role_Id>
+      <Attending>Y</Attending>
+      <Disability_Needs>N</Disability_Needs>
+      <Interpreter_Signer_Id>206</Interpreter_Signer_Id>
+      <DOB>1982-12-10T00:00:00+00:00</DOB>
+    </Parties>
+    <Major_Status>
+      <Status_Id>3</Status_Id>
+      <Date_Set>2018-03-06T07:33:56.07+00:00</Date_Set>
+      <BF_Date>2018-04-10T00:00:00+01:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>600</Status_Id>
+      <Date_Set>2018-03-06T07:33:36.007+00:00</Date_Set>
+      <Date_Closed>2018-03-06T07:34:00+00:00</Date_Closed>
+      <BF_Date>2018-03-06T00:00:00+00:00</BF_Date>
+    </Major_Status>
+  </Appeal_Case>
+
+  <!--- past hearing booked-->
+  <Appeal_Case>
+    <Extract_Time_UTC>2018-02-13T20:10:14.93+00:00</Extract_Time_UTC>
+    <Appeal_Case_Id>1</Appeal_Case_Id>
+    <Appeal_Case_RefNum>SC285/18/00001</Appeal_Case_RefNum>
+    <Appeal_Case_Confidential>N</Appeal_Case_Confidential>
+    <Appeal_Case_Case_Code_Id>1316</Appeal_Case_Case_Code_Id>
+    <Tribunal_Type_Id>2</Tribunal_Type_Id>
+    <Appeal_Case_Date_Appeal_Received>2018-03-01T00:00:00+01:00</Appeal_Case_Date_Appeal_Received>
+    <Appeal_Case_Date_of_Decision>2017-10-24T00:00:00+01:00</Appeal_Case_Date_of_Decision>
+    <Appeal_Case_Date_Appeal_Made>2017-11-10T00:00:00+00:00</Appeal_Case_Date_Appeal_Made>
+    <Appeal_Case_Date_FTA_Response_Received>2017-12-07T00:00:00+00:00</Appeal_Case_Date_FTA_Response_Received>
+    <Appeal_Case_NINO>JT 12 34 56 D</Appeal_Case_NINO>
+    <Appeal_Case_Major_Id>18</Appeal_Case_Major_Id>
+    <Appeal_Case_BF_Date>2018-03-31T00:00:00+01:00</Appeal_Case_BF_Date>
+    <Originating_Office_Id>231</Originating_Office_Id>
+    <Admin_Team_Id>113</Admin_Team_Id>
+    <Parties>
+      <PTTP_ID>5394442</PTTP_ID>
+      <Title>Miss</Title>
+      <INITIALS>L E</INITIALS>
+      <Surname>Test</Surname>
+      <Phone_1>01324 831841</Phone_1>
+      <Phone_2>07391 885617</Phone_2>
+      <Postcode>FK2 7SD</Postcode>
+      <Role_Id>4</Role_Id>
+      <Attending>Y</Attending>
+      <Disability_Needs>N</Disability_Needs>
+      <Interpreter_Signer_Id>239</Interpreter_Signer_Id>
+      <DOB>1900-01-01T00:00:00+00:00</DOB>
+    </Parties>
+    <Parties>
+      <PTTP_ID>5394443</PTTP_ID>
+      <Title>S/M</Title>
+      <INITIALS />
+      <Surname />
+      <Phone_1>01324 590 780</Phone_1>
+      <Phone_2>01324 590 781</Phone_2>
+      <Postcode>FK1 1XR</Postcode>
+      <Role_Id>3</Role_Id>
+      <Attending>N</Attending>
+      <Disability_Needs>N</Disability_Needs>
+    </Parties>
+    <Major_Status>
+      <Status_Id>18</Status_Id>
+      <Date_Set>2018-02-13T16:13:11.243+00:00</Date_Set>
+      <BF_Date>2018-03-31T00:00:00+01:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>22</Status_Id>
+      <Date_Set>2017-12-12T11:40:03.237+00:00</Date_Set>
+      <Date_Closed>2017-12-28T09:58:00+00:00</Date_Closed>
+      <BF_Date>2017-12-22T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>18</Status_Id>
+      <Date_Set>2017-12-12T11:37:35.093+00:00</Date_Set>
+      <Date_Closed>2017-12-12T11:40:00+00:00</Date_Closed>
+      <BF_Date>2017-12-12T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>600</Status_Id>
+      <Date_Set>2017-11-16T08:31:03.11+00:00</Date_Set>
+      <Date_Closed>2017-11-16T08:31:00+00:00</Date_Closed>
+      <BF_Date>2017-11-16T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>3</Status_Id>
+      <Date_Set>2017-11-16T08:31:24.97+00:00</Date_Set>
+      <Date_Closed>2017-12-12T11:38:00+00:00</Date_Closed>
+      <BF_Date>2017-12-21T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>22</Status_Id>
+      <Date_Set>2017-12-28T09:58:28.657+00:00</Date_Set>
+      <Date_Closed>2018-02-13T16:13:00+00:00</Date_Closed>
+      <BF_Date>2018-01-11T00:00:00+00:00</BF_Date>
+    </Major_Status>
+  </Appeal_Case>
+
+  <!-- Appeal received -->
+
+  <Appeal_Case>
+    <Extract_Time_UTC>2018-02-13T20:10:14.93+00:00</Extract_Time_UTC>
+    <Appeal_Case_Id>2</Appeal_Case_Id>
+    <Appeal_Case_RefNum>SC285/18/00002</Appeal_Case_RefNum>
+    <Appeal_Case_Confidential>N</Appeal_Case_Confidential>
+    <Appeal_Case_Case_Code_Id>1316</Appeal_Case_Case_Code_Id>
+    <Tribunal_Type_Id>2</Tribunal_Type_Id>
+    <Appeal_Case_Date_Appeal_Received>2018-06-01T00:00:00+01:00</Appeal_Case_Date_Appeal_Received>
+    <Appeal_Case_Date_of_Decision>2017-12-05T00:00:00+00:00</Appeal_Case_Date_of_Decision>
+    <Appeal_Case_Date_Appeal_Made>2018-01-11T00:00:00+00:00</Appeal_Case_Date_Appeal_Made>
+    <Appeal_Case_NINO>JT 12 34 56 D</Appeal_Case_NINO>
+    <Appeal_Case_Major_Id>3</Appeal_Case_Major_Id>
+    <Appeal_Case_BF_Date>2018-02-15T00:00:00+00:00</Appeal_Case_BF_Date>
+    <Originating_Office_Id>1679</Originating_Office_Id>
+    <Admin_Team_Id>242</Admin_Team_Id>
+    <Parties>
+      <PTTP_ID>5463905</PTTP_ID>
+      <Title>Mrs.</Title>
+      <INITIALS>AN</INITIALS>
+      <Surname>Test</Surname>
+      <Phone_1>07903 809570</Phone_1>
+      <Postcode>EN5 2LY</Postcode>
+      <Role_Id>3</Role_Id>
+      <Attending>N</Attending>
+      <Disability_Needs>N</Disability_Needs>
+    </Parties>
+    <Parties>
+      <PTTP_ID>5463904</PTTP_ID>
+      <Title>Mrs.</Title>
+      <INITIALS>AN</INITIALS>
+      <Surname>Test</Surname>
+      <Phone_1>07903 809570</Phone_1>
+      <Postcode>NW4 4LG</Postcode>
+      <Role_Id>4</Role_Id>
+      <Attending>Y</Attending>
+      <Disability_Needs>N</Disability_Needs>
+      <Interpreter_Signer_Id>61</Interpreter_Signer_Id>
+      <DOB>1900-01-01T00:00:00+00:00</DOB>
+    </Parties>
+    <Major_Status>
+      <Status_Id>3</Status_Id>
+      <Date_Set>2018-06-05T15:39:16.697+00:00</Date_Set>
+      <BF_Date>2018-06-04T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>600</Status_Id>
+      <Date_Set>2018-06-01T15:38:59.947+00:00</Date_Set>
+      <Date_Closed>2018-06-02T15:39:00+00:00</Date_Closed>
+      <BF_Date>2018-06-02T00:00:00+00:00</BF_Date>
+    </Major_Status>
+  </Appeal_Case>
+
+<!--  Hearing Booked -->
+
+  <Appeal_Case>
+    <Extract_Time_UTC>2018-02-13T20:10:14.93+00:00</Extract_Time_UTC>
+    <Appeal_Case_Id>3</Appeal_Case_Id>
+    <Appeal_Case_RefNum>SC285/18/00003</Appeal_Case_RefNum>
+    <Appeal_Case_Confidential>N</Appeal_Case_Confidential>
+    <Appeal_Case_Case_Code_Id>1316</Appeal_Case_Case_Code_Id>
+    <Tribunal_Type_Id>2</Tribunal_Type_Id>
+    <Appeal_Case_Date_Appeal_Received>2018-03-01T00:00:00+01:00</Appeal_Case_Date_Appeal_Received>
+    <Appeal_Case_Date_of_Decision>2017-09-25T00:00:00+01:00</Appeal_Case_Date_of_Decision>
+    <Appeal_Case_Date_Appeal_Made>2017-10-04T00:00:00+01:00</Appeal_Case_Date_Appeal_Made>
+    <Appeal_Case_Date_FTA_Response_Received>2017-11-07T00:00:00+00:00</Appeal_Case_Date_FTA_Response_Received>
+    <Appeal_Case_NINO>JT 12 34 56 D</Appeal_Case_NINO>
+    <Appeal_Case_Major_Id>24</Appeal_Case_Major_Id>
+    <Appeal_Case_BF_Date>2018-03-20T00:00:00+00:00</Appeal_Case_BF_Date>
+    <Originating_Office_Id>1679</Originating_Office_Id>
+    <Admin_Team_Id>1252</Admin_Team_Id>
+    <Parties>
+      <PTTP_ID>5463905</PTTP_ID>
+      <Title>Mrs.</Title>
+      <INITIALS>AN</INITIALS>
+      <Surname>Test</Surname>
+      <Phone_1>07903 809570</Phone_1>
+      <Postcode>EN5 2LY</Postcode>
+      <Role_Id>4</Role_Id>
+      <Attending>N</Attending>
+      <Disability_Needs>N</Disability_Needs>
+      <DOB>1900-01-01T00:00:00+00:00</DOB>
+    </Parties>
+    <Hearing>
+      <Hearing_Id>3698764</Hearing_Id>
+      <Date_Hearing_Notification>2018-02-09T00:00:00+00:00</Date_Hearing_Notification>
+      <Session_Date>2018-04-20T00:00:00+00:00</Session_Date>
+      <Appeal_Time>2018-02-09T11:40:00+00:00</Appeal_Time>
+      <Venue_Id>64</Venue_Id>
+    </Hearing>
+    <Major_Status>
+      <Status_Id>18</Status_Id>
+      <Date_Set>2017-11-09T11:16:01.867+00:00</Date_Set>
+      <Date_Closed>2018-02-09T14:38:00+00:00</Date_Closed>
+      <BF_Date>2017-11-09T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>24</Status_Id>
+      <Date_Set>2018-02-09T14:38:26.443+00:00</Date_Set>
+      <BF_Date>2018-03-20T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>600</Status_Id>
+      <Date_Set>2017-10-06T10:38:13.827+01:00</Date_Set>
+      <Date_Closed>2017-10-06T10:38:00+01:00</Date_Closed>
+      <BF_Date>2017-10-06T00:00:00+01:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>3</Status_Id>
+      <Date_Set>2017-10-06T10:38:25.19+01:00</Date_Set>
+      <Date_Closed>2017-11-09T11:16:00+00:00</Date_Closed>
+      <BF_Date>2017-11-10T00:00:00+00:00</BF_Date>
+    </Major_Status>
+  </Appeal_Case>
+
+<!-- Hearing  Booked-->
+
+  <Appeal_Case>
+    <Extract_Time_UTC>2018-02-13T20:10:14.93+00:00</Extract_Time_UTC>
+    <Appeal_Case_Id>4</Appeal_Case_Id>
+    <Appeal_Case_RefNum>SC285/18/00004</Appeal_Case_RefNum>
+    <Appeal_Case_Confidential>N</Appeal_Case_Confidential>
+    <Appeal_Case_Case_Code_Id>1316</Appeal_Case_Case_Code_Id>
+    <Tribunal_Type_Id>1</Tribunal_Type_Id>
+    <Appeal_Case_Date_Appeal_Received>2018-03-01T00:00:00+01:00</Appeal_Case_Date_Appeal_Received>
+    <Appeal_Case_Date_of_Decision>2017-11-22T00:00:00+00:00</Appeal_Case_Date_of_Decision>
+    <Appeal_Case_Date_Appeal_Made>2017-12-21T00:00:00+00:00</Appeal_Case_Date_Appeal_Made>
+    <Appeal_Case_Date_FTA_Response_Received>2018-01-22T00:00:00+00:00</Appeal_Case_Date_FTA_Response_Received>
+    <Appeal_Case_NINO>JT 12 34 56 D</Appeal_Case_NINO>
+    <Appeal_Case_Major_Id>29</Appeal_Case_Major_Id>
+    <Appeal_Case_BF_Date>2018-02-13T00:00:00+00:00</Appeal_Case_BF_Date>
+    <Originating_Office_Id>1303</Originating_Office_Id>
+    <Admin_Team_Id>101</Admin_Team_Id>
+    <Parties>
+      <PTTP_ID>5445123</PTTP_ID>
+      <Title>Miss</Title>
+      <INITIALS>AN</INITIALS>
+      <Surname>Test</Surname>
+      <Phone_1>1</Phone_1>
+      <Postcode>ML1 4NE</Postcode>
+      <Role_Id>4</Role_Id>
+      <Attending>N</Attending>
+      <Disability_Needs>N</Disability_Needs>
+      <Interpreter_Signer_Id>239</Interpreter_Signer_Id>
+      <DOB>1900-01-01T00:00:00+00:00</DOB>
+    </Parties>
+      <Hearing>
+      <Hearing_Id>3698764</Hearing_Id>
+      <Date_Hearing_Notification>2018-02-09T00:00:00+00:00</Date_Hearing_Notification>
+      <Session_Date>2018-02-10T00:00:00+00:00</Session_Date>
+      <Appeal_Time>2018-02-09T11:40:00+00:00</Appeal_Time>
+      <Venue_Id>64</Venue_Id>
+    </Hearing>
+    <Major_Status>
+      <Status_Id>29</Status_Id>
+      <Date_Set>2018-02-25T14:38:26.443+00:00</Date_Set>
+      <BF_Date>2018-03-20T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+    <Status_Id>18</Status_Id>
+      <Date_Set>2017-11-09T11:16:01.867+00:00</Date_Set>
+      <Date_Closed>2018-02-09T14:38:00+00:00</Date_Closed>
+      <BF_Date>2017-11-09T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>24</Status_Id>
+      <Date_Set>2018-02-09T14:38:26.443+00:00</Date_Set>
+      <Date_Closed>2018-02-11T14:38:00+00:00</Date_Closed>
+      <BF_Date>2018-03-20T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>600</Status_Id>
+      <Date_Set>2017-10-06T10:38:13.827+01:00</Date_Set>
+      <Date_Closed>2017-10-06T10:38:00+01:00</Date_Closed>
+      <BF_Date>2017-10-06T00:00:00+01:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>3</Status_Id>
+      <Date_Set>2017-10-06T10:38:25.19+01:00</Date_Set>
+      <Date_Closed>2017-11-09T11:16:00+00:00</Date_Closed>
+      <BF_Date>2017-11-10T00:00:00+00:00</BF_Date>
+    </Major_Status>
+  </Appeal_Case>
+
+
+<!-- Closed -->
+
+  <Appeal_Case>
+    <Extract_Time_UTC>2018-02-13T20:10:14.93+00:00</Extract_Time_UTC>
+    <Appeal_Case_Id>6</Appeal_Case_Id>
+    <Appeal_Case_RefNum>SC285/18/00006</Appeal_Case_RefNum>
+    <Appeal_Case_Confidential>N</Appeal_Case_Confidential>
+    <Appeal_Case_Case_Code_Id>1316</Appeal_Case_Case_Code_Id>
+    <Tribunal_Type_Id>2</Tribunal_Type_Id>
+    <Appeal_Case_Date_Appeal_Received>2018-03-01T00:00:00+01:00</Appeal_Case_Date_Appeal_Received>
+    <Appeal_Case_Date_of_Decision>2017-08-10T00:00:00+01:00</Appeal_Case_Date_of_Decision>
+    <Appeal_Case_Date_Appeal_Made>2017-09-21T00:00:00+01:00</Appeal_Case_Date_Appeal_Made>
+    <Appeal_Case_Date_FTA_Response_Received>2017-10-18T00:00:00+01:00</Appeal_Case_Date_FTA_Response_Received>
+    <Appeal_Case_NINO>JT 12 34 56 D</Appeal_Case_NINO>
+    <Appeal_Case_Major_Id>33</Appeal_Case_Major_Id>
+    <Appeal_Case_BF_Date>2018-02-27T00:00:00+00:00</Appeal_Case_BF_Date>
+    <Originating_Office_Id>1686</Originating_Office_Id>
+    <Admin_Team_Id>236</Admin_Team_Id>
+    <Parties>
+      <PTTP_ID>5324808</PTTP_ID>
+      <Title>Mrs.</Title>
+      <INITIALS>AN</INITIALS>
+      <Surname>Test</Surname>
+      <Phone_1>0191 581 3470</Phone_1>
+      <Phone_2>07784 944212</Phone_2>
+      <Postcode>SR7 7BS</Postcode>
+      <Role_Id>4</Role_Id>
+      <Attending>Y</Attending>
+      <Disability_Needs>Y</Disability_Needs>
+      <Interpreter_Signer_Id>239</Interpreter_Signer_Id>
+      <DOB>1900-01-01T00:00:00+00:00</DOB>
+    </Parties>
+    <Parties>
+      <PTTP_ID>5324809</PTTP_ID>
+      <Title>S/M</Title>
+      <INITIALS />
+      <Surname />
+      <Phone_1>0344 411 1444</Phone_1>
+      <Postcode>SR8 1BW</Postcode>
+      <Role_Id>3</Role_Id>
+      <Attending>Y</Attending>
+      <Disability_Needs>N</Disability_Needs>
+      <Interpreter_Signer_Id>239</Interpreter_Signer_Id>
+    </Parties>
+    <Further_Evidence>
+      <FUR_EVIDENCE_ID>2548059</FUR_EVIDENCE_ID>
+      <FE_Date_Received>2018-01-13T00:00:00+00:00</FE_Date_Received>
+      <FE_Date_Issued>2018-01-13T00:00:00+00:00</FE_Date_Issued>
+      <FE_Type_of_Evidence_Id>2</FE_Type_of_Evidence_Id>
+      <FE_Role_Id>4</FE_Role_Id>
+    </Further_Evidence>
+    <Hearing>
+      <Hearing_Id>3698764</Hearing_Id>
+      <Date_Hearing_Notification>2018-02-09T00:00:00+00:00</Date_Hearing_Notification>
+      <Session_Date>2018-02-10T00:00:00+00:00</Session_Date>
+      <Appeal_Time>2018-02-09T11:40:00+00:00</Appeal_Time>
+      <Venue_Id>64</Venue_Id>
+    </Hearing>
+    <Major_Status>
+      <Status_Id>33</Status_Id>
+      <Date_Set>2018-02-12T14:38:26.443+00:00</Date_Set>
+      <BF_Date>2018-03-20T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>18</Status_Id>
+      <Date_Set>2017-11-09T11:16:01.867+00:00</Date_Set>
+      <Date_Closed>2018-02-09T14:38:00+00:00</Date_Closed>
+      <BF_Date>2017-11-09T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>24</Status_Id>
+      <Date_Set>2018-02-09T14:38:26.443+00:00</Date_Set>
+      <Date_Closed>2018-02-11T14:38:00+00:00</Date_Closed>
+      <BF_Date>2018-03-20T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>600</Status_Id>
+      <Date_Set>2017-10-06T10:38:13.827+01:00</Date_Set>
+      <Date_Closed>2017-10-06T10:38:00+01:00</Date_Closed>
+      <BF_Date>2017-10-06T00:00:00+01:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>3</Status_Id>
+      <Date_Set>2017-10-06T10:38:25.19+01:00</Date_Set>
+      <Date_Closed>2017-11-09T11:16:00+00:00</Date_Closed>
+      <BF_Date>2017-11-10T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    </Appeal_Case>
+
+ <!-- DWP Respond Overdue-->
+
+  <Appeal_Case>
+    <Extract_Time_UTC>2018-02-13T20:10:14.93+00:00</Extract_Time_UTC>
+    <Appeal_Case_Id>7</Appeal_Case_Id>
+    <Appeal_Case_RefNum>SC285/18/00007</Appeal_Case_RefNum>
+    <Appeal_Case_Confidential>N</Appeal_Case_Confidential>
+    <Appeal_Case_Case_Code_Id>1316</Appeal_Case_Case_Code_Id>
+    <Tribunal_Type_Id>1</Tribunal_Type_Id>
+    <Appeal_Case_Date_Appeal_Received>2018-03-01T00:00:00+01:00</Appeal_Case_Date_Appeal_Received>
+    <Appeal_Case_Date_of_Decision>2017-12-20T00:00:00+00:00</Appeal_Case_Date_of_Decision>
+    <Appeal_Case_Date_Appeal_Made>2018-01-19T00:00:00+00:00</Appeal_Case_Date_Appeal_Made>
+    <Appeal_Case_NINO>JT 12 34 56 D</Appeal_Case_NINO>
+    <Appeal_Case_Major_Id>3</Appeal_Case_Major_Id>
+    <Appeal_Case_BF_Date>2018-02-26T00:00:00+00:00</Appeal_Case_BF_Date>
+    <Originating_Office_Id>1678</Originating_Office_Id>
+    <Admin_Team_Id>79</Admin_Team_Id>
+    <Parties>
+      <PTTP_ID>5475016</PTTP_ID>
+      <Title>Miss</Title>
+      <INITIALS>AN</INITIALS>
+      <Surname>Test</Surname>
+      <Phone_1>07725 576 836</Phone_1>
+      <Postcode>M46 0HY</Postcode>
+      <Role_Id>4</Role_Id>
+      <Attending>N</Attending>
+      <Disability_Needs>N</Disability_Needs>
+      <Interpreter_Signer_Id>239</Interpreter_Signer_Id>
+      <DOB>1900-01-01T00:00:00+00:00</DOB>
+    </Parties>
+    <Major_Status>
+      <Status_Id>600</Status_Id>
+      <Date_Set>2017-11-22T07:49:03.693+00:00</Date_Set>
+      <Date_Closed>2017-11-22T07:49:00+00:00</Date_Closed>
+      <BF_Date>2017-11-22T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>3</Status_Id>
+      <Date_Set>2017-12-01T07:49:19.333+00:00</Date_Set>
+      <BF_Date>2017-12-02T00:00:00+00:00</BF_Date>
+    </Major_Status>
+  </Appeal_Case>
+
+<!-- Past hearing booked -->
+
+  <Appeal_Case>
+    <Extract_Time_UTC>2018-02-13T20:10:14.93+00:00</Extract_Time_UTC>
+    <Appeal_Case_Id>8</Appeal_Case_Id>
+    <Appeal_Case_RefNum>SC285/18/00008</Appeal_Case_RefNum>
+    <Appeal_Case_Confidential>N</Appeal_Case_Confidential>
+    <Appeal_Case_Case_Code_Id>1316</Appeal_Case_Case_Code_Id>
+    <Tribunal_Type_Id>2</Tribunal_Type_Id>
+    <Appeal_Case_Date_Appeal_Received>2018-03-01T00:00:00+01:00</Appeal_Case_Date_Appeal_Received>
+    <Appeal_Case_Date_of_Decision>2017-01-16T00:00:00+00:00</Appeal_Case_Date_of_Decision>
+    <Appeal_Case_Date_Appeal_Made>2017-08-07T00:00:00+01:00</Appeal_Case_Date_Appeal_Made>
+    <Appeal_Case_Date_FTA_Response_Received>2017-09-18T00:00:00+01:00</Appeal_Case_Date_FTA_Response_Received>
+    <Appeal_Case_NINO>JT 12 34 56 D</Appeal_Case_NINO>
+    <Appeal_Case_Major_Id>18</Appeal_Case_Major_Id>
+    <Appeal_Case_BF_Date>2018-02-13T00:00:00+00:00</Appeal_Case_BF_Date>
+    <Originating_Office_Id>1679</Originating_Office_Id>
+    <Admin_Team_Id>242</Admin_Team_Id>
+    <Parties>
+      <PTTP_ID>5270997</PTTP_ID>
+      <Title>Miss</Title>
+      <INITIALS>AN</INITIALS>
+      <Surname>Test</Surname>
+      <Phone_1>2</Phone_1>
+      <Phone_2>1</Phone_2>
+      <Postcode>NW10 2SH</Postcode>
+      <Role_Id>4</Role_Id>
+      <Attending>Y</Attending>
+      <Disability_Needs>N</Disability_Needs>
+      <Interpreter_Signer_Id>239</Interpreter_Signer_Id>
+      <DOB>1900-01-01T00:00:00+00:00</DOB>
+    </Parties>
+    <Major_Status>
+      <Status_Id>3</Status_Id>
+      <Date_Set>2017-08-09T11:18:39.68+01:00</Date_Set>
+      <Date_Closed>2017-09-18T12:10:00+01:00</Date_Closed>
+      <BF_Date>2017-09-13T00:00:00+01:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>18</Status_Id>
+      <Date_Set>2017-11-13T09:45:47.08+00:00</Date_Set>
+      <BF_Date>2017-12-13T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>600</Status_Id>
+      <Date_Set>2017-08-09T11:18:23.543+01:00</Date_Set>
+      <Date_Closed>2017-08-09T11:19:00+01:00</Date_Closed>
+      <BF_Date>2017-08-09T00:00:00+01:00</BF_Date>
+    </Major_Status>
+  </Appeal_Case>
+
+<!-- Lapsed revised -->
+
+  <Appeal_Case>
+    <Extract_Time_UTC>2018-02-13T20:10:14.93+00:00</Extract_Time_UTC>
+    <Appeal_Case_Id>10</Appeal_Case_Id>
+    <Appeal_Case_RefNum>SC285/18/00010</Appeal_Case_RefNum>
+    <Appeal_Case_Case_Code_Id>1316</Appeal_Case_Case_Code_Id>
+    <Tribunal_Type_Id>2</Tribunal_Type_Id>
+    <Appeal_Case_Date_Appeal_Received>2018-02-12T00:00:00+00:00</Appeal_Case_Date_Appeal_Received>
+    <Appeal_Case_Date_of_Decision>2018-01-29T00:00:00+00:00</Appeal_Case_Date_of_Decision>
+    <Appeal_Case_Date_Appeal_Made>2018-02-12T00:00:00+00:00</Appeal_Case_Date_Appeal_Made>
+    <Appeal_Case_NINO>JT 12 34 56 D</Appeal_Case_NINO>
+    <Appeal_Case_Major_Id>56</Appeal_Case_Major_Id>
+    <Appeal_Case_BF_Date>2018-03-20T00:00:00+00:00</Appeal_Case_BF_Date>
+    <Originating_Office_Id>1682</Originating_Office_Id>
+    <Admin_Team_Id>84</Admin_Team_Id>
+    <Parties>
+      <PTTP_ID>5506051</PTTP_ID>
+      <Title>Mr.</Title>
+      <INITIALS>AN</INITIALS>
+      <Surname>Test</Surname>
+      <Phone_1>07500 113 937</Phone_1>
+      <Postcode>KA22 8HE</Postcode>
+      <Role_Id>4</Role_Id>
+      <Attending>N</Attending>
+      <Disability_Needs>N</Disability_Needs>
+      <DOB>1900-01-01T00:00:00+00:00</DOB>
+    </Parties>
+    <Parties>
+      <PTTP_ID>5506052</PTTP_ID>
+      <Title>Ms.</Title>
+      <INITIALS>AN</INITIALS>
+      <Surname>Other</Surname>
+      <Phone_1>07584 199 076</Phone_1>
+      <Postcode>KA22 8BH</Postcode>
+      <Role_Id>3</Role_Id>
+      <Attending>N</Attending>
+      <Disability_Needs>N</Disability_Needs>
+    </Parties>
+    <Major_Status>
+      <Status_Id>56</Status_Id>
+      <Date_Set>2018-03-01T10:25:56.973+00:00</Date_Set>
+      <BF_Date>2018-03-20T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>3</Status_Id>
+      <Date_Set>2018-02-14T10:25:56.973+00:00</Date_Set>
+      <Date_Closed>2018-02-14T11:26:00+00:00</Date_Closed>
+      <BF_Date>2018-03-20T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>600</Status_Id>
+      <Date_Set>2018-02-13T10:25:37.707+00:00</Date_Set>
+      <Date_Closed>2018-02-13T10:26:00+00:00</Date_Closed>
+      <BF_Date>2018-02-13T00:00:00+00:00</BF_Date>
+    </Major_Status>
+  </Appeal_Case>
+
+
+<!-- Withdrawn -->
+
+  <Appeal_Case>
+    <Extract_Time_UTC>2018-03-13T20:10:14.93+00:00</Extract_Time_UTC>
+    <Appeal_Case_Id>12</Appeal_Case_Id>
+    <Appeal_Case_RefNum>SC285/18/00012</Appeal_Case_RefNum>
+    <Appeal_Case_Confidential>N</Appeal_Case_Confidential>
+    <Appeal_Case_Case_Code_Id>1316</Appeal_Case_Case_Code_Id>
+    <Tribunal_Type_Id>2</Tribunal_Type_Id>
+    <Appeal_Case_Date_Appeal_Received>2018-03-01T00:00:00+01:00</Appeal_Case_Date_Appeal_Received>
+    <Appeal_Case_Date_of_Decision>2017-09-27T00:00:00+01:00</Appeal_Case_Date_of_Decision>
+    <Appeal_Case_Date_Appeal_Made>2018-03-01T00:00:00+01:00</Appeal_Case_Date_Appeal_Made>
+    <Appeal_Case_Date_FTA_Response_Received>2017-12-01T00:00:00+00:00</Appeal_Case_Date_FTA_Response_Received>
+    <Appeal_Case_NINO>JT 12 34 56 D</Appeal_Case_NINO>
+    <Appeal_Case_Major_Id>58</Appeal_Case_Major_Id>
+    <Appeal_Case_BF_Date>2018-03-22T00:00:00+00:00</Appeal_Case_BF_Date>
+    <Originating_Office_Id>1682</Originating_Office_Id>
+    <Admin_Team_Id>142</Admin_Team_Id>
+    <Parties>
+      <PTTP_ID>5368136</PTTP_ID>
+      <Title>Ms.</Title>
+      <INITIALS>AN</INITIALS>
+      <Surname>Test</Surname>
+      <Phone_1>6</Phone_1>
+      <Postcode>IP21 4TN</Postcode>
+      <Role_Id>4</Role_Id>
+      <Attending>Y</Attending>
+      <Disability_Needs>N</Disability_Needs>
+      <Interpreter_Signer_Id>239</Interpreter_Signer_Id>
+      <DOB>1900-01-01T00:00:00+00:00</DOB>
+    </Parties>
+    <Parties>
+      <PTTP_ID>5368137</PTTP_ID>
+      <Title>Mr.</Title>
+      <INITIALS>AN</INITIALS>
+      <Surname>Other</Surname>
+      <Phone_1>01379 651752</Phone_1>
+      <Postcode>IP22 4EH</Postcode>
+      <Role_Id>3</Role_Id>
+      <Attending>N</Attending>
+      <Disability_Needs>N</Disability_Needs>
+    </Parties>
+    <Major_Status>
+      <Status_Id>600</Status_Id>
+      <Date_Set>2017-10-26T16:00:01.23+01:00</Date_Set>
+      <Date_Closed>2017-10-26T16:00:00+01:00</Date_Closed>
+      <BF_Date>2017-10-26T00:00:00+01:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>58</Status_Id>
+      <Date_Set>2018-02-13T12:27:00.77+00:00</Date_Set>
+      <BF_Date>2018-03-22T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>18</Status_Id>
+      <Date_Set>2017-12-04T11:07:51.18+00:00</Date_Set>
+      <Date_Closed>2018-02-13T12:27:00+00:00</Date_Closed>
+      <BF_Date>2017-12-04T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>3</Status_Id>
+      <Date_Set>2017-10-26T16:00:12.083+01:00</Date_Set>
+      <Date_Closed>2017-12-04T11:08:00+00:00</Date_Closed>
+      <BF_Date>2017-11-30T00:00:00+00:00</BF_Date>
+    </Major_Status>
+  </Appeal_Case>
+
+  <!-- hearing booked -->
+
+  <Appeal_Case>
+    <Extract_Time_UTC>2018-03-13T20:10:14.93+00:00</Extract_Time_UTC>
+    <Appeal_Case_Id>13</Appeal_Case_Id>
+    <Appeal_Case_RefNum>SC285/18/00013</Appeal_Case_RefNum>
+    <Appeal_Case_Confidential>N</Appeal_Case_Confidential>
+    <Appeal_Case_Case_Code_Id>1316</Appeal_Case_Case_Code_Id>
+    <Tribunal_Type_Id>2</Tribunal_Type_Id>
+    <Appeal_Case_Date_Appeal_Received>2018-03-01T00:00:00+01:00</Appeal_Case_Date_Appeal_Received>
+    <Appeal_Case_Date_of_Decision>2017-11-17T00:00:00+00:00</Appeal_Case_Date_of_Decision>
+    <Appeal_Case_Date_Appeal_Made>2018-03-01T00:00:00+01:00</Appeal_Case_Date_Appeal_Made>
+    <Appeal_Case_Date_FTA_Response_Received>2018-01-24T00:00:00+00:00</Appeal_Case_Date_FTA_Response_Received>
+    <Appeal_Case_NINO>JT 12 34 56 D</Appeal_Case_NINO>
+    <Appeal_Case_Major_Id>24</Appeal_Case_Major_Id>
+    <Appeal_Case_BF_Date>2018-03-22T00:00:00+00:00</Appeal_Case_BF_Date>
+    <Originating_Office_Id>1699</Originating_Office_Id>
+    <Admin_Team_Id>64</Admin_Team_Id>
+    <Parties>
+      <PTTP_ID>5444175</PTTP_ID>
+      <Title>Mrs.</Title>
+      <INITIALS>K M</INITIALS>
+      <Surname>Other</Surname>
+      <Phone_1>01253 691158</Phone_1>
+      <Postcode>FY2 0QL</Postcode>
+      <Role_Id>4</Role_Id>
+      <Attending>Y</Attending>
+      <Disability_Needs>N</Disability_Needs>
+      <Interpreter_Signer_Id>239</Interpreter_Signer_Id>
+      <DOB>1900-01-01T00:00:00+00:00</DOB>
+    </Parties>
+    <Parties>
+      <PTTP_ID>5444176</PTTP_ID>
+      <Title>Mr.</Title>
+      <INITIALS>AN</INITIALS>
+      <Surname>Other</Surname>
+      <Phone_1>01253 691158</Phone_1>
+      <Postcode>FY2 0QL</Postcode>
+      <Role_Id>4</Role_Id>
+      <Attending>N</Attending>
+      <Disability_Needs>N</Disability_Needs>
+    </Parties>
+    <Further_Evidence>
+      <FUR_EVIDENCE_ID>2505046</FUR_EVIDENCE_ID>
+      <FE_Date_Received>2017-11-22T00:00:00+00:00</FE_Date_Received>
+      <FE_Date_Issued>2017-12-08T00:00:00+00:00</FE_Date_Issued>
+      <FE_Type_of_Evidence_Id>1</FE_Type_of_Evidence_Id>
+      <FE_Role_Id>4</FE_Role_Id>
+    </Further_Evidence>
+    <Hearing>
+      <Hearing_Id>3660350</Hearing_Id>
+      <Date_Hearing_Notification>2017-12-19T00:00:00+00:00</Date_Hearing_Notification>
+      <Date_Outcome_Decision_Notification>2018-01-19T00:00:00+00:00</Date_Outcome_Decision_Notification>
+      <Session_Date>2018-04-10T00:00:00+00:00</Session_Date>
+      <Appeal_Time>2018-01-19T15:00:00+00:00</Appeal_Time>
+      <Venue_Id>64</Venue_Id>
+    </Hearing>
+    <Hearing>
+      <Hearing_Id>3660349</Hearing_Id>
+      <Date_Hearing_Notification>2017-12-19T00:00:00+00:00</Date_Hearing_Notification>
+      <Date_Outcome_Decision_Notification>2018-01-19T00:00:00+00:00</Date_Outcome_Decision_Notification>
+      <Session_Date>2018-01-19T00:00:00+00:00</Session_Date>
+      <Appeal_Time>2018-01-19T15:00:00+00:00</Appeal_Time>
+      <Venue_Id>64</Venue_Id>
+      <Outcome_Id>12</Outcome_Id>
+    </Hearing>
+    <Major_Status>
+      <Status_Id>24</Status_Id>
+      <Date_Set>2018-03-24T15:01:28.993+01:00</Date_Set>
+      <BF_Date>2018-04-21T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>18</Status_Id>
+      <Date_Set>2018-01-19T13:47:31.033+00:00</Date_Set>
+      <Date_Closed>2018-02-14T11:16:00+00:00</Date_Closed>
+      <BF_Date>2018-02-02T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>24</Status_Id>
+      <Date_Set>2017-12-19T08:53:39.107+00:00</Date_Set>
+      <Date_Closed>2018-01-19T13:47:00+00:00</Date_Closed>
+      <BF_Date>2018-01-19T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>18</Status_Id>
+      <Date_Set>2017-11-16T11:15:37.107+00:00</Date_Set>
+      <Date_Closed>2017-12-19T08:54:00+00:00</Date_Closed>
+      <BF_Date>2017-11-16T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>3</Status_Id>
+      <Date_Set>2018-03-01T00:00:00+01:00</Date_Set>
+      <Date_Closed>2017-07-13T16:49:00+01:00</Date_Closed>
+      <BF_Date>2017-07-11T00:00:00+01:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>600</Status_Id>
+      <Date_Set>2017-06-06T12:17:50.407+01:00</Date_Set>
+      <Date_Closed>2017-06-06T12:18:00+01:00</Date_Closed>
+      <BF_Date>2017-06-06T00:00:00+01:00</BF_Date>
+    </Major_Status>
+    <Postponement_Requests>
+      <Appeal_Hearing_Id>3660349</Appeal_Hearing_Id>
+      <Role_Requested_By_Id>4</Role_Requested_By_Id>
+      <Postponement_Reason_Id>6</Postponement_Reason_Id>
+      <Postponement_Granted>Y</Postponement_Granted>
+    </Postponement_Requests>
+  </Appeal_Case>
+
+  <!-- Postponed  -->
+
+  <Appeal_Case>
+    <Extract_Time_UTC>2018-04-24T19:26:42.29+01:00</Extract_Time_UTC>
+    <Appeal_Case_Id>3553607</Appeal_Case_Id>
+    <Appeal_Case_RefNum>SC285/18/00011</Appeal_Case_RefNum>
+    <Appeal_Case_Confidential>N</Appeal_Case_Confidential>
+    <Appeal_Case_Case_Code_Id>1739</Appeal_Case_Case_Code_Id>
+    <Tribunal_Type_Id>2</Tribunal_Type_Id>
+    <Appeal_Case_Date_Appeal_Received>2018-03-05T00:00:00+00:00</Appeal_Case_Date_Appeal_Received>
+    <Appeal_Case_Date_of_Decision>2018-02-25T00:00:00+00:00</Appeal_Case_Date_of_Decision>
+    <Appeal_Case_Date_Appeal_Made>2018-03-05T00:00:00+00:00</Appeal_Case_Date_Appeal_Made>
+    <Appeal_Case_Date_FTA_Response_Received>2018-03-26T00:00:00+01:00</Appeal_Case_Date_FTA_Response_Received>
+    <Appeal_Case_NINO>NW 23 34 45 A</Appeal_Case_NINO>
+    <Appeal_Case_Major_Id>24</Appeal_Case_Major_Id>
+    <Appeal_Case_BF_Date>2018-05-31T00:00:00+01:00</Appeal_Case_BF_Date>
+    <Originating_Office_Id>1682</Originating_Office_Id>
+    <Admin_Team_Id>68</Admin_Team_Id>
+    <Parties>
+      <PTTP_ID>5534639</PTTP_ID>
+      <Title>Miss</Title>
+      <INITIALS>S</INITIALS>
+      <Surname>Test</Surname>
+      <Email>shuvla@hotmail.com</Email>
+      <Phone_1>07704244054</Phone_1>
+      <Postcode>L24 4BG</Postcode>
+      <Role_Id>4</Role_Id>
+      <Attending>Y</Attending>
+      <Disability_Needs>N</Disability_Needs>
+      <Interpreter_Signer_Id>206</Interpreter_Signer_Id>
+      <DOB>1982-12-10T00:00:00+00:00</DOB>
+    </Parties>
+    <Hearing>
+      <Hearing_Id>3751424</Hearing_Id>
+      <Date_Hearing_Notification>2018-04-24T00:00:00+01:00</Date_Hearing_Notification>
+      <Session_Date>2018-05-31T00:00:00+01:00</Session_Date>
+      <Appeal_Time>2018-04-24T09:00:00+01:00</Appeal_Time>
+      <Venue_Id>68</Venue_Id>
+      <Outcome_Id>16</Outcome_Id>
+    </Hearing>
+    <Major_Status>
+      <Status_Id>24</Status_Id>
+      <Date_Set>2018-04-24T10:56:25.463+01:00</Date_Set>
+      <BF_Date>2018-05-31T00:00:00+01:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>18</Status_Id>
+      <Date_Set>2018-03-26T11:44:40.23+01:00</Date_Set>
+      <Date_Closed>2018-03-27T19:08:00+01:00</Date_Closed>
+      <BF_Date>2018-03-26T00:00:00+01:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>3</Status_Id>
+      <Date_Set>2018-03-06T07:33:56.07+00:00</Date_Set>
+      <Date_Closed>2018-03-26T11:45:00+01:00</Date_Closed>
+      <BF_Date>2018-04-10T00:00:00+01:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>600</Status_Id>
+      <Date_Set>2018-03-06T07:33:36.007+00:00</Date_Set>
+      <Date_Closed>2018-03-06T07:34:00+00:00</Date_Closed>
+      <BF_Date>2018-03-06T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>24</Status_Id>
+      <Date_Set>2018-03-27T19:08:24.263+01:00</Date_Set>
+      <Date_Closed>2018-03-28T16:57:00+01:00</Date_Closed>
+      <BF_Date>2018-04-25T00:00:00+01:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>18</Status_Id>
+      <Date_Set>2018-03-28T16:56:51.733+01:00</Date_Set>
+      <Date_Closed>2018-04-24T10:56:00+01:00</Date_Closed>
+      <BF_Date>2018-03-28T00:00:00+01:00</BF_Date>
+    </Major_Status>
+  </Appeal_Case>
+
+  <!-- new hearing booked -->
+  <Appeal_Case>
+    <Extract_Time_UTC>2018-02-13T20:10:14.93+00:00</Extract_Time_UTC>
+    <Appeal_Case_Id>11</Appeal_Case_Id>
+    <Appeal_Case_RefNum>SC285/18/00016</Appeal_Case_RefNum>
+    <Appeal_Case_Confidential>N</Appeal_Case_Confidential>
+    <Appeal_Case_Case_Code_Id>1316</Appeal_Case_Case_Code_Id>
+    <Tribunal_Type_Id>2</Tribunal_Type_Id>
+    <Appeal_Case_Date_Appeal_Received>2018-03-01T00:00:00+01:00</Appeal_Case_Date_Appeal_Received>
+    <Appeal_Case_Date_of_Decision>2017-06-27T00:00:00+01:00</Appeal_Case_Date_of_Decision>
+    <Appeal_Case_Date_Appeal_Made>2018-03-01T00:00:00+01:00</Appeal_Case_Date_Appeal_Made>
+    <Appeal_Case_Date_FTA_Response_Received>2017-08-02T00:00:00+01:00</Appeal_Case_Date_FTA_Response_Received>
+    <Appeal_Case_NINO>JT 12 34 56 D</Appeal_Case_NINO>
+    <Appeal_Case_Major_Id>24</Appeal_Case_Major_Id>
+    <Appeal_Case_BF_Date>2018-02-13T00:00:00+00:00</Appeal_Case_BF_Date>
+    <Originating_Office_Id>1682</Originating_Office_Id>
+    <Admin_Team_Id>241</Admin_Team_Id>
+    <Parties>
+      <PTTP_ID>5238754</PTTP_ID>
+      <Title>Mrs.</Title>
+      <INITIALS>AN</INITIALS>
+      <Surname>Test</Surname>
+      <Phone_1>5</Phone_1>
+      <Postcode>SS11 8HY</Postcode>
+      <Role_Id>4</Role_Id>
+      <Attending>Y</Attending>
+      <Disability_Needs>N</Disability_Needs>
+      <Interpreter_Signer_Id>239</Interpreter_Signer_Id>
+      <DOB>1900-01-01T00:00:00+00:00</DOB>
+    </Parties>
+    <Further_Evidence>
+      <FUR_EVIDENCE_ID>2505046</FUR_EVIDENCE_ID>
+      <FE_Date_Received>2017-11-22T00:00:00+00:00</FE_Date_Received>
+      <FE_Date_Issued>2017-12-08T00:00:00+00:00</FE_Date_Issued>
+      <FE_Type_of_Evidence_Id>1</FE_Type_of_Evidence_Id>
+      <FE_Role_Id>4</FE_Role_Id>
+    </Further_Evidence>
+    <Hearing>
+      <Hearing_Id>3660349</Hearing_Id>
+      <Date_Hearing_Notification>2017-12-19T00:00:00+00:00</Date_Hearing_Notification>
+      <Date_Outcome_Decision_Notification>2018-01-19T00:00:00+00:00</Date_Outcome_Decision_Notification>
+      <Session_Date>2018-01-19T00:00:00+00:00</Session_Date>
+      <Appeal_Time>2018-01-19T15:00:00+00:00</Appeal_Time>
+      <Venue_Id>64</Venue_Id>
+      <Outcome_Id>11</Outcome_Id>
+    </Hearing>
+    <Hearing>
+      <Hearing_Id>3660349</Hearing_Id>
+      <Date_Hearing_Notification>2017-12-19T00:00:00+00:00</Date_Hearing_Notification>
+      <Date_Outcome_Decision_Notification>2018-01-19T00:00:00+00:00</Date_Outcome_Decision_Notification>
+      <Session_Date>2018-01-19T00:00:00+00:00</Session_Date>
+      <Appeal_Time>2018-01-19T15:00:00+00:00</Appeal_Time>
+      <Venue_Id>64</Venue_Id>
+      <Outcome_Id>11</Outcome_Id>
+    </Hearing>
+    <Major_Status>
+      <Status_Id>600</Status_Id>
+      <Date_Set>2018-03-01T00:00:00+01:00</Date_Set>
+      <Date_Closed>2017-06-06T12:18:00+01:00</Date_Closed>
+      <BF_Date>2017-06-06T00:00:00+01:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>3</Status_Id>
+      <Date_Set>2018-03-01T00:00:00+01:00</Date_Set>
+      <Date_Closed>2018-03-01T00:00:00+01:00</Date_Closed>
+      <BF_Date>2018-03-01T00:00:00+01:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>18</Status_Id>
+      <Date_Set>2018-03-02T00:00:00+01:00</Date_Set>
+      <Date_Closed>2018-03-02T00:00:00+01:00</Date_Closed>
+      <BF_Date>2018-03-02T00:00:00+01:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>24</Status_Id>
+      <Date_Set>2018-03-03T00:00:00+01:00</Date_Set>
+      <Date_Closed>2018-03-03T13:47:00+00:00</Date_Closed>
+      <BF_Date>2018-03-03T13:47:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>27</Status_Id>
+      <Date_Set>2018-03-19T13:47:31.033+00:00</Date_Set>
+      <Date_Closed>2018-03-19T13:47:31.033+00:00</Date_Closed>
+      <BF_Date>2018-03-19T13:47:31.033+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>24</Status_Id>
+      <Date_Set>2018-04-06T08:53:39.107+00:00</Date_Set>
+      <BF_Date>2018-04-06T08:53:39.107+00:00</BF_Date>
+    </Major_Status>
+    <Postponement_Requests>
+      <Appeal_Hearing_Id>3660349</Appeal_Hearing_Id>
+      <Role_Requested_By_Id>4</Role_Requested_By_Id>
+      <Postponement_Reason_Id>6</Postponement_Reason_Id>
+      <Postponement_Granted>Y</Postponement_Granted>
+    </Postponement_Requests>
+  </Appeal_Case>
+
+  <!-- Ajourned -->
+
+  <Appeal_Case>
+    <Extract_Time_UTC>2018-03-06T20:26:05.1+00:00</Extract_Time_UTC>
+    <Appeal_Case_Id>3553607</Appeal_Case_Id>
+    <Appeal_Case_RefNum>SC285/18/00017</Appeal_Case_RefNum>
+    <Appeal_Case_Confidential>N</Appeal_Case_Confidential>
+    <Appeal_Case_Case_Code_Id>1707</Appeal_Case_Case_Code_Id>
+    <Tribunal_Type_Id>2</Tribunal_Type_Id>
+    <Appeal_Case_Date_Appeal_Received>2018-03-05T00:00:00+00:00</Appeal_Case_Date_Appeal_Received>
+    <Appeal_Case_Date_of_Decision>2018-02-25T00:00:00+00:00</Appeal_Case_Date_of_Decision>
+    <Appeal_Case_Date_Appeal_Made>2018-03-05T00:00:00+00:00</Appeal_Case_Date_Appeal_Made>
+    <Appeal_Case_NINO>NW 23 34 45 A</Appeal_Case_NINO>
+    <Appeal_Case_Major_Id>3</Appeal_Case_Major_Id>
+    <Appeal_Case_BF_Date>2018-04-10T00:00:00+01:00</Appeal_Case_BF_Date>
+    <Originating_Office_Id>1682</Originating_Office_Id>
+    <Admin_Team_Id>68</Admin_Team_Id>
+    <Parties>
+      <PTTP_ID>5534639</PTTP_ID>
+      <Title>Miss</Title>
+      <INITIALS>S</INITIALS>
+      <Surname>Test</Surname>
+      <Email>shuvla@hotmail.com</Email>
+      <Phone_1>07704244054</Phone_1>
+      <Postcode>L24 4BG</Postcode>
+      <Role_Id>4</Role_Id>
+      <Attending>Y</Attending>
+      <Disability_Needs>N</Disability_Needs>
+      <Interpreter_Signer_Id>206</Interpreter_Signer_Id>
+      <DOB>1982-12-10T00:00:00+00:00</DOB>
+    </Parties>
+    <Hearing>
+      <Hearing_Id>289784</Hearing_Id>
+      <Date_Hearing_Notification>2018-03-19T00:00:00+01:00</Date_Hearing_Notification>
+      <Date_Outcome_Decision_Notification>2018-03-19T00:00:00+01:00</Date_Outcome_Decision_Notification>
+      <Session_Date>2018-03-19T00:00:00+01:00</Session_Date>
+      <Appeal_Time>2018-03-19T11:00:00+01:00</Appeal_Time>
+      <Venue_Id>68</Venue_Id>
+      <Outcome_Id>110</Outcome_Id>
+    </Hearing>
+    <Major_Status>
+      <Status_Id>18</Status_Id>
+      <Date_Set>2018-03-08T08:33:56.07+00:00</Date_Set>
+      <BF_Date>2018-04-10T00:00:00+01:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>24</Status_Id>
+      <Date_Set>2018-03-08T08:33:56.07+00:00</Date_Set>
+      <BF_Date>2018-04-10T00:00:00+01:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>18</Status_Id>
+      <Date_Set>2018-03-07T08:33:56.07+00:00</Date_Set>
+      <BF_Date>2018-04-10T00:00:00+01:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>3</Status_Id>
+      <Date_Set>2018-03-06T08:33:56.07+00:00</Date_Set>
+      <BF_Date>2018-04-10T00:00:00+01:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>600</Status_Id>
+      <Date_Set>2018-03-06T07:33:36.007+00:00</Date_Set>
+      <Date_Closed>2018-03-06T07:34:00+00:00</Date_Closed>
+      <BF_Date>2018-03-06T00:00:00+01:00</BF_Date>
+    </Major_Status>
+  </Appeal_Case>
+
+
+  <!-- DWP Respond -->
+  <Appeal_Case>
+    <Extract_Time_UTC>2018-05-23T16:14:20+01:00</Extract_Time_UTC>
+    <Appeal_Case_Id>952745</Appeal_Case_Id>
+    <Appeal_Case_RefNum>SC285/18/00018</Appeal_Case_RefNum>
+    <Appeal_Case_Case_Code_Id>1707</Appeal_Case_Case_Code_Id>
+    <Tribunal_Type_Id>2</Tribunal_Type_Id>
+    <Appeal_Case_Date_Appeal_Received>2018-05-18T16:14:20+01:00</Appeal_Case_Date_Appeal_Received>
+    <Appeal_Case_Date_of_Decision>2018-05-23T16:14:20+01:00</Appeal_Case_Date_of_Decision>
+    <Appeal_Case_Date_Appeal_Made>2018-05-17T16:14:20+01:00</Appeal_Case_Date_Appeal_Made>
+    <Appeal_Case_NINO>JA 00 00 00 A</Appeal_Case_NINO>
+    <Appeal_Case_Major_Id>18</Appeal_Case_Major_Id>
+    <Appeal_Case_BF_Date>2018-06-05T16:14:20+01:00</Appeal_Case_BF_Date>
+    <Originating_Office_Id>943</Originating_Office_Id>
+    <Admin_Team_Id>998</Admin_Team_Id>
+    <Parties>
+      <PTTP_ID>4</PTTP_ID>
+      <Title>Mr</Title>
+      <INITIALS>D</INITIALS>
+      <Surname>test</Surname>
+      <Postcode>HA4 1ER</Postcode>
+      <Role_Id>4</Role_Id>
+      <Attending>Y</Attending>
+      <Disability_Needs>N</Disability_Needs>
+    </Parties>
+    <Hearing>
+      <Hearing_Id>952745</Hearing_Id>
+      <Date_Hearing_Notification>2018-05-24T16:14:20+01:00</Date_Hearing_Notification>
+      <Date_Outcome_Decision_Notification>2018-05-24T16:14:20+01:00</Date_Outcome_Decision_Notification>
+      <Session_Date>2018-05-28T16:14:20+01:00</Session_Date>
+      <Appeal_Time>2018-05-28T16:14:20+01:00</Appeal_Time>
+      <Venue_Id>1</Venue_Id>
+    </Hearing>
+    <Major_Status>
+      <Status_Id>600</Status_Id>
+      <Date_Set>2018-05-19T16:14:20+01:00</Date_Set>
+      <Date_Closed>2018-05-20T16:14:20+01:00</Date_Closed>
+      <BF_Date>2018-05-19T16:14:20+01:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>3</Status_Id>
+      <Date_Set>2018-05-20T16:14:20+01:00</Date_Set>
+      <Date_Closed>2018-05-21T16:14:20+01:00</Date_Closed>
+      <BF_Date>2018-05-21T16:14:20+01:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>18</Status_Id>
+      <Date_Set>2018-06-08T16:14:20+01:00</Date_Set>
+      <BF_Date>2018-05-22T16:14:20+01:00</BF_Date>
+    </Major_Status>
+  </Appeal_Case>
+
+
+  <!-- Dormant -->
+
+  <Appeal_Case>
+    <Extract_Time_UTC>2018-02-13T20:10:14.93+00:00</Extract_Time_UTC>
+    <Appeal_Case_Id>5</Appeal_Case_Id>
+    <Appeal_Case_RefNum>SC285/18/10019</Appeal_Case_RefNum>
+    <Appeal_Case_Confidential>N</Appeal_Case_Confidential>
+    <Appeal_Case_Case_Code_Id>1316</Appeal_Case_Case_Code_Id>
+    <Tribunal_Type_Id>2</Tribunal_Type_Id>
+    <Appeal_Case_Date_Appeal_Received>2018-06-01T00:00:00+01:00</Appeal_Case_Date_Appeal_Received>
+    <Appeal_Case_Date_of_Decision>2018-06-06T00:00:00+00:00</Appeal_Case_Date_of_Decision>
+    <Appeal_Case_Date_Appeal_Made>2018-06-05T00:00:00+00:00</Appeal_Case_Date_Appeal_Made>
+    <Appeal_Case_NINO>JT 12 34 56 D</Appeal_Case_NINO>
+    <Appeal_Case_Major_Id>33</Appeal_Case_Major_Id>
+    <Appeal_Case_BF_Date>2018-06-05T00:00:00+00:00</Appeal_Case_BF_Date>
+    <Originating_Office_Id>1681</Originating_Office_Id>
+    <Admin_Team_Id>1246</Admin_Team_Id>
+    <Parties>
+      <PTTP_ID>5505708</PTTP_ID>
+      <Title>Miss</Title>
+      <INITIALS>AN</INITIALS>
+      <Surname>Test</Surname>
+      <Phone_1>01424 752419</Phone_1>
+      <Postcode>TN35 4QP</Postcode>
+      <Role_Id>4</Role_Id>
+      <Attending>Y</Attending>
+      <Disability_Needs>N</Disability_Needs>
+      <Interpreter_Signer_Id>239</Interpreter_Signer_Id>
+      <DOB>1900-01-01T00:00:00+00:00</DOB>
+    </Parties>
+    <Hearing>
+      <Hearing_Id>3698764</Hearing_Id>
+      <Date_Hearing_Notification>2018-02-09T00:00:00+00:00</Date_Hearing_Notification>
+      <Session_Date>2018-06-01T00:00:00+00:00</Session_Date>
+      <Appeal_Time>2018-06-02T11:40:00+00:00</Appeal_Time>
+      <Venue_Id>64</Venue_Id>
+    </Hearing>
+    <Major_Status>
+      <Status_Id>33</Status_Id>
+      <Date_Set>2018-07-05T14:38:26.443+00:00</Date_Set>
+      <BF_Date>2018-07-04T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>18</Status_Id>
+      <Date_Set>2018-05-09T11:16:01.867+00:00</Date_Set>
+      <Date_Closed>2018-02-09T14:38:00+00:00</Date_Closed>
+      <BF_Date>2017-11-09T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>24</Status_Id>
+      <Date_Set>2018-02-09T14:38:26.443+00:00</Date_Set>
+      <Date_Closed>2018-02-11T14:38:00+00:00</Date_Closed>
+      <BF_Date>2018-03-20T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>600</Status_Id>
+      <Date_Set>2017-10-06T10:38:13.827+01:00</Date_Set>
+      <Date_Closed>2017-10-06T10:38:00+01:00</Date_Closed>
+      <BF_Date>2017-10-06T00:00:00+01:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>3</Status_Id>
+      <Date_Set>2017-10-06T10:38:25.19+01:00</Date_Set>
+      <Date_Closed>2017-11-09T11:16:00+00:00</Date_Closed>
+      <BF_Date>2017-11-10T00:00:00+00:00</BF_Date>
+    </Major_Status>
+  </Appeal_Case>
+
+  <!-- Hearing -->
+
+  <Appeal_Case>
+    <Extract_Time_UTC>2018-02-13T20:10:14.93+00:00</Extract_Time_UTC>
+    <Appeal_Case_Id>4</Appeal_Case_Id>
+    <Appeal_Case_RefNum>SC285/18/10020</Appeal_Case_RefNum>
+    <Appeal_Case_Confidential>N</Appeal_Case_Confidential>
+    <Appeal_Case_Case_Code_Id>1316</Appeal_Case_Case_Code_Id>
+    <Tribunal_Type_Id>1</Tribunal_Type_Id>
+    <Appeal_Case_Date_Appeal_Received>2018-03-01T00:00:00+01:00</Appeal_Case_Date_Appeal_Received>
+    <Appeal_Case_Date_of_Decision>2018-06-08T14:38:26.443+00:00</Appeal_Case_Date_of_Decision>
+    <Appeal_Case_Date_Appeal_Made>2017-12-21T00:00:00+00:00</Appeal_Case_Date_Appeal_Made>
+    <Appeal_Case_Date_FTA_Response_Received>2018-01-22T00:00:00+00:00</Appeal_Case_Date_FTA_Response_Received>
+    <Appeal_Case_NINO>JT 12 34 56 D</Appeal_Case_NINO>
+    <Appeal_Case_Major_Id>33</Appeal_Case_Major_Id>
+    <Appeal_Case_BF_Date>2018-04-05T14:38:26.443+00:00</Appeal_Case_BF_Date>
+    <Originating_Office_Id>1303</Originating_Office_Id>
+    <Admin_Team_Id>101</Admin_Team_Id>
+    <Parties>
+      <PTTP_ID>5445123</PTTP_ID>
+      <Title>Miss</Title>
+      <INITIALS>AN</INITIALS>
+      <Surname>Test</Surname>
+      <Phone_1>1</Phone_1>
+      <Postcode>ML1 4NE</Postcode>
+      <Role_Id>4</Role_Id>
+      <Attending>N</Attending>
+      <Disability_Needs>N</Disability_Needs>
+      <Interpreter_Signer_Id>239</Interpreter_Signer_Id>
+      <DOB>1900-01-01T00:00:00+00:00</DOB>
+    </Parties>
+    <Hearing>
+      <Hearing_Id>3680904</Hearing_Id>
+      <Date_Hearing_Notification>2018-02-25T14:38:26.443+00:00</Date_Hearing_Notification>
+      <Date_Outcome_Decision_Notification>2018-02-25T14:38:26.443+00:00</Date_Outcome_Decision_Notification>
+      <Session_Date>2018-03-25T14:38:26.443+00:00</Session_Date>
+      <Appeal_Time>2018-03-25T15:30:00+00:00</Appeal_Time>
+      <Venue_Id>96</Venue_Id>
+      <Outcome_Id>10</Outcome_Id>
+    </Hearing>
+    <Major_Status>
+      <Status_Id>33</Status_Id>
+      <Date_Set>2018-07-08T14:38:26.443+00:00</Date_Set>
+      <BF_Date>2018-07-05T14:38:26.443+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>24</Status_Id>
+      <Date_Set>2018-02-09T14:38:26.443+00:00</Date_Set>
+      <Date_Closed>2018-02-09T14:38:26.443+00:00</Date_Closed>
+      <BF_Date>2018-03-20T00:00:00+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>18</Status_Id>
+      <Date_Set>2018-02-09T14:38:26.443+00:00</Date_Set>
+      <Date_Closed>2018-02-09T14:38:00+00:00</Date_Closed>
+      <BF_Date>2018-02-09T14:38:26.443+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>3</Status_Id>
+      <Date_Set>2018-02-03T14:38:26.443+00:00</Date_Set>
+      <Date_Closed>2018-02-03T14:38:26.443+00:00</Date_Closed>
+      <BF_Date>2018-02-03T14:38:26.443+00:00</BF_Date>
+    </Major_Status>
+    <Major_Status>
+      <Status_Id>600</Status_Id>
+      <Date_Set>2018-02-03T14:38:26.443+00:00</Date_Set>
+      <Date_Closed>2018-02-03T14:38:26.443+00:00</Date_Closed>
+      <BF_Date>2018-02-03T14:38:26.443+00:00</BF_Date>
+    </Major_Status>
+  </Appeal_Case>
+
+  <Num_Records>
+    <NumberOfCases>17</NumberOfCases>
+  </Num_Records>
+  <Schema_Version>
+    <Version xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">0.8</Version>
+  </Schema_Version>
+</Appeal_Cases>
