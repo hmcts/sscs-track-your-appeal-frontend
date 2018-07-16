@@ -27,6 +27,7 @@ variable "subscription" {
 variable "ilbIp" {}
 
 variable "additional_hostname" {
+  type    = "list"
   default = ["track-appeal.sandbox.platform.hmcts.net"]
 }
 
