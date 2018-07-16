@@ -1,0 +1,20 @@
+#!groovy
+
+properties([
+        parameters([string(name: 'LIB_VERSION', defaultValue: 'master', description: 'Branch name of pipeline library to use')]),
+        pipelineTriggers([cron('15 02 * * *')])
+])
+
+library "Infrastructure@${params.LIB_VERSION}"
+
+String product = "SSCS"
+
+String component = "TYA"
+
+def type = "nodejs"
+
+withNightlyPipeline(type,product,component) {
+
+    env.TEST_URL = 'https://track-appeal.nonprod.platform.hmcts.net'
+    enableCrossBrowserTest()
+}
