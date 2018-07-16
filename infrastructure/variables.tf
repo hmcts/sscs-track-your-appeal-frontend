@@ -1,9 +1,9 @@
 variable "product" {
-  type    = "string"
+  type = "string"
 }
 
 variable "component" {
-  type   = "string"
+  type = "string"
 }
 
 variable "location" {
@@ -24,7 +24,7 @@ variable "subscription" {
   type = "string"
 }
 
-variable "ilbIp"{}
+variable "ilbIp" {}
 
 variable "additional_hostname" {
   default = ["track-appeal.sandbox.platform.hmcts.net"]

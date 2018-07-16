@@ -18,7 +18,7 @@ locals {
   aseName = "${data.terraform_remote_state.core_apps_compute.ase_name[0]}"
 
   localApiUrl = "http://sscs-tribunals-api-${var.env}.service.${local.aseName}.internal"
-  ApiUrl = "${var.env == "preview" ? "http://sscs-tribunals-api-aat.service.core-compute-aat.internal" : local.localApiUrl}"
+  ApiUrl      = "${var.env == "preview" ? "http://sscs-tribunals-api-aat.service.core-compute-aat.internal" : local.localApiUrl}"
 }
 
 module "tya-frontend" {
@@ -29,7 +29,7 @@ module "tya-frontend" {
   ilbIp                = "${var.ilbIp}"
   is_frontend          = "${var.env != "preview" ? 1: 0}"
   subscription         = "${var.subscription}"
-  additional_host_name = var.env != "preview" ? var.additional_hostname : []
+  additional_host_name = "${var.env != "preview" ? var.additional_hostname : []}"
   https_only           = "${var.env != "preview" ? "true" : "true"}"
   common_tags          = "${var.common_tags}"
 
@@ -42,5 +42,3 @@ module "tya-frontend" {
     HPKP_SHA256_BACKUP           = "${data.vault_generic_secret.hpkp_tya_sha_2.data["value"]}"
   }
 }
-
-
