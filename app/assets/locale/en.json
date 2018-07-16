@@ -312,6 +312,7 @@
     "heading": "Enter your last name - Appeal a benefit decision - GOV.UK",
     "submit": "Track your appeal",
     "surname": {
+      "hint": "This is to check it's your appeal and protect your personal information",
       "errors": {
         "emptyStringHeading": "Enter your last name to continue",
         "notValidHeading": "You have entered an invalid last name. Enter your last name in full",
