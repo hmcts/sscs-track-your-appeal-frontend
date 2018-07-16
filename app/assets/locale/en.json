@@ -66,7 +66,10 @@
     },
     "pastHearingBooked": {
       "heading": "Still booking a hearing",
-      "content": "We’re still trying to find a suitable time for your {{benefitType|acronym}} benefit appeal. We’ll contact you as soon as we’ve scheduled it. We apologise for any inconvenience this may cause you."
+      "content": [
+        "A hearing has still not been booked for your  {{benefitType|acronym}} benefit appeal because the tribunal is busier than expected. Your hearing will be booked as soon as possible. We are sorry for any inconvenience this has caused you.",
+        "You don’t need to do anything. You’ll receive another update on your hearing by {{hearingContactDate|formatDate}}"
+      ]
     },
     "postponed": {
       "heading": "Hearing postponed",
