@@ -35,7 +35,8 @@
     "dwpRespondOverdue": {
       "heading": "DWP response overdue",
       "content": [
-        "DWP were due to respond to your appeal by {{dwpResponseDate|formatDate}}. We’ve written to them again to remind them. We’ll let you know when they respond."
+        "DWP were due to respond to your appeal by {{dwpResponseDate|formatDate}} but they have not yet done so.",
+        "You don’t have to do anything. We’ve contacted them again to ask them to respond. We’ll let you know when they do."
       ]
     },
     "evidenceReceived": {
