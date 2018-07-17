@@ -9,7 +9,10 @@
     },
     "appealReceived": {
       "heading": "Appeal received",
-      "content": "We’ve told DWP that you’ve appealed against their decision. They should respond before {{dwpResponseDate|formatDate}}. We’ll contact you and explain the next steps when they’ve replied."
+      "content": [
+        "Your {{benefitType|fullDescription}} benefit appeal has been lodged.",
+        "DWP now have to respond to your appeal by {{dwpResponseDate|formatDate}}. You’ll get another email explaining what happens next, after they’ve responded."
+      ]
     },
     "closed": {
       "heading": "Appeal closed",
