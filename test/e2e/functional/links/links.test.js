@@ -2,7 +2,7 @@ const { hearing, claimExpenses, evidence, contactUs, cookiePolicy } = require('a
 const { appeal } = require('test/mock/data/appealReceived');
 const paths = require('paths');
 
-Feature('TYA anchor links ');
+Feature('TYA anchor links');
 
 Before(I => {
   I.enterSurnameAndSubmitAndSeeTYA(appeal);
