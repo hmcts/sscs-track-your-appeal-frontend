@@ -28,8 +28,8 @@
     "dwpRespond": {
       "heading": "DWP response",
       "content": [
-        "DWP have written a response to your {{benefitType|acronym}} benefit appeal. They should have sent you a copy in the post.",
-        "We now need to book your hearing. You don’t need to do anything. We’ll contact you again when we have a date for your hearing. Unfortunately we can’t say how long it will take to book but it may be some time. It will depend on how busy the hearing venues are."
+        "DWP have responded to your {{benefitType|acronym}} benefit appeal. They should have sent you a copy of their response in the post.",
+        "Your appeal hearing needs to be booked. You don’t need to do anything. You’ll receive another update by {{hearingContactDate|formatDate}}."
       ]
     },
     "dwpRespondOverdue": {
