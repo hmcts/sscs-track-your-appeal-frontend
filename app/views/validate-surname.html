@@ -15,13 +15,13 @@
 
         {% include "errors/summary.html" %}
 
-        <h1 class="heading-large">{{ i18n.validateSurname.heading }}</h1>
+        <h1 class="heading-large">{{ i18n.validateSurname.title }}</h1>
 
         <form action="/validate-surname/{{ id }}/{{ originalPage }}" method="post">
 
             {{ textField(
                 label='',
-                hint='',
+                hint=i18n.validateSurname.surname.hint,
                 name='surname',
                 field=fields.surname
             ) }}
