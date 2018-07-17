@@ -8,6 +8,15 @@ const supportedBrowsers = {
     ignoreProtectedModeSettings: true,
     version: '11'
   },
+  edge_win10: {
+    browserName: 'MicrosoftEdge',
+    name: 'Edge_Win10',
+    platform: 'Windows 10',
+    ignoreZoomSetting: true,
+    nativeEvents: false,
+    ignoreProtectedModeSettings: true,
+    version: '17.17134'
+  },
   chrome_win_latest: {
     browserName: 'chrome',
     name: 'WIN_CHROME_LATEST',
