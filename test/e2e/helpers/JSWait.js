@@ -13,7 +13,7 @@ class JSWait extends codecept_helper {
   async navByClick (text, locator) {
     const helper = this.helpers['WebDriverIO'] || this.helpers['Puppeteer'];
     const helperIsPuppeteer = this.helpers['Puppeteer'];
-
+    helper.wait(5);
     helper.click(text, locator);
 
     if (helperIsPuppeteer) {
@@ -29,7 +29,7 @@ class JSWait extends codecept_helper {
       if (url.indexOf('http') !== 0) {
         url = helper.options.url + url;
       }
-      
+
       helper.page.goto(url);
       await helper.page.waitForNavigation({waitUntil: 'networkidle0'});
 
