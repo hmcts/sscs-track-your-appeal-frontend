@@ -8,15 +8,17 @@ Before(I => {
   I.enterSurnameAndSubmitAndSeeTYA(appeal);
 });
 
-Scenario.only('Verify past hearing booked appeal details, progress bar status, screen reader text and content', I => {
+Scenario('Verify past hearing booked appeal details, progress bar status, screen reader text and content', I => {
   I.seeAppealDetails(appeal);
   I.seeProgressBarAtDWPRespond();
   I.seeScreenReaderTextAtDWPRespond();
 
   // Content
   I.see(common.latestUpdate);
-  I.see(env.renderString(status.pastHearingBooked.content, {
-    benefitType: appeal.benefitType,
-    hearingContactDate: appeal.latestEvents[0].hearingContactDate
-  }));
+  status.pastHearingBooked.content.forEach(content => {
+    I.see(env.renderString(content, {
+      benefitType: appeal.benefitType,
+      hearingContactDate: appeal.latestEvents[0].hearingContactDate
+    }));
+  });
 });
