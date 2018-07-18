@@ -1,5 +1,9 @@
 const config = require('config');
 
+const chromeArgs = ['--no-sandbox'];
+
+if (process.env.TEST_UR) chromeArgs.push('--proxy-server=proxyout.reform.hmcts.net:8080');
+
 exports.config = {
   tests: './**/*.test.js',
   output: process.cwd() + '/functional-output', // eslint-disable-line prefer-template
@@ -14,10 +18,7 @@ exports.config = {
       windowSize: ' 800x1000',
       chrome: {
         ignoreHTTPSErrors: true,
-        args: [
-          '--no-sandbox',
-          '--proxy-server=proxyout.reform.hmcts.net:8080'
-        ]
+        args: chromeArgs
       }
     },
     MyPuppeteer: { require: './helpers/JSWait.js' }
@@ -43,6 +44,12 @@ exports.config = {
           charts: true
         }
       }
+    }
+  },
+  multiple: {
+    parallel: {
+      chunks: 2,
+      browsers: 'chrome'
     }
   },
   name: 'TYA tests'

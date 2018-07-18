@@ -10,7 +10,7 @@ Before(I => {
 Scenario('verify contact us page', I => {
   // Click into 'Contact us'
   I.navByClick(contactUs.title);
-
+  I.wait('2');
   // See the title
   I.see(contactUs.title);
 

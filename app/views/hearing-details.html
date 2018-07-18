@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-Hearing Details
+Check your hearing details  {{ i18n.common.titleContext }}
 {% endblock %}
 
 {% block content %}
@@ -15,7 +15,7 @@ Hearing Details
             <h1 class="heading-xlarge">{{ i18n.hearingDetails.checkDetails }}</h1>
             <div class="details">
                 <h2 class="heading-medium">{{ appeal.name }}</h2>
-                <h2 class="form-hint">{{ i18n.common.appealReferenceNumber }}: {{ appeal.caseReference }}</h2>
+                <h2>{{ i18n.common.appealReferenceNumber }}: {{ appeal.caseReference }}</h2>
             </div>
             <div class="divider"></div>
         </div>
