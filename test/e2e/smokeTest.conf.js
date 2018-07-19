@@ -2,7 +2,7 @@ const config = require('config');
 
 const chromeArgs = ['--no-sandbox'];
 
-if (process.env.TEST_UR) chromeArgs.push('--proxy-server=proxyout.reform.hmcts.net:8080');
+if (process.env.TEST_URL) chromeArgs.push('--proxy-server=proxyout.reform.hmcts.net:8080');
 
 exports.config = {
   tests: './**/*.test.js',
