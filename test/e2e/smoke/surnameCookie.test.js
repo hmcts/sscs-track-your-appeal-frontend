@@ -9,4 +9,4 @@ Scenario('User enters a valid surname and leaves a cookie @smoke', I => {
   I.enterSurnameAndSubmit('Test');
   I.wait('2');
   I.seeCookie('tya-surname-appeal-validated');
-}).retry(2);
+}).retry(2); // eslint-disable-line
