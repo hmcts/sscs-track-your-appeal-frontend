@@ -46,11 +46,5 @@ exports.config = {
       }
     }
   },
-  multiple: {
-    parallel: {
-      chunks: 2,
-      browsers: 'chrome'
-    }
-  },
-  name: 'TYA tests'
+  name: 'TYA smoke tests'
 };
