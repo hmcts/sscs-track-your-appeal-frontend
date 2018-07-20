@@ -14,4 +14,4 @@ Scenario('Verify appeal details, progress bar status, screen reader text and con
 
   // Content.
   I.see(common.latestUpdate);
-}).retry(2); // eslint-disable-line
+});
