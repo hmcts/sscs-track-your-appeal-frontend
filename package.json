@@ -4,7 +4,8 @@
   "version": "0.0.2",
   "private": true,
   "engines": {
-    "node": ">=8.9.0"
+    "node": ">=8.9.0",
+    "npm": "5.5.1"
   },
   "scripts": {
     "start": "cross-env NODE_PATH=. LOG_OUTPUT=single node server.js",
@@ -16,9 +17,9 @@
     "coverage": "cross-env NODE_PATH=. istanbul cover _mocha test/unit/** --dir test/coverage/html",
     "pa11y": "cross-env NODE_PATH=. LOG_LEVEL=OFF mocha test/accessibility -r test/chai-sinon.js --reporter spec --recursive --timeout 10000",
     "test:smoke": "cross-env NODE_PATH=. codeceptjs run -c test/e2e/ --grep @smoke -c test/e2e/smokeTest.conf.js --reporter mocha-multi",
-    "test:functional": "NODE_ENV=test NODE_PATH=. codeceptjs run -c test/e2e/ --reporter mocha-multi",
+    "test:functional": "cross-env NODE_ENV=test NODE_PATH=. codeceptjs run -c test/e2e/ --reporter mocha-multi",
     "test:crossbrowser": "./test/crossbrowser/runCrossBrowserTestsOvernight.sh",
-    "cross-browser": "NODE_ENV=TESTING LOG_LEVEL=OFF NODE_PATH=. codeceptjs run-multiple parallel -c test/e2e/saucelabs.conf.js --steps",
+    "cross-browser": "cross-env NODE_ENV=TESTING LOG_LEVEL=OFF NODE_PATH=. codeceptjs run-multiple parallel -c test/e2e/saucelabs.conf.js --steps",
     "security-scan": "cross-env NODE_PATH=. codeceptjs run --config test/smoke/securityScan.conf.js --steps",
     "eslint": "cross-env NODE_PATH=. eslint .",
     "security-checks": "cross-env NODE_PATH=. grunt security-checks",
