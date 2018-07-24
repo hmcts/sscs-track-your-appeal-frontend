@@ -20,10 +20,11 @@
         <form action="/validate-surname/{{ id }}/{{ originalPage }}" method="post">
 
             {{ textField(
-                label='',
+                label=i18n.validateSurname.surname.label,
                 hint=i18n.validateSurname.surname.hint,
                 name='surname',
-                field=fields.surname
+                field=fields.surname,
+                hideLabel=true
             ) }}
 
             <div class="form-group">

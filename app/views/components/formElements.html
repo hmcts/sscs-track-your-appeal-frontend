@@ -1,6 +1,6 @@
-{% macro textField(label, hint, field, name) %}
+{% macro textField(label, hint, field, name, hideLabel=false) %}
 <div class="form-group {{ 'form-group-error' if field.error }}">
-    <label class="form-label" for="{{ name }}">{{ label | safe }}</label>
+    <label class="form-label  {% if hideLabel %}visually-hidden{% endif %}" for="{{ name }}">{{ label | safe }}</label>
 
     {% if hint %}
     <span class="form-hint">{{ hint | safe }}</span>
