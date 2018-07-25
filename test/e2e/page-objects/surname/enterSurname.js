@@ -4,6 +4,7 @@ const paths = require('paths');
 
 function enterSurnameAndSubmit(surname) {
   const I = this;
+  /*eslint no-magic-numbers: "off"*/
   I.waitForElement('#surname', 10);
   I.fillField('#surname', surname);
   I.navByClick(validateSurname.submit);
