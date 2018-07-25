@@ -1,5 +1,6 @@
 const request = require('superagent');
 const api = require('config').get('api.url');
+const appInsights = require('app-insights');
 const HttpStatus = require('http-status-codes');
 const { tya } = require('paths');
 
@@ -32,6 +33,7 @@ const matchSurnameToAppeal = (req, res, next) => {
           }
         });
       } else {
+        appInsights.trackException(error);
         next(error);
       }
     });
