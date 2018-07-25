@@ -2,10 +2,11 @@
 const { validateSurname } = require('app/assets/locale/en');
 const paths = require('paths');
 
+const waitTime = 10;
+
 function enterSurnameAndSubmit(surname) {
   const I = this;
-  /*eslint no-magic-numbers: "off"*/
-  I.waitForElement('#surname', 10);
+  I.waitForElement('#surname', waitTime);
   I.fillField('#surname', surname);
   I.navByClick(validateSurname.submit);
 }
