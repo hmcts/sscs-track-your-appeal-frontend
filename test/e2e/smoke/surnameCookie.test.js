@@ -1,7 +1,6 @@
 const { appeal } = require('test/mock/data/smokeTest');
 const paths = require('paths');
 
-const waitTime = 10;
 
 Feature('Surname validation cookie');
 
