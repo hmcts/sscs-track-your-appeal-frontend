@@ -11,6 +11,5 @@ Scenario('User enters a valid surname and leaves a cookie @smoke', I => {
   I.enterSurnameAndSubmit('Test');
   I.wait(3); // eslint-disable-line
   I.seeCurrentUrlEquals(`${paths.tya.trackYourAppeal}/${appeal.appealNumber}`);
-  I.waitForElement('#surname', waitTime);
   I.seeCookie('tya-surname-appeal-validated');
 });
