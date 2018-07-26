@@ -1,2 +1,2 @@
 infrastructure_env = "prod"
-additional_hostname = "track-appeal.platform.hmcts.net"
+additional_hostname = "track-benefit-appeal.service.gov.uk"
