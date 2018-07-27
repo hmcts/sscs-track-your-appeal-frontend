@@ -42,8 +42,8 @@ locals {
 
   localApiUrl         = "http://sscs-tribunals-api-${var.env}.service.${local.aseName}.internal"
   ApiUrl              = "${var.env == "preview" ? "http://sscs-tribunals-api-aat.service.core-compute-aat.internal" : local.localApiUrl}"
-  previewVaultName    = "${var.product}-${var.component}-aat"
-  nonPreviewVaultName = "${var.product}-${var.component}-${var.infrastructure_env}"
+  previewVaultName    = "${var.raw_product}-${var.component}-aat"
+  nonPreviewVaultName = "${var.raw_product}-${var.component}-${var.infrastructure_env}"
   vaultName           = "${(var.env == "preview" || var.env == "spreview") ? local.previewVaultName : local.nonPreviewVaultName}"
 }
 
