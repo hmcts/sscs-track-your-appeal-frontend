@@ -3,7 +3,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-Cookie Policy
+    {{ i18n.cookiePolicy.titleHead }}}
 {% endblock %}
 
 {% block content %}
@@ -16,59 +16,45 @@ Cookie Policy
 
         <div class="column-two-thirds">
 
-            <h1 class="heading-xlarge">{{i18n.cookiePolicy.cookies.title}}</h1>
+            <h1 class="heading-large">{{ i18n.cookiePolicy.cookies.title }}</h1>
 
-            <p>{{i18n.cookiePolicy.cookies.description}}</p>
+            <p>{{ i18n.cookiePolicy.cookies.description }}</p>
 
-            <p>{{i18n.cookiePolicy.cookies.whatAreThey.listHeading}}</p>
+            <h2 class="heading-medium">{{ i18n.cookiePolicy.usedInService.title }}</h2>
+            <p>{{ i18n.cookiePolicy.usedInService.uses }}</p>
             <ul class="list list-bullet">
-            {% for listItem in i18n.cookiePolicy.cookies.whatAreThey.list %}
-            <li>{{listItem}}</li>
-            {% endfor %}
-            </ul>
-
-            {% for description in i18n.cookiePolicy.cookies.whatAreThey.description %}
-            <p>{{description}}</p>
-            {% endfor %}
-
-            <p>{{i18n.cookiePolicy.cookies.whatAreThey.preLink}}
-                <a href="{{urls.aboutcookies}}" rel="external">{{i18n.cookiePolicy.cookies.whatAreThey.link}}</a>
-            </p>
-
-            <h2 class="heading-large">{{i18n.cookiePolicy.howAreTheyUsed.title}}</h2>
-            <h3 class="heading-medium">{{i18n.cookiePolicy.howAreTheyUsed.subtitle}}</h3>
-
-            <p>{{i18n.cookiePolicy.howAreTheyUsed.description}}
-                <a href="{{urls.searches}}" rel="external">{{i18n.cookiePolicy.howAreTheyUsed.descriptionLink}}</a>
-            </p>
-
-            <p>{{i18n.cookiePolicy.howAreTheyUsed.googleAnalytics.listHeading}}</p>
-            <ul class="list list-bullet">
-                {% for listItem in i18n.cookiePolicy.howAreTheyUsed.googleAnalytics.list %}
-                <li>{{listItem}}</li>
+                {% for use in i18n.cookiePolicy.usedInService.usesList %}
+                <li>{{ use }}</li>
                 {% endfor %}
             </ul>
+            <p>{{ usedInService.more }}<a href="http://www.aboutcookies.org/">{{ i18n.cookiePolicy.usedInService.manage }}</a></p>
 
-            {% for description in i18n.cookiePolicy.howAreTheyUsed.googleAnalytics.description %}
-            <p>{{description}}</p>
-            {% endfor %}
-
-            <h3 class="heading-medium">{{i18n.cookiePolicy.universalAnalytics.title}}</h3>
-            {{ cookieTable( i18n.cookiePolicy.universalAnalytics.items, i18n.cookiePolicy.universalAnalytics.columnNames ) }}
-
-            <h3 class="heading-medium">{{i18n.cookiePolicy.googleAnalytics.title}}</h3>
-            {{ cookieTable( i18n.cookiePolicy.googleAnalytics.items, i18n.cookiePolicy.googleAnalytics.columnNames ) }}
-
-            <h3 class="heading-medium">{{i18n.cookiePolicy.govUkEvents.title}}</h3>
-            {{ cookieTable( i18n.cookiePolicy.govUkEvents.items, i18n.cookiePolicy.govUkEvents.columnNames ) }}
-
-            <p class="google-opt-out-link">{{i18n.cookiePolicy.govUkEvents.preLink}}
-                <a href="{{urls.goolgeOptOut}}" rel="external">{{i18n.cookiePolicy.govUkEvents.link}}</a>
+            <h2 class="heading-medium">{{ i18n.cookiePolicy.howAreTheyUsed.title }}</h2>
+            <p>{{ i18n.cookiePolicy.howAreTheyUsed.description }}</p>
+            <p>{{ i18n.cookiePolicy.howAreTheyUsed.info }}</p>
+            <ul class="list list-bullet">
+                {% for info in i18n.cookiePolicy.howAreTheyUsed.infoList %}
+                <li>{{ info }}</li>
+                {% endfor %}
+            </ul>
+            <p>{{ i18n.cookiePolicy.howAreTheyUsed.googleShare }}<a href="https://policies.google.com/privacy/partners?hl=en-GB&gl=uk">{{ i18n.cookiePolicy.howAreTheyUsed.googlePrivacyPolicy }}</a></p>
+            <p>
+                {{ i18n.cookiePolicy.howAreTheyUsed.optOut.youCan }}
+                <a href="https://policies.google.com/privacy/partners?hl=en-GB&gl=uk">{{ i18n.cookiePolicy.howAreTheyUsed.optOut.google }}</a>
+                {{ i18n.cookiePolicy.howAreTheyUsed.optOut.access }}
             </p>
 
-            <h3 class="heading-medium">{{i18n.cookiePolicy.ourIntroductoryMessage.title}}</h3>
-            <p>{{i18n.cookiePolicy.ourIntroductoryMessage.description}}</p>
-            {{ cookieTable( i18n.cookiePolicy.ourIntroductoryMessage.items, i18n.cookiePolicy.ourIntroductoryMessage.columnNames ) }}
+            <p>{{ i18n.cookiePolicy.howAreTheyUsed.googleCookies }}</p>
+            {{ cookieTable( i18n.cookiePolicy.howAreTheyUsed.cookieTable.items, i18n.cookiePolicy.howAreTheyUsed.cookieTable.columnNames ) }}
+
+            <h2 class="heading-medium">{{ i18n.cookiePolicy.introMessage.title }}</h2>
+            <p>{{ i18n.cookiePolicy.introMessage.description }}</p>
+            {{ cookieTable( i18n.cookiePolicy.introMessage.cookieTable.items, i18n.cookiePolicy.introMessage.cookieTable.columnNames ) }}
+
+            <h2 class="heading-medium">{{ i18n.cookiePolicy.sessionCookie.title }}</h2>
+            <p>{{ i18n.cookiePolicy.sessionCookie.description }}</p>
+            {{ cookieTable( i18n.cookiePolicy.sessionCookie.cookieTable.items, i18n.cookiePolicy.sessionCookie.cookieTable.columnNames ) }}
+
 
         </div>
 

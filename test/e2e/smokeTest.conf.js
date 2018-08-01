@@ -2,11 +2,11 @@ const config = require('config');
 
 const chromeArgs = ['--no-sandbox'];
 
-if (process.env.TEST_UR) chromeArgs.push('--proxy-server=proxyout.reform.hmcts.net:8080');
+if (process.env.TEST_URL) chromeArgs.push('--proxy-server=proxyout.reform.hmcts.net:8080');
 
 exports.config = {
   tests: './**/*.test.js',
-  output: process.cwd() + '/functional-output', // eslint-disable-line prefer-template
+  output: process.cwd() + '/smoke-output', // eslint-disable-line prefer-template
   timeout: 1000,
   helpers: {
     Puppeteer: {
@@ -33,12 +33,12 @@ exports.config = {
       },
       'mocha-junit-reporter': {
         stdout: '-',
-        options: { mochaFile: process.cwd() + '/functional-output/result.xml' } // eslint-disable-line prefer-template
+        options: { mochaFile: process.cwd() + '/smoke-output/result.xml' } // eslint-disable-line prefer-template
       },
       mochawesome: {
         stdout: '-',
         options: {
-          reportDir: process.env.OUTPUT_DIR || './functional-output',
+          reportDir: process.env.OUTPUT_DIR || './smoke-output',
           reportName: 'index',
           inlineAssets: true,
           charts: true
@@ -46,11 +46,5 @@ exports.config = {
       }
     }
   },
-  multiple: {
-    parallel: {
-      chunks: 2,
-      browsers: 'chrome'
-    }
-  },
-  name: 'TYA tests'
+  name: 'TYA smoke tests'
 };

@@ -34,7 +34,7 @@ describe('routes.js', () => {
       const url = '/abouthearing/OEk16aq6uk';
       request(app)
         .get(url)
-        .expect('Location', '/validate-surname/OEk16aq6uk')
+        .expect('Location', '/validate-surname/OEk16aq6uk/abouthearing')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
@@ -42,7 +42,7 @@ describe('routes.js', () => {
       const url = '/expenses/OEk16aq6uk';
       request(app)
         .get(url)
-        .expect('Location', '/validate-surname/OEk16aq6uk')
+        .expect('Location', '/validate-surname/OEk16aq6uk/expenses')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
@@ -50,7 +50,7 @@ describe('routes.js', () => {
       const url = '/hearingdetails/md007';
       request(app)
         .get(url)
-        .expect('Location', '/validate-surname/md007')
+        .expect('Location', '/validate-surname/md007/hearingdetails')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
@@ -58,7 +58,7 @@ describe('routes.js', () => {
       const url = '/hearingdetails/md007/10';
       request(app)
         .get(url)
-        .expect('Location', '/validate-surname/md007')
+        .expect('Location', '/validate-surname/md007/hearingdetails')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
@@ -66,7 +66,7 @@ describe('routes.js', () => {
       const url = '/evidence/OEk16aq6uk';
       request(app)
         .get(url)
-        .expect('Location', '/validate-surname/OEk16aq6uk')
+        .expect('Location', '/validate-surname/OEk16aq6uk/evidence')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
@@ -74,7 +74,7 @@ describe('routes.js', () => {
       const url = '/trackyourappeal/OEk16aq6uk';
       request(app)
         .get(url)
-        .expect('Location', '/validate-surname/OEk16aq6uk')
+        .expect('Location', '/validate-surname/OEk16aq6uk/trackyourappeal')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 
@@ -82,7 +82,7 @@ describe('routes.js', () => {
       const url = '/contactus/OEk16aq6uk';
       request(app)
         .get(url)
-        .expect('Location', '/validate-surname/OEk16aq6uk')
+        .expect('Location', '/validate-surname/OEk16aq6uk/contactus')
         .expect(HttpStatus.MOVED_TEMPORARILY, done);
     });
 

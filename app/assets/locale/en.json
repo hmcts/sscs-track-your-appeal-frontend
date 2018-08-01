@@ -28,8 +28,8 @@
     "dwpRespond": {
       "heading": "DWP response",
       "content": [
-        "DWP have written a response to your {{benefitType|acronym}} benefit appeal. They should have sent you a copy in the post.",
-        "We now need to book your hearing. You don’t need to do anything. We’ll contact you again when we have a date for your hearing. Unfortunately we can’t say how long it will take to book but it may be some time. It will depend on how busy the hearing venues are."
+        "DWP have responded to your {{benefitType|acronym}} benefit appeal. They should have sent you a copy of their response in the post.",
+        "Your appeal hearing needs to be booked. You don’t need to do anything. You’ll receive another update by {{hearingContactDate|formatDate}}."
       ]
     },
     "dwpRespondOverdue": {
@@ -181,19 +181,19 @@
     },
     "email": {
       "manage": {
-        "tab": "Manage notifications",
+        "tab": "Manage email notifications",
         "title": "What do you want to do?",
         "visuallyHidden": "What do you want to do?",
         "continue": "Continue"
       },
       "stop": {
-        "tab": "Manage email notifications",
+        "tab": "Stop receiving email updates",
         "title": "You’ll stop receiving email updates and reminders about your {{benefitType|acronym}} benefit appeal.",
         "confirm": "Confirm",
         "link": "Cancel"
       },
       "stopConfirmation": {
-        "tab": "Stopped notifications",
+        "tab": "Email notifications stopped",
         "title": "You’ve stopped email notifications",
         "content": "You won’t receive any more emails about your {{benefitType|acronym}} benefit appeal.",
         "exitFeedbackSurveyPreLink": "Please provide some",
@@ -202,7 +202,7 @@
         "linkPost": "track your benefit appeal online"
       },
       "addressChange": {
-        "tab": "Change email address",
+        "tab": "Your new email address",
         "tabError": "Errors on page",
         "title": "Your new email address",
         "visuallyHidden": "What do you want to do?",
@@ -213,7 +213,7 @@
         }
       },
       "addressChangeConfirmed": {
-        "tab": "Email address confirmation",
+        "tab": "Email address change confirmation",
         "title": "Emails about your {{benefitType|acronym}} benefit appeal will now be sent to",
         "content": "We’ve sent a confirmation email to that address. Check it in a few minutes.",
         "link": "Change your email address"
@@ -308,9 +308,11 @@
     }
   },
   "validateSurname": {
-    "heading": "Enter your last name",
+    "title": "Enter your last name",
+    "heading": "Enter your last name - Appeal a benefit decision - GOV.UK",
     "submit": "Track your appeal",
     "surname": {
+      "hint": "This is to check it's your appeal and protect your personal information",
       "errors": {
         "emptyStringHeading": "Enter your last name to continue",
         "notValidHeading": "You have entered an invalid last name. Enter your last name in full",
@@ -334,9 +336,11 @@
     "availableInAnotherLanguage": "This page is also available in Welsh (Cymraeg).",
     "latestUpdate": "Latest update",
     "viewAllUpdates": "View previous updates",
-    "errorHeading": "There was a problem"
+    "errorHeading": "There was a problem",
+    "titleContext": "- Appeal a benefit decision - GOV.UK"
   },
   "cookiePolicy": {
+    "titleHead": "Cookie Policy - Appeal a benefit decision - GOV.UK",
     "banner": {
       "text": "GOV.UK uses cookies to make the site simpler.",
       "link": "Find out more about cookies"
@@ -345,129 +349,89 @@
       "cookies": "Cookies"
     },
     "cookies": {
-      "title": "Cookie Policy",
-      "description": "The ‘track your benefit appeal’ website stores small files (known as cookies), on your computer. They are used to improve your experience of using the website.",
-      "whatAreThey": {
-        "listHeading": "Cookies are used to:",
-        "list": [
-          "measure how you use the website so it can be updated and improved based on your needs",
-          "remember the notifications you’ve seen so that we don’t show them to you again"
-        ],
-        "description": [
-          "Cookies on the ‘track your benefit appeal’ website aren’t used to identify you personally.",
-          "You’ll normally see a message on the site before we store a cookie on your computer. "
-        ],
-        "preLink": "Find out more about",
-        "link": "how to manage cookies."
-      }
+      "title": "Cookie Policy"
+    },
+    "usedInService": {
+      "title": "How cookies are used in this service",
+      "uses": "This service uses them to:",
+      "usesList": [
+        "measure how you use the service so it can be improved",
+        "remember the notifications you’ve seen so that you’re not shown them again",
+        "temporarily store the answers you give"
+      ],
+      "more": "Find out more about ",
+      "manage": "how to manage cookies."
     },
     "howAreTheyUsed": {
-      "title": "How cookies are used",
-      "subtitle": "Measuring website usage (Google Analytics)",
-      "description": "We use Google Analytics software to collect information about how you use GOV.UK. We do this to help make sure the site is meeting the needs of its users and to help us make improvements, e.g.",
-      "descriptionLink": "improving site search.",
-      "googleAnalytics": {
-        "listHeading": "Google Analytics stores information about:",
-        "list": [
-          "the GOV.UK pages you visit",
-          "how long you spend on each GOV.UK page",
-          "how you got to the track your benefit appeal site",
-          "what you click on while you’re visiting the site"
+      "title": "Cookies used to measure website usage",
+      "description": "We use Google Analytics software to collect information about how you use this service. We do this to help make sure the service is meeting the needs of its users and to help us make improvements, for example improving site search.",
+      "info": "Google Analytics stores information about:",
+      "infoList": [
+        "the pages you visit",
+        "how long you spend on each page",
+        "how you got to the service",
+        "what you click on while you’re visiting the service"
+      ],
+      "googleShare": "We allow Google to use or share this data. Find out more about how they use this information in the ",
+      "googlePrivacyPolicy": "Google privacy policy.",
+      "optOut": {
+        "youCan": "You can ",
+        "google": "opt out of Google Analytics ",
+        "access": "if you do not want Google to have access to your information."
+      },
+      "googleCookies": "Google Analytics sets the following cookies:",
+      "cookieTable": {
+        "columnNames": [
+          "Cookie name",
+          "What this cookie is for",
+          "Expires after"
         ],
-        "description": [
-          "We don’t collect or store your personal information (e.g. your name or address) so this information can’t be used to identify who you are.",
-          "We don’t allow Google to use or share our analytics data.",
-          "Google Analytics sets the following cookies:"
-        ]
+        "items": [{
+          "name": "_ga",
+          "purpose": "This helps us count how many people visit the service by tracking if you’ve visited before",
+          "expires": "2 years"
+        }, {
+          "name": "_gid",
+          "purpose": "Identifies you to the service",
+          "expires": "24 hours"
+        }]
       }
     },
-    "universalAnalytics": {
-      "title": "Universal Analytics",
-      "columnNames": [
-        "Name",
-        "Purpose",
-        "Expires"
-      ],
-      "items": [
-        {
-          "name": "_ga",
-          "purpose": "This helps us count how many people visit GOV.UK by tracking if you’ve visited before",
-          "expires": "2 years"
-        },
-        {
-          "name": "_gat",
-          "purpose": "Used to manage the rate at which page view requests are made",
-          "expires": "10 minutes"
-        }
-      ]
-    },
-    "googleAnalytics": {
-      "title": "Google Analytics",
-      "columnNames": [
-        "Name",
-        "Purpose",
-        "Expires"
-      ],
-      "items": [
-        {
-          "name": "_utma",
-          "purpose": "Like _ga, this lets us know if you’ve visited before, so we can count how many of our visitors are new to GOV.UK or to a certain page",
-          "expires": "2 years"
-        },
-        {
-          "name": "_utmb",
-          "purpose": "This works with _utmc to calculate the average length of time you spend on GOV.UK",
-          "expires": "30 minutes"
-        },
-        {
-          "name": "_utmc",
-          "purpose": "This works with _utmb to calculate when you close your browser",
-          "expires": "when you close your browser"
-        },
-        {
-          "name": "_utmz",
-          "purpose": "This tells us how you reached GOV.UK (e.g. from another website or a search engine)",
-          "expires": "6 months"
-        }
-      ]
-    },
-    "govUkEvents": {
-      "title": "GOV.UK events",
-      "columnNames": [
-        "Name",
-        "Purpose",
-        "Expires"
-      ],
-      "preLink": "You can opt",
-      "link": "out of Google Analytics cookies",
-      "items": [
-        {
-          "name": "analytics_next_page_call",
-          "purpose": "This lets us know the next page you visit on GOV.UK, so we can make journeys better",
-          "expires": "when you close your browser"
-        },
-        {
-          "name": "govuk_contact_referrer",
-          "purpose": "This lets us know the last page you visited before using the contact GOV.UK form",
-          "expires": "1 day"
-        }
-      ]
-    },
-    "ourIntroductoryMessage": {
-      "title": "Our introductory message",
-      "description": "You may see a pop-up welcome message when you first visit GOV.UK. We’ll store a cookie so that your computer knows you’ve seen it and knows not to show it again.",
-      "columnNames": [
-        "Name",
-        "Purpose",
-        "Expires"
-      ],
-      "items": [
-        {
+    "introMessage": {
+      "title": "Cookies used to turn our introductory message off",
+      "description": "You may see a welcome message when you first visit the service. We’ll store a cookie so that your computer knows not to show this message again.",
+      "cookieTable": {
+        "columnNames": [
+          "Cookie name",
+          "What this cookie is for",
+          "Expires after"
+        ],
+        "items": [{
           "name": "seen_cookie_message",
           "purpose": "Saves a message to let us know that you’ve seen our cookie message",
           "expires": "1 month"
-        }
-      ]
+        }]
+      }
+    },
+    "sessionCookie": {
+      "title": "Cookies used to store the answers you’ve given during your visit (known as a ‘session’)",
+      "description": "Session cookies are stored on your computer as you browse a website, and let the website know what you’ve seen and done so far. These are temporary cookies and are automatically deleted after you leave the website.",
+      "cookieTable": {
+        "columnNames": [
+          "Cookie name",
+          "What this cookie is for",
+          "Expires after"
+        ],
+        "items": [{
+          "name": "session",
+          "purpose": "Keeps track of your answers",
+          "expires": "When you close your browser"
+        }, {
+          "name": "ARRAffinity",
+          "purpose": "To know which internal IP a request should be routed to. ",
+          "expires": "When you close your browser"
+        }]
+      }
     }
   },
   "contactUs": {
@@ -500,6 +464,468 @@
         "Check that you’ve entered the correct web address.",
         "If you want an update on your appeal you can call 0300 123 1142."
       ]
+    }
+  },
+  "termsAndConditions": {
+    "titleHead": "Terms and conditions - Appeal a benefit decision - GOV.UK",
+    "title": "Terms and conditions",
+    "footer": {
+      "terms": "Terms and conditions"
+    },
+    "termsAndConditions": {
+      "termsOfUse": "By using this service you’re agreeing to the following terms of use. This includes the ",
+      "links": {
+        "privacy": {
+          "name": "privacy policy"
+        },
+        "terms": {
+          "name": "terms and conditions"
+        },
+        "cookie": {
+          "name": "cookie policy"
+        },
+        "contact": {
+          "name": "Contact us"
+        }
+      }
+    },
+    "whoWeAre": {
+      "title": "Who we are",
+      "managedBy": "This service is managed by Her Majesty’s Courts and Tribunals Service.",
+      "changeInLaw": "You should check these terms and conditions regularly. We may update them at any time without notice. If you continue to use this service after the terms and conditions have changed, you are deemed to have agreed to the changes."
+    },
+    "informationProvided": {
+      "title": "Information provided by this service",
+      "support": "This service provides information to support your claim or application. We cannot give legal advice on individual cases.",
+      "questions": "You should answer the questions in the service based on your circumstances and seek legal advice if you need it."
+    },
+    "dataStored": {
+      "title": "Sharing and storing data",
+      "our": "Our ",
+      "privacy": " explains where your data is stored, and who it is shared with.",
+      "cookie": "explains how this service uses and stores cookies."
+    },
+    "laws": {
+      "title": "Laws applying to this service",
+      "use": "Your use of this service and any dispute arising from its use will be governed by and construed in accordance with the laws of England and Wales, including but not limited to the:",
+      "acts": [
+        "Computer Misuse Act 1990",
+        "Data Protection Act 1998 (until 25 May 2018)",
+        "Data Protection Act 2018 (from 25 May 2018)",
+        "General Data Protection Regulation",
+        "Mental Capacity Act 2005"
+      ]
+    },
+    "responsibleUse": {
+      "title": "How to use this service responsibly",
+      "aware": "There are risks in using a shared computer (for example, in a library) to access this service. It’s your responsibility to be aware of these risks and to avoid using any computer which may leave your personal information accessible to others. You’re responsible if you choose to leave a computer unprotected while using this service.",
+      "precautions": "You should take your own precautions to ensure that the way you access this service does not expose you to the risk of:",
+      "risks": [
+        "viruses",
+        "malicious computer code",
+        "other forms of interference which may damage your computer system"
+      ],
+      "mustNot": "You must not misuse this service by knowingly introducing viruses, trojans, worms, logic bombs or other material which is malicious or technologically harmful. You must not attempt to gain unauthorised access to this service, the system on which it is stored, or any server, computer or database connected to it. You must not attack this site using a denial-of-service attack or a distributed denial-of-service attack."
+    },
+    "sensitiveInfo": {
+      "title": "Entering personally sensitive information",
+      "freeText": "This online service contains several free-text fields in which you may choose to enter information which is personally sensitive.",
+      "enter": "If you enter information about your:",
+      "infoList": [
+        "religious beliefs",
+        "sexual orientation or sex life",
+        "racial or ethnic origins",
+        "political opinions",
+        "religious or philosophical beliefs",
+        "trade union membership",
+        "genetic data or biometric data",
+        "health data"
+      ],
+      "consent": "You give us your consent to processing this information for the purpose of dealing with your application.",
+      "moreInfo": "For more information about how we collect and store your personal data, see the privacy policy "
+    },
+    "disclaimer": {
+      "title": "Disclaimer",
+      "upToDate": "While we make every effort to keep information up to date, we don’t provide any guarantees, conditions or warranties that it will be:",
+      "conditions": [
+        "current",
+        "secure",
+        "accurate",
+        "complete",
+        "free from bugs or viruses"
+      ],
+      "publish": "We don’t publish advice. You should get professional or specialist advice before doing anything on the basis of the information in the service.",
+      "loss": "We’re not liable for any loss or damage that may come from using this service. This includes:",
+      "damages": [
+        "any direct, indirect or consequential losses",
+        "any loss or damage caused by civil wrongs (‘tort’, including negligence), breach of contract or otherwise",
+        "the use of this service, GOV.UK and any websites that are linked to or from it",
+        "the inability to use this service, GOV.UK and any websites that are linked to or from it"
+      ],
+      "applies": "This applies if the loss or damage was foreseeable, arose in the normal course of things or you advised us that it might happen.",
+      "includes": "This includes (but isn’t limited to) the loss of your:",
+      "losses": [
+        "income or revenue",
+        "salary, benefits or other payments",
+        "business",
+        "profits or contracts",
+        "opportunity",
+        "anticipated savings",
+        "data",
+        "goodwill or reputation",
+        "intangible property, including loss, corruption or damage to data or any computer system",
+        "wasted management or office time"
+      ],
+      "liable": "We may still be liable for:",
+      "liabilities": [
+        "death or personal injury arising from our negligence",
+        "fraudulent misrepresentation",
+        "any other liability which cannot be excluded or limited under applicable law"
+      ],
+      "furtherInfo": " for further information."
+    }
+  },
+  "titleHead": "Privacy Policy - Appeal a benefit decision - GOV.UK",
+  "privacy": {
+    "title": "Privacy policy",
+    "description": "This privacy policy explains why we collect your personal data and what we do with it. It also explains your rights and how to enforce them."
+  },
+  "manages": {
+    "title": "Who manages this service",
+    "managedBy": "This service is managed by HM Courts and Tribunals Service (HMCTS), which is an executive agency of the Ministry of Justice (MoJ).",
+    "data": {
+      "controller": "The MoJ is known as the data controller for data protection purposes. The ",
+      "link": "MoJ personal information charter ",
+      "process": "explains how the MoJ processes personal data."
+    },
+    "responsible": "As part of the MoJ, HMCTS is responsible for deciding how your personal data is used and for protecting the personal data you provide.",
+    "moreInfo": {
+      "service": "More information about using this service is in the ",
+      "link": "terms and conditions"
+    }
+  },
+  "whyWeCollect": {
+    "title": "Why we collect your personal data",
+    "collect": "We collect your personal data to:",
+    "collectList": [
+      "process your claim or application",
+      "meet legal requirements",
+      "make improvements to this service"
+    ],
+    "staffUseData": "Our staff use your personal data to process your claim or application. They work in the UK and your data is stored in the UK."
+  },
+  "personalData": {
+    "title": "Types of personal data we collect ",
+    "collect": "The personal data we collect includes:",
+    "collectList": [
+      "your name, address and contact details",
+      "your email and password (if you create an account)",
+      "other personal information you provide in your claim or application"
+    ],
+    "more": {
+      "data": "Some services collect more personal data. Find out more about the ",
+      "link": "personal data that is collected by the service you are using."
+    }
+  },
+  "usingYourData": {
+    "title": "Using your data",
+    "account": "As part of your claim you’ll be asked to use your email address to set up an account. You will be able to use this email and password to sign into other HMCTS services.",
+    "permission": "We may ask for your permission to use your email address to send you emails using GOV.UK Notify. This system processes emails only within the European Economic Area until the point where emails are handed over to the email provider you use. ",
+    "cookies": {
+      "we": "We ",
+      "link": "use cookies ",
+      "collect": "to collect data that tells us about how you’re using this service, including:"
+    },
+    "dataList": [
+      "if you open an email from us or click on a link in an email",
+      "your computer, phone or tablet’s IP address",
+      "the region or town where you are using your computer, phone or tablet",
+      "the web browser you use"
+    ]
+  },
+  "storingData": {
+    "title": "Storing your data",
+    "dataProvided": " When you make your claim or application we store the data you have provided. This is stored in the UK. The amount of time that your data is kept for depends on the service that you are using.",
+    "findOut": {
+      "more": "Find out more about",
+      "link": "how long your personal data is stored by the service you are using."
+    }
+  },
+  "shareDate": {
+    "title": "Sharing your data",
+    "involved": "While processing your claim or application, another government department, agency or organisation might be involved and we may share your data with them.",
+    "contact": "If you contact us and ask for help with the service you are using, your personal data may be shared with the Good Things Foundation. This is a company who we have partnered with to offer face to face support.",
+    "share": "In some circumstances we may share your data for example, to prevent or detect crime, or to produce anonymised statistics.",
+    "google": {
+      "used": "We use Google Analytics to collect data about how a website is used. This anonymous data is shared with Google. Find out about this in our ",
+      "link": "terms and conditions."
+    }
+  },
+  "internationally": {
+    "title": "Storing and sharing your data internationally",
+    "outsideUK": "Sometimes we need to send your personal information outside of the UK. When we do this we comply with data protection law."
+  },
+  "yourRights": {
+    "title": "Your rights",
+    "ask": "You can ask:",
+    "questions": [
+      "to see the personal data that we hold on you",
+      "to have the personal data corrected",
+      "to have the personal data removed or deleted (this will depend on the circumstances, for example if you decide not to continue your claim or application)",
+      "that access to the personal data is restricted (for example, you can ask to have your data stored for longer and not automatically deleted)"
+    ],
+    "seeData": "If you want to see the personal data that we hold on you, you can:",
+    "form": {
+      "complete": "complete a form to ",
+      "link": "make a subject access request. ",
+      "controller": "Your request goes to the MoJ as data controller."
+    },
+    "write": "write to us: Disclosure Team, Post point 10.38, 102 Petty France, London, SW1H 9AJ",
+    "moreInfo": "You can ask for more information about:",
+    "infoList": [
+      "agreements we have on sharing information with other organisations",
+      "when we are allowed to pass on personal information without telling you",
+      "our instructions to staff on how to collect, use or delete your personal information",
+      "how we check that the information we hold is accurate and up-to-date"
+    ],
+    "contactOfficer": " You can contact the MoJ data protection officer, by:",
+    "contactList": [
+      "writing to us: Post point 10.38, 102 Petty France, London, SW1H 9AJ",
+      "emailing: data.compliance@justice.gov.uk"
+    ]
+  },
+  "complain": {
+    "title": "How to complain",
+    "complaints": {
+      "procedure": "See our ",
+      "link": "complaints procedure ",
+      "personalData": "if you want to complain about how we've handled your personal data."
+    },
+    "write": "Write to: Post point 10.38, 102 Petty France, London, SW1H 9AJ",
+    "email": "Email: data.compliance@justice.gov.uk",
+    "commissioner": {
+      "canAlso": "You can also complain to the",
+      "link": "Information Commissioner’s Office",
+      "notSatisifed": "if you’re not satisfied with our response or believe we are not processing your personal data lawfully."
+    }
+  },
+  "appealBenefit": {
+    "title": "Using the Appeal a benefit decision service",
+    "personalData": {
+      "title": "The personal data we need ",
+      "weAskFor": "When you use the appeal a benefit decision service we ask for:",
+      "yourDetails": [
+        "your name",
+        "your date of birth",
+        "your email or mobile phone number",
+        "your National Insurance Number",
+        "information from the Mandatory Reconsideration Notice",
+        "information on any support you need for a hearing, if you attend one",
+        "information on your availability for a hearing, if you attend one"
+      ],
+      "rep": "If you have a representative, we will ask for:",
+      "repDetails": [
+        "their name",
+        "their contact details"
+      ],
+      "onBehalf": "If you are appointee, you will need to provide information about the person who you are appealing on behalf of, including:",
+      "theirDetails": [
+        "their name",
+        "their National Insurance number"
+      ]
+    },
+    "notifications": {
+      "title": "Receiving notifications",
+      "receive": "As part of your appeal we’ll ask if you want to receive text message and email notifications to keep you updated with your appeal. ",
+      "cancel": "You can cancel text messages by following the steps mentioned in the text message, and you can cancel emails by following the steps mentioned in the emails. ",
+      "updates": {
+        "rep": "If you have asked for your named representative to receive updates on your appeal, then we will share your data with them. If you want your representative to stop receiving notifications then you need to ",
+        "link": "Contact us"
+      }
+    },
+    "storing": {
+      "title": "Storing and sharing your data",
+      "shared": "Your data will be shared with the government department that made the decision you are appealing against. For example, the Department for Work and Pensions or HM Revenue and Customs. This is so that department can respond to your appeal. "
+    },
+    "after": {
+      "title": "After you submit your information ",
+      "deleted": "The information you submit will be deleted 2 years after the tribunal have issued their decision and the last update has been made to your appeal. ",
+      "noDecision": "If the tribunal doesn’t make a decision about your appeal (for example, it is withdrawn, or both parties agree) then the information you provide will be deleted 2 years after the appeal has been closed and the last update made.",
+      "complaint": "If you make a complaint against the tribunal then information about the appeal is stored for 3 years after the last update on the complaint. "
+    }
+  },
+  "privacyPolicy": {
+    "titleHead": "Privacy Policy - Appeal a benefit decision - GOV.UK",
+    "footer": {
+      "privacy": "Privacy policy"
+    },
+    "privacy": {
+      "title": "Privacy policy",
+      "description": "This privacy policy explains why we collect your personal data and what we do with it. It also explains your rights and how to enforce them."
+    },
+    "manages": {
+      "title": "Who manages this service",
+      "managedBy": "This service is managed by HM Courts and Tribunals Service (HMCTS), which is an executive agency of the Ministry of Justice (MoJ).",
+      "data": {
+        "controller": "The MoJ is known as the data controller for data protection purposes. The ",
+        "link": "MoJ personal information charter ",
+        "process": "explains how the MoJ processes personal data."
+      },
+      "responsible": "As part of the MoJ, HMCTS is responsible for deciding how your personal data is used and for protecting the personal data you provide.",
+      "moreInfo": {
+        "service": "More information about using this service is in the ",
+        "link": "terms and conditions"
+      }
+    },
+    "whyWeCollect": {
+      "title": "Why we collect your personal data",
+      "collect": "We collect your personal data to:",
+      "collectList": [
+        "process your claim or application",
+        "meet legal requirements",
+        "make improvements to this service"
+      ],
+      "staffUseData": "Our staff use your personal data to process your claim or application. They work in the UK and your data is stored in the UK."
+    },
+    "personalData": {
+      "title": "Types of personal data we collect ",
+      "collect": "The personal data we collect includes:",
+      "collectList": [
+        "your name, address and contact details",
+        "your email and password (if you create an account)",
+        "other personal information you provide in your claim or application"
+      ],
+      "more": {
+        "data": "Some services collect more personal data. Find out more about the ",
+        "link": "personal data that is collected by the service you are using."
+      }
+    },
+    "usingYourData": {
+      "title": "Using your data",
+      "account": "As part of your claim you’ll be asked to use your email address to set up an account. You will be able to use this email and password to sign into other HMCTS services.",
+      "permission": "We may ask for your permission to use your email address to send you emails using GOV.UK Notify. This system processes emails only within the European Economic Area until the point where emails are handed over to the email provider you use. ",
+      "cookies": {
+        "we": "We ",
+        "link": "use cookies ",
+        "collect": "to collect data that tells us about how you’re using this service, including:"
+      },
+      "dataList": [
+        "if you open an email from us or click on a link in an email",
+        "your computer, phone or tablet’s IP address",
+        "the region or town where you are using your computer, phone or tablet",
+        "the web browser you use"
+      ]
+    },
+    "storingData": {
+      "title": "Storing your data",
+      "dataProvided": " When you make your claim or application we store the data you have provided. This is stored in the UK. The amount of time that your data is kept for depends on the service that you are using.",
+      "findOut": {
+        "more": "Find out more about",
+        "link": "how long your personal data is stored by the service you are using."
+      }
+    },
+    "shareDate": {
+      "title": "Sharing your data",
+      "involved": "While processing your claim or application, another government department, agency or organisation might be involved and we may share your data with them.",
+      "contact": "If you contact us and ask for help with the service you are using, your personal data may be shared with the Good Things Foundation. This is a company who we have partnered with to offer face to face support.",
+      "share": "In some circumstances we may share your data for example, to prevent or detect crime, or to produce anonymised statistics.",
+      "google": {
+        "used": "We use Google Analytics to collect data about how a website is used. This anonymous data is shared with Google. Find out about this in our ",
+        "link": "terms and conditions."
+      }
+    },
+    "internationally": {
+      "title": "Storing and sharing your data internationally",
+      "outsideUK": "Sometimes we need to send your personal information outside of the UK. When we do this we comply with data protection law."
+    },
+    "yourRights": {
+      "title": "Your rights",
+      "ask": "You can ask:",
+      "questions": [
+        "to see the personal data that we hold on you",
+        "to have the personal data corrected",
+        "to have the personal data removed or deleted (this will depend on the circumstances, for example if you decide not to continue your claim or application)",
+        "that access to the personal data is restricted (for example, you can ask to have your data stored for longer and not automatically deleted)"
+      ],
+      "seeData": "If you want to see the personal data that we hold on you, you can:",
+      "form": {
+        "complete": "complete a form to ",
+        "link": "make a subject access request. ",
+        "controller": "Your request goes to the MoJ as data controller."
+      },
+      "write": "write to us: Disclosure Team, Post point 10.38, 102 Petty France, London, SW1H 9AJ",
+      "moreInfo": "You can ask for more information about:",
+      "infoList": [
+        "agreements we have on sharing information with other organisations",
+        "when we are allowed to pass on personal information without telling you",
+        "our instructions to staff on how to collect, use or delete your personal information",
+        "how we check that the information we hold is accurate and up-to-date"
+      ],
+      "contactOfficer": " You can contact the MoJ data protection officer, by:",
+      "contactList": [
+        "writing to us: Post point 10.38, 102 Petty France, London, SW1H 9AJ",
+        "emailing: data.compliance@justice.gov.uk"
+      ]
+    },
+    "complain": {
+      "title": "How to complain",
+      "complaints": {
+        "procedure": "See our ",
+        "link": "complaints procedure ",
+        "personalData": "if you want to complain about how we've handled your personal data."
+      },
+      "write": "Write to: Post point 10.38, 102 Petty France, London, SW1H 9AJ",
+      "email": "Email: data.compliance@justice.gov.uk",
+      "commissioner": {
+        "canAlso": "You can also complain to the",
+        "link": "Information Commissioner’s Office",
+        "notSatisifed": "if you’re not satisfied with our response or believe we are not processing your personal data lawfully."
+      }
+    },
+    "appealBenefit": {
+      "title": "Using the Appeal a benefit decision service",
+      "personalData": {
+        "title": "The personal data we need ",
+        "weAskFor": "When you use the appeal a benefit decision service we ask for:",
+        "yourDetails": [
+          "your name",
+          "your date of birth",
+          "your email or mobile phone number",
+          "your National Insurance Number",
+          "information from the Mandatory Reconsideration Notice",
+          "information on any support you need for a hearing, if you attend one",
+          "information on your availability for a hearing, if you attend one"
+        ],
+        "rep": "If you have a representative, we will ask for:",
+        "repDetails": [
+          "their name",
+          "their contact details"
+        ],
+        "onBehalf": "If you are appointee, you will need to provide information about the person who you are appealing on behalf of, including:",
+        "theirDetails": [
+          "their name",
+          "their National Insurance number"
+        ]
+      },
+      "notifications": {
+        "title": "Receiving notifications",
+        "receive": "As part of your appeal we’ll ask if you want to receive text message and email notifications to keep you updated with your appeal. ",
+        "cancel": "You can cancel text messages by following the steps mentioned in the text message, and you can cancel emails by following the steps mentioned in the emails. ",
+        "updates": {
+          "rep": "If you have asked for your named representative to receive updates on your appeal, then we will share your data with them. If you want your representative to stop receiving notifications then you need to ",
+          "link": "Contact us"
+        }
+      },
+      "storing": {
+        "title": "Storing and sharing your data",
+        "shared": "Your data will be shared with the government department that made the decision you are appealing against. For example, the Department for Work and Pensions or HM Revenue and Customs. This is so that department can respond to your appeal. "
+      },
+      "after": {
+        "title": "After you submit your information ",
+        "deleted": "The information you submit will be deleted 2 years after the tribunal have issued their decision and the last update has been made to your appeal. ",
+        "noDecision": "If the tribunal doesn’t make a decision about your appeal (for example, it is withdrawn, or both parties agree) then the information you provide will be deleted 2 years after the appeal has been closed and the last update made.",
+        "complaint": "If you make a complaint against the tribunal then information about the appeal is stored for 3 years after the last update on the complaint. "
+      }
     }
   }
 }

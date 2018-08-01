@@ -22,17 +22,17 @@ describe('events.js', () => {
     let latestEvents = null;
 
     before(() => {
-      latestEvents = res.locals.appeal.historicalEvents[0];
+      latestEvents = res.locals.appeal.latestEvents[0];
     });
 
     it('should contain heading index', () => {
       expect(latestEvents).to.have.any.keys('heading');
-      expect(latestEvents.heading).to.equal('Evidence received');
+      expect(latestEvents.heading).to.equal('DWP response');
     });
 
     it('should contain benefitType index', () => {
       expect(latestEvents).to.have.any.keys('benefitType');
-      expect(latestEvents.benefitType).to.equal('esa');
+      expect(latestEvents.benefitType).to.equal('pip');
     });
 
     it('should contain renderedContent index', () => {
@@ -45,7 +45,7 @@ describe('events.js', () => {
     let historicalEvents = null;
 
     before(() => {
-      historicalEvents = res.locals.appeal.historicalEvents[1];
+      historicalEvents = res.locals.appeal.historicalEvents[0];
     });
 
     it('should contain heading index', () => {
@@ -55,7 +55,7 @@ describe('events.js', () => {
 
     it('should contain benefitType index', () => {
       expect(historicalEvents).to.have.any.keys('benefitType');
-      expect(historicalEvents.benefitType).to.equal('esa');
+      expect(historicalEvents.benefitType).to.equal('pip');
     });
 
     it('should contain renderedContent index', () => {

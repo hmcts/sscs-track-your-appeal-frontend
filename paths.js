@@ -10,7 +10,9 @@ module.exports = {
     expenses: '/expenses',
     hearingDetails: '/hearingdetails',
     trackYourAppeal: '/trackyourappeal',
-    validateSurname: '/validate-surname'
+    validateSurname: '/validate-surname',
+    terms: '/terms-and-conditions',
+    privacy: '/privacy-policy'
   },
 
   notifications: { manageEmailNotifications: 'manage-email-notifications' }

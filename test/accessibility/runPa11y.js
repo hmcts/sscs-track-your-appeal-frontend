@@ -22,7 +22,7 @@ const pa11yTest = pa11y({
 const manageEmailNotifications = '/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=';
 
 const accessibilityPages = [
-  '/validate-surname/OEk16aq6uk',
+  '/validate-surname/OEk16aq6uk/trackyourappeal',
   '/contactus/OEk16aq6uk',
   '/abouthearing/OEk16aq6uk',
   '/trackyourappeal/OEk16aq6uk',

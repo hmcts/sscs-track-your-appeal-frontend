@@ -5,25 +5,28 @@ const paths = require('paths');
 Feature('Verify surname');
 
 Before(I => {
-  I.amOnPage(`${paths.tya.validateSurname}/${appeal.appealNumber}`);
+  I.amOnPage(`${paths.tya.validateSurname}/${appeal.appealNumber}${paths.tya.trackYourAppeal}`);
 });
 
 Scenario('I enter a surname that matches the appeal, I am taken to /trackyourappeal', I => {
   I.enterSurnameAndSubmit(appeal.surname);
+  I.wait('2');
   I.seeInCurrentUrl(`/trackyourappeal/${appeal.appealNumber}`);
 });
 
 Scenario('I enter a surname that does not match the appeal, I see errors', I => {
   I.enterSurnameAndSubmit('invalid');
+  I.wait('2');
   I.see(validateSurname.surname.errors.noMatch);
 });
 
 Scenario('I omit the surname and submit, I see errors', I => {
   I.click(validateSurname.submit);
   I.see(validateSurname.surname.errors.emptyStringHeading);
-});
+}).retry(1);
 
 Scenario('I enter a surname that is incorrectly formatted, I see errors', I => {
   I.enterSurnameAndSubmit('surn4m£');
+  I.wait('2');
   I.see(validateSurname.surname.errors.notValidHeading);
-});
+}).retry(1);

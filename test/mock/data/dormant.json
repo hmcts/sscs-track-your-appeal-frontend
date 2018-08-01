@@ -1,31 +1,57 @@
 {
   "appeal": {
-    "caseReference": "SC285/18/00005",
-    "appealNumber": "8bgBLDf1E5",
-    "benefitType": "pip",
+    "caseReference": "SC285/18/10019",
+    "appealNumber": "of2vX5dEZr",
+    "status": "DORMANT",
+    "benefitType": "esa",
     "name": "Miss AN Test",
     "surname": "Test",
-    "status": "DORMANT",
     "latestEvents": [
       {
-        "decisionLetterReceiveByDate": "2017-07-10T12:50:11.437Z",
-        "date": "2017-06-29T12:50:11.437Z",
+        "date": "2018-07-05T13:38:26.443Z",
         "type": "DORMANT",
-        "contentKey": "status.dormant"
+        "contentKey": "status.dormant",
+        "decisionLetterReceiveByDate": "2018-06-14T13:38:26.443Z"
+      }
+    ],
+    "historicalEvents": [
+      {
+        "date": "2018-05-09T10:16:01.867Z",
+        "type": "DWP_RESPOND",
+        "contentKey": "status.dwpRespond",
+        "hearingContactDate": "2018-06-20T10:16:01.867Z"
+      },
+      {
+        "date": "2018-02-09T14:38:26.443Z",
+        "type": "HEARING_BOOKED",
+        "contentKey": "status.hearingBooked",
+        "postcode": "FY1 3AB",
+        "hearingDateTime": "2018-06-01T10:40:00.000Z",
+        "venueName": "Prudential House",
+        "addressLine1": "2-10 Topping Street",
+        "addressLine2": "",
+        "addressLine3": "Blackpool",
+        "googleMapUrl": "https://www.google.com/maps/place/2-10+Topping+Street+Blackpool+FY1+3AB/@53.820175,-3.050717"
+      },
+      {
+        "date": "2017-10-06T08:38:25.190Z",
+        "type": "APPEAL_RECEIVED",
+        "contentKey": "status.appealReceived",
+        "dwpResponseDate": "2017-11-10T09:38:25.190Z"
       }
     ],
     "regionalProcessingCenter": {
-      "name": "LEEDS",
+      "name": "BIRMINGHAM",
       "addressLines": [
         "HM Courts & Tribunals Service",
         "Social Security & Child Support Appeals",
-        "York House",
-        "31 York Place"
+        "Administrative Support Centre",
+        "PO Box 14620"
       ],
-      "city": "LEEDS",
-      "postcode": "LS1 2ED",
+      "city": "BIRMINGHAM",
+      "postcode": "B16 6FR",
       "phoneNumber": "0300 123 1142",
-      "faxNumber": "0870 739 4331"
+      "faxNumber": "0126 434 7983"
     }
   }
 }

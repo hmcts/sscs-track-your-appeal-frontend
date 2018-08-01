@@ -1,51 +1,39 @@
 {
   "appeal": {
-    "caseReference": "SC123/45/00001",
-    "name": "Mr Jason Test",
-    "surname": "Test",
-    "appealNumber": "md005",
-    "benefitType": "esa",
+    "caseReference": "SC285/18/00018",
+    "appealNumber": "ZFEosvLF4N",
     "status": "DWP_RESPOND",
+    "benefitType": "pip",
+    "name": "Mr D test",
+    "surname": "test",
     "latestEvents": [
       {
-        "date": "2017-04-12T00:00:00Z",
-        "type": "EVIDENCE_RECEIVED",
-        "evidenceType": "medical",
-        "contentKey": "status.evidenceReceived"
-      },
-      {
-        "date": "2017-04-10T00:00:00Z",
+        "date": "2018-06-08T14:14:20.000Z",
         "type": "DWP_RESPOND",
         "contentKey": "status.dwpRespond",
-        "hearingContactDate": "2017-05-24T00:00:00Z"
+        "hearingContactDate": "2018-08-03T14:14:20.000Z"
       }
     ],
     "historicalEvents": [
       {
-        "date": "2017-03-10T00:00:00Z",
-        "type": "EVIDENCE_RECEIVED",
-        "evidenceType": "medical",
-        "contentKey": "status.evidenceReceived"
-      },
-      {
-        "date": "2017-03-08T00:00:00Z",
+        "date": "2018-05-20T14:14:20.000Z",
         "type": "APPEAL_RECEIVED",
-        "dwpResponseDate": "2017-04-12T00:00:00Z",
-        "contentKey": "status.appealReceived"
+        "contentKey": "status.appealReceived",
+        "dwpResponseDate": "2018-06-24T14:14:20.000Z"
       }
     ],
     "regionalProcessingCenter": {
-      "name": "SUTTON",
+      "name": "BIRMINGHAM",
       "addressLines": [
         "HM Courts & Tribunals Service",
         "Social Security & Child Support Appeals",
-        "Copthall House",
-        "9 The Pavement, Grove Road"
+        "Administrative Support Centre",
+        "PO Box 14620"
       ],
-      "city": "SUTTON",
-      "postcode": "SM1 1DA",
+      "city": "BIRMINGHAM",
+      "postcode": "B16 6FR",
       "phoneNumber": "0300 123 1142",
-      "faxNumber": "0870 739 4229"
+      "faxNumber": "0126 434 7983"
     }
   }
 }

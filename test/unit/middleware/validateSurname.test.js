@@ -4,11 +4,15 @@ const validateSurnameContent = require('app/assets/locale/en').validateSurname;
 
 describe('validateSurname.js', () => {
   const id = 'validId';
+  const originalPage = 'abouthearing';
   let req = null, res = null, next = null;
 
   beforeEach(() => {
     req = {
-      params: { id },
+      params: {
+        id,
+        originalPage
+      },
       body: {}
     };
     res = {
@@ -47,7 +51,7 @@ describe('validateSurname.js', () => {
       fields.surname.errorMessage = validateSurnameContent.surname.errors.emptyStringHeading;
       req.body.surname = '';
       validateSurname(req, res, next);
-      expect(res.render).to.have.been.calledWith('validate-surname', { id, fields });
+      expect(res.render).to.have.been.calledWith('validate-surname', { id, fields, originalPage });
     });
 
     it('calls res.render when the field is invalid', () => {
@@ -56,7 +60,7 @@ describe('validateSurname.js', () => {
       fields.surname.errorMessage = validateSurnameContent.surname.errors.notValidHeading;
       req.body.surname = '12345';
       validateSurname(req, res, next);
-      expect(res.render).to.have.been.calledWith('validate-surname', { id, fields });
+      expect(res.render).to.have.been.calledWith('validate-surname', { id, fields, originalPage });
     });
   });
 });

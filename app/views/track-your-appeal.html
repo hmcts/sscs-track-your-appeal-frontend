@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-Track your Appeal
+Track your appeal {{ i18n.common.titleContext }}
 {% endblock %}
 
 {% block content %}
@@ -18,7 +18,7 @@ Track your Appeal
 
             <div class="details">
                 <h2 class="heading-medium">{{ data.name }}</h2>
-                <h2 class="form-hint">{{ i18n.common.appealReferenceNumber }}: {{ data.caseReference }}</h2>
+                <h2>{{ i18n.common.appealReferenceNumber }}: {{ data.caseReference }}</h2>
             </div>
 
             <div class="divider"></div>
@@ -89,14 +89,14 @@ Track your Appeal
                     <div>
                         <h3 class="bold-small">
                             {{ historicalEvent.heading }}
-                            <span class="form-hint">{{ historicalEvent.date | formatDate }}</span>
+                            <span>{{ historicalEvent.date | formatDate }}</span>
                         </h3>
 
                         {% for content in historicalEvent.renderedContent %}
                         <p>{{ content }}</p>
                         {% endfor %}
 
-                        {% if historicalEvent.contentKey === 'status.hearingBooked' %}
+                        {% if historicalEvent.contentKey === 'status.hearingBooked' and historicalEvent.hearingAddress.lines > 0 %}
                         <a href="/hearingdetails/{{data.appealNumber}}/{{loop.index0}}">{{ i18n.hearingDetails.checkDetails }}</a>
                         {% endif %}
                     </div>
