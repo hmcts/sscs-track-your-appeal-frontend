@@ -1,6 +1,7 @@
 const { validateToken } = require('app/services/tokenService');
 const { expect, sinon } = require('test/chai-sinon');
 const apiUrl = require('config').get('api.url');
+const appInsights = require('app-insights');
 const HttpStatus = require('http-status-codes');
 const nock = require('nock');
 
@@ -43,6 +44,12 @@ describe('tokenService.js', () => {
   });
 
   describe('validateToken() - HTTP GET /tokens/mactoken 500', () => {
+    beforeEach(() => {
+      sinon.spy(appInsights, 'trackException');
+    });
+    afterEach(() => {
+      appInsights.trackException.restore();
+    });
     it('should call next() passing an error containing a 500', () => {
       const error = { value: HttpStatus.INTERNAL_SERVER_ERROR, reason: 'server error' };
 
@@ -53,6 +60,7 @@ describe('tokenService.js', () => {
       return validateToken(req, res, next)
         .then(() => {
           expect(next).to.have.been.calledWith(error);
+          expect(appInsights.trackException).to.have.been.calledOnce.calledWith(error);
         });
     });
   });

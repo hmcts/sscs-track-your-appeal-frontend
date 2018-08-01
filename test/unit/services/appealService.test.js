@@ -7,10 +7,10 @@ const { expect, sinon } = require('test/chai-sinon');
 const { appeal } = require('test/mock/data/appealReceived');
 const HttpStatus = require('http-status-codes');
 const apiURL = require('config').get('api.url');
+const appInsights = require('app-insights');
 const nock = require('nock');
 
 describe('appealService.js', () => {
-  const invalidId = 'invalidId';
   let req = null, res = null, next = null, notificationsUrl = null;
 
   beforeEach(() => {
@@ -57,27 +57,34 @@ describe('appealService.js', () => {
       req.params.id = appeal.appealNumber;
 
       nock(apiURL)
-        .get(`/appeals/${invalidId}`)
+        .get(`/appeals/${req.params.id}`)
         .replyWithError(error);
 
       return getAppeal(req, res, next)
-        .catch(() => {
+        .then(() => {
           expect(next).to.have.been.calledWith(error);
         });
     });
   });
 
   describe('getAppeal() - GET 500', () => {
+    beforeEach(() => {
+      sinon.spy(appInsights, 'trackException');
+    });
+    afterEach(() => {
+      appInsights.trackException.restore();
+    });
     it('should call next() passing an error containing a 500', () => {
       const error = { value: HttpStatus.INTERNAL_SERVER_ERROR, reason: 'server error' };
       req.params.id = appeal.appealNumber;
       nock(apiURL)
-        .get(`/appeals/${invalidId}`)
+        .get(`/appeals/${req.params.id}`)
         .replyWithError(error);
 
       return getAppeal(req, res, next)
-        .catch(() => {
+        .then(() => {
           expect(next).to.have.been.calledWith(error);
+          expect(appInsights.trackException).to.have.been.calledOnce.calledWith(error);
         });
     });
   });
@@ -96,6 +103,12 @@ describe('appealService.js', () => {
   });
 
   describe('changeEmailAddress() - POST 500', () => {
+    beforeEach(() => {
+      sinon.spy(appInsights, 'trackException');
+    });
+    afterEach(() => {
+      appInsights.trackException.restore();
+    });
     it('should call next() with the error', () => {
       const error = { value: HttpStatus.INTERNAL_SERVER_ERROR, reason: 'server error' };
       nock(apiURL)
@@ -103,8 +116,9 @@ describe('appealService.js', () => {
         .replyWithError(error);
 
       return changeEmailAddress(req, res, next)
-        .catch(() => {
+        .then(() => {
           expect(next).to.have.been.calledWith(error);
+          expect(appInsights.trackException).to.have.been.calledOnce.calledWith(error);
         });
     });
   });
@@ -123,6 +137,12 @@ describe('appealService.js', () => {
   });
 
   describe('stopReceivingEmails() - DELETE 500', () => {
+    beforeEach(() => {
+      sinon.spy(appInsights, 'trackException');
+    });
+    afterEach(() => {
+      appInsights.trackException.restore();
+    });
     it('should call next() passing an error containing a 500', () => {
       const error = { value: HttpStatus.INTERNAL_SERVER_ERROR, reason: 'server error' };
       nock(apiURL)
@@ -130,8 +150,9 @@ describe('appealService.js', () => {
         .replyWithError(error);
 
       return stopReceivingEmails(req, res, next)
-        .catch(() => {
+        .then(() => {
           expect(next).to.have.been.calledWith(error);
+          expect(appInsights.trackException).to.have.been.calledOnce.calledWith(error);
         });
     });
   });
