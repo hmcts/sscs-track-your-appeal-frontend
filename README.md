@@ -92,4 +92,3 @@ Ensure environment variable `NOTIFICATION_API_KEY` is set before running smoke t
 Pass `E2E_OUTPUT_DIR` environment variable to use mochawesome reporter.
 
     $> make test-end-to-end
-    
