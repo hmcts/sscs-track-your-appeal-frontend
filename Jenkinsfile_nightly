@@ -17,4 +17,8 @@ withNightlyPipeline(type,product,component) {
 
     env.TEST_URL = 'https://track-appeal.nonprod.platform.hmcts.net'
     enableCrossBrowserTest()
+    after("crossBrowserTest")
+    {
+        step([$class: 'SauceOnDemandTestPublisher'])
+    }
 }
