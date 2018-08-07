@@ -4,7 +4,7 @@ const supportedBrowsers = require('../crossbrowser/supportedBrowsers.js');
 
 const browser = requiredValue(process.env.SAUCELABS_BROWSER, 'SAUCELABS_BROWSER'); // eslint-disable-line no-use-before-define
 
-const tunnelName = 'sscs-test';
+const tunnelName = 'reformtunnel';
 
 function getDesiredCapabilities() {
   const desiredCapability = supportedBrowsers[browser];
