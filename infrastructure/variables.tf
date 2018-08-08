@@ -1,9 +1,13 @@
 variable "product" {
-  type    = "string"
+  type = "string"
+}
+
+variable "raw_product" {
+  default = "sscs-tya" // jenkins-library overrides product for PRs and adds e.g. pr-118-cmc
 }
 
 variable "component" {
-  type   = "string"
+  type = "string"
 }
 
 variable "location" {
@@ -24,7 +28,7 @@ variable "subscription" {
   type = "string"
 }
 
-variable "ilbIp"{}
+variable "ilbIp" {}
 
 variable "additional_hostname" {
   default = "track-appeal.sandbox.platform.hmcts.net"
