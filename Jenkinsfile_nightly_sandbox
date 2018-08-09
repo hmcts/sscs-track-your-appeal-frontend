@@ -22,6 +22,8 @@ withNightlyPipeline(type,product,component) {
     env.https_proxy='http://proxyout.reform.hmcts.net:8080'
     env.HTTPS_PROXY='http://proxyout.reform.hmcts.net:8080'
     env.HTTP_PROXY='http://proxyout.reform.hmcts.net:8080'
+    env.no_proxy='*.googleapis.com'
+    env.NO_PROXY='*.googleapis.com'
     enableCrossBrowserTest()
 
        after('crossBrowserTest') {
