@@ -18,10 +18,10 @@ withNightlyPipeline(type,product,component) {
     env.TEST_URL = 'https://track-appeal.nonprod.platform.hmcts.net'
     env.SAUCE_ACCESS_KEY='c7dd3daf-5e1f-4d72-a07f-278260ef69b8'
     env.SAUCE_USERNAME='vreddy'
-    env.http_proxy=http://proxyout.reform.hmcts.net:8080
-    env.https_proxy=http://proxyout.reform.hmcts.net:8080
-    env.HTTPS_PROXY=http://proxyout.reform.hmcts.net:8080
-    env.HTTP_PROXY=http://proxyout.reform.hmcts.net:8080
+    env.http_proxy='http://proxyout.reform.hmcts.net:8080'
+    env.https_proxy='http://proxyout.reform.hmcts.net:8080'
+    env.HTTPS_PROXY='http://proxyout.reform.hmcts.net:8080'
+    env.HTTP_PROXY='http://proxyout.reform.hmcts.net:8080'
     enableCrossBrowserTest()
 
        after('crossBrowserTest') {
