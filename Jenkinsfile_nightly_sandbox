@@ -22,8 +22,8 @@ withNightlyPipeline(type,product,component) {
     env.https_proxy='http://proxyout.reform.hmcts.net:8080'
     env.HTTPS_PROXY='http://proxyout.reform.hmcts.net:8080'
     env.HTTP_PROXY='http://proxyout.reform.hmcts.net:8080'
-    env.no_proxy='saucelabs.com, *.saucelabs.com, *.track-appeal.nonprod'
-    env.NO_PROXY='saucelabs.com, *.saucelabs.com, *.track-appeal.nonprod'
+    env.no_proxy='saucelabs.com, *.saucelabs.com, *.track-appeal.nonprod.platform.hmcts.net'
+    env.NO_PROXY='saucelabs.com, *.saucelabs.com, *.track-appeal.nonprod.platform.hmcts.net'
     }
     env.TEST_URL = 'https://track-appeal.nonprod.platform.hmcts.net'
     enableCrossBrowserTest()
