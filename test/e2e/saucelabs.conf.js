@@ -12,6 +12,7 @@ function getDesiredCapabilities() {
   desiredCapability.extendedDebugging = true;
   desiredCapability.tags = ['sscs-tya'];
   desiredCapability.httpProxy = 'proxyout.reform.hmcts.net:8080';
+  desiredCapability.httpsProxy = 'proxyout.reform.hmcts.net:8080';
   return desiredCapability;
 }
 
