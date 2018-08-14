@@ -11,7 +11,6 @@ function getDesiredCapabilities() {
   desiredCapability.tunnelIdentifier = tunnelName;
   desiredCapability.extendedDebugging = true;
   desiredCapability.tags = ['sscs-tya'];
-  desiredCapability.proxy = { proxyType: 'MANUAL', httpproxy: 'proxyout.reform.hmcts.net:8080', httpsproxy: 'proxyout.reform.hmcts.net:8080' };
   return desiredCapability;
 }
 
