@@ -5,7 +5,7 @@ properties([
         pipelineTriggers([cron('15 02 * * *')])
 ])
 
-library "Infrastructure@${params.LIB_VERSION}"
+library "Infrastructure@sauce-publisher"
 
 String product = "SSCS"
 
@@ -17,14 +17,6 @@ withNightlyPipeline(type,product,component) {
 
     before("crossBrowserTest") {
     env.TEST_URL = 'https://track-appeal.nonprod.platform.hmcts.net'
-    env.SAUCE_ACCESS_KEY='c7dd3daf-5e1f-4d72-a07f-278260ef69b8'
-    env.SAUCE_USERNAME='vreddy'
-    env.http_proxy='http://172.16.0.7:8080'
-    env.https_proxy='http://172.16.0.7:8080'
-    env.HTTPS_PROXY='http://172.16.0.7:8080'
-    env.HTTP_PROXY='http://172.16.0.7:8080'
-    env.no_proxy='saucelabs.com, *.saucelabs.com'
-    env.NO_PROXY='saucelabs.com, *.saucelabs.com'
     }
     enableCrossBrowserTest()
 
