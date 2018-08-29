@@ -39,7 +39,7 @@ Track your appeal {{ i18n.common.titleContext }}
                     <div class="ring">
                         <img class="tick" src="/public/images/tick.png" alt="ignored by screen readers" aria-hidden="true">
                     </div>
-                    <h4 class="{{ data.status|isCurrent('DWP_RESPOND') }}" aria-hidden="true">{{ i18n.progressBar.dwpRespond }}</h4>
+                    <h4 class="{{ data.status|isCurrent('DWP_RESPOND') }}" aria-hidden="true">{{ 'DWP_RESPOND'|getProgressBarHeading(data.benefitType)}}</h4>
                     <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('DWP_RESPOND') }}</span>
                 </div>
 

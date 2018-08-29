@@ -99,7 +99,10 @@
   },
   "progressBar": {
     "appeal": "Appeal",
-    "dwpRespond": "{{benefitType|agencyAcronym}} response",
+    "DWP_RESPOND": {
+      "pip": "DWP response",
+      "esa": "DWP response"
+    },
     "hearingBooked": "Hearing booked",
     "hearing": "Hearing",
     "screenReader": {
