@@ -9,13 +9,13 @@
     },
     "appealReceived": {
       "heading": "Appeal received",
-      "content": "We’ve told DWP that you’ve appealed against their decision. They should respond before {{dwpResponseDate|formatDate}}. We’ll contact you and explain the next steps when they’ve replied."
+      "content": "We’ve told {{benefitType|agencyAcronym}} that you’ve appealed against their decision. They should respond before {{dwpResponseDate|formatDate}}. We’ll contact you and explain the next steps when they’ve replied."
     },
     "closed": {
       "heading": "Appeal closed",
       "content": [
         "Your {{benefitType|acronym}} benefit appeal is now closed.",
-        "If you have any questions relating to your benefits, contact DWP. You can find their contact details on any correspondence you’ve received from them."
+        "If you have any questions relating to your benefits, contact {{benefitType|agencyAcronym}}. You can find their contact details on any correspondence you’ve received from them."
       ]
     },
     "dormant": {
@@ -26,16 +26,16 @@
       ]
     },
     "dwpRespond": {
-      "heading": "DWP response",
+      "heading": "{{benefitType|agencyAcronym}} response",
       "content": [
-        "DWP have responded to your {{benefitType|acronym}} benefit appeal. They should have sent you a copy of their response in the post.",
+        "{{benefitType|agencyAcronym}} have responded to your {{benefitType|acronym}} benefit appeal. They should have sent you a copy of their response in the post.",
         "Your appeal hearing needs to be booked. You don’t need to do anything. You’ll receive another update by {{hearingContactDate|formatDate}}."
       ]
     },
     "dwpRespondOverdue": {
-      "heading": "DWP response overdue",
+      "heading": "{{benefitType|agencyAcronym}} response overdue",
       "content": [
-        "DWP were due to respond to your appeal by {{dwpResponseDate|formatDate}}. We’ve written to them again to remind them. We’ll let you know when they respond."
+        "{{benefitType|agencyAcronym}} were due to respond to your appeal by {{dwpResponseDate|formatDate}}. We’ve written to them again to remind them. We’ll let you know when they respond."
       ]
     },
     "evidenceReceived": {
@@ -56,8 +56,8 @@
     "lapsedRevised": {
       "heading": "Change of decision",
       "content": [
-        "DWP have told us they changed their decision on your entitlement to {{benefitType|acronym}} in your favour. We’ve therefore closed this appeal. If you don’t agree with their new decision you can start a new appeal.",
-        "If you have any questions relating to your benefits, contact DWP. You can find their contact details on any correspondence you’ve received from them."
+        "{{benefitType|agencyAcronym}} have told us they changed their decision on your entitlement to {{benefitType|acronym}} in your favour. We’ve therefore closed this appeal. If you don’t agree with their new decision you can start a new appeal.",
+        "If you have any questions relating to your benefits, contact {{benefitType|agencyAcronym}}. You can find their contact details on any correspondence you’ve received from them."
       ]
     },
     "newHearingBooked": {
@@ -79,23 +79,27 @@
       "heading": "Appeal withdrawn",
       "content": [
         "You told us you wanted to withdraw your appeal so we’ve closed it.",
-        "If you have any questions relating to your benefits, contact DWP. You can find their contact details on any correspondence you’ve received from them."
+        "If you have any questions relating to your benefits, contact {{benefitType|agencyAcronym}}. You can find their contact details on any correspondence you’ve received from them."
       ]
     }
   },
   "benefitTypes": {
     "esa": {
       "acronym": "ESA",
-      "fullDescription": "Employment and Support Allowance (ESA)"
+      "fullDescription": "Employment and Support Allowance (ESA)",
+      "agency": "Department for Work and Pensions",
+      "agencyAcronym": "DWP"
     },
     "pip": {
       "acronym": "PIP",
-      "fullDescription": "Personal Independence Payment (PIP)"
+      "fullDescription": "Personal Independence Payment (PIP)",
+      "agency": "Department for Work and Pensions",
+      "agencyAcronym": "DWP"
     }
   },
   "progressBar": {
     "appeal": "Appeal",
-    "dwpRespond": "DWP response",
+    "dwpRespond": "{{benefitType|agencyAcronym}} response",
     "hearingBooked": "Hearing booked",
     "hearing": "Hearing",
     "screenReader": {
@@ -104,8 +108,8 @@
         "happened": "Appeal received. This step is complete."
       },
       "dwpRespond": {
-        "due": "DWP respond to your appeal. This has not happened yet.",
-        "happened": "DWP respond to your appeal. This step is complete."
+        "due": "{{benefitType|agencyAcronym}} respond to your appeal. This has not happened yet.",
+        "happened": "{{benefitType|agencyAcronym}} respond to your appeal. This step is complete."
       },
       "hearingBooked": {
         "due": "Hearing booked. This has not happened yet.",
@@ -139,7 +143,7 @@
         "content": [
           "This is the most important form of evidence. Medical evidence helps the tribunal understand your condition and how it affects your life.",
           "As a patient, you have a right to a copy of your medical records. You’ll need to ask your doctor for them as early as possible in your appeal. Only get records going back 2 years from the time you made your appeal.",
-          "You might have other medical evidence which isn’t included in your medical records. For example a letter from a consultant, physiotherapist or mental health worker. Submit these too, if they are relevant to your condition at the time you received your decision from DWP.",
+          "You might have other medical evidence which isn’t included in your medical records. For example a letter from a consultant, physiotherapist or mental health worker. Submit these too, if they are relevant to your condition at the time you received your decision from {{benefitType|agencyAcronym}}.",
           "You’ll need to send evidence to the tribunal as early as possible. If you submit evidence too close to your hearing, it could be delayed to a different day because there hasn’t been enough time to review it.",
           "Please be aware your doctor or consultant may charge you for your medical records. We can’t reimburse you for this."
         ]
@@ -258,15 +262,15 @@
       "peopleAtHearing": {
         "heading": "The people at your hearing",
         "content": [
-          "The tribunal is made up of a judge and a medical expert who will make an impartial decision on your appeal. They are both independent from DWP.",
+          "The tribunal is made up of a judge and a medical expert who will make an impartial decision on your appeal. They are both independent from {{benefitType|agencyAcronym}}.",
           "The judge runs the hearing and will explain how it works. They’ll also take notes of what is said during the hearing.",
           "The medical expert is there to give their medical opinion on your appeal."
         ]
       },
       "dwp": {
-        "heading": "DWP",
+        "heading": "{{benefitType|agencyAcronym}}",
         "content": [
-          "A representative from DWP might be there. They are not on the panel and are there to speak on behalf of DWP. They won’t be the person who made the decision about your entitlement to {{benefitType|acronym}}."
+          "A representative from {{benefitType|agencyAcronym}} might be there. They are not on the panel and are there to speak on behalf of DWP. They won’t be the person who made the decision about your entitlement to {{benefitType|acronym}}."
         ]
       },
       "duringHearing": {
@@ -303,7 +307,7 @@
       "content": [
         "You can bring people to support you at your hearing. For example family, friends or a support worker. There will be a limit to the number of people you can take into the hearing room because of space.",
         "Children are allowed in the waiting area but not in the hearing room. You’ll need to bring someone to supervise them while you’re in the hearing.",
-        "Bring all documents relating to your appeal to the hearing. For example letters or evidence we or DWP have sent you."
+        "Bring all documents relating to your appeal to the hearing. For example letters or evidence we or {{benefitType|agencyAcronym}} have sent you."
       ]
     }
   },

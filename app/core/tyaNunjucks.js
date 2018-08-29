@@ -54,6 +54,14 @@ const filters = {
 
   fullDescription: benefitType => {
     return getContentAsString(`benefitTypes.${benefitType}.fullDescription`);
+  },
+
+  agency: benefitType => {
+    return getContentAsString(`benefitTypes.${benefitType}.agency`);
+  },
+
+  agencyAcronym: benefitType => {
+    return getContentAsString(`benefitTypes.${benefitType}.agencyAcronym`);
   }
 
 };
