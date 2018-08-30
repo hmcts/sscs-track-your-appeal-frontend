@@ -64,6 +64,10 @@ const filters = {
     return getContentAsString(`benefitTypes.${benefitType}.agencyAcronym`);
   },
 
+  panel: benefitType => {
+    return getContentAsString(`benefitTypes.${benefitType}.panel`);
+  },
+
   getProgressBarHeading: (currentStatus, benefitType) => {
     return getContentAsString(`progressBar.${currentStatus}.${benefitType}`);
   }

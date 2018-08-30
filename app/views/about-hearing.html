@@ -33,9 +33,15 @@ What to expect at your hearing  {{ i18n.common.titleContext }}
             <p>{{ i18n.hearing.expectations.theHearingRoom.content }}</p>
 
             <h2 class="heading-medium">{{ i18n.hearing.expectations.peopleAtHearing.heading }}</h2>
-            {% for content in i18n.hearing.expectations.peopleAtHearing.content %}
-            <p>{{content}}</p>
-            {% endfor %}
+            {% if data.benefitType === 'pip' %}
+                {% for contentPIP in i18n.hearing.expectations.peopleAtHearing.contentPIP %}
+                    <p>{{contentPIP}}</p>
+                {% endfor %}
+            {% elseif data.benefitType === 'esa' %}
+                {% for contentESA in i18n.hearing.expectations.peopleAtHearing.contentESA %}
+                    <p>{{contentESA}}</p>
+                {% endfor %}
+            {% endif %}
 
             <h2 class="heading-medium">{{ i18n.hearing.expectations.dwp.heading }}</h2>
             {% for content in i18n.hearing.expectations.dwp.content %}
@@ -49,7 +55,7 @@ What to expect at your hearing  {{ i18n.common.titleContext }}
 
             <h2 class="heading-medium">{{ i18n.hearing.expectations.gettingDecision.heading }}</h2>
             {% for content in i18n.hearing.expectations.gettingDecision.content %}
-            <p>{{content }}</p>
+            <p>{{content}}</p>
             {% endfor %}
 
         </div>

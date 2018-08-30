@@ -88,13 +88,15 @@
       "acronym": "ESA",
       "fullDescription": "Employment and Support Allowance (ESA)",
       "agency": "Department for Work and Pensions",
-      "agencyAcronym": "DWP"
+      "agencyAcronym": "DWP",
+      "panel": "a judge and a doctor"
     },
     "pip": {
       "acronym": "PIP",
       "fullDescription": "Personal Independence Payment (PIP)",
       "agency": "Department for Work and Pensions",
-      "agencyAcronym": "DWP"
+      "agencyAcronym": "DWP",
+      "panel": "a judge, doctor and disability expert"
     }
   },
   "progressBar": {
@@ -245,10 +247,10 @@
     "expectations": {
       "title": "What to expect at your hearing",
       "link": "Find out what your hearing is going to be like",
-      "content": "Your hearing is an opportunity for you to explain your appeal and get an impartial decision on your entitlement to {{benefitType|fullDescription}}. The tribunal is independent and will consider both sides of the appeal.",
+      "content": "Your hearing is an opportunity for you to explain your {{benefitType|fullDescription}} appeal. An independent panel of people will consider everything you tell them and make an impartial decision on your entitlement to {{benefitType|acronym}}. The panel will be made up of {{benefitType|panel}}. They are independent from {{benefitType|agency}} ({{benefitType|agencyAcronym}}).",
       "whenYouArrive": {
         "heading": "When you arrive",
-        "content": "You’ll be greeted by a tribunal clerk. They’ll take care of you at the hearing venue and answer any questions you have."
+        "content": "You’ll be greeted by a tribunal clerk. They’ll take care of you at the hearing venue and answer any questions you have. You should arrive at least 15 minutes before your hearing is due to start. If you are late your hearing may go ahead without you or be postponed to a different day."
       },
       "theHearingRoom": {
         "caption": {
@@ -260,35 +262,41 @@
           "esa": "A tribunal hearing with 4 people, dressed informally, sat around a table."
         },
         "heading": "The hearing room",
-        "content": "The tribunal clerk will take you into the hearing room. The judge and medical expert will be sitting at a table. You’ll be invited to sit opposite them. If you have someone to support you or to give evidence, they’ll sit next to you."
+        "content": "The tribunal clerk will take you into the hearing room. The tribunal panel will be sat behind a table. You’ll be invited to sit opposite them. If you have someone to support you or to give evidence, they’ll sit next to you."
       },
       "peopleAtHearing": {
         "heading": "The people at your hearing",
-        "content": [
-          "The tribunal is made up of a judge and a medical expert who will make an impartial decision on your appeal. They are both independent from {{benefitType|agencyAcronym}}.",
+        "contentPIP": [
           "The judge runs the hearing and will explain how it works. They’ll also take notes of what is said during the hearing.",
-          "The medical expert is there to give their medical opinion on your appeal."
+          "The doctor provides their medical knowledge. The disability expert provides their knowledge of disability issues and how disability affects people.",
+          "Together they make a decision about your entitlement to the PIP benefit. "
+        ],
+        "contentESA": [
+          "The judge runs the hearing and will explain how it works. They’ll also take notes of what is said during the hearing.",
+          "The doctor provides their medical knowledge.",
+          "Together they make a decision about your entitlement to the ESA benefit. "
         ]
       },
       "dwp": {
         "heading": "{{benefitType|agencyAcronym}}",
         "content": [
-          "A representative from {{benefitType|agencyAcronym}} might be there. They are not on the panel and are there to speak on behalf of DWP. They won’t be the person who made the decision about your entitlement to {{benefitType|acronym}}."
+          "A representative from {{benefitType|agencyAcronym}} might be there. They are not on the panel and are there to speak on behalf of {{benefitType|agencyAcronym}}. They won’t be the person who made the decision about your entitlement to {{benefitType|acronym}}."
         ]
       },
       "duringHearing": {
         "heading": "During your hearing",
         "content": [
-          "The tribunal panel members will ask you some straightforward questions. They’re trying to understand how your condition affects your life. This is your opportunity to explain your side of the appeal. They will consider everything you tell them.",
+          "The tribunal panel members will ask you some straightforward questions. This is your opportunity to explain your side of the appeal. They will listen to everything you tell them.",
           "Sometimes the tribunal panel will need more evidence to help them make a decision. It’s important that you submit all your evidence well before the hearing so they have time to review it. Otherwise they may have to postpone the hearing to a different day."
         ]
       },
       "gettingDecision": {
         "heading": "Getting a decision",
         "content": [
-          "After you’ve answered all the questions you’ll be asked to wait outside while the tribunal discusses your appeal. You’ll then be asked back into the room to be told the decision.",
-          "The judge will explain whether you’re entitled to {{benefitType|acronym}} and if so, at what level.",
-          "Sometimes the tribunal may need more time to make a decision. If that happens the decision about your appeal will be posted to you."
+          "After you’ve answered all the questions you’ll be asked to wait outside while the tribunal panel discusses your appeal. You’ll then be asked back into the room to be told the decision.",
+          "The judge will explain whether you’re entitled to {{benefitType|acronym}}, and if so, at what level.",
+          "Sometimes the tribunal need more time to make a decision. If that happens the decision about your appeal will be posted to you.",
+          "The whole hearing usually lasts about an hour."
         ]
       }
     }
