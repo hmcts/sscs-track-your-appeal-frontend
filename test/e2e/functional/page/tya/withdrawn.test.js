@@ -7,7 +7,7 @@ Before(I => {
   I.enterSurnameAndSubmitAndSeeTYA(appeal);
 });
 
-Scenario.only('Verify appeal details, no progress bar and content', I => {
+Scenario('Verify appeal details, no progress bar and content', I => {
   I.seeAppealDetails(appeal);
   I.dontSeeAProgressBar();
 
