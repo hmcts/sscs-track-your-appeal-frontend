@@ -142,28 +142,35 @@
     "received": "If you have any more evidence to support your appeal, you should send it as soon as possible. This is so there's time to read it before your hearing.",
     "provide": {
       "title": "Providing evidence to support your appeal",
-      "content": "Evidence is anything that supports your appeal. It could be medical records, letters or documents. What you say at the hearing is also evidence. It all helps the tribunal understand the facts of your appeal.",
+      "content": ["Evidence is any information that supports your appeal, such as a letter, written statement or medical report. If you go to the hearing, what you say is also evidence. It all helps the tribunal understand the facts of your appeal.",
+                "If you have any evidence, you should post it as soon as possible to the address at the bottom of this page. This is so the tribunal have time to read it before your hearing. You don’t have to send evidence if you don’t have any."],
       "medicalEvidence": {
         "heading": "Medical evidence",
         "content": [
-          "This is the most important form of evidence. Medical evidence helps the tribunal understand your condition and how it affects your life.",
-          "As a patient, you have a right to a copy of your medical records. You’ll need to ask your doctor for them as early as possible in your appeal. Only get records going back 2 years from the time you made your appeal.",
-          "You might have other medical evidence which isn’t included in your medical records. For example a letter from a consultant, physiotherapist or mental health worker. Submit these too, if they are relevant to your condition at the time you received your decision from {{benefitType|agencyAcronym}}.",
-          "You’ll need to send evidence to the tribunal as early as possible. If you submit evidence too close to your hearing, it could be delayed to a different day because there hasn’t been enough time to review it.",
-          "Please be aware your doctor or consultant may charge you for your medical records. We can’t reimburse you for this."
+          "This type of evidence helps the tribunal understand your condition from the perspective of a medical professional. You could ask your doctor, physiotherapist or mental health worker to write a letter for you. It’s useful if it explains how your condition affects your life at the time of the decision by {{benefitType|agency}}, including the types of activities you can and can’t do.",
+          "Please be aware your doctor may charge you for providing this. The tribunal can’t reimburse you."
         ]
+      },
+      "statement": {
+        "heading": "Statement",
+        "content": ["Someone who lives with you or knows you well you could write a statement. A useful statement describes how your condition affects your life and includes the types of activities you can and can’t do.",
+        "It can written by hand or on a computer but it should be signed by the person who wrote it. It should also say what their relationship is to you."]
+      },
+      "photoEvidence": {
+        "heading": "Photographic evidence",
+        "content": ["If you think a photograph will show how your condition affects your life, you can send them in too. For example, photographs of any aids you use to help your move."]
       },
       "oralEvidence": {
         "heading": "Oral evidence",
         "content": [
-          "What you or anyone else says on your behalf at the hearing is called oral evidence. If you have a carer or someone who supports you in your home, you might want to invite them to come and tell the tribunal about your condition.",
+          "What you or anyone else says on your behalf at the hearing is called oral evidence. If you have someone who supports you in your home, you could invite them to come and tell the tribunal about your condition.",
           "You should check the person is willing to talk at your hearing and available on the day."
         ]
       },
       "whereToSendEvidence": {
         "heading": "Where to send your evidence",
         "content": [
-          "Post evidence to the following address, clearly marked with your appeal reference number:"
+          "Post evidence to the following address, clearly marked with your appeal reference number: {{caseReference}}"
         ],
         "address": [
           "Liverpool Social Security and Child Support Tribunal",
@@ -171,7 +178,8 @@
           "Liverpool",
           "Merseyside",
           "L2 5UZ"
-        ]
+        ],
+        "moreContent": "You’ll need to send evidence to the tribunal as early as possible. If you submit evidence too close to your hearing, it could be delayed to a different day because there hasn’t been enough time to review it."
       }
     }
   },
