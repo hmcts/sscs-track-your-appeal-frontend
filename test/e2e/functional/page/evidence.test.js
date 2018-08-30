@@ -21,5 +21,4 @@ Scenario('Verify the dynamic content of the /evidence page', I => {
   I.see(env.renderString(evidence.provide.statement.content[0], benefitType));
   I.see(env.renderString(evidence.provide.photoEvidence.content[0], benefitType));
   I.see(env.renderString(evidence.provide.oralEvidence.content[0], benefitType));
-
 });
