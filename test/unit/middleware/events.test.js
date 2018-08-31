@@ -1,3 +1,4 @@
+const { env } = require('test/e2e/helpers/nunjucksHelper');
 const { applyContentToEvents } = require('app/middleware/events');
 const { expect, sinon } = require('test/chai-sinon');
 const { appeal } = require('test/mock/data/dwpRespond');
@@ -26,9 +27,9 @@ describe('events.js', () => {
     });
 
     it('should contain heading index', () => {
+      const benefitType = 'pip';
       expect(latestEvents).to.have.any.keys('heading');
-      // The tokens aren't compiled so this would fail
-      // expect(latestEvents.heading).to.equal('DWP response');
+      expect(env.renderString(latestEvents.heading, { benefitType })).to.equal('DWP response');
     });
 
     it('should contain benefitType index', () => {
