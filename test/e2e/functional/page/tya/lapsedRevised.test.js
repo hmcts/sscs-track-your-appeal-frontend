@@ -8,7 +8,7 @@ Before(I => {
   I.enterSurnameAndSubmitAndSeeTYA(appeal);
 });
 
-Scenario('Verify lapsed revised appeal details, no progress bar and content', I => {
+xScenario('Verify lapsed revised appeal details, no progress bar and content', I => {
   I.seeAppealDetails(appeal);
   I.dontSeeAProgressBar();
 
