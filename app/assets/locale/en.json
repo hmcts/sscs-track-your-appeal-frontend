@@ -147,18 +147,18 @@
       "medicalEvidence": {
         "heading": "Medical evidence",
         "content": [
-          "This type of evidence helps the tribunal understand your condition from the perspective of a medical professional. You could ask your doctor, physiotherapist or mental health worker to write a letter for you. It’s useful if it explains how your condition affects your life at the time of the decision by {{benefitType|agency}}, including the types of activities you can and can’t do.",
-          "Please be aware your doctor may charge you for providing this. The tribunal can’t reimburse you."
+          "This type of evidence helps the tribunal understand your condition from the perspective of a medical professional. You might have a letter from your doctor, physiotherapist, social worker or hospital consultant. A useful letter explains how your condition affects your life at the time of the decision by {{benefitType|agency}}. Appointment letters are not useful. ",
+          "Please be aware your doctor may charge you for writing a letter. The tribunal cannot reimburse you."
         ]
       },
       "statement": {
-        "heading": "Statement",
+        "heading": "Written statement",
         "content": ["Someone who lives with you or knows you well you could write a statement. A useful statement describes how your condition affects your life and includes the types of activities you can and can’t do.",
         "It can written by hand or on a computer but it should be signed by the person who wrote it. It should also say what their relationship is to you."]
       },
       "photoEvidence": {
         "heading": "Photographic evidence",
-        "content": ["If you think a photograph will show how your condition affects your life, you can send them in too. For example, photographs of any aids you use to help your move."]
+        "content": ["A useful photo shows how your condition affects your life. For example, pictures of any aids you use to help you move. Do not send in any photos of your body."]
       },
       "oralEvidence": {
         "heading": "Oral evidence",
@@ -179,7 +179,7 @@
           "Merseyside",
           "L2 5UZ"
         ],
-        "moreContent": "You’ll need to send evidence to the tribunal as early as possible. If you submit evidence too close to your hearing, it could be delayed to a different day because there hasn’t been enough time to review it."
+        "moreContent": "Send your evidence as early as possible. This is so the tribunal have time to read it before your hearing. If you send it in too late your appeal may be delayed."
       }
     }
   },
@@ -262,8 +262,8 @@
       },
       "theHearingRoom": {
         "caption": {
-          "pip": "A PIP benefit appeal with a judge, doctor and disability expert",
-          "esa": "An ESA hearing with a judge and a doctor"
+          "pip": "A tribunal hearing for a PIP appeal",
+          "esa": "A tribunal hearing for an ESA appeal"
         },
         "imageAlt": {
           "pip": "A tribunal hearing with 5 people, dressed informally, sat around a table.",
@@ -276,8 +276,7 @@
         "heading": "The people at your hearing",
         "intro": "The tribunal panel is made up of a {{benefitType|panel}}. They are there to listen to both sides and make a decision on your appeal. They are independent from {{benefitType|agencyAcronym}}.",
         "contentPIP": [
-          "The judge runs the hearing and will explain how it works. They’ll also take notes of what is said during the hearing.",
-          "The doctor provides their medical knowledge. The disability expert provides their knowledge of disability issues and how disability affects people.",
+          "The judge runs the hearing and will explain how it works. They’ll also take notes of what is said during the hearing. The doctor provides their medical knowledge. The disability expert provides their knowledge of disability issues and how disability affects people.",
           "Together they make a decision about your entitlement to the PIP benefit. "
         ],
         "contentESA": [
