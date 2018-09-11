@@ -53,14 +53,5 @@ describe('validateSurname.js', () => {
       validateSurname(req, res, next);
       expect(res.render).to.have.been.calledWith('validate-surname', { id, fields, originalPage });
     });
-
-    it('calls res.render when the field is invalid', () => {
-      fields.surname.value = '12345';
-      fields.surname.errorHeading = validateSurnameContent.surname.errors.notValidHeading;
-      fields.surname.errorMessage = validateSurnameContent.surname.errors.notValidHeading;
-      req.body.surname = '12345';
-      validateSurname(req, res, next);
-      expect(res.render).to.have.been.calledWith('validate-surname', { id, fields, originalPage });
-    });
   });
 });
