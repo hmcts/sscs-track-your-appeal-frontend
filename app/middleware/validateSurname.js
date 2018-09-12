@@ -13,7 +13,7 @@ const validateField = (surname, errors) => {
           empty: `!!${errors.emptyStringHeading}`,
           invalid: `!!${errors.notValidHeading}`
         },
-        string: { regex: { base: `!!${errors.notValidHeading}` } }
+        string: { min: `!!${errors.notValidHeading}` }
       }
     });
 
