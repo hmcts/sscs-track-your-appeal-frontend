@@ -3,32 +3,33 @@ provider "vault" {
 }
 
 data "azurerm_key_vault" "sscs_key_vault" {
-  name = "${local.vaultName}"
+  name                = "${local.vaultName}"
   resource_group_name = "${local.vaultName}"
 }
 
 data "azurerm_key_vault_secret" "cookiesecret" {
-  name = "tyacookiesecret"
-  vault_uri = "${data.azurerm_key_vault.sscs_key_vault.vault_uri}" 
+  name      = "tyacookiesecret"
+  vault_uri = "${data.azurerm_key_vault.sscs_key_vault.vault_uri}"
 }
 
 data "azurerm_key_vault_secret" "hpkp-tya-sha-1" {
-  name = "hpkp-tya-sha-1"
-  vault_uri = "${data.azurerm_key_vault.sscs_key_vault.vault_uri}" 
+  name      = "hpkp-tya-sha-1"
+  vault_uri = "${data.azurerm_key_vault.sscs_key_vault.vault_uri}"
 }
+
 data "azurerm_key_vault_secret" "hpkp-tya-sha-2" {
-  name = "hpkp-tya-sha-2"
-  vault_uri = "${data.azurerm_key_vault.sscs_key_vault.vault_uri}" 
+  name      = "hpkp-tya-sha-2"
+  vault_uri = "${data.azurerm_key_vault.sscs_key_vault.vault_uri}"
 }
 
 locals {
-  aseName = "${data.terraform_remote_state.core_apps_compute.ase_name[0]}"
-  previewVaultName = "${var.raw_product}-aat"
+  aseName             = "${data.terraform_remote_state.core_apps_compute.ase_name[0]}"
+  previewVaultName    = "${var.raw_product}-aat"
   nonPreviewVaultName = "${var.raw_product}-${var.env}"
-  vaultName = "${(var.env == "preview" || var.env == "spreview") ? local.previewVaultName : local.nonPreviewVaultName}"
+  vaultName           = "${(var.env == "preview" || var.env == "spreview") ? local.previewVaultName : local.nonPreviewVaultName}"
 
   localApiUrl = "http://sscs-tribunals-api-${var.env}.service.${local.aseName}.internal"
-  ApiUrl = "${var.env == "preview" ? "http://sscs-tribunals-api-aat.service.core-compute-aat.internal" : local.localApiUrl}"
+  ApiUrl      = "${var.env == "preview" ? "http://sscs-tribunals-api-aat.service.core-compute-aat.internal" : local.localApiUrl}"
 }
 
 module "tya-frontend" {
@@ -42,6 +43,8 @@ module "tya-frontend" {
   additional_host_name = "${var.env != "preview" ? var.additional_hostname : "null"}"
   https_only           = "${var.env != "preview" ? "true" : "true"}"
   common_tags          = "${var.common_tags}"
+  asp_rg               = "${var.product}-${var.component}-${var.env}"
+  asp_name             = "${var.product}-${var.component}-${var.env}"
 
   app_settings = {
     SSCS_API_URL                 = "${local.ApiUrl}"
@@ -52,5 +55,3 @@ module "tya-frontend" {
     HPKP_SHA256_BACKUP           = "${data.azurerm_key_vault_secret.hpkp-tya-sha-2.value}"
   }
 }
-
-
