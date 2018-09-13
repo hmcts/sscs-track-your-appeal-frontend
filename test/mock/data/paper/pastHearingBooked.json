@@ -1,8 +1,9 @@
 {
   "appeal": {
-    "caseReference": "SC285/18/00001",
-    "appealNumber": "QOtMVmnhao",
+    "caseReference": "SC285/18/00011",
+    "appealNumber": "QOtMVmnhap",
     "benefitType": "esa",
+    "hearingType" : "paper",
     "name": "Miss L E Test",
     "surname": "Test",
     "status": "PAST_HEARING_BOOKED",

@@ -1,9 +1,10 @@
 {
   "appeal": {
     "caseReference": "SC285/18/00017",
-    "appealNumber": "VvQ8RFCwLx",
+    "appealNumber": "VvQ8RFCwLp",
     "status": "ADJOURNED",
     "benefitType": "pip",
+    "hearingType" : "paper",
     "name": "Miss S Test",
     "surname": "Test",
     "latestEvents": [

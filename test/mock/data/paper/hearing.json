@@ -1,9 +1,10 @@
 {
   "appeal": {
     "caseReference": "SC285/18/10020",
-    "appealNumber": "gghCoPUjOP",
+    "appealNumber": "gghCoPUjOp",
     "status": "DORMANT",
     "benefitType": "esa",
+    "hearingType" : "paper",
     "name": "Miss AN Test",
     "surname": "Test",
     "latestEvents": [

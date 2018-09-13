@@ -1,7 +1,7 @@
 const { env } = require('test/e2e/helpers/nunjucksHelper');
 const { applyContentToEvents } = require('app/middleware/events');
 const { expect, sinon } = require('test/chai-sinon');
-const { appeal } = require('test/mock/data/dwpRespond');
+const { appeal } = require('test/mock/data/oral/dwpRespond');
 
 describe('events.js', () => {
   const req = sinon.stub();
