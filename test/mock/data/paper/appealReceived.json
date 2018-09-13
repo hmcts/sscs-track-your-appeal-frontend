@@ -3,8 +3,9 @@
     "caseReference": "SC285/18/00002",
     "name": "Mrs. AN Test",
     "surname": "Test",
-    "appealNumber": "1CA27vtZ1z",
+    "appealNumber": "1CA27vtZ1p",
     "benefitType": "esa",
+    "hearingType" : "paper",
     "status": "APPEAL_RECEIVED",
     "latestEvents": [
       {

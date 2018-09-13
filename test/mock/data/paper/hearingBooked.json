@@ -1,8 +1,9 @@
 {
   "appeal": {
     "caseReference": "SC285/18/00003",
-    "appealNumber": "iRsJYdNkwN",
+    "appealNumber": "iRsJYdNkwp",
     "benefitType": "esa",
+    "hearingType" : "paper",
     "name": "Mrs. AN Test",
     "surname": "Test",
     "status": "HEARING_BOOKED",

@@ -4,6 +4,7 @@
     "appealNumber": "ZFEosvLF4N",
     "status": "DWP_RESPOND",
     "benefitType": "pip",
+    "hearingType" : "oral",
     "name": "Mr D test",
     "surname": "test",
     "latestEvents": [

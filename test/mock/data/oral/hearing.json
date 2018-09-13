@@ -1,43 +1,44 @@
 {
   "appeal": {
-    "caseReference": "SC285/18/10019",
-    "appealNumber": "of2vX5dEZr",
+    "caseReference": "SC285/18/10020",
+    "appealNumber": "gghCoPUjOP",
     "status": "DORMANT",
     "benefitType": "esa",
+    "hearingType" : "oral",
     "name": "Miss AN Test",
     "surname": "Test",
     "latestEvents": [
       {
-        "date": "2018-07-05T13:38:26.443Z",
+        "date": "2018-07-08T13:38:26.443Z",
         "type": "DORMANT",
         "contentKey": "status.dormant",
-        "decisionLetterReceiveByDate": "2018-06-14T13:38:26.443Z"
+        "decisionLetterReceiveByDate": "2018-06-19T13:38:26.443Z"
       }
     ],
     "historicalEvents": [
       {
-        "date": "2018-05-09T10:16:01.867Z",
-        "type": "DWP_RESPOND",
-        "contentKey": "status.dwpRespond",
-        "hearingContactDate": "2018-06-20T10:16:01.867Z"
-      },
-      {
         "date": "2018-02-09T14:38:26.443Z",
         "type": "HEARING_BOOKED",
         "contentKey": "status.hearingBooked",
-        "postcode": "FY1 3AB",
-        "hearingDateTime": "2018-06-01T10:40:00.000Z",
-        "venueName": "Prudential House",
-        "addressLine1": "2-10 Topping Street",
+        "postcode": "G2 2XL",
+        "hearingDateTime": "2018-03-25T14:30:00.000Z",
+        "venueName": "Wellington House",
+        "addressLine1": "134-136 Wellington Street",
         "addressLine2": "",
-        "addressLine3": "Blackpool",
-        "googleMapUrl": "https://www.google.com/maps/place/2-10+Topping+Street+Blackpool+FY1+3AB/@53.820175,-3.050717"
+        "addressLine3": "Glasgow",
+        "googleMapUrl": "https://www.google.com/maps/place/134-136+Wellington+Street+Glasgow+G2+2XL/@55.864541,-4.259269"
       },
       {
-        "date": "2017-10-06T08:38:25.190Z",
+        "date": "2018-02-09T14:38:26.443Z",
+        "type": "DWP_RESPOND",
+        "contentKey": "status.dwpRespond",
+        "hearingContactDate": "2018-03-23T14:38:26.443Z"
+      },
+      {
+        "date": "2018-02-03T14:38:26.443Z",
         "type": "APPEAL_RECEIVED",
         "contentKey": "status.appealReceived",
-        "dwpResponseDate": "2017-11-10T09:38:25.190Z"
+        "dwpResponseDate": "2018-03-10T14:38:26.443Z"
       }
     ],
     "regionalProcessingCenter": {
