@@ -8,7 +8,6 @@ const contentSubKeys = {
 
 const renderArrayContent = (content, event) => {
   return content.map(str => {
-    console.info('mapping ', str)
     return tyaNunjucks.env.renderString(str, event);
   });
 };
