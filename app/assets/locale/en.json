@@ -2,85 +2,160 @@
   "status": {
     "adjourned": {
       "heading": "Hearing didn't take place",
-      "content": [
-        "The hearing for your appeal didn’t take place as scheduled. We’ve sent you a letter explaining why, which you should receive by {{adjournedLetterReceivedByDate|formatDate}}.",
-        "We’ll now set a new date for your hearing. You don’t need to do anything. Unfortunately we can’t say how long it will take to book but it may be some time. It will depend on how busy the hearing venues are."
-      ]
+      "oral": {
+        "content": [
+          "The hearing for your appeal didn’t take place as scheduled. We’ve sent you a letter explaining why, which you should receive by {{adjournedLetterReceivedByDate|formatDate}}.",
+          "We’ll now set a new date for your hearing. You don’t need to do anything. Unfortunately we can’t say how long it will take to book but it may be some time. It will depend on how busy the hearing venues are."
+        ]
+      },
+      "paper": {
+        "content": []
+      }
     },
     "appealReceived": {
       "heading": "Appeal received",
-      "content": "We’ve told {{benefitType|agencyAcronym}} that you’ve appealed against their decision. They should respond before {{dwpResponseDate|formatDate}}. We’ll contact you and explain the next steps when they’ve replied."
+      "oral": {
+        "content": [
+          "We’ve told {{benefitType|agencyAcronym}} that you’ve appealed against their decision. They should respond before {{dwpResponseDate|formatDate}}. We’ll contact you and explain the next steps when they’ve replied."
+        ]
+      },
+      "paper": {
+        "content": []
+      }
     },
     "closed": {
       "heading": "Appeal closed",
-      "content": [
-        "Your {{benefitType|acronym}} benefit appeal is now closed.",
-        "If you have any questions relating to your benefits, contact {{benefitType|agencyAcronym}}. You can find their contact details on any correspondence you’ve received from them."
-      ]
+      "oral": {
+        "content": [
+          "Your {{benefitType|acronym}} benefit appeal is now closed.",
+          "If you have any questions relating to your benefits, contact {{benefitType|agencyAcronym}}. You can find their contact details on any correspondence you’ve received from them."
+        ]
+      },
+      "paper": {
+        "content": []
+      }
     },
     "dormant": {
       "heading": "Hearing took place",
-      "content": [
-        "A hearing for your {{benefitType|acronym}} appeal took place on {{date|formatDate}} and a decision was made. You should receive the decision by post within 7 working days of the hearing.",
-        "We can’t publish the decision online or tell you over the phone. This is to protect your personal information."
-      ]
+      "oral": {
+        "content": [
+          "A hearing for your {{benefitType|acronym}} appeal took place on {{date|formatDate}} and a decision was made. You should receive the decision by post within 7 working days of the hearing.",
+          "We can’t publish the decision online or tell you over the phone. This is to protect your personal information."
+        ]
+      },
+      "paper": {
+        "content": []
+      }
     },
     "dwpRespond": {
       "heading": "{{benefitType|agencyAcronym}} response",
-      "content": [
-        "{{benefitType|agencyAcronym}} have responded to your {{benefitType|acronym}} benefit appeal. They should have sent you a copy of their response in the post.",
-        "Your appeal hearing needs to be booked. You don’t need to do anything. You’ll receive another update by {{hearingContactDate|formatDate}}."
-      ]
+      "oral": {
+        "content": [
+          "{{benefitType|agencyAcronym}} have responded to your {{benefitType|acronym}} benefit appeal. They should have sent you a copy of their response in the post.",
+          "Your appeal hearing needs to be booked. You don’t need to do anything. You’ll receive another update by {{hearingContactDate|formatDate}}."
+        ]
+      },
+      "paper": {
+        "content": [
+          "{{benefitType|agencyAcronym}} has responded to your {{benefitType|acronym}} appeal. They should have sent you a copy in the post. Read their response and send your comments to the tribunal, if you have any.",
+          "A tribunal panel made up of a {{benefitType|panel}} will hold a hearing for your appeal by {{hearingContactDate|formatDate}}. You have told us you do not want to attend so you will receive the decision in the post after the hearing has taken place."
+        ]
+      }
     },
     "dwpRespondOverdue": {
       "heading": "{{benefitType|agencyAcronym}} response overdue",
-      "content": [
-        "{{benefitType|agencyAcronym}} were due to respond to your appeal by {{dwpResponseDate|formatDate}}. We’ve written to them again to remind them. We’ll let you know when they respond."
-      ]
+      "oral": {
+        "content": [
+          "{{benefitType|agencyAcronym}} were due to respond to your appeal by {{dwpResponseDate|formatDate}}. We’ve written to them again to remind them. We’ll let you know when they respond."
+        ]
+      },
+      "paper": {
+        "content": []
+      }
     },
     "evidenceReceived": {
       "heading": "Evidence received",
-      "content": "The evidence you sent was received by us on {{date|formatDate}}."
+      "oral": {
+        "content": "The evidence you sent was received by us on {{date|formatDate}}."
+      },
+      "paper": {
+        "content": ""
+      }
     },
     "hearing": {
       "heading": "Hearing took place",
-      "content": [
-        "A hearing for your {{benefitType|acronym}} appeal took place on {{date|formatDate}} and a decision was made. You should receive the decision by post within 7 working days of the hearing.",
-        "We can’t publish the decision online or tell you over the phone. This is to protect your personal information."
-      ]
+      "oral": {
+        "content": [
+          "A hearing for your {{benefitType|acronym}} appeal took place on {{date|formatDate}} and a decision was made. You should receive the decision by post within 7 working days of the hearing.",
+          "We can’t publish the decision online or tell you over the phone. This is to protect your personal information."
+        ]
+      },
+      "paper": {
+        "content": []
+      }
     },
     "hearingBooked": {
       "heading": "Hearing booked",
-      "content": "A hearing has been booked for your appeal."
+      "oral": {
+        "content": "A hearing has been booked for your appeal."
+      },
+      "paper": {
+        "content": []
+      }
     },
     "lapsedRevised": {
       "heading": "Change of decision",
-      "content": [
-        "{{benefitType|agencyAcronym}} have told us they changed their decision on your entitlement to {{benefitType|acronym}} in your favour. We’ve therefore closed this appeal. If you don’t agree with their new decision you can start a new appeal.",
-        "If you have any questions relating to your benefits, contact {{benefitType|agencyAcronym}}. You can find their contact details on any correspondence you’ve received from them."
-      ]
+      "oral": {
+        "content": [
+          "{{benefitType|agencyAcronym}} have told us they changed their decision on your entitlement to {{benefitType|acronym}} in your favour. We’ve therefore closed this appeal. If you don’t agree with their new decision you can start a new appeal.",
+          "If you have any questions relating to your benefits, contact {{benefitType|agencyAcronym}}. You can find their contact details on any correspondence you’ve received from them."
+        ]
+      },
+      "paper": {
+        "content": []
+      }
     },
     "newHearingBooked": {
       "heading": "New hearing booked",
-      "content": "A new hearing has been booked for your appeal."
+      "oral": {
+        "content": "A new hearing has been booked for your appeal."
+      },
+      "paper": {
+        "content": ""
+      }
     },
     "pastHearingBooked": {
       "heading": "Still booking a hearing",
-      "content": "We’re still trying to find a suitable time for your {{benefitType|acronym}} benefit appeal. We’ll contact you as soon as we’ve scheduled it. We apologise for any inconvenience this may cause you."
+      "oral": {
+        "content": "We’re still trying to find a suitable time for your {{benefitType|acronym}} benefit appeal. We’ll contact you as soon as we’ve scheduled it. We apologise for any inconvenience this may cause you."
+      },
+      "paper": {
+        "content": ""
+      }
     },
     "postponed": {
       "heading": "Hearing postponed",
-      "content": [
-        "The hearing for your {{benefitType|acronym}} benefit appeal has been postponed and will now take place on a different day.",
-        "We’ll now book a new hearing for your appeal. You don’t need to do anything. Unfortunately we can’t say how long it will take to book but it may be some time. It will depend on how busy the hearing venues are."
-      ]
+      "oral": {
+        "content": [
+          "The hearing for your {{benefitType|acronym}} benefit appeal has been postponed and will now take place on a different day.",
+          "We’ll now book a new hearing for your appeal. You don’t need to do anything. Unfortunately we can’t say how long it will take to book but it may be some time. It will depend on how busy the hearing venues are."
+        ]
+      },
+      "paper": {
+        "content": []
+      }
     },
     "withdrawn": {
       "heading": "Appeal withdrawn",
-      "content": [
-        "You told us you wanted to withdraw your appeal so we’ve closed it.",
-        "If you have any questions relating to your benefits, contact {{benefitType|agencyAcronym}}. You can find their contact details on any correspondence you’ve received from them."
-      ]
+      "oral": {
+        "content": [
+          "You told us you wanted to withdraw your appeal so we’ve closed it.",
+          "If you have any questions relating to your benefits, contact {{benefitType|agencyAcronym}}. You can find their contact details on any correspondence you’ve received from them."
+        ]
+      },
+      "paper": {
+        "content": []
+      }
     }
   },
   "benefitTypes": {
