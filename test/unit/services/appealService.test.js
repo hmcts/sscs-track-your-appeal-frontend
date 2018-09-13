@@ -4,7 +4,7 @@ const {
   stopReceivingEmails
 } = require('app/services/appealService');
 const { expect, sinon } = require('test/chai-sinon');
-const { appeal } = require('test/mock/data/appealReceived');
+const { appeal } = require('test/mock/data/oral/appealReceived');
 const HttpStatus = require('http-status-codes');
 const apiURL = require('config').get('api.url');
 const appInsights = require('app-insights');

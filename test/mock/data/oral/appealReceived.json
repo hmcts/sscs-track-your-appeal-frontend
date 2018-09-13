@@ -1,10 +1,11 @@
 {
   "appeal": {
-    "caseReference": "SC068/18/01217",
-    "name": "Miss S Test",
-    "surname": "test",
-    "appealNumber": "vUXyPb17L3",
-    "benefitType": "pip",
+    "caseReference": "SC285/18/00002",
+    "name": "Mrs. AN Test",
+    "surname": "Test",
+    "appealNumber": "1CA27vtZ1z",
+    "benefitType": "esa",
+    "hearingType" : "oral",
     "status": "APPEAL_RECEIVED",
     "latestEvents": [
       {
