@@ -361,8 +361,8 @@
       },
       "theHearingRoom": {
         "caption": {
-          "pip": "A tribunal hearing for a PIP appeal",
-          "esa": "A tribunal hearing for an ESA appeal"
+          "pip": "A tribunal hearing for a PIP appeal with a judge, a doctor and a disability expert.",
+          "esa": "A tribunal hearing for an ESA appeal with a judge and a doctor."
         },
         "imageAlt": {
           "pip": "A tribunal hearing with 5 people, dressed informally, sat around a table.",
@@ -373,15 +373,13 @@
       },
       "peopleAtHearing": {
         "heading": "The people at your hearing",
-        "intro": "The tribunal panel is made up of a {{benefitType|panel}}. They are there to listen to both sides and make a decision on your appeal. They are independent from {{benefitType|agencyAcronym}}.",
+        "intro": "The tribunal panel is made up of {{benefitType|panel}}. They are there to listen to both sides and make a decision on your appeal. They are independent from {{benefitType|agencyAcronym}}.",
         "contentPIP": [
           "The judge runs the hearing and will explain how it works. They’ll also take notes of what is said during the hearing. The doctor provides their medical knowledge. The disability expert provides their knowledge of disability issues and how disability affects people.",
           "Together they make a decision about your entitlement to the PIP benefit. "
         ],
         "contentESA": [
-          "The judge runs the hearing and will explain how it works. They’ll also take notes of what is said during the hearing.",
-          "The doctor provides their medical knowledge.",
-          "Together they make a decision about your entitlement to the ESA benefit. "
+          "The judge runs the hearing and will explain how it works. They’ll also take notes of what is said during the hearing. The doctor provides their medical knowledge. Together they make a decision about your entitlement to the ESA benefit."
         ]
       },
       "dwp": {
