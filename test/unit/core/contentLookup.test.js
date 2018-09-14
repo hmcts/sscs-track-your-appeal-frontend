@@ -52,7 +52,7 @@ describe('Calling the getContentAsArray() function', () => {
       return expect(contentArr).to.be.an('array').that.is.not.empty;
     });
   });
-  it('should...', () => {
+  it('when it\'s an oral case, it finds the content', () => {
     allEventKeys.forEach(key => {
       const contentArr = getContentAsArray(`status.${key}.oral.content`);
       contentArr.forEach(contnt => {
@@ -61,7 +61,7 @@ describe('Calling the getContentAsArray() function', () => {
       });
     });
   });
-  it('should... when it is a paper case', () => {
+  it('when it\'s a paper case, it finds the content', () => {
     allEventKeys.forEach(key => {
       const contentArr = getContentAsArray(`status.${key}.paper.content`);
       contentArr.forEach(contnt => {
