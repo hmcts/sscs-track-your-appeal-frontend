@@ -13,7 +13,7 @@ const renderArrayContent = (content, event) => {
 };
 
 const setRenderedContentOnEvent = (event, appeal) => {
-  const hearingType = appeal.hearingType;
+  const hearingType = appeal.hearingType || 'oral';
   const contentArray = getContentAsArray(`${event.contentKey}.${hearingType}${contentSubKeys.CONTENT}`);
   event.renderedContent = renderArrayContent(contentArray, event);
 };
