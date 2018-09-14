@@ -54,7 +54,24 @@ const filters = {
 
   fullDescription: benefitType => {
     return getContentAsString(`benefitTypes.${benefitType}.fullDescription`);
+  },
+
+  agency: benefitType => {
+    return getContentAsString(`benefitTypes.${benefitType}.agency`);
+  },
+
+  agencyAcronym: benefitType => {
+    return getContentAsString(`benefitTypes.${benefitType}.agencyAcronym`);
+  },
+
+  panel: benefitType => {
+    return getContentAsString(`benefitTypes.${benefitType}.panel`);
+  },
+
+  getProgressBarHeading: (currentStatus, benefitType) => {
+    return getContentAsString(`progressBar.${currentStatus}.${benefitType}`);
   }
+
 
 };
 

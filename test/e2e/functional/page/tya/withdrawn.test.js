@@ -14,6 +14,9 @@ Scenario('Verify appeal details, no progress bar and content', I => {
   // Content
   I.see(common.latestUpdate);
   status.withdrawn.content.forEach(content => {
-    I.see(content);
+    // do not check the keys that would need compiling
+    if (content.indexOf('{{benefitType|agencyAcronym}}') === -1) {
+      I.see(content);
+    }
   });
 });

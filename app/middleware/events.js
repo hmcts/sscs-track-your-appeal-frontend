@@ -1,5 +1,5 @@
 const { getContentAsString, getContentAsArray } = require('app/core/contentLookup');
-const { tyaNunjucks } = require('app/core/tyaNunjucks');
+const { tyaNunjucks, renderContent } = require('app/core/tyaNunjucks');
 
 const contentSubKeys = {
   HEADING: '.heading',
@@ -21,13 +21,14 @@ const setBenefitTypeOnEvent = (event, benefitType) => {
   event.benefitType = benefitType;
 };
 
-const setHeadingOnEvent = event => {
-  event.heading = getContentAsString(event.contentKey + contentSubKeys.HEADING);
+const setHeadingOnEvent = (event, benefitType) => {
+  event.heading =
+    renderContent(getContentAsString(event.contentKey + contentSubKeys.HEADING), benefitType);
 };
 
 const setHeadingAndRenderedContentOnEvents = (events, appeal) => {
   events.forEach(event => {
-    setHeadingOnEvent(event);
+    setHeadingOnEvent(event, appeal);
     setBenefitTypeOnEvent(event, appeal.benefitType);
     setRenderedContentOnEvent(event);
   });

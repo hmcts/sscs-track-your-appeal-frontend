@@ -7,7 +7,7 @@ const {
 } = require('app/services');
 
 const { applyContentToEvents } = require('app/middleware/events');
-const { aboutHearingContent, emailNotifications } = require('app/middleware/content');
+const { aboutHearingContent, emailNotifications, evidenceContent } = require('app/middleware/content');
 const { applyEvidence } = require('app/middleware/evidence');
 const { reformatHearingDetails } = require('app/middleware/hearing');
 const { notificationRedirect } = require('app/middleware/notificationRedirect');
@@ -48,7 +48,7 @@ router.get(`${tya.trackYourAppeal}/:id`, cookieCheck, tyaMiddleware, (req, res) 
   res.render('track-your-appeal', { data: res.locals.appeal});
 });
 
-router.get(`${tya.evidence}/:id`, cookieCheck, getAppeal, (req, res) => {
+router.get(`${tya.evidence}/:id`, cookieCheck, getAppeal, evidenceContent, (req, res) => {
   res.render('provide-evidence', { data: res.locals.appeal});
 });
 
