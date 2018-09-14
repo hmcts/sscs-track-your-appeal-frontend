@@ -69,7 +69,7 @@ Track your appeal {{ i18n.common.titleContext }}
                 <h2 class="heading-small">{{ i18n.common.latestUpdate }}</h2>
                 {% for latestEvent in data.latestEvents | reverse %}
                     {% for content in latestEvent.renderedContent %}
-                    <p>{{ content }}</p>
+                    <p>{{ content | safe }}</p>
                     {% endfor %}
                 {% endfor %}
 

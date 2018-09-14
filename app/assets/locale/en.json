@@ -127,7 +127,8 @@
       },
       "paper": {
         "content": [
-          "{{benefitType|agencyAcronym}} have told us they changed their decision on your entitlement to {{benefitType|acronym}} in your favour. We’ve therefore closed this appeal. If you don’t agree with their new decision you can start a new appeal.",
+          "{{benefitType|agencyAcronym}} has told us they changed their decision about your entitlement to {{benefitType|acronym}} in your favour. We’ve therefore closed this appeal.",
+          "If you don’t agree with their new decision you can start a new appeal: <a href=\"https://www.gov.uk/appeal-benefit-decision\">https://www.gov.uk/appeal-benefit-decision</a>",
           "If you have any questions relating to your benefits, contact {{benefitType|agencyAcronym}}. You can find their contact details on any correspondence you’ve received from them."
         ]
       }
