@@ -1,4 +1,4 @@
-const { appeal } = require('test/mock/data/smokeTest');
+const { appeal } = require('test/mock/data/oral/smokeTest');
 const paths = require('paths');
 
 Feature('Surname validation cookie');

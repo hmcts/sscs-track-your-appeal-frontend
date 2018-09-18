@@ -1,4 +1,4 @@
-const { appeal } = require('test/mock/data/withdrawn');
+const { appeal } = require('test/mock/data/oral/withdrawn');
 const { common, status } = require('public/locale/en');
 
 Feature('TYA - Withdrawn');
