@@ -1,5 +1,5 @@
 const { env } = require('test/e2e/helpers/nunjucksHelper');
-const { appeal } = require('test/mock/data/dormant');
+const { appeal } = require('test/mock/data/oral/dormant');
 const { common, status } = require('public/locale/en');
 
 Feature('TYA - Dormant');

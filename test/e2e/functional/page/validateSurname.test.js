@@ -1,4 +1,4 @@
-const { appeal } = require('test/mock/data/appealReceived');
+const { appeal } = require('test/mock/data/oral/appealReceived');
 const { validateSurname } = require('public/locale/en');
 const paths = require('paths');
 

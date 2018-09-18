@@ -1,4 +1,4 @@
-const { appeal } = require('test/mock/data/appealReceived');
+const { appeal } = require('test/mock/data/oral/appealReceived');
 const { errors, validateSurname } = require('app/assets/locale/en');
 
 Feature('HTTP 404 error page');
