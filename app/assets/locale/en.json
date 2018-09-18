@@ -51,8 +51,9 @@
       },
       "paper": {
         "content": [
-          "A hearing for your {{benefitType|acronym}} appeal took place on {{date|formatDate}} and a decision was made. You should receive the decision by post within 7 working days of the hearing.",
-          "We can’t publish the decision online or tell you over the phone. This is to protect your personal information."
+          "The tribunal have reviewed all the information you and {{benefitType|agencyAcronym}} have provided and have reached a decision on your {{benefitType|acronym}} appeal.",
+          "The decision notice has been posted to you. This has the tribunal's decision and their reasons. You should receive it by {{date|dateForDecisionReceived}}.",
+          "Please note we cannot give you your decision over the phone. This is to protect your personal information."
         ]
       }
     },
