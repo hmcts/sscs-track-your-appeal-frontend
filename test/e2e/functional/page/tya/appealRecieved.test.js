@@ -1,4 +1,4 @@
-const { appeal } = require('test/mock/data/appealReceived');
+const { appeal } = require('test/mock/data/oral/appealReceived');
 const { common } = require('public/locale/en');
 
 Feature('TYA - Appeal Received');
