@@ -24,7 +24,7 @@ describe('validateSurname.js', () => {
 
   describe('no field errors', () => {
     it('calls next when there are no field errors', () => {
-      req.body.surname = 'validSurname';
+      req.body.surname = 'László-Erdős 姓名';
       validateSurname(req, res, next);
       return expect(next).to.have.been.called;
     });
@@ -54,11 +54,11 @@ describe('validateSurname.js', () => {
       expect(res.render).to.have.been.calledWith('validate-surname', { id, fields, originalPage });
     });
 
-    it('calls res.render when the field is invalid', () => {
-      fields.surname.value = '12345';
+    it('calls res.render when the field has less than 2 characters', () => {
+      fields.surname.value = 'A';
       fields.surname.errorHeading = validateSurnameContent.surname.errors.notValidHeading;
       fields.surname.errorMessage = validateSurnameContent.surname.errors.notValidHeading;
-      req.body.surname = '12345';
+      req.body.surname = 'A';
       validateSurname(req, res, next);
       expect(res.render).to.have.been.calledWith('validate-surname', { id, fields, originalPage });
     });
