@@ -13,9 +13,9 @@ function enterSurnameAndSubmitAndSeeTYA(appeal) {
   const I = this;
 
   I.amOnLoadedPage(`${paths.tya.validateSurname}/${appeal.appealNumber}${paths.tya.trackYourAppeal}`);
-  I.wait(3); // eslint-disable-line
+  I.waitForElement('#surname');
   I.enterSurnameAndSubmit(appeal.surname);
-  I.wait(3); // eslint-disable-line
+  I.waitForElement('.heading-xlarge'); // eslint-disable-line
   I.seeCurrentUrlEquals(`${paths.tya.trackYourAppeal}/${appeal.appealNumber}`);
 }
 
