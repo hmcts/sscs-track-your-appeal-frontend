@@ -1,0 +1,60 @@
+{
+  "appeal": {
+    "caseReference": "SC285/18/00017",
+    "appealNumber": "VvQ8RFCwLx",
+    "status": "ADJOURNED",
+    "benefitType": "pip",
+    "hearingType" : "oral",
+    "name": "Miss S Test",
+    "surname": "Test",
+    "latestEvents": [
+      {
+        "date": "2018-03-19T00:00:00.000Z",
+        "type": "ADJOURNED",
+        "contentKey": "status.adjourned",
+        "adjournedDate": "2018-03-19T00:00:00.000Z",
+        "hearingContactDate": "2018-04-29T23:00:00.000Z",
+        "adjournedLetterReceivedByDate": "2018-03-25T23:00:00.000Z"
+      }
+    ],
+    "historicalEvents": [
+      {
+        "date": "2018-03-08T08:33:56.070Z",
+        "type": "HEARING_BOOKED",
+        "contentKey": "status.hearingBooked",
+        "postcode": "L2 5UZ",
+        "hearingDateTime": "2018-03-19T11:00:00.000Z",
+        "venueName": "Prudential House",
+        "addressLine1": "36 Dale Street",
+        "addressLine2": "",
+        "addressLine3": "Liverpool",
+        "googleMapUrl": "https://www.google.com/maps/place/36+Dale+Street+Liverpool+Merseyside+L2+5UZ/@53.407820,-2.988509"
+      },
+      {
+        "date": "2018-03-07T08:33:56.070Z",
+        "type": "DWP_RESPOND",
+        "contentKey": "status.dwpRespond",
+        "hearingContactDate": "2018-04-18T07:33:56.070Z"
+      },
+      {
+        "date": "2018-03-06T08:33:56.070Z",
+        "type": "APPEAL_RECEIVED",
+        "contentKey": "status.appealReceived",
+        "dwpResponseDate": "2018-04-10T07:33:56.070Z"
+      }
+    ],
+    "regionalProcessingCenter": {
+      "name": "BIRMINGHAM",
+      "addressLines": [
+        "HM Courts & Tribunals Service",
+        "Social Security & Child Support Appeals",
+        "Administrative Support Centre",
+        "PO Box 14620"
+      ],
+      "city": "BIRMINGHAM",
+      "postcode": "B16 6FR",
+      "phoneNumber": "0300 123 1142",
+      "faxNumber": "0126 434 7983"
+    }
+  }
+}

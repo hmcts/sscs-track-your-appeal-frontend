@@ -1,0 +1,40 @@
+{
+  "appeal": {
+    "caseReference": "SC285/18/00007",
+    "appealNumber": "aAIlOULP6p",
+    "benefitType": "esa",
+    "hearingType" : "paper",
+    "name": "Miss AN Test",
+    "surname": "Test",
+    "status": "DWP_RESPOND_OVERDUE",
+    "latestEvents": [
+      {
+        "dwpResponseDate": "2018-01-05T16:37:18.693Z",
+        "date": "2017-03-02T16:37:18.693Z",
+        "type": "DWP_RESPOND_OVERDUE",
+        "contentKey": "status.dwpRespondOverdue"
+      }
+    ],
+    "historicalEvents": [
+      {
+        "dwpResponseDate": "2017-04-06T16:37:18.693Z",
+        "date": "2017-03-02T16:37:18.693Z",
+        "type": "APPEAL_RECEIVED",
+        "contentKey": "status.appealReceived"
+      }
+    ],
+    "regionalProcessingCenter": {
+      "name": "NEWCASTLE",
+      "addressLines": [
+        "HM Courts & Tribunals Service",
+        "Social Security & Child Support Appeals",
+        "Manorview House",
+        "Kings Manor"
+      ],
+      "city": "NEWCASTLE UPON TYNE",
+      "postcode": "NE1 6PA",
+      "phoneNumber": "0300 123 1142",
+      "faxNumber": "0870 739 5784"
+    }
+  }
+}

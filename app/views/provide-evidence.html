@@ -18,10 +18,22 @@ Benefit appeal evidence {{ i18n.common.titleContext }}
                 {{ i18n.evidence.provide.title }}
             </h1>
 
-            <p class="lede">{{ i18n.evidence.provide.content }}</p>
+            {% for content in i18n.evidence.provide.content %}
+                <p class="lede">{{content}}</p>
+            {% endfor %}
 
             <h2 class="heading-medium">{{ i18n.evidence.provide.medicalEvidence.heading }}</h2>
             {% for content in i18n.evidence.provide.medicalEvidence.content %}
+            <p>{{content}}</p>
+            {% endfor %}
+
+            <h2 class="heading-medium">{{ i18n.evidence.provide.statement.heading }}</h2>
+            {% for content in i18n.evidence.provide.statement.content %}
+            <p>{{content}}</p>
+            {% endfor %}
+
+            <h2 class="heading-medium">{{ i18n.evidence.provide.photoEvidence.heading }}</h2>
+            {% for content in i18n.evidence.provide.photoEvidence.content %}
             <p>{{content}}</p>
             {% endfor %}
 
@@ -35,13 +47,15 @@ Benefit appeal evidence {{ i18n.common.titleContext }}
             <p>{{content}}</p>
             {% endfor %}
 
-            <div>
+            <p class="bold">
                 {% for addressLine in data.regionalProcessingCenter.addressLines %}
                 {{ addressLine }}<br>
                 {% endfor %}
                 {{ data.regionalProcessingCenter.city | capitalize }}<br>
                 {{ data.regionalProcessingCenter.postcode }}
-            </div>
+            </p>
+
+            <p>{{i18n.evidence.provide.whereToSendEvidence.moreContent}}</p>
 
         </div>
 

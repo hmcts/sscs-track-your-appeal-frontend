@@ -1,5 +1,5 @@
 const { env } = require('test/e2e/helpers/nunjucksHelper');
-const { appeal } = require('test/mock/data/closed');
+const { appeal } = require('test/mock/data/oral/closed');
 const { common, status } = require('public/locale/en');
 
 Feature('TYA - Closed');

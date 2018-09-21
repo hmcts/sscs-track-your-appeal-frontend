@@ -1,4 +1,4 @@
-const { appeal } = require('test/mock/data/newHearingBooked');
+const { appeal } = require('test/mock/data/oral/newHearingBooked');
 const { common, status } = require('public/locale/en');
 
 Feature('TYA - New Hearing Booked');

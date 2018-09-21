@@ -1,5 +1,5 @@
 const { cookiePolicy } = require('app/assets/locale/en');
-const { appeal } = require('test/mock/data/appealReceived');
+const { appeal } = require('test/mock/data/oral/appealReceived');
 const paths = require('paths');
 
 const globalCookieMsgID = '#global-cookie-message';
