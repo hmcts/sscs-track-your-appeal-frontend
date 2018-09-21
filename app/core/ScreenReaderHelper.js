@@ -1,6 +1,5 @@
 const content = require('app/assets/locale/en').progressBar.screenReader;
 const {events} = require('app/core/events');
-const { renderContent } = require('app/core/tyaNunjucks');
 
 class ScreenReaderHelper {
 
@@ -21,7 +20,7 @@ class ScreenReaderHelper {
             currentStatus === events.NEW_HEARING_BOOKED.name;
   }
 
-  static getRawStringFor(currentStatus, progressBarTick) {
+  static getScreenReaderTextFor(currentStatus, progressBarTick) {
     switch(progressBarTick) {
       case events.APPEAL_RECEIVED.name:
         return content.appeal.happened;
@@ -43,11 +42,6 @@ class ScreenReaderHelper {
       case events.DORMANT.name:
         return content.hearing.happened;
     }
-  }
-
-  static getScreenReaderTextFor(currentStatus, progressBarTick, data) {
-    const rawString = ScreenReaderHelper.getRawStringFor(currentStatus, progressBarTick);
-    return rawString.indexOf('{{') !== -1 ? renderContent(rawString, data || {}) : rawString;
   }
 }
 

@@ -214,8 +214,8 @@
         "happened": "Appeal received. This step is complete."
       },
       "dwpRespond": {
-        "due": "{{benefitType|agencyAcronym}} respond to your appeal. This has not happened yet.",
-        "happened": "{{benefitType|agencyAcronym}} respond to your appeal. This step is complete."
+        "due": "DWP respond to your appeal. This has not happened yet.",
+        "happened": "DWP respond to your appeal. This step is complete."
       },
       "hearingBooked": {
         "due": "Hearing booked. This has not happened yet.",
