@@ -15,7 +15,7 @@ xScenario('Verify DWP respond appeal details, progress bar status, screen reader
 
   // Content.
   I.see(common.latestUpdate);
-  status.dwpRespond.content.forEach(content => {
+  status.dwpRespond.oral.content.forEach(content => {
     I.see(env.renderString(content, {
       benefitType: appeal.benefitType,
       hearingContactDate: appeal.latestEvents[0].hearingContactDate
