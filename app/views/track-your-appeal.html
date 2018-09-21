@@ -31,7 +31,7 @@ Track your appeal {{ i18n.common.titleContext }}
                                 <img class="tick" src="/public/images/tick.png" alt="ignored by screen readers" aria-hidden="true">
                             </div>
                             <h4 class="{{ data.status|isCurrent('APPEAL_RECEIVED') }}" aria-hidden="true">{{ i18n.progressBar.appeal }}</h4>
-                            <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('APPEAL_RECEIVED') }}</span>
+                            <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('APPEAL_RECEIVED', data) }}</span>
                         </div>
 
                         <div class="dwp-respond {{ data.status|isActive('DWP_RESPOND') }} {{data.hearingType}}">
@@ -40,7 +40,7 @@ Track your appeal {{ i18n.common.titleContext }}
                                 <img class="tick" src="/public/images/tick.png" alt="ignored by screen readers" aria-hidden="true">
                             </div>
                             <h4 class="{{ data.status|isCurrent('DWP_RESPOND') }}" aria-hidden="true">{{ 'DWP_RESPOND'|getProgressBarHeading(data.benefitType)}}</h4>
-                            <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('DWP_RESPOND') }}</span>
+                            <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('DWP_RESPOND', data) }}</span>
                         </div>
 
                         <div class="hearing-booked {{ data.status|isActive('HEARING_BOOKED') }} {{data.hearingType}}">
@@ -49,7 +49,7 @@ Track your appeal {{ i18n.common.titleContext }}
                                 <img class="tick" src="/public/images/tick.png" alt="ignored by screen readers" aria-hidden="true">
                             </div>
                             <h4 class="{{ data.status|isCurrent('HEARING_BOOKED') }}" aria-hidden="true">{{ i18n.progressBar.hearingBooked }}</h4>
-                            <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('HEARING_BOOKED') }}</span>
+                            <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('HEARING_BOOKED', data) }}</span>
                         </div>
 
                         <div class="hearing {{ data.status|isActive('HEARING') }} {{data.hearingType}}">
@@ -58,7 +58,7 @@ Track your appeal {{ i18n.common.titleContext }}
                                 <img class="tick" src="/public/images/tick.png" alt="ignored by screen readers" aria-hidden="true">
                             </div>
                             <h4 class="{{ data.status|isCurrent('HEARING') }}" aria-hidden="true">{{ i18n.progressBar.hearing }}</h4>
-                            <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('HEARING') }}</span>
+                            <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('HEARING', data) }}</span>
                         </div>
                     {% endif %}
                     {% if data.hearingType == 'paper' %}
@@ -67,7 +67,7 @@ Track your appeal {{ i18n.common.titleContext }}
                                 <img class="tick" src="/public/images/tick.png" alt="ignored by screen readers" aria-hidden="true">
                             </div>
                             <h4 class="{{ data.status|isCurrent('APPEAL_RECEIVED') }}" aria-hidden="true">{{ i18n.progressBar.appeal }}</h4>
-                            <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('APPEAL_RECEIVED') }}</span>
+                            <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('APPEAL_RECEIVED', data) }}</span>
                         </div>
 
                         <div class="dwp-respond {{ data.status|isActive('DWP_RESPOND') }} {{data.hearingType}}">
@@ -76,7 +76,6 @@ Track your appeal {{ i18n.common.titleContext }}
                                 <img class="tick" src="/public/images/tick.png" alt="ignored by screen readers" aria-hidden="true">
                             </div>
                             <h4 class="{{ data.status|isCurrent('DWP_RESPOND') }}" aria-hidden="true">{{ 'DWP_RESPOND'|getProgressBarHeading(data.benefitType)}}</h4>
-                            <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('DWP_RESPOND') }}</span>
                         </div>
 
                         <div class="hearing-booked {{ data.status|isActive('DORMANT') }} {{data.hearingType}}">
@@ -85,7 +84,6 @@ Track your appeal {{ i18n.common.titleContext }}
                                 <img class="tick" src="/public/images/tick.png" alt="ignored by screen readers" aria-hidden="true">
                             </div>
                             <h4 class="{{ data.status|isCurrent('DORMANT') }}" aria-hidden="true">{{ i18n.progressBar.dormant }}</h4>
-                            <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('DORMANT') }}</span>
                         </div>
                     {% endif %}
                     </section>

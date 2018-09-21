@@ -52,8 +52,8 @@ const filters = {
     return events[currentStatus].index === events[status].index ? 'current' : '';
   },
 
-  getScreenReaderTextFor: (currentStatus, progressBarTick) => {
-    return screenReaderHelper.getScreenReaderTextFor(currentStatus, progressBarTick);
+  getScreenReaderTextFor: (currentStatus, progressBarTick, data) => {
+    return screenReaderHelper.getScreenReaderTextFor(currentStatus, progressBarTick, data);
   },
 
   acronym: benefitType => {
@@ -84,6 +84,7 @@ const filters = {
 };
 
 const renderContent = (content, placeholder) => {
+  console.info('about to renderzzzz ', content)
   if (Array.isArray(content)) {
     return content.map(str => {
       return renderContent(str, placeholder);
@@ -96,7 +97,10 @@ const renderContent = (content, placeholder) => {
     return Object.assign({}, ...newKeys);
   }
   if (typeof content === 'string') {
-    return tyaNunjucks.env.renderString(content, placeholder);
+    console.info('about to render', content)
+    const renderedString = tyaNunjucks.env.renderString(content, placeholder);
+    console.info('rendered', renderedString);
+    return renderedString;
   }
   return null;
 };
