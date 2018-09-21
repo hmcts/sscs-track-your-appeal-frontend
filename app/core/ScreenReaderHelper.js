@@ -24,7 +24,6 @@ class ScreenReaderHelper {
   static getRawStringFor(currentStatus, progressBarTick) {
     switch(progressBarTick) {
       case events.APPEAL_RECEIVED.name:
-        console.info('received', content.appeal.happened)
         return content.appeal.happened;
       case events.DWP_RESPOND.name:
         return this.classifiedAsAppealReceived(currentStatus) ?
@@ -41,13 +40,14 @@ class ScreenReaderHelper {
                 this.classifiedAsHearingBooked(currentStatus)) ?
           content.hearing.due :
           content.hearing.happened;
+      case events.DORMANT.name:
+        return content.hearing.happened;
     }
   }
 
   static getScreenReaderTextFor(currentStatus, progressBarTick, data) {
     const rawString = ScreenReaderHelper.getRawStringFor(currentStatus, progressBarTick);
-    console.info('raw string is', rawString)
-    return renderContent(rawString, data || {});
+    return rawString.indexOf('{{') !== -1 ? renderContent(rawString, data || {}) : rawString;
   }
 }
 

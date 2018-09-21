@@ -84,7 +84,6 @@ const filters = {
 };
 
 const renderContent = (content, placeholder) => {
-  console.info('about to renderzzzz ', content)
   if (Array.isArray(content)) {
     return content.map(str => {
       return renderContent(str, placeholder);
@@ -97,9 +96,7 @@ const renderContent = (content, placeholder) => {
     return Object.assign({}, ...newKeys);
   }
   if (typeof content === 'string') {
-    console.info('about to render', content)
     const renderedString = tyaNunjucks.env.renderString(content, placeholder);
-    console.info('rendered', renderedString);
     return renderedString;
   }
   return null;
