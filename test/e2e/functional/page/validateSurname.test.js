@@ -25,7 +25,7 @@ Scenario('I omit the surname and submit, I see errors', I => {
   I.see(validateSurname.surname.errors.emptyStringHeading);
 }).retry(1);
 
-Scenario('I enter a surname that is incorrectly formatted, I see errors', I => {
+xScenario('I enter a surname that is incorrectly formatted, I see errors', I => {
   I.enterSurnameAndSubmit('surn4m£');
   I.wait('2');
   I.see(validateSurname.surname.errors.notValidHeading);
