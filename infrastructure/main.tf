@@ -1,7 +1,3 @@
-provider "vault" {
-  address = "https://vault.reform.hmcts.net:6200"
-}
-
 data "azurerm_key_vault" "sscs_key_vault" {
   name = "${local.vaultName}"
   resource_group_name = "${local.vaultName}"
@@ -9,16 +5,16 @@ data "azurerm_key_vault" "sscs_key_vault" {
 
 data "azurerm_key_vault_secret" "cookiesecret" {
   name = "tyacookiesecret"
-  vault_uri = "${data.azurerm_key_vault.sscs_key_vault.vault_uri}" 
+  vault_uri = "${data.azurerm_key_vault.sscs_key_vault.vault_uri}"
 }
 
 data "azurerm_key_vault_secret" "hpkp-tya-sha-1" {
   name = "hpkp-tya-sha-1"
-  vault_uri = "${data.azurerm_key_vault.sscs_key_vault.vault_uri}" 
+  vault_uri = "${data.azurerm_key_vault.sscs_key_vault.vault_uri}"
 }
 data "azurerm_key_vault_secret" "hpkp-tya-sha-2" {
   name = "hpkp-tya-sha-2"
-  vault_uri = "${data.azurerm_key_vault.sscs_key_vault.vault_uri}" 
+  vault_uri = "${data.azurerm_key_vault.sscs_key_vault.vault_uri}"
 }
 
 locals {
@@ -52,5 +48,3 @@ module "tya-frontend" {
     HPKP_SHA256_BACKUP           = "${data.azurerm_key_vault_secret.hpkp-tya-sha-2.value}"
   }
 }
-
-
