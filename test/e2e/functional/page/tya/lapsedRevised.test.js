@@ -7,12 +7,13 @@ Feature('TYA - Lapsed Revised');
 Before(I => {
   I.enterSurnameAndSubmitAndSeeTYA(appeal);
 });
-git
+
 Scenario('Verify lapsed revised appeal details, no progress bar and content', I => {
   I.seeAppealDetails(appeal);
   I.dontSeeAProgressBar();
 
   // Content
   I.see(common.latestUpdate);
-  I.see(env.renderString(status.lapsedRevised.oral.content[0], { benefitType: appeal.benefitType }));
+  I.see(env.renderString(status.lapsedRevised.oral.content[0],
+    { benefitType: appeal.benefitType }));
 });

@@ -15,5 +15,6 @@ Scenario('Verify past hearing booked appeal details, progress bar status, screen
 
   // Content
   I.see(common.latestUpdate);
-  I.see(env.renderString(status.pastHearingBooked.oral.content, { benefitType: appeal.benefitType }));
+  I.see(env.renderString(status.pastHearingBooked.oral.content,
+    { benefitType: appeal.benefitType }));
 });
