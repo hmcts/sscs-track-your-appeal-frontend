@@ -8,7 +8,7 @@ Before(I => {
   I.enterSurnameAndSubmitAndSeeTYA(appeal);
 });
 
-xScenario('Verify hearing appeal details, progress bar status, screen reader text and content', I => {
+Scenario('Verify hearing appeal details, progress bar status, screen reader text and content', I => {
   I.seeAppealDetails(appeal);
   I.seeProgressBarAtHearing();
   I.seeScreenReaderTextAtHearing();

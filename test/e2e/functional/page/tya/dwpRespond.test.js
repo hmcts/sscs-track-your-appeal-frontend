@@ -8,7 +8,7 @@ Before(I => {
   I.enterSurnameAndSubmitAndSeeTYA(appeal);
 });
 
-xScenario('Verify DWP respond appeal details, progress bar status, screen reader text and content', I => {
+Scenario('Verify DWP respond appeal details, progress bar status, screen reader text and content', I => {
   I.seeAppealDetails(appeal);
   I.seeProgressBarAtDWPRespond();
   I.seeScreenReaderTextAtDWPRespond();

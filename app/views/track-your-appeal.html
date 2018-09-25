@@ -79,7 +79,7 @@ Track your appeal {{ i18n.common.titleContext }}
                             <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('DWP_RESPOND') }}</span>
                         </div>
 
-                        <div class="hearing-booked {{ data.status|isActive('DORMANT') }} {{data.hearingType}}">
+                        <div class="hearing {{ data.status|isActive('DORMANT') }} {{data.hearingType}}">
                             <div class="leg"></div>
                             <div class="ring">
                                 <img class="tick" src="/public/images/tick.png" alt="ignored by screen readers" aria-hidden="true">
