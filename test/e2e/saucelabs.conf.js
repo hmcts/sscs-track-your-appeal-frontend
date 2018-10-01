@@ -33,8 +33,8 @@ const pauseFor = seconds => {
 };
 
 const saucelabsconfig = {
-  tests: './functional/cookies/cookies.test.js',
-  output: config.get('saucelabs.outputDir'),
+  tests: './smoke/**/*.test.js',
+  output: `../../${config.get('saucelabs.outputDir')}`,
   helpers: {
     WebDriverIO: {
       url: process.env.TEST_URL || config.get('e2e.frontendUrl'),
@@ -52,7 +52,6 @@ const saucelabsconfig = {
     SauceLabsReportingHelper: { require: './helpers/SauceLabsReportingHelper.js' }
   },
   include: { I: './page-objects/steps.js' },
-  bootstrap: true,
   teardownAll: done => {
     // Pause to allow SauceLabs to finish updating before Jenkins queries it for results
     logger.info('Wait for 30 seconds before Jenkins queries SauceLabs results...');
