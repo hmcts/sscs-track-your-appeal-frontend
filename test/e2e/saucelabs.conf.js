@@ -1,76 +1,84 @@
 /* eslint-disable no-process-env */
 
-const supportedBrowsers = require('../crossbrowser/supportedBrowsers.js');
+const config = require('config');
+const supportedBrowsers = require('./crossbrowser/supportedBrowsers.js');
+const { Logger } = require('@hmcts/nodejs-logging');
 
-const browser = requiredValue(process.env.SAUCELABS_BROWSER, 'SAUCELABS_BROWSER'); // eslint-disable-line no-use-before-define
-
+const logger = Logger.getLogger('saucelabs.conf.js');
 const tunnelName = 'reformtunnel';
 
-function getDesiredCapabilities() {
-  const desiredCapability = supportedBrowsers[browser];
-  desiredCapability.tunnelIdentifier = tunnelName;
-  desiredCapability.extendedDebugging = true;
-  desiredCapability.tags = ['sscs-tya'];
-  return desiredCapability;
-}
-
-function requiredValue(envVariableValue, variableName) {
-  if (envVariableValue && envVariableValue.trim().length > 0) {
-    return envVariableValue.trim();
+const getBrowserConfig = browserGroup => {
+  const browserConfig = [];
+  for (const candidateBrowser in supportedBrowsers[browserGroup]) {
+    if (candidateBrowser) {
+      const desiredCapability = supportedBrowsers[browserGroup][candidateBrowser];
+      desiredCapability.tunnelIdentifier = tunnelName;
+      desiredCapability.tags = ['sscs-tya'];
+      browserConfig.push({
+        browser: desiredCapability.browserName,
+        desiredCapabilities: desiredCapability
+      });
+    } else {
+      logger.error('supportedBrowsers.js is empty or incorrectly defined');
+    }
   }
-  throw new Error(`${variableName} is a required environment variable, but wasn't set`);
-}
+  return browserConfig;
+};
 
-const getChunks = (chunks, numberOfTestsFiles, tests) => {
-  const testChunks = [];
-  for (let i = 0; i < chunks; i++) {
-    const arr = [];
-    arr.push(...tests.slice(i * numberOfTestsFiles, (i + 1) * numberOfTestsFiles));
-    testChunks.push(arr);
-  }
-  return testChunks;
+const oneThousand = 1000;
+const pauseFor = seconds => {
+  setTimeout(() => {
+    return true;
+  }, seconds * oneThousand);
 };
 
 const saucelabsconfig = {
-  tests: './functional/**/*.test.js',
-  output: './output',
-  timeout: 20000,
+  tests: './functional/cookies/cookies.test.js',
+  output: config.get('saucelabs.outputDir'),
   helpers: {
     WebDriverIO: {
-      url: process.env.TEST_URL || 'http://localhost:3000',
-      browser: supportedBrowsers[browser].browserName,
-      excludeSwitches: ['ignore-certificate-errors'],
-      waitforTimeout: 60000,
-      smartWait: 30000,
+      url: process.env.TEST_URL || config.get('e2e.frontendUrl'),
+      browser: process.env.SAUCE_BROWSER || config.get('saucelabs.browser'),
+      waitForTimeout: parseInt(config.get('saucelabs.waitForTimeout')),
+      smartWait: parseInt(config.get('saucelabs.smartWait')),
+      cssSelectorsEnabled: 'true',
       host: 'ondemand.saucelabs.com',
       port: 80,
-      user: process.env.SAUCE_USERNAME,
-      key: process.env.SAUCE_ACCESS_KEY,
-      desiredCapabilities: getDesiredCapabilities()
+      user: process.env.SAUCE_USERNAME || config.get('saucelabs.username'),
+      key: process.env.SAUCE_ACCESS_KEY || config.get('saucelabs.key'),
+      desiredCapabilities: {}
     },
     JSWait: { require: './helpers/JSWait.js' },
     SauceLabsReportingHelper: { require: './helpers/SauceLabsReportingHelper.js' }
   },
   include: { I: './page-objects/steps.js' },
   bootstrap: true,
+  teardownAll: done => {
+    // Pause to allow SauceLabs to finish updating before Jenkins queries it for results
+    logger.info('Wait for 30 seconds before Jenkins queries SauceLabs results...');
+    const thirtySeconds = 30;
+    pauseFor(thirtySeconds);
+    done();
+  },
   mocha: {
     reporterOptions: {
-      reportDir: process.env.E2E_CROSSBROWSER_OUTPUT_DIR || './output',
-      reportName: `${browser}_report`,
-      reportTitle: `Crossbrowser results for: ${browser.toUpperCase()}`,
-      inlineAssets: true
+      'codeceptjs-cli-reporter': {
+        stdout: '-',
+        options: { steps: true }
+      },
+      mochawesome: {
+        stdout: './functional-output/console.log',
+        options: {
+          reportDir: config.get('saucelabs.outputDir'),
+          reportName: 'index',
+          inlineAssets: true
+        }
+      }
     }
   },
   multiple: {
-    parallel: {
-      chunks: files => {
-        const testPages = files.filter(file => file.includes('page')); // eslint-disable-line
-        const testLinks = files.filter(file => file.includes('links')); // eslint-disable-line
-        const tests = [...testPages, ...testLinks];
-        return getChunks('2', '9', tests);
-      },
-      browsers: supportedBrowsers[browser].browserName
-    }
+    chrome: { browsers: getBrowserConfig('chrome') },
+    firefox: { browsers: getBrowserConfig('firefox') }
   },
   name: 'TYA cross-browser tests'
 };

@@ -1,24 +1,21 @@
 #!groovy
 
 properties([
-        parameters([string(name: 'LIB_VERSION', defaultValue: 'master', description: 'Branch name of pipeline library to use')]),
-        pipelineTriggers([cron('15 02 * * *')])
+        pipelineTriggers([cron('30 20 * * *')]),
+        parameters([
+            string(name: 'URL_TO_TEST', defaultValue: 'https://benefit-appeal.nonprod.platform.hmcts.net', description: 'The URL you want to run these tests against'),
+        ])
 ])
 
-library "Infrastructure@${params.LIB_VERSION}"
+@Library("Infrastructure")
 
-String product = "SSCS"
+def product = "sscs-tya"
+def component = "frontend"
 
-String component = "TYA"
+withNightlyPipeline("nodejs", product, component) {
+    env.TEST_URL = params.URL_TO_TEST
 
-def type = "nodejs"
-
-withNightlyPipeline(type,product,component) {
-
-    env.TEST_URL = 'https://track-appeal.nonprod.platform.hmcts.net'
     enableCrossBrowserTest()
-    after("crossBrowserTest")
-    {
-        step([$class: 'SauceOnDemandTestPublisher'])
-    }
+
+//    enableSlackNotifications('#sscs')  // can be turned back on once the overnight functionality is working fully
 }
