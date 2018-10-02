@@ -16,7 +16,7 @@ Scenario('I verify the visibility of the cookie banner and cookie', I => {
 Scenario('I click cookie banner URL to view the cookie policy', I => {
   I.amOnPage(`${paths.tya.validateSurname}/${appeal.appealNumber}${paths.tya.trackYourAppeal}`);
   I.navByClick(cookiePolicy.banner.link, globalCookieMsgID);
-  I.seeCurrentUrlEquals(paths.tya.cookiepolicy);
+  I.waitUrlEquals(paths.tya.cookiepolicy);
   I.see(cookiePolicy.cookies.title);
 });
 
