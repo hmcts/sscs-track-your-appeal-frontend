@@ -34,7 +34,7 @@ const pauseFor = seconds => {
 
 const saucelabsconfig = {
   tests: './functional/**/*.test.js',
-  output: `../../${config.get('saucelabs.outputDir')}`,
+  output: config.get('saucelabs.outputDir'),
   helpers: {
     WebDriverIO: {
       url: process.env.TEST_URL || config.get('e2e.frontendUrl'),
