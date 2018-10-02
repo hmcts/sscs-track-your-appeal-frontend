@@ -33,7 +33,7 @@ const pauseFor = seconds => {
 };
 
 const saucelabsconfig = {
-  tests: './smoke/**/*.test.js',
+  tests: './functional/**/*.test.js',
   output: `../../${config.get('saucelabs.outputDir')}`,
   helpers: {
     WebDriverIO: {
