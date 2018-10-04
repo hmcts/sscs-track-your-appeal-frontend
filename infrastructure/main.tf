@@ -1,6 +1,6 @@
 data "azurerm_key_vault" "sscs_key_vault" {
-  name                = "${local.vaultName}"
-  resource_group_name = "${local.vaultName}"
+  name                = "${local.azureVaultName}"
+  resource_group_name = "${local.azureVaultName}"
 }
 
 data "azurerm_key_vault_secret" "cookiesecret" {
