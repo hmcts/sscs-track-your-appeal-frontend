@@ -17,4 +17,13 @@ const emailNotifications = (req, res, next) => {
   next();
 };
 
-module.exports = { aboutHearingContent, emailNotifications };
+const evidenceContent = (req, res, next) => {
+  const appeal = res.locals.appeal;
+  const caseReference = appeal.caseReference;
+  const benefitType = { benefitType: appeal.benefitType, caseReference };
+  res.locals.i18n.evidence =
+    renderContent(res.locals.i18n.evidence, benefitType);
+  next();
+};
+
+module.exports = { aboutHearingContent, emailNotifications, evidenceContent };
