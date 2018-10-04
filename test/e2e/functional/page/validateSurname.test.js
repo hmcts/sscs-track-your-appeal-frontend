@@ -1,4 +1,4 @@
-const { appeal } = require('test/mock/data/appealReceived');
+const { appeal } = require('test/mock/data/oral/appealReceived');
 const { validateSurname } = require('public/locale/en');
 const paths = require('paths');
 
@@ -19,14 +19,7 @@ Scenario('I enter a surname that does not match the appeal, I see errors', I => 
   I.wait('2');
   I.see(validateSurname.surname.errors.noMatch);
 });
-
 Scenario('I omit the surname and submit, I see errors', I => {
   I.click(validateSurname.submit);
   I.see(validateSurname.surname.errors.emptyStringHeading);
-}).retry(1);
-
-Scenario('I enter a surname that is incorrectly formatted, I see errors', I => {
-  I.enterSurnameAndSubmit('surn4m£');
-  I.wait('2');
-  I.see(validateSurname.surname.errors.notValidHeading);
 }).retry(1);

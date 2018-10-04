@@ -38,6 +38,7 @@
   "globals": {
     "Before": true,
     "Feature": true,
-    "Scenario": true
+    "Scenario": true,
+    "xScenario": true
   }
 }

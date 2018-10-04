@@ -1,4 +1,4 @@
-const { appeal } = require('test/mock/data/appealReceived');
+const { appeal } = require('test/mock/data/oral/appealReceived');
 const paths = require('paths');
 
 Feature('Google analytics');

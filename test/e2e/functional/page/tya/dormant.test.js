@@ -1,5 +1,5 @@
 const { env } = require('test/e2e/helpers/nunjucksHelper');
-const { appeal } = require('test/mock/data/dormant');
+const { appeal } = require('test/mock/data/oral/dormant');
 const { common, status } = require('public/locale/en');
 
 Feature('TYA - Dormant');
@@ -8,7 +8,7 @@ Before(I => {
   I.enterSurnameAndSubmitAndSeeTYA(appeal);
 });
 
-Scenario('Verify dormant appeal details, progress bar status, screen reader text and content', I => {
+xScenario('Verify dormant appeal details, progress bar status, screen reader text and content', I => {
   I.seeAppealDetails(appeal);
   I.seeProgressBarAtHearing();
   I.seeScreenReaderTextAtHearing();
