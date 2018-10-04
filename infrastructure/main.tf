@@ -26,6 +26,12 @@ locals {
 
   localApiUrl = "http://sscs-tribunals-api-${var.env}.service.${local.aseName}.internal"
   ApiUrl      = "${var.env == "preview" ? "http://sscs-tribunals-api-aat.service.core-compute-aat.internal" : local.localApiUrl}"
+
+  azureVaultName = "sscs-${local.local_env}"
+
+  saat_app_service_plan     = "${var.product}-${var.env}"
+  non_saat_app_service_plan = "${var.product}-${var.component}-${var.env}"
+  app_service_plan          = "${var.env == "saat" ? local.saat_app_service_plan : local.non_saat_app_service_plan}"
 }
 
 module "tya-frontend" {
@@ -39,8 +45,8 @@ module "tya-frontend" {
   additional_host_name = "${(var.env != "preview" || var.env != "saat") ? var.additional_hostname : "null"}"
   https_only           = "${var.env != "preview" ? "true" : "true"}"
   common_tags          = "${var.common_tags}"
-  asp_rg               = "${var.product}-${var.component}-${var.env}"
-  asp_name             = "${var.product}-${var.component}-${var.env}"
+  asp_rg               = "${local.app_service_plan}"
+  asp_name             = "${local.app_service_plan}"
 
   app_settings = {
     SSCS_API_URL                 = "${local.ApiUrl}"
