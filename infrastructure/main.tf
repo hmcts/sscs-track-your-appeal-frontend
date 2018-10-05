@@ -32,9 +32,9 @@ locals {
 
   azureVaultName = "sscs-${local.local_env}"
 
-  saat_app_service_plan     = "${var.product}-${var.env}"
-  non_saat_app_service_plan = "${var.product}-${var.component}-${var.env}"
-  app_service_plan          = "${var.env == "saat" ? local.saat_app_service_plan : local.non_saat_app_service_plan}"
+  shared_app_service_plan     = "${var.product}-${var.env}"
+  non_shared_app_service_plan = "${var.product}-${var.component}-${var.env}"
+  app_service_plan          = "${(var.env == "saat" || var.env == "sandbox") ?  local.shared_app_service_plan : local.non_shared_app_service_plan}"
 }
 
 module "tya-frontend" {
