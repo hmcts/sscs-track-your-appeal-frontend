@@ -5,10 +5,10 @@ const seeProgressBar = (I,
                         hearingBookedActive='',
                         hearingActive='') => {
 
-  I.seeInSource(`<div class="appeal-received ${appealReceivedActive}">`);
-  I.seeInSource(`<div class="dwp-respond ${dwpRespondActive}">`);
-  I.seeInSource(`<div class="hearing-booked ${hearingBookedActive}">`);
-  I.seeInSource(`<div class="hearing ${hearingActive}">`);
+  I.seeInSource(`<div class="appeal-received ${appealReceivedActive} oral">`);
+  I.seeInSource(`<div class="dwp-respond ${dwpRespondActive} oral">`);
+  I.seeInSource(`<div class="hearing-booked ${hearingBookedActive} oral">`);
+  I.seeInSource(`<div class="hearing ${hearingActive} oral">`);
 
 };
 

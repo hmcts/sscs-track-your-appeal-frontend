@@ -1,6 +1,6 @@
 const {expect} = require('test/chai-sinon');
 const {timeZone} = require('app/core/dateUtils');
-const {tyaNunjucks} = require('app/core/tyaNunjucks');
+const {tyaNunjucks, filters} = require('app/core/tyaNunjucks');
 const moment = require('moment-timezone');
 
 describe('tyaNunjucks.js', () => {
@@ -60,6 +60,18 @@ describe('tyaNunjucks.js', () => {
         };
         let stringifiedObj = tyaNunjucks.env.renderString('{{obj|json}}', {obj: credentials});
         expect(stringifiedObj).to.eq('{\n  &quot;username&quot;: &quot;harrypotter&quot;,\n  &quot;password&quot;: &quot;123&quot;\n}');
+      });
+
+      describe('dateForDecisionReceived', () => {
+
+        it('adds five days to the string date passed to it - 1', () => {
+          expect(filters.dateForDecisionReceived('2016-12-11T12:50:11.437Z')).to.equal('16 December 2016');
+        });
+
+        it('adds five days to the string date passed to it - 2', () => {
+          expect(filters.dateForDecisionReceived('2016-12-30T12:50:11.437Z')).to.equal('04 January 2017');
+        });
+
       });
 
       describe('isActive', () => {

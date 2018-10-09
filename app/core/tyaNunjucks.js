@@ -2,7 +2,8 @@ const { getContentAsString } = require('app/core/contentLookup');
 const { dateFormat, timeZone } = require('app/core/dateUtils');
 const { events } = require('app/core/events');
 const screenReaderHelper = require('app/core/ScreenReaderHelper');
-const moment = require('moment-timezone');
+const momentTimezone = require('moment-timezone');
+const moment = require('moment');
 
 const space = 2;
 const tyaNunjucks = {
@@ -29,11 +30,18 @@ const filters = {
   },
 
   formatDate: utcDateTimeStr => {
-    return moment.tz(utcDateTimeStr, timeZone).format(dateFormat.date);
+    return momentTimezone.tz(utcDateTimeStr, timeZone).format(dateFormat.date);
+  },
+
+  dateForDecisionReceived: utcDateTimeStr => {
+    const howManyDaysAfterHearing = 5;
+    return moment(utcDateTimeStr)
+      .add(howManyDaysAfterHearing, 'days')
+      .format(dateFormat.date);
   },
 
   formatTime: utcDateTimeStr => {
-    return moment.tz(utcDateTimeStr, timeZone).format(dateFormat.time);
+    return momentTimezone.tz(utcDateTimeStr, timeZone).format(dateFormat.time);
   },
 
   isActive: (currentStatus, status) => {

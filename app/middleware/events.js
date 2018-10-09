@@ -12,8 +12,9 @@ const renderArrayContent = (content, event) => {
   });
 };
 
-const setRenderedContentOnEvent = event => {
-  const contentArray = getContentAsArray(event.contentKey + contentSubKeys.CONTENT);
+const setRenderedContentOnEvent = (event, appeal) => {
+  const hearingType = appeal.hearingType || 'oral';
+  const contentArray = getContentAsArray(`${event.contentKey}.${hearingType}${contentSubKeys.CONTENT}`);
   event.renderedContent = renderArrayContent(contentArray, event);
 };
 
@@ -30,7 +31,7 @@ const setHeadingAndRenderedContentOnEvents = (events, appeal) => {
   events.forEach(event => {
     setHeadingOnEvent(event, appeal);
     setBenefitTypeOnEvent(event, appeal.benefitType);
-    setRenderedContentOnEvent(event);
+    setRenderedContentOnEvent(event, appeal);
   });
 };
 
