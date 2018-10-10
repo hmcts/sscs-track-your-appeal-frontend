@@ -239,7 +239,7 @@
     }
   },
   "evidence": {
-    "notReceived": "If you have any evidence to support your appeal, you should send it as soon as possible. This so there's time to read it before your hearing.",
+    "notReceived": "If you have any evidence to support your appeal, you should send it as soon as possible. This is so there's time to read it before your hearing.",
     "received": "If you have any more evidence to support your appeal, you should send it as soon as possible. This is so there's time to read it before your hearing.",
     "provide": {
       "title": "Providing evidence to support your appeal",
