@@ -1,5 +1,5 @@
 const request = require('superagent');
-const api = require('config').get('api.url');
+const apiUrl = require('config').get('api.url');
 const appInsights = require('app-insights');
 const HttpStatus = require('http-status-codes');
 const { tya } = require('paths');
@@ -9,7 +9,7 @@ const matchSurnameToAppeal = (req, res, next) => {
   const originalPage = req.params.originalPage;
   const surname = req.body.surname;
 
-  return request.get(`${api}/appeals/${id}/surname/${surname}`)
+  return request.get(`${apiUrl}/appeals/${id}/surname/${surname}`)
     .then(() => {
       req.session[id] = true;
       const pageExists = Object.values(tya).includes(`/${originalPage}`);
