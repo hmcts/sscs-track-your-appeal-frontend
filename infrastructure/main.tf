@@ -27,10 +27,11 @@ locals {
   localApiUrl = "http://sscs-tribunals-api-${var.env}.service.${local.aseName}.internal"
   ApiUrl      = "${var.env == "preview" ? "http://sscs-tribunals-api-aat.service.core-compute-aat.internal" : local.localApiUrl}"
 
+  use_shared_asp = "${contains(list("saat", "sandbox", "demo"), var.env)}"
+
   shared_app_service_plan     = "${var.product}-${var.env}"
   non_shared_app_service_plan = "${var.product}-${var.component}-${var.env}"
-  app_service_plan            = "${(var.env == "saat" || var.env == "sandbox") ?  local.shared_app_service_plan : local.non_shared_app_service_plan}"
-
+  app_service_plan            = "${local.use_shared_asp ?  local.shared_app_service_plan : local.non_shared_app_service_plan}"
 }
 
 module "tya-frontend" {
