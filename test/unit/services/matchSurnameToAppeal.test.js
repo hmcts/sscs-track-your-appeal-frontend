@@ -9,7 +9,7 @@ const validateSurname = require('app/assets/locale/en').validateSurname;
 describe('matchSurnameToAppeal.js', () => {
   const invalidId = 'invalidId';
   const invalidSurname = 'invalidSurname';
-  const appealId = '1234';
+  const caseId = '1234';
   const originalPage = 'abouthearing';
 
   let req = null, res = null, next = sinon.stub();
@@ -39,7 +39,11 @@ describe('matchSurnameToAppeal.js', () => {
 
       nock(apiURL)
         .get(`/appeals/${req.params.id}/surname/${req.body.surname}`)
-        .reply(HttpStatus.OK, { appealId });
+        .reply(HttpStatus.OK, {
+          caseId,
+          appealNumber: req.params.id,
+          surname: req.body.surname
+        });
 
       return matchSurnameToAppeal(req, res, next)
         .then(() => {
