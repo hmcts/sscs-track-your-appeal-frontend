@@ -24,7 +24,8 @@
     "outputDir": "./functional-output/crossbrowser/reports"
   },
   "appInsights": {
-    "instrumentationKey": "iKey"
+    "instrumentationKey": "iKey",
+    "roleName": "tya"
   },
   "ssl": {
     "hpkp": {
