@@ -101,6 +101,15 @@ describe('routes.js', () => {
     });
   });
 
+  describe('/', () => {
+    it('should respond to / route with a HTTP 200', done => {
+      request(app)
+        .get('/')
+        .expect(HttpStatus.OK, done);
+    });
+  });
+
+
   describe('/manage-email-notifications/mactoken', () => {
     const url = '/manage-email-notifications/NnwxNDg3MDY1ODI4fDExN3BsSDdrVDc=';
 
@@ -200,12 +209,6 @@ describe('routes.js', () => {
   });
 
   describe('making application route requests which result in a HTTP 404', () => {
-    it('should respond to / route with a HTTP 404:Not found', done => {
-      request(app)
-        .get('/')
-        .expect(HttpStatus.NOT_FOUND, done);
-    });
-
     it('should respond to an unknown route with a HTTP 404:Not found', done => {
       request(app)
         .get('/foo')
