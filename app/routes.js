@@ -29,6 +29,16 @@ const tyaMiddleware = [
 
 const { tya } = require('paths');
 
+// -------------------------- BLANK ROOT ROUTE -------------------------------------------
+/*
+ * Azure hits us on / every 5 seconds to prevent it sleeping the application
+ * Application insights registers that as a 404 and adds it as an exception,
+ * This is here to reduce the noise
+ */
+router.get('/', (req,res) => {
+  res.send('');
+})
+
 // -------------------------- TRACK YOUR APPEAL ------------------------------------------
 
 router.get(`${tya.validateSurname}/:id/:originalPage`, (req, res) => {
