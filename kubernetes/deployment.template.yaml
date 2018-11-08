@@ -32,6 +32,12 @@ spec:
           limits:
             memory: "256Mi"
             cpu: "500m"
+        readinessProbe:
+          initialDelaySeconds: 5
+          periodSeconds: 1
+          httpGet:
+            path: /health
+            port: 3000
 ---
 apiVersion: v1
 kind: Service
