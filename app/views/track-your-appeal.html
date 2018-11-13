@@ -146,7 +146,9 @@ Track your appeal {{ i18n.common.titleContext }}
 
             <h3 class="heading-small">{{ i18n.common.aboutYourAppeal }}</h3>
             <ul class="links">
-                <li><a href="/abouthearing/{{data.appealNumber}}">{{ i18n.hearing.expectations.title }}</a></li>
+                {% if data.hearingType != 'paper' %}
+                    <li><a href="/abouthearing/{{data.appealNumber}}">{{ i18n.hearing.expectations.title }}</a></li>
+                {% endif %}
                 <li><a href="/expenses/{{data.appealNumber}}">{{ i18n.claimExpenses.link }}</a></li>
                 <li><a href="/evidence/{{data.appealNumber}}">{{ i18n.evidence.provide.title }}</a></li>
                 <li><a href="/contactus/{{data.appealNumber}}">{{ i18n.contactUs.title }}</a></li>
