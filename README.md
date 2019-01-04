@@ -4,6 +4,7 @@ Track your appeal is a node.js web application that allows an appellant to track
 online. An appellant may also wish to subscribe to receive updates about their appeal via email and SMS, these are
 known as notifications and are not part of this application, they are part of the [API](https://git.reform.hmcts.net/sscs/track-your-appeal-api)
 
+
 ## Background
 
 Someone who receives a decision about their entitlement to benefits has the right to appeal against that decision, if 
