@@ -4,6 +4,12 @@
 {% include "includes/head.html" %}
 {% endblock %}
 
+{% block inside_header %}
+    <div class="header-proposition">
+        <a href="/" class="proposition-name">Appeal a benefit decision</a>
+    </div>
+{% endblock %}
+
 {% block cookie_message %}
 <p>{{cookieText | safe }}
     <a href="/cookiepolicy">{{cookieLink | safe }}</a>
