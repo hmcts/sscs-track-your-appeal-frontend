@@ -13,10 +13,8 @@ Scenario('Verify appeal received details, progress bar status, screen reader tex
   I.seeProgressBarAtAppealReceived();
   I.seeScreenReaderTextAtAppealReceived();
 
-  // Content.
   I.see(common.latestUpdate);
 
-  // below commented out because it requires a new appeal being pushed everytime so after three months this step will fail for known appeal.
   const renderString = env.renderString(status.appealReceived.oral.content[0],
     { benefitType: appeal.benefitType, dwpResponseDate: appeal.latestEvents[0].dwpResponseDate });
 
