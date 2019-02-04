@@ -20,12 +20,9 @@ data "azurerm_key_vault_secret" "hpkp-tya-sha-2" {
 
 locals {
   aseName             = "${data.terraform_remote_state.core_apps_compute.ase_name[0]}"
-  previewVaultName    = "${var.raw_product}-aat"
-  nonPreviewVaultName = "${var.raw_product}-${var.env}"
-  vaultName           = "${(var.env == "preview" || var.env == "spreview") ? local.previewVaultName : local.nonPreviewVaultName}"
+  vaultName           = "${var.raw_product}-${var.env}"
 
-  localApiUrl = "http://sscs-tribunals-api-${var.env}.service.${local.aseName}.internal"
-  ApiUrl      = "${var.env == "preview" ? "http://sscs-tribunals-api-aat.service.core-compute-aat.internal" : local.localApiUrl}"
+  ApiUrl      = "http://sscs-tribunals-api-${var.env}.service.${local.aseName}.internal"
 
   shared_app_service_plan     = "${var.product}-${var.env}"
   non_shared_app_service_plan = "${var.product}-${var.component}-${var.env}"
@@ -39,10 +36,10 @@ module "tya-frontend" {
   location             = "${var.location}"
   env                  = "${var.env}"
   ilbIp                = "${var.ilbIp}"
-  is_frontend          = "${var.env != "preview" ? 1: 0}"
+  is_frontend          = 1
   subscription         = "${var.subscription}"
-  additional_host_name = "${var.env != "preview" ? var.additional_hostname : "null"}"
-  https_only           = "${var.env != "preview" ? "true" : "true"}"
+  additional_host_name = "${var.additional_hostname}"
+  https_only           = "true"
   common_tags          = "${var.common_tags}"
   asp_rg               = "${local.app_service_plan}"
   asp_name             = "${local.app_service_plan}"
