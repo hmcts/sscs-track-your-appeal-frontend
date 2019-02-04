@@ -4,6 +4,7 @@ const { events } = require('app/core/events');
 const screenReaderHelper = require('app/core/ScreenReaderHelper');
 const momentTimezone = require('moment-timezone');
 const moment = require('moment');
+const { lowerCase } = require('lodash');
 
 const space = 2;
 const tyaNunjucks = {
@@ -57,30 +58,28 @@ const filters = {
   },
 
   acronym: benefitType => {
-    return getContentAsString(`benefitTypes.${benefitType}.acronym`);
+    return getContentAsString(`benefitTypes.${lowerCase(benefitType)}.acronym`);
   },
 
   fullDescription: benefitType => {
-    return getContentAsString(`benefitTypes.${benefitType}.fullDescription`);
+    return getContentAsString(`benefitTypes.${lowerCase(benefitType)}.fullDescription`);
   },
 
   agency: benefitType => {
-    return getContentAsString(`benefitTypes.${benefitType}.agency`);
+    return getContentAsString(`benefitTypes.${lowerCase(benefitType)}.agency`);
   },
 
   agencyAcronym: benefitType => {
-    return getContentAsString(`benefitTypes.${benefitType}.agencyAcronym`);
+    return getContentAsString(`benefitTypes.${lowerCase(benefitType)}.agencyAcronym`);
   },
 
   panel: benefitType => {
-    return getContentAsString(`benefitTypes.${benefitType}.panel`);
+    return getContentAsString(`benefitTypes.${lowerCase(benefitType)}.panel`);
   },
 
   getProgressBarHeading: (currentStatus, benefitType) => {
-    return getContentAsString(`progressBar.${currentStatus}.${benefitType}`);
+    return getContentAsString(`progressBar.${currentStatus}.${lowerCase(benefitType)}`);
   }
-
-
 };
 
 const renderContent = (content, placeholder) => {
