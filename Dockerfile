@@ -30,5 +30,5 @@ COPY --from=build $WORKDIR/Gruntfile.js \
     $WORKDIR/paths.js \
     ./
 EXPOSE 3000
-USER HMCTS
+USER hmcts
 CMD ["npm", "start"]
