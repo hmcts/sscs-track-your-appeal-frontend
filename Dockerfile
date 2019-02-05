@@ -1,8 +1,6 @@
 # ---- Base image ----
 FROM hmcts.azurecr.io/hmcts/base/node/alpine-lts-8:latest as base
 ENV PATH="./node_modules/.bin:$PATH"
-ENV WORKDIR /app
-WORKDIR ${WORKDIR}
 COPY package.json yarn.lock ./
 RUN yarn install \
     --ignore-scripts \
