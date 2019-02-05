@@ -1,5 +1,5 @@
 # ---- Base image ----
-FROM node:8.9.4-alpine as base
+FROM hmcts.azurecr.io/hmcts/base/node/alpine-lts-8:latest as base
 ENV PATH="./node_modules/.bin:$PATH"
 ENV WORKDIR /app
 WORKDIR ${WORKDIR}
