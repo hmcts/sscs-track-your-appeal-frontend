@@ -20,4 +20,3 @@ RUN yarn setup \
 FROM base as runtime
 COPY --from=build $WORKDIR .
 EXPOSE 3000
-USER hmcts
