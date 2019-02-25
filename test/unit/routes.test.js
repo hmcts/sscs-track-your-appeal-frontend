@@ -14,6 +14,7 @@ describe('routes.js', () => {
         token: {
           appealId: 'md005',
           subscriptionId: 1,
+          benefitType: 'pip',
           decryptedToken: '3|1487025828|147plJ7kQ7'
         }
       });
