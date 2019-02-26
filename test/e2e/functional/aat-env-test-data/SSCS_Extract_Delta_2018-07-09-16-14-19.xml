@@ -168,7 +168,7 @@
     <Major_Status>
       <Status_Id>3</Status_Id>
       <!-- Appeal received  date needs to be less than 35 days from today date. Otherwise it moves to DWP overdue status-->
-      <Date_Set>2019-01-01T15:39:16.697+00:00</Date_Set>
+      <Date_Set>2019-02-25T15:39:16.697+00:00</Date_Set>
       <BF_Date>2019-01-01T00:00:00+00:00</BF_Date>
     </Major_Status>
     <Major_Status>
@@ -1028,7 +1028,6 @@
 
 
   <!-- Dormant -->
-
   <Appeal_Case>
     <Extract_Time_UTC>2018-02-13T20:10:14.93+00:00</Extract_Time_UTC>
     <Appeal_Case_Id>5</Appeal_Case_Id>
@@ -1067,7 +1066,7 @@
     <Major_Status>
       <Status_Id>33</Status_Id>
       <!-- date needs to be less than one month from today date. Otherwise it moves to closed status-->
-      <Date_Set>2019-01-17T14:38:26.443+00:00</Date_Set>
+      <Date_Set>2019-02-25T14:38:26.443+00:00</Date_Set>
       <BF_Date>2019-01-17T00:00:00+00:00</BF_Date>
     </Major_Status>
     <Major_Status>
