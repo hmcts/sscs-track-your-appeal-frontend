@@ -76,6 +76,7 @@ In order to track an appeal the appellant is required to be [subscribed](https:/
     $> yarn coverage
 
 #### Security checks
+    $> yarn test:audit
     $> yarn security-checks
 
 #### Crossbrowser tests
