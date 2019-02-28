@@ -19,8 +19,8 @@
     "username": "username",
     "key": "privatekey",
     "tunnelId": "reformtunnel",
-    "smartWait": "10000",
-    "waitForTimeout": "30000",
+    "smartWait": "20000",
+    "waitForTimeout": "60000",
     "outputDir": "./functional-output/crossbrowser/reports"
   },
   "appInsights": {

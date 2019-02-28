@@ -46,7 +46,7 @@ const saucelabsconfig = {
       port: 80,
       user: process.env.SAUCE_USERNAME || config.get('saucelabs.username'),
       key: process.env.SAUCE_ACCESS_KEY || config.get('saucelabs.key'),
-      desiredCapabilities: {}
+      desiredCapabilities: { idleTimeout: 90 }
     },
     JSWait: { require: './helpers/JSWait.js' },
     SauceLabsReportingHelper: { require: './helpers/SauceLabsReportingHelper.js' }
