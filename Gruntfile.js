@@ -144,13 +144,10 @@ module.exports = grunt => {
         tasks: ['watch', 'nodemon'],
         options: { logConcurrentOutput: true }
       }
-    },
-
-    nsp: { package: grunt.file.readJSON('package.json') }
+    }
   });
 
   [
-    'grunt-nsp',
     'grunt-sync',
     'grunt-contrib-watch',
     'grunt-contrib-copy',
@@ -181,5 +178,4 @@ module.exports = grunt => {
 
   grunt.registerTask('mock-services', ['copy:mockServices']);
   grunt.registerTask('services', ['copy:services']);
-  grunt.registerTask('security-checks', ['nsp:package']);
 };
