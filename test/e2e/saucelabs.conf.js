@@ -79,7 +79,6 @@ const saucelabsconfig = {
   multiple: {
     chrome: { browsers: getBrowserConfig('chrome') },
     microsoft: { browsers: getBrowserConfig('microsoft') },
-    safari: { browsers: getBrowserConfig('safari') },
     firefox: { browsers: getBrowserConfig('firefox') }
   },
   name: 'TYA cross-browser tests'
