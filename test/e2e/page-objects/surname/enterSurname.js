@@ -16,7 +16,7 @@ function enterSurnameAndSubmitAndSeeTYA(appeal) {
   I.waitForElement('#surname');
   I.enterSurnameAndSubmit(appeal.surname);
   I.wait(3); // eslint-disable-line
-  I.seeCurrentUrlEquals(`${paths.tya.trackYourAppeal}/${appeal.appealNumber}`);
+  I.waitInUrl(`${paths.tya.trackYourAppeal}/${appeal.appealNumber}`);
 }
 
 module.exports = { enterSurnameAndSubmit, enterSurnameAndSubmitAndSeeTYA };

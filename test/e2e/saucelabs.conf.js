@@ -6,6 +6,7 @@ const { Logger } = require('@hmcts/nodejs-logging');
 
 const logger = Logger.getLogger('saucelabs.conf.js');
 const tunnelName = 'reformtunnel';
+const reportOutputDir = `${process.cwd()}/${config.get('saucelabs.outputDir')}`;
 
 const getBrowserConfig = browserGroup => {
   const browserConfig = [];
@@ -34,7 +35,7 @@ const pauseFor = seconds => {
 
 const saucelabsconfig = {
   tests: './smoke/**/*.test.js',
-  output: `../../${config.get('saucelabs.outputDir')}`,
+  output: reportOutputDir,
   helpers: {
     WebDriverIO: {
       url: process.env.TEST_URL || config.get('e2e.frontendUrl'),
@@ -68,7 +69,7 @@ const saucelabsconfig = {
       mochawesome: {
         stdout: './functional-output/console.log',
         options: {
-          reportDir: config.get('saucelabs.outputDir'),
+          reportDir: reportOutputDir,
           reportName: 'index',
           inlineAssets: true
         }
@@ -77,6 +78,8 @@ const saucelabsconfig = {
   },
   multiple: {
     chrome: { browsers: getBrowserConfig('chrome') },
+    microsoft: { browsers: getBrowserConfig('microsoft') },
+    safari: { browsers: getBrowserConfig('safari') },
     firefox: { browsers: getBrowserConfig('firefox') }
   },
   name: 'TYA cross-browser tests'

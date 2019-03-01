@@ -21,7 +21,7 @@
     "tunnelId": "reformtunnel",
     "smartWait": "20000",
     "waitForTimeout": "60000",
-    "outputDir": "./functional-output/crossbrowser/reports"
+    "outputDir": "functional-output/crossbrowser/reports"
   },
   "appInsights": {
     "instrumentationKey": "iKey",
