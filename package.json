@@ -13,7 +13,7 @@
     "dev": "cross-env NODE_PATH=. NODE_ENV=development LOG_OUTPUT=multi grunt dev",
     "dev-mock-api": "cross-env NODE_PATH=. NODE_ENV=development LOG_LEVEL=OFF grunt dev-mock-services",
     "test": "cross-env NODE_PATH=. NODE_ENV=test nyc mocha test/unit --recursive --exit",
-    "pa11y": "cross-env NODE_PATH=. LOG_LEVEL=OFF mocha test/accessibility -r test/chai-sinon.js --reporter spec --recursive --timeout 10000",
+    "pa11y": "cross-env NODE_PATH=. LOG_LEVEL=OFF mocha test/accessibility -r test/chai-sinon.js --reporter spec --recursive --timeout 10000 --exit",
     "test:audit": "./bin/run-yarn-audit.sh -f yarn-audit-known-issues",
     "test:smoke": "cross-env NODE_PATH=. codeceptjs run -c test/e2e/ --grep @smoke -c test/e2e/smokeTest.conf.js --reporter mocha-multi",
     "test:functional": "cross-env NODE_ENV=test NODE_PATH=. codeceptjs run -c test/e2e/ --reporter mocha-multi",
