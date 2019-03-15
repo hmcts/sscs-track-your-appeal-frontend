@@ -7,7 +7,7 @@ const {
 } = require('app/services');
 
 const { applyContentToEvents } = require('app/middleware/events');
-const { aboutHearingContent, emailNotifications } = require('app/middleware/content');
+const { aboutHearingContent, emailNotifications, evidenceContent } = require('app/middleware/content');
 const { applyEvidence } = require('app/middleware/evidence');
 const { reformatHearingDetails } = require('app/middleware/hearing');
 const { notificationRedirect } = require('app/middleware/notificationRedirect');
@@ -29,6 +29,16 @@ const tyaMiddleware = [
 
 const { tya } = require('paths');
 
+// -------------------------- BLANK ROOT ROUTE -------------------------------------------
+/*
+ * Azure hits us on / every 5 seconds to prevent it sleeping the application
+ * Application insights registers that as a 404 and adds it as an exception,
+ * This is here to reduce the noise
+ */
+router.get('/', (req,res) => {
+  res.send('');
+})
+
 // -------------------------- TRACK YOUR APPEAL ------------------------------------------
 
 router.get(`${tya.validateSurname}/:id/:originalPage`, (req, res) => {
@@ -48,7 +58,7 @@ router.get(`${tya.trackYourAppeal}/:id`, cookieCheck, tyaMiddleware, (req, res) 
   res.render('track-your-appeal', { data: res.locals.appeal});
 });
 
-router.get(`${tya.evidence}/:id`, cookieCheck, getAppeal, (req, res) => {
+router.get(`${tya.evidence}/:id`, cookieCheck, getAppeal, evidenceContent, (req, res) => {
   res.render('provide-evidence', { data: res.locals.appeal});
 });
 

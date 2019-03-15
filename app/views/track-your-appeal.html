@@ -24,44 +24,71 @@ Track your appeal {{ i18n.common.titleContext }}
             <div class="divider"></div>
 
             {% if data.showProgressBar %}
-            <section class="progress-bar">
+                <section class="progress-bar">
+                    {% if data.hearingType == 'oral' %}
+                        <div class="appeal-received {{ data.status|isActive('APPEAL_RECEIVED') }} {{data.hearingType}}">
+                            <div class="ring">
+                                <img class="tick" src="/public/images/tick.png" alt="ignored by screen readers" aria-hidden="true">
+                            </div>
+                            <h4 class="{{ data.status|isCurrent('APPEAL_RECEIVED') }}" aria-hidden="true">{{ i18n.progressBar.appeal }}</h4>
+                            <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('APPEAL_RECEIVED') }}</span>
+                        </div>
 
-                <div class="appeal-received {{ data.status|isActive('APPEAL_RECEIVED') }}">
-                    <div class="ring">
-                        <img class="tick" src="/public/images/tick.png" alt="ignored by screen readers" aria-hidden="true">
-                    </div>
-                    <h4 class="{{ data.status|isCurrent('APPEAL_RECEIVED') }}" aria-hidden="true">{{ i18n.progressBar.appeal }}</h4>
-                    <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('APPEAL_RECEIVED') }}</span>
-                </div>
+                        <div class="dwp-respond {{ data.status|isActive('DWP_RESPOND') }} {{data.hearingType}}">
+                            <div class="leg"></div>
+                            <div class="ring">
+                                <img class="tick" src="/public/images/tick.png" alt="ignored by screen readers" aria-hidden="true">
+                            </div>
+                            <h4 class="{{ data.status|isCurrent('DWP_RESPOND') }}" aria-hidden="true">{{ 'DWP_RESPOND'|getProgressBarHeading(data.benefitType)}}</h4>
+                            <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('DWP_RESPOND') }}</span>
+                        </div>
 
-                <div class="dwp-respond {{ data.status|isActive('DWP_RESPOND') }}">
-                    <div class="leg"></div>
-                    <div class="ring">
-                        <img class="tick" src="/public/images/tick.png" alt="ignored by screen readers" aria-hidden="true">
-                    </div>
-                    <h4 class="{{ data.status|isCurrent('DWP_RESPOND') }}" aria-hidden="true">{{ i18n.progressBar.dwpRespond }}</h4>
-                    <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('DWP_RESPOND') }}</span>
-                </div>
+                        <div class="hearing-booked {{ data.status|isActive('HEARING_BOOKED') }} {{data.hearingType}}">
+                            <div class="leg"></div>
+                            <div class="ring">
+                                <img class="tick" src="/public/images/tick.png" alt="ignored by screen readers" aria-hidden="true">
+                            </div>
+                            <h4 class="{{ data.status|isCurrent('HEARING_BOOKED') }}" aria-hidden="true">{{ i18n.progressBar.hearingBooked }}</h4>
+                            <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('HEARING_BOOKED') }}</span>
+                        </div>
 
-                <div class="hearing-booked {{ data.status|isActive('HEARING_BOOKED') }}">
-                    <div class="leg"></div>
-                    <div class="ring">
-                        <img class="tick" src="/public/images/tick.png" alt="ignored by screen readers" aria-hidden="true">
-                    </div>
-                    <h4 class="{{ data.status|isCurrent('HEARING_BOOKED') }}" aria-hidden="true">{{ i18n.progressBar.hearingBooked }}</h4>
-                    <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('HEARING_BOOKED') }}</span>
-                </div>
+                        <div class="hearing {{ data.status|isActive('HEARING') }} {{data.hearingType}}">
+                            <div class="leg"></div>
+                            <div class="ring">
+                                <img class="tick" src="/public/images/tick.png" alt="ignored by screen readers" aria-hidden="true">
+                            </div>
+                            <h4 class="{{ data.status|isCurrent('HEARING') }}" aria-hidden="true">{{ i18n.progressBar.hearing }}</h4>
+                            <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('HEARING') }}</span>
+                        </div>
+                    {% endif %}
+                    {% if data.hearingType == 'paper' %}
+                        <div class="appeal-received {{ data.status|isActive('APPEAL_RECEIVED') }} {{data.hearingType}}">
+                            <div class="ring">
+                                <img class="tick" src="/public/images/tick.png" alt="ignored by screen readers" aria-hidden="true">
+                            </div>
+                            <h4 class="{{ data.status|isCurrent('APPEAL_RECEIVED') }}" aria-hidden="true">{{ i18n.progressBar.appeal }}</h4>
+                            <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('APPEAL_RECEIVED') }}</span>
+                        </div>
 
-                <div class="hearing {{ data.status|isActive('HEARING') }}">
-                    <div class="leg"></div>
-                    <div class="ring">
-                        <img class="tick" src="/public/images/tick.png" alt="ignored by screen readers" aria-hidden="true">
-                    </div>
-                    <h4 class="{{ data.status|isCurrent('HEARING') }}" aria-hidden="true">{{ i18n.progressBar.hearing }}</h4>
-                    <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('HEARING') }}</span>
-                </div>
+                        <div class="dwp-respond {{ data.status|isActive('DWP_RESPOND') }} {{data.hearingType}}">
+                            <div class="leg"></div>
+                            <div class="ring">
+                                <img class="tick" src="/public/images/tick.png" alt="ignored by screen readers" aria-hidden="true">
+                            </div>
+                            <h4 class="{{ data.status|isCurrent('DWP_RESPOND') }}" aria-hidden="true">{{ 'DWP_RESPOND'|getProgressBarHeading(data.benefitType)}}</h4>
+                            <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('DWP_RESPOND') }}</span>
+                        </div>
 
-            </section>
+                        <div class="hearing {{ data.status|isActive('DORMANT') }} {{data.hearingType}}">
+                            <div class="leg"></div>
+                            <div class="ring">
+                                <img class="tick" src="/public/images/tick.png" alt="ignored by screen readers" aria-hidden="true">
+                            </div>
+                            <h4 class="{{ data.status|isCurrent('DORMANT') }}" aria-hidden="true">{{ i18n.progressBar.dormant }}</h4>
+                            <span class="screen-reader-text">{{ data.status|getScreenReaderTextFor('DORMANT') }}</span>
+                        </div>
+                    {% endif %}
+                    </section>
             {% endif %}
 
             <div class="events">
@@ -69,7 +96,7 @@ Track your appeal {{ i18n.common.titleContext }}
                 <h2 class="heading-small">{{ i18n.common.latestUpdate }}</h2>
                 {% for latestEvent in data.latestEvents | reverse %}
                     {% for content in latestEvent.renderedContent %}
-                    <p>{{ content }}</p>
+                    <p>{{ content | safe }}</p>
                     {% endfor %}
                 {% endfor %}
 
@@ -119,7 +146,9 @@ Track your appeal {{ i18n.common.titleContext }}
 
             <h3 class="heading-small">{{ i18n.common.aboutYourAppeal }}</h3>
             <ul class="links">
-                <li><a href="/abouthearing/{{data.appealNumber}}">{{ i18n.hearing.expectations.title }}</a></li>
+                {% if data.hearingType != 'paper' %}
+                    <li><a href="/abouthearing/{{data.appealNumber}}">{{ i18n.hearing.expectations.title }}</a></li>
+                {% endif %}
                 <li><a href="/expenses/{{data.appealNumber}}">{{ i18n.claimExpenses.link }}</a></li>
                 <li><a href="/evidence/{{data.appealNumber}}">{{ i18n.evidence.provide.title }}</a></li>
                 <li><a href="/contactus/{{data.appealNumber}}">{{ i18n.contactUs.title }}</a></li>

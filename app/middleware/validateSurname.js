@@ -1,10 +1,11 @@
 const Joi = require('joi');
 const { setErrorFields } = require('app/core/fieldErrors');
 
-const surnameRegex = /^([a-zA-z]+([ '-][a-zA-Z]+)*){2,}$/;
+const minSurnameLength = 2;
 
 const validateField = (surname, errors) => {
-  const schema = Joi.string().regex(surnameRegex)
+  const schema = Joi.string()
+    .min(minSurnameLength)
     .required()
     .options({
       language: {
@@ -12,7 +13,7 @@ const validateField = (surname, errors) => {
           empty: `!!${errors.emptyStringHeading}`,
           invalid: `!!${errors.notValidHeading}`
         },
-        string: { regex: { base: `!!${errors.notValidHeading}` } }
+        string: { min: `!!${errors.notValidHeading}` }
       }
     });
 

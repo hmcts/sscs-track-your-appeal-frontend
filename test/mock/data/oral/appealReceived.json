@@ -1,0 +1,32 @@
+{
+  "appeal": {
+    "caseReference": "SC285/18/00002",
+    "name": "Mrs. AN Test",
+    "surname": "Test",
+    "appealNumber": "1CA27vtZ1z",
+    "benefitType": "esa",
+    "hearingType" : "oral",
+    "status": "APPEAL_RECEIVED",
+    "latestEvents": [
+      {
+        "date": "2019-02-25T15:39:16.697Z",
+        "type": "APPEAL_RECEIVED",
+        "dwpResponseDate": "2019-04-01T14:39:16.697Z",
+        "contentKey": "status.appealReceived"
+      }
+    ],
+    "regionalProcessingCenter": {
+      "name": "BIRMINGHAM",
+      "addressLines": [
+        "HM Courts & Tribunals Service",
+        "Social Security & Child Support Appeals",
+        "Administrative Support Centre",
+        "PO Box 14620"
+      ],
+      "city": "BIRMINGHAM",
+      "postcode": "B16 6FR",
+      "phoneNumber": "0300 123 1142",
+      "faxNumber": "0126 434 7983"
+    }
+  }
+}

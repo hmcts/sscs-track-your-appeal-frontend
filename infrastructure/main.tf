@@ -1,24 +1,33 @@
-provider "vault" {
-  address = "https://vault.reform.hmcts.net:6200"
+data "azurerm_key_vault" "sscs_key_vault" {
+  name                = "${local.vaultName}"
+  resource_group_name = "${local.vaultName}"
 }
 
-data "vault_generic_secret" "cookiesecret" {
-  path = "secret/${var.infrastructure_env}/sscs/tyacookiesecret"
+data "azurerm_key_vault_secret" "cookiesecret" {
+  name      = "tyacookiesecret"
+  vault_uri = "${data.azurerm_key_vault.sscs_key_vault.vault_uri}"
 }
 
-data "vault_generic_secret" "hpkp_tya_sha_1" {
-  path = "secret/${var.infrastructure_env}/sscs/hpkp_tya_sha_1"
+data "azurerm_key_vault_secret" "hpkp-tya-sha-1" {
+  name      = "hpkp-tya-sha-1"
+  vault_uri = "${data.azurerm_key_vault.sscs_key_vault.vault_uri}"
 }
 
-data "vault_generic_secret" "hpkp_tya_sha_2" {
-  path = "secret/${var.infrastructure_env}/sscs/hpkp_tya_sha_2"
+data "azurerm_key_vault_secret" "hpkp-tya-sha-2" {
+  name      = "hpkp-tya-sha-2"
+  vault_uri = "${data.azurerm_key_vault.sscs_key_vault.vault_uri}"
 }
 
 locals {
-  aseName = "${data.terraform_remote_state.core_apps_compute.ase_name[0]}"
+  aseName             = "${data.terraform_remote_state.core_apps_compute.ase_name[0]}"
+  vaultName           = "${var.raw_product}-${var.env}"
 
-  localApiUrl = "http://sscs-tribunals-api-${var.env}.service.${local.aseName}.internal"
-  ApiUrl = "${var.env == "preview" ? "http://sscs-tribunals-api-aat.service.core-compute-aat.internal" : local.localApiUrl}"
+  ApiUrl      = "http://sscs-tribunals-api-${var.env}.service.${local.aseName}.internal"
+
+  shared_app_service_plan     = "${var.product}-${var.env}"
+  non_shared_app_service_plan = "${var.product}-${var.component}-${var.env}"
+  app_service_plan            = "${(var.env == "saat" || var.env == "sandbox") ?  local.shared_app_service_plan : local.non_shared_app_service_plan}"
+
 }
 
 module "tya-frontend" {
@@ -27,20 +36,20 @@ module "tya-frontend" {
   location             = "${var.location}"
   env                  = "${var.env}"
   ilbIp                = "${var.ilbIp}"
-  is_frontend          = "${var.env != "preview" ? 1: 0}"
+  is_frontend          = 1
   subscription         = "${var.subscription}"
-  additional_host_name = "${var.env != "preview" ? var.additional_hostname : "null"}"
-  https_only           = "${var.env != "preview" ? "true" : "true"}"
+  additional_host_name = "${var.additional_hostname}"
+  https_only           = "true"
   common_tags          = "${var.common_tags}"
+  asp_rg               = "${local.app_service_plan}"
+  asp_name             = "${local.app_service_plan}"
 
   app_settings = {
     SSCS_API_URL                 = "${local.ApiUrl}"
     WEBSITE_NODE_DEFAULT_VERSION = "8.9.4"
     NODE_ENV                     = "${var.infrastructure_env}"
-    COOKIE_SECRET                = "${data.vault_generic_secret.cookiesecret.data["value"]}"
-    HPKP_SHA256                  = "${data.vault_generic_secret.hpkp_tya_sha_1.data["value"]}"
-    HPKP_SHA256_BACKUP           = "${data.vault_generic_secret.hpkp_tya_sha_2.data["value"]}"
+    COOKIE_SECRET                = "${data.azurerm_key_vault_secret.cookiesecret.value}"
+    HPKP_SHA256                  = "${data.azurerm_key_vault_secret.hpkp-tya-sha-1.value}"
+    HPKP_SHA256_BACKUP           = "${data.azurerm_key_vault_secret.hpkp-tya-sha-2.value}"
   }
 }
-
-
