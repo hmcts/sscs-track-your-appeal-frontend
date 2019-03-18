@@ -1,5 +1,5 @@
 const { env } = require('test/e2e/helpers/nunjucksHelper');
-const { appeal } = require('test/mock/data/pastHearingBooked');
+const { appeal } = require('test/mock/data/oral/pastHearingBooked');
 const { common, status } = require('public/locale/en');
 
 Feature('TYA - Past Hearing Booked');
@@ -15,6 +15,7 @@ Scenario('Verify past hearing booked appeal details, progress bar status, screen
 
   // Content
   I.see(common.latestUpdate);
+
   status.pastHearingBooked.content.forEach(content => {
     I.see(env.renderString(content, {
       benefitType: appeal.benefitType,

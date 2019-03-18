@@ -1,6 +1,6 @@
 const { expect, sinon } = require('test/chai-sinon');
 const { aboutHearingContent, emailNotifications } = require('app/middleware/content');
-const { appeal } = require('test/mock/data/appealReceived');
+const { appeal } = require('test/mock/data/oral/appealReceived');
 
 describe('content.js', () => {
   const req = sinon.stub();

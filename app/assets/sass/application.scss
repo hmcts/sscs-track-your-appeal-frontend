@@ -47,3 +47,48 @@ $path: "/public/images/";
 .google-opt-out-link {
   margin-top: 50px;
 }
+
+.header-proposition {
+  clear: both;
+  .proposition-name {
+    font-size: 24px;
+    line-height: 1.25;
+    font-weight: bold;
+    white-space: nowrap;
+    text-decoration: none;
+    margin-top: 5px;
+    display: inline-block;
+    margin: 5px 15px 0 15px;
+    font-size: 18px;
+    line-height: 1.2;
+
+    &:link,
+    &:visited {
+      color: white;
+    }
+  }
+}
+
+@media (min-width: 641px) {
+  #global-header .header-proposition .proposition-name {
+      font-size: 24px;
+      line-height: 1.25;
+  }
+}
+
+@media (min-width: 769px) {
+  #global-header .header-proposition {
+    width: 66.66%;
+    float: left;
+    clear: none;
+  }
+
+  #global-header.with-proposition .header-wrapper .header-global .header-logo {
+    width: 33.33%;
+  }
+
+  #global-header.with-proposition .header-wrapper .header-global {
+    float: left;
+    width: 100%;
+  }
+}

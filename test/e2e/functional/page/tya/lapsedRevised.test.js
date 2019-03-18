@@ -1,5 +1,5 @@
 const { env } = require('test/e2e/helpers/nunjucksHelper');
-const { appeal } = require('test/mock/data/lapsedRevised');
+const { appeal } = require('test/mock/data/oral/lapsedRevised');
 const { common, status } = require('public/locale/en');
 
 Feature('TYA - Lapsed Revised');
@@ -14,5 +14,6 @@ Scenario('Verify lapsed revised appeal details, no progress bar and content', I 
 
   // Content
   I.see(common.latestUpdate);
-  I.see(env.renderString(status.lapsedRevised.content[0], { benefitType: appeal.benefitType }));
+  I.see(env.renderString(status.lapsedRevised.oral.content[0],
+    { benefitType: appeal.benefitType }));
 });

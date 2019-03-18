@@ -1,5 +1,6 @@
 const {get} = require('lodash');
 const apiUrl = require('config').get('api.url');
+const appInsights = require('app-insights');
 const HttpStatus = require('http-status-codes');
 const request = require('superagent');
 const {Logger} = require('@hmcts/nodejs-logging');
@@ -19,7 +20,7 @@ const getAppeal = (req, res, next) => {
       appeal.latestEvents = appeal.latestEvents || [];
       appeal.historicalEvents = appeal.historicalEvents || [];
       res.locals.appeal = appeal;
-      logger.info(`GET /appeals/${req.params.id} ${HttpStatus.OK}`);
+      logger.info(`GET /appeals/${req.params.id} ${HttpStatus.OK} for caseId ${appeal.caseId}`);
       next();
     }).catch((error) => {
       if(error.status === HttpStatus.NOT_FOUND) {
@@ -27,6 +28,7 @@ const getAppeal = (req, res, next) => {
         const path = get(error, 'response.body.path');
         error.message = `${message} ${path}`;
       }
+      appInsights.trackException(error);
       next(error);
     });
 };
@@ -48,6 +50,7 @@ const changeEmailAddress = (req, res, next) => {
         logger.info(`POST ${endpoint} ${HttpStatus.OK}`);
         next();
       }).catch((error) => {
+        appInsights.trackException(error);
         next(error);
       });
 };
@@ -67,6 +70,7 @@ const stopReceivingEmails = (req, res, next) => {
       logger.info(`DELETE ${endpoint} ${HttpStatus.OK}`);
       next();
     }).catch((error) => {
+      appInsights.trackException(error);
       next(error);
     });
 

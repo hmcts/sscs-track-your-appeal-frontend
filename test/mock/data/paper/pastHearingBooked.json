@@ -1,0 +1,40 @@
+{
+  "appeal": {
+    "caseReference": "SC285/18/00011",
+    "appealNumber": "QOtMVmnhap",
+    "benefitType": "esa",
+    "hearingType" : "paper",
+    "name": "Miss L E Test",
+    "surname": "Test",
+    "status": "PAST_HEARING_BOOKED",
+    "latestEvents": [
+      {
+        "hearingContactDate": "2017-05-17T17:31:21.703Z",
+        "date": "2017-04-05T17:31:21.703Z",
+        "type": "PAST_HEARING_BOOKED",
+        "contentKey": "status.pastHearingBooked"
+      }
+    ],
+    "historicalEvents": [
+      {
+        "dwpResponseDate": "2017-02-09T17:30:53.293Z",
+        "date": "2017-01-05T17:30:53.293Z",
+        "type": "APPEAL_RECEIVED",
+        "contentKey": "status.appealReceived"
+      }
+    ],
+    "regionalProcessingCenter": {
+      "name": "LEEDS",
+      "addressLines": [
+        "HM Courts & Tribunals Service",
+        "Social Security & Child Support Appeals",
+        "York House",
+        "31 York Place"
+      ],
+      "city": "LEEDS",
+      "postcode": "LS1 2ED",
+      "phoneNumber": "0300 123 1142",
+      "faxNumber": "0870 739 4331"
+    }
+  }
+}

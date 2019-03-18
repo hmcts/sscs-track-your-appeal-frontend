@@ -1,7 +1,8 @@
-require('app-insights')();
+require('app-insights').enable();
 const { Express } = require('@hmcts/nodejs-logging');
 const { tyaNunjucks, filters } = require('app/core/tyaNunjucks');
 const health = require('app/services/health');
+const monitoring = require('app/services/monitoring');
 const ErrorHandling = require('app/core/ErrorHandling');
 const expressNunjucks = require('express-nunjucks');
 const cookieSession = require('cookie-session');
@@ -15,6 +16,7 @@ const routes = require('app/routes');
 const helmet = require('helmet');
 const os = require('os');
 const path = require('path');
+const paths = require('paths');
 
 const app = express();
 
@@ -98,7 +100,8 @@ app.use(favicon(path.join(
 ));
 
 // API health check
-app.use('/health', health);
+app.use(paths.health, health);
+app.use(paths.monitoring, monitoring);
 
 // Support for parsing data in POSTs
 app.use(bodyParser.json());
