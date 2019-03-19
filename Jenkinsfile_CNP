@@ -6,7 +6,7 @@ properties(
 
 @Library("Infrastructure")
 
-def product = "sscs-track-your-appeal"
+def product = "sscs-track-your-appeal-frontend"
 def component = "frontend"
 
 withPipeline("nodejs", product, component) {
