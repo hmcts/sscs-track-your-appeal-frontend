@@ -14,8 +14,18 @@
     "outputDir": "./output",
     "frontendUrl": "http://localhost:3000"
   },
+  "saucelabs": {
+    "browser": "chrome",
+    "username": "username",
+    "key": "privatekey",
+    "tunnelId": "reformtunnel",
+    "smartWait": "10000",
+    "waitForTimeout": "30000",
+    "outputDir": "./functional-output/crossbrowser/reports"
+  },
   "appInsights": {
-    "instrumentationKey": "iKey"
+    "instrumentationKey": "iKey",
+    "roleName": "tya"
   },
   "ssl": {
     "hpkp": {

@@ -39,6 +39,8 @@ class ScreenReaderHelper {
                 this.classifiedAsHearingBooked(currentStatus)) ?
           content.hearing.due :
           content.hearing.happened;
+      case events.DORMANT.name:
+        return content.hearing.happened;
     }
   }
 }

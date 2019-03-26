@@ -2,103 +2,212 @@
   "status": {
     "adjourned": {
       "heading": "Hearing didn't take place",
-      "content": [
-        "The hearing for your appeal didn’t take place as scheduled. We’ve sent you a letter explaining why, which you should receive by {{adjournedLetterReceivedByDate|formatDate}}.",
-        "We’ll now set a new date for your hearing. You don’t need to do anything. Unfortunately we can’t say how long it will take to book but it may be some time. It will depend on how busy the hearing venues are."
-      ]
+      "oral": {
+        "content": [
+          "The hearing for your appeal didn’t take place as scheduled. We’ve sent you a letter explaining why, which you should receive by {{adjournedLetterReceivedByDate|formatDate}}.",
+          "We’ll now set a new date for your hearing. You don’t need to do anything. Unfortunately we can’t say how long it will take to book but it may be some time. It will depend on how busy the hearing venues are."
+        ]
+      },
+      "paper": {
+        "content": [
+          "The hearing for your appeal didn’t take place as scheduled. We’ve sent you a letter explaining why, which you should receive by {{adjournedLetterReceivedByDate|formatDate}}.",
+          "We’ll now set a new date for your hearing. You don’t need to do anything. Unfortunately we can’t say how long it will take to book but it may be some time. It will depend on how busy the hearing venues are."
+        ]
+      }
     },
     "appealReceived": {
       "heading": "Appeal received",
-      "content": "We’ve told DWP that you’ve appealed against their decision. They should respond before {{dwpResponseDate|formatDate}}. We’ll contact you and explain the next steps when they’ve replied."
+      "oral": {
+        "content": [
+          "We’ve told {{benefitType|agencyAcronym}} that you’ve appealed against their decision. They should respond before {{dwpResponseDate|formatDate}}. We’ll contact you and explain the next steps when they’ve replied."
+        ]
+      },
+      "paper": {
+        "content": [
+          "We’ve told {{benefitType|agencyAcronym}} that you’ve appealed against their decision. They should respond before {{dwpResponseDate|formatDate}}. We’ll contact you and explain the next steps when they’ve replied."
+        ]
+      }
     },
     "closed": {
       "heading": "Appeal closed",
-      "content": [
-        "Your {{benefitType|acronym}} benefit appeal is now closed.",
-        "If you have any questions relating to your benefits, contact DWP. You can find their contact details on any correspondence you’ve received from them."
-      ]
+      "oral": {
+        "content": [
+          "We’ve told {{benefitType|agencyAcronym}} that you’ve appealed against their decision. They should respond before {{dwpResponseDate|formatDate}}. We’ll contact you and explain the next steps when they’ve replied."
+        ]
+      },
+      "paper": {
+        "content": [
+          "We’ve told {{benefitType|agencyAcronym}} that you’ve appealed against their decision. They should respond before {{dwpResponseDate|formatDate}}. We’ll contact you and explain the next steps when they’ve replied."
+        ]
+      }
     },
     "dormant": {
       "heading": "Hearing took place",
-      "content": [
-        "A hearing for your {{benefitType|acronym}} appeal took place on {{date|formatDate}} and a decision was made. You should receive the decision by post within 7 working days of the hearing.",
-        "We can’t publish the decision online or tell you over the phone. This is to protect your personal information."
-      ]
+      "oral": {
+        "content": [
+          "A hearing for your {{benefitType|acronym}} appeal took place on {{date|formatDate}} and a decision was made. You should receive the decision by post within 7 working days of the hearing.",
+          "We can’t publish the decision online or tell you over the phone. This is to protect your personal information."
+        ]
+      },
+      "paper": {
+        "content": [
+          "The tribunal have reviewed all the information you and {{benefitType|agencyAcronym}} have provided and have reached a decision on your {{benefitType|acronym}} appeal.",
+          "The decision notice has been posted to you. This has the tribunal's decision and their reasons. You should receive it by {{date|dateForDecisionReceived}}.",
+          "Please note we cannot give you your decision over the phone. This is to protect your personal information."
+        ]
+      }
     },
     "dwpRespond": {
-      "heading": "DWP response",
-      "content": [
-        "DWP have responded to your {{benefitType|acronym}} benefit appeal. They should have sent you a copy of their response in the post.",
-        "Your appeal hearing needs to be booked. You don’t need to do anything. You’ll receive another update by {{hearingContactDate|formatDate}}."
-      ]
+      "heading": "{{benefitType|agencyAcronym}} response",
+      "oral": {
+        "content": [
+          "{{benefitType|agencyAcronym}} have responded to your {{benefitType|acronym}} benefit appeal. They should have sent you a copy of their response in the post.",
+          "Your appeal hearing needs to be booked. You don’t need to do anything. You’ll receive another update by {{hearingContactDate|formatDate}}."
+        ]
+      },
+      "paper": {
+        "content": [
+          "{{benefitType|agencyAcronym}} has responded to your {{benefitType|acronym}} appeal. They should have sent you a copy in the post. Read their response and send your comments to the tribunal, if you have any.",
+          "A tribunal panel made up of {{benefitType|panel}} will hold a hearing for your appeal by {{hearingContactDate|formatDate}}. You have told us you do not want to attend so you will receive the decision in the post after the hearing has taken place."
+        ]
+      }
     },
     "dwpRespondOverdue": {
-      "heading": "DWP response overdue",
-      "content": [
-        "DWP were due to respond to your appeal by {{dwpResponseDate|formatDate}} but they have not yet done so.",
-        "You don’t have to do anything. We’ve contacted them again to ask them to respond. We’ll let you know when they do."
-      ]
+      "heading": "{{benefitType|agencyAcronym}} response overdue",
+      "oral": {
+        "content": [
+          "{{benefitType|agencyAcronym}} were due to respond to your appeal by {{dwpResponseDate|formatDate}}. We’ve written to them again to remind them. We’ll let you know when they respond."
+        ]
+      },
+      "paper": {
+        "content": [
+          "{{benefitType|agencyAcronym}} were due to respond to your appeal by {{dwpResponseDate|formatDate}}. We’ve written to them again to remind them. We’ll let you know when they respond."
+        ]
+      }
     },
     "evidenceReceived": {
       "heading": "Evidence received",
-      "content": "The evidence you sent was received by us on {{date|formatDate}}."
+      "oral": {
+        "content": "The evidence you sent was received by us on {{date|formatDate}}."
+      },
+      "paper": {
+        "content": "The evidence you sent was received by us on {{date|formatDate}}."
+      }
     },
     "hearing": {
       "heading": "Hearing took place",
-      "content": [
-        "A hearing for your {{benefitType|acronym}} appeal took place on {{date|formatDate}} and a decision was made. You should receive the decision by post within 7 working days of the hearing.",
-        "We can’t publish the decision online or tell you over the phone. This is to protect your personal information."
-      ]
+      "oral": {
+        "content": [
+          "A hearing for your {{benefitType|acronym}} appeal took place on {{date|formatDate}} and a decision was made. You should receive the decision by post within 7 working days of the hearing.",
+          "We can’t publish the decision online or tell you over the phone. This is to protect your personal information."
+        ]
+      },
+      "paper": {
+        "content": [
+          "A hearing for your {{benefitType|acronym}} appeal took place on {{date|formatDate}} and a decision was made. You should receive the decision by post within 7 working days of the hearing.",
+          "We can’t publish the decision online or tell you over the phone. This is to protect your personal information."
+        ]
+      }
     },
     "hearingBooked": {
       "heading": "Hearing booked",
-      "content": "A hearing has been booked for your appeal."
+      "oral": {
+        "content": "A hearing has been booked for your appeal."
+      },
+      "paper": {
+        "content": "A hearing has been booked for your appeal."
+      }
     },
     "lapsedRevised": {
       "heading": "Change of decision",
-      "content": [
-        "DWP have told us they changed their decision on your entitlement to {{benefitType|acronym}} in your favour. We’ve therefore closed this appeal. If you don’t agree with their new decision you can start a new appeal.",
-        "If you have any questions relating to your benefits, contact DWP. You can find their contact details on any correspondence you’ve received from them."
-      ]
+      "oral": {
+        "content": [
+          "{{benefitType|agencyAcronym}} have told us they changed their decision on your entitlement to {{benefitType|acronym}} in your favour. We’ve therefore closed this appeal. If you don’t agree with their new decision you can start a new appeal.",
+          "If you have any questions relating to your benefits, contact {{benefitType|agencyAcronym}}. You can find their contact details on any correspondence you’ve received from them."
+        ]
+      },
+      "paper": {
+        "content": [
+          "{{benefitType|agencyAcronym}} has told us they changed their decision about your entitlement to {{benefitType|acronym}} in your favour. We’ve therefore closed this appeal.",
+          "If you don’t agree with their new decision you can start a new appeal: <a href=\"https://www.gov.uk/appeal-benefit-decision\">https://www.gov.uk/appeal-benefit-decision</a>",
+          "If you have any questions relating to your benefits, contact {{benefitType|agencyAcronym}}. You can find their contact details on any correspondence you’ve received from them."
+        ]
+      }
     },
     "newHearingBooked": {
       "heading": "New hearing booked",
-      "content": "A new hearing has been booked for your appeal."
+      "oral": {
+        "content": "A new hearing has been booked for your appeal."
+      },
+      "paper": {
+        "content": "A new hearing has been booked for your appeal."
+      }
     },
     "pastHearingBooked": {
       "heading": "Still booking a hearing",
-      "content": "We’re still trying to find a suitable time for your {{benefitType|acronym}} benefit appeal. We’ll contact you as soon as we’ve scheduled it. We apologise for any inconvenience this may cause you."
+      "oral": {
+        "content": "We’re still trying to find a suitable time for your {{benefitType|acronym}} benefit appeal. We’ll contact you as soon as we’ve scheduled it. We apologise for any inconvenience this may cause you."
+      },
+      "paper": {
+        "content": "We’re still trying to find a suitable time for your {{benefitType|acronym}} benefit appeal. We’ll contact you as soon as we’ve scheduled it. We apologise for any inconvenience this may cause you."
+      }
     },
     "postponed": {
       "heading": "Hearing postponed",
-      "content": [
-        "The hearing for your {{benefitType|acronym}} benefit appeal has been postponed and will now take place on a different day.",
-        "We’ll now book a new hearing for your appeal. You don’t need to do anything. Unfortunately we can’t say how long it will take to book but it may be some time. It will depend on how busy the hearing venues are."
-      ]
+      "oral": {
+        "content": [
+          "The hearing for your {{benefitType|acronym}} benefit appeal has been postponed and will now take place on a different day.",
+          "We’ll now book a new hearing for your appeal. You don’t need to do anything. Unfortunately we can’t say how long it will take to book but it may be some time. It will depend on how busy the hearing venues are."
+        ]
+      },
+      "paper": {
+        "content": [
+          "The hearing for your {{benefitType|acronym}} benefit appeal has been postponed and will now take place on a different day.",
+          "We’ll now book a new hearing for your appeal. You don’t need to do anything. Unfortunately we can’t say how long it will take to book but it may be some time. It will depend on how busy the hearing venues are."
+        ]
+      }
     },
     "withdrawn": {
       "heading": "Appeal withdrawn",
-      "content": [
-        "You told us you wanted to withdraw your appeal so we’ve closed it.",
-        "If you have any questions relating to your benefits, contact DWP. You can find their contact details on any correspondence you’ve received from them."
-      ]
+      "oral": {
+        "content": [
+          "You told us you wanted to withdraw your appeal so we’ve closed it.",
+          "If you have any questions relating to your benefits, contact {{benefitType|agencyAcronym}}. You can find their contact details on any correspondence you’ve received from them."
+        ]
+      },
+      "paper": {
+        "content": [
+          "You told us you wanted to withdraw your appeal so we’ve closed it.",
+          "If you have any questions relating to your benefits, contact {{benefitType|agencyAcronym}}. You can find their contact details on any correspondence you’ve received from them."
+        ]
+      }
     }
   },
   "benefitTypes": {
     "esa": {
       "acronym": "ESA",
-      "fullDescription": "Employment and Support Allowance (ESA)"
+      "fullDescription": "Employment and Support Allowance (ESA)",
+      "agency": "Department for Work and Pensions",
+      "agencyAcronym": "DWP",
+      "panel": "a judge and a doctor"
     },
     "pip": {
       "acronym": "PIP",
-      "fullDescription": "Personal Independence Payment (PIP)"
+      "fullDescription": "Personal Independence Payment (PIP)",
+      "agency": "Department for Work and Pensions",
+      "agencyAcronym": "DWP",
+      "panel": "a judge, doctor and disability expert"
     }
   },
   "progressBar": {
     "appeal": "Appeal",
-    "dwpRespond": "DWP response",
+    "DWP_RESPOND": {
+      "pip": "DWP response",
+      "esa": "DWP response"
+    },
     "hearingBooked": "Hearing booked",
     "hearing": "Hearing",
+    "dormant": "Decision",
     "screenReader": {
       "heading": "Appeal process",
       "appeal": {
@@ -134,28 +243,35 @@
     "received": "If you have any more evidence to support your appeal, you should send it as soon as possible. This is so there's time to read it before your hearing.",
     "provide": {
       "title": "Providing evidence to support your appeal",
-      "content": "Evidence is anything that supports your appeal. It could be medical records, letters or documents. What you say at the hearing is also evidence. It all helps the tribunal understand the facts of your appeal.",
+      "content": ["Evidence is any information that supports your appeal, such as a letter, written statement or medical report. If you go to the hearing, what you say is also evidence. It all helps the tribunal understand the facts of your appeal.",
+                "If you have any evidence, you should post it as soon as possible to the address at the bottom of this page. This is so the tribunal have time to read it before your hearing. You don’t have to send evidence if you don’t have any."],
       "medicalEvidence": {
         "heading": "Medical evidence",
         "content": [
-          "This is the most important form of evidence. Medical evidence helps the tribunal understand your condition and how it affects your life.",
-          "As a patient, you have a right to a copy of your medical records. You’ll need to ask your doctor for them as early as possible in your appeal. Only get records going back 2 years from the time you made your appeal.",
-          "You might have other medical evidence which isn’t included in your medical records. For example a letter from a consultant, physiotherapist or mental health worker. Submit these too, if they are relevant to your condition at the time you received your decision from DWP.",
-          "You’ll need to send evidence to the tribunal as early as possible. If you submit evidence too close to your hearing, it could be delayed to a different day because there hasn’t been enough time to review it.",
-          "Please be aware your doctor or consultant may charge you for your medical records. We can’t reimburse you for this."
+          "This type of evidence helps the tribunal understand your condition from the perspective of a medical professional. You might have a letter from your doctor, physiotherapist, social worker or hospital consultant. A useful letter explains how your condition affects your life at the time of the decision by {{benefitType|agency}}. Appointment letters are not useful. ",
+          "Please be aware your doctor may charge you for writing a letter. The tribunal cannot reimburse you."
         ]
+      },
+      "statement": {
+        "heading": "Written statement",
+        "content": ["Someone who lives with you or knows you well you could write a statement. A useful statement describes how your condition affects your life and includes the types of activities you can and can’t do.",
+        "It can written by hand or on a computer but it should be signed by the person who wrote it. It should also say what their relationship is to you."]
+      },
+      "photoEvidence": {
+        "heading": "Photographic evidence",
+        "content": ["A useful photo shows how your condition affects your life. For example, pictures of any aids you use to help you move. Do not send in any photos of your body."]
       },
       "oralEvidence": {
         "heading": "Oral evidence",
         "content": [
-          "What you or anyone else says on your behalf at the hearing is called oral evidence. If you have a carer or someone who supports you in your home, you might want to invite them to come and tell the tribunal about your condition.",
+          "What you or anyone else says on your behalf at the hearing is called oral evidence. If you have someone who supports you in your home, you could invite them to come and tell the tribunal about your condition.",
           "You should check the person is willing to talk at your hearing and available on the day."
         ]
       },
       "whereToSendEvidence": {
         "heading": "Where to send your evidence",
         "content": [
-          "Post evidence to the following address, clearly marked with your appeal reference number:"
+          "Post evidence to the following address, clearly marked with your appeal reference number: {{caseReference}}"
         ],
         "address": [
           "Liverpool Social Security and Child Support Tribunal",
@@ -163,7 +279,8 @@
           "Liverpool",
           "Merseyside",
           "L2 5UZ"
-        ]
+        ],
+        "moreContent": "Send your evidence as early as possible. This is so the tribunal have time to read it before your hearing. If you send it in too late your appeal may be delayed."
       }
     }
   },
@@ -239,50 +356,54 @@
     "expectations": {
       "title": "What to expect at your hearing",
       "link": "Find out what your hearing is going to be like",
-      "content": "Your hearing is an opportunity for you to explain your appeal and get an impartial decision on your entitlement to {{benefitType|fullDescription}}. The tribunal is independent and will consider both sides of the appeal.",
+      "content": "Your hearing is an opportunity for you to explain your {{benefitType|fullDescription}} appeal. An independent panel of people will consider everything you tell them and make an impartial decision on your entitlement to {{benefitType|acronym}}. The panel will be made up of {{benefitType|panel}}. They are independent from {{benefitType|agency}} ({{benefitType|agencyAcronym}}).",
       "whenYouArrive": {
         "heading": "When you arrive",
-        "content": "You’ll be greeted by a tribunal clerk. They’ll take care of you at the hearing venue and answer any questions you have."
+        "content": "You’ll be greeted by a tribunal clerk. They’ll take care of you at the hearing venue and answer any questions you have. You should arrive at least 15 minutes before your hearing is due to start. If you are late your hearing may go ahead without you or be postponed to a different day."
       },
       "theHearingRoom": {
         "caption": {
-          "pip": "A PIP benefit appeal with a judge, doctor and disability expert",
-          "esa": "An ESA hearing with a judge and a doctor"
+          "pip": "A tribunal hearing for a PIP appeal with a judge, a doctor and a disability expert.",
+          "esa": "A tribunal hearing for an ESA appeal with a judge and a doctor."
         },
         "imageAlt": {
           "pip": "A tribunal hearing with 5 people, dressed informally, sat around a table.",
           "esa": "A tribunal hearing with 4 people, dressed informally, sat around a table."
         },
         "heading": "The hearing room",
-        "content": "The tribunal clerk will take you into the hearing room. The judge and medical expert will be sitting at a table. You’ll be invited to sit opposite them. If you have someone to support you or to give evidence, they’ll sit next to you."
+        "content": "The tribunal clerk will take you into the hearing room. The tribunal panel will be sat behind a table. You’ll be invited to sit opposite them. If you have someone to support you or to give evidence, they’ll sit next to you."
       },
       "peopleAtHearing": {
         "heading": "The people at your hearing",
-        "content": [
-          "The tribunal is made up of a judge and a medical expert who will make an impartial decision on your appeal. They are both independent from DWP.",
-          "The judge runs the hearing and will explain how it works. They’ll also take notes of what is said during the hearing.",
-          "The medical expert is there to give their medical opinion on your appeal."
+        "intro": "The tribunal panel is made up of {{benefitType|panel}}. They are there to listen to both sides and make a decision on your appeal. They are independent from {{benefitType|agencyAcronym}}.",
+        "contentPIP": [
+          "The judge runs the hearing and will explain how it works. They’ll also take notes of what is said during the hearing. The doctor provides their medical knowledge. The disability expert provides their knowledge of disability issues and how disability affects people.",
+          "Together they make a decision about your entitlement to the PIP benefit. "
+        ],
+        "contentESA": [
+          "The judge runs the hearing and will explain how it works. They’ll also take notes of what is said during the hearing. The doctor provides their medical knowledge. Together they make a decision about your entitlement to the ESA benefit."
         ]
       },
       "dwp": {
-        "heading": "DWP",
+        "heading": "{{benefitType|agencyAcronym}}",
         "content": [
-          "A representative from DWP might be there. They are not on the panel and are there to speak on behalf of DWP. They won’t be the person who made the decision about your entitlement to {{benefitType|acronym}}."
+          "A representative from {{benefitType|agencyAcronym}} might be there. They are not on the panel and are there to speak on behalf of {{benefitType|agencyAcronym}}. They won’t be the person who made the decision about your entitlement to {{benefitType|acronym}}."
         ]
       },
       "duringHearing": {
         "heading": "During your hearing",
         "content": [
-          "The tribunal panel members will ask you some straightforward questions. They’re trying to understand how your condition affects your life. This is your opportunity to explain your side of the appeal. They will consider everything you tell them.",
+          "The tribunal panel members will ask you some straightforward questions. This is your opportunity to explain your side of the appeal. They will listen to everything you tell them.",
           "Sometimes the tribunal panel will need more evidence to help them make a decision. It’s important that you submit all your evidence well before the hearing so they have time to review it. Otherwise they may have to postpone the hearing to a different day."
         ]
       },
       "gettingDecision": {
         "heading": "Getting a decision",
         "content": [
-          "After you’ve answered all the questions you’ll be asked to wait outside while the tribunal discusses your appeal. You’ll then be asked back into the room to be told the decision.",
-          "The judge will explain whether you’re entitled to {{benefitType|acronym}} and if so, at what level.",
-          "Sometimes the tribunal may need more time to make a decision. If that happens the decision about your appeal will be posted to you."
+          "After you’ve answered all the questions you’ll be asked to wait outside while the tribunal panel discusses your appeal. You’ll then be asked back into the room to be told the decision.",
+          "The judge will explain whether you’re entitled to {{benefitType|acronym}}, and if so, at what level.",
+          "Sometimes the tribunal need more time to make a decision. If that happens the decision about your appeal will be posted to you.",
+          "The whole hearing usually lasts about an hour."
         ]
       }
     }
@@ -304,7 +425,7 @@
       "content": [
         "You can bring people to support you at your hearing. For example family, friends or a support worker. There will be a limit to the number of people you can take into the hearing room because of space.",
         "Children are allowed in the waiting area but not in the hearing room. You’ll need to bring someone to supervise them while you’re in the hearing.",
-        "Bring all documents relating to your appeal to the hearing. For example letters or evidence we or DWP have sent you."
+        "Bring all documents relating to your appeal to the hearing. For example letters or evidence we or {{benefitType|agencyAcronym}} have sent you."
       ]
     }
   },
@@ -544,6 +665,13 @@
       ],
       "consent": "You give us your consent to processing this information for the purpose of dealing with your application.",
       "moreInfo": "For more information about how we collect and store your personal data, see the privacy policy "
+    },
+    "welsh": {
+      "title": "Appealing in Welsh",
+      "instructions": "This is a beta service is and is not currently available in Welsh. If you want to appeal in Welsh then you should",
+      "inDevelopment": "A Welsh version of this online service is in development and will be available when it's complete",
+      "formLink": "https://www.gov.uk/government/publications/appeal-a-social-security-benefits-decision-form-sscs1",
+      "linkLabel": "download the Welsh version of the paper SSCS1 form"
     },
     "disclaimer": {
       "title": "Disclaimer",

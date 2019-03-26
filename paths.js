@@ -1,6 +1,7 @@
 module.exports = {
 
   health: '/health',
+  monitoring: '/monitoring',
 
   tya: {
     aboutHearing: '/abouthearing',

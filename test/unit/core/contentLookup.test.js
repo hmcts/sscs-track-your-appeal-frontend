@@ -48,13 +48,22 @@ describe('Calling the getContentAsString() function', () => {
 describe('Calling the getContentAsArray() function', () => {
   it('should retrieve the content of all events as an array', () => {
     allEventKeys.forEach(key => {
-      const contentArr = getContentAsArray(`status.${key}.content`);
+      const contentArr = getContentAsArray(`status.${key}.oral.content`);
       return expect(contentArr).to.be.an('array').that.is.not.empty;
     });
   });
-  it('should...', () => {
+  it('when it\'s an oral case, it finds the content', () => {
     allEventKeys.forEach(key => {
-      const contentArr = getContentAsArray(`status.${key}.content`);
+      const contentArr = getContentAsArray(`status.${key}.oral.content`);
+      contentArr.forEach(contnt => {
+        expect(contnt).to.be.a('string');
+        return expect(contnt.length > 0).to.be.true;
+      });
+    });
+  });
+  it('when it\'s a paper case, it finds the content', () => {
+    allEventKeys.forEach(key => {
+      const contentArr = getContentAsArray(`status.${key}.paper.content`);
       contentArr.forEach(contnt => {
         expect(contnt).to.be.a('string');
         return expect(contnt.length > 0).to.be.true;
