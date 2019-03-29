@@ -11,6 +11,9 @@ module.exports = (req, res, next) => {
   res.locals.cookies = locale.cookiePolicy.footer.cookies;
   res.locals.termsAndConditions = locale.termsAndConditions.footer.terms;
   res.locals.privacyPolicy = locale.privacyPolicy.footer.privacy;
+  res.locals.contactUs = locale.contactUs.footer.contactUs;
+  res.locals.contactUsLink = locale.contactUs.footer.link;
+  res.locals.privacyPolicy = locale.privacyPolicy.footer.privacy;
   res.locals.cookieText = locale.cookiePolicy.banner.text;
   res.locals.cookieLink = locale.cookiePolicy.banner.link;
   res.locals.types = types;
