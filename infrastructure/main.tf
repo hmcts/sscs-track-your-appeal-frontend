@@ -44,6 +44,8 @@ module "tya-frontend" {
   asp_rg               = "${local.app_service_plan}"
   asp_name             = "${local.app_service_plan}"
 
+  appinsights_instrumentation_key = "${var.appinsights_instrumentation_key}"
+
   app_settings = {
     SSCS_API_URL                 = "${local.ApiUrl}"
     WEBSITE_NODE_DEFAULT_VERSION = "8.9.4"
