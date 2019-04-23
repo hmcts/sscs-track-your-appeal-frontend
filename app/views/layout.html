@@ -20,15 +20,21 @@
 with-proposition
 {% endblock %}
 
-{% block footer_top %}
-<ul>
-    <li><a href="/cookiepolicy">{{cookies}}</a></li>
+
+{% block footer_support_links %}
+    <ul>
+    <li><a href="{{contactUsLink}}">{{contactUs}}</a></li>
     {% if data.appealNumber %}
     <li><a href="/terms-and-conditions/{{ data.appealNumber }}">{{ termsAndConditions }}</a></li>
+    {% endif %}
+    <li><a href="/cookiepolicy">{{cookies}}</a></li>
+    {% if data.appealNumber %}
     <li><a href="/privacy-policy/{{ data.appealNumber }}">{{ privacyPolicy }}</a></li>
     {% endif %}
-</ul>
+    </ul>
 {% endblock %}
+
+
 
 {% block body_end %}
 {% include "includes/scripts.html" %}
