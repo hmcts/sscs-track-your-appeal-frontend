@@ -1,3 +1,4 @@
+require('app-insights').enable();
 const { Express } = require('@hmcts/nodejs-logging');
 const { tyaNunjucks, filters } = require('app/core/tyaNunjucks');
 const health = require('app/services/health');
