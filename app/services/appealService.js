@@ -20,7 +20,7 @@ const getAppeal = (req, res, next) => {
       appeal.latestEvents = appeal.latestEvents || [];
       appeal.historicalEvents = appeal.historicalEvents || [];
       res.locals.appeal = appeal;
-      logger.info(`GET /appeals/${req.params.id} ${HttpStatus.OK}`);
+      logger.info(`GET /appeals/${req.params.id} ${HttpStatus.OK} for caseId ${appeal.caseId}`);
       next();
     }).catch((error) => {
       if(error.status === HttpStatus.NOT_FOUND) {

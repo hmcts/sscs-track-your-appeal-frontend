@@ -14,5 +14,5 @@ Scenario('Verify hearing booked appeal details, progress bar status, screen read
 
   // Content
   I.see(common.latestUpdate);
-  I.see(status.hearingBooked.content);
+  I.see(status.hearingBooked.oral.content);
 });

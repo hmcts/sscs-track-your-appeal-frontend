@@ -8,14 +8,14 @@ Before(I => {
   I.enterSurnameAndSubmitAndSeeTYA(appeal);
 });
 
-xScenario('Verify dormant appeal details, progress bar status, screen reader text and content', I => {
+Scenario('Verify dormant appeal details, progress bar status, screen reader text and content @appealDormant', I => {
   I.seeAppealDetails(appeal);
   I.seeProgressBarAtHearing();
   I.seeScreenReaderTextAtHearing();
 
   // Content
   I.see(common.latestUpdate);
-  status.dormant.content.forEach(content => {
+  status.dormant.oral.content.forEach(content => {
     I.see(env.renderString(content, {
       benefitType: appeal.benefitType,
       date: appeal.latestEvents[0].date

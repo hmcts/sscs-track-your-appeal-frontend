@@ -8,13 +8,13 @@ Before(I => {
   I.enterSurnameAndSubmitAndSeeTYA(appeal);
 });
 
-Scenario('Verify closed appeal details, no progress bar and content', I => {
+Scenario('Verify closed appeal details, no progress bar and content @appealClosed', I => {
   I.seeAppealDetails(appeal);
   I.dontSeeAProgressBar();
 
   // Content.
   I.see(common.latestUpdate);
-  status.closed.content.forEach(content => {
+  status.closed.oral.content.forEach(content => {
     I.see(env.renderString(content, { benefitType: appeal.benefitType }));
   });
 });

@@ -2,7 +2,9 @@ const { getContentAsString } = require('app/core/contentLookup');
 const { dateFormat, timeZone } = require('app/core/dateUtils');
 const { events } = require('app/core/events');
 const screenReaderHelper = require('app/core/ScreenReaderHelper');
-const moment = require('moment-timezone');
+const momentTimezone = require('moment-timezone');
+const moment = require('moment');
+const { lowerCase } = require('lodash');
 
 const space = 2;
 const tyaNunjucks = {
@@ -29,11 +31,18 @@ const filters = {
   },
 
   formatDate: utcDateTimeStr => {
-    return moment.tz(utcDateTimeStr, timeZone).format(dateFormat.date);
+    return momentTimezone.tz(utcDateTimeStr, timeZone).format(dateFormat.date);
+  },
+
+  dateForDecisionReceived: utcDateTimeStr => {
+    const howManyDaysAfterHearing = 5;
+    return moment(utcDateTimeStr)
+      .add(howManyDaysAfterHearing, 'days')
+      .format(dateFormat.date);
   },
 
   formatTime: utcDateTimeStr => {
-    return moment.tz(utcDateTimeStr, timeZone).format(dateFormat.time);
+    return momentTimezone.tz(utcDateTimeStr, timeZone).format(dateFormat.time);
   },
 
   isActive: (currentStatus, status) => {
@@ -49,30 +58,28 @@ const filters = {
   },
 
   acronym: benefitType => {
-    return getContentAsString(`benefitTypes.${benefitType}.acronym`);
+    return getContentAsString(`benefitTypes.${lowerCase(benefitType)}.acronym`);
   },
 
   fullDescription: benefitType => {
-    return getContentAsString(`benefitTypes.${benefitType}.fullDescription`);
+    return getContentAsString(`benefitTypes.${lowerCase(benefitType)}.fullDescription`);
   },
 
   agency: benefitType => {
-    return getContentAsString(`benefitTypes.${benefitType}.agency`);
+    return getContentAsString(`benefitTypes.${lowerCase(benefitType)}.agency`);
   },
 
   agencyAcronym: benefitType => {
-    return getContentAsString(`benefitTypes.${benefitType}.agencyAcronym`);
+    return getContentAsString(`benefitTypes.${lowerCase(benefitType)}.agencyAcronym`);
   },
 
   panel: benefitType => {
-    return getContentAsString(`benefitTypes.${benefitType}.panel`);
+    return getContentAsString(`benefitTypes.${lowerCase(benefitType)}.panel`);
   },
 
   getProgressBarHeading: (currentStatus, benefitType) => {
-    return getContentAsString(`progressBar.${currentStatus}.${benefitType}`);
+    return getContentAsString(`progressBar.${currentStatus}.${lowerCase(benefitType)}`);
   }
-
-
 };
 
 const renderContent = (content, placeholder) => {

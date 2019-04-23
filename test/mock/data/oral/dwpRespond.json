@@ -9,10 +9,10 @@
     "surname": "test",
     "latestEvents": [
       {
-        "date": "2018-06-08T14:14:20.000Z",
+        "date": "2019-04-08T15:14:20.000Z",
         "type": "DWP_RESPOND",
         "contentKey": "status.dwpRespond",
-        "hearingContactDate": "2018-08-03T14:14:20.000Z"
+        "hearingContactDate": "2019-06-03T14:14:20.000Z"
       }
     ],
     "historicalEvents": [

@@ -167,8 +167,9 @@
     </Parties>
     <Major_Status>
       <Status_Id>3</Status_Id>
-      <Date_Set>2018-06-05T15:39:16.697+00:00</Date_Set>
-      <BF_Date>2018-06-04T00:00:00+00:00</BF_Date>
+      <!-- Appeal received  date needs to be less than 35 days from today date. Otherwise it moves to DWP overdue status-->
+      <Date_Set>2019-04-08T15:39:16.697+00:00</Date_Set>
+      <BF_Date>2019-01-01T00:00:00+00:00</BF_Date>
     </Major_Status>
     <Major_Status>
       <Status_Id>600</Status_Id>
@@ -407,7 +408,7 @@
     <Appeal_Case_RefNum>SC285/18/00007</Appeal_Case_RefNum>
     <Appeal_Case_Confidential>N</Appeal_Case_Confidential>
     <Appeal_Case_Case_Code_Id>1316</Appeal_Case_Case_Code_Id>
-    <Tribunal_Type_Id>1</Tribunal_Type_Id>
+    <Tribunal_Type_Id>2</Tribunal_Type_Id>
     <Appeal_Case_Date_Appeal_Received>2018-03-01T00:00:00+01:00</Appeal_Case_Date_Appeal_Received>
     <Appeal_Case_Date_of_Decision>2017-12-20T00:00:00+00:00</Appeal_Case_Date_of_Decision>
     <Appeal_Case_Date_Appeal_Made>2018-01-19T00:00:00+00:00</Appeal_Case_Date_Appeal_Made>
@@ -1019,14 +1020,14 @@
     </Major_Status>
     <Major_Status>
       <Status_Id>18</Status_Id>
-      <Date_Set>2018-06-08T16:14:20+01:00</Date_Set>
-      <BF_Date>2018-05-22T16:14:20+01:00</BF_Date>
+      <!-- date needs to be less than 8 weeks from today date. Otherwise it moves to past hearing booked status-->
+      <Date_Set>2019-04-08T16:14:20+01:00</Date_Set>
+      <BF_Date>2019-01-17T16:14:20+01:00</BF_Date>
     </Major_Status>
   </Appeal_Case>
 
 
   <!-- Dormant -->
-
   <Appeal_Case>
     <Extract_Time_UTC>2018-02-13T20:10:14.93+00:00</Extract_Time_UTC>
     <Appeal_Case_Id>5</Appeal_Case_Id>
@@ -1064,8 +1065,9 @@
     </Hearing>
     <Major_Status>
       <Status_Id>33</Status_Id>
-      <Date_Set>2018-07-05T14:38:26.443+00:00</Date_Set>
-      <BF_Date>2018-07-04T00:00:00+00:00</BF_Date>
+      <!-- date needs to be less than one month from today date. Otherwise it moves to closed status-->
+      <Date_Set>2019-04-08T14:38:26.443+00:00</Date_Set>
+      <BF_Date>2019-01-17T00:00:00+00:00</BF_Date>
     </Major_Status>
     <Major_Status>
       <Status_Id>18</Status_Id>
