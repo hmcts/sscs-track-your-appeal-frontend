@@ -1,8 +1,10 @@
 {% macro phoneNumber(city, text) %}
     {% set city = city.toUpperCase() %}
-    {% if city == 'GLASGOW' %}
+    {% if city == 'GLASGOW' and text['scotland'] %}
         {{  text['scotland'] }}
+    {% elseif text['englandWales']  %}
+        {{  text['englandWales'] }}
     {% else %}
-        {{  text['englandWales'] }}            
+        {{ text }}                
     {% endif %}    
 {% endmacro %}
