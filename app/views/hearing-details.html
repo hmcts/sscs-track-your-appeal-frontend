@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% from "components/phoneNumber.html" import phoneNumber %}
 
 {% block page_title %}
 Check your hearing details  {{ i18n.common.titleContext }}
@@ -53,7 +54,11 @@ Check your hearing details  {{ i18n.common.titleContext }}
             </div>
 
             <div class="panel panel-border-wide">
-                <h3><strong class="bold-small">{{ i18n.hearingDetails.incorrect }}</strong></h3>
+                <h3>
+                    <strong class="bold-small">
+                        {{ phoneNumber(data.regionalProcessingCenter.city, i18n.hearingDetails.incorrect) }}                      
+                    </strong>
+                </h3>
             </div>
 
             <h3 class="heading-small">{{ i18n.hearingDetails.pleaseNote.heading }}</h3>

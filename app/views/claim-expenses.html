@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% from "components/phoneNumber.html" import phoneNumber %}
 
 {% block page_title %}
 Claiming hearing expenses  {{ i18n.common.titleContext }}
@@ -15,12 +16,8 @@ Claiming hearing expenses  {{ i18n.common.titleContext }}
         <div class="column-two-thirds">
 
             <h1 class="heading-xlarge">{{ i18n.claimExpenses.title }}</h1>
-
             <p class="lede">{{ i18n.claimExpenses.content }}</p>
-            {% for content in i18n.claimExpenses.travel.content %}
-            <p>{{content}}</p>
-            {% endfor %}
-
+            <p>{{ phoneNumber(data.regionalProcessingCenter.city, i18n.claimExpenses.travel.content) }}</p>
         </div>
 
         <div class="column-third">
