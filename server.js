@@ -1,6 +1,9 @@
 const { Logger } = require('@hmcts/nodejs-logging');
 const config = require('config');
 const app = require('app.js');
+const appInsights = require('app-insights');
+
+appInsights.enable();
 
 const logger = Logger.getLogger('server.js');
 
