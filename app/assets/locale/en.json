@@ -568,6 +568,10 @@
     "scotland": {
       "heading": "Scotland",
       "phoneNumber": "Telephone: 0141 354 8400"
+    },
+    "footer" : {
+      "contactUs": "Contact us",
+      "link": "https://hmcts-access.service.gov.uk/contact-us"
     }
   },
   "errors": {
