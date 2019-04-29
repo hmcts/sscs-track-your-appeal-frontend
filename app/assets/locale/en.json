@@ -234,7 +234,7 @@
     "travel": {
         "content":  {
           "englandWales" : "You should use public transport where possible. Keep your travel tickets and bring them with you to your hearing. You’ll be given a claim form to fill out by the tribunal clerk. If you have a health condition or disability which means you can’t get yourself to the hearing then you might be able to claim for a taxi. You’ll need to get authorisation first by phoning 0300 123 1142.",
-          "scotland" : "You should use public transport where possible. Keep your travel tickets and bring them with you to your hearing. You’ll be given a claim form to fill out by the tribunal clerk. If you have a health condition or disability which means you can’t get yourself to the hearing then you might be able to claim for a taxi. You’ll need to get authorisation first by phoning 0141 354 8400."
+          "scotland" : "You should use public transport where possible. Keep your travel tickets and bring them with you to your hearing. You’ll be given a claim form to fill out by the tribunal clerk. If you have a health condition or disability which means you can’t get yourself to the hearing then you might be able to claim for a taxi. You’ll need to get authorisation first by phoning 0300 790 6234."
         } 
     }
   },
@@ -419,7 +419,7 @@
     "interpreter": "Interpreter",
     "representative": "Representative",
     "interpretersBookedByUs": "Only interpreters booked by us can translate for you at the hearing.",
-    "incorrect":  { "englandWales": "If you can't attend, call us on 0300 123 1142", "scotland": "If you can't attend, call us on 0141 354 8400"},
+    "incorrect":  { "englandWales": "If you can't attend, call us on 0300 123 1142", "scotland": "If you can't attend, call us on 0300 790 6234"},
     "pleaseNote": {
       "heading": "Please note",
       "content": [
@@ -567,7 +567,7 @@
     },
     "scotland": {
       "heading": "Scotland",
-      "phoneNumber": "Telephone: 0141 354 8400"
+      "phoneNumber": "Telephone: 0300 790 6234"
     },
     "footer" : {
       "contactUs": "Contact us",
@@ -580,7 +580,7 @@
       "heading": "Sorry, we're experiencing technical difficulties",
       "content": [
         "Please try again in a few minutes.",
-        "Or, if you want an update on your appeal you can call 0300 123 1142 (from England and Wales) or 0141 354 8400 (from Scotland)."
+        "Or, if you want an update on your appeal you can call 0300 123 1142 (from England and Wales) or 0300 790 6234 (from Scotland)."
       ]
     },
     "error404": {
@@ -588,7 +588,7 @@
       "heading": "Sorry, this page could not be found",
       "content": [
         "Check that you’ve entered the correct web address.",
-        "If you want an update on your appeal you can call 0300 123 1142 (from England and Wales) or 0141 354 8400 (from Scotland)."
+        "If you want an update on your appeal you can call 0300 123 1142 (from England and Wales) or 0300 790 6234 (from Scotland)."
       ]
     }
   },
