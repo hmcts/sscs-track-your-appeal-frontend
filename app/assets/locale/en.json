@@ -76,12 +76,12 @@
       "heading": "{{benefitType|agencyAcronym}} response overdue",
       "oral": {
         "content": [
-          "{{benefitType|agencyAcronym}} were due to respond to your appeal by {{dwpResponseDate|formatDate}}. We’ve written to them again to remind them. We’ll let you know when they respond."
+          "{{benefitType|agencyAcronym}} were due to respond to your appeal but they have not yet done so. You do not have to do anything. We’ve contacted them again to ask them to respond. We’ll let you know when they do."
         ]
       },
       "paper": {
         "content": [
-          "{{benefitType|agencyAcronym}} were due to respond to your appeal by {{dwpResponseDate|formatDate}}. We’ve written to them again to remind them. We’ll let you know when they respond."
+          "{{benefitType|agencyAcronym}} were due to respond to your appeal but they have not yet done so. You do not have to do anything. We’ve contacted them again to ask them to respond. We’ll let you know when they do."
         ]
       }
     },
