@@ -16,6 +16,6 @@ Scenario('Verify DWP respond overdue appeal details, progress bar status, screen
   // Content
   I.see(common.latestUpdate);
   status.dwpRespondOverdue.oral.content.forEach(content => {
-    I.see(env.renderString(content, { dwpResponseDate: appeal.latestEvents[0].dwpResponseDate }));
+    I.see(env.renderString(content, { benefitType: appeal.benefitType }));
   });
 });
