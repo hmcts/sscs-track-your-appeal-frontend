@@ -19,6 +19,6 @@ Scenario('Verify adjourned appeal details, progress bar status, screen reader te
   // Content.
   I.see(common.latestUpdate);
   status.adjourned.oral.content.forEach(content => {
-    I.see(env.renderString(content, date));
+    I.see(env.renderString(content, { benefitType: appeal.benefitType }));
   });
 });
