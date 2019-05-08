@@ -4,14 +4,14 @@
       "heading": "Hearing didn't take place",
       "oral": {
         "content": [
-          "The hearing for your appeal didn’t take place as scheduled. We’ve sent you a letter explaining why, which you should receive by {{adjournedLetterReceivedByDate|formatDate}}.",
-          "We’ll now set a new date for your hearing. You don’t need to do anything. Unfortunately we can’t say how long it will take to book but it may be some time. It will depend on how busy the hearing venues are."
+          "The hearing for your {{benefitType|agencyAcronym}} appeal did not go ahead as scheduled because the tribunal felt they could not proceed. You’ll get a letter in a few days which explains why. Read the letter because you may be asked to provide further information to the tribunal.",
+          "You will receive another email or text message when your new hearing has been booked."
         ]
       },
       "paper": {
         "content": [
-          "The hearing for your appeal didn’t take place as scheduled. We’ve sent you a letter explaining why, which you should receive by {{adjournedLetterReceivedByDate|formatDate}}.",
-          "We’ll now set a new date for your hearing. You don’t need to do anything. Unfortunately we can’t say how long it will take to book but it may be some time. It will depend on how busy the hearing venues are."
+          "The hearing for your {{benefitType|agencyAcronym}} appeal did not go ahead as scheduled because the tribunal felt they could not proceed. You’ll get a letter in a few days which explains why. Read the letter because you may be asked to provide further information to the tribunal.",
+          "You will receive another email or text message when your new hearing has been booked."
         ]
       }
     },
@@ -62,13 +62,13 @@
       "oral": {
         "content": [
           "{{benefitType|agencyAcronym}} have responded to your {{benefitType|acronym}} benefit appeal. They should have sent you a copy of their response in the post.",
-          "Your appeal hearing needs to be booked. You don’t need to do anything. You’ll receive another update by {{hearingContactDate|formatDate}}."
+          "You do not need to do anything. You will receive another email or text message update when your hearing has been booked. Unfortunately we cannot say how long this will be but it may be several months."
         ]
       },
       "paper": {
         "content": [
           "{{benefitType|agencyAcronym}} has responded to your {{benefitType|acronym}} appeal. They should have sent you a copy in the post. Read their response and send your comments to the tribunal, if you have any.",
-          "A tribunal panel made up of {{benefitType|panel}} will hold a hearing for your appeal by {{hearingContactDate|formatDate}}. You have told us you do not want to attend so you will receive the decision in the post after the hearing has taken place."
+          "A tribunal panel made up of {{benefitType|panel}} will hold a hearing for your appeal. You have told us you do not want to attend so you will receive the decision in the post, after the hearing has taken place. Unfortunately we cannot say how long this will be but it could be several months."
         ]
       }
     },
@@ -76,12 +76,12 @@
       "heading": "{{benefitType|agencyAcronym}} response overdue",
       "oral": {
         "content": [
-          "{{benefitType|agencyAcronym}} were due to respond to your appeal by {{dwpResponseDate|formatDate}}. We’ve written to them again to remind them. We’ll let you know when they respond."
+          "{{benefitType|agencyAcronym}} were due to respond to your appeal but they have not yet done so. You do not have to do anything. We’ve contacted them again to ask them to respond. We’ll let you know when they do."
         ]
       },
       "paper": {
         "content": [
-          "{{benefitType|agencyAcronym}} were due to respond to your appeal by {{dwpResponseDate|formatDate}}. We’ve written to them again to remind them. We’ll let you know when they respond."
+          "{{benefitType|agencyAcronym}} were due to respond to your appeal but they have not yet done so. You do not have to do anything. We’ve contacted them again to ask them to respond. We’ll let you know when they do."
         ]
       }
     },
@@ -146,24 +146,24 @@
     "pastHearingBooked": {
       "heading": "Still booking a hearing",
       "oral": {
-        "content": "We’re still trying to find a suitable time for your {{benefitType|acronym}} benefit appeal. We’ll contact you as soon as we’ve scheduled it. We apologise for any inconvenience this may cause you."
+        "content": "We are still booking a date for your {{benefitType|acronym}} benefit appeal. We apologise for the delay. The hearing venue is busier than expected. We will contact you as soon as we have a date for your hearing."
       },
       "paper": {
-        "content": "We’re still trying to find a suitable time for your {{benefitType|acronym}} benefit appeal. We’ll contact you as soon as we’ve scheduled it. We apologise for any inconvenience this may cause you."
+        "content": "We are still booking a date for your {{benefitType|acronym}} benefit appeal. We apologise for the delay. The hearing venue is busier than expected. We will contact you as soon as we have a date for your hearing."
       }
     },
     "postponed": {
       "heading": "Hearing postponed",
       "oral": {
         "content": [
-          "The hearing for your {{benefitType|acronym}} benefit appeal has been postponed and will now take place on a different day.",
-          "We’ll now book a new hearing for your appeal. You don’t need to do anything. Unfortunately we can’t say how long it will take to book but it may be some time. It will depend on how busy the hearing venues are."
+          "The hearing for your {{benefitType|acronym}} appeal has been postponed and will now take place on a different day.",
+          "You do not need to do anything. We'll now book a new hearing for your appeal as soon as we can."
         ]
       },
       "paper": {
         "content": [
-          "The hearing for your {{benefitType|acronym}} benefit appeal has been postponed and will now take place on a different day.",
-          "We’ll now book a new hearing for your appeal. You don’t need to do anything. Unfortunately we can’t say how long it will take to book but it may be some time. It will depend on how busy the hearing venues are."
+          "The hearing for your {{benefitType|acronym}} appeal has been postponed and will now take place on a different day.",
+          "You do not need to do anything. We'll now book a new hearing for your appeal as soon as we can."
         ]
       }
     },
