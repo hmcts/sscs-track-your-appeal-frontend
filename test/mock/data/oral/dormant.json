@@ -9,7 +9,7 @@
     "surname": "Test",
     "latestEvents": [
       {
-        "date": "2019-05-09T14:38:26.443Z",
+        "date": "2019-07-19T14:38:26.443Z",
         "type": "DORMANT",
         "contentKey": "status.dormant",
         "decisionLetterReceiveByDate": "2019-05-20T13:38:26.443Z"
