@@ -1,4 +1,5 @@
 nodejs:
+  image: 'https://hmctspublic.azurecr.io/hmcts/sscs/tya-frontend:latest'
   applicationPort: 3000
   environment:
     PUBLIC_PROTOCOL: https
