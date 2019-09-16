@@ -31,6 +31,9 @@ const filters = {
   },
 
   formatDate: utcDateTimeStr => {
+    if (!utcDateTimeStr) {
+      return 'Invalid';
+    }
     return momentTimezone.tz(utcDateTimeStr, timeZone).format(dateFormat.date);
   },
 
@@ -42,6 +45,9 @@ const filters = {
   },
 
   formatTime: utcDateTimeStr => {
+    if (!utcDateTimeStr) {
+      return 'Invalid';
+    }
     return momentTimezone.tz(utcDateTimeStr, timeZone).format(dateFormat.time);
   },
 
