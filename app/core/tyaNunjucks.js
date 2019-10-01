@@ -31,11 +31,10 @@ const filters = {
   },
 
   formatDate: utcDateTimeStr => {
-    // if (!utcDateTimeStr) {
-    //   return 'System error, please refer to letter for details';
-    // }
-    return 'System error, please refer to letter for details';
-    // return momentTimezone.tz(utcDateTimeStr, timeZone).format(dateFormat.date);
+    if (!utcDateTimeStr) {
+      return 'System error, please refer to letter for details';
+    }
+    return momentTimezone.tz(utcDateTimeStr, timeZone).format(dateFormat.date);
   },
 
   dateForDecisionReceived: utcDateTimeStr => {
@@ -46,11 +45,10 @@ const filters = {
   },
 
   formatTime: utcDateTimeStr => {
-    // if (!utcDateTimeStr) {
-    //   return 'System error, please refer to letter for details';
-    // }
-    // return momentTimezone.tz(utcDateTimeStr, timeZone).format(dateFormat.time);
-    return 'System error, please refer to letter for details';
+    if (!utcDateTimeStr) {
+      return 'System error, please refer to letter for details';
+    }
+    return momentTimezone.tz(utcDateTimeStr, timeZone).format(dateFormat.time);
   },
 
   isActive: (currentStatus, status) => {
