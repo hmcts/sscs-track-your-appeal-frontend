@@ -1,5 +1,6 @@
 const { reformatHearingDetails } = require('app/middleware/hearing');
 const { expect, sinon } = require('test/chai-sinon');
+const content = require('app/assets/locale/en.json');
 
 const testAddressLines = (
   address,
@@ -18,6 +19,7 @@ const testAddressLines = (
 
 describe('hearing.js', () => {
   let appeal = null, req = null, res = null, next = null;
+  const hearingDetails = content.hearingDetails;
 
   before(() => {
     appeal = {
@@ -60,7 +62,7 @@ describe('hearing.js', () => {
     };
 
     req = sinon.stub();
-    res = { locals: { appeal } };
+    res = { locals: { appeal, i18n: { hearingDetails } } };
     next = sinon.stub();
 
     reformatHearingDetails(req, res, next);
