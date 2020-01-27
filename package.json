@@ -24,8 +24,7 @@
     "sonar-scan": "sonar-scanner",
     "test:coverage": "yarn coverage",
     "test:a11y": "yarn pa11y",
-    "lint": "eslint .",
-    "test:nsp": "yarn security-checks"
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
