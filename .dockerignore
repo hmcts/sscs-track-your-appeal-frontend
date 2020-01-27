@@ -1,0 +1,11 @@
+*
+
+!app/
+!config/
+!app.js
+!app-insights.js
+!Gruntfile.js
+!package.json
+!yarn.lock
+!paths.js
+!server.js

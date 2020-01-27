@@ -9,4 +9,4 @@ services:
       - http_proxy
       - https_proxy
       - no_proxy
-    image: docker.artifactory.reform.hmcts.net/sscs/track-your-appeal-frontend
+    image: hmctspublic.azurecr.io/sscs/tya-frontend
