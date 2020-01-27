@@ -8,16 +8,6 @@ data "azurerm_key_vault_secret" "cookiesecret" {
   vault_uri = "${data.azurerm_key_vault.sscs_key_vault.vault_uri}"
 }
 
-data "azurerm_key_vault_secret" "hpkp-tya-sha-1" {
-  name      = "hpkp-tya-sha-1"
-  vault_uri = "${data.azurerm_key_vault.sscs_key_vault.vault_uri}"
-}
-
-data "azurerm_key_vault_secret" "hpkp-tya-sha-2" {
-  name      = "hpkp-tya-sha-2"
-  vault_uri = "${data.azurerm_key_vault.sscs_key_vault.vault_uri}"
-}
-
 locals {
   aseName             = "${data.terraform_remote_state.core_apps_compute.ase_name[0]}"
   vaultName           = "${var.raw_product}-${var.env}"
@@ -51,7 +41,5 @@ module "tya-frontend" {
     WEBSITE_NODE_DEFAULT_VERSION = "8.9.4"
     NODE_ENV                     = "${var.infrastructure_env}"
     COOKIE_SECRET                = "${data.azurerm_key_vault_secret.cookiesecret.value}"
-    HPKP_SHA256                  = "${data.azurerm_key_vault_secret.hpkp-tya-sha-1.value}"
-    HPKP_SHA256_BACKUP           = "${data.azurerm_key_vault_secret.hpkp-tya-sha-2.value}"
   }
 }

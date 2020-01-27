@@ -26,12 +26,5 @@
   "appInsights": {
     "instrumentationKey": "iKey",
     "roleName": "tya"
-  },
-  "ssl": {
-    "hpkp": {
-      "maxAge": "3600",
-      "sha256s": "AbCdEf123=",
-      "sha256sBackup": "ZyXwVu456="
-    }
   }
 }

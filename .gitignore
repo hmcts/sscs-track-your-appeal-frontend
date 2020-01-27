@@ -16,3 +16,4 @@ test/e2e/output/
 functional-output/
 smoke-output/
 .nyc_output/
+.terraform/
