@@ -1,5 +1,5 @@
 # ---- Base image ----
-FROM node:8.11-alpine as base
+FROM node:8-alpine as base
 ENV PATH="./node_modules/.bin:$PATH"
 ENV WORKDIR /app
 
