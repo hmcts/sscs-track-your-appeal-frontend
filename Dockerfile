@@ -1,7 +1,11 @@
 # ---- Base image ----
-FROM node:8.9.4-alpine as base
+FROM node:8.11-alpine as base
 ENV PATH="./node_modules/.bin:$PATH"
 ENV WORKDIR /app
+
+# required for node-gyp a dependency of node-sass
+RUN apk update && apk add python2 make g++
+
 WORKDIR ${WORKDIR}
 COPY package.json yarn.lock ./
 RUN yarn install \
