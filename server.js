@@ -1,5 +1,10 @@
+const config = require('@hmcts/properties-volume').addTo(require('config'));
+const setupSecrets = require('app/services/setupSecrets');
+
+// Setup secrets before loading the app
+setupSecrets();
+
 const { Logger } = require('@hmcts/nodejs-logging');
-const config = require('config');
 const app = require('app.js');
 const appInsights = require('app-insights');
 

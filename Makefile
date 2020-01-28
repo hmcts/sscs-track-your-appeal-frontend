@@ -14,9 +14,6 @@ test-unit:
 test-coverage:
 	yarn coverage
 
-test-security:
-	yarn security-checks
-
 test-accessibility:
 ifdef JUNIT_REPORT_PATH
 	yarn pa11y -- --reporter mocha-jenkins-reporter --reporter-options junit_report_packages=true

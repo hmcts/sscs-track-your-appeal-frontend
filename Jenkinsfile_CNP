@@ -1,10 +1,5 @@
 #!groovy
-properties(
-        [[$class: 'GithubProjectProperty', projectUrlStr: 'https://github.com/hmcts/track-your-appeal-frontend'],
-         pipelineTriggers([[$class: 'GitHubPushTrigger']])]
-)
-
-@Library("Infrastructure")
+@Library("Infrastructure") _
 
 def product = "sscs"
 def component = "tya-frontend"
@@ -12,6 +7,9 @@ def component = "tya-frontend"
 withPipeline("nodejs", product, component) {
   enableDockerBuild()
   installCharts()
+
+  enableAksStagingDeployment()
+  // disableLegacyDeploymentOnAAT()
   after("smoketest:preview") {
       stage('Application URLs') {
         def AppDevUrl = env.TEST_URL.replace("https", "http")

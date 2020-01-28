@@ -76,7 +76,7 @@ In order to track an appeal the appellant is required to be [subscribed](https:/
     $> yarn coverage
 
 #### Security checks
-    $> yarn security-checks
+    $> yarn audit
 
 #### Crossbrowser tests
 Ensure environment variables 'TUNNEL_IDENTIFIER', 

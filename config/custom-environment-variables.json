@@ -15,6 +15,7 @@
     "frontendUrl": "E2E_FRONTEND_URL"
   },
   "appInsights": {
-    "instrumentationKey": "APPINSIGHTS_INSTRUMENTATIONKEY"
+    "instrumentationKey": "APPINSIGHTS_INSTRUMENTATIONKEY",
+    "roleName": "APPINSIGHTS_ROLE_NAME"
   }
 }
