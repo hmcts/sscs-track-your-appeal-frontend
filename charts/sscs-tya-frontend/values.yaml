@@ -1,11 +1,13 @@
 nodejs:
-  image: 'https://hmctspublic.azurecr.io/hmcts/sscs/tya-frontend:latest'
+  image: 'hmctspublic.azurecr.io/hmcts/sscs/tya-frontend:latest'
   applicationPort: 3000
+  aadIdentityName: sscs
   environment:
-    PUBLIC_PROTOCOL: https
-    REFORM_TEAM: sscs
-    REFORM_SERVICE_NAME: sscs-track-your-appeal-frontend
-    REFORM_ENVIRONMENT : preview
-    SSCS_API_URL: http://sscs-tribunals-api-aat.service.core-compute-aat.internal
-    COOKIE_SECRET:
-    NODE_ENV: preview
+    SSCS_API_URL: http://sscs-tribunals-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    NODE_ENV: production
+
+  keyVaults:
+    sscs:
+      secrets:
+        - AppInsightsInstrumentationKey
+        - tyacookiesecret

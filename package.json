@@ -4,7 +4,7 @@
   "version": "0.0.2",
   "private": true,
   "engines": {
-    "node": ">=8.9.0"
+    "node": ">=12.0.0"
   },
   "scripts": {
     "start": "cross-env NODE_PATH=. LOG_OUTPUT=single node server.js",
@@ -20,7 +20,6 @@
     "test:crossbrowser": "cross-env NODE_PATH=. NODE_ENV=test codeceptjs run-multiple ${BROWSER_GROUP:-'--all'} -c test/e2e/saucelabs.conf.js --steps --reporter mocha-multi --verbose",
     "security-scan": "cross-env NODE_PATH=. codeceptjs run --config test/smoke/securityScan.conf.js --steps",
     "eslint": "cross-env NODE_PATH=. eslint .",
-    "security-checks": "cross-env NODE_PATH=. grunt security-checks",
     "sonar-scan": "sonar-scanner",
     "test:coverage": "yarn coverage",
     "test:a11y": "yarn pa11y",
@@ -28,12 +27,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hmcts/track-your-appeal-frontend.git"
+    "url": "https://github.com/hmcts/sscs-track-your-appeal-frontend.git"
   },
   "dependencies": {
     "@hmcts/nodejs-healthcheck": "^1.4.5",
     "@hmcts/nodejs-logging": "^3.0.0",
-    "applicationinsights": "^1.0.1",
+    "@hmcts/properties-volume": "^0.0.9",
+    "applicationinsights": "^1.6.0",
+    "applicationinsights-native-metrics": "^0.0.5",
     "body-parser": "^1.17.1",
     "config": "^1.30.0",
     "cookie-parser": "^1.4.3",

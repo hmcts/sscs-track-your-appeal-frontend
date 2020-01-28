@@ -5,11 +5,11 @@ data "azurerm_key_vault" "sscs_key_vault" {
 
 data "azurerm_key_vault_secret" "cookiesecret" {
   name      = "tyacookiesecret"
-  vault_uri = "${data.azurerm_key_vault.sscs_key_vault.vault_uri}"
+  key_vault_id = "${data.azurerm_key_vault.sscs_key_vault.id}"
 }
 
 locals {
-  aseName             = "${data.terraform_remote_state.core_apps_compute.ase_name[0]}"
+  aseName             = "core-compute-${var.env}"
   vaultName           = "${var.raw_product}-${var.env}"
 
   ApiUrl      = "http://sscs-tribunals-api-${var.env}.service.${local.aseName}.internal"
@@ -38,7 +38,7 @@ module "tya-frontend" {
 
   app_settings = {
     SSCS_API_URL                 = "${local.ApiUrl}"
-    WEBSITE_NODE_DEFAULT_VERSION = "8.9.4"
+    WEBSITE_NODE_DEFAULT_VERSION = "12.3.0"
     NODE_ENV                     = "${var.infrastructure_env}"
     COOKIE_SECRET                = "${data.azurerm_key_vault_secret.cookiesecret.value}"
   }

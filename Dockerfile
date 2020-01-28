@@ -1,4 +1,4 @@
-FROM hmctspublic.azurecr.io/base/node:8-alpine as base
+FROM hmctspublic.azurecr.io/base/node:12-alpine as base
 
 COPY --chown=hmcts:hmcts package.json yarn.lock Gruntfile.js ./
 
