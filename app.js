@@ -50,15 +50,6 @@ app.use(helmet.contentSecurityPolicy({
   }
 }));
 
-const maxAge = config.get('ssl.hpkp.maxAge');
-const sha256s = [
-  config.get('ssl.hpkp.sha256s'),
-  config.get('ssl.hpkp.sha256sBackup')
-];
-
-// Helmet HTTP public key pinning
-app.use(helmet.hpkp({ maxAge, sha256s }));
-
 // Helmet referrer policy
 app.use(helmet.referrerPolicy({ policy: 'origin' }));
 
