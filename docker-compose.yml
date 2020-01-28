@@ -10,3 +10,5 @@ services:
       - https_proxy
       - no_proxy
     image: hmctspublic.azurecr.io/sscs/tya-frontend
+    ports:
+      - 3000:3000
