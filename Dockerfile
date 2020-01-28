@@ -11,7 +11,7 @@ USER hmcts
 RUN yarn
 
 COPY --chown=hmcts:hmcts . .
-RUN rm -r node_modules/ && yarn install --production && rm -r ~/.cache/yarn
+RUN yarn setup && rm -r node_modules/ && yarn install --production && rm -r ~/.cache/yarn
 
 FROM base as runtime
 COPY --from=build $WORKDIR ./
