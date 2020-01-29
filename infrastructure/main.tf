@@ -41,5 +41,6 @@ module "tya-frontend" {
     WEBSITE_NODE_DEFAULT_VERSION = "12.3.0"
     NODE_ENV                     = "${var.infrastructure_env}"
     COOKIE_SECRET                = "${data.azurerm_key_vault_secret.cookiesecret.value}"
+    FORCE_APPLY = "remove me"
   }
 }
