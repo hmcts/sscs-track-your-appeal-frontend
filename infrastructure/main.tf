@@ -38,8 +38,9 @@ module "tya-frontend" {
 
   app_settings = {
     SSCS_API_URL                 = "${local.ApiUrl}"
-    WEBSITE_NODE_DEFAULT_VERSION = "12.3.0"
+    WEBSITE_NODE_DEFAULT_VERSION = "12.13.0"
     NODE_ENV                     = "${var.infrastructure_env}"
     COOKIE_SECRET                = "${data.azurerm_key_vault_secret.cookiesecret.value}"
+    FORCE_APPLY = "remove me"
   }
 }
