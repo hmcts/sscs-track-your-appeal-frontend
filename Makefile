@@ -15,9 +15,6 @@ test-coverage:
 	yarn coverage
 
 test-accessibility:
-ifdef JUNIT_REPORT_PATH
-	yarn pa11y -- --reporter mocha-jenkins-reporter --reporter-options junit_report_packages=true
-else
 	yarn pa11y
 endif
 
