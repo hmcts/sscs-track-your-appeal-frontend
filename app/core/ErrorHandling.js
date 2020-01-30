@@ -1,5 +1,8 @@
 /* eslint-disable no-unused-vars  */
 const HttpStatus = require('http-status-codes');
+const { Logger } = require('@hmcts/nodejs-logging');
+
+const logger = Logger.getLogger('ErrorHandling.js');
 
 class ErrorHandling {
   static handle404(req, res, next) {
@@ -10,6 +13,7 @@ class ErrorHandling {
 
   static handleError(error, req, res, next) {
     const status = ErrorHandling.getStatus(error);
+    logger.error('Unhandled error', error);
     res.status(status);
     res.render(status === HttpStatus.NOT_FOUND ? 'errors/404.html' : 'errors/500.html');
   }
