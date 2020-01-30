@@ -19,12 +19,12 @@
       "heading": "Appeal received",
       "oral": {
         "content": [
-          "We’ve told {{benefitType|agencyAcronym}} that you’ve appealed against their decision. They should respond before {{dwpResponseDate|formatDate}}. We’ll contact you and explain the next steps when they’ve replied."
+          "{{benefitType|agencyAcronym}} has to respond to your appeal by {{dwpResponseDate|formatDate}}. You'll receive another update when they have responded. If {{benefitType|agencyAcronym}} do not respond by this date then we will send them a reminder."
         ]
       },
       "paper": {
         "content": [
-          "We’ve told {{benefitType|agencyAcronym}} that you’ve appealed against their decision. They should respond before {{dwpResponseDate|formatDate}}. We’ll contact you and explain the next steps when they’ve replied."
+          "{{benefitType|agencyAcronym}} has to respond to your appeal by {{dwpResponseDate|formatDate}}. You'll receive another update when they have responded. If {{benefitType|agencyAcronym}} do not respond by this date then we will send them a reminder."
         ]
       }
     },
@@ -235,7 +235,7 @@
         "content":  {
           "englandWales" : "You should use public transport where possible. Keep your travel tickets and bring them with you to your hearing. You’ll be given a claim form to fill out by the tribunal clerk. If you have a health condition or disability which means you can’t get yourself to the hearing then you might be able to claim for a taxi. You’ll need to get authorisation first by phoning 0300 123 1142.",
           "scotland" : "You should use public transport where possible. Keep your travel tickets and bring them with you to your hearing. You’ll be given a claim form to fill out by the tribunal clerk. If you have a health condition or disability which means you can’t get yourself to the hearing then you might be able to claim for a taxi. You’ll need to get authorisation first by phoning 0300 790 6234."
-        } 
+        }
     }
   },
   "evidence": {
