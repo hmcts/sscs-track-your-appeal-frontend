@@ -19,7 +19,6 @@ Scenario('verify contact us page', I => {
   I.see(contactUs.englandWales.heading);
   I.see(contactUs.englandWales.phoneNumber);
   I.see(contactUs.englandWales.openingHours);
-  I.see(contactUs.englandWales.weekendOpeningHours);
   I.see(contactUs.englandWales.email);
 
   // Scotland content
