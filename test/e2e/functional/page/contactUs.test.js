@@ -21,7 +21,7 @@ Scenario('verify contact us page', I => {
   I.see(contactUs.englandWales.openingHours);
   I.see(contactUs.englandWales.weekendOpeningHours);
   I.see(contactUs.englandWales.email);
- 
+
   // Scotland content
   I.see(contactUs.scotland.heading);
   I.see(contactUs.scotland.phoneNumber);
