@@ -4,7 +4,7 @@ const { tyaNunjucks, filters } = require('app/core/tyaNunjucks');
 const health = require('app/services/health');
 const monitoring = require('app/services/monitoring');
 const ErrorHandling = require('app/core/ErrorHandling');
-const expressNunjucks = require('express-nunjucks');
+const nunjucks = require('nunjucks');
 const cookieSession = require('cookie-session');
 const cookieParser = require('cookie-parser');
 const express = require('express');
@@ -50,15 +50,6 @@ app.use(helmet.contentSecurityPolicy({
   }
 }));
 
-const maxAge = config.get('ssl.hpkp.maxAge');
-const sha256s = [
-  config.get('ssl.hpkp.sha256s'),
-  config.get('ssl.hpkp.sha256sBackup')
-];
-
-// Helmet HTTP public key pinning
-app.use(helmet.hpkp({ maxAge, sha256s }));
-
 // Helmet referrer policy
 app.use(helmet.referrerPolicy({ policy: 'origin' }));
 
@@ -76,12 +67,23 @@ app.get('/robots.txt', (req, res) => {
   res.send('User-agent: *\nDisallow: /');
 });
 
-tyaNunjucks.env = expressNunjucks(app, {
+const nunjucksEnv = nunjucks.configure([
+  path.join(__dirname, 'app', 'views'),
+  path.join(__dirname, 'app', 'views', 'notifications'),
+  path.join(__dirname, 'govuk_modules', 'govuk_template', 'views', 'layouts'),
+  __dirname
+], {
   autoescape: true,
-  watch: true,
-  noCache: false,
-  filters
-}).env;
+  watch: process.env.NODE_ENV !== 'production',
+  express: app,
+  noCache: false
+});
+Object.keys(filters).map(key => {
+  return nunjucksEnv.addFilter(key, filters[key]);
+});
+
+tyaNunjucks.env = nunjucksEnv;
+
 
 app.use('/public', express.static(`${__dirname}/public`));
 app.use('/public', express.static(`${__dirname}/govuk_modules/govuk_template/assets`));

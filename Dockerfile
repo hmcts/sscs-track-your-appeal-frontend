@@ -1,35 +1,19 @@
-# ---- Base image ----
-FROM node:8.9.4-alpine as base
-ENV PATH="./node_modules/.bin:$PATH"
-ENV WORKDIR /app
-WORKDIR ${WORKDIR}
-COPY package.json yarn.lock ./
-RUN yarn install \
-    --ignore-scripts \
-    --production
+FROM hmctspublic.azurecr.io/base/node:12-alpine as base
 
-# ---- Build image ----
-# Yarn will install the missing dev dependencies
-# then execute the setup post-install npm script hook.
-# This image is only used to generate the bundles
+COPY --chown=hmcts:hmcts package.json yarn.lock Gruntfile.js ./
+
 FROM base as build
-COPY app ./app
-COPY config ./config
-COPY Gruntfile.js server.js app.js app-insights.js paths.js ./
-RUN yarn install
 
-# ---- Runtime image ----
+USER root
+RUN apk add python2 make g++
+USER hmcts
+
+RUN yarn
+
+COPY --chown=hmcts:hmcts . .
+RUN yarn setup && rm -r node_modules/ && yarn install --production && rm -r ~/.cache/yarn
+
 FROM base as runtime
-COPY --from=build $WORKDIR/app ./app
-COPY --from=build $WORKDIR/config ./config
-COPY --from=build $WORKDIR/govuk_modules ./govuk_modules
-COPY --from=build $WORKDIR/lib ./lib
-COPY --from=build $WORKDIR/public ./public
-COPY --from=build $WORKDIR/Gruntfile.js \
-    $WORKDIR/server.js \
-    $WORKDIR/app.js \
-    $WORKDIR/app-insights.js \
-    $WORKDIR/paths.js \
-    ./
+COPY --from=build $WORKDIR ./
+USER hmcts
 EXPOSE 3000
-CMD ["npm", "start"]

@@ -1,5 +1,6 @@
 const { events } = require('app/core/events');
 const { startsWith } = require('lodash');
+const { renderContent } = require('app/core/tyaNunjucks');
 
 const ADDRESS_LINE = 'addressLine';
 
@@ -59,6 +60,8 @@ const reformatHearingDetails = (req, res, next) => {
   reformatHearingBookedEvents(appeal.latestEvents);
   reformatHearingBookedEvents(appeal.historicalEvents);
   setLatestHearingBookedEventOnAppeal(appeal);
+  const benefitType = { benefitType: appeal.benefitType };
+  res.locals.i18n.hearingDetails = renderContent(res.locals.i18n.hearingDetails, benefitType);
 
   next();
 };

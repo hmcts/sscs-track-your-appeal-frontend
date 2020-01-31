@@ -35,7 +35,7 @@ Check your hearing details  {{ i18n.common.titleContext }}
                 <dl class="date-time">
                     <dt>{{ i18n.common.time }}</dt>
                     <dd>
-                        <span><span class="time">{{ event.hearingDateTime | formatTime }}</span> ({{ i18n.hearingDetails.arriveEarly }})</span>
+                       {{ event.hearingDateTime | formatTime }} <span class="time"> ({{ i18n.hearingDetails.arriveEarly }})</span>
                     </dd>
                 </dl>
 

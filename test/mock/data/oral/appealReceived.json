@@ -9,9 +9,9 @@
     "status": "APPEAL_RECEIVED",
     "latestEvents": [
       {
-        "date": "2019-06-08T15:39:16.697Z",
+        "date": "2020-01-28T15:39:16.697Z",
         "type": "APPEAL_RECEIVED",
-        "dwpResponseDate": "2019-08-20T14:39:16.697Z",
+        "dwpResponseDate": "2020-03-03T15:39:16.697Z",
         "contentKey": "status.appealReceived"
       }
     ],

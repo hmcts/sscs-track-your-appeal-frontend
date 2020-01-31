@@ -5,21 +5,11 @@ data "azurerm_key_vault" "sscs_key_vault" {
 
 data "azurerm_key_vault_secret" "cookiesecret" {
   name      = "tyacookiesecret"
-  vault_uri = "${data.azurerm_key_vault.sscs_key_vault.vault_uri}"
-}
-
-data "azurerm_key_vault_secret" "hpkp-tya-sha-1" {
-  name      = "hpkp-tya-sha-1"
-  vault_uri = "${data.azurerm_key_vault.sscs_key_vault.vault_uri}"
-}
-
-data "azurerm_key_vault_secret" "hpkp-tya-sha-2" {
-  name      = "hpkp-tya-sha-2"
-  vault_uri = "${data.azurerm_key_vault.sscs_key_vault.vault_uri}"
+  key_vault_id = "${data.azurerm_key_vault.sscs_key_vault.id}"
 }
 
 locals {
-  aseName             = "${data.terraform_remote_state.core_apps_compute.ase_name[0]}"
+  aseName             = "core-compute-${var.env}"
   vaultName           = "${var.raw_product}-${var.env}"
 
   ApiUrl      = "http://sscs-tribunals-api-${var.env}.service.${local.aseName}.internal"
@@ -31,7 +21,7 @@ locals {
 }
 
 module "tya-frontend" {
-  source               = "git@github.com:contino/moj-module-webapp?ref=master"
+  source               = "git@github.com:hmcts/cnp-module-webapp?ref=master"
   product              = "${var.product}-${var.component}"
   location             = "${var.location}"
   env                  = "${var.env}"
@@ -48,10 +38,9 @@ module "tya-frontend" {
 
   app_settings = {
     SSCS_API_URL                 = "${local.ApiUrl}"
-    WEBSITE_NODE_DEFAULT_VERSION = "8.9.4"
+    WEBSITE_NODE_DEFAULT_VERSION = "12.13.0"
     NODE_ENV                     = "${var.infrastructure_env}"
     COOKIE_SECRET                = "${data.azurerm_key_vault_secret.cookiesecret.value}"
-    HPKP_SHA256                  = "${data.azurerm_key_vault_secret.hpkp-tya-sha-1.value}"
-    HPKP_SHA256_BACKUP           = "${data.azurerm_key_vault_secret.hpkp-tya-sha-2.value}"
+    FORCE_APPLY = "remove me"
   }
 }
