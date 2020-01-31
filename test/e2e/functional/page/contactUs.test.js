@@ -13,14 +13,18 @@ Scenario('verify contact us page', I => {
   I.wait('2');
   // See the title
   I.see(contactUs.title);
+  I.see(contactUs.description);
 
   // England and Wales content
-  I.see(contactUs.description);
-  I.see(contactUs.openingHours);
   I.see(contactUs.englandWales.heading);
-
-  // Scotland content
   I.see(contactUs.englandWales.phoneNumber);
+  I.see(contactUs.englandWales.openingHours);
+  I.see(contactUs.englandWales.weekendOpeningHours);
+  I.see(contactUs.englandWales.email);
+ 
+  // Scotland content
   I.see(contactUs.scotland.heading);
   I.see(contactUs.scotland.phoneNumber);
+  I.see(contactUs.scotland.openingHours);
+  I.see(contactUs.scotland.email);
 });

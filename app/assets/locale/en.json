@@ -559,15 +559,19 @@
   "contactUs": {
     "title": "Contact us",
     "description": "For help and support with your appeal call:",
-    "openingHours": "Monday to Friday, 8:30am to 5pm",
     "callCharges": "Find out about call charges",
     "englandWales": {
       "heading": "England and Wales",
-      "phoneNumber": "Telephone: 0300 123 1142"
+      "phoneNumber": "Telephone: 0300 123 1142",
+      "openingHours": "Monday to Friday, 8:00am to 8:00pm",
+      "weekendOpeningHours": "Saturday,  8:00am to 2:00pm",
+      "email": "Email: Contactsscs@justice.gov.uk"
     },
     "scotland": {
       "heading": "Scotland",
-      "phoneNumber": "Telephone: 0300 790 6234"
+      "phoneNumber": "Telephone: 0300 790 6234",
+      "openingHours": "Monday to Friday, 8:30am to 5.00pm",
+      "email": "Email: SSCSA-Glasgow@justice.gov.uk"
     },
     "footer" : {
       "contactUs": "Contact us",
