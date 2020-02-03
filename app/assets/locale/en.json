@@ -19,12 +19,12 @@
       "heading": "Appeal received",
       "oral": {
         "content": [
-          "We’ve told {{benefitType|agencyAcronym}} that you’ve appealed against their decision. They should respond before {{dwpResponseDate|formatDate}}. We’ll contact you and explain the next steps when they’ve replied."
+          "{{benefitType|agencyAcronym}} has to respond to your appeal by {{dwpResponseDate|formatDate}}. You'll receive another update when they have responded. If {{benefitType|agencyAcronym}} do not respond by this date then we will send them a reminder."
         ]
       },
       "paper": {
         "content": [
-          "We’ve told {{benefitType|agencyAcronym}} that you’ve appealed against their decision. They should respond before {{dwpResponseDate|formatDate}}. We’ll contact you and explain the next steps when they’ve replied."
+          "{{benefitType|agencyAcronym}} has to respond to your appeal by {{dwpResponseDate|formatDate}}. You'll receive another update when they have responded. If {{benefitType|agencyAcronym}} do not respond by this date then we will send them a reminder."
         ]
       }
     },
