@@ -9,8 +9,8 @@
     "cookieSecret": "my-secret"
   },
   "e2e": {
-    "waitForTimeout": "1000",
-    "waitForAction": "500",
+    "waitForTimeout": "3000",
+    "waitForAction": "2000",
     "outputDir": "./output",
     "frontendUrl": "http://localhost:3000"
   },
