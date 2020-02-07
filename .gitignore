@@ -17,3 +17,4 @@ functional-output/
 smoke-output/
 .nyc_output/
 .terraform/
+.vscode
