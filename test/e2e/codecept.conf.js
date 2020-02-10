@@ -7,7 +7,7 @@ if (process.env.TEST_UR) chromeArgs.push('--proxy-server=proxyout.reform.hmcts.n
 exports.config = {
   tests: './**/*.test.js',
   output: process.cwd() + '/functional-output', // eslint-disable-line prefer-template
-  timeout: 1000,
+  timeout: 3000,
   helpers: {
     Puppeteer: {
       url: process.env.TEST_URL || 'http://localhost:3000',
