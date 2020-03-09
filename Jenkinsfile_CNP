@@ -9,7 +9,7 @@ def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 withPipeline("nodejs", product, component) {
   installCharts()
   enableAksStagingDeployment()
-  // disableLegacyDeploymentOnAAT()
+  disableLegacyDeployment()
 
   after('build') {
     yarnBuilder.yarn('setup')
